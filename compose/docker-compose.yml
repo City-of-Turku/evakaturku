@@ -57,7 +57,7 @@ services:
       timeout: 5s
       retries: 5
 
-  evakaoulu-srv:
+  evakaturku-srv:
     image: evakaturku/service
     ports:
       - "8888:8888"

@@ -18,7 +18,7 @@ module.exports = {
       EVAKA_CUSTOMER_SAML_ISSUER: 'evakaturku',
       EVAKA_SAML_ENTRYPOINT: 'http://localhost:8080/auth/realms/employees/protocol/saml',
       EVAKA_SAML_ISSUER: 'evakaturku',
-      AD_SAML_EXTERNAL_ID_PREFIX: 'oulu-ad'
+      AD_SAML_EXTERNAL_ID_PREFIX: 'turku-ad'
     },
     ...defaults
   }, {
