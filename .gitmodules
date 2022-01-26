@@ -1,0 +1,6 @@
+[submodule "evaka"]
+	path = evaka
+	url = git@github.com:City-of-Turku/evaka.git
+[submodule "auth/theme"]
+	path = auth/theme
+	url = git@github.com:espoon-voltti/evaka-keycloak-theme.git
