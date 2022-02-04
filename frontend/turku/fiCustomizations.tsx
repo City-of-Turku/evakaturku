@@ -80,7 +80,8 @@ const fi: DeepPartial<Translations> = {
                   text="https://www.suomi.fi/viestit"
                   href="https://www.suomi.fi/viestit"
                   newTab
-                />. Mikäli ette ota Suomi.fi-viestit -palvelua käyttöön, päätös
+                />
+                . Mikäli ette ota Suomi.fi-viestit -palvelua käyttöön, päätös
                 lähetetään teille postitse.
               </P>
               <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
