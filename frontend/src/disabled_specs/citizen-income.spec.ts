@@ -11,7 +11,7 @@ import { enduserLogin } from 'e2e-test/utils/user'
 import {
   resetDatabaseForE2ETests
 } from '../../common/turku-dev-api'
-  
+
 
 let page: Page
 let header: CitizenHeader
