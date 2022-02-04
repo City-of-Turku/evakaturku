@@ -20,7 +20,7 @@ const customerContactText = function () {
       {' '}
       Varhaiskasvatuksen asiakaspalveluun:{' '}
       <a href="mailto:varhaiskasvatus@turku.fi">
-        varhaiskasvatus@ouka.fi
+        varhaiskasvatus@turku.fi
       </a> / <a href="tel:+358855845300">08 558 45300 - valitse numero 1</a>{' '}
       (ma-pe klo 9-12).
     </>
@@ -80,8 +80,7 @@ const fi: DeepPartial<Translations> = {
                   text="https://www.suomi.fi/viestit"
                   href="https://www.suomi.fi/viestit"
                   newTab
-                />
-                . Mikäli ette ota Suomi.fi-viestit -palvelua käyttöön, päätös
+                />. Mikäli ette ota Suomi.fi-viestit -palvelua käyttöön, päätös
                 lähetetään teille postitse.
               </P>
               <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
