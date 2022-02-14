@@ -12,7 +12,7 @@ import {
   resetDatabaseForE2ETests
 } from '../../common/turku-dev-api'
 import { enduserChildFixturePorriHatterRestricted, Fixture } from "e2e-test/dev-api/fixtures";
-  
+
 
 let page: Page
 let header: CitizenHeader
