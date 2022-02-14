@@ -114,6 +114,9 @@ class TurkuInvoiceProductProvider : InvoiceProductProvider {
     override val fullMonthSickLeave = Product.SICK_LEAVE_100.key
     override val fullMonthAbsence = Product.ABSENCE.key
 
+    override val contractSurplusDay: ProductKey
+        get() = TODO("Not yet implemented")
+
     override fun mapToProduct(placementType: PlacementType): ProductKey {
         val product = when (placementType) {
             PlacementType.DAYCARE,
