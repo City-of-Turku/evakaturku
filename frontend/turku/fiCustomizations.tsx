@@ -6,13 +6,13 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 */
 }
 
-import { P } from 'lib-components/typography'
+import React from 'react'
+import ExternalLink from 'lib-components/atoms/ExternalLink'
 import UnorderedList from 'lib-components/atoms/UnorderedList'
+import { P } from 'lib-components/typography'
 import { Gap } from 'lib-components/white-space'
 import { Translations } from 'lib-customizations/citizen'
 import { DeepPartial } from 'lib-customizations/types'
-import React from 'react'
-import ExternalLink from 'lib-components/atoms/ExternalLink'
 
 const customerContactText = function () {
   return (
@@ -20,7 +20,7 @@ const customerContactText = function () {
       {' '}
       Varhaiskasvatuksen asiakaspalveluun:{' '}
       <a href="mailto:varhaiskasvatus@turku.fi">
-        varhaiskasvatus@ouka.fi
+        varhaiskasvatus@turku.fi
       </a> / <a href="tel:+358855845300">08 558 45300 - valitse numero 1</a>{' '}
       (ma-pe klo 9-12).
     </>
