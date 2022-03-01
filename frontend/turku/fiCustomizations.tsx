@@ -18,11 +18,9 @@ const customerContactText = function () {
   return (
     <>
       {' '}
-      Varhaiskasvatuksen asiakaspalveluun:{' '}
-      <a href="mailto:varhaiskasvatus@turku.fi">
-        varhaiskasvatus@turku.fi
-      </a> / <a href="tel:+358855845300">08 558 45300 - valitse numero 1</a>{' '}
-      (ma-pe klo 9-12).
+      varhaiskasvatuksen palveluohjaukseen puh.{' '}
+      <a href="tel:+35822625610">02 2625610</a> TAI{' '}
+      <a href="mailto:varhaiskasvatus@turku.fi">varhaiskasvatus@turku.fi</a>
     </>
   )
 }
@@ -31,9 +29,14 @@ const fi: DeepPartial<Translations> = {
   applications: {
     creation: {
       daycareInfo:
-        'Varhaiskasvatushakemuksella haetaan paikkaa kunnallisesta päiväkodista tai perhepäivähoidosta, ostopalvelupäiväkodista tai palvelusetelillä tuetusta päiväkodista.',
+        'Varhaiskasvatushakemuksella haetaan varhaiskasvatuspaikkaa kunnalliseen päiväkotiin tai perhepäivähoitoon. Samalla hakemuksella voi hakea myös varhaiskasvatuksen palveluseteliä yksityiseen varhaiskasvatukseen valitsemalla Hakutoiveet-kohtaan palveluseteliyksikkö, johon halutaan hakea.',
+      preschoolLabel: 'Ilmoittautuminen esiopetukseen',
+      preschoolInfo:
+        'Maksutonta esiopetusta järjestetään neljä (4) tuntia päivässä. Lukuvuosi noudattaa pääosin koulujen loma- ja työaikoja. Tämän lisäksi lapselle voidaan hakea esiopetuksen täydentävään varhaiskasvatusta, jota tarjotaan esiopetuspaikoissa aamulla ennen esiopetuksen alkua ja iltapäivisin esiopetuksen jälkeen.',
+      preschoolDaycareInfo: '',
+      clubLabel: 'Avoimen varhaiskasvatuksen hakemus',
       clubInfo:
-        'Kerhohakemuksella haetaan paikkaa kunnallisista tai palvelusetelillä tuetuista kerhoista.',
+        'Avoimen varhaiskasvatuksen hakemuksella haetaan avoimen varhaiskasvatuksen kerhoihin ja leikkipuistotoimintaan.',
       applicationInfo: (
         <P>
           Huoltaja voi tehdä muutoksia hakemukseen verkkopalvelussa siihen asti,
@@ -235,24 +238,33 @@ const fi: DeepPartial<Translations> = {
   applicationsList: {
     title: 'Hakeminen varhaiskasvatukseen',
     summary: (
-      <P width="800px">
-        Lapsen huoltaja voi tehdä lapselleen hakemuksen varhaiskasvatukseen ja
-        kerhoon. Huoltajan lasten tiedot haetaan tähän näkymään automaattisesti
-        Väestötietojärjestelmästä.
-      </P>
+      <>
+        <P width="800px">
+          Lapsen huoltaja voi tehdä lapselle hakemuksen varhaiskasvatukseen ja
+          avoimeen varhaiskasvatukseen tai ilmoittaa lapsen esiopetukseen.
+          Samalla hakemuksella voi hakea myös varhaiskasvatuksen palveluseteliä,
+          hakemalla varhaiskasvatuspaikkaa palveluseteliyksiköstä. Huoltajan
+          lasten tiedot haetaan tähän näkymään automaattisesti
+          Väestötietojärjestelmästä.
+        </P>
+        <P width="800px">
+          Jos lapsella on jo paikka Turun varhaiskasvatuksessa ja halutaan hakea
+          siirtoa toiseen yksikköön, tehdään lapselle uusi hakemus.
+        </P>
+      </>
     )
   },
   footer: {
     cityLabel: '© Turun kaupunki',
     privacyPolicyLink: 'https://www.turku.fi/tietosuoja',
-    sendFeedbackLink: 'https://www.turku.fi/palaute'
+    sendFeedbackLink: 'https://opaskartta.turku.fi/efeedback'
   },
   map: {
-    mainInfo: `Tässä näkymässä voit hakea kartalta kaikki Turun varhaiskasvatusyksiköt sekä kerhot. Kartalta löytyvät myös seudulliset palveluseteliyksiköt ja -kerhot.`,
+    mainInfo: `Tässä näkymässä voit hakea kartalta Turun varhaiskasvatus-, esiopetus- ja avoimia varhaiskasvatuspaikkoja. Tietoa yksityisistä päiväkodeista löydät Turun varhaiskasvatuksen kotisivuilta.`,
     privateUnitInfo: <></>,
     serviceVoucherLink:
       'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli',
-    searchPlaceholder: 'Esim. Amurin päiväkoti'
+    searchPlaceholder: 'Esim. Arkeologinkadun päiväkoti.'
   },
   decisions: {
     summary: (

@@ -7,7 +7,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 }
 
 import { CitizenCustomizations } from 'lib-customizations/types'
-import TurkuLogo from './city-logo-citizen.svg'
+import TurkuLogo from './city-logo-citizen.png'
 import enCustomizations from './enCustomizations'
 import featureFlags from './featureFlags'
 import fiCustomizations from './fiCustomizations'
