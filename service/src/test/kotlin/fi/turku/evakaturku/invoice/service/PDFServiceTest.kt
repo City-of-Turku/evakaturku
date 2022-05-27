@@ -270,8 +270,8 @@ private val testDecisionIncome = DecisionIncome(
     totalIncome = 314100,
     totalExpenses = 0,
     total = 314100,
-    validFrom = LocalDate.of(2000, 1, 1),
-    validTo = null
+    worksAtECHA = false
+
 )
 
 private fun validFeeDecision() = FeeDecisionDetailed(
@@ -302,7 +302,8 @@ private fun validFeeDecision() = FeeDecisionDetailed(
             feeAlterations = listOf(
                 FeeAlterationWithEffect(FeeAlteration.Type.RELIEF, 50, false, -10800),
             ),
-            finalFee = 1
+            finalFee = 1,
+            childIncome = null
         )
     ),
     validDuring = DateRange(LocalDate.now(), null),
@@ -350,6 +351,7 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
     partner = null,
     headOfFamilyIncome = null,
     partnerIncome = null,
+    childIncome = null,
     familySize = 1,
     FeeDecisionThresholds(
         minIncomeThreshold = 1,
@@ -360,7 +362,7 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
     ),
     PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,
-        "Matti", "Meikäläinen",
+        "Jaakko", "Oululainen",
         null, "", "", "",
         "", null, "", null, restrictedDetailsEnabled = false
     ),
@@ -389,7 +391,6 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
     finalCoPayment = 1,
     baseValue = 1,
     childAge = 1,
-    ageCoefficient = BigDecimal.ONE,
     capacityFactor = BigDecimal.ONE,
     voucherValue = 1,
     documentKey = null,

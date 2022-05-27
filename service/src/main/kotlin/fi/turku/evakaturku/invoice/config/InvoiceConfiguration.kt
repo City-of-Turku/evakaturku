@@ -29,57 +29,23 @@ import org.springframework.ws.soap.saaj.SaajSoapMessageFactory
 import org.springframework.ws.transport.http.HttpComponentsMessageSender
 import org.springframework.ws.transport.http.HttpComponentsMessageSender.RemoveSoapHeadersInterceptor
 
-const val WEB_SERVICE_TEMPLATE_INVOICE = "webServiceTemplateInvoice"
-const val HTTP_CLIENT_INVOICE = "httpClientInvoice"
-
-internal val SOAP_PACKAGES = arrayOf(
-    "fi.tampere.messages.ipaas.commontypes.v1",
-    "fi.tampere.messages.sapsd.salesorder.v11",
-    "fi.tampere.services.sapsd.salesorder.v1",
-)
-
 @Profile("evakaturku")
 @Configuration
 class InvoiceConfiguration {
     @Primary
-    @Bean(name = ["trevakaInvoiceIntegrationClient"])
+    @Bean(name = ["evakaTurkuInvoiceIntegrationClient"])
     fun invoiceIntegrationClient(
-        @Qualifier(WEB_SERVICE_TEMPLATE_INVOICE) webServiceTemplate: WebServiceTemplate,
         properties: EVakaTurkuProperties
-    ): InvoiceIntegrationClient = EVakaTurkuInvoiceClient(webServiceTemplate, properties.invoice)
-
-    @Bean(WEB_SERVICE_TEMPLATE_INVOICE)
-    fun webServiceTemplate(
-        @Qualifier(HTTP_CLIENT_INVOICE) httpClient: HttpClient,
-        properties: EVakaTurkuProperties
-    ): WebServiceTemplate {
-        val messageFactory = SaajSoapMessageFactory().apply {
-            setSoapVersion(SoapVersion.SOAP_12)
-            afterPropertiesSet()
-        }
-        val marshaller = Jaxb2Marshaller().apply {
-            setPackagesToScan(*SOAP_PACKAGES)
-            afterPropertiesSet()
-        }
-        return WebServiceTemplate(messageFactory).apply {
-            this.marshaller = marshaller
-            unmarshaller = marshaller
-            setMessageSender(HttpComponentsMessageSender(httpClient))
-        }
+    ): InvoiceIntegrationClient {
+        return EVakaTurkuInvoiceClient()
     }
 
-    @Bean(HTTP_CLIENT_INVOICE)
-    fun httpClient(properties: EVakaTurkuProperties) = HttpClientBuilder.create()
-        .addInterceptorFirst(RemoveSoapHeadersInterceptor())
-        .addInterceptorFirst(basicAuthInterceptor(properties.ipaas.username, properties.ipaas.password))
-        .build()
 
     @Bean
     fun incomeTypesProvider(): IncomeTypesProvider = TurkuIncomeTypesProvider()
 
     @Bean
     fun invoiceProductProvider(): InvoiceProductProvider = TurkuInvoiceProductProvider()
-
 }
 
 class TurkuIncomeTypesProvider : IncomeTypesProvider {
@@ -113,69 +79,50 @@ class TurkuInvoiceProductProvider : InvoiceProductProvider {
     override val partMonthSickLeave = Product.SICK_LEAVE_50.key
     override val fullMonthSickLeave = Product.SICK_LEAVE_100.key
     override val fullMonthAbsence = Product.ABSENCE.key
+    override val contractSurplusDay = Product.OVER_CONTRACT.key
 
-    override val contractSurplusDay: ProductKey
-        get() = TODO("Not yet implemented")
 
     override fun mapToProduct(placementType: PlacementType): ProductKey {
         val product = when (placementType) {
-            PlacementType.DAYCARE,
-            PlacementType.DAYCARE_PART_TIME,
-            PlacementType.DAYCARE_FIVE_YEAR_OLDS,
-            PlacementType.DAYCARE_PART_TIME_FIVE_YEAR_OLDS ->
-                Product.DAYCARE
-            PlacementType.PRESCHOOL_DAYCARE ->
-                Product.PRESCHOOL_WITH_DAYCARE
-            PlacementType.PREPARATORY_DAYCARE ->
-                Product.PRESCHOOL_WITH_DAYCARE
-            PlacementType.TEMPORARY_DAYCARE,
-            PlacementType.TEMPORARY_DAYCARE_PART_DAY ->
-                Product.TEMPORARY_CARE
-            PlacementType.SCHOOL_SHIFT_CARE ->
-                Product.SCHOOL_SHIFT_CARE
-            PlacementType.PRESCHOOL,
-            PlacementType.PREPARATORY,
-            PlacementType.CLUB ->
-                error("No product mapping found for placement type $placementType")
+            PlacementType.DAYCARE, PlacementType.DAYCARE_PART_TIME, PlacementType.DAYCARE_FIVE_YEAR_OLDS, PlacementType.DAYCARE_PART_TIME_FIVE_YEAR_OLDS -> Product.DAYCARE
+            PlacementType.PRESCHOOL_DAYCARE -> Product.PRESCHOOL_WITH_DAYCARE
+            PlacementType.PREPARATORY_DAYCARE -> Product.PRESCHOOL_WITH_DAYCARE
+            PlacementType.TEMPORARY_DAYCARE, PlacementType.TEMPORARY_DAYCARE_PART_DAY -> Product.TEMPORARY_CARE
+            PlacementType.PRESCHOOL, PlacementType.PREPARATORY, PlacementType.SCHOOL_SHIFT_CARE, PlacementType.CLUB -> error(
+                "No product mapping found for placement type $placementType"
+            )
         }
         return product.key
     }
 
     override fun mapToFeeAlterationProduct(productKey: ProductKey, feeAlterationType: FeeAlteration.Type): ProductKey {
         val product = when (findProduct(productKey) to feeAlterationType) {
-            Product.DAYCARE to FeeAlteration.Type.DISCOUNT,
-            Product.DAYCARE to FeeAlteration.Type.RELIEF,
-            Product.PRESCHOOL_WITH_DAYCARE to FeeAlteration.Type.DISCOUNT,
-            Product.PRESCHOOL_WITH_DAYCARE to FeeAlteration.Type.RELIEF ->
-                Product.DAYCARE_DISCOUNT
-            Product.DAYCARE to FeeAlteration.Type.INCREASE,
-            Product.PRESCHOOL_WITH_DAYCARE to FeeAlteration.Type.INCREASE ->
-                Product.CORRECTION
-            else ->
-                error("No product mapping found for product + fee alteration type combo ($productKey + $feeAlterationType)")
+            Product.DAYCARE to FeeAlteration.Type.DISCOUNT, Product.DAYCARE to FeeAlteration.Type.RELIEF, Product.PRESCHOOL_WITH_DAYCARE to FeeAlteration.Type.DISCOUNT, Product.PRESCHOOL_WITH_DAYCARE to FeeAlteration.Type.RELIEF -> Product.DAYCARE_DISCOUNT
+            Product.DAYCARE to FeeAlteration.Type.INCREASE -> Product.CORRECTION
+            Product.PRESCHOOL_WITH_DAYCARE to FeeAlteration.Type.INCREASE -> Product.PRESCHOOL_DAYCARE_CORRECTION
+            else -> error("No product mapping found for product + fee alteration type combo ($productKey + $feeAlterationType)")
         }
         return product.key
     }
 
 }
 
-fun findProduct(key: ProductKey) = Product.values().find { it.key == key }
-    ?: error("Product with key $key not found")
+fun findProduct(key: ProductKey) = Product.values().find { it.key == key } ?: error("Product with key $key not found")
 
 enum class Product(val nameFi: String, val code: String) {
-    DAYCARE("Varhaiskasvatus", "500218"),
-    DAYCARE_DISCOUNT("Alennus", "500687"),
-    PRESCHOOL_WITH_DAYCARE("Esiopetusta täydentävä varhaiskasvatus", "500220"),
-    TEMPORARY_CARE("Tilapäinen varhaiskasvatus", "500576"),
-    SCHOOL_SHIFT_CARE("Koululaisen vuorohoito", "500949"),
-    SICK_LEAVE_50("Laskuun vaikuttava poissaolo 50%", "500283"),
-    SICK_LEAVE_100("Laskuun vaikuttava poissaolo 100%", "500248"),
-    ABSENCE("Poissaolovähennys 50%", "500210"),
-    FREE_OF_CHARGE("Maksuton päivä", "503696"),
-    CORRECTION("Oikaisu", "500177"),
-    FREE_MONTH("Maksuton kuukausi", "500156"),
-    OVER_CONTRACT("Sopimuksen ylitys", "500538"),
-    UNANNOUNCED_ABSENCE("Ilmoittamaton päivystysajan poissaolo", "507292");
+    DAYCARE("Varhaiskasvatus", ""),
+    DAYCARE_DISCOUNT("Alennus", ""),
+    PRESCHOOL_WITH_DAYCARE("Esiopetusta täydentävä varhaiskasvatus", ""),
+    TEMPORARY_CARE("Tilapäinen varhaiskasvatus", ""),
+    SICK_LEAVE_50("Sairaspoissaolovähennys 50 %", ""),
+    SICK_LEAVE_100("Sairaspoissaolovähennys 100 %", ""),
+    ABSENCE("Poissaolovähennys 50%", ""),
+    FREE_OF_CHARGE("Maksuton päivä", ""),
+    CORRECTION("Oikaisu", ""),
+    FREE_MONTH("Poissaolovähennys 100 %", ""),
+    OVER_CONTRACT("Sovittujen päivien ylitys", ""),
+    PRESCHOOL_DAYCARE_CORRECTION("Kokoaikainen varhaiskasvatus", "");
 
     val key = ProductKey(this.name)
 }
+

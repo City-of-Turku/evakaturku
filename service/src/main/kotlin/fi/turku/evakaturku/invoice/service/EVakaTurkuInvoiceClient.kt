@@ -12,7 +12,6 @@ import org.springframework.ws.client.core.WebServiceTemplate
 
 
 class EVakaTurkuInvoiceClient(
-    private val webServiceTemplate: WebServiceTemplate, private val properties: InvoiceProperties
 ) : InvoiceIntegrationClient {
     override fun send(invoices: List<InvoiceDetailed>): SendResult {
         TODO("Not yet implemented")
