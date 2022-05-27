@@ -7,6 +7,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 }
 
 import React from 'react'
+
 import ExternalLink from 'lib-components/atoms/ExternalLink'
 import UnorderedList from 'lib-components/atoms/UnorderedList'
 import { P } from 'lib-components/typography'
@@ -246,8 +247,22 @@ const en: DeepPartial<Translations> = {
   },
   footer: {
     cityLabel: '© City of Turku',
-    privacyPolicyLink: 'https://www.turku.fi/tietosuoja',
-    sendFeedbackLink: 'https://www.turku.fi/palaute'
+    privacyPolicyLink: (
+      <ExternalLink
+        href="https://www.turku.fi/tietosuoja"
+        text="Privacy Notices"
+        newTab={true}
+        data-qa="footer-policy-link"
+      ></ExternalLink>
+    ),
+    sendFeedbackLink: (
+      <ExternalLink
+        href="https://www.turku.fi/palaute"
+        text="Give feedback"
+        newTab={true}
+        data-qa="footer-feedback-link"
+      ></ExternalLink>
+    )
   },
   map: {
     mainInfo: `In this view you can locate on the map all of Turku’s early childhood education units and clubs. Regional service voucher units and clubs can also be found on the map.`,
