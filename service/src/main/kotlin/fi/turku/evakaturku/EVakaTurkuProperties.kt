@@ -13,22 +13,6 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConstructorBinding
 @ConfigurationProperties(prefix = "evakaturku", ignoreUnknownFields = false)
 data class EVakaTurkuProperties(
-    val ipaas: IpaasProperties,
-    val invoice: InvoiceProperties,
+   val one : String = "1"
 )
 
-data class IpaasProperties(
-    val username: String,
-    val password: String,
-)
-
-data class InvoiceProperties(
-    val url: String,
-    val paymentTerm: String = "V000",
-    val salesOrganisation: String = "1312",
-    val distributionChannel: String = "00",
-    val division: String = "00",
-    val salesOrderType: String = "ZPH",
-    val interfaceID: String = "352",
-    val plant: String = "1310"
-)

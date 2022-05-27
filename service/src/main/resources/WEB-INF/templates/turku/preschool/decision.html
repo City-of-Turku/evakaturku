@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2021 City of Turku
+SPDX-FileCopyrightText: 2022 City of Oulu
 
 SPDX-License-Identifier: LGPL-2.1-or-later
 -->
@@ -23,12 +23,14 @@ SPDX-License-Identifier: LGPL-2.1-or-later
         <strong th:text="#{decision.title}"></strong>
     </h1>
     <div th:replace="~{ turku/shared/common :: child-and-unit-details}"></div>
-    <p th:utext="#{decision.instructions}"></p>
+    <div th:utext="#{decision.instructions}"></div>
+    <div th:replace="~{ turku/shared/common :: decision-details }"></div>
 </div>
 
 <div class="page last-page">
-    <div th:replace="~{ turku/shared/common :: decision-details}"></div>
+
     <div th:utext="#{decision.legalInstructions}"></div>
+    <div th:replace="~{turku/shared/daycare-correction :: preschool-correction}"></div>
 </div>
 
 </body>

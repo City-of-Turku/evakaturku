@@ -40,7 +40,6 @@ class InvoiceConfiguration {
         return EVakaTurkuInvoiceClient()
     }
 
-
     @Bean
     fun incomeTypesProvider(): IncomeTypesProvider = TurkuIncomeTypesProvider()
 

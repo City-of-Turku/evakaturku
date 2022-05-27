@@ -30,20 +30,8 @@ class EvakaTurkuMain
 private val logger = KotlinLogging.logger {}
 
 fun main(args: Array<String>) {
-
-    val profiles = mutableListOf("evakaturku")
-
-    System.getenv("VOLTTI_ENV")?.let { envString ->
-        when (envString) {
-            "dev", "test" -> profiles.add("enables_dev_api")
-            else -> {
-            }
-        }
-    }
-
-    logger.info("Parsed profiles: {}", profiles.toTypedArray())
     SpringApplicationBuilder()
         .sources(EvakaTurkuMain::class.java)
-        .profiles(*profiles.toTypedArray())
+        .profiles("evakaturku")
         .run(*args)
 }

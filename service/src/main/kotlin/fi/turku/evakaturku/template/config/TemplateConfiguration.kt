@@ -23,10 +23,6 @@ internal class EVakaTurkuTemplateProvider : ITemplateProvider {
     override fun getDaycareVoucherDecisionPath(): String = "turku/daycare/voucher/decision"
     override fun getDaycareTransferDecisionPath(): String = "turku/daycare/decision"
     override fun getDaycareDecisionPath(): String = "turku/daycare/decision"
-
-    override fun getPreschoolDecisionPath(): String =
-        throw UnsupportedOperationException("Preschool decision is not supported")
-
-    override fun getPreparatoryDecisionPath(): String =
-        throw UnsupportedOperationException("Preparatory decision is not supported")
+    override fun getPreschoolDecisionPath(): String = "turku/preschool/decision"
+    override fun getPreparatoryDecisionPath(): String = "turku/preschool/decision"
 }

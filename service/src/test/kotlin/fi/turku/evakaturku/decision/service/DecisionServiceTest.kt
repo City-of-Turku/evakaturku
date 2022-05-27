@@ -23,10 +23,15 @@ import fi.espoo.evaka.shared.DaycareId
 import fi.espoo.evaka.shared.DecisionId
 import fi.espoo.evaka.shared.PersonId
 import fi.espoo.evaka.shared.ServiceNeedOptionId
+import fi.espoo.evaka.shared.config.PDFConfig
 import fi.espoo.evaka.shared.message.IMessageProvider
 import fi.espoo.evaka.shared.template.ITemplateProvider
 import fi.espoo.voltti.pdfgen.PDFService
 import fi.turku.evakaturku.AbstractIntegrationTest
+import fi.turku.evakaturku.message.config.MessageConfiguration
+import fi.turku.evakaturku.template.config.TemplateConfiguration
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
@@ -41,24 +46,23 @@ private val settings = mapOf(
     SettingType.DECISION_MAKER_TITLE to "Asiakaspalvelupäällikkö"
 )
 
-class DecisionServiceTest : AbstractIntegrationTest() {
-
-    @Autowired
+class DecisionServiceTest {
     private lateinit var messageProvider: IMessageProvider
-
-    @Autowired
-    private lateinit var emailMessageProvider: IEmailMessageProvider
-
-    @Autowired
     private lateinit var templateProvider: ITemplateProvider
-
-    @Autowired
     private lateinit var pdfService: PDFService
+
+    @BeforeEach
+    fun setup() {
+        messageProvider = MessageConfiguration().messageProvider()
+        templateProvider = TemplateConfiguration().templateProvider()
+        pdfService = PDFService(PDFConfig.templateEngine())
+    }
+
 
     @ParameterizedTest
     @EnumSource(
         value = DecisionType::class,
-        names = ["PRESCHOOL", "PRESCHOOL_DAYCARE", "PREPARATORY_EDUCATION"],
+        names = [],
         mode = EnumSource.Mode.EXCLUDE
     )
     fun createDecisionPdf(decisionType: DecisionType) {

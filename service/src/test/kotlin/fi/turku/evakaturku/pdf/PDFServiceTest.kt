@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
-package fi.turku.evakaturku.invoice.service
+package fi.turku.evakaturku.pdf
 
 import fi.espoo.evaka.invoicing.domain.DecisionIncome
 import fi.espoo.evaka.invoicing.domain.EmployeeWithName
@@ -35,13 +35,16 @@ import fi.espoo.evaka.shared.EmployeeId
 import fi.espoo.evaka.shared.FeeDecisionId
 import fi.espoo.evaka.shared.PersonId
 import fi.espoo.evaka.shared.VoucherValueDecisionId
+import fi.espoo.evaka.shared.config.PDFConfig
 import fi.espoo.evaka.shared.domain.DateRange
 import fi.espoo.evaka.shared.domain.HelsinkiDateTime
 import fi.turku.evakaturku.AbstractIntegrationTest
+import fi.turku.evakaturku.message.config.MessageConfiguration
+import fi.turku.evakaturku.template.config.TemplateConfiguration
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
-import org.springframework.beans.factory.annotation.Autowired
 import org.thymeleaf.context.Context
 import java.io.FileOutputStream
 import java.math.BigDecimal
@@ -58,8 +61,15 @@ private val settings = mapOf(
 
 internal class PDFServiceTest : AbstractIntegrationTest() {
 
-    @Autowired
     private lateinit var pdfService: PDFService
+
+    @BeforeEach
+    fun setup() {
+        pdfService = PDFService(
+            MessageConfiguration().messageProvider(),
+            TemplateConfiguration().templateProvider(),
+            PDFConfig.templateEngine())
+    }
 
     @Test
     fun render() {
