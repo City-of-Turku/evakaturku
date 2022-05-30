@@ -35,5 +35,3 @@ evaka:
     koski:
       enabled: false
 
-evakaturku:
-  stub: false

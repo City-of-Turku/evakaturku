@@ -12,22 +12,11 @@ import fi.espoo.evaka.invoicing.service.InvoiceProductProvider
 import fi.espoo.evaka.invoicing.service.ProductKey
 import fi.espoo.evaka.invoicing.service.ProductWithName
 import fi.espoo.evaka.placement.PlacementType
-import fi.turku.evakaturku.EVakaTurkuProperties
 import fi.turku.evakaturku.invoice.service.EVakaTurkuInvoiceClient
-import fi.turku.evakaturku.util.basicAuthInterceptor
-import org.apache.http.client.HttpClient
-import org.apache.http.impl.client.HttpClientBuilder
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 import org.springframework.context.annotation.Profile
-import org.springframework.oxm.jaxb.Jaxb2Marshaller
-import org.springframework.ws.client.core.WebServiceTemplate
-import org.springframework.ws.soap.SoapVersion
-import org.springframework.ws.soap.saaj.SaajSoapMessageFactory
-import org.springframework.ws.transport.http.HttpComponentsMessageSender
-import org.springframework.ws.transport.http.HttpComponentsMessageSender.RemoveSoapHeadersInterceptor
 
 @Profile("evakaturku")
 @Configuration
@@ -35,7 +24,6 @@ class InvoiceConfiguration {
     @Primary
     @Bean(name = ["evakaTurkuInvoiceIntegrationClient"])
     fun invoiceIntegrationClient(
-        properties: EVakaTurkuProperties
     ): InvoiceIntegrationClient {
         return EVakaTurkuInvoiceClient()
     }
