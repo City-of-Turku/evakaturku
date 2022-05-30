@@ -36,8 +36,4 @@ evaka:
       enabled: false
 
 evakaturku:
-  ipaas:
-    username: user
-    password: pass
-  invoice:
-    url: http://localhost:${server.port}/salesOrder
+  stub: false

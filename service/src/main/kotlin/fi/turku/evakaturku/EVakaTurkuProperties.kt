@@ -13,6 +13,6 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConstructorBinding
 @ConfigurationProperties(prefix = "evakaturku", ignoreUnknownFields = false)
 data class EVakaTurkuProperties(
-   val one : String = "1"
+   val stub : String
 )
 
