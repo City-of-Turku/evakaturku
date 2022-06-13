@@ -20,8 +20,7 @@ const customerContactText = function () {
     <>
       {' '}
       varhaiskasvatuksen palveluohjaukseen puh.{' '}
-      <a href="tel:+35822625610">02 2625610</a> TAI{' '}
-      <a href="mailto:varhaiskasvatus@turku.fi">varhaiskasvatus@turku.fi</a>
+      <a href="tel:+35822625610">02 2625610</a>.
     </>
   )
 }
@@ -57,7 +56,7 @@ const fi: DeepPartial<Translations> = {
       unitPreference: {
         units: {
           serviceVoucherLink:
-            'https://www.tampere.fi/varhaiskasvatus-ja-koulutus/varhaiskasvatus/paivakodit.html#palvelusetelipaivakodit'
+            'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli'
         }
       },
       heading: {
@@ -65,29 +64,24 @@ const fi: DeepPartial<Translations> = {
           DAYCARE: (
             <>
               <P>
-                Varhaiskasvatuspaikkaa voi hakea ympäri vuoden.
-                Varhaiskasvatushakemus tulee jättää viimeistään neljä kuukautta
-                ennen hoidon toivottua alkamisajankohtaa. Mikäli
-                varhaiskasvatuksen tarve johtuu työllistymisestä, opinnoista tai
-                koulutuksesta, eikä hoidon tarpeen ajankohtaa ole pystynyt
-                ennakoimaan, on varhaiskasvatuspaikkaa haettava mahdollisimman
-                pian - kuitenkin viimeistään kaksi viikkoa ennen kuin lapsi
-                tarvitsee hoitopaikan.
+                Varhaiskasvatusta voi hakea ympäri vuoden. Hakemus on jätettävä 
+                neljä kuukautta ennen kuin tarvitsette paikan. Mikäli tarvitsette 
+                varhaiskasvatusta kiireellisesti työn tai opiskelujen vuoksi, 
+                tulee paikkaa hakea viimeistään kaksi viikkoa ennen.
               </P>
-              <P>
-                Kirjallinen päätös varhaiskasvatuspaikasta lähetetään
-                Suomi.fi-viestit -palveluun. Mikäli haluatte päätöksen
-                sähköisenä tiedoksiantona, teidän tulee ottaa Suomi.fi-viestit
-                -palvelu käyttöön. Palvelusta ja sen käyttöönotosta saatte
-                lisätietoa{' '}
+              <p>
+                Saatte kirjallisen päätöksen varhaiskasvatuspaikasta 
+                {' '}
                 <ExternalLink
-                  text="https://www.suomi.fi/viestit"
+                  text="Suomi.fi-viestit -palveluun"
                   href="https://www.suomi.fi/viestit"
                   newTab
                 />
-                . Mikäli ette ota Suomi.fi-viestit -palvelua käyttöön, päätös
-                lähetetään teille postitse.
-              </P>
+                 {' '}
+                 tai postitse, mikäli et ole ottanut Suomi.fi-palvelua käyttöön. 
+                 Päätös on nähtävillä myös eVaka-palvelussa kohdassa 
+                 Hakeminen - Päätökset. 
+              </p>
               <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
             </>
           ),
@@ -121,9 +115,10 @@ const fi: DeepPartial<Translations> = {
         startDate: {
           instructions: (
             <>
-              Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi niin
-              kauan, kun hakemusta ei ole otettu käsittelyyn. Tämän jälkeen
-              toivotun aloituspäivän muutokset tehdään ottamalla yhteyttä
+              Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi 
+              siihen saakka, kunnes palveluohjaus on ottanut hakemuksen 
+              käsittelyyn. Tämän jälkeen toivotun aloituspäivän muutokset 
+              tehdään ottamalla yhteyttä 
               {customerContactText()}
             </>
           )
@@ -138,11 +133,18 @@ const fi: DeepPartial<Translations> = {
           attachmentsMessage: {
             text: (
               <P fitted={true}>
-                Mikäli varhaiskasvatuspaikan tarve johtuu äkillisestä
-                työllistymisestä tai opiskelupaikan saamisesta, tulee paikkaa
-                hakea viimeistään kaksi viikkoa ennen kuin hoidon tarve alkaa.
-                Lisäksi huoltajan tulee ottaa yhteyttä viipymättä
+                Mikäli varhaiskasvatuspaikan tarve johtuu äkillisestä työllistymisestä 
+                tai opiskelusta, tulee paikkaa hakea viimeistään kaksi viikkoa ennen 
+                kuin tarve alkaa. Hakemuksen liitteenä tulee olla työ- tai 
+                opiskelutodistus molemmilta samassa taloudessa asuvilta huoltajilta.  
+                Kahden viikon käsittelyaika alkaa siitä, kun olemme vastaanottaneet 
+                hakemuksen tarvittavine liitteineen. Jos et voi lisätä liitteitä 
+                hakemukselle sähköisesti, ole yhteydessä puhelimitse 
                 {customerContactText()}
+                {' '}
+                Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen 
+                palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla 
+                Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
               </P>
             )
           }
