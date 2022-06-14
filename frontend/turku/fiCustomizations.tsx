@@ -20,8 +20,7 @@ const customerContactText = function () {
     <>
       {' '}
       varhaiskasvatuksen palveluohjaukseen puh.{' '}
-      <a href="tel:+35822625610">02 2625610</a> TAI{' '}
-      <a href="mailto:varhaiskasvatus@turku.fi">varhaiskasvatus@turku.fi</a>
+      <a href="tel:+35822625610">02 2625610</a>.
     </>
   )
 }
@@ -57,7 +56,7 @@ const fi: DeepPartial<Translations> = {
       unitPreference: {
         units: {
           serviceVoucherLink:
-            'https://www.tampere.fi/varhaiskasvatus-ja-koulutus/varhaiskasvatus/paivakodit.html#palvelusetelipaivakodit'
+            'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli'
         }
       },
       heading: {
@@ -65,29 +64,23 @@ const fi: DeepPartial<Translations> = {
           DAYCARE: (
             <>
               <P>
-                Varhaiskasvatuspaikkaa voi hakea ympäri vuoden.
-                Varhaiskasvatushakemus tulee jättää viimeistään neljä kuukautta
-                ennen hoidon toivottua alkamisajankohtaa. Mikäli
-                varhaiskasvatuksen tarve johtuu työllistymisestä, opinnoista tai
-                koulutuksesta, eikä hoidon tarpeen ajankohtaa ole pystynyt
-                ennakoimaan, on varhaiskasvatuspaikkaa haettava mahdollisimman
-                pian - kuitenkin viimeistään kaksi viikkoa ennen kuin lapsi
-                tarvitsee hoitopaikan.
+                Varhaiskasvatusta voi hakea ympäri vuoden. Hakemus on jätettävä
+                neljä kuukautta ennen kuin tarvitsette paikan. Mikäli
+                tarvitsette varhaiskasvatusta kiireellisesti työn tai
+                opiskelujen vuoksi, tulee paikkaa hakea viimeistään kaksi
+                viikkoa ennen.
               </P>
-              <P>
-                Kirjallinen päätös varhaiskasvatuspaikasta lähetetään
-                Suomi.fi-viestit -palveluun. Mikäli haluatte päätöksen
-                sähköisenä tiedoksiantona, teidän tulee ottaa Suomi.fi-viestit
-                -palvelu käyttöön. Palvelusta ja sen käyttöönotosta saatte
-                lisätietoa{' '}
+              <p>
+                Saatte kirjallisen päätöksen varhaiskasvatuspaikasta{' '}
                 <ExternalLink
-                  text="https://www.suomi.fi/viestit"
+                  text="Suomi.fi-viestit -palveluun"
                   href="https://www.suomi.fi/viestit"
                   newTab
-                />
-                . Mikäli ette ota Suomi.fi-viestit -palvelua käyttöön, päätös
-                lähetetään teille postitse.
-              </P>
+                />{' '}
+                tai postitse, mikäli et ole ottanut Suomi.fi-palvelua käyttöön.
+                Päätös on nähtävillä myös eVaka-palvelussa kohdassa Hakeminen -
+                Päätökset.
+              </p>
               <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
             </>
           ),
@@ -121,9 +114,10 @@ const fi: DeepPartial<Translations> = {
         startDate: {
           instructions: (
             <>
-              Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi niin
-              kauan, kun hakemusta ei ole otettu käsittelyyn. Tämän jälkeen
-              toivotun aloituspäivän muutokset tehdään ottamalla yhteyttä
+              Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi siihen
+              saakka, kunnes palveluohjaus on ottanut hakemuksen käsittelyyn.
+              Tämän jälkeen toivotun aloituspäivän muutokset tehdään ottamalla
+              yhteyttä
               {customerContactText()}
             </>
           )
@@ -139,27 +133,34 @@ const fi: DeepPartial<Translations> = {
             text: (
               <P fitted={true}>
                 Mikäli varhaiskasvatuspaikan tarve johtuu äkillisestä
-                työllistymisestä tai opiskelupaikan saamisesta, tulee paikkaa
-                hakea viimeistään kaksi viikkoa ennen kuin hoidon tarve alkaa.
-                Lisäksi huoltajan tulee ottaa yhteyttä viipymättä
-                {customerContactText()}
+                työllistymisestä tai opiskelusta, tulee paikkaa hakea
+                viimeistään kaksi viikkoa ennen kuin tarve alkaa. Hakemuksen
+                liitteenä tulee olla työ- tai opiskelutodistus molemmilta
+                samassa taloudessa asuvilta huoltajilta. Kahden viikon
+                käsittelyaika alkaa siitä, kun olemme vastaanottaneet hakemuksen
+                tarvittavine liitteineen. Jos et voi lisätä liitteitä
+                hakemukselle sähköisesti, ole yhteydessä puhelimitse
+                {customerContactText()} Voit myös lähettää liitteet postitse
+                osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101
+                Turun kaupunki tai toimittamalla Kauppatorin Monitoriin,
+                Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
               </P>
             )
           }
         },
         shiftCare: {
           instructions:
-            'Päiväkodit palvelevat normaalisti arkisin klo 6.00–18.00. Iltahoito on tarkoitettu lapsille, jotka vanhempien työn tai tutkintoon johtavan opiskelun vuoksi tarvitsevat säännöllisesti hoitoa klo 18.00 jälkeen. Iltahoitoa tarjoavat päiväkodit aukeavat tarvittaessa klo 5.30 ja menevät kiinni viimeistään klo 22.30. Osa iltahoitoa antavista päiväkodeista on auki myös viikonloppuisin. Vuorohoito on tarkoitettu lapsille, joiden vanhemmat tekevät vuorotyötä ja lapsen hoitoon sisältyy myös öitä.',
+            'Ilta- ja vuorohoidolla tarkoitetaan pääasiassa klo 6.00–18.00 ulkopuolella ja viikonloppuisin sekä ympärivuorokautisesti tapahtuvaa varhaiskasvatusta. Mikäli tarvitset ilta- tai vuorohoitoa, täsmennä tarvetta hakemuksen Muut lisätiedot -kohdassa.',
           message: {
-            text: 'Ilta- ja vuorohoito on tarkoitettu lapsille, jotka vanhempien työn tai tutkintoon johtavan opiskelun vuoksi tarvitsevat ilta- ja vuorohoitoa. Hakemuksen liitteeksi on toimitettava vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta.'
+            text: 'Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610. Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.'
           },
           attachmentsMessage: {
-            text: 'Ilta- ja vuorohoito on tarkoitettu lapsille, jotka vanhempien työn tai tutkintoon johtavan opiskelun vuoksi tarvitsevat ilta- ja vuorohoitoa. Hakemuksen liitteeksi on toimitettava vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta.'
+            text: 'Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610. Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.'
           }
         },
         assistanceNeedInstructions: {
           DAYCARE:
-            'Tehostettua tai erityistä tukea annetaan lapselle heti tarpeen ilmettyä. Mikäli lapsella on olemassa tuen tarpeesta asiantuntijalausunto, tämä tulee ilmoittaa varhaiskasvatushakemuksella. Tukitoimet toteutuvat lapsen arjessa osana varhaiskasvatuksen toimintaa. Turun varhaiskasvatuksesta otetaan erikseen yhteyttä hakemuksen jättämisen jälkeen, jos lapsella on tuen tarve.',
+            'Lapsen tuen tarpeella tarkoitetaan sellaisten tukitoimien tarvetta, jotka on osoitettu asiantuntijalausunnoin. Tukitoimet toteutuvat lapsen arjessa osana varhaiskasvatuksen muuta toimintaa. Varhaiskasvatuksen erityisopettaja ottaa hakijaan yhteyttä, jotta lapsen tarpeet voidaan ottaa huomioon varhaiskasvatuspaikkaa myönnettäessä.',
           CLUB: 'Jos lapsella on tuen tarve, Turun varhaiskasvatuksesta otetaan yhteyttä hakemuksen jättämisen jälkeen.'
         },
         partTime: {
@@ -168,6 +169,179 @@ const fi: DeepPartial<Translations> = {
         dailyTime: {
           label: {
             DAYCARE: 'Palveluntarve'
+          }
+        }
+      },
+      unitPreference: {
+        title: 'Hakutoive',
+        siblingBasis: {
+          title: 'Haku sisarperusteella',
+          info: {
+            DAYCARE: (
+              <>
+                <P>
+                  Lapsella on sisarusperuste samaan varhaiskasvatuspaikkaan,
+                  jossa hänen sisaruksensa on. Tavoitteena on järjestää
+                  sisarukset samaan varhaiskasvatuspaikkaan perheen niin
+                  toivoessa. Jos haet paikkaa sisaruksille, jotka{' '}
+                  <b>eivät vielä ole</b> varhaiskasvatuksessa, kirjoita tieto
+                  hakemuksen Muut lisätiedot -kohtaan.
+                </P>
+                <P>
+                  Täytä nämä tiedot vain, jos käytät sisarusperustetta, sekä
+                  valitse alla olevissa hakutoiveissa ensisijaiseksi toiveeksi
+                  sama varhaiskasvatusyksikkö, jossa lapsen sisarus on.
+                </P>
+              </>
+            ),
+            PRESCHOOL: (
+              <>
+                <P>Esioppilaalla on sisarusperuste:</P>
+                <ol type="a">
+                  <li>
+                    Oman palvelualueen päiväkotiin, jossa esioppilaalla on
+                    sisarus, jolla on päätöksentekohetkellä ja tulevana
+                    esiopetusvuonna paikka esiopetuspäiväkodissa.
+                  </li>
+                  <li>
+                    Kunnan osoittamaan lähikouluun, jota esioppilaan sisarus käy
+                    tulevana lukuvuonna.
+                  </li>
+                </ol>
+                <P>
+                  Huoltaja voi valita, käyttääkö hän sisarusperustetta kohdan a
+                  vai b mukaisesti, jos esioppilaalla on sisarusperuste
+                  molempien kohtien mukaan. Valinta ilmoitetaan alla.
+                  Sisarukseksi katsotaan kaikki samassa osoitteessa asuvat
+                  lapset.
+                </P>
+                <P>
+                  Täytä nämä tiedot vain, jos käytät sisarusperustetta, sekä
+                  valitse alla olevissa hakutoiveissa ensisijaiseksi toiveeksi
+                  sama yksikkö, jossa lapsen sisarus on.
+                </P>
+              </>
+            ),
+            CLUB: (
+              <>
+                <P>
+                  Sisarukseksi katsotaan kaikki samassa osoitteessa asuvat
+                  lapset. Tavoitteena on sijoittaa sisarukset samaan
+                  kerhoryhmään perheen niin toivoessa.
+                </P>
+                <P>
+                  Täytä nämä tiedot vain, jos käytät sisarusperustetta, sekä
+                  valitse alla olevissa hakutoiveissa ensisijaiseksi toiveeksi
+                  sama kerho, jossa lapsen sisarus on.
+                </P>
+              </>
+            )
+          },
+          checkbox: {
+            DAYCARE:
+              'Haen ensisijaisesti samaan paikkaan, jossa lapsen sisarus on jo varhaiskasvatuksessa.',
+            PRESCHOOL:
+              'Haen ensisijaisesti samaan paikkaan, jossa lapsen sisarus on.',
+            CLUB: 'Haen ensisijaisesti paikkaa samasta kerhoryhmästä, jossa lapsen sisarus on.'
+          },
+          radioLabel: {
+            DAYCARE:
+              'Valitse sisarus, jonka kanssa haet samaan varhaiskasvatuspaikkaan',
+            PRESCHOOL: 'Valitse sisarus, jonka kanssa haet samaan paikkaan',
+            CLUB: 'Valitse sisarus, jonka kanssa haet samaan kerhoryhmään'
+          },
+          otherSibling: 'Muu sisarus',
+          names: 'Sisaruksen etunimet ja sukunimi',
+          namesPlaceholder: 'Etunimet ja sukunimi',
+          ssn: 'Sisaruksen henkilötunnus',
+          ssnPlaceholder: 'Henkilötunnus'
+        },
+        units: {
+          title: 'Hakutoiveet',
+          startDateMissing:
+            'Päästäksesi valitsemaan hakutoiveet valitse ensin toivottu aloituspäivä "Palvelun tarve" -osiosta',
+          info: {
+            DAYCARE: (
+              <>
+                <P>
+                  Voit hakea 1-3 paikkaa toivomassasi järjestyksessä.
+                  Hakutoiveet eivät takaa paikkaa toivotussa yksikössä, mutta
+                  mahdollisuus toivotun paikan saamiseen kasvaa antamalla
+                  useamman vaihtoehdon.
+                </P>
+                <P>
+                  Näet eri varhaiskasvatusyksiköiden sijainnin valitsemalla
+                  ‘Yksiköt kartalla’.
+                </P>
+                <P>
+                  Palveluseteliä haetaan valitsemalla hakutoiveeksi se
+                  palveluseteliyksikkö, johon halutaan hakea. Jos ensisijainen
+                  valintasi on palveluseteliyksikkö, ota yhteyttä kyseiseen
+                  yksikköön.{' '}
+                  <i>
+                    Palveluseteliyksikköön haettaessa myös yksikön esimies saa
+                    tiedon hakemuksesta.
+                  </i>
+                </P>
+              </>
+            ),
+            PRESCHOOL: (
+              <>
+                <P>
+                  Voit hakea 1-3 paikka paikkaa toivomassasi järjestyksessä.
+                  Hakutoiveet eivät takaa paikkaa toivotussa yksikössä, mutta
+                  mahdollisuus toivotun paikan saamiseen kasvaa antamalla
+                  useamman vaihtoehdon.
+                </P>
+                <P>
+                  Näet eri yksiköiden sijainnin valitsemalla ‘Yksiköt kartalla’.
+                </P>
+                <P>
+                  Palveluseteliä haetaan valitsemalla hakutoiveeksi se
+                  palveluseteliyksikkö, johon halutaan hakea.
+                  Palveluseteliyksikköön haettaessa myös yksikön esimies saa
+                  tiedon hakemuksesta.
+                </P>
+              </>
+            ),
+            CLUB: (
+              <>
+                <P>
+                  Voit hakea 1-3 paikkaa toivomassasi järjestyksessä.
+                  Hakutoiveet eivät takaa paikkaa toivotussa kerhossa, mutta
+                  mahdollisuus toivotun paikan saamiseen kasvaa antamalla
+                  useamman vaihtoehdon.
+                </P>
+                <P>
+                  Näet eri kerhojen sijainnin valitsemalla ‘Yksiköt kartalla’.
+                </P>
+              </>
+            )
+          },
+          mapLink: 'Yksiköt kartalla',
+          serviceVoucherLink:
+            'https://www.espoo.fi/fi/kasvatus-ja-opetus/varhaiskasvatus/varhaiskasvatuksen-palveluseteli#section-6228',
+          languageFilter: {
+            label: 'Yksikön kieli',
+            fi: 'suomi',
+            sv: 'ruotsi'
+          },
+          select: {
+            label: 'Valitse hakutoiveet',
+            placeholder: 'Hae yksiköitä',
+            maxSelected: 'Maksimimäärä yksiköitä valittu',
+            noOptions: 'Ei hakuehtoja vastaavia yksiköitä'
+          },
+          preferences: {
+            label: 'Valitsemasi hakutoiveet',
+            noSelections: 'Ei valintoja',
+            info: 'Valitse 1-3 varhaiskasvatusyksikköä ja järjestä ne toivomaasi järjestykseen. Voit muuttaa järjestystä nuolien avulla.',
+            fi: 'suomenkielinen',
+            sv: 'ruotsinkielinen',
+            en: 'englanninkielinen',
+            moveUp: 'Siirrä ylöspäin',
+            moveDown: 'Siirrä alaspäin',
+            remove: 'Poista hakutoive'
           }
         }
       },
@@ -185,10 +359,9 @@ const fi: DeepPartial<Translations> = {
             . Mikäli osoitteenne on muuttumassa, voit lisätä tulevan osoitteen
             erilliseen kohtaan hakemuksella; lisää tuleva osoite sekä lapselle
             että huoltajalle. Virallisena osoitetietoa pidetään vasta, kun se on
-            päivittynyt väestötietojärjestelmään. Varhaiskasvatus- ja
-            palvelusetelipäätös sekä tieto avoimen varhaiskasvatuksen
-            kerhopaikasta toimitetaan automaattisesti myös eri osoitteessa
-            asuvalle väestötiedoista löytyvälle huoltajalle.
+            päivittynyt väestötietojärjestelmään. Päätökset esiopetus- ja
+            varhaiskasvatuspaikoista toimitetaan automaattisesti myös eri
+            osoitteessa asuvalle väestötiedoista löytyvälle huoltajalle.
           </P>
         ),
         futureAddressInfo:
@@ -198,39 +371,33 @@ const fi: DeepPartial<Translations> = {
         info: {
           DAYCARE: (
             <P>
-              Kunnallisen varhaiskasvatuksen asiakasmaksu ja palvelusetelin
-              omavastuuosuus perustuu varhaiskasvatuksen asiakasmaksuista
-              annettuun lakiin (Laki varhaiskasvatuksen asiakasmaksuista
-              (1503/2016)). Asiakasmaksu määräytyy perheen koon, palveluntarpeen
-              sekä bruttotulojen mukaan. Uusien asiakkaiden tulee täyttää
-              asiakasmaksulomake ja toimittaa tarvittavat liitteet
-              Varhaiskasvatuksen asiakasmaksuihin viimeistään kuukauden kuluessa
-              hoidon alkamisesta.
+              Kunnallisen varhaiskasvatuksen asiakasmaksut ja palvelusetelin
+              omavastuuosuus määräytyvät prosenttiosuutena perheen
+              bruttotuloista. Maksut vaihtelevat perheen koon ja tulojen sekä
+              varhaiskasvatusajan mukaan. Mikäli varhaiskasvatuspaikan hinta
+              yksityisellä on enemmän kuin palvelusetelin arvo, erotuksen maksaa
+              perhe. Perhe toimittaa tuloselvityksen bruttotuloistaan
+              tuloselvityslomakkeella mahdollisimman pian siitä, kun lapsi on
+              aloittanut varhaiskasvatuksessa.
             </P>
           )
         },
         links: (
-          <P>
-            Lisätietoa varhaiskasvatuksen asiakasmaksuista löydät{' '}
-            <ExternalLink
-              href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli"
-              text="Turun kaupungin sivuilta"
-              newTab
-            />
-          </P>
-        )
-      },
-      additionalDetails: {
-        dietInfo: (
           <>
-            Erityisruokavaliosta huoltaja toimittaa varhaiskasvatuspaikkaan
-            lääkärin tai ravitsemusterapeutin täyttämän ja allekirjoittaman{' '}
-            <ExternalLink
-              href="https://www.tampere.fi/sosiaali-ja-terveyspalvelut/erityisruokavaliot.html"
-              text="Selvitys erityisruokavaliosta -lomakkeen"
-              newTab
-            />
-            , joka on määräaikainen.
+            <P>
+              Tuloselvityslomake löytyy eVakassa Käyttäjä-valikosta kohdasta
+              Tulotiedot.
+            </P>
+            <P>
+              Lisätietoa asiakasmaksuista löydät Turun kaupungin nettisivuilta:
+              Varhaiskasvatuksen asiakasmaksut. Suuntaa antavat
+              varhaiskasvatusmaksut löydät varhaiskasvatuksen{' '}
+              <ExternalLink
+                href="https://laskurit.turku.fi/paivahoitolaskuri_2021.php"
+                text="asiakasmaksulaskurista"
+                newTab
+              />
+            </P>
           </>
         )
       }
