@@ -53,12 +53,6 @@ const fi: DeepPartial<Translations> = {
       }
     },
     editor: {
-      unitPreference: {
-        units: {
-          serviceVoucherLink:
-            'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli'
-        }
-      },
       heading: {
         info: {
           DAYCARE: (
@@ -320,7 +314,7 @@ const fi: DeepPartial<Translations> = {
           },
           mapLink: 'Yksiköt kartalla',
           serviceVoucherLink:
-            'https://www.espoo.fi/fi/kasvatus-ja-opetus/varhaiskasvatus/varhaiskasvatuksen-palveluseteli#section-6228',
+            'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli',
           languageFilter: {
             label: 'Yksikön kieli',
             fi: 'suomi',
