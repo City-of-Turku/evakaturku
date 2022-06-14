@@ -5,33 +5,34 @@
 fi.turku.evakaturku:
   MessageProvider:
     DECISION_HEADER:
-      fi: Tampereen varhaiskasvatukseen liittyvät päätökset
+      fi: Turun varhaiskasvatukseen liittyvät päätökset
     DECISION_CONTENT:
       fi: |
-        Olette hakeneet lapsellenne varhaiskasvatus- tai kerhopaikkaa Tampereen varhaiskasvatuksesta. Päätös on luettavissa alla olevasta liitteestä.
+        Olette saaneet päätöksen Turun kaupungin varhaiskasvatuksesta, joka on luettavissa oheisesta liitteestä.
 
-        Varhaiskasvatus tai kerhopaikka on hakemuksen tehneen huoltajan hyväksyttävissä Tampereen kaupungin varhaiskasvatuksen sähköisessä palvelussa osoitteessa varhaiskasvatus.ouka.fi. Paikkaa ei voi hyväksyä Suomi.fi-viestit -palvelussa.
+        Huomioithan, että vastaus päätökseen tulee antaa kahden viikon kuluessa tämän päätöksen saamisesta joko sähköisesti osoitteessa varhaiskasvatus.turku.fi (vaatii vahvan tunnistautumisen) tai olemalla yhteydessä sen päiväkodin johtajaan, josta paikka myönnettiin.
 
-        Huomioittehan, että vastaus päätökseen tulee antaa kahden viikon kuluessa.
     FEE_DECISION_HEADER:
-      fi: Tampereen varhaiskasvatukseen liittyvät päätökset
+      fi: Turun varhaiskasvatukseen liittyvät päätökset
     FEE_DECISION_CONTENT:
       fi: |
-        Olette saaneet päätöksen varhaiskasvatuksen asiakasmaksusta Oulun kaupungilta. Päätös on luettavissa alla olevasta liitteestä.
+        Olette saaneet päätöksen varhaiskasvatuksen asiakasmaksusta Turun kaupungilta. Päätös on luettavissa oheisesta liitteestä.
 
-        Varhaiskasvatuksen asiakasmaksu on voimassa toistaiseksi ja perheellä on velvollisuus ilmoittaa, mikäli perheen tulot olennaisesti muuttuvat (+/- 10 %).
+        Maksupäätös on voimassa toistaiseksi.  Jos perheen bruttotuloissa tapahtuu olennaisia (+/-10 %) muutoksia, on uusi tuloselvitys tehtävä välittömästi. 
 
-        Lisätietoja varhaiskasvatuksen asiakasmaksuista
+        Lisätietoja maksun määräytymisestä löytyy Turun kaupungin verkkosivuilta: Varhaiskasvatuksen asiakasmaksut.
 
         https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli
+
     VOUCHER_VALUE_DECISION_HEADER:
-      fi: Tampereen varhaiskasvatukseen liittyvät päätökset
+      fi: Turun varhaiskasvatukseen liittyvät päätökset
     VOUCHER_VALUE_DECISION_CONTENT:
       fi: |
-        Olette saaneet päätöksen palvelusetelin omavastuuosuudesta Oulun kaupungilta. Päätös on luettavissa alla olevasta liitteestä.
+        Olette saaneet päätöksen varhaiskasvatuksen palvelusetelin arvosta ja omavastuuosuudesta. Päätös on luettavissa oheisesta liitteestä.
 
-        Omavastuuosuus on voimassa toistaiseksi ja perheellä on velvollisuus ilmoittaa, mikäli perheen tulot olennaisesti muuttuvat (+/- 10 %).
+        Päätös omavastuuosuudesta on voimassa toistaiseksi.  Päiväkodin / perhepäivähoitajan perimä omavastuu voi olla suurempi, kuin mitä päätöksessä ilmoitettu, jos päiväkodin hinta on suurempi kuin palvelusetelin enimmäisarvo. 
+        Jos perheen bruttotuloissa tapahtuu olennaisia (+/-10 %) muutoksia, on uusi tuloselvitys tehtävä välittömästi. 
 
-        Lisätietoja:
+        Lisätietoja maksun määräytymisestä löytyy Turun kaupungin verkkosivuilta: Varhaiskasvatuksen asiakasmaksut.
 
-        https://www.ouka.fi/oulu/paivahoito-ja-esiopetus/yksityisen-hoidon-tuki-ja-kuntalisa
+        https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli
