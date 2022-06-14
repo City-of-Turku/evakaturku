@@ -64,23 +64,22 @@ const fi: DeepPartial<Translations> = {
           DAYCARE: (
             <>
               <P>
-                Varhaiskasvatusta voi hakea ympäri vuoden. Hakemus on jätettävä 
-                neljä kuukautta ennen kuin tarvitsette paikan. Mikäli tarvitsette 
-                varhaiskasvatusta kiireellisesti työn tai opiskelujen vuoksi, 
-                tulee paikkaa hakea viimeistään kaksi viikkoa ennen.
+                Varhaiskasvatusta voi hakea ympäri vuoden. Hakemus on jätettävä
+                neljä kuukautta ennen kuin tarvitsette paikan. Mikäli
+                tarvitsette varhaiskasvatusta kiireellisesti työn tai
+                opiskelujen vuoksi, tulee paikkaa hakea viimeistään kaksi
+                viikkoa ennen.
               </P>
               <p>
-                Saatte kirjallisen päätöksen varhaiskasvatuspaikasta 
-                {' '}
+                Saatte kirjallisen päätöksen varhaiskasvatuspaikasta{' '}
                 <ExternalLink
                   text="Suomi.fi-viestit -palveluun"
                   href="https://www.suomi.fi/viestit"
                   newTab
-                />
-                 {' '}
-                 tai postitse, mikäli et ole ottanut Suomi.fi-palvelua käyttöön. 
-                 Päätös on nähtävillä myös eVaka-palvelussa kohdassa 
-                 Hakeminen - Päätökset. 
+                />{' '}
+                tai postitse, mikäli et ole ottanut Suomi.fi-palvelua käyttöön.
+                Päätös on nähtävillä myös eVaka-palvelussa kohdassa Hakeminen -
+                Päätökset.
               </p>
               <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
             </>
@@ -115,10 +114,10 @@ const fi: DeepPartial<Translations> = {
         startDate: {
           instructions: (
             <>
-              Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi 
-              siihen saakka, kunnes palveluohjaus on ottanut hakemuksen 
-              käsittelyyn. Tämän jälkeen toivotun aloituspäivän muutokset 
-              tehdään ottamalla yhteyttä 
+              Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi siihen
+              saakka, kunnes palveluohjaus on ottanut hakemuksen käsittelyyn.
+              Tämän jälkeen toivotun aloituspäivän muutokset tehdään ottamalla
+              yhteyttä
               {customerContactText()}
             </>
           )
@@ -133,18 +132,18 @@ const fi: DeepPartial<Translations> = {
           attachmentsMessage: {
             text: (
               <P fitted={true}>
-                Mikäli varhaiskasvatuspaikan tarve johtuu äkillisestä työllistymisestä 
-                tai opiskelusta, tulee paikkaa hakea viimeistään kaksi viikkoa ennen 
-                kuin tarve alkaa. Hakemuksen liitteenä tulee olla työ- tai 
-                opiskelutodistus molemmilta samassa taloudessa asuvilta huoltajilta.  
-                Kahden viikon käsittelyaika alkaa siitä, kun olemme vastaanottaneet 
-                hakemuksen tarvittavine liitteineen. Jos et voi lisätä liitteitä 
-                hakemukselle sähköisesti, ole yhteydessä puhelimitse 
-                {customerContactText()}
-                {' '}
-                Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen 
-                palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla 
-                Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+                Mikäli varhaiskasvatuspaikan tarve johtuu äkillisestä
+                työllistymisestä tai opiskelusta, tulee paikkaa hakea
+                viimeistään kaksi viikkoa ennen kuin tarve alkaa. Hakemuksen
+                liitteenä tulee olla työ- tai opiskelutodistus molemmilta
+                samassa taloudessa asuvilta huoltajilta. Kahden viikon
+                käsittelyaika alkaa siitä, kun olemme vastaanottaneet hakemuksen
+                tarvittavine liitteineen. Jos et voi lisätä liitteitä
+                hakemukselle sähköisesti, ole yhteydessä puhelimitse
+                {customerContactText()} Voit myös lähettää liitteet postitse
+                osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101
+                Turun kaupunki tai toimittamalla Kauppatorin Monitoriin,
+                Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
               </P>
             )
           }
