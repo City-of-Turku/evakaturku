@@ -24,11 +24,10 @@ SPDX-License-Identifier: LGPL-2.1-or-later
     </h1>
     <div th:replace="~{ turku/shared/common :: child-and-unit-details}"></div>
     <div th:utext="#{decision.instructions}"></div>
-</div>
-
-<div class="page last-page">
     <div th:replace="~{ turku/shared/common :: decision-details }"></div>
     <div th:utext="#{decision.legalInstructions}"></div>
+</div>
+<div class="page last-page">
     <div th:replace="~{ turku/shared/daycare-correction :: daycare-correction}"></div>
 </div>
 
