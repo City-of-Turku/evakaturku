@@ -62,7 +62,24 @@ SPDX-License-Identifier: LGPL-2.1-or-later
     <div class="correction-content">
         <div th:utext="#{address.content}">Oikaisuvaatimus toimitetaan joko....</div>
     </div>
-
 </th:block>
+
+<th:block th:fragment="fee-decision-correction">
+    <h2 th:text="#{title}"></h2>
+    <div class="correction-content">
+        <p th:utext="#{fee-decision-correction.p1}"></p>
+        <p th:utext="#{fee-decision-correction.p2}"></p>
+        <p th:utext="#{fee-decision-correction.p3}"></p>
+        <p th:utext="#{fee-decision-correction.p4}"></p>
+        <p th:utext="#{fee-decision-correction.p5}"></p>
+        <p th:utext="#{fee-decision-correction.p6}"></p>
+        <p th:utext="#{fee-decision-correction.p7}"></p>
+    </div>
+    
+    <div class="correction-content">
+        <div th:utext="#{address.content}">Oikaisuvaatimus toimitetaan joko....</div>
+    </div>
+</th:block>
+
 </body>
 </html>
