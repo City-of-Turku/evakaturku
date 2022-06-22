@@ -318,7 +318,7 @@ private fun validFeeDecision() = FeeDecisionDetailed(
     ),
     validDuring = DateRange(LocalDate.now(), null),
     FeeDecisionStatus.WAITING_FOR_SENDING,
-    decisionNumber = null,
+    decisionNumber = 123456,
     FeeDecisionType.NORMAL,
     headOfFamily = PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
@@ -379,7 +379,7 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
     VoucherValueDecisionPlacementDetailed(
         UnitData(
             DaycareId(UUID.randomUUID()),
-            name = "Vuoreksen kerho",
+            name = "Jäkärlän kerho",
             areaId = AreaId(UUID.randomUUID()),
             areaName = "Etelä",
             language = "fi"
