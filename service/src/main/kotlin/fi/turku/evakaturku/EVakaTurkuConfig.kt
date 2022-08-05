@@ -10,6 +10,7 @@ import fi.espoo.evaka.s3.DocumentService
 import software.amazon.awssdk.services.s3.S3Client
 import software.amazon.awssdk.services.s3.presigner.S3Presigner
 import fi.espoo.evaka.BucketEnv
+import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 
 @Configuration
 class EVakaTurkuConfig {
@@ -21,7 +22,10 @@ class EVakaTurkuConfig {
         citizenReservationThresholdHours = 6 * 24, // Tue 00:00
         dailyFeeDivisorOperationalDaysOverride = null,
         freeSickLeaveOnContractDays = true,
-        alwaysUseDaycareFinanceDecisionHandler = true
+        alwaysUseDaycareFinanceDecisionHandler = true,
+        freeAbsenceGivesADailyRefund = true,
+        invoiceNumberSeriesStart = 1,
+        paymentNumberSeriesStart = 1
     )
 
     @Bean
@@ -33,4 +37,7 @@ class EVakaTurkuConfig {
     @Bean
     fun documentService(s3Client: S3Client, s3Presigner: S3Presigner, env: BucketEnv): DocumentService =
         DocumentService(s3Client, s3Presigner, env.proxyThroughNginx)
+
+    @Bean
+    fun paymentIntegrationClient(): PaymentIntegrationClient = PaymentIntegrationClient.FailingClient()
 }
