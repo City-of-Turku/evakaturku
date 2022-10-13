@@ -25,4 +25,5 @@ internal class EVakaTurkuTemplateProvider : ITemplateProvider {
     override fun getDaycareDecisionPath(): String = "turku/daycare/decision"
     override fun getPreschoolDecisionPath(): String = "turku/preschool/decision"
     override fun getPreparatoryDecisionPath(): String = "turku/preschool/decision"
+    override fun getAssistanceNeedDecisionPath(): String = "turku/assistanceneed/decision"
 }

@@ -8,7 +8,7 @@ import fi.espoo.evaka.shared.db.Database
 import fi.espoo.evaka.shared.dev.runDevScript
 
 fun Database.Transaction.ensureTurkuDevData() {
-    if (createQuery("SELECT count(*) FROM daycare").mapTo(Int::class.java).first() == 0) {
+    if (createQuery("SELECT count(*) FROM daycare").mapTo<Int>().first() == 0) {
         listOf("turku-dev-data.sql").forEach { runDevScript(it) }
     }
 }

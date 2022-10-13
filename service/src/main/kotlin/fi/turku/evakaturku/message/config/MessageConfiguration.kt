@@ -48,7 +48,15 @@ internal class EVakaTurkuMessageProvider(val messageSource: MessageSource) : IMe
     override fun getVoucherValueDecisionHeader(lang: MessageLanguage): String =
         messageSource.getMessage("$PREFIX.VOUCHER_VALUE_DECISION_HEADER", null, resolveLocale(lang))
 
+    // TODO Provide ASSISTANCE_NEED_DECISION_HEADER and change this!
+    override fun getAssistanceNeedDecisionHeader(lang: MessageLanguage): String =
+        messageSource.getMessage("$PREFIX.VOUCHER_VALUE_DECISION_HEADER", null, resolveLocale(lang))
+
     override fun getVoucherValueDecisionContent(lang: MessageLanguage): String =
+        messageSource.getMessage("$PREFIX.VOUCHER_VALUE_DECISION_CONTENT", null, resolveLocale(lang))
+
+    // TODO Provide ASSISTANCE_NEED_DECISION_HEADER and change this!
+    override fun getAssistanceNeedDecisionContent(lang: MessageLanguage): String =
         messageSource.getMessage("$PREFIX.VOUCHER_VALUE_DECISION_CONTENT", null, resolveLocale(lang))
 
     override fun getDefaultDecisionAddress(lang: MessageLanguage): DecisionSendAddress = when (lang) {
@@ -70,8 +78,24 @@ internal class EVakaTurkuMessageProvider(val messageSource: MessageSource) : IMe
         )
     }
 
-    override fun getDefaultFeeDecisionAddress(lang: MessageLanguage): DecisionSendAddress =
-        getDefaultDecisionAddress(lang)
+    override fun getDefaultFinancialDecisionAddress(lang: MessageLanguage): DecisionSendAddress = when (lang) {
+        MessageLanguage.FI -> DecisionSendAddress(
+            street = "PL 487",
+            postalCode = "33101",
+            postOffice = "Tampere",
+            row1 = "Varhaiskasvatus ja esiopetus",
+            row2 = "Asiakaspalvelu",
+            row3 = "PL 487, 33101 Tampere"
+        )
+        MessageLanguage.SV -> DecisionSendAddress(
+            street = "PL 487",
+            postalCode = "33101",
+            postOffice = "Tampere",
+            row1 = "Varhaiskasvatus ja esiopetus",
+            row2 = "Asiakaspalvelu",
+            row3 = "PL 487, 33101 Tampere"
+        )
+    }
 
     private fun resolveLocale(lang: MessageLanguage): Locale {
         if (MessageLanguage.SV.equals(lang)) return resolveLocale(MessageLanguage.FI)

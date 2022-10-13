@@ -11,6 +11,7 @@ import software.amazon.awssdk.services.s3.S3Client
 import software.amazon.awssdk.services.s3.presigner.S3Presigner
 import fi.espoo.evaka.BucketEnv
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
+import fi.espoo.evaka.shared.auth.UserRole
 
 @Configuration
 class EVakaTurkuConfig {
@@ -25,7 +26,15 @@ class EVakaTurkuConfig {
         alwaysUseDaycareFinanceDecisionHandler = true,
         freeAbsenceGivesADailyRefund = true,
         invoiceNumberSeriesStart = 1,
-        paymentNumberSeriesStart = 1
+        paymentNumberSeriesStart = 1,
+        unplannedAbsencesAreContractSurplusDays = false,
+        maxContractDaySurplusThreshold = 13,
+        useContractDaysAsDailyFeeDivisor = false,
+        enabledChildConsentTypes = setOf(),
+        curriculumDocumentPermissionToShareRequired = true,
+        assistanceDecisionMakerRoles = setOf(UserRole.SPECIAL_EDUCATION_TEACHER),
+        requestedStartUpperLimit = 7,
+        partialAbsenceThresholdsEnabled = false
     )
 
     @Bean

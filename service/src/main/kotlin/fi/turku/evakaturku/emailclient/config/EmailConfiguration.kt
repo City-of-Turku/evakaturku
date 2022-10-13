@@ -5,6 +5,8 @@
 package fi.turku.evakaturku.emailclient.config
 
 import fi.espoo.evaka.emailclient.IEmailMessageProvider
+import fi.espoo.evaka.shared.AssistanceNeedDecisionId
+import fi.espoo.evaka.shared.ChildId
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
@@ -22,6 +24,7 @@ internal class EmailMessageProvider(): IEmailMessageProvider {
     override val subjectForClubApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     override val subjectForDaycareApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     override val subjectForPreschoolApplicationReceivedEmail: String = "Hakemus vastaanotettu"
+    override val subjectForDecisionEmail: String = "X"
 
     override fun getPendingDecisionEmailHtml(): String {
         return """
@@ -148,6 +151,9 @@ internal class EmailMessageProvider(): IEmailMessageProvider {
             Tämä on automaattinen viesti, joka kertoo lomakkeen tallennuksesta. Viestiin ei voi vastata reply-/ vastaa-toiminnolla.
         """.trimIndent()
     }
+
+    override fun getDecisionEmailHtml(childId: ChildId, decisionId: AssistanceNeedDecisionId): String = "X"
+    override fun getDecisionEmailText(childId: ChildId, decisionId: AssistanceNeedDecisionId): String = "X"
 
     override fun getPreschoolApplicationReceivedEmailHtml(withinApplicationPeriod: Boolean): String {
         throw Error("Preschool not in use!")

@@ -115,8 +115,7 @@ internal class PDFServiceTest : AbstractIntegrationTest() {
                 "Mikko", "Meikäläinen",
                 "140680-9239", "", "", "",
                 "", null, "", null, restrictedDetailsEnabled = false
-            ),
-            isElementaryFamily = true
+            )
         )
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, "fi"))
@@ -184,8 +183,7 @@ internal class PDFServiceTest : AbstractIntegrationTest() {
                 "Mikko", "Meikäläinen",
                 "140680-9239", "", "", "",
                 "", null, "", null, restrictedDetailsEnabled = false
-            ),
-            isElementaryFamily = true
+            )
         )
         val data = VoucherValueDecisionPdfData(decision, settings, DocumentLang.fi)
 
@@ -401,7 +399,7 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
     finalCoPayment = 1,
     baseValue = 1,
     childAge = 1,
-    capacityFactor = BigDecimal.ONE,
+    assistanceNeedCoefficient = BigDecimal.ONE,
     voucherValue = 1,
     documentKey = null,
     approvedBy = EmployeeWithName(EmployeeId(UUID.randomUUID()), "Markus", "Maksusihteeri"),
