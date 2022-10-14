@@ -253,7 +253,7 @@ const en: DeepPartial<Translations> = {
         text="Privacy Notices"
         newTab={true}
         data-qa="footer-policy-link"
-      ></ExternalLink>
+      />
     ),
     sendFeedbackLink: (
       <ExternalLink
@@ -261,7 +261,7 @@ const en: DeepPartial<Translations> = {
         text="Give feedback"
         newTab={true}
         data-qa="footer-feedback-link"
-      ></ExternalLink>
+      />
     )
   },
   map: {
@@ -352,7 +352,7 @@ const en: DeepPartial<Translations> = {
         <P>* The information denoted with an asterisk is mandatory.</P>
       </>
     )
-  },
+  }
 }
 
 export default en
