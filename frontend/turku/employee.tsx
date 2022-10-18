@@ -10,7 +10,7 @@ import React from 'react'
 
 import { EmployeeCustomizations } from 'lib-customizations/types'
 
-import TurkuLogo from './city-logo.svg'
+import TurkuLogo from './city-logo-citizen.png'
 import featureFlags from './featureFlags'
 
 const customizations: EmployeeCustomizations = {
@@ -22,6 +22,11 @@ const customizations: EmployeeCustomizations = {
         careTypeLabels: {
           preschool: 'Esiopetusta täydentävä toiminta'
         }
+      },
+      footer: {
+        cityLabel: 'Turun kaupunki',
+        linkLabel: 'Turun varhaiskasvatus',
+        linkHref: 'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus'
       },
       childInformation: {
         assistanceNeed: {
@@ -118,10 +123,12 @@ const customizations: EmployeeCustomizations = {
   placementTypes: [
     'DAYCARE',
     'DAYCARE_PART_TIME',
-    'TEMPORARY_DAYCARE',
+    'PRESCHOOL',
     'PRESCHOOL_DAYCARE',
+    'DAYCARE_FIVE_YEAR_OLDS',
+    'DAYCARE_PART_TIME_FIVE_YEAR_OLDS',
     'CLUB',
-    'SCHOOL_SHIFT_CARE'
+    'TEMPORARY_DAYCARE'
   ],
   placementPlanRejectReasons: ['REASON_1', 'REASON_2', 'REASON_3', 'OTHER'],
   unitProviderTypes: [
