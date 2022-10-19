@@ -125,6 +125,8 @@ const customizations: EmployeeCustomizations = {
     'DAYCARE_PART_TIME',
     'PRESCHOOL',
     'PRESCHOOL_DAYCARE',
+    'PREPARATORY',
+    'PREPARATORY_DAYCARE',
     'DAYCARE_FIVE_YEAR_OLDS',
     'DAYCARE_PART_TIME_FIVE_YEAR_OLDS',
     'CLUB',
