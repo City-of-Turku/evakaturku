@@ -42,7 +42,7 @@ VALUES
     ('ff6ddcd4-fa8a-11eb-8592-2f2b4e398fcb', 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', 'Open early childhood education at most 10h/week', 'CLUB', TRUE, 1.0, 0.54, 10, FALSE, FALSE, 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', null, 1.75),
     ('50359334-b961-11eb-b525-f3febdfea5d3', 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', 'Open early childhood education at most 15h/week', 'CLUB', FALSE, 1.0, 0.54, 15, FALSE, FALSE, 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', null, 1.75)
 
-  ON CONFLICT (id) DO
+ON CONFLICT (id) DO
 UPDATE SET
     name_fi = EXCLUDED.name_fi,
     name_sv = EXCLUDED.name_sv,
@@ -87,9 +87,9 @@ VALUES
     ('a51aacf4-148c-11ed-be1e-733f9c20ff61','86ef70a0-bf85-11eb-91e6-1fb57a101161',daterange('2000-01-01', NULL, '[]'),82600,1.0,82600,126600,1.0,126600),
     ('a51aaf88-148c-11ed-be1e-db2e9883417e','503590f0-b961-11eb-b520-53740af3f7ee',daterange('2000-01-01', NULL, '[]'),82600,0.5,41300,126600,0.5,63300),
     ('a51ab19a-148c-11ed-be1e-4be88e69e52e','503591ae-b961-11eb-b521-1fca99358eef',daterange('2000-01-01', NULL, '[]'),82600,0.75,61950,126600,0.75,94950),
-    ('a51ab398-148c-11ed-be1e-df739d9aecb9','50359212-b961-11eb-b522-074fb05f7086',daterange('2000-01-01', NULL, '[]'),82600,0.6,49560,126600,0.6,75960),
-    ('a51ab5b4-148c-11ed-be1e-8785a13fca88','86ef7370-bf85-11eb-91e7-6fcd728c518d',daterange('2000-01-01', NULL, '[]'),82600,0.6,49560,126600,0.6,75960),
-    ('a51ab870-148c-11ed-be1e-6fcae4f7e94b','50359280-b961-11eb-b523-237115533645',daterange('2000-01-01', NULL, '[]'),82600,0.3,24780,126600,0.3,37980),
+  --  ('a51ab398-148c-11ed-be1e-df739d9aecb9','50359212-b961-11eb-b522-074fb05f7086',daterange('2000-01-01', NULL, '[]'),82600,0.6,49560,126600,0.6,75960),
+ --   ('a51ab5b4-148c-11ed-be1e-8785a13fca88','86ef7370-bf85-11eb-91e7-6fcd728c518d',daterange('2000-01-01', NULL, '[]'),82600,0.6,49560,126600,0.6,75960),
+  --  ('a51ab870-148c-11ed-be1e-6fcae4f7e94b','50359280-b961-11eb-b523-237115533645',daterange('2000-01-01', NULL, '[]'),82600,0.3,24780,126600,0.3,37980),
     ('a51abaa0-148c-11ed-be1e-931156918f24','503592da-b961-11eb-b524-7f27c780d83a',daterange('2000-01-01', NULL, '[]'),82600,0.45,37170,126600,0.45,56970),
     ('a51abc9e-148c-11ed-be1e-e7efda66457b','50359334-b961-11eb-b525-f3febdfea5d3',daterange('2000-01-01', NULL, '[]'),82600,0.5,41300,126600,0.5,63300),
     ('a51abf3c-148c-11ed-be1e-2f734e058208','5035938e-b961-11eb-b526-6b30323c87a8',daterange('2000-01-01', NULL, '[]'),82600,1.0,82600,126600,1.0,126600),
