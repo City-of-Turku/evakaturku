@@ -16,6 +16,8 @@ VALUES
 
     --PRESCHOOL
     ('bc6a4550-fa74-11eb-9a2d-035acd5db9aa', 'Esiopetus 4h/pv', 'Förskole undervisning 4h/dag', 'Preschool 4h/day', 'PRESCHOOL', TRUE, 0, 0.5, 20, TRUE, FALSE, 'Esiopetus 4h/pv', 'Förskole undervisning 4h/dag', 'Esiopetus 4h/pv', 'Förskole undervisning 4h/dag', null, 1.75),
+    ('5c21d452-4f90-11ed-8be7-bf748cc343bf', 'Esiopetus 4h/pv', 'Förskole undervisning 4h/dag', 'Preschool 4h/day', 'PRESCHOOL', FALSE, 0, 0.5, 20, TRUE, FALSE, 'Esiopetus 4h/pv', 'Förskole undervisning 4h/dag', 'Esiopetus 4h/pv', 'Förskole undervisning 4h/dag', 50, 1.75),
+
 
     --PRESCHOOL_DAYCARE
     ('0bfc6c92-ff2a-11eb-a785-2724e8e5e7ee', 'Esiopetus 4h/pv + varhaiskasvatus yli 147h/kk (100%)', 'Förskole undervisning 4h/dag + småbarnspedagogik över 147t/mån (100%)', 'Preschool 4h/day + early childhood education over 147h/month (100%)', 'PRESCHOOL_DAYCARE', TRUE, 1.0, 1.0, 40, FALSE, FALSE, 'Esiopetus 4h/pv + varhaiskasvatus yli 147h/kk (100%)', 'Förskole undervisning 4h/dag + småbarnspedagogik över 147t/mån (100%)', 'Esiopetus 4h/pv + varhaiskasvatus yli 147h/kk (100%)', 'Förskole undervisning 4h/dag + småbarnspedagogik över 147t/mån (100%)', null, 1.75),
@@ -27,12 +29,15 @@ VALUES
 
     --PREPARATORY
     ('1b4413f6-d99d-11eb-89ac-a3a978104bce', 'Valmistava opetus', 'Förbererande utbilndning', 'Preparatory education', 'PREPARATORY', TRUE, 0, 0.54, 25, TRUE, FALSE, 'Valmistava opetus', 'Förbererande utbilndning', 'Valmistava opetus', 'Förbererande utbilndning', null, 1.75),
+    ('d6d5a660-4f90-11ed-8be9-6f76cd90c246', 'Valmistava opetus', 'Förbererande utbilndning', 'Preparatory education', 'PREPARATORY', FALSE, 0, 0.54, 25, TRUE, FALSE, 'Valmistava opetus', 'Förbererande utbilndning', 'Valmistava opetus', 'Förbererande utbilndning', 2220, 1.75),
+
 
     --PREPARATORY_DAYCARE
     ('bc6a44ec-fa74-11eb-9a2c-73b53c2af869', 'Valmistava opetus + varhaiskasvatus yli 147h/kk (100%)', 'Förbererande utbilndning + småbarnspedagogik över 147h/mån  (100%)', 'Preschool daycare – max 5 h per day; 15 day agreement', 'PREPARATORY_DAYCARE', TRUE, 1.0, 1.0, 40, FALSE, FALSE, 'Valmistava opetus + varhaiskasvatus yli 147h/kk (100%)', 'Förbererande utbilndning + småbarnspedagogik över 147h/mån  (100%)', 'Valmistava opetus + varhaiskasvatus yli 147h/kk (100%)', 'Förbererande utbilndning + småbarnspedagogik över 147h/mån  (100%)', 2300, 1.75),
     ('bc6a45a0-fa74-11eb-9a2e-fb411a8588da', 'Valmistava opetus + varhaiskasvatus yli 147h/kk (100%)', 'Förbererande utbilndning + småbarnspedagogik över 147h/mån  (100%)', 'Preschool daycare – max 5 h per day; 15 day agreement', 'PREPARATORY_DAYCARE', FALSE, 1.0, 1.0, 40, FALSE, FALSE, 'Valmistava opetus + varhaiskasvatus yli 147h/kk (100%)', 'Förbererande utbilndning + småbarnspedagogik över 147h/mån  (100%)', 'Valmistava opetus + varhaiskasvatus yli 147h/kk (100%)', 'Förbererande utbilndning + småbarnspedagogik över 147h/mån  (100%)', 2350, 1.75),
-    ('86ef7370-bf85-11eb-91e7-6fcd728c518d', 'Valmistava opetus + varhaiskasvatus enintään 147h/kk (85%)', 'Förbererande utbilndning + småbarnspedagogik högst 147h/mån (85%)', 'Preparatory education + early childhood education at most 147h/month (85%)', 'PREPARATORY_DAYCARE', FALSE, 0.85, 1, 35, FALSE, FALSE, 'Valmistava opetus + varhaiskasvatus enintään 147h/kk (85%)', 'Förbererande utbilndning + småbarnspedagogik högst 147h/mån (85%)', 'Valmistava opetus + varhaiskasvatus enintään 147h/kk (85%)', 'Förbererande utbilndning + småbarnspedagogik högst 147h/mån (85%)', 2400, 1.75),
-    ('50359280-b961-11eb-b523-237115533645', 'Valmistava opetus + varhaiskasvatus enintään 116h/kk (65%)', 'Förbererande utbilndning + småbarnspedagogik högst 116h/mån (65%)', 'Preparatory education +early childhood education at most 116h/month  (65%)', 'PREPARATORY_DAYCARE', FALSE, 0.65, 1, 27.5, FALSE, FALSE, 'Valmistava opetus + varhaiskasvatus enintään 116h/kk (65%)', 'Förbererande utbilndning + småbarnspedagogik högst 116h/mån (65%)', 'Valmistava opetus + varhaiskasvatus enintään 116h/kk (65%)', 'Förbererande utbilndning + småbarnspedagogik högst 116h/mån (65%)', 2450, 1.75),
+    ('86ef7370-bf85-11eb-91e7-6fcd728c518d', 'Valmistava opetus + varhaiskasvatus enintään 147h/kk (85%)', 'Förbererande utbilndning + småbarnspedagogik högst 147h/mån (85%)', 'Preparatory education + early childhood education at most 147h/month (85%)', 'PREPARATORY_DAYCARE', FALSE, 0.85, 1.0, 35, FALSE, FALSE, 'Valmistava opetus + varhaiskasvatus enintään 147h/kk (85%)', 'Förbererande utbilndning + småbarnspedagogik högst 147h/mån (85%)', 'Valmistava opetus + varhaiskasvatus enintään 147h/kk (85%)', 'Förbererande utbilndning + småbarnspedagogik högst 147h/mån (85%)', 2400, 1.75),
+    ('50359280-b961-11eb-b523-237115533645', 'Valmistava opetus + varhaiskasvatus enintään 116h/kk (65%)', 'Förbererande utbilndning + småbarnspedagogik högst 116h/mån (65%)', 'Preparatory education +early childhood education at most 116h/month  (65%)', 'PREPARATORY_DAYCARE', FALSE, 0.65, 1.0, 27.5, FALSE, FALSE, 'Valmistava opetus + varhaiskasvatus enintään 116h/kk (65%)', 'Förbererande utbilndning + småbarnspedagogik högst 116h/mån (65%)', 'Valmistava opetus + varhaiskasvatus enintään 116h/kk (65%)', 'Förbererande utbilndning + småbarnspedagogik högst 116h/mån (65%)', 2450, 1.75),
+    ('5e82f704-4f8f-11ed-8be5-bbe76169415f', 'Valmistava opetus + varhaiskasvatus enintään 84h/kk (50%)', 'Förbererande utbilndning + småbarnspedagogik högst 84h/mån (50%)', 'Preparatory education + early childhood education at most 84h/month (50%)', 'PREPARATORY_DAYCARE', FALSE, 0.5, 1.0, 20, FALSE, FALSE, 'Valmistava opetus + varhaiskasvatus enintään 84h/kk (50%)', 'Förbererande utbilndning + småbarnspedagogik högst 84h/mån (50%)', 'Valmistava opetus + varhaiskasvatus enintään 84h/kk (50%)', 'Förbererande utbilndning + småbarnspedagogik högst 84h/mån (50%)', 2500, 1.75),
 
 
     --TEMPORARY_DAYCARE
@@ -90,6 +95,7 @@ VALUES
     ('a51ab398-148c-11ed-be1e-df739d9aecb9','50359212-b961-11eb-b522-074fb05f7086',daterange('2000-01-01', NULL, '[]'),82600,0.6,49560,126600,0.6,75960),
     ('a51ab5b4-148c-11ed-be1e-8785a13fca88','86ef7370-bf85-11eb-91e7-6fcd728c518d',daterange('2000-01-01', NULL, '[]'),82600,1.0,82600,126600,1.0,126600),
     ('a51ab870-148c-11ed-be1e-6fcae4f7e94b','50359280-b961-11eb-b523-237115533645',daterange('2000-01-01', NULL, '[]'),82600,0.3,24780,126600,0.3,37980),
+    ('93660830-4f8f-11ed-8be6-8b783396d6b7','5e82f704-4f8f-11ed-8be5-bbe76169415f',daterange('2000-01-01', NULL, '[]'),82600,1.0,82600,126600,1.0,126600),
     ('a51abaa0-148c-11ed-be1e-931156918f24','503592da-b961-11eb-b524-7f27c780d83a',daterange('2000-01-01', NULL, '[]'),82600,0.45,37170,126600,0.45,56970),
     ('a51abc9e-148c-11ed-be1e-e7efda66457b','50359334-b961-11eb-b525-f3febdfea5d3',daterange('2000-01-01', NULL, '[]'),82600,0.5,41300,126600,0.5,63300),
     ('a51abf3c-148c-11ed-be1e-2f734e058208','5035938e-b961-11eb-b526-6b30323c87a8',daterange('2000-01-01', NULL, '[]'),82600,1.0,82600,126600,1.0,126600),
@@ -99,8 +105,10 @@ VALUES
     ('a51ac6ee-148c-11ed-be1e-ebc76f5037c4','bc6a42d0-fa74-11eb-9a2b-d315a7916074',daterange('2000-01-01', NULL, '[]'),82600,0.3,24780,126600,0.3,37980),
     ('a51ac8e2-148c-11ed-be1e-db830daa047b','bc6a44ec-fa74-11eb-9a2c-73b53c2af869',daterange('2000-01-01', NULL, '[]'),82600,0.45,37170,126600,0.45,56970),
     ('a51acacc-148c-11ed-be1e-6f6c58c226d4','bc6a4550-fa74-11eb-9a2d-035acd5db9aa',daterange('2000-01-01', NULL, '[]'),82600,0.4,33040,126600,0.4,50640),
+    ('7ea85b54-4f90-11ed-8be8-b7c388bb843a','5c21d452-4f90-11ed-8be7-bf748cc343bf',daterange('2000-01-01', NULL, '[]'),82600,0.4,33040,126600,0.4,50640),
     ('a51acd56-148c-11ed-be1e-17764348bca7','bc6a45a0-fa74-11eb-9a2e-fb411a8588da',daterange('2000-01-01', NULL, '[]'),82600,0.6,49560,126600,0.6,75960),
     ('a51acf5e-148c-11ed-be1e-836c2b35ecb6','ff6ddcd4-fa8a-11eb-8592-2f2b4e398fcb',daterange('2000-01-01', NULL, '[]'),82600,1.0,82600,126600,1.0,126600),
+    ('fad5ddb4-4f90-11ed-8bea-8b352f1dca97','d6d5a660-4f90-11ed-8be9-6f76cd90c246',daterange('2000-01-01', NULL, '[]'),82600,1.0,82600,126600,1.0,126600),
     ('a51ad148-148c-11ed-be1e-0bdf6a5141f9','1b4413f6-d99d-11eb-89ac-a3a978104bce',daterange('2000-01-01', NULL, '[]'),82600,1.0,82600,126600,1.0,126600)
 ON CONFLICT (id) DO
 UPDATE SET
