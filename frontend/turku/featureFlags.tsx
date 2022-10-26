@@ -18,11 +18,15 @@ const featureFlags: FeatureFlags = {
   financeBasicsPage: true,
   urgencyAttachmentsEnabled: true,
   preschoolEnabled: true,
-  assistanceActionOtherEnabled: false,
+  assistanceActionOtherEnabled: true,
   experimental: {
     messageAttachments: true,
     personalDetailsPage: true,
-    mobileMessages: true
+    voucherUnitPayments: true,
+    assistanceNeedDecisions: true,
+    assistanceNeedDecisionsLanguageSelect: false,
+    mobileMessages: true,
+    citizenVasu: true
   },
   adminSettingsEnabled: true
 }
