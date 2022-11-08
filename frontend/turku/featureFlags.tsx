@@ -26,7 +26,8 @@ const featureFlags: FeatureFlags = {
     assistanceNeedDecisions: true,
     assistanceNeedDecisionsLanguageSelect: false,
     mobileMessages: true,
-    citizenVasu: true
+    citizenVasu: true,
+    fosterParents: true
   },
   adminSettingsEnabled: true
 }
