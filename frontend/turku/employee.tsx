@@ -132,6 +132,20 @@ const customizations: EmployeeCustomizations = {
     'CLUB',
     'TEMPORARY_DAYCARE'
   ],
+  absenceTypes: [
+    'OTHER_ABSENCE',
+    'PLANNED_ABSENCE',
+    'SICKLEAVE',
+    'PARENTLEAVE',
+    'FORCE_MAJEURE',
+    'FREE_ABSENCE'
+  ],
+  voucherValueDecisionTypes: [
+    'NORMAL',
+    'RELIEF_ACCEPTED',
+    'RELIEF_PARTLY_ACCEPTED',
+    'RELIEF_REJECTED'
+  ],
   placementPlanRejectReasons: ['REASON_1', 'REASON_2', 'REASON_3', 'OTHER'],
   unitProviderTypes: [
     'MUNICIPAL',
