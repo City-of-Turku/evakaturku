@@ -339,8 +339,8 @@ private fun validFeeDecision() = FeeDecisionDetailed(
     approvedBy = EmployeeWithName(EmployeeId(UUID.randomUUID()), "Markus", "Maksusihteeri"),
     approvedAt = HelsinkiDateTime.now(),
     sentAt = null,
-    financeDecisionHandlerFirstName = null,
-    financeDecisionHandlerLastName = null
+    financeDecisionHandlerFirstName = "Jonne",
+    financeDecisionHandlerLastName = "Johtaja"
 )
 
 private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
@@ -406,6 +406,6 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
     approvedAt = HelsinkiDateTime.now(),
     sentAt = null,
     created = HelsinkiDateTime.now(),
-    financeDecisionHandlerFirstName = null,
-    financeDecisionHandlerLastName = null
+    financeDecisionHandlerFirstName = "Satu",
+    financeDecisionHandlerLastName = "Leppänen"
 )

@@ -155,12 +155,8 @@ internal class EmailMessageProvider(): IEmailMessageProvider {
     override fun getDecisionEmailHtml(childId: ChildId, decisionId: AssistanceNeedDecisionId): String = "X"
     override fun getDecisionEmailText(childId: ChildId, decisionId: AssistanceNeedDecisionId): String = "X"
 
-    override fun getPreschoolApplicationReceivedEmailHtml(withinApplicationPeriod: Boolean): String {
-        throw Error("Preschool not in use!")
-    }
+    override fun getPreschoolApplicationReceivedEmailHtml(withinApplicationPeriod: Boolean): String = "X"
 
-    override fun getPreschoolApplicationReceivedEmailText(withinApplicationPeriod: Boolean): String {
-        throw Error("Preschool not in use!")
-    }
+    override fun getPreschoolApplicationReceivedEmailText(withinApplicationPeriod: Boolean): String = "X"
 
 }

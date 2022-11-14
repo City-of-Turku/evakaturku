@@ -169,7 +169,8 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 
         <div>
             <span th:text="#{decision.approver.prefix}">Päätöksentekijä</span>
-            <span th:text="#{decision.approver.person}">Palvelupäällikön nimi</span>
+            <span th:text="${financeDecisionHandlerFirstName}"></span>
+            <span th:text="${financeDecisionHandlerLastName}"></span>
         </div>
         <div th:utext="#{decision.approver.additionalInfo}">(allekirjoitettu sähköisesti)</div>
         <div th:utext="#{decision.approver.title}">Varhaiskasvatuksen palveluohjaaja</div>
