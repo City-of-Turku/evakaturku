@@ -24,7 +24,7 @@ internal class EmailMessageProvider(): IEmailMessageProvider {
     override val subjectForClubApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     override val subjectForDaycareApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     override val subjectForPreschoolApplicationReceivedEmail: String = "Hakemus vastaanotettu"
-    override val subjectForDecisionEmail: String = "X"
+    override val subjectForDecisionEmail: String = "Päätös eVakassa"
 
     override fun getPendingDecisionEmailHtml(): String {
         return """
@@ -143,8 +143,31 @@ internal class EmailMessageProvider(): IEmailMessageProvider {
         """.trimIndent()
     }
 
-    override fun getDecisionEmailHtml(childId: ChildId, decisionId: AssistanceNeedDecisionId): String = "X"
-    override fun getDecisionEmailText(childId: ChildId, decisionId: AssistanceNeedDecisionId): String = "X"
+    override fun getDecisionEmailHtml(childId: ChildId, decisionId: AssistanceNeedDecisionId): String {
+        return """
+        <p>Hei!</p>
+       
+        <p>Lapsellenne on tehty päätös.</p>
+       
+        <p>Päätös on nähtävissä eVakassa osoitteessa <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+        
+        <p>Tähän viestiin ei voi vastata.</p>
+       
+    """.trimIndent()
+    }
+
+    override fun getDecisionEmailText(childId: ChildId, decisionId: AssistanceNeedDecisionId): String {
+        return """
+        Hei!
+        
+        Lapsellenne on tehty päätös.
+        
+        Päätös on nähtävissä eVakassa osoitteessa https://evaka.turku.fi/.
+        
+        Tähän viestiin ei voi vastata.
+        
+    """.trimIndent()
+    }
 
     override fun getPreschoolApplicationReceivedEmailHtml(withinApplicationPeriod: Boolean): String {
         return """
