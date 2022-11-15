@@ -56,13 +56,38 @@ internal class EmailMessageProvider(): IEmailMessageProvider {
 
     override fun getClubApplicationReceivedEmailHtml(): String {
         return """
+            <p>Hei!</p>
            
+            <p>Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa.</p>
+           
+            <p>Hakemuksia käsitellään pääsääntöisesti vastaanottopäivämäärän mukaan.</p>
+           
+            <p>Tähän viestiin ei voi vastata.</p>
+           
+            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+           
+            <p>
+            Ystävällisesti, <br/>
+            Varhaiskasvatuksen palveluohjaus<br/> 
+            </p>
         """.trimIndent()
     }
 
     override fun getClubApplicationReceivedEmailText(): String {
         return """
+           Hei! 
            
+           Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa. 
+           
+           Hakemuksia käsitellään pääsääntöisesti vastaanottopäivämäärän mukaan.
+
+           Tähän viestiin ei voi vastata.
+            
+           Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.
+           
+           Ystävällisesti, 
+           Varhaiskasvatuksen palveluohjaus 
+
         """.trimIndent()
     }
 
