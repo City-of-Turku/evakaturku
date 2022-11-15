@@ -28,75 +28,41 @@ internal class EmailMessageProvider(): IEmailMessageProvider {
 
     override fun getPendingDecisionEmailHtml(): String {
         return """
-            <p>Olet saanut päätöksen/ilmoituksen Oulun varhaiskasvatukselta, joka odottaa toimenpiteitäsi. Myönnetty varhaiskasvatus-/kerhopaikka tulee hyväksyä tai hylätä kahden viikon sisällä päätöksen saapumisesta.</p>
+            <p>Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
             
-            <p>Hakemuksen tekijä voi hyväksyä tai hylätä varhaiskasvatus-/kerhopaikan kirjautumalla osoitteeseen <a href="https://varhaiskasvatus.ouka.fi">varhaiskasvatus.ouka.fi</a> tai ottamalla yhteyttä päätöksellä mainittuun päiväkodin johtajaan.</p>
+            <p>Tähän viestiin ei voi vastata. Tarvittaessa ole yhteydessä varhaiskasvatuksen palveluohjaukseen p. 02 262 5610, puhelinpäivystys arkisin klo 9.00–15.00 (keskiviikkoisin 9–12).</p>
             
-            <p>Tähän viestiin ei voi vastata. Tarvittaessa ole yhteydessä Varhaiskasvatuksen asiakaspalveluun: <a href="mailto:varhaiskasvatus@ouka.fi">varhaiskasvatus@ouka.fi</a>, puh. <a href="tel:+358855845300">08 558 45300 - valitse numero 1</a> (ma–pe klo 9–12).</p>
+            <p>
+            Ystävällisesti,<br/>
+            Varhaiskasvatuksen palveluohjaus<br/>
+            varhaiskasvatus@turku.fi<br/>
+            p. 02 262 5610<br/>
+            </p>
         """.trimIndent()
     }
 
     override fun getPendingDecisionEmailText(): String {
         return """
-            Olet saanut päätöksen/ilmoituksen Oulun varhaiskasvatukselta, joka odottaa toimenpiteitäsi. Myönnetty varhaiskasvatus-/kerhopaikka tulee hyväksyä tai hylätä kahden viikon sisällä päätöksen saapumisesta.
+            Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi
             
-            Hakemuksen tekijä voi hyväksyä tai hylätä varhaiskasvatus-/kerhopaikan kirjautumalla osoitteeseen https://varhaiskasvatus.ouka.fi tai ottamalla yhteyttä päätöksellä mainittuun päiväkodin johtajaan.
+            Tähän viestiin ei voi vastata. Tarvittaessa ole yhteydessä varhaiskasvatuksen palveluohjaukseen p. 02 262 5610, puhelinpäivystys arkisin klo 9.00–15.00 (keskiviikkoisin 9–12).
             
-            Tähän viestiin ei voi vastata. Tarvittaessa ole yhteydessä Varhaiskasvatuksen asiakaspalveluun: varhaiskasvatus@ouka.fi, puh. 08 558 45300 - valitse numero 1 (ma–pe klo 9–12).
+            Ystävällisesti,
+            Varhaiskasvatuksen palveluohjaus
+            varhaiskasvatus@turku.fi
+            p. 02 262 5610
         """.trimIndent()
     }
 
     override fun getClubApplicationReceivedEmailHtml(): String {
         return """
-            <p>Hyvä huoltaja,</p>
-            
-            <p>lapsenne kerhohakemus on vastaanotettu.</p>
-            
-            <p>Hakemuksen tehnyt huoltaja voi muokata hakemusta Oulun varhaiskasvatuksen verkkopalvelussa osoitteessa <a href="https://varhaiskasvatus.ouka.fi">varhaiskasvatus.ouka.fi</a> siihen saakka, kunnes se on otettu käsittelyyn asiakaspalvelussa.</p>
-            
-            <p>Kirjallinen ilmoitus myönnetystä kerhopaikasta lähetetään huoltajalle Suomi.fi-viestit -palveluun. Mikäli huoltaja ei ole ottanut Suomi.fi-viestit -palvelua käyttöön, ilmoitus lähetetään hänelle postitse.</p> 
-            
-            <p>Myönnetyn kerhopaikan voi hyväksyä / hylätä sähköisesti Tampereen varhaiskasvatuksen verkkopalvelussa osoitteessa <a href="https://varhaiskasvatus.ouka.fi">varhaiskasvatus.ouka.fi</a>. Kerhohakemus kohdistuu yhdelle kerhon toimintakaudelle. Kauden päättyessä hakemus poistetaan järjestelmästä.</p>
-            
-            <p>Lisätietoa hakemuksen käsittelystä ja kerhopaikan myöntämisestä saa varhaiskasvatuksen ja esiopetuksen asiakaspalvelusta:</p>
-            
-            <p>
-            Tampereen kaupunki<br/>
-            Sivistyspalvelut<br/>
-            Varhaiskasvatus ja esiopetus<br/>
-            Asiakaspalvelu<br/>
-            <a href="mailto:varhaiskasvatus@ouka.fi">varhaiskasvatus@ouka.fi</a><br/>
-            Puh. <a href="tel:+358855845300">08&nbsp;558&nbsp;45300</a> (ma–pe klo 9–12)<br/>
-            <a href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus">https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus</a>
-            </p>
-            
-            <p>Tämä on automaattinen viesti, joka kertoo lomakkeen tallennuksesta. Viestiin ei voi vastata reply-/ vastaa-toiminnolla.</p>
+           
         """.trimIndent()
     }
 
     override fun getClubApplicationReceivedEmailText(): String {
         return """
-            Hyvä huoltaja, 
-
-            lapsenne kerhohakemus on vastaanotettu.
-            
-            Hakemuksen tehnyt huoltaja voi muokata hakemusta Tampereen varhaiskasvatuksen verkkopalvelussa osoitteessa varhaiskasvatus.ouka.fi siihen saakka, kunnes se on otettu käsittelyyn asiakaspalvelussa.
-
-            Kirjallinen ilmoitus myönnetystä kerhopaikasta lähetetään huoltajalle Suomi.fi-viestit -palveluun. Mikäli huoltaja ei ole ottanut Suomi.fi-viestit -palvelua käyttöön, ilmoitus lähetetään hänelle postitse.
-            
-            Myönnetyn kerhopaikan voi hyväksyä / hylätä sähköisesti Tampereen varhaiskasvatuksen verkkopalvelussa osoitteessa varhaiskasvatus.ouka.fi. Kerhohakemus kohdistuu yhdelle kerhon toimintakaudelle. Kauden päättyessä hakemus poistetaan järjestelmästä.
-            
-            Lisätietoa hakemuksen käsittelystä ja kerhopaikan myöntämisestä saa varhaiskasvatuksen ja esiopetuksen asiakaspalvelusta:
-            
-            Oulun kaupunki
-            Sivistyspalvelut
-            Varhaiskasvatus ja esiopetus
-            Asiakaspalvelu
-            varhaiskasvatus@ouka.fi
-            Puh. 08 558 45300 - valitse numero 1 (ma–pe klo 9–12)
-            https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus
-            
-            Tämä on automaattinen viesti, joka kertoo lomakkeen tallennuksesta. Viestiin ei voi vastata reply-/ vastaa-toiminnolla.
+           
         """.trimIndent()
     }
 
