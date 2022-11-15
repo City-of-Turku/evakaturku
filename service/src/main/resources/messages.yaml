@@ -9,30 +9,28 @@ fi.turku.evakaturku:
     DECISION_CONTENT:
       fi: |
         Olette saaneet päätöksen Turun kaupungin varhaiskasvatuksesta, joka on luettavissa oheisesta liitteestä.
+        
+        Huomioithan, että vastaus päätökseen tulee antaa kahden viikon kuluessa tämän päätöksen saamisesta joko sähköisesti osoitteessa evaka.turku.fi (vaatii vahvan tunnistautumisen) tai olemalla yhteydessä sen päiväkodin johtajaan, josta paikka myönnettiin.
 
-        Huomioithan, että vastaus päätökseen tulee antaa kahden viikon kuluessa tämän päätöksen saamisesta joko sähköisesti osoitteessa varhaiskasvatus.turku.fi (vaatii vahvan tunnistautumisen) tai olemalla yhteydessä sen päiväkodin johtajaan, josta paikka myönnettiin.
-
-    FEE_DECISION_HEADER:
+FEE_DECISION_HEADER:
       fi: Turun varhaiskasvatukseen liittyvät päätökset
     FEE_DECISION_CONTENT:
       fi: |
-        Olette saaneet päätöksen varhaiskasvatuksen asiakasmaksusta Turun kaupungilta. Päätös on luettavissa oheisesta liitteestä.
-
-        Maksupäätös on voimassa toistaiseksi.  Jos perheen bruttotuloissa tapahtuu olennaisia (+/-10 %) muutoksia, on uusi tuloselvitys tehtävä välittömästi. 
-
+        
+        Olette saaneet päätöksen varhaiskasvatuksen asiakasmaksusta Turun kaupungilta. Päätös on luettavissa oheisesta liitteestä.  
+        
+        Maksupäätös on voimassa toistaiseksi.  Jos perheen bruttotuloissa tapahtuu olennaisia (+/-10 %) muutoksia, on uusi tuloselvitys tehtävä välittömästi.
+        
         Lisätietoja maksun määräytymisestä löytyy Turun kaupungin verkkosivuilta: Varhaiskasvatuksen asiakasmaksut.
-
-        https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli
+  
 
     VOUCHER_VALUE_DECISION_HEADER:
       fi: Turun varhaiskasvatukseen liittyvät päätökset
     VOUCHER_VALUE_DECISION_CONTENT:
       fi: |
-        Olette saaneet päätöksen varhaiskasvatuksen palvelusetelin arvosta ja omavastuuosuudesta. Päätös on luettavissa oheisesta liitteestä.
-
-        Päätös omavastuuosuudesta on voimassa toistaiseksi.  Päiväkodin / perhepäivähoitajan perimä omavastuu voi olla suurempi, kuin mitä päätöksessä ilmoitettu, jos päiväkodin hinta on suurempi kuin palvelusetelin enimmäisarvo. 
-        Jos perheen bruttotuloissa tapahtuu olennaisia (+/-10 %) muutoksia, on uusi tuloselvitys tehtävä välittömästi. 
-
+        
+        Olette saaneet päätöksen varhaiskasvatuksen palvelusetelin arvosta ja omavastuuosuudesta. Päätös on luettavissa oheisesta liitteestä. 
+        
+        Päätös omavastuuosuudesta on voimassa toistaiseksi.  Päiväkodin / perhepäivähoitajan perimä omavastuu voi olla suurempi, kuin mitä päätöksessä ilmoitettu, jos päiväkodin hinta on suurempi kuin palvelusetelin enimmäisarvo. Jos perheen bruttotuloissa tapahtuu olennaisia (+/-10 %) muutoksia, on uusi tuloselvitys tehtävä välittömästi. 
+        
         Lisätietoja maksun määräytymisestä löytyy Turun kaupungin verkkosivuilta: Varhaiskasvatuksen asiakasmaksut.
-
-        https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli
