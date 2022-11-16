@@ -34,7 +34,9 @@ class EVakaTurkuConfig {
         curriculumDocumentPermissionToShareRequired = true,
         assistanceDecisionMakerRoles = setOf(UserRole.SPECIAL_EDUCATION_TEACHER),
         requestedStartUpperLimit = 7,
-        partialAbsenceThresholdsEnabled = false
+        partialAbsenceThresholdsEnabled = false,
+        postOffice = "TURKU",
+        municipalMessageAccountName = "Turun kaupunki"
     )
 
     @Bean

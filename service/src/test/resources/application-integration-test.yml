@@ -12,6 +12,11 @@ evaka:
     decisions: evakaturku-daycaredecisions-it
     fee_decisions: evakaturku-paymentdecisions-it
     voucher_value_decisions: evakaturku-vouchervaluedecisions-it
+  email:
+    sender_address: evaka@localhost
+    sender_name:
+      fi: evaka_it_fi
+      sv: evaka_it_sv
   frontend:
     base_url:
       fi: http://localhost:${server.port}

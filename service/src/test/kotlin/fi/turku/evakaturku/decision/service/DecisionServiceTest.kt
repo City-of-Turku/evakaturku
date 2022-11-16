@@ -15,6 +15,7 @@ import fi.espoo.evaka.decision.DecisionUnit
 import fi.espoo.evaka.decision.createDecisionPdf
 import fi.espoo.evaka.emailclient.IEmailMessageProvider
 import fi.espoo.evaka.identity.ExternalIdentifier
+import fi.espoo.evaka.invoicing.service.DocumentLang
 import fi.espoo.evaka.pis.service.PersonDTO
 import fi.espoo.evaka.setting.SettingType
 import fi.espoo.evaka.shared.ApplicationId
@@ -90,7 +91,7 @@ class DecisionServiceTest {
                     )
                 )
             },
-            lang = "fi",
+            lang = DocumentLang.FI,
             DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234")
         )
 
@@ -118,7 +119,7 @@ class DecisionServiceTest {
                     ServiceNeedOptionId(UUID.randomUUID()), "Palveluntarve 1", "Palveluntarve 1", "Palveluntarve 1"
                 )
             ),
-            lang = "fi",
+            lang = DocumentLang.FI,
             DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234")
         )
 
@@ -149,7 +150,7 @@ class DecisionServiceTest {
                     "Palveluntarve 1"
                 )
             ),
-            lang = "fi",
+            lang = DocumentLang.FI,
             DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234")
         )
 
@@ -180,7 +181,7 @@ class DecisionServiceTest {
                     "Palveluntarve 1"
                 )
             ),
-            lang = "fi",
+            lang = DocumentLang.FI,
             DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234")
         )
 
@@ -211,7 +212,7 @@ class DecisionServiceTest {
                     "Palveluntarve 1"
                 )
             ),
-            lang = "fi",
+            lang = DocumentLang.FI,
             DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234")
         )
 
