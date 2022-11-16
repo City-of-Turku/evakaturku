@@ -5,13 +5,14 @@
 export type Env = 'staging' | 'prod'
 
 export const env = (): Env | 'default' => {
-  if (window.location.host === 'evaka.turku.fi') {
-    return 'prod'
-  }
+  if (typeof window !== 'undefined') {
+    if (window.location.host === 'evaka.turku.fi') {
+      return 'prod'
+    }
 
-  if (window.location.host === 'staging-evaka.turku.fi') {
-    return 'staging'
+    if (window.location.host === 'staging-evaka.turku.fi') {
+      return 'staging'
+    }
   }
-
   return 'default'
 }
