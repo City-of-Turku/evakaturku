@@ -46,19 +46,18 @@ const customizations: EmployeeCustomizations = {
         },
         absenceTypeInfo: {
           OTHER_ABSENCE:
-              'Käytetään aina, kun huoltaja on ilmoittanut poissaolosta mukaan lukien säännölliset vapaat ja loma-aika. Käytetään myös vuoroyksiköissä lasten lomamerkinnöissä tai muissa poissaoloissa, jotka ovat suunniteltujen läsnäolovarausten ulkopuolella.',
-          SICKLEAVE:
-              'Merkitään kun lapsi on sairaana.',
+            'Käytetään aina, kun huoltaja on ilmoittanut poissaolosta mukaan lukien säännölliset vapaat ja loma-aika. Käytetään myös vuoroyksiköissä lasten lomamerkinnöissä tai muissa poissaoloissa, jotka ovat suunniteltujen läsnäolovarausten ulkopuolella.',
+          SICKLEAVE: 'Merkitään kun lapsi on sairaana.',
           UNKNOWN_ABSENCE:
-              'Käytetään silloin, kun huoltaja ei ole ilmoittanut poissaolosta, vaikuttaa heinäkuussa myös laskutukseen. Koodi muutetaan vain, jos kyseessä on sairauspoissaolo, jonka jatkumisesta huoltaja ilmoittaa seuraavana päivänä.',
+            'Käytetään silloin, kun huoltaja ei ole ilmoittanut poissaolosta, vaikuttaa heinäkuussa myös laskutukseen. Koodi muutetaan vain, jos kyseessä on sairauspoissaolo, jonka jatkumisesta huoltaja ilmoittaa seuraavana päivänä.',
           PLANNED_ABSENCE:
-              'Palveluntarvesopimuksen (enintään 147h/kk, enintään 166h/kk, tai enintään 84h/kk mukaiset etukäteen ilmoitetut poissaolot',
+            'Palveluntarvesopimuksen (enintään 147h/kk, enintään 166h/kk, tai enintään 84h/kk mukaiset etukäteen ilmoitetut poissaolot',
           TEMPORARY_RELOCATION:
-              'Lapselle on tehty varasijoitus toiseen yksikköön. Poissa omasta, läsnä muualla.',
+            'Lapselle on tehty varasijoitus toiseen yksikköön. Poissa omasta, läsnä muualla.',
           PARENTLEAVE:
-              'Poissaolo merkitään sille lapselle, josta maksetaan Kelan vanhenpainrahaa.',
+            'Poissaolo merkitään sille lapselle, josta maksetaan Kelan vanhenpainrahaa.',
           FORCE_MAJEURE:
-              'Käytetään vain erikoistilanteissa hallinnon ohjeiden mukaan. Yksittäisiä päiviä, joista on luvattu maksuhyvitys',
+            'Käytetään vain erikoistilanteissa hallinnon ohjeiden mukaan. Yksittäisiä päiviä, joista on luvattu maksuhyvitys',
           FREE_ABSENCE: 'Kesäajan maksuton poissaolo',
           UNAUTHORIZED_ABSENCE: 'Ilmoittamaton päivystyksen poissaolo',
           NO_ABSENCE: 'Jos lapsi on paikalla, älä merkitse mitään.'
