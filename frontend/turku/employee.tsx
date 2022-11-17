@@ -18,6 +18,52 @@ const customizations: EmployeeCustomizations = {
   translations: {
     fi: {
       // override translations here
+      absences: {
+        title: 'Poissaolot',
+        absenceTypes: {
+          OTHER_ABSENCE: 'Poissaolo',
+          SICKLEAVE: 'Sairaus',
+          UNKNOWN_ABSENCE: 'Ilmoittamaton poissaolo',
+          PLANNED_ABSENCE: 'Sopimuspoissaolo',
+          TEMPORARY_RELOCATION: 'Lapsi varasijoitettuna muualla',
+          PARENTLEAVE: 'Vanhempainvapaa',
+          FORCE_MAJEURE: 'Päiväkohtainen alennus',
+          FREE_ABSENCE: 'Maksuton kesäpoissaolo',
+          UNAUTHORIZED_ABSENCE: 'Ilmoittamaton päivystyksen poissaolo',
+          NO_ABSENCE: 'Ei poissaoloa'
+        },
+        absenceTypesShort: {
+          OTHER_ABSENCE: 'Poissaolo',
+          SICKLEAVE: 'Sairaus',
+          UNKNOWN_ABSENCE: 'Ilmoittamaton',
+          PLANNED_ABSENCE: 'Sopimus',
+          TEMPORARY_RELOCATION: 'Varasijoitus',
+          PARENTLEAVE: 'Vanhempainvapaa',
+          FORCE_MAJEURE: 'Maksuton',
+          FREE_ABSENCE: 'Maksuton',
+          UNAUTHORIZED_ABSENCE: 'Sakko',
+          NO_ABSENCE: 'Ei poissa'
+        },
+        absenceTypeInfo: {
+          OTHER_ABSENCE:
+              'Käytetään aina, kun huoltaja on ilmoittanut poissaolosta mukaan lukien säännölliset vapaat ja loma-aika. Käytetään myös vuoroyksiköissä lasten lomamerkinnöissä tai muissa poissaoloissa, jotka ovat suunniteltujen läsnäolovarausten ulkopuolella.',
+          SICKLEAVE:
+              'Merkitään kun lapsi on sairaana.',
+          UNKNOWN_ABSENCE:
+              'Käytetään silloin, kun huoltaja ei ole ilmoittanut poissaolosta, vaikuttaa heinäkuussa myös laskutukseen. Koodi muutetaan vain, jos kyseessä on sairauspoissaolo, jonka jatkumisesta huoltaja ilmoittaa seuraavana päivänä.',
+          PLANNED_ABSENCE:
+              'Palveluntarvesopimuksen (enintään 147h/kk, enintään 166h/kk, tai enintään 84h/kk mukaiset etukäteen ilmoitetut poissaolot',
+          TEMPORARY_RELOCATION:
+              'Lapselle on tehty varasijoitus toiseen yksikköön. Poissa omasta, läsnä muualla.',
+          PARENTLEAVE:
+              'Poissaolo merkitään sille lapselle, josta maksetaan Kelan vanhenpainrahaa.',
+          FORCE_MAJEURE:
+              'Käytetään vain erikoistilanteissa hallinnon ohjeiden mukaan. Yksittäisiä päiviä, joista on luvattu maksuhyvitys',
+          FREE_ABSENCE: 'Kesäajan maksuton poissaolo',
+          UNAUTHORIZED_ABSENCE: 'Ilmoittamaton päivystyksen poissaolo',
+          NO_ABSENCE: 'Jos lapsi on paikalla, älä merkitse mitään.'
+        }
+      },
       common: {
         careTypeLabels: {
           preschool: 'Esiopetusta täydentävä toiminta'
@@ -119,7 +165,13 @@ const customizations: EmployeeCustomizations = {
     alt: 'Turku logo'
   },
   featureFlags,
-  assistanceMeasures: [],
+  assistanceMeasures: [
+    'SPECIAL_ASSISTANCE_DECISION',
+    'INTENSIFIED_ASSISTANCE',
+    'EXTENDED_COMPULSORY_EDUCATION',
+    'CHILD_ACCULTURATION_SUPPORT',
+    'TRANSPORT_BENEFIT'
+  ],
   placementTypes: [
     'DAYCARE',
     'DAYCARE_PART_TIME',
@@ -134,11 +186,12 @@ const customizations: EmployeeCustomizations = {
   ],
   absenceTypes: [
     'OTHER_ABSENCE',
+    'UNKNOWN_ABSENCE',
     'PLANNED_ABSENCE',
     'SICKLEAVE',
-    'PARENTLEAVE',
     'FORCE_MAJEURE',
-    'FREE_ABSENCE'
+    'FREE_ABSENCE',
+    'PARENTLEAVE'
   ],
   voucherValueDecisionTypes: [
     'NORMAL',
