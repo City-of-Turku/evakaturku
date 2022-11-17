@@ -82,7 +82,7 @@ const customizations: EmployeeCustomizations = {
           free: 'Maksuton',
           paid: 'Maksullinen',
           absenceSummaryTitle: 'Lapsen poissaolokooste'
-        },
+        }
       },
       common: {
         careTypeLabels: {
