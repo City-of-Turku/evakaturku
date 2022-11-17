@@ -39,8 +39,8 @@ const customizations: EmployeeCustomizations = {
           PLANNED_ABSENCE: 'Sopimus',
           TEMPORARY_RELOCATION: 'Varasijoitus',
           PARENTLEAVE: 'Vanhempainvapaa',
-          FORCE_MAJEURE: 'Maksuton',
-          FREE_ABSENCE: 'Maksuton',
+          FORCE_MAJEURE: 'Päiväkohtainen alennus',
+          FREE_ABSENCE: 'Maksuton kesäpoissaolo',
           UNAUTHORIZED_ABSENCE: 'Sakko',
           NO_ABSENCE: 'Ei poissa'
         },
@@ -61,7 +61,28 @@ const customizations: EmployeeCustomizations = {
           FREE_ABSENCE: 'Kesäajan maksuton poissaolo',
           UNAUTHORIZED_ABSENCE: 'Ilmoittamaton päivystyksen poissaolo',
           NO_ABSENCE: 'Jos lapsi on paikalla, älä merkitse mitään.'
-        }
+        },
+        modal: {
+          absenceSectionLabel: 'Poissaolon syy',
+          placementSectionLabel: 'Toimintamuoto, jota poissaolo koskee',
+          saveButton: 'Tallenna',
+          cancelButton: 'Peruuta',
+          absenceTypes: {
+            OTHER_ABSENCE: 'Poissaolo',
+            SICKLEAVE: 'Sairaus',
+            UNKNOWN_ABSENCE: 'Ilmoittamaton poissaolo',
+            PLANNED_ABSENCE: 'Sopimuspoissaolo',
+            TEMPORARY_RELOCATION: 'Lapsi varasijoitettuna muualla',
+            PARENTLEAVE: 'Vanhempainvapaa',
+            FORCE_MAJEURE: 'Päiväkohtainen alennus',
+            FREE_ABSENCE: 'Maksuton kesäpoissaolo',
+            UNAUTHORIZED_ABSENCE: 'Ilmoittamaton päivystyksen poissaolo',
+            NO_ABSENCE: 'Ei poissaoloa'
+          },
+          free: 'Maksuton',
+          paid: 'Maksullinen',
+          absenceSummaryTitle: 'Lapsen poissaolokooste'
+        },
       },
       common: {
         careTypeLabels: {
