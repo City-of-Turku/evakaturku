@@ -134,9 +134,9 @@ const customizations: EmployeeCustomizations = {
       unit: {
         placementProposals: {
           rejectReasons: {
-            REASON_1: 'Päiväkoti täynnä',
-            REASON_2: 'Sisäilma tai muu rakenteellinen syy',
-            REASON_3: 'Henkilökuntaa tilapäisesti vähennetty'
+            REASON_1: 'Vapaat paikat vain esiopetuksen ryhmässä',
+            REASON_2: 'Palvelusetelituottajan paikat täynnä',
+            OTHER: 'Muu syy - perustelut'
           },
           infoTitle: '',
           infoText: ''
@@ -219,7 +219,7 @@ const customizations: EmployeeCustomizations = {
     'RELIEF_PARTLY_ACCEPTED',
     'RELIEF_REJECTED'
   ],
-  placementPlanRejectReasons: ['REASON_1', 'REASON_2', 'REASON_3', 'OTHER'],
+  placementPlanRejectReasons: ['REASON_1', 'REASON_2', 'OTHER'],
   unitProviderTypes: [
     'MUNICIPAL',
     'PURCHASED',
