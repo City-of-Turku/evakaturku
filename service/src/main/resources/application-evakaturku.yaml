@@ -10,16 +10,16 @@ evaka:
   email:
     sender_address: "no-reply.evaka@turku.fi"
     sender_name:
-      fi: "Turun Varhaiskasvatus"
-      sv: "Åbo småbarnspedagogik"
+      fi: "Turun varhaiskasvatus"
+      sv: "Åbo småbarnsperdagogik"
     application_received:
       sender_address:
-        fi: "vaka.palveluohjaus@turku.fi"
-        sv: "dagis@turku.fi"
+        fi: "varhaiskasvatus.palveluohjaus@turku.fi"
+        sv: "varhaiskasvatus.palveluohjaus@turku.fi"
       sender_name:
         fi: "Varhaiskasvatuksen palveluohjaus"
-        sv: "Barninvalskoordinatorer / Turku stad"
+        sv: "Service enheten vid småbarnspedagogik"
   oph:
-    organizer_oid: "1.2.246.562.10.79499343246"
-    organizer_id: "176"
-    municipality_code: "813"
+    organizer_oid: "1.2.246.562.10.56820737825"
+    organizer_id: "PUUTTUU"
+    municipality_code: "853"
