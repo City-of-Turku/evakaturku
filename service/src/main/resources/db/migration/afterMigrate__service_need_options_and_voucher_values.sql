@@ -45,12 +45,10 @@ VALUES
     ('73976b22-536b-11ed-8d13-57ff6a3494ef', '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 'Free of charge early education for 5 years old + Early childhood education at most 35h/week (at most 147h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 0.85, 1.0, 35, FALSE, FALSE, '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 210, 1.75, false),
     ('3172d514-536c-11ed-8d15-dfe8e83094cd', '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 'Free of charge early education for 5 years old + Early childhood education at most 27,5h/week (at most 116h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 0.65, 1.0, 27.5, FALSE, FALSE, '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 27h/vko (enintään 116h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 220, 1.75, false),
     ('e94a8bae-536d-11ed-8d17-9b8007da5dec', '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', 'Free of charge early education for 5 years old + Early childhood education at most 20h/week (at most 84h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 0.5, 1.0, 20, FALSE, FALSE, '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', '5-vuotiaiden maksuton varhaiskasvatus + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', 230, 1.75, false),
-
     ('a2877f1a-7087-11ed-a559-4fa06829e6fd', 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus yli 35/vko (yli 147h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik över 35h/vecka (över 147h/mån)', 'Group family day care service voucher free of charge early education for 5 years old + Early childhood education over 35h/week (over 147h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 1.0, 1.0, 40, FALSE, FALSE, 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus yli 35/vko (yli 147h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik över 35h/vecka (över 147h/mån)', 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus yli 35/vko (yli 147h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik över 35h/vecka (över 147h/mån)', 232, 1.75, false),
     ('a2878c8a-7087-11ed-a55a-ffa38e3847aa', 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 'Group family day care service voucher free of charge early education for 5 years old + Early childhood education at most 35h/week (at most 147h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 0.85, 1.0, 35, FALSE, FALSE, 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 234, 1.75, false),
     ('a2878d2a-7087-11ed-a55b-2f42cae1743e', 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 'Group family day care service voucher free of charge early education for 5 years old + Early childhood education at most 27,5h/week (at most 116h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 0.65, 1.0, 27.5, FALSE, FALSE, 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 236, 1.75, false),
     ('a2878d84-7087-11ed-a55c-53988f52a3bf', 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', 'Group family day care service voucher free of charge early education for 5 years old + Early childhood education at most 20h/week (at most 84h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 0.5, 1.0, 20, FALSE, FALSE, 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', 'Ryhmäperhepäivähoidon palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Gruppfamiljedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', 238, 1.75, false),
-
     ('a2879072-7087-11ed-a55d-6f35f6f6df2f', 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus yli 35/vko (yli 147h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik över 35h/vecka (över 147h/mån)', 'Family day care service voucher free of charge early education for 5 years old + Early childhood education over 35h/week (over 147h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 1.0, 1.0, 40, FALSE, FALSE, 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus yli 35/vko (yli 147h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik över 35h/vecka (över 147h/mån)', 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus yli 35/vko (yli 147h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik över 35h/vecka (över 147h/mån)', 240, 1.75, false),
     ('a28790e0-7087-11ed-a55e-0700a24f1119', 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 'Family day care service voucher free of charge early education for 5 years old + Early childhood education at most 35h/week (at most 147h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 0.85, 1.0, 35, FALSE, FALSE, 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 242, 1.75, false),
     ('a2879554-7087-11ed-a55f-df43279a1ac6', 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 'Family day care service voucher free of charge early education for 5 years old + Early childhood education at most 27,5h/week (at most 116h/month)', 'DAYCARE_PART_TIME_FIVE_YEAR_OLDS', FALSE, 0.65, 1.0, 27.5, FALSE, FALSE, 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 'Perhepäivähoiton palveluseteli 5v maksuton varhaikasvatus + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Familjedagvårds servicecedeln avgiftsfri småbarnspedagogik för 5-åringar + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 244, 1.75, false),
@@ -168,19 +166,16 @@ VALUES
     ('b8159630-6fb2-11ed-9bd6-df1d69c40100','267946fa-6fb1-11ed-8c85-4725b99d6549',daterange('2022-08-01', NULL, '[]'),121400,0.45,54600,121400,0.45,54600),
     ('b816805e-6fb2-11ed-9bd7-f3c20b046d31','26794f24-6fb1-11ed-8c86-1f58d027951d',daterange('2022-08-01', NULL, '[]'),90000,0.45,40500,90000,0.45,40500),
 
-
     --DAYCARE_PART_TIME_FIVE_YEAR_OLDS
     ('4c67845c-536a-11ed-8d11-97b77098a2ac','153a6364-536a-11ed-8d0f-d7a4b2b860f1',daterange('2022-08-01', NULL, '[]'),132100,1.0,132100,132100,1.0,132100),
     ('6106a848-536a-11ed-8d12-9b8d0bb52ef5','325c97b4-536a-11ed-8d10-4b3a543573f7',daterange('2022-08-01', NULL, '[]'),132100,1.0,132100,132100,1.0,132100),
     ('931b15a2-536b-11ed-8d14-f743f93c7f0d','73976b22-536b-11ed-8d13-57ff6a3494ef',daterange('2022-08-01', NULL, '[]'),132100,1.0,132100,132100,1.0,132100),
     ('4a1f4610-536c-11ed-8d16-ef79cd92be44','3172d514-536c-11ed-8d15-dfe8e83094cd',daterange('2022-08-01', NULL, '[]'),132100,0.75,91100,132100,0.75,91100),
     ('00e6e6a4-536e-11ed-8d18-c74c7ee8eee7','e94a8bae-536d-11ed-8d17-9b8007da5dec',daterange('2022-08-01', NULL, '[]'),132100,0.6,79300,132100,0.6,79300),
-
     ('cdd6c148-7088-11ed-a759-cb6f7e91fff1','a2877f1a-7087-11ed-a559-4fa06829e6fd',daterange('2022-08-01', NULL, '[]'),176000,1.0,176000,176000,1.0,176000),
     ('cdd7653a-7088-11ed-a75a-6bd92b763473','a2878c8a-7087-11ed-a55a-ffa38e3847aa',daterange('2022-08-01', NULL, '[]'),176000,1.0,176000,176000,1.0,176000),
     ('cdd7663e-7088-11ed-a75b-ef5fb52280a9','a2878d2a-7087-11ed-a55b-2f42cae1743e',daterange('2022-08-01', NULL, '[]'),176000,0.75,132000,176000,0.75,132000),
     ('cdd766b6-7088-11ed-a75c-ff8cc1bb61f7','a2878d84-7087-11ed-a55c-53988f52a3bf',daterange('2022-08-01', NULL, '[]'),176000,0.6,105600,176000,0.6,105600),
-
     ('cdd7672e-7088-11ed-a75d-c7357b09b35c','a2879072-7087-11ed-a55d-6f35f6f6df2f',daterange('2022-08-01', NULL, '[]'),130500,1.0,130500,130500,1.0,130500),
     ('cdd7679c-7088-11ed-a75e-bf7d24c40ca5','a28790e0-7087-11ed-a55e-0700a24f1119',daterange('2022-08-01', NULL, '[]'),130500,1.0,130500,130500,1.0,130500),
     ('cdd7680a-7088-11ed-a75f-fbdc40b677b6','a2879554-7087-11ed-a55f-df43279a1ac6',daterange('2022-08-01', NULL, '[]'),130500,0.75,97900,130500,0.75,97900),
@@ -214,7 +209,84 @@ VALUES
     ('a51acf5e-148c-11ed-be1e-836c2b35ecb6','ff6ddcd4-fa8a-11eb-8592-2f2b4e398fcb',daterange('2022-08-01', NULL, '[]'),91100,1.0,91100,154900,1.0,154900),
     ('66a28654-4f92-11ed-8bee-077eea087eb0','4d246a6c-4f92-11ed-8bed-2f5b3226e682',daterange('2022-08-01', NULL, '[]'),91100,1.0,91100,154900,1.0,154900),
     ('fad5ddb4-4f90-11ed-8bea-8b352f1dca97','d6d5a660-4f90-11ed-8be9-6f76cd90c246',daterange('2022-08-01', NULL, '[]'),91100,1.0,91100,154900,1.0,154900),
-    ('a51ad148-148c-11ed-be1e-0bdf6a5141f9','1b4413f6-d99d-11eb-89ac-a3a978104bce',daterange('2022-08-01', NULL, '[]'),91100,1.0,91100,154900,1.0,154900)
+    ('a51ad148-148c-11ed-be1e-0bdf6a5141f9','1b4413f6-d99d-11eb-89ac-a3a978104bce',daterange('2022-08-01', NULL, '[]'),91100,1.0,91100,154900,1.0,154900),
+
+    -- 2022-05-01 - 2022-07-31
+
+    --DAYCARE
+    --DAYCARE_PART_TIME
+    ('','50358394-b961-11eb-b51f-67ac436e5636',daterange('2022-05-01', '2022-07-31' '[]'),81200,1.0,81200,122600,1.0,122600),
+    ('','86ef70a0-bf85-11eb-91e6-1fb57a101161',daterange('2022-05-01', '2022-07-31' '[]'),81200,1.0,81200,122600,1.0,122600),
+    ('','503590f0-b961-11eb-b520-53740af3f7ee',daterange('2022-05-01', '2022-07-31' '[]'),81200,1.0,81200,122600,1.0,122600),
+    ('','503591ae-b961-11eb-b521-1fca99358eef',daterange('2022-05-01', '2022-07-31' '[]'),81200,0.75,67700,122600,0.75,102200),
+    ('','503592da-b961-11eb-b524-7f27c780d83a',daterange('2022-05-01', '2022-07-31' '[]'),81200,0.6,54100,122600,0.6,81700),
+    ('','85d1a0ca-5364-11ed-8d09-cb8b39c5e5e0',daterange('2022-05-01', '2022-07-31' '[]'),81200,0.6,54100,122600,0.6,81700),
+
+    --PRESCHOOL
+    ('','bc6a4550-fa74-11eb-9a2d-035acd5db9aa',daterange('2022-05-01', '2022-07-31' '[]'),50500,1.0,50500,50500,1.0,50500),
+    ('','5c21d452-4f90-11ed-8be7-bf748cc343bf',daterange('2022-05-01', '2022-07-31' '[]'),50500,1.0,50500,50500,1.0,50500),
+    ('','a678968e-536f-11ed-8d19-5715e16c8489',daterange('2022-05-01', '2022-07-31' '[]'),50500,1.0,50500,50500,1.0,50500),
+
+    --DAYCARE_FIVE_YEAR_OLDS
+    ('','a867f3ec-5368-11ed-8d0b-b31b59a849a1',daterange('2022-05-01', '2022-07-31' '[]'),40600,1.0,40600,40600,1.0,40600),
+    ('','c73c5cea-5368-11ed-8d0c-8fb44e947bc6',daterange('2022-05-01', '2022-07-31' '[]'),40600,1.0,40600,40600,1.0,40600),
+    ('','267946fa-6fb1-11ed-8c85-4725b99d6549',daterange('2022-05-01', '2022-07-31' '[]'),120200,0.45,54100,120200,0.45,54100),
+    ('','26794f24-6fb1-11ed-8c86-1f58d027951d',daterange('2022-05-01', '2022-07-31' '[]'),89100,0.45,40100,89100,0.45,40100),
+
+    -- 2021-08-01 - 2022-04-30
+
+    --PRESCHOOL
+    ('','a678968e-536f-11ed-8d19-5715e16c8489',daterange('2021-08-01', '2022-04-30' '[]'),48100,1.0,48100,48100,1.0,48100),
+
+    -- 2020-08-01 - 2022-04-30
+
+    --DAYCARE
+    --DAYCARE_PART_TIME
+    ('','50358394-b961-11eb-b51f-67ac436e5636',daterange('2020-08-01', '2022-04-30' '[]'),77400,1.0,77400,116900,1.0,116900),
+    ('','86ef70a0-bf85-11eb-91e6-1fb57a101161',daterange('2020-08-01', '2022-04-30' '[]'),77400,1.0,77400,116900,1.0,116900),
+    ('','503590f0-b961-11eb-b520-53740af3f7ee',daterange('2020-08-01', '2022-04-30' '[]'),77400,1.0,77400,116900,1.0,116900),
+    ('','503591ae-b961-11eb-b521-1fca99358eef',daterange('2020-08-01', '2022-04-30' '[]'),77400,0.75,64500,116900,0.75,97400),
+    ('','503592da-b961-11eb-b524-7f27c780d83a',daterange('2020-08-01', '2022-04-30' '[]'),77400,0.6,51600,116900,0.6,77900),
+    ('','85d1a0ca-5364-11ed-8d09-cb8b39c5e5e0',daterange('2020-08-01', '2022-04-30' '[]'),77400,0.6,51600,116900,0.6,77900),
+
+    --PRESCHOOL
+    ('','bc6a4550-fa74-11eb-9a2d-035acd5db9aa',daterange('2020-08-01', '2022-04-30' '[]'),48100,1.0,48100,48100,1.0,48100),
+    ('','5c21d452-4f90-11ed-8be7-bf748cc343bf',daterange('2020-08-01', '2022-04-30' '[]'),48100,1.0,48100,48100,1.0,48100),
+
+    --DAYCARE_FIVE_YEAR_OLDS
+    ('','267946fa-6fb1-11ed-8c85-4725b99d6549',daterange('2020-08-01', '2022-04-30' '[]'),86000,0.45,38700,86000,0.45,38700),
+    ('','26794f24-6fb1-11ed-8c86-1f58d027951d',daterange('2020-08-01', '2022-04-30' '[]'),86000,0.45,38700,86000,0.45,38700),
+
+    -- 2019-11-01 - 2022-04-30
+
+    --DAYCARE_FIVE_YEAR_OLDS
+    ('','a867f3ec-5368-11ed-8d0b-b31b59a849a1',daterange('2019-11-01', '2022-04-30' '[]'),37200,1.0,37200,37200,1.0,37200),
+    ('','c73c5cea-5368-11ed-8d0c-8fb44e947bc6',daterange('2019-11-01', '2022-04-30' '[]'),37200,1.0,37200,37200,1.0,37200),
+
+    -- 2018-11-01 - 2020-07-31
+
+    --DAYCARE_FIVE_YEAR_OLDS
+    ('','267946fa-6fb1-11ed-8c85-4725b99d6549',daterange('2018-11-01', '2020-07-31' '[]'),82700,0.45,37200,82700,0.45,37200),
+    ('','26794f24-6fb1-11ed-8c86-1f58d027951d',daterange('2018-11-01', '2020-07-31' '[]'),82700,0.45,37200,82700,0.45,37200),
+
+    -- 2018-08-01 - 2020-07-31
+
+    --DAYCARE
+    --DAYCARE_PART_TIME
+    ('','50358394-b961-11eb-b51f-67ac436e5636',daterange('2018-08-01', '2020-07-31' '[]'),74500,1.0,74500,112500,1.0,112500),
+    ('','86ef70a0-bf85-11eb-91e6-1fb57a101161',daterange('2018-08-01', '2020-07-31' '[]'),74500,1.0,74500,112500,1.0,112500),
+    ('','503590f0-b961-11eb-b520-53740af3f7ee',daterange('2018-08-01', '2020-07-31' '[]'),74500,1.0,74500,112500,1.0,112500),
+    ('','503591ae-b961-11eb-b521-1fca99358eef',daterange('2018-08-01', '2020-07-31' '[]'),74500,0.75,62100,112500,0.75,93800),
+    ('','503592da-b961-11eb-b524-7f27c780d83a',daterange('2018-08-01', '2020-07-31' '[]'),74500,0.6,49700,112500,0.6,75000),
+    ('','85d1a0ca-5364-11ed-8d09-cb8b39c5e5e0',daterange('2018-08-01', '2020-07-31' '[]'),74500,0.6,49700,112500,0.6,75000),
+
+    --PRESCHOOL
+    ('','bc6a4550-fa74-11eb-9a2d-035acd5db9aa',daterange('2018-08-01', '2020-07-31' '[]'),46300,1.0,46300,46300,1.0,46300),
+    ('','5c21d452-4f90-11ed-8be7-bf748cc343bf',daterange('2018-08-01', '2020-07-31' '[]'),46300,1.0,46300,46300,1.0,46300),
+
+
+
+
 ON CONFLICT (id) DO
 UPDATE SET
     validity = EXCLUDED.validity,
