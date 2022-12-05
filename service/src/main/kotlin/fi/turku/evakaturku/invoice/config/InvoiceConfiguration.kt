@@ -4,15 +4,14 @@
 
 package fi.turku.evakaturku.invoice.config
 
+import com.jcraft.jsch.JSch
 import fi.espoo.evaka.invoicing.domain.FeeAlteration
 import fi.espoo.evaka.invoicing.domain.IncomeType
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
-import fi.espoo.evaka.invoicing.service.IncomeTypesProvider
-import fi.espoo.evaka.invoicing.service.InvoiceProductProvider
-import fi.espoo.evaka.invoicing.service.ProductKey
-import fi.espoo.evaka.invoicing.service.ProductWithName
+import fi.espoo.evaka.invoicing.service.*
 import fi.espoo.evaka.placement.PlacementType
-import fi.turku.evakaturku.invoice.service.EVakaTurkuInvoiceClient
+import fi.turku.evakaturku.EvakaTurkuProperties
+import fi.turku.evakaturku.invoice.service.*
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
@@ -24,9 +23,16 @@ class InvoiceConfiguration {
     @Primary
     @Bean(name = ["evakaTurkuInvoiceIntegrationClient"])
     fun invoiceIntegrationClient(
-    ): InvoiceIntegrationClient {
-        return EVakaTurkuInvoiceClient()
+        properties: EvakaTurkuProperties,
+        invoiceGenerator: ProEInvoiceGenerator,
+        sftpConnector: SftpConnector
+        ): InvoiceIntegrationClient {
+        val sftpSender = SftpSender(properties.sapInvoicing, sftpConnector)
+        return EVakaTurkuInvoiceClient(sftpSender, invoiceGenerator)
     }
+
+    @Bean
+    fun jsch() : JSch = JSch()
 
     @Bean
     fun incomeTypesProvider(): IncomeTypesProvider = TurkuIncomeTypesProvider()
@@ -38,21 +44,21 @@ class InvoiceConfiguration {
 class TurkuIncomeTypesProvider : IncomeTypesProvider {
     override fun get(): Map<String, IncomeType> {
         return linkedMapOf(
-            "MAIN_INCOME" to IncomeType("Palkkatulo", 1, false, false),
-            "HOLIDAY_BONUS" to IncomeType("Lomaraha", 1, false, false),
-            "PERKS" to IncomeType("Luontaisetu", 1, false, false),
+            "MAIN_INCOME" to IncomeType("Palkkatulo", 1, true, false),
+            "HOLIDAY_BONUS" to IncomeType("Lomaraha", 1, true, false),
+            "PERKS" to IncomeType("Luontaisetu", 1, true, false),
             "DAILY_ALLOWANCE" to IncomeType("Päiväraha", 1, true, false),
-            "HOME_CARE_ALLOWANCE" to IncomeType("Kotihoidontuki", 1, false, false),
-            "PENSION" to IncomeType("Eläke", 1, false, false),
-            "RELATIVE_CARE_SUPPORT" to IncomeType("Omaishoidontuki", 1, false, false),
-            "STUDENT_INCOME" to IncomeType("Opiskelijan tulot", 1, false, false),
-            "GRANT" to IncomeType("Apuraha", 1, false, false),
+            "HOME_CARE_ALLOWANCE" to IncomeType("Kotihoidontuki", 1, true, false),
+            "PENSION" to IncomeType("Eläke", 1, true, false),
+            "RELATIVE_CARE_SUPPORT" to IncomeType("Omaishoidontuki", 1, true, false),
+            "STUDENT_INCOME" to IncomeType("Opiskelijan tulot", 1, true, false),
+            "GRANT" to IncomeType("Apuraha", 1, true, false),
             "STARTUP_GRANT" to IncomeType("Starttiraha", 1, true, false),
-            "BUSINESS_INCOME" to IncomeType("Yritystoiminnan tulo", 1, false, false),
-            "CAPITAL_INCOME" to IncomeType("Pääomatulo", 1, false, false),
-            "RENTAL_INCOME" to IncomeType("Vuokratulot", 1, false, false),
-            "PAID_ALIMONY" to IncomeType("Maksetut elatusavut", -1, false, false),
-            "ALIMONY" to IncomeType("Saadut elatusavut", 1, false, false),
+            "BUSINESS_INCOME" to IncomeType("Yritystoiminnan tulo", 1, true, false),
+            "CAPITAL_INCOME" to IncomeType("Pääomatulo", 1, true, false),
+            "RENTAL_INCOME" to IncomeType("Vuokratulot", 1, true, false),
+            "PAID_ALIMONY" to IncomeType("Maksetut elatusavut", -1, true, false),
+            "ALIMONY" to IncomeType("Saadut elatusavut", 1, true, false),
             "OTHER_INCOME" to IncomeType("Muu tulo", 1, true, false),
             "ADJUSTED_DAILY_ALLOWANCE" to IncomeType("Soviteltu päiväraha", 1, true, false),
         )
@@ -112,4 +118,3 @@ enum class Product(val nameFi: String, val code: String) {
 
     val key = ProductKey(this.name)
 }
-

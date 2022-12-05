@@ -12,6 +12,10 @@ import software.amazon.awssdk.services.s3.presigner.S3Presigner
 import fi.espoo.evaka.BucketEnv
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.espoo.evaka.shared.auth.UserRole
+import fi.turku.evakaturku.invoice.service.SftpConnector
+import fi.turku.evakaturku.invoice.service.SftpSender
+import fi.turku.evakaturku.payment.service.ProEPaymentGenerator
+import fi.turku.evakaturku.payment.service.TurkuPaymentIntegrationClient
 
 @Configuration
 class EVakaTurkuConfig {
@@ -50,5 +54,8 @@ class EVakaTurkuConfig {
         DocumentService(s3Client, s3Presigner, env.proxyThroughNginx)
 
     @Bean
-    fun paymentIntegrationClient(): PaymentIntegrationClient = PaymentIntegrationClient.FailingClient()
+    fun paymentIntegrationClient(evakaProperties: EvakaTurkuProperties, paymentGenerator: ProEPaymentGenerator, sftpConnector: SftpConnector): PaymentIntegrationClient {
+        val sftpSender = SftpSender(evakaProperties.sapPayments, sftpConnector)
+        return TurkuPaymentIntegrationClient(paymentGenerator, sftpSender)
+    }
 }

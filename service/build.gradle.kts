@@ -26,6 +26,7 @@ dependencies {
     implementation("org.apache.httpcomponents:httpclient")
     implementation("com.github.kittinunf.fuel:fuel")
     implementation("org.jdbi:jdbi3-core")
+    implementation("com.jcraft:jsch:0.1.55")
 
     implementation("software.amazon.awssdk:s3")
 
