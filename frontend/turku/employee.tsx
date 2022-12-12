@@ -18,6 +18,14 @@ const customizations: EmployeeCustomizations = {
   translations: {
     fi: {
       // override translations here
+      preferredFirstName: {
+        popupLink: 'Kutsumanimi',
+        title: 'Kutsumanimi',
+        description:
+            'Voit määritellä eVakassa käytössä olevan kutsumanimesi. Kutsumanimen tulee olla jokin etunimistäsi.',
+        select: 'Valitse kutsumanimi',
+        confirm: 'Vahvista'
+      },
       absences: {
         title: 'Poissaolot',
         absenceTypes: {
