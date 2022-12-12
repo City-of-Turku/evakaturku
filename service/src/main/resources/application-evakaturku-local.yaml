@@ -35,3 +35,14 @@ evaka:
     koski:
       enabled: false
 
+evakaturku:
+  sapInvoicing:
+    username: user
+    password: pass
+    address: address
+    path: path
+  sapPayments:
+    username: user
+    password: pass
+    address: address
+    path: path
