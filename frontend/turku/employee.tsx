@@ -22,7 +22,7 @@ const customizations: EmployeeCustomizations = {
         popupLink: 'Kutsumanimi',
         title: 'Kutsumanimi',
         description:
-            'Voit määritellä eVakassa käytössä olevan kutsumanimesi. Kutsumanimen tulee olla jokin etunimistäsi.',
+          'Voit määritellä eVakassa käytössä olevan kutsumanimesi. Kutsumanimen tulee olla jokin etunimistäsi.',
         select: 'Valitse kutsumanimi',
         confirm: 'Vahvista'
       },
