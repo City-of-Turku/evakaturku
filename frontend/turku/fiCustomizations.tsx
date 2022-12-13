@@ -158,7 +158,8 @@ const fi: DeepPartial<Translations> = {
           CLUB: 'Jos lapsella on tuen tarve, Turun varhaiskasvatuksesta otetaan yhteyttä hakemuksen jättämisen jälkeen.'
         },
         partTime: {
-          true: 'Osapäiväinen'
+          true: 'Osapäiväinen (20h/vko, 84h/kk)',
+          false: 'Kokopäiväinen'
         },
         dailyTime: {
           label: {

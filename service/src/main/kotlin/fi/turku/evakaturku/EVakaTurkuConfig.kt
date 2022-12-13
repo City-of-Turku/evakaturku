@@ -23,7 +23,7 @@ class EVakaTurkuConfig {
     @Bean
     fun featureConfig(): FeatureConfig = FeatureConfig(
         valueDecisionCapacityFactorEnabled = true,
-        daycareApplicationServiceNeedOptionsEnabled = true,
+        daycareApplicationServiceNeedOptionsEnabled = false,
         citizenReservationThresholdHours = 6 * 24, // Tue 00:00
         dailyFeeDivisorOperationalDaysOverride = null,
         freeSickLeaveOnContractDays = true,
