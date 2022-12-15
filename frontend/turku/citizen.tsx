@@ -31,7 +31,10 @@ const customizations: CitizenCustomizations = {
   footerLogo: <img src={FooterLogo} alt="Turku Logo" />,
   routeLinkRootUrl: 'https://turku.digitransit.fi/',
   mapConfig,
-  featureFlags
+  featureFlags,
+  getMaxPreferredUnits(type) {
+    return 3
+  }
 }
 
 export default customizations
