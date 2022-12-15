@@ -106,15 +106,27 @@ const fi: DeepPartial<Translations> = {
       },
       serviceNeed: {
         startDate: {
-          instructions: (
-            <>
-              Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi siihen
-              saakka, kunnes palveluohjaus on ottanut hakemuksen käsittelyyn.
-              Tämän jälkeen toivotun aloituspäivän muutokset tehdään ottamalla
-              yhteyttä
-              {customerContactText()}
-            </>
-          )
+          instructions: {
+	    DAYCARE: (
+              <>
+                Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi siihen
+                saakka, kunnes palveluohjaus on ottanut hakemuksen käsittelyyn.
+                Tämän jälkeen toivotun aloituspäivän muutokset tehdään ottamalla
+                yhteyttä
+                {customerContactText()}
+              </>
+            ),
+	    PRESCHOOL: (
+              <>
+                Toivottua aloituspäivää on mahdollista muuttaa myöhemmäksi siihen
+                saakka, kunnes palveluohjaus on ottanut hakemuksen käsittelyyn.
+                Tämän jälkeen toivotun aloituspäivän muutokset tehdään ottamalla
+                yhteyttä
+                {customerContactText()}
+              </>
+            ),
+	    CLUB: null
+	  }
         },
         clubDetails: {
           wasOnDaycareInfo:
