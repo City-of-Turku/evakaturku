@@ -32,7 +32,7 @@ const customizations: CitizenCustomizations = {
   routeLinkRootUrl: 'https://turku.digitransit.fi/',
   mapConfig,
   featureFlags,
-  getMaxPreferredUnits(type) {
+  getMaxPreferredUnits() {
     return 3
   }
 }
