@@ -7,9 +7,11 @@ import React from 'react'
 import { isArray, toArray, isObject } from 'lodash'
 
 const checkTurkuTranslation = (value: string, errors: string[]) => {
-    if (value.toLowerCase().includes('espoo')) {
-        console.error(value)
-        errors.push(value);
+    if (value !== null){
+        if (value.toLowerCase().includes('espoo') || value.toLowerCase().includes('tampere')) {
+            console.error(value)
+            errors.push(value);
+        }
     }
 }
 
