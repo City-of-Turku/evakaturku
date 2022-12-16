@@ -115,23 +115,23 @@ const en: DeepPartial<Translations> = {
       serviceNeed: {
         startDate: {
           instructions: {
-	    DAYCARE: (
+            DAYCARE: (
               <>
                 It is possible to postpone the preferred starting day as long as
                 the application has not been processed by the customer service.
                 After this, any desired amendments can be made by contacting the
                 {customerContactText()}
               </>
-	    ),
-	    PRESCHOOL: (
+            ),
+            PRESCHOOL: (
               <>
                 It is possible to postpone the preferred starting day as long as
                 the application has not been processed by the customer service.
                 After this, any desired amendments can be made by contacting the
                 {customerContactText()}
               </>
-	    ),
-	    CLUB: null
+            ),
+            CLUB: null
           }
         },
         clubDetails: {
