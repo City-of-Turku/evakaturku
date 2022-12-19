@@ -264,7 +264,8 @@ const fi: DeepPartial<Translations> = {
           ssnPlaceholder: 'Henkilötunnus'
         },
         units: {
-          title: 'Hakutoiveet',
+          title: (maxUnits: number): string =>
+            maxUnits === 1 ? 'Hakutoive' : 'Hakutoiveet',
           startDateMissing:
             'Päästäksesi valitsemaan hakutoiveet valitse ensin toivottu aloituspäivä "Palvelun tarve" -osiosta',
           info: {
