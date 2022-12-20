@@ -195,12 +195,6 @@ const fi: DeepPartial<Translations> = {
             PRESCHOOL:
               ' Esiopetusta tarjotaan päiväkodeissa ja kouluissa neljä tuntia päivässä. Ilmoita lapsen tarvitsema varhaiskasvatusaika siten, että̈ se sisältää myös esiopetusajan (esim. 7.00–17.00). Aika tarkennetaan varhaiskasvatuksen alkaessa. Päivittäisen varhaiskasvatusajan vaihdellessa päivittäin tai viikoittain (esim. vuorohoidossa), ilmoita tarve tarkemmin hakemuksen Muut lisätiedot -kohdassa.'
           },
-          connectedDaycare: {
-            label: 'Liittyvä varhaiskasvatus',
-            withConnectedDaycare:
-              'Haen myös esiopetuksen täydentävää varhaiskasvatusta.',
-            withoutConnectedDaycare: 'Ei'
-          },
           connectedDaycareInfo: (
             <>
               <P>
@@ -226,6 +220,16 @@ const fi: DeepPartial<Translations> = {
               </P>
             </>
           )
+        }
+      },
+      verification: {
+        serviceNeed: {
+          connectedDaycare: {
+            label: 'Liittyvä varhaiskasvatus',
+            withConnectedDaycare:
+              'Haen myös esiopetuksen täydentävää varhaiskasvatusta.',
+            withoutConnectedDaycare: 'Ei'
+          }
         }
       },
       unitPreference: {
