@@ -105,7 +105,19 @@ const fi: DeepPartial<Translations> = {
         }
       },
       serviceNeed: {
+        preparatory: 'Lapsi tarvitsee tukea suomen kielen oppimisessa.',
+        preparatoryInfo:
+          'Jokaiselle lapselle, jonka äidinkieli ei ole suomi, ruotsi tai saame. Turun varhaiskasvatuksessa arvioidaan lapsen valmistavan opetuksen tarve.',
         startDate: {
+          info: {
+            DAYCARE: [],
+            PRESCHOOL: [
+              'Suomen- ja ruotsinkielinen esiopetus alkaa 10.8.2023. Jos tarvitsette esiopetukseen täydentävää varhaiskasvatusta, voitte hakea sitä kohdassa Esiopetuksen täydentävä varhaiskasvatus. Jos lapsi siirtyy yksityisestä varhaiskasvatuksesta kunnalliseen, tehkää hakemus täydentävään varhaiskasvatukseen.'
+            ],
+            CLUB: [
+              'Kerhot noudattavat esiopetuksen työ- ja loma-aikoja. Kerhon toimintakausi on elokuusta toukokuun loppuun, ja kullekin toimintakaudelle haetaan erikseen. Eri kerhot kokoontuvat eri viikonpäivinä.'
+            ]
+          },
           instructions: {
             DAYCARE: (
               <>
@@ -161,13 +173,17 @@ const fi: DeepPartial<Translations> = {
             text: 'Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610. Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.'
           },
           attachmentsMessage: {
-            text: 'Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610. Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.'
+            text: 'Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610. Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.',
+            subtitle:
+              'Lisää tähän selvitys vuorotyöstä tai iltaisin ja/tai viikonloppuisin tapahtuvasta opiskelusta molempien huoltajien osalta.'
           }
         },
         assistanceNeedInstructions: {
           DAYCARE:
             'Lapsen tuen tarpeella tarkoitetaan sellaisten tukitoimien tarvetta, jotka on osoitettu asiantuntijalausunnoin. Tukitoimet toteutuvat lapsen arjessa osana varhaiskasvatuksen muuta toimintaa. Varhaiskasvatuksen erityisopettaja ottaa hakijaan yhteyttä, jotta lapsen tarpeet voidaan ottaa huomioon varhaiskasvatuspaikkaa myönnettäessä.',
-          CLUB: 'Jos lapsella on tuen tarve, Turun varhaiskasvatuksesta otetaan yhteyttä hakemuksen jättämisen jälkeen.'
+          CLUB: 'Jos lapsella on tuen tarve, Turun varhaiskasvatuksesta otetaan yhteyttä hakemuksen jättämisen jälkeen.',
+          PRESCHOOL:
+            'Valitse hakemuksesta tämä kohta, jos lapsi tarvitsee kehitykselleen ja/tai oppimiselleen tukea esiopetusvuonna. Tukea toteutetaan lapsen arjessa osana esiopetuksen ja varhaiskasvatuksen muuta toimintaa. Varhaiskasvatuksen erityisopettaja ottaa hakijaan yhteyttä, jotta lapsen tuen tarve voidaan ottaa huomioon esiopetuspaikkaa osoitettaessa.'
         },
         partTime: {
           true: 'Osapäiväinen (max 20h/vko, max 84h/kk)',
@@ -175,14 +191,41 @@ const fi: DeepPartial<Translations> = {
         },
         dailyTime: {
           label: {
-            DAYCARE: 'Palveluntarve'
-          }
+            DAYCARE: 'Palveluntarve',
+            PRESCHOOL:
+              ' Esiopetusta tarjotaan päiväkodeissa ja kouluissa neljä tuntia päivässä. Ilmoita lapsen tarvitsema varhaiskasvatusaika siten, että̈ se sisältää myös esiopetusajan (esim. 7.00–17.00). Aika tarkennetaan varhaiskasvatuksen alkaessa. Päivittäisen varhaiskasvatusajan vaihdellessa päivittäin tai viikoittain (esim. vuorohoidossa), ilmoita tarve tarkemmin hakemuksen Muut lisätiedot -kohdassa.'
+          },
+          connectedDaycareInfo: (
+            <>
+              <P>
+                Voit hakea lapselle tarvittaessa esiopetukseen täydentävää
+                maksullista varhaiskasvatusta. Jos haluat aloittaa
+                varhaiskasvatuksen myöhemmin kuin esiopetus alkaa, kirjoita
+                haluttu aloituspäivämäärä hakemuksen “Muut lisätiedot” -kohtaan.
+                Palveluseteliä yksityiseen päiväkotiin haetaan valitsemalla
+                hakutoiveeksi se palveluseteliyksikkö, johon halutaan hakea.
+              </P>
+              <P>
+                Saat varhaiskasvatuspaikasta kirjallisen päätöksen{' '}
+                <a
+                  href="https://www.suomi.fi/viestit"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Suomi.fi-viestit
+                </a>{' '}
+                -palveluun tai postitse, jos et ole ottanut Suomi.fi-viestit
+                -palvelua käyttöön. Päätös on nähtävillä myös eVaka-palvelussa
+                kohdassa Hakeminen - Päätökset.
+              </P>
+            </>
+          )
         }
       },
       unitPreference: {
         title: 'Hakutoive',
         siblingBasis: {
-          title: 'Haku sisarperusteella',
+          title: 'Haku sisarperusteella ei ole käytössä Turussa',
           info: {
             DAYCARE: (
               <>
@@ -203,30 +246,7 @@ const fi: DeepPartial<Translations> = {
             ),
             PRESCHOOL: (
               <>
-                <P>Esioppilaalla on sisarusperuste:</P>
-                <ol type="a">
-                  <li>
-                    Oman palvelualueen päiväkotiin, jossa esioppilaalla on
-                    sisarus, jolla on päätöksentekohetkellä ja tulevana
-                    esiopetusvuonna paikka esiopetuspäiväkodissa.
-                  </li>
-                  <li>
-                    Kunnan osoittamaan lähikouluun, jota esioppilaan sisarus käy
-                    tulevana lukuvuonna.
-                  </li>
-                </ol>
-                <P>
-                  Huoltaja voi valita, käyttääkö hän sisarusperustetta kohdan a
-                  vai b mukaisesti, jos esioppilaalla on sisarusperuste
-                  molempien kohtien mukaan. Valinta ilmoitetaan alla.
-                  Sisarukseksi katsotaan kaikki samassa osoitteessa asuvat
-                  lapset.
-                </P>
-                <P>
-                  Täytä nämä tiedot vain, jos käytät sisarusperustetta, sekä
-                  valitse alla olevissa hakutoiveissa ensisijaiseksi toiveeksi
-                  sama yksikkö, jossa lapsen sisarus on.
-                </P>
+                <P>Haku sisarperusteella ei ole käytössä Turussa.</P>
               </>
             ),
             CLUB: (
@@ -335,15 +355,22 @@ const fi: DeepPartial<Translations> = {
             sv: 'ruotsi'
           },
           select: {
-            label: 'Valitse hakutoiveet',
+            label: (maxUnits: number): string =>
+              maxUnits === 1 ? 'Valitse hakutoive' : 'Valitse hakutoiveet',
             placeholder: 'Hae yksiköitä',
             maxSelected: 'Maksimimäärä yksiköitä valittu',
             noOptions: 'Ei hakuehtoja vastaavia yksiköitä'
           },
           preferences: {
-            label: 'Valitsemasi hakutoiveet',
+            label: (maxUnits: number): string =>
+              maxUnits === 1
+                ? 'Valitsemasi hakutoive'
+                : 'Valitsemasi hakutoiveet',
             noSelections: 'Ei valintoja',
-            info: 'Valitse 1-3 varhaiskasvatusyksikköä ja järjestä ne toivomaasi järjestykseen. Voit muuttaa järjestystä nuolien avulla.',
+            info: (maxUnits: number) =>
+              maxUnits === 1
+                ? 'Valitse yksi varhaiskasvatusyksikkö'
+                : `Valitse 1-${maxUnits} varhaiskasvatusyksikköä ja järjestä ne toivomaasi järjestykseen. Voit muuttaa järjestystä nuolien avulla.`,
             fi: 'suomenkielinen',
             sv: 'ruotsinkielinen',
             en: 'englanninkielinen',
@@ -354,26 +381,34 @@ const fi: DeepPartial<Translations> = {
         }
       },
       contactInfo: {
+        secondGuardianInfoPreschoolSeparated:
+          'Toisen huoltajan tiedot haetaan automaattisesti väestötietojärjestelmästä. Tietojemme mukaan lapsen toinen huoltaja asuu eri osoitteessa. Esiopetukseen ilmoittautumisesta tulee sopia yhdessä toisen huoltajan kanssa.',
         info: (
-          <P data-qa="contact-info-text">
-            Henkilötiedot on haettu väestötiedoista, eikä niitä voi muuttaa
-            tällä hakemuksella. Jos henkilötiedoissa on virheitä, päivitäthän
-            tiedot{' '}
-            <ExternalLink
-              text="Digi- ja Väestötietoviraston sivuilla"
-              href="https://dvv.fi/henkiloasiakkaat"
-              newTab
-            />
-            . Mikäli osoitteenne on muuttumassa, voit lisätä tulevan osoitteen
-            erilliseen kohtaan hakemuksella; lisää tuleva osoite sekä lapselle
-            että huoltajalle. Virallisena osoitetietoa pidetään vasta, kun se on
-            päivittynyt väestötietojärjestelmään. Päätökset esiopetus- ja
-            varhaiskasvatuspaikoista toimitetaan automaattisesti myös eri
-            osoitteessa asuvalle väestötiedoista löytyvälle huoltajalle.
-          </P>
+          <>
+            <P>
+              Ilmoita hakemuksella kaikki samassa taloudessa asuvat aikuiset ja
+              lapset.
+            </P>
+            <P data-qa="contact-info-text">
+              Henkilötiedot on haettu väestötiedoista, eikä niitä voi muuttaa
+              tällä hakemuksella. Jos henkilötiedoissa on virheitä, päivitäthän
+              tiedot{' '}
+              <ExternalLink
+                text="Digi- ja Väestötietoviraston sivuilla"
+                href="https://dvv.fi/henkiloasiakkaat"
+                newTab
+              />
+              . Mikäli osoitteenne on muuttumassa, voit lisätä tulevan osoitteen
+              erilliseen kohtaan hakemuksella; lisää tuleva osoite sekä lapselle
+              että huoltajalle. Virallisena osoitetietoa pidetään vasta, kun se
+              on päivittynyt väestötietojärjestelmään. Päätökset esiopetus- ja
+              varhaiskasvatuspaikoista toimitetaan automaattisesti myös eri
+              osoitteessa asuvalle väestötiedoista löytyvälle huoltajalle.
+            </P>
+          </>
         ),
         futureAddressInfo:
-          'Turun varhaiskasvatuksessa virallisena osoitteena pidetään väestötiedoista saatavaa osoitetta. Osoite väestötiedoissa muuttuu hakijan tehdessä muuttoilmoituksen postiin tai maistraattiin.'
+          'Turun varhaiskasvatuksen virallisena osoitteena pidetään väestötiedoista saatavaa osoitetta. Osoite väestötiedoissa muuttuu hakijan tehdessä muutosilmoituksen postiin tai Digi- ja väestötietovirastoon.'
       },
       fee: {
         info: {
@@ -388,6 +423,15 @@ const fi: DeepPartial<Translations> = {
               tuloselvityslomakkeella mahdollisimman pian siitä, kun lapsi on
               aloittanut varhaiskasvatuksessa.
             </P>
+          ),
+          PRESCHOOL: (
+            <P>
+              Esiopetus on maksutonta, mutta täydentävä varhaiskasvatus on
+              maksullista. Jos lapsi osallistuu esiopetukseen täydentävään
+              varhaiskasvatukseen, perhe toimittaa tuloselvityksen
+              bruttotuloistaan tulonselvityslomakkeella mahdollisimman pian
+              siitä, kun lapsi on aloittanut varhaiskasvatuksessa.
+            </P>
           )
         },
         links: (
@@ -397,17 +441,20 @@ const fi: DeepPartial<Translations> = {
               Tulotiedot.
             </P>
             <P>
-              Lisätietoa asiakasmaksuista löydät Turun kaupungin nettisivuilta:
-              Varhaiskasvatuksen asiakasmaksut. Suuntaa antavat
-              varhaiskasvatusmaksut löydät varhaiskasvatuksen{' '}
+              Lisätietoa asiakasmaksuista löydät Turun kaupungin nettisivuilta:{' '}
               <ExternalLink
-                href="https://laskurit.turku.fi/paivahoitolaskuri_2021.php"
-                text="asiakasmaksulaskurista"
+                href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli"
+                text="Varhaiskasvatuksen asiakasmaksut."
                 newTab
               />
             </P>
           </>
         )
+      },
+      sentInfo: {
+        title: 'Hakemus on lähetetty',
+        text: 'Hakemukseen voi tehdä muutoksia siihen saakka, kunnes varhaiskasvatuksen palveluohjaus on ottanut sen käsittelyyn.',
+        ok: 'Selvä!'
       }
     }
   },
