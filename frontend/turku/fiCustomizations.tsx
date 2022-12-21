@@ -78,6 +78,29 @@ const fi: DeepPartial<Translations> = {
               <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
             </>
           ),
+          PRESCHOOL: (
+            <>
+              <P>
+                Esiopetukseen osallistutaan vuosi ennen oppivelvollisuuden
+                alkamista. Esiopetus on maksutonta. Lukuvuoden 2023–2024
+                esiopetukseen ilmoittaudutaan 2.1-17.1.2023. Esiopetus alkaa
+                10.8.2023.
+              </P>
+              <P>
+                Päätökset tulevat{' '}
+                <a
+                  href="https://www.suomi.fi/viestit"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Suomi.fi-viestit
+                </a>{' '}
+                -palveluun tai postitse, mikäli et ole ottanut Suomi.fi
+                -palvelua käyttöön.
+              </P>
+              <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
+            </>
+          ),
           CLUB: (
             <>
               <P>
@@ -195,6 +218,8 @@ const fi: DeepPartial<Translations> = {
             PRESCHOOL:
               ' Esiopetusta tarjotaan päiväkodeissa ja kouluissa neljä tuntia päivässä. Ilmoita lapsen tarvitsema varhaiskasvatusaika siten, että̈ se sisältää myös esiopetusajan (esim. 7.00–17.00). Aika tarkennetaan varhaiskasvatuksen alkaessa. Päivittäisen varhaiskasvatusajan vaihdellessa päivittäin tai viikoittain (esim. vuorohoidossa), ilmoita tarve tarkemmin hakemuksen Muut lisätiedot -kohdassa.'
           },
+          connectedDaycare:
+            'Haen myös esiopetuksen täydentävää varhaiskasvatusta.',
           connectedDaycareInfo: (
             <>
               <P>
@@ -225,7 +250,7 @@ const fi: DeepPartial<Translations> = {
       verification: {
         serviceNeed: {
           connectedDaycare: {
-            label: 'Liittyvä varhaiskasvatus',
+            label: 'Täydentävä varhaiskasvatus',
             withConnectedDaycare:
               'Haen myös esiopetuksen täydentävää varhaiskasvatusta.',
             withoutConnectedDaycare: 'Ei'
