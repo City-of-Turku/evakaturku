@@ -42,6 +42,7 @@ import fi.turku.evakaturku.AbstractIntegrationTest
 import fi.turku.evakaturku.message.config.MessageConfiguration
 import fi.turku.evakaturku.template.config.TemplateConfiguration
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
@@ -58,7 +59,7 @@ private val settings = mapOf(
     SettingType.DECISION_MAKER_NAME to "Paula Palvelupäällikkö",
     SettingType.DECISION_MAKER_TITLE to "Asiakaspalvelupäällikkö"
 )
-
+@Tag("PDFGenerationTest")
 internal class PDFServiceTest : AbstractIntegrationTest() {
 
     private lateinit var pdfService: PDFService

@@ -74,3 +74,9 @@ tasks {
         systemProperty("spring.profiles.active", "local,evakaturku-local")
     }
 }
+
+tasks.register<Test>("pdfGenerationTest"){
+    useJUnitPlatform {
+        includeTags("PDFGenerationTest")
+    }
+}

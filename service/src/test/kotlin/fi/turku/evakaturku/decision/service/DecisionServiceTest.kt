@@ -46,7 +46,7 @@ private val settings = mapOf(
     SettingType.DECISION_MAKER_NAME to "Paula Palvelupäällikkö",
     SettingType.DECISION_MAKER_TITLE to "Asiakaspalvelupäällikkö"
 )
-
+@Tag("PDFGenerationTest")
 class DecisionServiceTest {
     private lateinit var messageProvider: IMessageProvider
     private lateinit var templateProvider: ITemplateProvider
