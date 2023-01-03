@@ -60,7 +60,7 @@ private val settings = mapOf(
     SettingType.DECISION_MAKER_TITLE to "Asiakaspalvelupäällikkö"
 )
 @Tag("PDFGenerationTest")
-internal class PDFServiceTest : AbstractIntegrationTest() {
+internal class PDFServiceTest {
 
     private lateinit var pdfService: PDFService
 
