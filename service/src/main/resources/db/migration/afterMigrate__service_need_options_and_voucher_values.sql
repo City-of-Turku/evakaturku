@@ -71,6 +71,15 @@ VALUES
     ('7b2ff2e4-5372-11ed-8d1d-5f26eff8b49b', 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 'Two year preschool education + Early childhood education at most 35h/week (at most 147h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.85, 1.0, 35, FALSE, FALSE, 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 35h/vko (enintään 147h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 35h/vecka (högst 147h/mån)', 2270, 1.75, false),
     ('0004e312-5373-11ed-8d1f-575317e00afc', 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 'Two year preschool education + Early childhood education at most 27,5h/week (at most 116h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.65, 1.0, 27.5, TRUE, TRUE, 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 27,5h/vko (enintään 116h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 27h/vko (enintään 116h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 27,5h/vecka (högst 116h/mån)', 2280, 1.75, false),
     ('6fdc7ad8-5373-11ed-8d21-87047833ff0b', 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', 'Two year preschool education + Early childhood education at most 20h/week (at most 84h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.5, 1.0, 20, FALSE, FALSE, 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', 'Kaksivuotinen esiopetuskokeilu + Varhaiskasvatus enintään 20h/vko (enintään 84h/kk)', 'Tvåårig förskole undervisning + Småbarnspedagogik högst 20h/vecka (högst 84h/mån)', 2290, 1.75, false),
+    ('576f6cf8-8cbc-11ed-b639-afa50c9355c1', 'Esiopetus 4h/pv + Palvelusetelin vuorohoito yli 35/vko (yli 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet över 35h/vecka (över 147h/mån)', 'Preschool 4h/day + Service voucher evening care over 35h/week (over 147h/month)', 'PRESCHOOL_DAYCARE', FALSE, 1.0, 1.0, 40, FALSE, FALSE, 'Esiopetus 4h/pv + Palvelusetelin vuorohoito yli 35/vko (yli 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet över 35h/vecka (över 147h/mån)', 'Esiopetus 4h/pv + Palvelusetelin vuorohoito yli 35/vko (yli 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet över 35h/vecka (över 147h/mån)', 2291, 1.75, false),
+    ('576fa380-8cbc-11ed-b63a-8bb1a5b587a0', 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 35h/vko (enintään 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 35h/vecka (högst 147h/mån)', 'Preschool 4h/day + Service voucher evening care at most 35h/week (at most 147h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.85, 1.0, 35, FALSE, FALSE, 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 35h/vko (enintään 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 35h/vecka (högst 147h/mån)', 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 35h/vko (enintään 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 35h/vecka (högst 147h/mån)', 2292, 1.75, false),
+    ('576fa452-8cbc-11ed-b63b-67fc666e0fa8', 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 27,5h/vko (enintään 116h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 27,5h/vecka (högst 116h/mån)', 'Preschool 4h/day + Service voucher evening care at most 27,5h/week (at most 116h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.65, 1.0, 27.5, TRUE, TRUE, 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 27,5h/vko (enintään 116h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 27,5h/vecka (högst 116h/mån)', 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 27,5h/vko (enintään 116h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 27,5h/vecka (högst 116h/mån)', 2293, 1.75, false),
+    ('576fa4ac-8cbc-11ed-b63c-2ff2276ab9f2', 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 20h/vko (enintään 84h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 20h/vecka (högst 84h/mån)', 'Preschool 4h/day + Service voucher evening care at most 20h/week (at most 84h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.5, 1.0, 20, FALSE, FALSE, 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 20h/vko (enintään 84h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 20h/vecka (högst 84h/mån)', 'Esiopetus 4h/pv + Palvelusetelin vuorohoito enintään 20h/vko (enintään 84h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln skiftesverksamhet högst 20h/vecka (högst 84h/mån)', 2294, 1.75, false),
+    ('576fa8f8-8cbc-11ed-b63d-8fb27ef151a1', 'Esiopetus 4h/pv + Palvelusetelin viikonloppu yli 35/vko (yli 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut över 35h/vecka (över 147h/mån)', 'Preschool 4h/day + Service voucher weekend care over 35h/week (over 147h/month)', 'PRESCHOOL_DAYCARE', FALSE, 1.0, 1.0, 40, FALSE, FALSE, 'Esiopetus 4h/pv + Palvelusetelin viikonloppu yli 35/vko (yli 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut över 35h/vecka (över 147h/mån)', 'Esiopetus 4h/pv + Palvelusetelin viikonloppu yli 35/vko (yli 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut över 35h/vecka (över 147h/mån)', 2295, 1.75, false),
+    ('576fa966-8cbc-11ed-b63e-630258790f77', 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään 35h/vko (enintään 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 35h/vecka (högst 147h/mån)', 'Preschool 4h/day + Service voucher weekend care at most 35h/week (at most 147h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.85, 1.0, 35, FALSE, FALSE, 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään 35h/vko (enintään 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 35h/vecka (högst 147h/mån)', 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään 35h/vko (enintään 147h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 35h/vecka (högst 147h/mån)', 2296, 1.75, false),
+    ('576fa9b6-8cbc-11ed-b63f-8bf378c64b67', 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään  27,5h/vko (enintään 116h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 27,5h/vecka (högst 116h/mån)', 'Preschool 4h/day + Service voucher weekend care at most 27,5h/week (at most 116h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.65, 1.0, 27.5, TRUE, TRUE, 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään  27,5h/vko (enintään 116h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 27,5h/vecka (högst 116h/mån)', 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään  27,5h/vko (enintään 116h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 27,5h/vecka (högst 116h/mån)', 2297, 1.75, false),
+    ('576fe070-8cbc-11ed-b640-675064ab6753', 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään 20h/vko (enintään 84h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 20h/vecka (högst 84h/mån)', 'Preschool 4h/day + Service voucher evening care at most 20h/week (at most 84h/month)', 'PRESCHOOL_DAYCARE', FALSE, 0.5, 1.0, 20, FALSE, FALSE, 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään 20h/vko (enintään 84h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 20h/vecka (högst 84h/mån)', 'Esiopetus 4h/pv + Palvelusetelin viikonloppu enintään 20h/vko (enintään 84h/kk)', 'Förskole undervisning 4h/dag + Servicecedeln veckoslut högst 20h/vecka (högst 84h/mån)', 2298, 1.75, false),
+
 
     --PREPARATORY
     ('1b4413f6-d99d-11eb-89ac-a3a978104bce', 'Valmistava opetus', 'Förbererande utbilndning', 'Preparatory education', 'PREPARATORY', TRUE, 0, 0.54, 25, TRUE, FALSE, 'Valmistava opetus', 'Förbererande utbilndning', 'Valmistava opetus', 'Förbererande utbilndning', null, 1.75, false),
@@ -197,6 +206,16 @@ VALUES
     ('1812f160-5373-11ed-8d20-cf346dae72fa','0004e312-5373-11ed-8d1f-575317e00afc',daterange('2022-08-01', NULL, '[]'),142000,0.75,106500,142000,0.75,106500),
     ('8698eb1c-5373-11ed-8d22-afd0f4472e7b','6fdc7ad8-5373-11ed-8d21-87047833ff0b',daterange('2022-08-01', NULL, '[]'),142000,0.6,85200,142000,0.6,85200),
 
+    ('af55ca40-8cc4-11ed-8515-5f67e4373fd4','576f6cf8-8cbc-11ed-b639-afa50c9355c1',daterange('2022-08-01', NULL, '[]'),142000,1.0,142000,142000,1.0,142000),
+    ('af578452-8cc4-11ed-8516-6b2e30ad77c0','576fa380-8cbc-11ed-b63a-8bb1a5b587a0',daterange('2022-08-01', NULL, '[]'),142000,1.0,142000,142000,1.0,142000),
+    ('af578600-8cc4-11ed-8517-9f0e14016ab5','576fa452-8cbc-11ed-b63b-67fc666e0fa8',daterange('2022-08-01', NULL, '[]'),142000,0.75,106500,142000,0.75,106500),
+    ('af5786f0-8cc4-11ed-8518-234ea248d6a3','576fa4ac-8cbc-11ed-b63c-2ff2276ab9f2',daterange('2022-08-01', NULL, '[]'),142000,0.6,85200,142000,0.6,85200),
+
+    ('af5787d6-8cc4-11ed-8519-67b722276df1','576fa8f8-8cbc-11ed-b63d-8fb27ef151a1',daterange('2022-08-01', NULL, '[]'),142000,1.0,142000,142000,1.0,142000),
+    ('af5788d0-8cc4-11ed-851a-271fb62f9d14','576fa966-8cbc-11ed-b63e-630258790f77',daterange('2022-08-01', NULL, '[]'),142000,1.0,142000,142000,1.0,142000),
+    ('af5789a2-8cc4-11ed-851b-435a07707160','576fa9b6-8cbc-11ed-b63f-8bf378c64b67',daterange('2022-08-01', NULL, '[]'),142000,0.75,106500,142000,0.75,106500),
+    ('af578a6a-8cc4-11ed-851c-43a9077a1de9','576fe070-8cbc-11ed-b640-675064ab6753',daterange('2022-08-01', NULL, '[]'),142000,0.6,85200,142000,0.6,85200),
+
     --OTHER_ONES - SET TO DEFAULT VOUCHER VALUE
     ('a51ab5b4-148c-11ed-be1e-8785a13fca88','86ef7370-bf85-11eb-91e7-6fcd728c518d',daterange('2022-08-01', NULL, '[]'),91100,1.0,91100,154900,1.0,154900),
     ('a51ab870-148c-11ed-be1e-6fcae4f7e94b','50359280-b961-11eb-b523-237115533645',daterange('2022-08-01', NULL, '[]'),91100,1.0,91100,154900,1.0,154900),
@@ -253,6 +272,16 @@ VALUES
     ('d9387b7e-75f8-11ed-8888-a3b4d26a4a6c','7b2ff2e4-5372-11ed-8d1d-5f26eff8b49b',daterange('2022-05-01', '2022-07-31', '[]'),140700,1.0,140700,140700,1.0,140700),
     ('d9387c5a-75f8-11ed-8889-eb082dc5a77f','0004e312-5373-11ed-8d1f-575317e00afc',daterange('2022-05-01', '2022-07-31', '[]'),140700,0.75,105500,140700,0.75,105500),
     ('d9387d40-75f8-11ed-888a-273f605e8bef','6fdc7ad8-5373-11ed-8d21-87047833ff0b',daterange('2022-05-01', '2022-07-31', '[]'),140700,0.6,84400,140700,0.6,84400),
+
+    ('34a2d3c8-8cc5-11ed-851d-2fed29d49b4f','576f6cf8-8cbc-11ed-b639-afa50c9355c1',daterange('2022-05-01', '2022-07-31', '[]'),140700,1.0,140700,140700,1.0,140700),
+    ('34a30910-8cc5-11ed-851e-0790ee786724','576fa380-8cbc-11ed-b63a-8bb1a5b587a0',daterange('2022-05-01', '2022-07-31', '[]'),140700,1.0,140700,140700,1.0,140700),
+    ('34a30a00-8cc5-11ed-851f-efc8668f4dc1','576fa452-8cbc-11ed-b63b-67fc666e0fa8',daterange('2022-05-01', '2022-07-31', '[]'),140700,0.75,105500,140700,0.75,105500),
+    ('34a30a8c-8cc5-11ed-8520-c729e0e18eff','576fa4ac-8cbc-11ed-b63c-2ff2276ab9f2',daterange('2022-05-01', '2022-07-31', '[]'),140700,0.6,84400,140700,0.6,84400),
+
+    ('34a30b18-8cc5-11ed-8521-37ef2d8453c7','576fa8f8-8cbc-11ed-b63d-8fb27ef151a1',daterange('2022-05-01', '2022-07-31', '[]'),140700,1.0,140700,140700,1.0,140700),
+    ('34a30b9a-8cc5-11ed-8522-d7213680d5c1','576fa966-8cbc-11ed-b63e-630258790f77',daterange('2022-05-01', '2022-07-31', '[]'),140700,1.0,140700,140700,1.0,140700),
+    ('34a30c26-8cc5-11ed-8523-c300697748b1','576fa9b6-8cbc-11ed-b63f-8bf378c64b67',daterange('2022-05-01', '2022-07-31', '[]'),140700,0.75,105500,140700,0.75,105500),
+    ('34a30c9e-8cc5-11ed-8524-8312859841f1','576fe070-8cbc-11ed-b640-675064ab6753',daterange('2022-05-01', '2022-07-31', '[]'),140700,0.6,84400,140700,0.6,84400),
 
 
     --DAYCARE_FIVE_YEAR_OLDS
@@ -333,6 +362,16 @@ VALUES
     ('d938829a-75f8-11ed-8891-b3b85a225c90','7b2ff2e4-5372-11ed-8d1d-5f26eff8b49b',daterange('2020-08-01', '2022-04-30', '[]'),134100,1.0,134100,134100,1.0,134100),
     ('d9388326-75f8-11ed-8892-af9fc8df4b4c','0004e312-5373-11ed-8d1f-575317e00afc',daterange('2020-08-01', '2022-04-30', '[]'),134100,0.75,100500,134100,0.75,100500),
     ('d93883a8-75f8-11ed-8893-0377a7a7047a','6fdc7ad8-5373-11ed-8d21-87047833ff0b',daterange('2020-08-01', '2022-04-30', '[]'),134100,0.6,80500,134100,0.6,80500),
+
+    ('d819fc70-8cc5-11ed-8525-43b354f0cf6a','576f6cf8-8cbc-11ed-b639-afa50c9355c1',daterange('2020-08-01', '2022-04-30', '[]'),134100,1.0,134100,134100,1.0,134100),
+    ('d81a0b20-8cc5-11ed-8526-3f659de47304','576fa380-8cbc-11ed-b63a-8bb1a5b587a0',daterange('2020-08-01', '2022-04-30', '[]'),134100,1.0,134100,134100,1.0,134100),
+    ('d81a0bde-8cc5-11ed-8527-9b9f4045094d','576fa452-8cbc-11ed-b63b-67fc666e0fa8',daterange('2020-08-01', '2022-04-30', '[]'),134100,0.75,100500,134100,0.75,100500),
+    ('d81a0c74-8cc5-11ed-8528-6f8c58357121','576fa4ac-8cbc-11ed-b63c-2ff2276ab9f2',daterange('2020-08-01', '2022-04-30', '[]'),134100,0.6,80500,134100,0.6,80500),
+
+    ('d81a0cf6-8cc5-11ed-8529-1fc676b5ab38','576fa8f8-8cbc-11ed-b63d-8fb27ef151a1',daterange('2020-08-01', '2022-04-30', '[]'),134100,1.0,134100,134100,1.0,134100),
+    ('d81a0d82-8cc5-11ed-852a-ff7f3780a62c','576fa966-8cbc-11ed-b63e-630258790f77',daterange('2020-08-01', '2022-04-30', '[]'),134100,1.0,134100,134100,1.0,134100),
+    ('d81a0e04-8cc5-11ed-852b-e72808e1ffa8','576fa9b6-8cbc-11ed-b63f-8bf378c64b67',daterange('2020-08-01', '2022-04-30', '[]'),134100,0.75,100500,134100,0.75,100500),
+    ('d81a0e86-8cc5-11ed-852c-f715d9322b1a','576fe070-8cbc-11ed-b640-675064ab6753',daterange('2020-08-01', '2022-04-30', '[]'),134100,0.6,80500,134100,0.6,80500),
 
     --DAYCARE_FIVE_YEAR_OLDS
     ('d6e4e474-7243-11ed-b72c-f348aea912ea','267946fa-6fb1-11ed-8c85-4725b99d6549',daterange('2020-08-01', '2022-04-30', '[]'),86000,0.45,38700,86000,0.45,38700),
@@ -427,6 +466,16 @@ VALUES
     ('d938875e-75f8-11ed-889a-736243f81408','7b2ff2e4-5372-11ed-8d1d-5f26eff8b49b',daterange('2018-08-01', '2020-07-31', '[]'),120800,1.0,120800,120800,1.0,120800),
     ('d93887e0-75f8-11ed-889b-f791f2a53feb','0004e312-5373-11ed-8d1f-575317e00afc',daterange('2018-08-01', '2020-07-31', '[]'),120800,0.75,90600,120800,0.75,90600),
     ('d938886c-75f8-11ed-889c-732ef2fe5f0f','6fdc7ad8-5373-11ed-8d21-87047833ff0b',daterange('2018-08-01', '2020-07-31', '[]'),120800,0.6,72500,120800,0.6,72500),
+
+    ('4bf46356-8cc6-11ed-852d-0772f0ae4852','576f6cf8-8cbc-11ed-b639-afa50c9355c1',daterange('2018-08-01', '2020-07-31', '[]'),120800,1.0,120800,120800,1.0,120800),
+    ('4bf47292-8cc6-11ed-852e-97b391e9345c','576fa380-8cbc-11ed-b63a-8bb1a5b587a0',daterange('2018-08-01', '2020-07-31', '[]'),120800,1.0,120800,120800,1.0,120800),
+    ('4bf47378-8cc6-11ed-852f-072d40c56f0b','576fa452-8cbc-11ed-b63b-67fc666e0fa8',daterange('2018-08-01', '2020-07-31', '[]'),120800,0.75,90600,120800,0.75,90600),
+    ('4bf47418-8cc6-11ed-8530-1b4409f50c85','576fa4ac-8cbc-11ed-b63c-2ff2276ab9f2',daterange('2018-08-01', '2020-07-31', '[]'),120800,0.6,72500,120800,0.6,72500),
+
+    ('4bf474a4-8cc6-11ed-8531-4bb80f92d806','576fa8f8-8cbc-11ed-b63d-8fb27ef151a1',daterange('2018-08-01', '2020-07-31', '[]'),120800,1.0,120800,120800,1.0,120800),
+    ('4bf47530-8cc6-11ed-8532-23c7948f46ba','576fa966-8cbc-11ed-b63e-630258790f77',daterange('2018-08-01', '2020-07-31', '[]'),120800,1.0,120800,120800,1.0,120800),
+    ('4bf475b2-8cc6-11ed-8533-674aab096e1b','576fa9b6-8cbc-11ed-b63f-8bf378c64b67',daterange('2018-08-01', '2020-07-31', '[]'),120800,0.75,90600,120800,0.75,90600),
+    ('4bf4763e-8cc6-11ed-8534-bf5196ee50a2','576fe070-8cbc-11ed-b640-675064ab6753',daterange('2018-08-01', '2020-07-31', '[]'),120800,0.6,72500,120800,0.6,72500),
 
     --DAYCARE_PART_TIME_FIVE_YEAR_OLDS
     ('84b8e97a-763a-11ed-ae62-b3e5f26534c0','153a6364-536a-11ed-8d0f-d7a4b2b860f1',daterange('2018-08-01', '2020-07-31', '[]'),130800,1.0,130800,130800,1.0,130800),
