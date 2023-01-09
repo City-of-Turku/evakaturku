@@ -243,6 +243,16 @@ const en: DeepPartial<Translations> = {
             is for a fixed time period.
           </>
         )
+      },
+      actions: {
+        allowOtherGuardianAccess: (
+          <span>
+            I understand that the application will also be visible to the other
+            guardian. If the other guardian should not be able to see this
+            application, please contact the Early Childhood Education Service
+            Guidance.
+          </span>
+        )
       }
     }
   },

@@ -9,6 +9,7 @@ import org.jdbi.v3.core.Jdbi
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import io.opentracing.noop.NoopTracerFactory
 
 class DevDataInitializerTest : AbstractIntegrationTest() {
 
@@ -17,7 +18,7 @@ class DevDataInitializerTest : AbstractIntegrationTest() {
 
     @AfterEach
     fun cleanup() {
-        Database(jdbi).connect { db -> db.transaction { tx -> tx.resetTurkuDatabaseForE2ETests() } }
+        Database(jdbi, NoopTracerFactory.create()).connect { db -> db.transaction { tx -> tx.resetTurkuDatabaseForE2ETests() } }
     }
 
     @Test
