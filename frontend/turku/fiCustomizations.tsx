@@ -490,17 +490,17 @@ const fi: DeepPartial<Translations> = {
         title: 'Hakemus on lähetetty',
         text: 'Hakemukseen voi tehdä muutoksia siihen saakka, kunnes varhaiskasvatuksen palveluohjaus on ottanut sen käsittelyyn.',
         ok: 'Selvä!'
+      },
+      actions: {
+        allowOtherGuardianAccess: (
+          <span>
+            Ymmärrän, että tieto hakemuksesta menee myös lapsen toiselle
+            huoltajalle. Jos tieto ei saa mennä toiselle huoltajalle, ole
+            yhteydessä palveluohjaukseen..
+          </span>
+        )
       }
     },
-    actions: {
-      allowOtherGuardianAccess: (
-        <span>
-          Ymmärrän, että tieto hakemuksesta menee myös lapsen toiselle
-          huoltajalle. Jos tieto ei saa mennä toiselle huoltajalle, ole
-          yhteydessä palveluohjaukseen..
-        </span>
-      )
-    }
   },
   applicationsList: {
     title: 'Hakeminen varhaiskasvatukseen',
