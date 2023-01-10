@@ -500,7 +500,7 @@ const fi: DeepPartial<Translations> = {
           </span>
         )
       }
-    },
+    }
   },
   applicationsList: {
     title: 'Hakeminen varhaiskasvatukseen',
