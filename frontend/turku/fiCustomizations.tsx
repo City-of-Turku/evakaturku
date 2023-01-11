@@ -54,6 +54,11 @@ const fi: DeepPartial<Translations> = {
     },
     editor: {
       heading: {
+        title: {
+          DAYCARE: 'Varhaiskasvatus- ja palvelusetelihakemus',
+          PRESCHOOL: 'Ilmoittautuminen esiopetukseen',
+          CLUB: 'Hakemus avoimeen varhaiskasvatukseen'
+        },
         info: {
           DAYCARE: (
             <>
@@ -104,25 +109,27 @@ const fi: DeepPartial<Translations> = {
           CLUB: (
             <>
               <P>
-                Kerhopaikkaa voi hakea ympäri vuoden. Kerhohakemuksella voi
-                hakea kunnallista tai palvelusetelillä tuettua kerhopaikkaa.
-                Kirjallinen ilmoitus kerhopaikasta lähetään Suomi.fi-viestit
-                -palveluun. Mikäli haluatte ilmoituksen sähköisenä
-                tiedoksiantona, teidän tulee ottaa Suomi.fi-viestit -palvelu
-                käyttöön. Palvelusta ja sen käyttöönotosta saatte lisätietoa{' '}
-                <ExternalLink
-                  text="https://www.suomi.fi/viestit"
-                  href="https://www.suomi.fi/viestit"
-                  newTab
-                />
-                . Mikäli ette ota Suomi.fi-viestit -palvelua käyttöön, ilmoitus
-                kerhopaikasta lähetetään teille postitse. Paikka myönnetään
-                yhdeksi toimintakaudeksi kerrallaan.
+                Avoimeen varhaiskasvatukseen voi hakea ympäri vuoden ja paikka
+                myönnetään siihen saakka, kunnes paikka irtisanotaan tai lapsi
+                siirtyy varhaiskasvatukseen tai esiopetukseen. Päätös avoimesta
+                varhaiskasvatuspaikasta tulee Suomi.fi-palveluun tai postitse,
+                mikäli ette ole ottanut palvelua käyttöön. Päätös on nähtävillä
+                myös eVaka-palvelussa kohdassa Hakeminen - Päätökset.
               </P>
               <P>
-                Kerhohakemus kohdistuu yhdelle kerhon toimintakaudelle. Kyseisen
-                kauden päättyessä hakemus poistetaan järjestelmästä.
+                Turun kaupungin järjestämä avoin varhaiskasvatustoiminta on
+                maksutonta (kerho ja leikkipuistotoiminta).
               </P>
+              <P>
+                Lisätietoa avoimesta varhaiskasvatuksesta Turun kaupungin
+                verkkosivuilta:{' '}
+                <ExternalLink
+                  text="Kerhot, leikkipuistotoiminta ja avoimet päiväkodit."
+                  href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/kerhot-leikkipuistotoiminta-ja-avoimet-paivakodit"
+                  newTab
+                />
+              </P>
+              <P>* Tähdellä merkityt tiedot ovat pakollisia.</P>
             </>
           )
         }
@@ -132,13 +139,25 @@ const fi: DeepPartial<Translations> = {
         preparatoryInfo:
           'Jokaiselle lapselle, jonka äidinkieli ei ole suomi, ruotsi tai saame. Turun varhaiskasvatuksessa arvioidaan lapsen valmistavan opetuksen tarve.',
         startDate: {
+          header: {
+            DAYCARE: 'Varhaiskasvatuksen aloitus',
+            PRESCHOOL: 'Esiopetuksen alkaminen',
+            CLUB: 'Avoimen varhaiskasvatuksen alkaminen'
+          },
+          clubTerm: 'Avoimen varhaiskasvatuksen toimintakausi',
+          clubTerms: 'Avoimen varhaiskasvatuksen toimintakaudet',
+          label: {
+            DAYCARE: 'Toivottu aloituspäivä',
+            PRESCHOOL: 'Toivottu aloituspäivä',
+            CLUB: 'Avoimen varhaiskasvatuksen toivottu aloituspäivä'
+          },
           info: {
             DAYCARE: [],
             PRESCHOOL: [
               'Suomen- ja ruotsinkielinen esiopetus alkaa 10.8.2023. Jos tarvitsette esiopetukseen täydentävää varhaiskasvatusta, voitte hakea sitä kohdassa Esiopetuksen täydentävä varhaiskasvatus. Jos lapsi siirtyy yksityisestä varhaiskasvatuksesta kunnalliseen, tehkää hakemus täydentävään varhaiskasvatukseen.'
             ],
             CLUB: [
-              'Kerhot noudattavat esiopetuksen työ- ja loma-aikoja. Kerhon toimintakausi on elokuusta toukokuun loppuun, ja kullekin toimintakaudelle haetaan erikseen. Eri kerhot kokoontuvat eri viikonpäivinä.'
+              'Avoimen varhaiskasvatuksen kerhot ja leikkipuistotoiminta noudattavat pääsääntöisesti esiopetuksen työ- ja loma-aikoja. Lapsi voi osallistua yhteen avoimen varhaiskasvatuspalveluun kerralla, poissulkien perhekerhot.'
             ]
           },
           instructions: {
@@ -164,10 +183,8 @@ const fi: DeepPartial<Translations> = {
           }
         },
         clubDetails: {
-          wasOnDaycareInfo:
-            'Jos lapsi on ollut kunnallisessa päiväkodissa tai perhepäivähoidossa ja hän luopuu paikastaan kerhon alkaessa, hänellä on suurempi mahdollisuus saada kerhopaikka.',
-          wasOnClubCareInfo:
-            'Jos lapsi on ollut kerhossa jo edellisen toimintakauden aikana, hänellä on suurempi mahdollisuus saada paikka kerhosta myös tulevana toimintakautena.'
+          wasOnDaycareInfo: '',
+          wasOnClubCareInfo: ''
         },
         urgent: {
           attachmentsMessage: {
@@ -204,7 +221,7 @@ const fi: DeepPartial<Translations> = {
         assistanceNeedInstructions: {
           DAYCARE:
             'Lapsen tuen tarpeella tarkoitetaan sellaisten tukitoimien tarvetta, jotka on osoitettu asiantuntijalausunnoin. Tukitoimet toteutuvat lapsen arjessa osana varhaiskasvatuksen muuta toimintaa. Varhaiskasvatuksen erityisopettaja ottaa hakijaan yhteyttä, jotta lapsen tarpeet voidaan ottaa huomioon varhaiskasvatuspaikkaa myönnettäessä.',
-          CLUB: 'Jos lapsella on tuen tarve, Turun varhaiskasvatuksesta otetaan yhteyttä hakemuksen jättämisen jälkeen.',
+          CLUB: 'Lapsen tuen tarpeella tarkoitetaan sellaisten tukitoimien tarvetta, jotka on osoitettu asiantuntijalausunnoin. Tukitoimet toteutuvat lapsen arjessa osana varhaiskasvatuksen muuta toimintaa. Varhaiskasvatuksen erityisopettaja ottaa hakijaan yhteyttä, jotta lapsen tarpeet voidaan ottaa huomioon varhaiskasvatuspaikkaa myönnettäessä.',
           PRESCHOOL:
             'Valitse hakemuksesta tämä kohta, jos lapsi tarvitsee kehitykselleen ja/tai oppimiselleen tukea esiopetusvuonna. Tukea toteutetaan lapsen arjessa osana esiopetuksen ja varhaiskasvatuksen muuta toimintaa. Varhaiskasvatuksen erityisopettaja ottaa hakijaan yhteyttä, jotta lapsen tuen tarve voidaan ottaa huomioon esiopetuspaikkaa osoitettaessa.'
         },
@@ -260,7 +277,7 @@ const fi: DeepPartial<Translations> = {
       unitPreference: {
         title: 'Hakutoive',
         siblingBasis: {
-          title: 'Haku sisarperusteella ei ole käytössä Turussa',
+          title: 'Haku sisarperusteella',
           info: {
             DAYCARE: (
               <>
@@ -287,14 +304,14 @@ const fi: DeepPartial<Translations> = {
             CLUB: (
               <>
                 <P>
-                  Sisarukseksi katsotaan kaikki samassa osoitteessa asuvat
-                  lapset. Tavoitteena on sijoittaa sisarukset samaan
-                  kerhoryhmään perheen niin toivoessa.
+                  Tavoitteena on sijoittaa sisarukset samaan avoimeen
+                  varhaisvatukseen perheen niin toivoessa.
                 </P>
                 <P>
                   Täytä nämä tiedot vain, jos käytät sisarusperustetta, sekä
-                  valitse alla olevissa hakutoiveissa ensisijaiseksi toiveeksi
-                  sama kerho, jossa lapsen sisarus on.
+                  valitse alla olevassa Hakutoiveet-kohdassa ensisijaiseksi
+                  toiveeksi sama avoimen varhaiskasvatuksen yksikkö, jossa
+                  lapsen sisarus on.
                 </P>
               </>
             )
@@ -304,13 +321,13 @@ const fi: DeepPartial<Translations> = {
               'Haen ensisijaisesti samaan paikkaan, jossa lapsen sisarus on jo varhaiskasvatuksessa.',
             PRESCHOOL:
               'Haen ensisijaisesti samaan paikkaan, jossa lapsen sisarus on.',
-            CLUB: 'Haen ensisijaisesti paikkaa samasta kerhoryhmästä, jossa lapsen sisarus on.'
+            CLUB: 'Haen ensisijaisesti samaan avoimeen varhaiskasvatukseen, jossa lapsen sisarus jo on.'
           },
           radioLabel: {
             DAYCARE:
               'Valitse sisarus, jonka kanssa haet samaan varhaiskasvatuspaikkaan',
             PRESCHOOL: 'Valitse sisarus, jonka kanssa haet samaan paikkaan',
-            CLUB: 'Valitse sisarus, jonka kanssa haet samaan kerhoryhmään'
+            CLUB: 'Valitse sisarus, jonka kanssa haet samaan avoimeen varhaiskasvatuspaikkaan'
           },
           otherSibling: 'Muu sisarus',
           names: 'Sisaruksen etunimet ja sukunimi',
@@ -370,13 +387,18 @@ const fi: DeepPartial<Translations> = {
             CLUB: (
               <>
                 <P>
-                  Voit hakea 1-3 paikkaa toivomassasi järjestyksessä.
-                  Hakutoiveet eivät takaa paikkaa toivotussa kerhossa, mutta
-                  mahdollisuus toivotun paikan saamiseen kasvaa antamalla
-                  useamman vaihtoehdon.
+                  Voit hakea 1–3 paikkaa toivomassasi järjestyksessä.
+                  Hakutoiveet eivät takaa paikkaa toivotussa avoimessa
+                  varhaiskasvatuksessa, mutta mahdollisuus toivotun paikan
+                  saamiseen kasvaa antamalla useamman vaihtoehdon.
                 </P>
                 <P>
-                  Näet eri kerhojen sijainnin valitsemalla ‘Yksiköt kartalla’.
+                  Näet eri avoimien varhaiskasvatuspaikkojen sijainnin
+                  valitsemalla ’Yksiköt kartalla’.
+                </P>
+                <P>
+                  Yksiköt kartalla -linkki avaa kartan Turun näkymään. Yksikön
+                  kieli -jätetään toistaiseksi ennalleen.
                 </P>
               </>
             )
