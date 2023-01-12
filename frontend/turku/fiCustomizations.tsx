@@ -183,11 +183,11 @@ const fi: DeepPartial<Translations> = {
           }
         },
         clubDetails: {
-            wasOnDaycare:
-                'Lapsella on varhaiskasvatuspaikka, josta hän luopuu avoimen varhaiskasvatuspaikan saadessaan.',
-            wasOnDaycareInfo: '',
-            wasOnClubCare:
-                'Lapsi on ollut avoimessa varhaiskasvatuksessa edellisen toimintakauden aikana.',
+          wasOnDaycare:
+            'Lapsella on varhaiskasvatuspaikka, josta hän luopuu avoimen varhaiskasvatuspaikan saadessaan.',
+          wasOnDaycareInfo: '',
+          wasOnClubCare:
+            'Lapsi on ollut avoimessa varhaiskasvatuksessa edellisen toimintakauden aikana.',
           wasOnClubCareInfo: ''
         },
         urgent: {
