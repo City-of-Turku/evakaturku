@@ -5,15 +5,19 @@
 INSERT INTO assistance_action_option
     (value, name_fi, description_fi, display_order)
 VALUES
-    ('10', 'Avustajapalvelut', 'Lapsen ryhmässä työskentelee ryhmäavustaja tai lapsella on henkilökohtainen avustaja. Mikäli lapsi on integroidussa varhaiskasvatusryhmässä tai erityisryhmässä, tätä vaihtoehtoa ei valita.', 10),
-    ('20', 'Erho', NULL, 20),
-    ('30', 'Erityisryhmä', 'Lapsi on erityisryhmässä.', 30),
-    ('40', 'Henkilökuntalisäys', 'Lapsen ryhmässä työskentelee lain vaatimaa resurssia enemmän varhaiskasvatuksen lastenhoitajia/opettajia. Mikäli lapsi on integroidussa varhaiskasvatusryhmässä tai erityisryhmässä, tätä vaihtoehtoa ei valita.', 40),
-    ('50', 'Integroitu varhaiskasvatusryhmä ', 'Lapsi on integroidussa varhaiskasvatusryhmässä.', 50),
-    ('60', 'Osa-aikainen erityisopetus', 'Lapsi saa osa-aikaista erityisopetusta. Mikäli lapsi on integroidussa varhaiskasvatusryhmässä tai erityisryhmässä, tätä vaihtoehtoa ei valita.', 60),
-    ('70', 'Veon tuki', 'Lapsen ryhmän henkilökunta saa veon tukea ja konsultaatiota ja/tai veo on samanaikaisopettajana lapsen ryhmässä. Mikäli lapsi on integroidussa varhaiskasvatusryhmässä tai erityisryhmässä, tätä vaihtoehtoa ei valita.', 70),
-    ('80', 'Tulkitsemispalvelut', 'Lapsi saa tulkitsemispalveluita. Huoltajien kanssa käytettävät tulkkipalvelut eivät sisälly tähän.', 80),
-    ('90', 'Kuljetusetu', 'Lapsi on saanut päätöksen kuljetusedusta.', 90)
+    ('10', 'Avustajataso I', 'lapsikohtainen', 10),
+    ('20', 'Avustajataso II', '2–3 lapselle', 20),
+    ('30', 'Avustajataso III', '2–5 lapselle', 30),
+    ('40', 'Tuen hoitaja', 'tuen hoitaja on resurssi, mitä ei lasketa suhdelukuun. Pedagogisesti vahvistettu ryhmä.', 40),
+    ('50', 'Pienennetty ryhmä', 'Ryhmän rakenne: Opettaja, lastenhoitaja ja avustaja tai tuen hoitaja. Lapsiluku 13 kpl, joista kolmella lapsella tuen tarve', 50),
+    ('60', 'Alueellinen integroitu ryhmä', 'Ryhmän rakenne: VEO, opettaja ja kaksi lastenhoitajaa. Lapsiluku 14 kpl, joista viidellä tuen tarve.', 60),
+    ('70', 'Erityisryhmä', 'Sarat-ryhmä. Ryhmän rakenne: VEO, sairaanhoitaja ja kaksi lastenhoitajaa. Lapsiluku 8 kpl, joista kaikilla tuen tarve.', 70),
+    ('80', 'Ryhmän pienennyspäätös', 'Tehdään harkinnanvaraisesti', 80),
+    ('90', 'Koululykkäys', 'Lähikoulun rehtorin päätöksellä', 90),
+    ('100', 'Pidennetty oppivelvollisuus', 'merkittävä, kun lapsella pidennetty oppivelvollisuus. Tieto menee KOSKI-palveluun.', 100),
+    ('110', 'Harkinnanvarainen kuljetusetu', 'Käytetään silloin kun lapselle on myönnetty harkinnanvarainen kuljetusetu', 110),
+    ('120', 'Koululykkäys', 'Lähikoulun rehtorin päätöksellä', 120)
+
 ON CONFLICT (value) DO
 UPDATE SET
     name_fi = EXCLUDED.name_fi,

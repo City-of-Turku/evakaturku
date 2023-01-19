@@ -105,33 +105,45 @@ const customizations: EmployeeCustomizations = {
       childInformation: {
         assistanceNeed: {
           fields: {
+            capacityFactor: 'Lapsen paikkatarve',
             // @ts-expect-error: Type 'Element' is not assignable to type 'string'
             capacityFactorInfo: (
-              <ol style={{ margin: '0', padding: '0 1em' }}>
-                <li>
-                  Kaupungin päiväkodeissa kerroin merkitään integroidussa
-                  varhaiskasvatusryhmässä oleville tehostettua tai erityistä
-                  tukea tarvitseville lapsille ja missä tahansa ryhmässä
-                  kotoutumisen tukea saaville lapsille. Kertoimen tallentaa
-                  varhaiskasvatuksen erityisopettaja.
-                </li>
-                <li>
-                  Mikäli ostopalvelu- tai palvelusetelipäiväkodissa olevalla
-                  lapsella on tehostetun tai erityisen tuen tarve, voidaan
-                  hänelle määritellä tuen kerroin. Päätöksen kertoimesta tekee
-                  varhaiskasvatusjohtaja, varhaiskasvatuksen erityisopettajan
-                  esityksen perusteella. Kertoimen tallentaa varhaiskasvatuksen
-                  asiakaspalvelu.
-                </li>
-              </ol>
+              <p>
+                Rakenteellinen tuki määräytyy yleensä lapsen iän ja palvelun
+                tarpeen mukaan. Mikäli lapsella on sellainen tuen tarve, joka
+                lisää rakenteellisen tuen tarvetta, lisätään tuen tarpeen
+                kerroin tähän. Tuen tarpeen ja kertoimen lisää
+                varhaiskasvatuksen erityisopettaja. Päiväkodinjohtaja lisää
+                kertoimen integroidun ryhmän tai erityisryhmän osalta
+              </p>
             ),
-            bases: 'Tuen tarve'
+            bases: 'Perusteet'
           }
         },
         assistanceAction: {
           title: 'Tukitoimet ja tukipalvelut',
           fields: {
-            actions: 'Tukitoimet ja tukipalvelut'
+            actions: 'Tukitoimet ja tukipalvelut',
+            measureTypes: {
+              SPECIAL_ASSISTANCE_DECISION: 'Erityisen tuen päätös',
+              SPECIAL_ASSISTANCE_DECISION_INFO:
+                  'Lapsella on pidennetty oppivelvollisuus. (Tieto menee KOSKI-palveluun)',
+              INTENSIFIED_ASSISTANCE: 'Tehostettu tuki',
+              INTENSIFIED_ASSISTANCE_INFO:
+                  'Lapsella on avustamispalvelu tai lapsi on pedagogisesti vahvistetussa ryhmässä. Koskee myös osaa laaja-alaisen veon tukea saavista lapsista. ',
+              EXTENDED_COMPULSORY_EDUCATION: 'Pidennetty oppivelvollisuus',
+              EXTENDED_COMPULSORY_EDUCATION_INFO:
+                  'Päätös tehdään perusopetuksessa. (Tieto menee KOSKI-palveluun)',
+              CHILD_SERVICE: 'Lastensuojelu',
+              CHILD_SERVICE_INFO:
+                  'Merkitään lapselle, jolla varhaiskasvatus on lastensuojelun avohuollon tukitoimena perhe- ja sosiaalipalvelujen päätöksellä.',
+              CHILD_ACCULTURATION_SUPPORT: 'Lapsen kotoutumisen tuki (ELY)',
+              CHILD_ACCULTURATION_SUPPORT_INFO:
+                  'Lapsen tuen tarpeen perusteella järjestäjälle myönnetty korvaus (ELY)',
+              TRANSPORT_BENEFIT: 'Kuljetusetu',
+              TRANSPORT_BENEFIT_INFO:
+                  'Kuljetusetu. (Tieto menee KOSKI-palveluun)'
+            }
           }
         },
         dailyServiceTimes: {
