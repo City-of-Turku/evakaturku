@@ -36,7 +36,7 @@ class EVakaTurkuConfig {
         useContractDaysAsDailyFeeDivisor = false,
         enabledChildConsentTypes = setOf(),
         curriculumDocumentPermissionToShareRequired = true,
-        assistanceDecisionMakerRoles = setOf(UserRole.SPECIAL_EDUCATION_TEACHER),
+        assistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
         requestedStartUpperLimit = 7,
         partialAbsenceThresholdsEnabled = false,
         postOffice = "TURKU",
