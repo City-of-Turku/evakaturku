@@ -48,16 +48,15 @@ internal class EVakaTurkuMessageProvider(val messageSource: MessageSource) : IMe
     override fun getVoucherValueDecisionHeader(lang: MessageLanguage): String =
         messageSource.getMessage("$PREFIX.VOUCHER_VALUE_DECISION_HEADER", null, resolveLocale(lang))
 
-    // TODO Provide ASSISTANCE_NEED_DECISION_HEADER and change this!
-    override fun getAssistanceNeedDecisionHeader(lang: MessageLanguage): String =
-        messageSource.getMessage("$PREFIX.VOUCHER_VALUE_DECISION_HEADER", null, resolveLocale(lang))
-
     override fun getVoucherValueDecisionContent(lang: MessageLanguage): String =
         messageSource.getMessage("$PREFIX.VOUCHER_VALUE_DECISION_CONTENT", null, resolveLocale(lang))
 
-    // TODO Provide ASSISTANCE_NEED_DECISION_HEADER and change this!
+    override fun getAssistanceNeedDecisionHeader(lang: MessageLanguage): String =
+        messageSource.getMessage("$PREFIX.ASSISTANCE_NEED_DECISION_HEADER", null, resolveLocale(lang))
+
     override fun getAssistanceNeedDecisionContent(lang: MessageLanguage): String =
-        messageSource.getMessage("$PREFIX.VOUCHER_VALUE_DECISION_CONTENT", null, resolveLocale(lang))
+        messageSource.getMessage("$PREFIX.ASSISTANCE_NEED_DECISION_CONTENT", null, resolveLocale(lang))
+
 
     override fun getDefaultDecisionAddress(lang: MessageLanguage): DecisionSendAddress = when (lang) {
         MessageLanguage.FI -> DecisionSendAddress(
