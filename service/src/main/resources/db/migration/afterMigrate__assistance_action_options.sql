@@ -8,13 +8,13 @@ VALUES
     ('10', 'Avustajataso I', 'lapsikohtainen', 10),
     ('20', 'Avustajataso II', '2–3 lapselle', 20),
     ('30', 'Avustajataso III', '2–5 lapselle', 30),
-    ('40', 'Tuen hoitaja', 'tuen hoitaja on resurssi, mitä ei lasketa suhdelukuun. Pedagogisesti vahvistettu ryhmä.', 40),
+    ('40', 'Tuen hoitaja', 'Tuen hoitaja on resurssi, mitä ei lasketa suhdelukuun. Pedagogisesti vahvistettu ryhmä.', 40),
     ('50', 'Pienennetty ryhmä', 'Ryhmän rakenne: Opettaja, lastenhoitaja ja avustaja tai tuen hoitaja. Lapsiluku 13 kpl, joista kolmella lapsella tuen tarve', 50),
     ('60', 'Alueellinen integroitu ryhmä', 'Ryhmän rakenne: VEO, opettaja ja kaksi lastenhoitajaa. Lapsiluku 14 kpl, joista viidellä tuen tarve.', 60),
     ('70', 'Erityisryhmä', 'Sarat-ryhmä. Ryhmän rakenne: VEO, sairaanhoitaja ja kaksi lastenhoitajaa. Lapsiluku 8 kpl, joista kaikilla tuen tarve.', 70),
     ('80', 'Ryhmän pienennyspäätös', 'Tehdään harkinnanvaraisesti', 80),
     ('90', 'Koululykkäys', 'Lähikoulun rehtorin päätöksellä', 90),
-    ('100', 'Pidennetty oppivelvollisuus', 'merkittävä, kun lapsella pidennetty oppivelvollisuus. Tieto menee KOSKI-palveluun.', 100),
+    ('100', 'Pidennetty oppivelvollisuus', 'Merkittävä, kun lapsella pidennetty oppivelvollisuus.', 100),
     ('110', 'Harkinnanvarainen kuljetusetu', 'Käytetään silloin kun lapselle on myönnetty harkinnanvarainen kuljetusetu', 110),
     ('120', 'Koululykkäys', 'Lähikoulun rehtorin päätöksellä', 120)
 

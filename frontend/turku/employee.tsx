@@ -140,9 +140,9 @@ const customizations: EmployeeCustomizations = {
               CHILD_ACCULTURATION_SUPPORT: 'Lapsen kotoutumisen tuki (ELY)',
               CHILD_ACCULTURATION_SUPPORT_INFO:
                 'Lapsen tuen tarpeen perusteella järjestäjälle myönnetty korvaus (ELY)',
-              TRANSPORT_BENEFIT: 'Kuljetusetu',
+              TRANSPORT_BENEFIT: 'Harkinnanvarainen kuljetusetu',
               TRANSPORT_BENEFIT_INFO:
-                'Kuljetusetu. (Tieto menee KOSKI-palveluun)'
+                'Harkinnanvarainen kuljetusetu. (Tieto menee KOSKI-palveluun)'
             }
           }
         },
