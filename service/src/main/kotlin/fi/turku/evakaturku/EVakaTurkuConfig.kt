@@ -40,7 +40,9 @@ class EVakaTurkuConfig {
         requestedStartUpperLimit = 7,
         partialAbsenceThresholdsEnabled = false,
         postOffice = "TURKU",
-        municipalMessageAccountName = "Turun kaupunki"
+        municipalMessageAccountName = "Turun kaupunki",
+        serviceWorkerMessageAccountName =
+        "Turun kaupungin palveluohjaus - Turku stads servicehandledning - City of Turku service guidance"
     )
 
     @Bean
@@ -54,7 +56,11 @@ class EVakaTurkuConfig {
         DocumentService(s3Client, s3Presigner, env.proxyThroughNginx)
 
     @Bean
-    fun paymentIntegrationClient(evakaProperties: EvakaTurkuProperties, paymentGenerator: ProEPaymentGenerator, sftpConnector: SftpConnector): PaymentIntegrationClient {
+    fun paymentIntegrationClient(
+        evakaProperties: EvakaTurkuProperties,
+        paymentGenerator: ProEPaymentGenerator,
+        sftpConnector: SftpConnector
+    ): PaymentIntegrationClient {
         val sftpSender = SftpSender(evakaProperties.sapPayments, sftpConnector)
         return TurkuPaymentIntegrationClient(paymentGenerator, sftpSender)
     }
