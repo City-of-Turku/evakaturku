@@ -8,6 +8,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 
 import React from 'react'
 
+import { H3, P } from 'lib-components/typography'
 import { EmployeeCustomizations } from 'lib-customizations/types'
 
 import TurkuLogo from './city-logo-citizen.png'
@@ -119,6 +120,102 @@ const customizations: EmployeeCustomizations = {
             ),
             bases: 'Perusteet'
           }
+        },
+        assistanceNeedDecision: {
+          appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
+          appealInstructions: (
+            <>
+              <H3>Oikaisuvaatimusohjeet</H3>
+              <P>
+                Edellä mainittuun päätökseen saa hakea oikaisua Lounais-Suomen
+                aluehallintovirastolta 14 päivän kuluessa päätöksen
+                tiedoksisaannista.
+              </P>
+              <H3>Oikaisuvaatimusoikeus</H3>
+              <P>
+                Oikaisuvaatimuksen saa tehdä se, johon päätös on kohdistettu tai
+                jonka oikeuteen, velvollisuuteen tai etuun päätös välittömästi
+                vaikuttaa (asianosainen).
+                <br />
+                Asianosaisen katsotaan saaneen päätöksestä tiedon 7 päivän
+                kuluessa päätöksen lähettämisestä postitse tai
+                saantitodistukseen tai tiedoksiantotodistukseen merkittynä
+                päivänä.
+                <br />
+                Sähköisesti lähetetty asiakirja katsotaan annetun tiedoksi
+                kolmantena päivänä viestin lähettämisestä, jollei muuta näytetä.
+              </P>
+              <H3>Oikaisuvaatimuksen sisältö ja toimittaminen</H3>
+              <P>
+                Oikaisuvaatimuksessa on ilmoitettava
+                <ul>
+                  <li>
+                    oikaisuvaatimuksen tekijän tai oikaisuvaatimuksen laatijan
+                    yhteystiedot (nimi, asuinkunta, postiosoite ja puhelinnumero
+                    virka-aikana),
+                  </li>
+                  <li>päätös, johon haetaan oikaisua,</li>
+                  <li>
+                    miltä kohdin päätökseen haetaan oikaisua ja millaista
+                    oikaisua siihen vaaditaan tehtäväksi sekä
+                  </li>
+                  <li>perusteet, joilla oikaisua vaaditaan.</li>
+                </ul>
+              </P>
+              <P>
+                Oikaisuvaatimus on tehtävä kirjallisesti ja allekirjoitettava
+                oikaisuvaatimuksen tekijän tai laatijan toimesta.
+                Oikaisuvaatimukseen tulee liittää
+                <ul>
+                  <li>päätös, johon haetaan oikaisua sekä</li>
+                  <li>todistus tiedoksisaantipäivästä.</li>
+                </ul>
+              </P>
+              <P>
+                Oikaisuvaatimus on toimitettava oikaisuvaatimusajan kuluessa
+                Lounais-Suomen aluehallintovirastolle osoitteella:
+              </P>
+              <P>
+                Lounais-Suomen aluehallintovirasto
+                <br />
+                PL 4, 13035 AVI
+                <br />
+                Itsenäisyydenaukio 2, 20800 Turku
+                <br />
+                Sähköposti: kirjaamo.lounais@avi.fi
+                <br />
+                Puh: 0295 018 000
+                <br />
+                Kirjaamon aukioloaika: 8.00–16.15
+                <br />
+                Fax (02) 2511 820
+              </P>
+              <P>
+                Omalla vastuulla oikaisuvaatimuksen voi lähettää postitse tai
+                lähetin välityksellä. Postiin oikaisuvaatimusasiakirjat on
+                jätettävä niin ajoissa, että ne ehtivät perille viimeistään
+                oikaisuvaatimusajan viimeisenä päivänä ennen viraston
+                aukioloajan päättymistä.
+              </P>
+              <P>
+                Omalla vastuulla oikaisuvaatimuksen voi toimittaa ennen
+                oikaisuvaatimusajan päättymistä myös telekopiona/faxina tai
+                sähköpostilla. Määräajassa toimitettava asiakirja on lähetettävä
+                ennen määräajan päättymistä siten, että asiakirja on
+                viranomaisen käytettävissä vastaanottolaitteessa tai
+                tietojärjestelmässä.
+              </P>
+              <H3>Avustaja- ja tulkitsemispalvelut </H3>
+              <P>
+                Päätökseen tyytymätön voi hakea muutosta valittamalla Turun
+                Hallinto-oikeuteen 30 päivän kuluessa tiedoksisaannista.
+              </P>
+              <P>
+                https://oikeus.fi/hallintooikeudet/turunhallinto-oikeus/fi/index.html
+                Sairashuoneenkatu 2–4 PL 32, 20101 Turku
+              </P>
+            </>
+          )
         },
         assistanceAction: {
           title: 'Tukitoimet ja tukipalvelut',
