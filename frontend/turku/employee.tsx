@@ -122,6 +122,8 @@ const customizations: EmployeeCustomizations = {
           }
         },
         assistanceNeedDecision: {
+          jurisdiction: '',
+          jurisdictionText: '',
           appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
           appealInstructions: (
             <>

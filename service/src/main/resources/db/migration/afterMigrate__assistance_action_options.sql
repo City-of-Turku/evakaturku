@@ -15,8 +15,7 @@ VALUES
     ('80', 'Ryhmän pienennyspäätös', 'Tehdään harkinnanvaraisesti', 80),
     ('90', 'Koululykkäys', 'Lähikoulun rehtorin päätöksellä', 90),
     ('100', 'Pidennetty oppivelvollisuus', 'Merkittävä, kun lapsella pidennetty oppivelvollisuus.', 100),
-    ('110', 'Harkinnanvarainen kuljetusetu', 'Käytetään silloin kun lapselle on myönnetty harkinnanvarainen kuljetusetu', 110),
-    ('120', 'Koululykkäys', 'Lähikoulun rehtorin päätöksellä', 120)
+    ('110', 'Harkinnanvarainen kuljetusetu', 'Käytetään silloin kun lapselle on myönnetty harkinnanvarainen kuljetusetu', 110)
 
 ON CONFLICT (value) DO
 UPDATE SET

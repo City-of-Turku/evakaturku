@@ -586,6 +586,8 @@ const fi: DeepPartial<Translations> = {
   decisions: {
     assistanceDecisions: {
       decision: {
+        jurisdiction: '',
+        jurisdictionText: '',
         appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
         appealInstructions: (
           <>
