@@ -6,7 +6,6 @@ package fi.turku.evakaturku.invoice.service
 
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
-import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import fi.turku.evakaturku.invoice.config.Product
 import fi.turku.evakaturku.util.FieldType
 import fi.turku.evakaturku.util.FinanceDateProvider
@@ -16,7 +15,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @Component
-class ProEInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financeDateProvider: FinanceDateProvider) : StringInvoiceGenerator {
+class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financeDateProvider: FinanceDateProvider) : StringInvoiceGenerator {
 
     fun generateInvoiceTitle(): String {
         val previousMonth = financeDateProvider.previousMonth()
@@ -209,6 +208,7 @@ class ProEInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val finan
     }
 
     override fun generateInvoice(invoices: List<InvoiceDetailed>): StringInvoiceGenerator.InvoiceGeneratorResult {
+        /*
         var invoiceString = ""
         var successList = mutableListOf<InvoiceDetailed>()
         var failedList = mutableListOf<InvoiceDetailed>()
@@ -224,5 +224,23 @@ class ProEInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val finan
         }
 
         return StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(successList, failedList, manuallySentList), invoiceString)
+        */
+
+        /*
+        class Nested(
+            val nestedValue: Int = 23    
+	)
+
+        class XmlTest(
+            val value: Int = 42,
+	    val nested: Nested
+        )
+
+        val xmlMapper = XmlMapper()
+        val xml = xmlMapper.writeValueAsString(XmlTest(42, Nested()))
+        return StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(listOf(), listOf(), listOf()), xml)
+         */
+
+
     }
 }

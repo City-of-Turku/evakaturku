@@ -4,7 +4,6 @@
 
 package fi.turku.evakaturku.invoice.service
 
-import com.jcraft.jsch.SftpException
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import mu.KotlinLogging
@@ -13,17 +12,20 @@ private val logger = KotlinLogging.logger {}
 
 class EVakaTurkuInvoiceClient(
     private val sftpSender: SftpSender,
-    private val invoiceGenerator: ProEInvoiceGenerator
+    private val invoiceGenerator: SapInvoiceGenerator
 ) : InvoiceIntegrationClient {
     override fun send(invoices: List<InvoiceDetailed>): InvoiceIntegrationClient.SendResult {
 
-        val failedList = mutableListOf<InvoiceDetailed>()
+        // val failedList = mutableListOf<InvoiceDetailed>()
 
         val generatorResult = invoiceGenerator.generateInvoice(invoices)
-        var proEinvoices = generatorResult.invoiceString
-        var successList = generatorResult.sendResult.succeeded
-        var manuallySentList = generatorResult.sendResult.manuallySent
+        var invoiceString = generatorResult.invoiceString
+        // var successList = generatorResult.sendResult.succeeded
+        // var manuallySentList = generatorResult.sendResult.manuallySent
 
+        print(invoiceString)
+        TODO()
+        /*
         if (!successList.isEmpty()) {
             try {
                 sftpSender.send(proEinvoices)
@@ -38,6 +40,7 @@ class EVakaTurkuInvoiceClient(
         }
 
         return InvoiceIntegrationClient.SendResult(successList, failedList, manuallySentList)
+         */
     }
 
 }

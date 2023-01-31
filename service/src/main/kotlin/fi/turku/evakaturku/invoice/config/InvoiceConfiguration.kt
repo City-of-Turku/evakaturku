@@ -24,7 +24,7 @@ class InvoiceConfiguration {
     @Bean(name = ["evakaTurkuInvoiceIntegrationClient"])
     fun invoiceIntegrationClient(
         properties: EvakaTurkuProperties,
-        invoiceGenerator: ProEInvoiceGenerator,
+        invoiceGenerator: SapInvoiceGenerator,
         sftpConnector: SftpConnector
         ): InvoiceIntegrationClient {
         val sftpSender = SftpSender(properties.sapInvoicing, sftpConnector)
