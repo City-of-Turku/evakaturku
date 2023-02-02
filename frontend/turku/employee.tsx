@@ -107,17 +107,8 @@ const customizations: EmployeeCustomizations = {
         assistanceNeed: {
           fields: {
             capacityFactor: 'Lapsen paikkatarve',
-            // @ts-expect-error: Type 'Element' is not assignable to type 'string'
-            capacityFactorInfo: (
-              <p>
-                Rakenteellinen tuki määräytyy yleensä lapsen iän ja palvelun
-                tarpeen mukaan. Mikäli lapsella on sellainen tuen tarve, joka
-                lisää rakenteellisen tuen tarvetta, lisätään tuen tarpeen
-                kerroin tähän. Tuen tarpeen ja kertoimen lisää
-                varhaiskasvatuksen erityisopettaja. Päiväkodinjohtaja lisää
-                kertoimen integroidun ryhmän tai erityisryhmän osalta
-              </p>
-            ),
+            capacityFactorInfo:
+              'Rakenteellinen tuki määräytyy yleensä lapsen iän ja palvelun tarpeen mukaan. Mikäli lapsella on sellainen tuen tarve, joka lisää rakenteellisen tuen tarvetta, lisätään tuen tarpeen kerroin tähän. Tuen tarpeen ja kertoimen lisää varhaiskasvatuksen erityisopettaja. Päiväkodinjohtaja lisää kertoimen integroidun ryhmän tai erityisryhmän osalta',
             bases: 'Perusteet'
           }
         },
@@ -293,7 +284,8 @@ const customizations: EmployeeCustomizations = {
       welcomePage: {
         text: 'Olet kirjautunut sisään eVaka Turku -palveluun. Käyttäjätunnuksellesi ei ole vielä annettu oikeuksia, jotka mahdollistavat palvelun käytön. Tarvittavat käyttöoikeudet saat omalta esimieheltäsi.'
       }
-    }
+    },
+    sv: {}
   },
   vasuTranslations: {
     FI: {},
