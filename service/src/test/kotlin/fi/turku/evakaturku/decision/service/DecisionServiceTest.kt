@@ -361,7 +361,8 @@ private val validAssistanceNeedDecision = AssistanceNeedDecision(
     otherRepresentativeDetails = null,
     assistanceLevels = setOf(AssistanceLevel.ENHANCED_ASSISTANCE),
     motivationForDecision = null,
-    hasDocument = false
+    hasDocument = false,
+    annulmentReason = ""
 )
 
 private fun validAddress() = DecisionSendAddress("Kotikatu", "20100", "Turku", "","","")

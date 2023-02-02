@@ -40,7 +40,9 @@ class EVakaTurkuConfig {
         requestedStartUpperLimit = 7,
         partialAbsenceThresholdsEnabled = false,
         postOffice = "TURKU",
-        municipalMessageAccountName = "Turun kaupunki"
+        municipalMessageAccountName = "Turun kaupunki",
+        serviceWorkerMessageAccountName = "Turun kaupunki",
+        applyPlacementUnitFromDecision = false
     )
 
     @Bean

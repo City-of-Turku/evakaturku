@@ -29,6 +29,14 @@ const customerContactText = function () {
 }
 
 const en: DeepPartial<Translations> = {
+  calendar: {
+    absenceModal: {
+      absenceTypes: {
+        PLANNED_ABSENCE: 'Sopimuspoissaolo'
+      },
+      selectChildrenInfo: 'Ilmoita tässä vain koko päivän poissaolot.'
+    }
+  },
   applications: {
     creation: {
       daycareInfo:

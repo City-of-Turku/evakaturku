@@ -26,6 +26,14 @@ const customerContactText = function () {
 }
 
 const fi: DeepPartial<Translations> = {
+  calendar: {
+    absenceModal: {
+      absenceTypes: {
+        PLANNED_ABSENCE: 'Sopimuspoissaolo'
+      },
+      selectChildrenInfo: 'Ilmoita tässä vain koko päivän poissaolot.'
+    }
+  },
   applications: {
     creation: {
       daycareInfo:
@@ -569,7 +577,14 @@ const fi: DeepPartial<Translations> = {
     )
   },
   loginPage: {
-    title: 'Turun kaupungin varhaiskasvatus'
+    title: 'Turun kaupungin varhaiskasvatus',
+    login: {
+      title: 'Kirjaudu käyttäjätunnuksella',
+      paragraph:
+        'Huoltajat, joiden lapsi on jo varhaiskasvatuksessa tai esiopetuksessa: hoida lapsesi päivittäisiä varhaiskasvatusasioita kuten lue viestejä ja ilmoita lapsen läsnäoloajat ja poissaolot.',
+      link: 'Kirjaudu sisään',
+      infoBoxText: <></>
+    }
   },
   map: {
     mainInfo: `Tässä näkymässä voit hakea kartalta Turun varhaiskasvatus-, esiopetus- ja avoimia varhaiskasvatuspaikkoja. Tietoa yksityisistä päiväkodeista löydät Turun varhaiskasvatuksen kotisivuilta.`,
