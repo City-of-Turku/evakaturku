@@ -2,9 +2,9 @@
 //
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
-package fi.ouka.evakaoulu.invoice.service
+package fi.turku.evakaturku.invoice.service
 
-import fi.ouka.evakaoulu.SftpProperties
+import fi.turku.evakaturku.SftpProperties
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.*
 

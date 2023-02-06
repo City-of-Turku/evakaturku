@@ -6,13 +6,21 @@ package fi.turku.evakaturku.invoice.service
 
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
+import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import fi.turku.evakaturku.invoice.config.Product
 import fi.turku.evakaturku.util.FieldType
 import fi.turku.evakaturku.util.FinanceDateProvider
 import org.springframework.stereotype.Component
+import java.io.FileOutputStream
+import java.io.StringWriter
 import java.lang.Math.abs
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import javax.xml.bind.JAXBContext
+import javax.xml.bind.JAXBException
+import javax.xml.bind.Marshaller
+import javax.xml.stream.XMLStreamWriter
+
 
 @Component
 class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financeDateProvider: FinanceDateProvider) : StringInvoiceGenerator {
@@ -208,8 +216,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
     }
 
     override fun generateInvoice(invoices: List<InvoiceDetailed>): StringInvoiceGenerator.InvoiceGeneratorResult {
-        /*
-        var invoiceString = ""
+
         var successList = mutableListOf<InvoiceDetailed>()
         var failedList = mutableListOf<InvoiceDetailed>()
         var manuallySentList = mutableListOf<InvoiceDetailed>()
@@ -217,30 +224,56 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val (manuallySent, succeeded) = invoices.partition { invoice -> invoiceChecker.shouldSendManually(invoice) }
         manuallySentList.addAll(manuallySent)
 
+        val idocs: MutableList<ORDERS05.IDOC> = mutableListOf()
         succeeded.forEach {
-            var invoiceData = gatherInvoiceData(it)
-            invoiceString += formatInvoice(invoiceData)
+            //idocs.add(generateIdoc(it))
+            idocs.add(generateIdoc())
             successList.add(it)
         }
 
-        return StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(successList, failedList, manuallySentList), invoiceString)
-        */
+        var invoiceString = ""
+        try {
+            invoiceString = marshalInvoices(idocs)
+        }
+        catch (e: JAXBException) {
+            failedList.addAll(successList)
+            successList.clear()
+        }
 
-        /*
-        class Nested(
-            val nestedValue: Int = 23    
-	)
-
-        class XmlTest(
-            val value: Int = 42,
-	    val nested: Nested
+        return StringInvoiceGenerator.InvoiceGeneratorResult(
+            InvoiceIntegrationClient.SendResult(
+                successList,
+                failedList,
+                manuallySentList
+            ), invoiceString
         )
+    }
 
-        val xmlMapper = XmlMapper()
-        val xml = xmlMapper.writeValueAsString(XmlTest(42, Nested()))
-        return StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(listOf(), listOf(), listOf()), xml)
-         */
+    //private fun generateIdoc(it: InvoiceDetailed): ORDERS05.IDOC {
+    private fun generateIdoc(): ORDERS05.IDOC {
 
+        val idoc = ORDERS05.IDOC()
+        val edidc40 = ORDERS05.IDOC.EDIDC40()
+        idoc.edidc40 = edidc40
+        edidc40.tabnam = "EDI_DC40"
+        edidc40.direct = "2"
+        edidc40.idoctyp = "ORDERS05"
+        edidc40.sndpor = ""
 
+        return idoc
+    }
+
+    fun marshalInvoices(idocs: List<ORDERS05.IDOC>): String {
+        val contextObj: JAXBContext = JAXBContext.newInstance(ORDERS05::class.java)
+
+        val marshallerObj: Marshaller = contextObj.createMarshaller()
+        marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true)
+
+        val orders05 = ORDERS05()
+        orders05.idoc = idocs
+
+        val stringWriter = StringWriter()
+        marshallerObj.marshal(orders05, stringWriter)
+        return stringWriter.toString()
     }
 }

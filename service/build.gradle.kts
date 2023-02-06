@@ -34,6 +34,9 @@ dependencies {
 
     implementation("software.amazon.awssdk:s3")
 
+    implementation("javax.jws:javax.jws-api")
+    implementation("javax.xml.ws:jaxws-api")
+
     api("io.opentracing:opentracing-api:${Version.openTracing}")
     api("io.opentracing:opentracing-util:${Version.openTracing}")
 
