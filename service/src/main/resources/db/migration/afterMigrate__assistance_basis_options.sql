@@ -8,8 +8,8 @@ VALUES
     ('GENERAL_ASSISTANCE_NEED', 'Yleisen tuen tukipalvelu', 'Koskee varhaiskasvatusta', 100),
     ('INTENSIFIED_ASSISTANCE', 'Tehostettu tuki', 'Varhaiskasvatuksessa tehdään hallintopäätös, esiopetuksessa ei.', 200),
     ('SPECIAL_ASSISTANCE_DECISION', 'Erityinen tuki', 'Varhaiskasvatuksessa ja esiopetuksessa tehdään hallintopäätös.', 300),
-    ('DEVELOPMENTAL_DISABILITY_1', 'Pidennetty oppivelvollisuus', 'Päätös tehdään esiopetuksessa. Tieto menee KOSKI-palveluun', 305),
-    ('DEVELOPMENTAL_DISABILITY_2', 'Kehitysvamma', 'Kehitysvammalain nojalla myönnettyjä palveluja saaville lapsille. Tieto menee KOSKI-palveluun', 310),
+    ('DEVELOPMENTAL_DISABILITY_1', 'Kehitysvamma', 'Kehitysvammalain nojalla myönnettyjä palveluja saaville lapsille. Tieto menee KOSKI-palveluun', 305),
+    ('DEVELOPMENTAL_DISABILITY_2', 'Pidennetty oppivelvollisuus', 'Päätös tehdään esiopetuksessa. Tieto menee KOSKI-palveluun', 310),
     ('OTHER_REASON', 'Muu peruste', NULL, 320)
 
 ON CONFLICT (value) DO
