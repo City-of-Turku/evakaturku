@@ -12,7 +12,6 @@ class SapInvoiceGeneratorTest {
         val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
         val invoiceList = listOf(validInvoice())
         val invoiceString = invoiceGenerator.generateInvoice(invoiceList).invoiceString
-        print(invoiceString)
 
         assert(invoiceString.contains('<' + tag + '>'))
         assert(invoiceString.contains("</" + tag + '>'))
