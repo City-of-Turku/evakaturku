@@ -249,7 +249,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         )
     }
 
-    //private fun generateIdoc(it: InvoiceDetailed): ORDERS05.IDOC {
+    //private fun generateIdoc(invoice: InvoiceDetailed): ORDERS05.IDOC {
     private fun generateIdoc(): ORDERS05.IDOC {
 
         val idoc = ORDERS05.IDOC()
