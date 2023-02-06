@@ -1,5 +1,6 @@
 package fi.ouka.evakaoulu.invoice.service
 
+import fi.turku.evakaturku.invoice.service.InvoiceChecker
 import org.junit.jupiter.api.Test
 
 internal class InvoiceCheckerTest {

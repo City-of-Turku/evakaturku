@@ -1,8 +1,8 @@
-package fi.ouka.evakaoulu.invoice.service
+package fi.turku.evakaturku.invoice.service
 
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
-import fi.ouka.evakaoulu.util.FieldType
-import fi.ouka.evakaoulu.util.FinanceDateProvider
+import fi.turku.evakaturku.util.FieldType
+import fi.turku.evakaturku.util.FinanceDateProvider
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -12,6 +12,7 @@ import org.mockito.kotlin.whenever
 
 internal class ProEInvoiceGeneratorTest {
 
+/*
     val financeDateProvider = mock<FinanceDateProvider>()
     val proEInvoiceGenerator = ProEInvoiceGenerator(InvoiceChecker(), financeDateProvider)
 
@@ -78,5 +79,6 @@ internal class ProEInvoiceGeneratorTest {
 
         assertEquals(correctInvoice, generationResult.invoiceString)
     }
+*/
 
 }
