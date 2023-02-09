@@ -14,8 +14,10 @@ import org.springframework.stereotype.Component
 import java.io.FileOutputStream
 import java.io.StringWriter
 import java.lang.Math.abs
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 import javax.xml.bind.JAXBContext
 import javax.xml.bind.JAXBException
 import javax.xml.bind.Marshaller
@@ -29,191 +31,8 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val previousMonth = financeDateProvider.previousMonth()
         return "Varhaiskasvatus " + previousMonth
     }
-    fun gatherInvoiceData(invoiceDetailed: InvoiceDetailed): InvoiceData {
-        var invoiceData = InvoiceData()
 
-        var invoiceDateFormatter = DateTimeFormatter.ofPattern("yyyyMMdd")
 
-        invoiceData.setAlphanumericValue(InvoiceFieldName.NOT_USED, "")
-
-        // we have previously made sure the head of family has an SSN but the compiler doesn't realize it
-        invoiceData.setAlphanumericValue(InvoiceFieldName.INVOICE_IDENTIFIER, invoiceDetailed.headOfFamily.ssn ?: "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.HEADER_ROW_CODE, "L")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CLIENT_GROUP, "10")
-        val clientName = invoiceDetailed.headOfFamily.lastName + " " + invoiceDetailed.headOfFamily.firstName
-        // CLIENT_NAME1 and CLIENT_NAME2 are 50 characters wide, but Intime only reads the first 30(!)
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CLIENT_NAME1, clientName.substring(0, Math.min(30, clientName.length)))
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CLIENT_NAME2, if (clientName.length > 30) clientName.substring(30, Math.min(60,clientName.length)) else "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.STREET_ADDRESS, invoiceDetailed.headOfFamily.streetAddress)
-        invoiceData.setAlphanumericValue(InvoiceFieldName.POSTAL_ADDRESS, invoiceDetailed.headOfFamily.postalCode + " " + invoiceDetailed.headOfFamily.postOffice)
-        invoiceData.setAlphanumericValue(InvoiceFieldName.PHONE_NUMBER, invoiceDetailed.headOfFamily.phone)
-        invoiceData.setAlphanumericValue(InvoiceFieldName.FAX_NUMBER, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CLIENT_CONTACT, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CLIENT_BANK, "")
-        // 0 = external client
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CLIENT_TYPE, "0")
-        // 1 = Finnish
-        invoiceData.setAlphanumericValue(InvoiceFieldName.LANGUAGE_CODE, "1")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.REMINDER_CODE, "")
-        // N = normal invoicing
-        invoiceData.setAlphanumericValue(InvoiceFieldName.PAYMENT_METHOD, "N")
-        // 0 = no payments defaulted
-        invoiceData.setAlphanumericValue(InvoiceFieldName.PAYMENT_DEFAULT_CODE, "0")
-        // K = print a normal invoice
-        invoiceData.setAlphanumericValue(InvoiceFieldName.PRINTING_METHOD, "K")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.INVOICE_DATE, invoiceDetailed.invoiceDate.format(invoiceDateFormatter))
-        invoiceData.setAlphanumericValue(InvoiceFieldName.DUE_DATE, invoiceDetailed.dueDate.format(invoiceDateFormatter))
-        invoiceData.setAlphanumericValue(InvoiceFieldName.ACCOUNTING_DATE, invoiceDetailed.sentAt?.toLocalDateTime()?.format(invoiceDateFormatter) ?: LocalDate.now().format(invoiceDateFormatter))
-        invoiceData.setNumericValue(InvoiceFieldName.INCLUDED_LATE_PAYMENT_INTEREST, 0)
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CREDIT_NOTE_INVOICE_NUMBER, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.INVOICE_NUMBER, if (invoiceDetailed.number != null) invoiceDetailed.number.toString() else "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.REFERENCE_NUMBER, "")
-        // N = normal
-        invoiceData.setAlphanumericValue(InvoiceFieldName.PAYMENT_TYPE, "N")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.PARTNER_CODE, "N")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CURRENCY, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.INVOICE_TYPE, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.INVOICING_UNIT, "000")
-        // what should we put here?
-        invoiceData.setAlphanumericValue(InvoiceFieldName.DESCRIPTION, generateInvoiceTitle())
-        invoiceData.setAlphanumericValue(InvoiceFieldName.SECURITY_DENIAL, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CONTRACT_NUMBER, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.ORDER_NUMBER, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.ADDRESS2, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.COUNTRY, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.SSN, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.LATE_PAYMENT_INTEREST, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.VAT_IDENTIFIER, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.DELIVERY_DATE, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.OVT_IDENTIFIER, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.PAYMENT_TERM, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.RF_REFERENCE, "")
-
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_ROW_CODE, "Y")
-
-        val codebtor = invoiceDetailed.codebtor
-        if (codebtor != null) {
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_IDENTIFIER, codebtor.ssn ?: "")
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_NAME, codebtor.lastName + " " + codebtor.firstName)
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_STREET_ADDRESS, codebtor.streetAddress)
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_POSTAL_ADDRESS, codebtor.postalCode + " " + codebtor.postOffice)
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_PHONE_NUMBER, codebtor.phone)
-        }
-        else {
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_IDENTIFIER, "")
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_NAME, "")
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_STREET_ADDRESS, "")
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_POSTAL_ADDRESS, "")
-            invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_PHONE_NUMBER, "")
-        }
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_LANGUAGE_CODE, "1")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_ADDRESS2, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_COUNTRY, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_NAME2, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_VAT_IDENTIFIER, "")
-        invoiceData.setAlphanumericValue(InvoiceFieldName.CODEBTOR_OVT_IDENTIFIER, "")
-
-        val sortedRows = invoiceDetailed.rows.sortedBy { row -> row.child.firstName }
-
-        val rowsPerChild: MutableMap<String, List<InvoiceData>> = mutableMapOf()
-        var currentChild = ""
-        var childRows: MutableList<InvoiceData> = mutableListOf()
-
-        sortedRows.forEach {
-            if (it.child.firstName != currentChild) {
-                currentChild = it.child.firstName
-                childRows = mutableListOf()
-                rowsPerChild.put(currentChild, childRows)
-            }
-
-            val invoiceRowData = InvoiceData()
-
-            // we have previously made sure the head of family has an SSN but the compiler doesn't realize it
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.INVOICE_IDENTIFIER, invoiceDetailed.headOfFamily.ssn ?: "")
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.TEXT_ROW_CODE, "3")
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.CHILD_NAME, it.child.lastName + " " + it.child.firstName)
-            val dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.TIME_PERIOD, it.periodStart.format(dateFormatter) + " - " + it.periodEnd.format(dateFormatter))
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.INVOICE_ROW_HEADER, "")
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.CONSTANT_TEXT_IDENTIFIER, "")
-
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.DETAIL_ROW_CODE, "1")
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.PRODUCT_NAME, Product.valueOf(it.product.value).nameFi)
-            // sign of unitPrice is moved to a separate field - empty value is interpreted as a plus sign
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.PRICE_SIGN, if (it.unitPrice < 0) "-" else "")
-            invoiceRowData.setNumericValue(InvoiceFieldName.UNIT_PRICE, abs(it.unitPrice))
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.UNIT, "kpl")
-            // empty value is interpreted as a plus sign
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.AMOUNT_SIGN, "")
-            invoiceRowData.setNumericValue(InvoiceFieldName.AMOUNT, it.amount)
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.VAT_CODE, "00")
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.VAT_ACCOUNT, "")
-            // format description says "value of this field has not been used", example file has "0" here
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.BRUTTO_NETTO, "0")
-            invoiceRowData.setAlphanumericValue(InvoiceFieldName.DEBIT_ACCOUNTING, "")
-            if (it.daycareType.contains(CareType.FAMILY) or it.daycareType.contains(CareType.GROUP_FAMILY)) {
-                invoiceRowData.setAlphanumericValue(InvoiceFieldName.CREDIT_ACCOUNTING, "3271 1101171      " + it.costCenter)
-            }
-            else {
-                invoiceRowData.setAlphanumericValue(InvoiceFieldName.CREDIT_ACCOUNTING, "3271 1101170      " + it.costCenter)
-            }
-
-            childRows.add(invoiceRowData)
-        }
-
-        invoiceData.setChildRowMap(rowsPerChild)
-
-        return invoiceData
-    }
-
-    fun generateRow(fields: List<InvoiceField>, invoiceData: InvoiceData): String {
-        var result = ""
-
-        fields.forEach{
-            if (it.fieldType == FieldType.ALPHANUMERIC) {
-                var value = invoiceData.getAlphanumericValue(it.field) ?: ""
-                result = result + value.take(it.length).padEnd(it.length)
-            }
-            else if (it.fieldType == FieldType.NUMERIC) {
-                var value = invoiceData.getNumericValue(it.field) ?: 0
-                var stringValue = value.toString().padStart(it.length, '0')
-                // all Evaka values seem to be Int so we can just pad
-                // the decimal part with the correct number of zeroes
-                result = result + stringValue.padEnd(it.length + it.decimals, '0')
-            }
-            else if (it.fieldType == FieldType.MONETARY) {
-                var value = invoiceData.getNumericValue(it.field) ?: 0
-                // if the value is non-zero it has been multiplied by 100 to already contain two decimals
-                val decimals = if (value == 0) it.decimals else it.decimals - 2
-                val length = if (value == 0) it.length else it.length + 2
-                var stringValue = value.toString().padStart(length, '0')
-                result = result + stringValue.padEnd(length + decimals, '0')
-            }
-        }
-
-        result = result + "\n"
-
-        return result
-    }
-
-    fun formatInvoice(invoiceData: InvoiceData): String {
-
-        var result = generateRow(headerRowFields, invoiceData)
-
-        if (invoiceData.getAlphanumericValue(InvoiceFieldName.CODEBTOR_IDENTIFIER) != "")
-            result += generateRow(codebtorRowFields, invoiceData)
-
-        var rowsPerChild = invoiceData.getChildRowMap()
-        rowsPerChild.forEach {
-            result += generateRow(childHeaderRowFields, it.value.get(0))
-            it.value.forEach {
-                result += generateRow(rowHeaderRowFields, it)
-                result += generateRow(detailRowFields, it)
-            }
-        }
-
-        return result
-    }
 
     override fun generateInvoice(invoices: List<InvoiceDetailed>): StringInvoiceGenerator.InvoiceGeneratorResult {
 
@@ -226,14 +45,15 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         val idocs: MutableList<ORDERS05.IDOC> = mutableListOf()
         succeeded.forEach {
-            //idocs.add(generateIdoc(it))
-            idocs.add(generateIdoc())
+            idocs.add(generateIdoc(it))
+            //idocs.add(generateIdoc())
             successList.add(it)
         }
 
         var invoiceString = ""
         try {
             invoiceString = marshalInvoices(idocs)
+            print(invoiceString)
         }
         catch (e: JAXBException) {
             failedList.addAll(successList)
@@ -249,16 +69,82 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         )
     }
 
-    //private fun generateIdoc(invoice: InvoiceDetailed): ORDERS05.IDOC {
-    private fun generateIdoc(): ORDERS05.IDOC {
+    private fun generateIdoc(invoice: InvoiceDetailed): ORDERS05.IDOC {
+    //private fun generateIdoc(): ORDERS05.IDOC {
 
         val idoc = ORDERS05.IDOC()
+
+        // EDIDC40
         val edidc40 = ORDERS05.IDOC.EDIDC40()
         idoc.edidc40 = edidc40
         edidc40.tabnam = "EDI_DC40"
         edidc40.direct = "2"
         edidc40.idoctyp = "ORDERS05"
+        edidc40.mestyp = "ORDERS"
         edidc40.sndpor = ""
+        edidc40.sndprt = "LS"
+        edidc40.sndprn = "VAK_1002"
+        edidc40.rcvpor = ""
+        edidc40.rcvprt = ""
+        edidc40.rcvprn = ""
+
+        // E1EDK01
+        val e1edk01 = ORDERS05.IDOC.E1EDK01()
+        idoc.e1EDK01 = e1edk01
+        e1edk01.zterm = ""
+        e1edk01.augru = ""
+
+        // E1EDK14
+        val e1EDK14list : MutableList<ORDERS05.IDOC.E1EDK14> = mutableListOf()
+        val e1edk14 = ORDERS05.IDOC.E1EDK14()
+        e1edk14.qualf = "006"
+        e1edk14.orgid = "2E"
+        e1EDK14list.add(e1edk14)
+
+        val e1edk14_2 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_2.qualf = "007"
+        e1edk14_2.orgid = "22"
+        e1EDK14list.add(e1edk14_2)
+
+        val e1edk14_3 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_3.qualf = "008"
+        e1edk14_3.orgid = "2100"
+        e1EDK14list.add(e1edk14_3)
+
+        val e1edk14_4 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_4.qualf = "012"
+        e1edk14_4.orgid = "ZMT"
+        e1EDK14list.add(e1edk14_4)
+
+        val e1edk14_5 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_5.qualf = "016"
+        e1edk14_5.orgid = "A010"
+        e1EDK14list.add(e1edk14_5)
+
+        val e1edk14_6 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_6.qualf = "019"
+        e1edk14_6.orgid = "VAK"
+        e1EDK14list.add(e1edk14_6)
+
+        idoc.e1EDK14 = e1EDK14list
+
+        // E1EDK03
+        val e1edk03list : MutableList<ORDERS05.IDOC.E1EDK03> = mutableListOf()
+
+        val e1edk03 = ORDERS05.IDOC.E1EDK03()
+        e1edk03.iddat = "016"
+        e1edk03.datum = SimpleDateFormat("yyyyMMdd").format(Date()) //Current date now. Should be asked from Turku
+        e1edk03list.add(e1edk03)
+
+        val e1edk03_2 = ORDERS05.IDOC.E1EDK03()
+        e1edk03_2.iddat = "024"
+        e1edk03_2.datum = invoice.invoiceDate.toString() //TO BE CONTINUED
+        e1edk03list.add(e1edk03_2)
+
+        idoc.e1EDK03 = e1edk03list
+
+
+
 
         return idoc
     }

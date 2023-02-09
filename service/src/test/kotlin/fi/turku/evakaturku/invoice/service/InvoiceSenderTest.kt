@@ -23,7 +23,7 @@ internal class InvoiceSenderTest {
         sftpSender.send(proEInvoice)
 
         verify(sftpConnector).connect(sftpProperties.address, sftpProperties.username, sftpProperties.password)
-        val fileNamePattern = """$path/proe-\d{8}-\d{6}.txt"""
+        val fileNamePattern = """$path/LAVAK_1002\d{6}-\d{6}.xml"""
         verify(sftpConnector).send(
             argThat { filePath -> filePath.matches(Regex(fileNamePattern)) },
             eq("one")
