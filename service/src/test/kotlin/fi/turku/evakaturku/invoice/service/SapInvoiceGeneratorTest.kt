@@ -186,4 +186,41 @@ class SapInvoiceGeneratorTest {
         assertElement("IDDAT", "024")
     }
 
+    @Test
+    fun `PARVW should have constant value of AG`() {
+        assertElement("PARVW", "AG")
+    }
+
+    @Test
+    fun `PARTN should have constant value of 45100001`() {
+        assertElement("PARTN", "45100001")
+    }
+
+    @Test
+    fun `PARVW should have constant value of RE`() {
+        assertElement("PARVW", "RE")
+    }
+
+    @Test
+    fun `PARVW should have constant value of RG`() {
+        assertElement("PARVW", "RG")
+    }
+
+    @Test
+    fun `PARVW should have constant value of WE`() {
+        assertElement("PARVW", "WE")
+    }
+
+    @Test
+    fun `PARVW should have constant value of Y1`() {
+        assertElement("PARVW", "Y1")
+    }
+
+    @Test
+    fun `PARTN should have constant value of 45100002`() {
+        assertElement("PARTN", "45100002")
+    }
+
+
+
 }

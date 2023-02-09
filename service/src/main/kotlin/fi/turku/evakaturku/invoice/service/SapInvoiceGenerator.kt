@@ -130,7 +130,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         // E1EDK03
         val e1edk03list : MutableList<ORDERS05.IDOC.E1EDK03> = mutableListOf()
-
         val e1edk03 = ORDERS05.IDOC.E1EDK03()
         e1edk03.iddat = "016"
         e1edk03.datum = SimpleDateFormat("yyyyMMdd").format(Date()) //Current date now. Should be asked from Turku
@@ -143,6 +142,36 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         idoc.e1EDK03 = e1edk03list
 
+        // E1EDKA1
+        val e1edka1list : MutableList<ORDERS05.IDOC.E1EDKA1> = mutableListOf()
+
+        val e1edka1 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1.parvw = "AG"
+        e1edka1.partn = "45100001"
+        e1edka1list.add(e1edka1)
+
+        val e1edka1_2 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1_2.parvw = "RE"
+        e1edka1_2.partn = "45100001"
+        e1edka1list.add(e1edka1_2)
+
+        val e1edka1_3 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1_3.parvw = "RG"
+        e1edka1_3.partn = "45100001"
+        e1edka1list.add(e1edka1_3)
+
+        val e1edka1_4 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1_4.parvw = "WE"
+        e1edka1_4.partn = "45100001"
+        e1edka1list.add(e1edka1_4)
+
+        val e1edka1_5 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1_5.parvw = "Y1"
+        e1edka1_5.partn = "45100002"
+        e1edka1list.add(e1edka1_5)
+
+
+        idoc.e1EDKA1 = e1edka1list
 
 
 
