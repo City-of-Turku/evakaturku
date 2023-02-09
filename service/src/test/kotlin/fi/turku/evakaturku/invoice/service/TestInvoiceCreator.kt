@@ -18,7 +18,7 @@ fun validInvoice(): InvoiceDetailed {
             InvoiceRowId(UUID.randomUUID()), PersonDetailed(
             PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,
             "Matti", "Meikäläinen",
-            null, "", "", "",
+            "210281-9988", "", "", "",
             "", null, "", null, restrictedDetailsEnabled = false
     ), 1, 24300,
             LocalDate.of(2021, 1, 1),
@@ -63,7 +63,7 @@ fun validInvoice(): InvoiceDetailed {
             null,
             AreaId(UUID.randomUUID()),
             headOfFamily,
-            null,
+            validCodebtor(),
             listOf(invoiceRow1, invoiceRow2, invoiceRow3),
             null,
             null,
@@ -78,6 +78,14 @@ fun validPerson() = PersonDetailed(
         "310382-956D", "Meikäläisenkuja 6 B 7", "90100", "OULU",
         "", null, "", null, restrictedDetailsEnabled = false
 )
+
+fun validCodebtor() = PersonDetailed(
+    PersonId(UUID.randomUUID()), LocalDate.of(1984, 3, 31), null,
+    "Jaana", "Meikäläinen",
+    "310384-956D", "Meikäläisenkuja 6 B 7", "90100", "OULU",
+    "", null, "", null, restrictedDetailsEnabled = false
+)
+
 
 fun personWithoutSSN() = PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,

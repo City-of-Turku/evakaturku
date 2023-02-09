@@ -192,8 +192,8 @@ class SapInvoiceGeneratorTest {
     }
 
     @Test
-    fun `PARTN should have constant value of 45100001`() {
-        assertElement("PARTN", "45100001")
+    fun `PARTN should have constant value of valid ssn (310382-956D)`() {
+        assertElement("PARTN", "310382-956D")
     }
 
     @Test
@@ -217,10 +217,25 @@ class SapInvoiceGeneratorTest {
     }
 
     @Test
-    fun `PARTN should have constant value of 45100002`() {
-        assertElement("PARTN", "45100002")
+    fun `PARTN should have constant value of codedebtor ssn (310384-956D)`() {
+        assertElement("PARTN", "310384-956D")
     }
 
+    @Test
+    fun `PARTN should have null value of codedebtor ssn (310384-956D)`() {
+        assertElement("PARTN", "310384-956D")
+    }
 
+    // E1EDK02 - segment
+    @Test
+    fun `QUALF should have constant value of 001`() {
+        assertElement("QUALF", "001")
+    }
+
+//    @Test
+//    fun `BELNR should have YEAR+SalesAgency(A010)+InvoicenumberFromEVaka`() {
+//
+//        assertElement("BELNR", "2022A010")
+//    }
 
 }

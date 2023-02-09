@@ -147,32 +147,39 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         val e1edka1 = ORDERS05.IDOC.E1EDKA1()
         e1edka1.parvw = "AG"
-        e1edka1.partn = "45100001"
+        e1edka1.partn = invoice.headOfFamily.ssn.toString()
         e1edka1list.add(e1edka1)
 
         val e1edka1_2 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_2.parvw = "RE"
-        e1edka1_2.partn = "45100001"
+        e1edka1_2.partn = invoice.headOfFamily.ssn.toString()
         e1edka1list.add(e1edka1_2)
 
         val e1edka1_3 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_3.parvw = "RG"
-        e1edka1_3.partn = "45100001"
+        e1edka1_3.partn = invoice.headOfFamily.ssn.toString()
         e1edka1list.add(e1edka1_3)
 
         val e1edka1_4 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_4.parvw = "WE"
-        e1edka1_4.partn = "45100001"
+        e1edka1_4.partn = invoice.headOfFamily.ssn.toString()
         e1edka1list.add(e1edka1_4)
+
 
         val e1edka1_5 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_5.parvw = "Y1"
-        e1edka1_5.partn = "45100002"
+        e1edka1_5.partn = invoice.codebtor?.ssn.toString() //  TODO: If no codebtor this needs to be null
         e1edka1list.add(e1edka1_5)
-
 
         idoc.e1EDKA1 = e1edka1list
 
+        // E1EDK02
+        val e1edk02list : MutableList<ORDERS05.IDOC.E1EDK02> = mutableListOf()
+        val e1edk02 = ORDERS05.IDOC.E1EDK02()
+        e1edk02.qualf = "001"
+//        e1edk02.belnr = SimpleDateFormat("yyyy").format(invoice.invoiceDate) + "A010" + invoice.number
+        e1edk02list.add(e1edk02)
+        idoc.e1EDK02 = e1edk02list
 
 
         return idoc
