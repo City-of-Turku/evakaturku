@@ -193,6 +193,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         // E1EDKT2 - TODO: this is optional
 
+
         // ROWS segment - TODO: loop invoice-row-values here
         //generateInvoiceRow(InvoiceRowDetailed)
 
@@ -200,7 +201,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edp01list : MutableList<ORDERS05.IDOC.E1EDP01> = mutableListOf()
         val e1edp01 = ORDERS05.IDOC.E1EDP01()
         e1edp01.posex = "000010" // TODO: invoicerow number
-        e1edp01.menge = "1.000"
+        e1edp01.menge = "1.000" //  invoice.rows[0].amount.toString() // Todo: format to x.000
         e1edp01.werks = "102S"
         e1edp01list.add(e1edp01)
         idoc.e1EDP01 = e1edp01list
