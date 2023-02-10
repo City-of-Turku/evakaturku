@@ -6,8 +6,10 @@ package fi.turku.evakaturku.invoice.service
 
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
+import fi.espoo.evaka.invoicing.domain.InvoiceRowDetailed
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import fi.turku.evakaturku.invoice.config.Product
+import fi.turku.evakaturku.payment.service.paymentRowFields
 import fi.turku.evakaturku.util.FieldType
 import fi.turku.evakaturku.util.FinanceDateProvider
 import org.springframework.stereotype.Component
@@ -181,9 +183,53 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edk02list.add(e1edk02)
         idoc.e1EDK02 = e1edk02list
 
+        // E1EDKT1 - TODO: this is optional
+        val e1edkt1list : MutableList<ORDERS05.IDOC.E1EDKT1> = mutableListOf()
+        val e1edkt1 = ORDERS05.IDOC.E1EDKT1()
+        e1edkt1.tdid = "Z002"
+        e1edkt1list.add(e1edkt1)
+        idoc.e1EDKT1 = e1edkt1list
+
+
+        // E1EDKT2 - TODO: this is optional
+
+        // ROWS segment - TODO: loop invoice-row-values here
+        //generateInvoiceRow(InvoiceRowDetailed)
+
+        // E1EDP01 ROWS - segment
+        val e1edp01list : MutableList<ORDERS05.IDOC.E1EDP01> = mutableListOf()
+        val e1edp01 = ORDERS05.IDOC.E1EDP01()
+        e1edp01.posex = "000010" // TODO: invoicerow number
+        e1edp01.menge = "1.000"
+        e1edp01.werks = "102S"
+        e1edp01list.add(e1edp01)
+        idoc.e1EDP01 = e1edp01list
+
+        // E1EDP02 ROWS - segment
+        val e1edp02list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP02> = mutableListOf()
+        val e1edp02 = ORDERS05.IDOC.E1EDP01.E1EDP02()
+        e1edp02.qualf = "048"
+        e1edp02.zeile = "000010" //TODO: same as invoice row number POSEX
+        e1edp02.bsark = "0000003108"
+        e1edp02list.add(e1edp02)
+        e1edp01.e1EDP02 = e1edp02list
+
+        // E1EDP03 ROWS - segment
+        val e1edp03list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP03> = mutableListOf()
+        val e1edp03 = ORDERS05.IDOC.E1EDP01.E1EDP03()
+        e1edp03.iddat = "002"
+        e1edp03.datum = invoice.invoiceDate.toString()
+        e1edp03list.add(e1edp03)
+        e1edp01.e1EDP03 = e1edp03list
+
 
         return idoc
     }
+
+//    private fun generateInvoiceRow(invoiceRowDetailed: Any) {
+//
+//    }
+
 
     fun marshalInvoices(idocs: List<ORDERS05.IDOC>): String {
         val contextObj: JAXBContext = JAXBContext.newInstance(ORDERS05::class.java)

@@ -238,4 +238,54 @@ class SapInvoiceGeneratorTest {
 //        assertElement("BELNR", "2022A010")
 //    }
 
+    // E1EDKT1 - segment TODO: this is optional
+    @Test
+    fun `TDID should have constant value of Z002`() {
+        assertElement("TDID", "Z002")
+    }
+
+    // E1EDKT2 - TODO: this is optional
+
+
+    // E1EDP01 ROWS - segment
+    @Test // TODO: invoicerow number
+    fun `POSEX should have constant value of 000010`() {
+        assertElement("POSEX", "000010")
+    }
+
+    @Test
+    fun `MENGE should have constant value of 1,000`() {
+        assertElement("MENGE", "1.000")
+    }
+
+    @Test
+    fun `WERKS should have constant value of 102S`() {
+        assertElement("WERKS", "102S")
+    }
+
+    // E1EDP02 ROWS - segment
+
+    @Test
+    fun `QUALF should have constant value of 048`() {
+        assertElement("QUALF", "048")
+    }
+
+    @Test //TODO: same as invoice row number POSEX
+    fun `ZEILE should have constant value of 000010`() {
+        assertElement("ZEILE", "000010")
+    }
+
+    @Test
+    fun `BSARK should have constant value of 0000003108`() {
+        assertElement("BSARK", "0000003108")
+    }
+
+    // E1EDP03 ROWS - segment
+    @Test
+    fun `IDDAT should have constant value of 002`() {
+        assertElement("IDDAT", "002")
+    }
+
+
+
 }
