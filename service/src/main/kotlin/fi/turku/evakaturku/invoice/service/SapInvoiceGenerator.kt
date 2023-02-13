@@ -4,26 +4,18 @@
 
 package fi.turku.evakaturku.invoice.service
 
-import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
-import fi.espoo.evaka.invoicing.domain.InvoiceRowDetailed
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import fi.turku.evakaturku.invoice.config.Product
-import fi.turku.evakaturku.payment.service.paymentRowFields
-import fi.turku.evakaturku.util.FieldType
 import fi.turku.evakaturku.util.FinanceDateProvider
 import org.springframework.stereotype.Component
-import java.io.FileOutputStream
 import java.io.StringWriter
-import java.lang.Math.abs
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 import javax.xml.bind.JAXBContext
 import javax.xml.bind.JAXBException
 import javax.xml.bind.Marshaller
-import javax.xml.stream.XMLStreamWriter
 
 
 @Component
@@ -150,49 +142,81 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edka1 = ORDERS05.IDOC.E1EDKA1()
         e1edka1.parvw = "AG"
         e1edka1.partn = invoice.headOfFamily.ssn.toString()
+        e1edka1.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+        e1edka1.stras = invoice.headOfFamily.streetAddress
+        e1edka1.pstlz = invoice.headOfFamily.postalCode
+        e1edka1.orT01 = invoice.headOfFamily.postOffice
+        e1edka1.land1 = "FI"
+
+
         e1edka1list.add(e1edka1)
 
         val e1edka1_2 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_2.parvw = "RE"
         e1edka1_2.partn = invoice.headOfFamily.ssn.toString()
+        e1edka1_2.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+        e1edka1_2.stras = invoice.headOfFamily.streetAddress
+        e1edka1_2.pstlz = invoice.headOfFamily.postalCode
+        e1edka1_2.orT01 = invoice.headOfFamily.postOffice
         e1edka1list.add(e1edka1_2)
 
         val e1edka1_3 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_3.parvw = "RG"
         e1edka1_3.partn = invoice.headOfFamily.ssn.toString()
+        e1edka1_3.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+        e1edka1_3.stras = invoice.headOfFamily.streetAddress
+        e1edka1_3.pstlz = invoice.headOfFamily.postalCode
+        e1edka1_3.orT01 = invoice.headOfFamily.postOffice
         e1edka1list.add(e1edka1_3)
 
         val e1edka1_4 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_4.parvw = "WE"
         e1edka1_4.partn = invoice.headOfFamily.ssn.toString()
+        e1edka1_4.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+        e1edka1_4.stras = invoice.headOfFamily.streetAddress
+        e1edka1_4.pstlz = invoice.headOfFamily.postalCode
+        e1edka1_4.orT01 = invoice.headOfFamily.postOffice
         e1edka1list.add(e1edka1_4)
 
 
-        val e1edka1_5 = ORDERS05.IDOC.E1EDKA1()
-        e1edka1_5.parvw = "Y1"
-        e1edka1_5.partn = invoice.codebtor?.ssn.toString() //  TODO: If no codebtor this needs to be null
-        e1edka1list.add(e1edka1_5)
+        if (invoice.codebtor != null)//  TODO: If no codebtor this needs to be null
+        {
+            val e1edka1_5 = ORDERS05.IDOC.E1EDKA1()
+            e1edka1_5.parvw = "Y1"
+            e1edka1_5.partn = invoice.codebtor?.ssn.toString()
+            e1edka1_4.name1 = invoice.codebtor?.lastName + " " + invoice.codebtor?.firstName
+            e1edka1_4.stras = invoice.codebtor?.streetAddress
+            e1edka1_4.pstlz = invoice.codebtor?.postalCode
+            e1edka1_4.orT01 = invoice.codebtor?.postOffice
+            e1edka1list.add(e1edka1_5)
 
-        idoc.e1EDKA1 = e1edka1list
+            idoc.e1EDKA1 = e1edka1list
+        }
 
         // E1EDK02
         val e1edk02list : MutableList<ORDERS05.IDOC.E1EDK02> = mutableListOf()
         val e1edk02 = ORDERS05.IDOC.E1EDK02()
         e1edk02.qualf = "001"
-//        e1edk02.belnr = SimpleDateFormat("yyyy").format(invoice.invoiceDate) + "A010" + invoice.number
+    //    e1edk02.belnr = SimpleDateFormat("yyyy").format(invoice.invoiceDate) + "A010" + invoice.number
         e1edk02list.add(e1edk02)
         idoc.e1EDK02 = e1edk02list
 
-        // E1EDKT1 - TODO: this is optional
+        // E1EDKT1
         val e1edkt1list : MutableList<ORDERS05.IDOC.E1EDKT1> = mutableListOf()
         val e1edkt1 = ORDERS05.IDOC.E1EDKT1()
         e1edkt1.tdid = "Z002"
-        e1edkt1list.add(e1edkt1)
+
         idoc.e1EDKT1 = e1edkt1list
 
 
-        // E1EDKT2 - TODO: this is optional
-
+        // E1EDKT2
+        val e1edkt2list : MutableList<ORDERS05.IDOC.E1EDKT1.E1EDKT2> = mutableListOf()
+        val e1edkt2 = ORDERS05.IDOC.E1EDKT1.E1EDKT2()
+        e1edkt2.tdline = "Lisätietoja laskun sisällöstä puh 358 22625609"
+        e1edkt2.tdformat = "*"
+        e1edkt2list.add(e1edkt2)
+        e1edkt1.e1EDKT2 = e1edkt2list
+        e1edkt1list.add(e1edkt1)
 
         // ROWS segment - TODO: loop invoice-row-values here
         //generateInvoiceRow(InvoiceRowDetailed)
@@ -222,6 +246,70 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edp03.datum = invoice.invoiceDate.toString()
         e1edp03list.add(e1edp03)
         e1edp01.e1EDP03 = e1edp03list
+
+        // E1EDP19 ROWS - segment
+        val e1edp19list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP19> = mutableListOf()
+        val e1edp19 = ORDERS05.IDOC.E1EDP01.E1EDP19()
+        e1edp19.qualf = "002"
+        if(invoice.rows[0].product.value == Product.DAYCARE.toString())
+        {
+            e1edp19.idtnr = "000000000000007246"
+        }
+        else if (invoice.rows[0].product.value == Product.PRESCHOOL_WITH_DAYCARE.toString())
+        {
+            e1edp19.idtnr = "000000000000007251"
+        }
+        e1edp19list.add(e1edp19)
+        e1edp01.e1EDP19= e1edp19list
+
+        // E1EDPT1 ROWS - segment
+        val e1edpt1list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1> = mutableListOf()
+        val e1edpt1 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
+        //Daycare name
+        e1edpt1.tdid = "ZZ01"
+
+        e1edpt1list.add(e1edpt1)
+
+        e1edp01.e1EDPT1= e1edpt1list
+
+        val e1edpt2list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
+        val e1edpt2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+        e1edpt2.tdline = "Testipäiväkoti" // TODO: needs core change to get daycare name also in invoice.rows
+        e1edpt2.tdformat = "*"
+        e1edpt2list.add(e1edpt2)
+
+        e1edpt1.e1EDPT2 = e1edpt2list
+
+        //Child name
+        val e1edpt1_2 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
+        e1edpt1_2.tdid = "ZZ02"
+        e1edpt1list.add(e1edpt1_2)
+
+        val e1edpt2_2list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
+        val e1edpt2_2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+        e1edpt2_2.tdline = invoice.rows[0].child.firstName + " " +invoice.rows[0].child.lastName
+        e1edpt2_2.tdformat = "*"
+        e1edpt2_2list.add(e1edpt2_2)
+
+        e1edpt1_2.e1EDPT2 = e1edpt2_2list
+
+        //DateTime range
+
+        val e1edpt1_3 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
+        e1edpt1_3.tdid = "ZZ03"
+        e1edpt1list.add(e1edpt1_3)
+
+        val e1edpt2_3list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
+        val e1edpt2_3 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+
+        val pattern = "dd.MM.yyyy"
+        val formatter = DateTimeFormatter.ofPattern(pattern)
+
+        e1edpt2_3.tdline =  invoice.rows[0].periodStart.format(formatter) + " - " + invoice.rows[0].periodEnd.format(formatter)
+        e1edpt2_3.tdformat = "*"
+        e1edpt2_3list.add(e1edpt2_3)
+
+        e1edpt1_3.e1EDPT2 = e1edpt2_3list
 
 
         return idoc

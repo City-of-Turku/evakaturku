@@ -75,14 +75,14 @@ fun validInvoice(): InvoiceDetailed {
 fun validPerson() = PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
         "Matti", "Meikäläinen",
-        "310382-956D", "Meikäläisenkuja 6 B 7", "90100", "OULU",
+        "310382-956D", "Meikäläisenkuja 6 B 7", "20100", "TURKU",
         "", null, "", null, restrictedDetailsEnabled = false
 )
 
 fun validCodebtor() = PersonDetailed(
     PersonId(UUID.randomUUID()), LocalDate.of(1984, 3, 31), null,
     "Jaana", "Meikäläinen",
-    "310384-956D", "Meikäläisenkuja 6 B 7", "90100", "OULU",
+    "310384-956D", "Meikäläisenkuja 6 B 7", "20100", "TURKU",
     "", null, "", null, restrictedDetailsEnabled = false
 )
 
@@ -90,20 +90,20 @@ fun validCodebtor() = PersonDetailed(
 fun personWithoutSSN() = PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
         "Maija", "Meikäläinen",
-        null, "Meikäläisenkuja 6 B 7", "90100", "OULU",
+        null, "Meikäläisenkuja 6 B 7", "20100", "TURKU",
         "", null, "", null, restrictedDetailsEnabled = false
 )
 
 fun personWithRestrictedDetails() = PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
         "Mysteeri", "Meikäläinen",
-        "280691-943Z", "Todistajansuojeluohjelmankatu 9", "45600", "OULU",
+        "280691-943Z", "Todistajansuojeluohjelmankatu 9", "25600", "TURKU",
         "", null, "", null, restrictedDetailsEnabled = true
 )
 
 fun personWithLongName() = PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
         "Eskoensio Velipekka-Simopetteri", "von und zu Aaltonen-Räyhäkäinen",
-        "310382-956D", "Aateliskulma 3", "90200", "OULU",
+        "310382-956D", "Aateliskulma 3", "20200", "TURKU",
         "", null, "", null, restrictedDetailsEnabled = false
 )

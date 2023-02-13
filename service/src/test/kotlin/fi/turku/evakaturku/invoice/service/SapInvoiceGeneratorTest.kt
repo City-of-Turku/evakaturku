@@ -245,7 +245,10 @@ class SapInvoiceGeneratorTest {
     }
 
     // E1EDKT2 - TODO: this is optional
-
+    @Test
+    fun `TDLINE should have constant value of Lisätietoja laskun sisällöstä puh 358 22625609`() {
+        assertElement("TDLINE", "Lisätietoja laskun sisällöstä puh 358 22625609")
+    }
 
     // E1EDP01 ROWS - segment
     @Test // TODO: invoicerow number
@@ -264,7 +267,6 @@ class SapInvoiceGeneratorTest {
     }
 
     // E1EDP02 ROWS - segment
-
     @Test
     fun `QUALF should have constant value of 048`() {
         assertElement("QUALF", "048")
@@ -284,6 +286,50 @@ class SapInvoiceGeneratorTest {
     @Test
     fun `IDDAT should have constant value of 002`() {
         assertElement("IDDAT", "002")
+    }
+
+    // E1EDP19 ROWS - segment
+    @Test
+    fun `QUALF should have constant value of 002`() {
+        assertElement("QUALF", "002")
+    }
+
+    // TODO: IDTNR test for product
+
+    // E1EDPT1 ROWS - segment
+    @Test
+    fun `TDID should have constant value of ZZ01`() {
+        assertElement("TDID", "ZZ01")
+    }
+
+    @Test// TODO: daycare name is not possible to set currently
+    fun `TDLINE should have constant value of Testipäiväkoti`() {
+        assertElement("TDLINE", "Testipäiväkoti")
+    }
+
+//    @Test
+//    fun `TDFORMAT should have constant value of *`() {
+//        assertElement("TDFORMAT", "*")
+//    }
+
+    @Test
+    fun `TDID should have constant value of ZZ02`() {
+        assertElement("TDID", "ZZ02")
+    }
+
+    @Test
+    fun `TDLINE should have constant value of Matti Meikäläinen`() {
+        assertElement("TDLINE", "Matti Meikäläinen")
+    }
+
+    @Test
+    fun `TDID should have constant value of ZZ03`() {
+        assertElement("TDID", "ZZ03")
+    }
+
+    @Test
+    fun `TDLINE should have constant value of DateTime interval`() {
+        assertElement("TDLINE", "01.01.2021 - 31.01.2021")
     }
 
 
