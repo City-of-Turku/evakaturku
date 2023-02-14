@@ -7,7 +7,7 @@ COPY theme/package*.json ./
 RUN npm ci
 COPY theme .
 COPY theme-fi.sed ./
-COPY TurkuLogo.png evaka/login/resources/img/TurunLogo.png
+COPY TurkuLogo.png evaka/login/resources/img/TurkuLogo.png
 RUN sed -i -E -f theme-fi.sed evaka/login/messages/messages_fi.properties && \
     sed -i -e '/<#--/d' -e '/-->/d' evaka/login/login-update-profile.ftl
 RUN npm run build
