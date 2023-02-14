@@ -232,11 +232,11 @@ class SapInvoiceGeneratorTest {
         assertElement("QUALF", "001")
     }
 
-//    @Test
-//    fun `BELNR should have YEAR+SalesAgency(A010)+InvoicenumberFromEVaka`() {
-//
-//        assertElement("BELNR", "2022A010")
-//    }
+    @Test
+    fun `BELNR should have YEAR+SalesAgency(A010)+InvoicenumberFromEVaka`() {
+
+        assertElement("BELNR", "2021A01012345")
+    }
 
     // E1EDKT1 - segment TODO: this is optional
     @Test

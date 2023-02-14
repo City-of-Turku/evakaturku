@@ -65,7 +65,7 @@ fun validInvoice(): InvoiceDetailed {
             headOfFamily,
             validCodebtor(),
             listOf(invoiceRow1, invoiceRow2, invoiceRow3),
-            null,
+            12345,
             null,
             HelsinkiDateTime.Companion.of(
                     LocalDateTime.of(2022, 5, 5, 1, 1))
