@@ -489,7 +489,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edp05.kschl = "ZPR0"
         //TODO: if unit price is negative remove mark and add it after the unit price
         val formattedUnitPrice = invoice.rows[0].unitPrice.toDouble() / 100
-        e1edp05.krate = String.format("%.2f", formattedUnitPrice)
+        e1edp05.krate = String.format(Locale.ENGLISH,"%.2f", formattedUnitPrice)
         e1edp05list.add(e1edp05)
         e1edp01.e1EDP05 = e1edp05list
 
