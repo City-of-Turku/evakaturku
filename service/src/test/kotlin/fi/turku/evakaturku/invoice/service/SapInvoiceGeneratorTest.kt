@@ -288,6 +288,22 @@ class SapInvoiceGeneratorTest {
         assertElement("IDDAT", "002")
     }
 
+    // E1EDP05 ROWS - segment
+//    @Test
+//    fun `ALCKZ should have constant value of +`() {
+//        assertElement("ALCKZ", "+")
+//    }
+
+    @Test
+    fun `KSCHL should have constant value of ZPR0`() {
+        assertElement("KSCHL", "ZPR0")
+    }
+
+//    @Test
+//    fun `KRATE should have constant value of 243.00`() {
+//        assertElement("KRATE", "243.00")
+//    }
+
     // E1EDP19 ROWS - segment
     @Test
     fun `QUALF should have constant value of 002`() {

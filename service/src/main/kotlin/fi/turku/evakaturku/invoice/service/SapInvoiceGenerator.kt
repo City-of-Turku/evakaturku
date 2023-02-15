@@ -254,8 +254,53 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edka1_3 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_3.parvw = "RG"
         e1edka1_3.partn = invoice.headOfFamily.ssn.toString()
-        e1edka1_3.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
-        e1edka1_3.stras = invoice.headOfFamily.streetAddress
+
+        val nameInInvoiceRG = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+        if (nameInInvoiceRG.count() > 35)
+        {
+            e1edka1_3.name1 = nameInInvoiceRG.substring(0, 35)
+            if (nameInInvoiceRG.length > 70) {
+                e1edka1_3.name2 = nameInInvoiceRG.substring(35, 70)
+                if (nameInInvoiceRG.length > 105)
+                {
+                    e1edka1_3.name3 = nameInInvoiceRG.substring(70, 105)
+                    if (nameInInvoiceRG.length > 140)
+                    {
+                        e1edka1_3.name4 = nameInInvoiceRG.substring(105, 140)
+                    }
+                    else
+                    {
+                        e1edka1_3.name4 = nameInInvoiceRG.substring(105, nameInInvoiceRG.length)
+                    }
+                }
+                else
+                {
+                    e1edka1_3.name3 = nameInInvoiceRG.substring(70, nameInInvoiceRG.length)
+                }
+            }
+            else
+            {
+                e1edka1_3.name2 = nameInInvoiceRG.substring(35, nameInInvoiceRG.length)
+            }
+        }
+        else
+        {
+            e1edka1_3.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+        }
+
+        val streetAddressRG = invoice.headOfFamily.streetAddress
+        if (streetAddressRG.count() > 35)
+        {
+            e1edka1_3.stras = streetAddressRG.substring(0, 35)
+            if (streetAddressRG.length > 70) {
+                e1edka1_3.strs2 = streetAddressRG.substring(35, 70)
+            }
+            else
+            {
+                e1edka1_3.strs2 = streetAddressRG.substring(35, streetAddressRG.length)
+            }
+        }
+
         e1edka1_3.pstlz = invoice.headOfFamily.postalCode
         e1edka1_3.orT01 = invoice.headOfFamily.postOffice
         e1edka1list.add(e1edka1_3)
@@ -263,20 +308,115 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edka1_4 = ORDERS05.IDOC.E1EDKA1()
         e1edka1_4.parvw = "WE"
         e1edka1_4.partn = invoice.headOfFamily.ssn.toString()
-        e1edka1_4.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
-        e1edka1_4.stras = invoice.headOfFamily.streetAddress
+
+        val nameInInvoiceWE = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+        if (nameInInvoiceWE.count() > 35)
+        {
+            e1edka1_4.name1 = nameInInvoiceWE.substring(0, 35)
+            if (nameInInvoiceWE.length > 70) {
+                e1edka1_4.name2 = nameInInvoiceWE.substring(35, 70)
+                if (nameInInvoiceWE.length > 105)
+                {
+                    e1edka1_4.name3 = nameInInvoiceWE.substring(70, 105)
+                    if (nameInInvoiceWE.length > 140)
+                    {
+                        e1edka1_4.name4 = nameInInvoiceWE.substring(105, 140)
+                    }
+                    else
+                    {
+                        e1edka1_4.name4 = nameInInvoiceWE.substring(105, nameInInvoiceWE.length)
+                    }
+                }
+                else
+                {
+                    e1edka1_4.name3 = nameInInvoiceWE.substring(70, nameInInvoiceWE.length)
+                }
+            }
+            else
+            {
+                e1edka1_4.name2 = nameInInvoiceWE.substring(35, nameInInvoiceWE.length)
+            }
+        }
+        else
+        {
+            e1edka1_4.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+        }
+
+        val streetAddressWE = invoice.headOfFamily.streetAddress
+        if (streetAddressWE.count() > 35)
+        {
+            e1edka1_4.stras = streetAddressWE.substring(0, 35)
+            if (streetAddressWE.length > 70) {
+                e1edka1_4.strs2 = streetAddressWE.substring(35, 70)
+            }
+            else
+            {
+                e1edka1_4.strs2 = streetAddressWE.substring(35, streetAddressWE.length)
+            }
+        }
+
         e1edka1_4.pstlz = invoice.headOfFamily.postalCode
         e1edka1_4.orT01 = invoice.headOfFamily.postOffice
         e1edka1list.add(e1edka1_4)
 
 
-        if (invoice.codebtor != null)//  TODO: If no codebtor this needs to be null
+        if (invoice.codebtor != null)//
         {
             val e1edka1_5 = ORDERS05.IDOC.E1EDKA1()
             e1edka1_5.parvw = "Y1"
             e1edka1_5.partn = invoice.codebtor?.ssn.toString()
-            e1edka1_4.name1 = invoice.codebtor?.lastName + " " + invoice.codebtor?.firstName
-            e1edka1_4.stras = invoice.codebtor?.streetAddress
+            //e1edka1_4.name1 = invoice.codebtor?.lastName + " " + invoice.codebtor?.firstName
+
+            val nameOfCodebtorY1 = invoice.codebtor?.lastName + " " + invoice.codebtor?.firstName
+            if (nameOfCodebtorY1.count() > 35)
+            {
+                e1edka1_3.name1 = nameOfCodebtorY1.substring(0, 35)
+                if (nameOfCodebtorY1.length > 70) {
+                    e1edka1_3.name2 = nameOfCodebtorY1.substring(35, 70)
+                    if (nameOfCodebtorY1.length > 105)
+                    {
+                        e1edka1_3.name3 = nameOfCodebtorY1.substring(70, 105)
+                        if (nameOfCodebtorY1.length > 140)
+                        {
+                            e1edka1_3.name4 = nameOfCodebtorY1.substring(105, 140)
+                        }
+                        else
+                        {
+                            e1edka1_3.name4 = nameOfCodebtorY1.substring(105, nameOfCodebtorY1.length)
+                        }
+                    }
+                    else
+                    {
+                        e1edka1_3.name3 = nameOfCodebtorY1.substring(70, nameOfCodebtorY1.length)
+                    }
+                }
+                else
+                {
+                    e1edka1_3.name2 = nameOfCodebtorY1.substring(35, nameOfCodebtorY1.length)
+                }
+            }
+            else
+            {
+                e1edka1_3.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+            }
+
+            val streetAddressCodebtorY1 = invoice.codebtor?.streetAddress
+
+            if(streetAddressCodebtorY1 != null)
+            {
+                if (streetAddressCodebtorY1.count() > 35)
+                {
+                    e1edka1_3.stras = streetAddressCodebtorY1.substring(0, 35)
+                    if (streetAddressCodebtorY1.length > 70) {
+                        e1edka1_3.strs2 = streetAddressCodebtorY1.substring(35, 70)
+                    }
+                    else
+                    {
+                        e1edka1_3.strs2 = streetAddressCodebtorY1.substring(35, streetAddressCodebtorY1.length)
+                    }
+                }
+            }
+
             e1edka1_4.pstlz = invoice.codebtor?.postalCode
             e1edka1_4.orT01 = invoice.codebtor?.postOffice
             e1edka1list.add(e1edka1_5)
@@ -342,6 +482,17 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edp03list.add(e1edp03)
         e1edp01.e1EDP03 = e1edp03list
 
+        // E1EDP05 ROWS - segment
+        val e1edp05list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP05> = mutableListOf()
+        val e1edp05 = ORDERS05.IDOC.E1EDP01.E1EDP05()
+        e1edp05.alckz = "+"
+        e1edp05.kschl = "ZPR0"
+        //TODO: if unit price is negative remove mark and add it after the unit price
+        val formattedUnitPrice = invoice.rows[0].unitPrice.toDouble() / 100
+        e1edp05.krate = String.format("%.2f", formattedUnitPrice)
+        e1edp05list.add(e1edp05)
+        e1edp01.e1EDP05 = e1edp05list
+
         // E1EDP19 ROWS - segment
         val e1edp19list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP19> = mutableListOf()
         val e1edp19 = ORDERS05.IDOC.E1EDP01.E1EDP19()
@@ -362,7 +513,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edpt1 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
         //Daycare name
         e1edpt1.tdid = "ZZ01"
-
         e1edpt1list.add(e1edpt1)
 
         e1edp01.e1EDPT1= e1edpt1list
