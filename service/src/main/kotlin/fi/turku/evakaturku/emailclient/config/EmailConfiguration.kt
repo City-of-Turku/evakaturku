@@ -10,6 +10,7 @@ import fi.espoo.evaka.emailclient.EmailContent
 import fi.espoo.evaka.emailclient.IEmailMessageProvider
 import fi.espoo.evaka.messaging.MessageThreadStub
 import fi.espoo.evaka.messaging.MessageType
+import fi.espoo.evaka.shared.ChildId
 import fi.espoo.evaka.shared.domain.FiniteDateRange
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -354,5 +355,91 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
             Varhaiskasvatuksen palveluohjaus 
         """.trimIndent()
     }
+
+    override fun vasuNotification(language: Language, childId: ChildId): EmailContent {
+        val documentsUrl = "${baseUrl(language)}/children/$childId"
+        return EmailContent(
+            subject = "Uusi dokumentti eVakassa / Nytt dokument i eVaka / New document in eVaka",
+            text =
+            """
+                Sinulle on saapunut uusi dokumentti eVakaan. Lue dokumentti täältä: $documentsUrl
+                
+                Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
+                
+                -----
+       
+                Du har fått ett nytt dokument i eVaka. Läs dokumentet här: $documentsUrl
+                
+                Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
+                
+                -----
+                
+                You have received a new eVaka document. Read the document here: $documentsUrl
+                
+                This is an automatic message from the eVaka system. Do not reply to this message.  
+        """
+                .trimIndent(),
+            html =
+            """
+                <p>Sinulle on saapunut uusi dokumentti eVakaan. Lue dokumentti täältä: <a href="$documentsUrl">$documentsUrl</a></p>
+                <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+            
+                <hr>
+                
+                <p>Du har fått ett nytt dokument i eVaka. Läs dokumentet här: <a href="$documentsUrl">$documentsUrl</a></p>
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>          
+                
+                <hr>
+                
+                <p>You have received a new eVaka document. Read the document here: <a href="$documentsUrl">$documentsUrl</a></p>
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
+        """
+                .trimIndent()
+        )
+    }
+
+    override fun pedagogicalDocumentNotification(language: Language): EmailContent {
+        val documentsUrl = "${baseUrl(language)}/pedagogical-documents"
+        return EmailContent(
+            subject =
+            "Uusi pedagoginen dokumentti eVakassa / Nytt pedagogiskt dokument i eVaka / New pedagogical document in eVaka",
+            text =
+            """
+                Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti täältä: $documentsUrl
+                
+                Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
+                
+                -----
+       
+                Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet här: $documentsUrl
+                
+                Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
+                
+                -----
+                
+                You have received a new eVaka pedagogical document. Read the document here: $documentsUrl
+                
+                This is an automatic message from the eVaka system. Do not reply to this message.  
+        """
+                .trimIndent(),
+            html =
+            """
+                <p>Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti täältä: <a href="$documentsUrl">$documentsUrl</a></p>
+                <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+            
+                <hr>
+                
+                <p>Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet här: <a href="$documentsUrl">$documentsUrl</a></p>
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>          
+                
+                <hr>
+                
+                <p>You have received a new eVaka pedagogical document. Read the document here: <a href="$documentsUrl">$documentsUrl</a></p>
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
+        """
+                .trimIndent()
+        )
+    }
+
 
 }
