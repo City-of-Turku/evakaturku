@@ -132,7 +132,8 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         val e1edk03_2 = ORDERS05.IDOC.E1EDK03()
         e1edk03_2.iddat = "024"
-        e1edk03_2.datum = invoice.invoiceDate.toString() //TO BE CONTINUED
+        e1edk03_2.datum = SimpleDateFormat("yyyyMMdd").format(Date()) //Current date now. Should be asked from Turku
+        // invoice.invoiceDate.toString() //TO BE CONTINUED
         e1edk03list.add(e1edk03_2)
 
         idoc.e1EDK03 = e1edk03list
@@ -428,10 +429,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edk02list : MutableList<ORDERS05.IDOC.E1EDK02> = mutableListOf()
         val e1edk02 = ORDERS05.IDOC.E1EDK02()
         e1edk02.qualf = "001"
-
-
         val invoiceYearFormatter = DateTimeFormatter.ofPattern("yyyy")
-
         e1edk02.belnr = invoice.invoiceDate.format(invoiceYearFormatter) + "A010" + invoice.number
         e1edk02list.add(e1edk02)
         idoc.e1EDK02 = e1edk02list
@@ -440,9 +438,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edkt1list : MutableList<ORDERS05.IDOC.E1EDKT1> = mutableListOf()
         val e1edkt1 = ORDERS05.IDOC.E1EDKT1()
         e1edkt1.tdid = "Z002"
-
         idoc.e1EDKT1 = e1edkt1list
-
 
         // E1EDKT2
         val e1edkt2list : MutableList<ORDERS05.IDOC.E1EDKT1.E1EDKT2> = mutableListOf()
@@ -460,7 +456,8 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edp01list : MutableList<ORDERS05.IDOC.E1EDP01> = mutableListOf()
         val e1edp01 = ORDERS05.IDOC.E1EDP01()
         e1edp01.posex = "000010" // TODO: invoicerow number
-        e1edp01.menge = "1.000" //  invoice.rows[0].amount.toString() // Todo: format to x.000
+        val formattedUnitAmount = invoice.rows[0].amount.toDouble()
+        e1edp01.menge = String.format(Locale.ENGLISH,"%.3f", formattedUnitAmount)
         e1edp01.werks = "102S"
         e1edp01list.add(e1edp01)
         idoc.e1EDP01 = e1edp01list
@@ -478,7 +475,8 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edp03list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP03> = mutableListOf()
         val e1edp03 = ORDERS05.IDOC.E1EDP01.E1EDP03()
         e1edp03.iddat = "002"
-        e1edp03.datum = invoice.invoiceDate.toString()
+        val dateFormatterE1EDP03 = DateTimeFormatter.ofPattern("yyyyMMdd")
+        e1edp03.datum = invoice.invoiceDate.format(dateFormatterE1EDP03)
         e1edp03list.add(e1edp03)
         e1edp01.e1EDP03 = e1edp03list
 
