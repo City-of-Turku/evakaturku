@@ -11,6 +11,13 @@ object Version {
 
 repositories {
     mavenCentral()
+    maven("https://build.shibboleth.net/maven/releases") {
+        content {
+            includeGroup("net.shibboleth")
+            includeGroup("net.shibboleth.utilities")
+            includeGroup("org.opensaml")
+        }
+    }
 }
 
 
@@ -26,16 +33,15 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-web-services")
 
-    implementation("javax.xml.bind:jaxb-api")
+    xjcTool("com.sun.xml.bind:jaxb-xjc:3.0.2")
+    xjcTool("com.sun.xml.bind:jaxb-impl:3.0.2")
+
     implementation("org.apache.httpcomponents:httpclient")
     implementation("com.github.kittinunf.fuel:fuel")
     implementation("org.jdbi:jdbi3-core")
     implementation("com.jcraft:jsch:0.1.55")
 
     implementation("software.amazon.awssdk:s3")
-
-    implementation("javax.jws:javax.jws-api")
-    implementation("javax.xml.ws:jaxws-api")
 
     api("io.opentracing:opentracing-api:${Version.openTracing}")
     api("io.opentracing:opentracing-util:${Version.openTracing}")
