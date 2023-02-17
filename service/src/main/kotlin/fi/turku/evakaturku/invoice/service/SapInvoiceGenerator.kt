@@ -9,14 +9,14 @@ import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import fi.espoo.evaka.toSystemEnvKey
 import fi.turku.evakaturku.invoice.config.Product
 import fi.turku.evakaturku.util.FinanceDateProvider
+import jakarta.xml.bind.JAXBContext
+import jakarta.xml.bind.JAXBException
+import jakarta.xml.bind.Marshaller
 import org.springframework.stereotype.Component
 import java.io.StringWriter
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 import java.util.*
-import javax.xml.bind.JAXBContext
-import javax.xml.bind.JAXBException
-import javax.xml.bind.Marshaller
 
 
 @Component

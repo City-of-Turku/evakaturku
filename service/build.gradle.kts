@@ -33,8 +33,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-web-services")
 
-    xjcTool("com.sun.xml.bind:jaxb-xjc:3.0.2")
-    xjcTool("com.sun.xml.bind:jaxb-impl:3.0.2")
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api")
+    implementation("com.sun.xml.bind:jaxb-impl")
 
     implementation("org.apache.httpcomponents:httpclient")
     implementation("com.github.kittinunf.fuel:fuel")
