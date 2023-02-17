@@ -4,9 +4,10 @@
 
 package fi.turku.evakaturku.pdfgen.service
 
-import fi.espoo.voltti.pdfgen.PDFService
-import fi.espoo.voltti.pdfgen.Page
-import fi.espoo.voltti.pdfgen.Template
+
+import fi.espoo.evaka.pdfgen.Page
+import fi.espoo.evaka.pdfgen.PdfGenerator
+import fi.espoo.evaka.pdfgen.Template
 import fi.turku.evakaturku.AbstractIntegrationTest
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,7 +16,7 @@ import org.thymeleaf.context.Context
 internal class PDFServiceTest : AbstractIntegrationTest() {
 
     @Autowired
-    private lateinit var pdfService: PDFService
+    private lateinit var pdfService: PdfGenerator
 
     @Test
     fun render() {

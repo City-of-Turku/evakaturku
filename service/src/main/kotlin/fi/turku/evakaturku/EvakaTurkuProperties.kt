@@ -5,12 +5,10 @@
 package fi.turku.evakaturku
 
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.boot.context.properties.ConstructorBinding
 
 /**
  * All evakaturku-specific configuration properties.
  */
-@ConstructorBinding
 @ConfigurationProperties(prefix = "evakaturku", ignoreUnknownFields = false)
 data class EvakaTurkuProperties(
     val sapInvoicing: SftpProperties,

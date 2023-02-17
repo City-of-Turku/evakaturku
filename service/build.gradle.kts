@@ -11,6 +11,13 @@ object Version {
 
 repositories {
     mavenCentral()
+    maven("https://build.shibboleth.net/maven/releases") {
+        content {
+            includeGroup("net.shibboleth")
+            includeGroup("net.shibboleth.utilities")
+            includeGroup("org.opensaml")
+        }
+    }
 }
 
 
@@ -26,16 +33,15 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-web-services")
 
-    implementation("javax.xml.bind:jaxb-api")
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api")
+    implementation("com.sun.xml.bind:jaxb-impl")
+
     implementation("org.apache.httpcomponents:httpclient")
     implementation("com.github.kittinunf.fuel:fuel")
     implementation("org.jdbi:jdbi3-core")
     implementation("com.jcraft:jsch:0.1.55")
 
     implementation("software.amazon.awssdk:s3")
-
-    implementation("javax.jws:javax.jws-api")
-    implementation("javax.xml.ws:jaxws-api")
 
     api("io.opentracing:opentracing-api:${Version.openTracing}")
     api("io.opentracing:opentracing-util:${Version.openTracing}")
@@ -89,4 +95,8 @@ tasks.register<Test>("pdfGenerationTest"){
     useJUnitPlatform {
         includeTags("PDFGenerationTest")
     }
+}
+
+tasks.withType<Jar>{duplicatesStrategy=org.gradle.api.file.DuplicatesStrategy.EXCLUDE
+
 }
