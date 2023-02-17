@@ -516,7 +516,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         val e1edpt2list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
         val e1edpt2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
-        e1edpt2.tdline = "Testipäiväkoti" // TODO: needs core change to get daycare name also in invoice.rows
+        e1edpt2.tdline = invoice.rows[0].unitName
         e1edpt2.tdformat = "*"
         e1edpt2list.add(e1edpt2)
 
