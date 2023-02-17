@@ -4,6 +4,8 @@
 
 package fi.turku.evakaturku.email
 
+import fi.espoo.evaka.daycare.domain.Language
+import fi.espoo.evaka.emailclient.EmailContent
 import fi.espoo.evaka.emailclient.IEmailMessageProvider
 import fi.turku.evakaturku.AbstractIntegrationTest
 import org.assertj.core.api.Assertions.assertThat
@@ -23,16 +25,23 @@ internal class EmailMessageProviderTest : AbstractIntegrationTest() {
 
     @Test
     fun testNonPreschoolMessagesDoNotContainEspooText() {
-        assertNotContainEspooText(emailMessageProvider.getDaycareApplicationReceivedEmailText())
-        assertNotContainEspooText(emailMessageProvider.getDaycareApplicationReceivedEmailHtml())
-        assertNotContainEspooText(emailMessageProvider.getClubApplicationReceivedEmailText())
-        assertNotContainEspooText(emailMessageProvider.getClubApplicationReceivedEmailHtml())
-        assertNotContainEspooText(emailMessageProvider.getPendingDecisionEmailText())
-        assertNotContainEspooText(emailMessageProvider.getPendingDecisionEmailHtml())
+        assertNotContainEspooText(emailMessageProvider.daycareApplicationReceived(Language.fi))
+        assertNotContainEspooText(emailMessageProvider.clubApplicationReceived(Language.fi))
+        assertNotContainEspooText(emailMessageProvider.pendingDecisionNotification(Language.fi))
     }
 
-    private fun assertNotContainEspooText(message: String) {
-        assertThat(message.also(::println))
+    private fun assertNotContainEspooText(content: EmailContent) {
+        assertThat(content.subject.also(::println))
+            .isNotBlank
+            .doesNotContainIgnoringCase("espoo")
+            .doesNotContainIgnoringCase("esbo")
+
+        assertThat(content.text.also(::println))
+            .isNotBlank
+            .doesNotContainIgnoringCase("espoo")
+            .doesNotContainIgnoringCase("esbo")
+
+        assertThat(content.html.also(::println))
             .isNotBlank
             .doesNotContainIgnoringCase("espoo")
             .doesNotContainIgnoringCase("esbo")

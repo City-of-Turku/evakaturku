@@ -6,7 +6,6 @@ package fi.turku.evakaturku.invoice.service
 
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
-import fi.espoo.evaka.toSystemEnvKey
 import fi.turku.evakaturku.invoice.config.Product
 import fi.turku.evakaturku.util.FinanceDateProvider
 import jakarta.xml.bind.JAXBContext

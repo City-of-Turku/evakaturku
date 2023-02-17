@@ -96,3 +96,7 @@ tasks.register<Test>("pdfGenerationTest"){
         includeTags("PDFGenerationTest")
     }
 }
+
+tasks.withType<Jar>{duplicatesStrategy=org.gradle.api.file.DuplicatesStrategy.EXCLUDE
+
+}

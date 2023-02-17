@@ -8,6 +8,6 @@ object TrevakaServiceDeps {
     const val springCloud = "2022.0.1"
     const val java = "17"
     const val xjc = "2.0.0"
-    const val junitPioneer = "2.0.0"
+    const val junitPioneer = "1.3.8"
     const val reflections = "0.9.12"
 }
