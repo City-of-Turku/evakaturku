@@ -126,12 +126,14 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edk03list : MutableList<ORDERS05.IDOC.E1EDK03> = mutableListOf()
         val e1edk03 = ORDERS05.IDOC.E1EDK03()
         e1edk03.iddat = "016"
-        e1edk03.datum =  SimpleDateFormat("yyyyMMdd").format(invoice.invoiceDate)
+        val dateFormatterE1edk03 = DateTimeFormatter.ofPattern("yyyyMMdd")
+        e1edk03.datum =  invoice.invoiceDate.format(dateFormatterE1edk03)
         e1edk03list.add(e1edk03)
 
         val e1edk03_2 = ORDERS05.IDOC.E1EDK03()
         e1edk03_2.iddat = "024"
-        e1edk03_2.datum = SimpleDateFormat("yyyyMMdd").format(SimpleDateFormat("yyyyMMdd").format(invoice.invoiceDate))
+        val dateFormatterE1edk03_2 = DateTimeFormatter.ofPattern("yyyyMMdd")
+        e1edk03_2.datum =  invoice.invoiceDate.format(dateFormatterE1edk03_2)
         e1edk03list.add(e1edk03_2)
 
         idoc.e1EDK03 = e1edk03list
@@ -364,7 +366,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             val e1edka1_5 = ORDERS05.IDOC.E1EDKA1()
             e1edka1_5.parvw = "Y1"
             e1edka1_5.partn = invoice.codebtor?.ssn.toString()
-            //e1edka1_4.name1 = invoice.codebtor?.lastName + " " + invoice.codebtor?.firstName
 
             val nameOfCodebtorY1 = invoice.codebtor?.lastName + " " + invoice.codebtor?.firstName
             if (nameOfCodebtorY1.count() > 35)
