@@ -126,13 +126,12 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edk03list : MutableList<ORDERS05.IDOC.E1EDK03> = mutableListOf()
         val e1edk03 = ORDERS05.IDOC.E1EDK03()
         e1edk03.iddat = "016"
-        e1edk03.datum = SimpleDateFormat("yyyyMMdd").format(Date()) //Current date now. Should be asked from Turku
+        e1edk03.datum =  SimpleDateFormat("yyyyMMdd").format(invoice.invoiceDate)
         e1edk03list.add(e1edk03)
 
         val e1edk03_2 = ORDERS05.IDOC.E1EDK03()
         e1edk03_2.iddat = "024"
-        e1edk03_2.datum = SimpleDateFormat("yyyyMMdd").format(Date()) //Current date now. Should be asked from Turku
-        // invoice.invoiceDate.toString() //TO BE CONTINUED
+        e1edk03_2.datum = SimpleDateFormat("yyyyMMdd").format(SimpleDateFormat("yyyyMMdd").format(invoice.invoiceDate))
         e1edk03list.add(e1edk03_2)
 
         idoc.e1EDK03 = e1edk03list
