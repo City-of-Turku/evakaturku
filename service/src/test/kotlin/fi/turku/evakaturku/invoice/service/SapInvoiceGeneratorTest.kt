@@ -347,7 +347,7 @@ class SapInvoiceGeneratorTest {
 
     @Test
     fun `TDLINE should have constant value of DateTime interval`() {
-        assertElement("TDLINE", "01.01.2021 - 31.01.2021")
+        assertElement("TDLINE", "01.01.2021-31.01.2021")
     }
 
 

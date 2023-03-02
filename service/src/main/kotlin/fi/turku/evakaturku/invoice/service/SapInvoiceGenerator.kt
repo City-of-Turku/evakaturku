@@ -264,6 +264,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         e1edka1_2.pstlz = invoice.headOfFamily.postalCode
         e1edka1_2.orT01 = invoice.headOfFamily.postOffice
+        e1edka1_2.land1 = "FI"
         e1edka1list.add(e1edka1_2)
 
         val e1edka1_3 = ORDERS05.IDOC.E1EDKA1()
@@ -319,6 +320,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         e1edka1_3.pstlz = invoice.headOfFamily.postalCode
         e1edka1_3.orT01 = invoice.headOfFamily.postOffice
+        e1edka1_3.land1 = "FI"
         e1edka1list.add(e1edka1_3)
 
         val e1edka1_4 = ORDERS05.IDOC.E1EDKA1()
@@ -374,6 +376,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         e1edka1_4.pstlz = invoice.headOfFamily.postalCode
         e1edka1_4.orT01 = invoice.headOfFamily.postOffice
+        e1edka1_4.land1 = "FI"
         e1edka1list.add(e1edka1_4)
 
 
@@ -387,34 +390,34 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             val nameOfCodebtorY1 = invoice.codebtor?.lastName + " " + invoice.codebtor?.firstName
             if (nameOfCodebtorY1.count() > 35)
             {
-                e1edka1_3.name1 = nameOfCodebtorY1.substring(0, 35)
+                e1edka1_5.name1 = nameOfCodebtorY1.substring(0, 35)
                 if (nameOfCodebtorY1.length > 70) {
-                    e1edka1_3.name2 = nameOfCodebtorY1.substring(35, 70)
+                    e1edka1_5.name2 = nameOfCodebtorY1.substring(35, 70)
                     if (nameOfCodebtorY1.length > 105)
                     {
-                        e1edka1_3.name3 = nameOfCodebtorY1.substring(70, 105)
+                        e1edka1_5.name3 = nameOfCodebtorY1.substring(70, 105)
                         if (nameOfCodebtorY1.length > 140)
                         {
-                            e1edka1_3.name4 = nameOfCodebtorY1.substring(105, 140)
+                            e1edka1_5.name4 = nameOfCodebtorY1.substring(105, 140)
                         }
                         else
                         {
-                            e1edka1_3.name4 = nameOfCodebtorY1.substring(105, nameOfCodebtorY1.length)
+                            e1edka1_5.name4 = nameOfCodebtorY1.substring(105, nameOfCodebtorY1.length)
                         }
                     }
                     else
                     {
-                        e1edka1_3.name3 = nameOfCodebtorY1.substring(70, nameOfCodebtorY1.length)
+                        e1edka1_5.name3 = nameOfCodebtorY1.substring(70, nameOfCodebtorY1.length)
                     }
                 }
                 else
                 {
-                    e1edka1_3.name2 = nameOfCodebtorY1.substring(35, nameOfCodebtorY1.length)
+                    e1edka1_5.name2 = nameOfCodebtorY1.substring(35, nameOfCodebtorY1.length)
                 }
             }
             else
             {
-                e1edka1_3.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+                e1edka1_5.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
             }
 
             val streetAddressCodebtorY1 = invoice.codebtor?.streetAddress
@@ -423,19 +426,20 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             {
                 if (streetAddressCodebtorY1.count() > 35)
                 {
-                    e1edka1_3.stras = streetAddressCodebtorY1.substring(0, 35)
+                    e1edka1_5.stras = streetAddressCodebtorY1.substring(0, 35)
                     if (streetAddressCodebtorY1.length > 70) {
-                        e1edka1_3.strs2 = streetAddressCodebtorY1.substring(35, 70)
+                        e1edka1_5.strs2 = streetAddressCodebtorY1.substring(35, 70)
                     }
                     else
                     {
-                        e1edka1_3.strs2 = streetAddressCodebtorY1.substring(35, streetAddressCodebtorY1.length)
+                        e1edka1_5.strs2 = streetAddressCodebtorY1.substring(35, streetAddressCodebtorY1.length)
                     }
                 }
             }
 
-            e1edka1_4.pstlz = invoice.codebtor?.postalCode
-            e1edka1_4.orT01 = invoice.codebtor?.postOffice
+            e1edka1_5.pstlz = invoice.codebtor?.postalCode
+            e1edka1_5.orT01 = invoice.codebtor?.postOffice
+            e1edka1_5.land1 = "FI"
             e1edka1list.add(e1edka1_5)
 
             idoc.e1EDKA1 = e1edka1list
@@ -593,7 +597,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             val pattern = "dd.MM.yyyy"
             val formatter = DateTimeFormatter.ofPattern(pattern)
 
-            e1edpt2_3.tdline =  row.periodStart.format(formatter) + " - " + row.periodEnd.format(formatter)
+            e1edpt2_3.tdline =  row.periodStart.format(formatter) + "-" + row.periodEnd.format(formatter)
             e1edpt2_3.tdformat = "*"
             e1edpt2_3list.add(e1edpt2_3)
 
