@@ -24,9 +24,6 @@ class EVakaTurkuInvoiceClient(
         var successList = generatorResult.sendResult.succeeded
         var manuallySentList = generatorResult.sendResult.manuallySent
 
- //       print(invoiceString)
- 
-
         if (!successList.isEmpty()) {
             try {
                 sftpSender.send(invoiceString)

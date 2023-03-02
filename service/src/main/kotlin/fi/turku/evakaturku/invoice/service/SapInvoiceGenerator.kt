@@ -5,6 +5,7 @@
 package fi.turku.evakaturku.invoice.service
 
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
+import fi.espoo.evaka.invoicing.domain.InvoiceRowDetailed
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import fi.turku.evakaturku.invoice.config.Product
 import fi.turku.evakaturku.util.FinanceDateProvider
@@ -13,9 +14,10 @@ import jakarta.xml.bind.JAXBException
 import jakarta.xml.bind.Marshaller
 import org.springframework.stereotype.Component
 import java.io.StringWriter
-import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.math.abs
 
 
 @Component
@@ -64,12 +66,13 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
     }
 
     private fun generateIdoc(invoice: InvoiceDetailed): ORDERS05.IDOC {
-    //private fun generateIdoc(): ORDERS05.IDOC {
 
         val idoc = ORDERS05.IDOC()
+        idoc.begin = "1"
 
         // EDIDC40
         val edidc40 = ORDERS05.IDOC.EDIDC40()
+        edidc40.segment = "1"
         idoc.edidc40 = edidc40
         edidc40.tabnam = "EDI_DC40"
         edidc40.direct = "2"
@@ -84,6 +87,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
         // E1EDK01
         val e1edk01 = ORDERS05.IDOC.E1EDK01()
+        e1edk01.segment = "1"
         idoc.e1EDK01 = e1edk01
         e1edk01.zterm = ""
         e1edk01.augru = ""
@@ -91,31 +95,37 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         // E1EDK14
         val e1EDK14list : MutableList<ORDERS05.IDOC.E1EDK14> = mutableListOf()
         val e1edk14 = ORDERS05.IDOC.E1EDK14()
+        e1edk14.segment = "1"
         e1edk14.qualf = "006"
         e1edk14.orgid = "2E"
         e1EDK14list.add(e1edk14)
 
         val e1edk14_2 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_2.segment = "1"
         e1edk14_2.qualf = "007"
         e1edk14_2.orgid = "22"
         e1EDK14list.add(e1edk14_2)
 
         val e1edk14_3 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_3.segment = "1"
         e1edk14_3.qualf = "008"
         e1edk14_3.orgid = "2100"
         e1EDK14list.add(e1edk14_3)
 
         val e1edk14_4 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_4.segment = "1"
         e1edk14_4.qualf = "012"
         e1edk14_4.orgid = "ZMT"
         e1EDK14list.add(e1edk14_4)
 
         val e1edk14_5 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_5.segment = "1"
         e1edk14_5.qualf = "016"
         e1edk14_5.orgid = "A010"
         e1EDK14list.add(e1edk14_5)
 
         val e1edk14_6 = ORDERS05.IDOC.E1EDK14()
+        e1edk14_6.segment = "1"
         e1edk14_6.qualf = "019"
         e1edk14_6.orgid = "VAK"
         e1EDK14list.add(e1edk14_6)
@@ -125,12 +135,14 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         // E1EDK03
         val e1edk03list : MutableList<ORDERS05.IDOC.E1EDK03> = mutableListOf()
         val e1edk03 = ORDERS05.IDOC.E1EDK03()
+        e1edk03.segment = "1"
         e1edk03.iddat = "016"
         val dateFormatterE1edk03 = DateTimeFormatter.ofPattern("yyyyMMdd")
         e1edk03.datum =  invoice.invoiceDate.format(dateFormatterE1edk03)
         e1edk03list.add(e1edk03)
 
         val e1edk03_2 = ORDERS05.IDOC.E1EDK03()
+        e1edk03_2.segment = "1"
         e1edk03_2.iddat = "024"
         val dateFormatterE1edk03_2 = DateTimeFormatter.ofPattern("yyyyMMdd")
         e1edk03_2.datum =  invoice.invoiceDate.format(dateFormatterE1edk03_2)
@@ -142,6 +154,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val e1edka1list : MutableList<ORDERS05.IDOC.E1EDKA1> = mutableListOf()
 
         val e1edka1 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1.segment = "1"
         e1edka1.parvw = "AG"
         e1edka1.partn = invoice.headOfFamily.ssn.toString()
 
@@ -199,6 +212,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edka1list.add(e1edka1)
 
         val e1edka1_2 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1_2.segment = "1"
         e1edka1_2.parvw = "RE"
         e1edka1_2.partn = invoice.headOfFamily.ssn.toString()
         val nameInInvoiceRE = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
@@ -253,6 +267,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edka1list.add(e1edka1_2)
 
         val e1edka1_3 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1_3.segment = "1"
         e1edka1_3.parvw = "RG"
         e1edka1_3.partn = invoice.headOfFamily.ssn.toString()
 
@@ -307,6 +322,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edka1list.add(e1edka1_3)
 
         val e1edka1_4 = ORDERS05.IDOC.E1EDKA1()
+        e1edka1_4.segment = "1"
         e1edka1_4.parvw = "WE"
         e1edka1_4.partn = invoice.headOfFamily.ssn.toString()
 
@@ -361,9 +377,10 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edka1list.add(e1edka1_4)
 
 
-        if (invoice.codebtor != null)//
+        if (invoice.codebtor != null)
         {
             val e1edka1_5 = ORDERS05.IDOC.E1EDKA1()
+            e1edka1_5.segment = "1"
             e1edka1_5.parvw = "Y1"
             e1edka1_5.partn = invoice.codebtor?.ssn.toString()
 
@@ -427,6 +444,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         // E1EDK02
         val e1edk02list : MutableList<ORDERS05.IDOC.E1EDK02> = mutableListOf()
         val e1edk02 = ORDERS05.IDOC.E1EDK02()
+        e1edk02.segment = "1"
         e1edk02.qualf = "001"
         val invoiceYearFormatter = DateTimeFormatter.ofPattern("yyyy")
         e1edk02.belnr = invoice.invoiceDate.format(invoiceYearFormatter) + "A010" + invoice.number
@@ -436,12 +454,14 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         // E1EDKT1
         val e1edkt1list : MutableList<ORDERS05.IDOC.E1EDKT1> = mutableListOf()
         val e1edkt1 = ORDERS05.IDOC.E1EDKT1()
+        e1edkt1.segment = "1"
         e1edkt1.tdid = "Z002"
         idoc.e1EDKT1 = e1edkt1list
 
         // E1EDKT2
         val e1edkt2list : MutableList<ORDERS05.IDOC.E1EDKT1.E1EDKT2> = mutableListOf()
         val e1edkt2 = ORDERS05.IDOC.E1EDKT1.E1EDKT2()
+        e1edkt2.segment = "1"
         e1edkt2.tdline = "Lisätietoja laskun sisällöstä puh 358 22625609"
         e1edkt2.tdformat = "*"
         e1edkt2list.add(e1edkt2)
@@ -449,117 +469,140 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edkt1list.add(e1edkt1)
 
         // ROWS segment - TODO: loop invoice-row-values here
-        //generateInvoiceRow(InvoiceRowDetailed)
-
-        // E1EDP01 ROWS - segment
-        val e1edp01list : MutableList<ORDERS05.IDOC.E1EDP01> = mutableListOf()
-        val e1edp01 = ORDERS05.IDOC.E1EDP01()
-        e1edp01.posex = "000010" // TODO: invoicerow number
-        val formattedUnitAmount = invoice.rows[0].amount.toDouble()
-        e1edp01.menge = String.format(Locale.ENGLISH,"%.3f", formattedUnitAmount)
-        e1edp01.werks = "102S"
-        e1edp01list.add(e1edp01)
-        idoc.e1EDP01 = e1edp01list
-
-        // E1EDP02 ROWS - segment
-        val e1edp02list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP02> = mutableListOf()
-        val e1edp02 = ORDERS05.IDOC.E1EDP01.E1EDP02()
-        e1edp02.qualf = "048"
-        e1edp02.zeile = "000010" //TODO: same as invoice row number POSEX
-        e1edp02.bsark = "0000003108"
-        e1edp02list.add(e1edp02)
-        e1edp01.e1EDP02 = e1edp02list
-
-        // E1EDP03 ROWS - segment
-        val e1edp03list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP03> = mutableListOf()
-        val e1edp03 = ORDERS05.IDOC.E1EDP01.E1EDP03()
-        e1edp03.iddat = "002"
-        val dateFormatterE1EDP03 = DateTimeFormatter.ofPattern("yyyyMMdd")
-        e1edp03.datum = invoice.invoiceDate.format(dateFormatterE1EDP03)
-        e1edp03list.add(e1edp03)
-        e1edp01.e1EDP03 = e1edp03list
-
-        // E1EDP05 ROWS - segment
-        val e1edp05list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP05> = mutableListOf()
-        val e1edp05 = ORDERS05.IDOC.E1EDP01.E1EDP05()
-        e1edp05.alckz = "+"
-        e1edp05.kschl = "ZPR0"
-        //TODO: if unit price is negative remove mark and add it after the unit price
-        val formattedUnitPrice = invoice.rows[0].unitPrice.toDouble() / 100
-        e1edp05.krate = String.format(Locale.ENGLISH,"%.2f", formattedUnitPrice)
-        e1edp05list.add(e1edp05)
-        e1edp01.e1EDP05 = e1edp05list
-
-        // E1EDP19 ROWS - segment
-        val e1edp19list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP19> = mutableListOf()
-        val e1edp19 = ORDERS05.IDOC.E1EDP01.E1EDP19()
-        e1edp19.qualf = "002"
-        if(invoice.rows[0].product.value == Product.DAYCARE.toString())
-        {
-            e1edp19.idtnr = "000000000000007246"
-        }
-        else if (invoice.rows[0].product.value == Product.PRESCHOOL_WITH_DAYCARE.toString())
-        {
-            e1edp19.idtnr = "000000000000007251"
-        }
-        e1edp19list.add(e1edp19)
-        e1edp01.e1EDP19= e1edp19list
-
-        // E1EDPT1 ROWS - segment
-        val e1edpt1list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1> = mutableListOf()
-        val e1edpt1 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
-        //Daycare name
-        e1edpt1.tdid = "ZZ01"
-        e1edpt1list.add(e1edpt1)
-
-        e1edp01.e1EDPT1= e1edpt1list
-
-        val e1edpt2list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
-        val e1edpt2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
-        e1edpt2.tdline = invoice.rows[0].unitName
-        e1edpt2.tdformat = "*"
-        e1edpt2list.add(e1edpt2)
-
-        e1edpt1.e1EDPT2 = e1edpt2list
-
-        //Child name
-        val e1edpt1_2 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
-        e1edpt1_2.tdid = "ZZ02"
-        e1edpt1list.add(e1edpt1_2)
-
-        val e1edpt2_2list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
-        val e1edpt2_2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
-        e1edpt2_2.tdline = invoice.rows[0].child.firstName + " " +invoice.rows[0].child.lastName
-        e1edpt2_2.tdformat = "*"
-        e1edpt2_2list.add(e1edpt2_2)
-
-        e1edpt1_2.e1EDPT2 = e1edpt2_2list
-
-        //DateTime range
-
-        val e1edpt1_3 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
-        e1edpt1_3.tdid = "ZZ03"
-        e1edpt1list.add(e1edpt1_3)
-
-        val e1edpt2_3list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
-        val e1edpt2_3 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
-
-        val pattern = "dd.MM.yyyy"
-        val formatter = DateTimeFormatter.ofPattern(pattern)
-
-        e1edpt2_3.tdline =  invoice.rows[0].periodStart.format(formatter) + " - " + invoice.rows[0].periodEnd.format(formatter)
-        e1edpt2_3.tdformat = "*"
-        e1edpt2_3list.add(e1edpt2_3)
-
-        e1edpt1_3.e1EDPT2 = e1edpt2_3list
-
+        generateRows(idoc, invoice.rows, invoice.invoiceDate)
 
         return idoc
     }
 
-//    private fun generateInvoiceRow(invoiceRowDetailed: Any) {
-//
-//    }
+    private fun generateRows(idoc: ORDERS05.IDOC, rows: List<InvoiceRowDetailed>, invoiceDate: LocalDate) {
+
+        var rowNumber = 1
+        val e1edp01list : MutableList<ORDERS05.IDOC.E1EDP01> = mutableListOf()
+
+        for(row in rows)
+        {
+            // E1EDP01 ROWS - segment
+            val e1edp01 = ORDERS05.IDOC.E1EDP01()
+            e1edp01.segment = "1"
+            var formattedRowNumber = "%06d".format(rowNumber *  10)
+            e1edp01.posex = formattedRowNumber
+            val formattedUnitAmount = row.amount.toDouble()
+            e1edp01.menge = String.format(Locale.ENGLISH,"%.3f", formattedUnitAmount)
+            e1edp01.werks = "102S"
+            e1edp01list.add(e1edp01)
+            idoc.e1EDP01 = e1edp01list
+
+            // E1EDP02 ROWS - segment
+            val e1edp02list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP02> = mutableListOf()
+            val e1edp02 = ORDERS05.IDOC.E1EDP01.E1EDP02()
+            e1edp02.segment = "1"
+            e1edp02.qualf = "048"
+            e1edp02.zeile = formattedRowNumber
+            e1edp02.bsark = "0000003108"
+            e1edp02list.add(e1edp02)
+            e1edp01.e1EDP02 = e1edp02list
+
+            // E1EDP03 ROWS - segment
+            val e1edp03list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP03> = mutableListOf()
+            val e1edp03 = ORDERS05.IDOC.E1EDP01.E1EDP03()
+            e1edp03.segment = "1"
+            e1edp03.iddat = "002"
+            val dateFormatterE1EDP03 = DateTimeFormatter.ofPattern("yyyyMMdd")
+            e1edp03.datum = invoiceDate.format(dateFormatterE1EDP03)
+            e1edp03list.add(e1edp03)
+            e1edp01.e1EDP03 = e1edp03list
+
+            // E1EDP05 ROWS - segment
+            val e1edp05list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP05> = mutableListOf()
+            val e1edp05 = ORDERS05.IDOC.E1EDP01.E1EDP05()
+            e1edp05.segment = "1"
+            e1edp05.alckz = "+"
+            e1edp05.kschl = "ZPR0"
+            //TODO: if unit price is negative remove mark and add it after the unit price
+
+            var sign = ""
+            if (row.unitPrice < 0)
+            {
+                sign = "-"
+            }
+            val formattedUnitPrice = abs(row.unitPrice.toDouble() / 100)
+            e1edp05.krate = String.format(Locale.ENGLISH,"%.2f", formattedUnitPrice) + sign
+            e1edp05list.add(e1edp05)
+            e1edp01.e1EDP05 = e1edp05list
+
+            // E1EDP19 ROWS - segment
+            val e1edp19list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP19> = mutableListOf()
+            val e1edp19 = ORDERS05.IDOC.E1EDP01.E1EDP19()
+            e1edp19.segment = "1"
+            e1edp19.qualf = "002"
+            if(row.product.value == Product.DAYCARE.toString())
+            {
+                e1edp19.idtnr = "000000000000007246"
+            }
+            else if (row.product.value == Product.PRESCHOOL_WITH_DAYCARE.toString())
+            {
+                e1edp19.idtnr = "000000000000007251"
+            }
+            e1edp19list.add(e1edp19)
+            e1edp01.e1EDP19= e1edp19list
+
+            // E1EDPT1 ROWS - segment
+            val e1edpt1list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1> = mutableListOf()
+            val e1edpt1 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
+            e1edpt1.segment = "1"
+            //Daycare name
+            e1edpt1.tdid = "ZZ01"
+            e1edpt1list.add(e1edpt1)
+
+            e1edp01.e1EDPT1= e1edpt1list
+
+            val e1edpt2list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
+            val e1edpt2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+            e1edpt2.segment = "1"
+            e1edpt2.tdline = row.unitName
+            e1edpt2.tdformat = "*"
+            e1edpt2list.add(e1edpt2)
+
+            e1edpt1.e1EDPT2 = e1edpt2list
+
+            //Child name
+            val e1edpt1_2 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
+            e1edpt1_2.segment = "1"
+            e1edpt1_2.tdid = "ZZ02"
+            e1edpt1list.add(e1edpt1_2)
+
+            val e1edpt2_2list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
+            val e1edpt2_2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+            e1edpt2_2.segment = "1"
+            e1edpt2_2.tdline = row.child.firstName + " " +row.child.lastName
+            e1edpt2_2.tdformat = "*"
+            e1edpt2_2list.add(e1edpt2_2)
+
+            e1edpt1_2.e1EDPT2 = e1edpt2_2list
+
+            //DateTime range
+            val e1edpt1_3 = ORDERS05.IDOC.E1EDP01.E1EDPT1()
+            e1edpt1_3.segment = "1"
+            e1edpt1_3.tdid = "ZZ03"
+            e1edpt1list.add(e1edpt1_3)
+
+            val e1edpt2_3list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
+            val e1edpt2_3 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+            e1edpt2_3.segment = "1"
+
+            val pattern = "dd.MM.yyyy"
+            val formatter = DateTimeFormatter.ofPattern(pattern)
+
+            e1edpt2_3.tdline =  row.periodStart.format(formatter) + " - " + row.periodEnd.format(formatter)
+            e1edpt2_3.tdformat = "*"
+            e1edpt2_3list.add(e1edpt2_3)
+
+            e1edpt1_3.e1EDPT2 = e1edpt2_3list
+
+            rowNumber++
+        }
+
+    }
 
 
     fun marshalInvoices(idocs: List<ORDERS05.IDOC>): String {

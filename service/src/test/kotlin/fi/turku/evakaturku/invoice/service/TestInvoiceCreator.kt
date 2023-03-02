@@ -53,6 +53,19 @@ fun validInvoice(): InvoiceDetailed {
             correctionId = null,
             note = null
     )
+    val invoiceRow4 = InvoiceRowDetailed(
+        InvoiceRowId(UUID.randomUUID()), PersonDetailed(
+            PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,
+            "Matti", "Meikäläinen",
+            null, "", "", "",
+            "", null, "", null, restrictedDetailsEnabled = false
+        ), 1, -2500,
+        LocalDate.of(2021, 1, 1),
+        LocalDate.of(2021, 1, 31),
+        ProductKey("DAYCARE"), DaycareId(UUID.randomUUID()), "Satunnainen päiväkoti 3", setOf(CareType.FAMILY) ,"2627", null, null, "kuvaus3",
+        correctionId = null,
+        note = null
+    )
     return InvoiceDetailed(
             (InvoiceId(UUID.randomUUID())),
             InvoiceStatus.WAITING_FOR_SENDING,
@@ -64,7 +77,7 @@ fun validInvoice(): InvoiceDetailed {
             AreaId(UUID.randomUUID()),
             headOfFamily,
             validCodebtor(),
-            listOf(invoiceRow1, invoiceRow2, invoiceRow3),
+            listOf(invoiceRow1, invoiceRow2, invoiceRow3, invoiceRow4),
             12345,
             null,
             HelsinkiDateTime.Companion.of(

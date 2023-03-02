@@ -43,9 +43,9 @@ class SapInvoiceGeneratorTest {
     }
 
     @Test
-    fun `invoiceGenerator result should have IDOC element`() {
+    fun `invoiceGenerator result should have IDOC with BEGIN element`() {
 
-        assertTag("IDOC")
+        assertExpectedString("<IDOC BEGIN=\"1\">")
     }
 
     @Test
