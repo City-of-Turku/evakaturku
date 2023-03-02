@@ -19,6 +19,11 @@ const customizations: EmployeeCustomizations = {
   translations: {
     fi: {
       // override translations here
+      invoices: {
+        buttons: {
+          individualSendAlertText: ''
+        }
+      },
       preferredFirstName: {
         popupLink: 'Kutsumanimi',
         title: 'Kutsumanimi',
