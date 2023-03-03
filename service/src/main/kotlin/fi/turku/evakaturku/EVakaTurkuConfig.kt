@@ -11,11 +11,15 @@ import software.amazon.awssdk.services.s3.S3Client
 import software.amazon.awssdk.services.s3.presigner.S3Presigner
 import fi.espoo.evaka.BucketEnv
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
+import fi.espoo.evaka.logging.defaultAccessLoggingValve
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.turku.evakaturku.invoice.service.SftpConnector
 import fi.turku.evakaturku.invoice.service.SftpSender
 import fi.turku.evakaturku.payment.service.ProEPaymentGenerator
 import fi.turku.evakaturku.payment.service.TurkuPaymentIntegrationClient
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory
+import org.springframework.boot.web.server.WebServerFactoryCustomizer
+import org.springframework.core.env.Environment
 
 @Configuration
 class EVakaTurkuConfig {
@@ -60,4 +64,10 @@ class EVakaTurkuConfig {
         val sftpSender = SftpSender(evakaProperties.sapPayments, sftpConnector)
         return TurkuPaymentIntegrationClient(paymentGenerator, sftpSender)
     }
+
+    @Bean
+    fun tomcatCustomizer(env: Environment) =
+        WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
+            it.addContextValves(defaultAccessLoggingValve(env))
+        }
 }

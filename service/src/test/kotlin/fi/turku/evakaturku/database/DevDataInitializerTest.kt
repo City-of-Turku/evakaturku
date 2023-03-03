@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2021 City of Turku
 //
 // SPDX-License-Identifier: LGPL-2.1-or-later
+
 package fi.turku.evakaturku.database
 
 import fi.espoo.evaka.shared.db.Database
@@ -15,11 +16,6 @@ class DevDataInitializerTest : AbstractIntegrationTest() {
 
     @Autowired
     private lateinit var jdbi: Jdbi
-
-    @AfterEach
-    fun cleanup() {
-        Database(jdbi, NoopTracerFactory.create()).connect { db -> db.transaction { tx -> tx.resetTurkuDatabaseForE2ETests() } }
-    }
 
     @Test
     fun init() {
