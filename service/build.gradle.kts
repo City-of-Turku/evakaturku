@@ -28,7 +28,8 @@ dependencies {
     implementation(":evaka-service")
 
     implementation("io.github.microutils:kotlin-logging-jvm")
-    implementation("dev.akkinoc.spring.boot:logback-access-spring-boot-starter")
+    implementation("ch.qos.logback:logback-access")
+    implementation("net.logstash.logback:logstash-logback-encoder")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-web-services")
@@ -60,6 +61,7 @@ dependencies {
     testImplementation("software.amazon.awssdk:s3")
     testImplementation("com.auth0:java-jwt")
     testImplementation("org.thymeleaf:thymeleaf")
+    testImplementation("redis.clients:jedis")
 
 }
 
