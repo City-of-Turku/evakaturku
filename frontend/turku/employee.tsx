@@ -19,6 +19,21 @@ const customizations: EmployeeCustomizations = {
   translations: {
     fi: {
       // override translations here
+      personProfile: {
+        income: {
+          details: {
+            incomeCoefficients: {
+              MONTHLY_WITH_HOLIDAY_BONUS: 'kuukausi + lomaraha',
+              MONTHLY_NO_HOLIDAY_BONUS: 'kuukausi ilman lomarahaa',
+              BI_WEEKLY_WITH_HOLIDAY_BONUS: '2 viikkoa + lomaraha',
+              BI_WEEKLY_NO_HOLIDAY_BONUS: '2 viikkoa ilman lomarahaa',
+              DAILY_ALLOWANCE_21_5: 'Päiväraha x 21,5',
+              DAILY_ALLOWANCE_25: 'Päiväraha x 25',
+              YEARLY: 'Vuosi'
+            }
+          }
+        }
+      },
       invoices: {
         buttons: {
           individualSendAlertText: ''

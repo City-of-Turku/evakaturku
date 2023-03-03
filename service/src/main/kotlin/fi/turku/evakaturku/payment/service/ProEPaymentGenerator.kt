@@ -5,7 +5,6 @@ import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
-import fi.turku.evakaturku.invoice.service.InvoiceFieldName
 import fi.turku.evakaturku.invoice.service.StringInvoiceGenerator
 import fi.turku.evakaturku.util.FieldType
 import fi.turku.evakaturku.util.FinanceDateProvider

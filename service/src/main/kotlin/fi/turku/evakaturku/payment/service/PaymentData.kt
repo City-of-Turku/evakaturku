@@ -1,6 +1,6 @@
 package fi.turku.evakaturku.payment.service
 
-import fi.turku.evakaturku.invoice.service.InvoiceFieldName
+
 import fi.turku.evakaturku.util.DataMapper
 import fi.turku.evakaturku.util.FieldType
 import java.awt.PageAttributes.MediaType.NOTE
