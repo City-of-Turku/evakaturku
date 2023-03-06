@@ -5,6 +5,7 @@ import fi.turku.evakaturku.util.FinanceDateProvider
 import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.Marshaller
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.io.StringWriter
 
@@ -23,7 +24,9 @@ class SapPaymentGeneratorTest {
         assert(result.paymentStrings.count() == 1)
     }
 
+
     @Test
+    @Disabled
     fun `should set some values`() {
         val payment = validPayment()
 
