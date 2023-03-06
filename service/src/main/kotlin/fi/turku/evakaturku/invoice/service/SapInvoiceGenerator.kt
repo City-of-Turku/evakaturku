@@ -42,7 +42,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         val idocs: MutableList<ORDERS05.IDOC> = mutableListOf()
         succeeded.forEach {
             idocs.add(generateIdoc(it))
-            //idocs.add(generateIdoc())
             successList.add(it)
         }
 

@@ -15,7 +15,7 @@ import fi.espoo.evaka.logging.defaultAccessLoggingValve
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.turku.evakaturku.invoice.service.SftpConnector
 import fi.turku.evakaturku.invoice.service.SftpSender
-import fi.turku.evakaturku.payment.service.ProEPaymentGenerator
+import fi.turku.evakaturku.payment.service.SapPaymentGenerator
 import fi.turku.evakaturku.payment.service.TurkuPaymentIntegrationClient
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory
 import org.springframework.boot.web.server.WebServerFactoryCustomizer
@@ -60,7 +60,7 @@ class EVakaTurkuConfig {
         DocumentService(s3Client, s3Presigner, env.proxyThroughNginx)
 
     @Bean
-    fun paymentIntegrationClient(evakaProperties: EvakaTurkuProperties, paymentGenerator: ProEPaymentGenerator, sftpConnector: SftpConnector): PaymentIntegrationClient {
+    fun paymentIntegrationClient(evakaProperties: EvakaTurkuProperties, paymentGenerator: SapPaymentGenerator, sftpConnector: SftpConnector): PaymentIntegrationClient {
         val sftpSender = SftpSender(evakaProperties.sapPayments, sftpConnector)
         return TurkuPaymentIntegrationClient(paymentGenerator, sftpSender)
     }

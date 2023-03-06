@@ -1,11 +1,8 @@
 package fi.turku.evakaturku.payment.service
 
 import fi.espoo.evaka.daycare.CareType
-import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
-import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
-import fi.turku.evakaturku.invoice.service.StringInvoiceGenerator
 import fi.turku.evakaturku.util.FieldType
 import fi.turku.evakaturku.util.FinanceDateProvider
 import org.springframework.stereotype.Component
@@ -13,7 +10,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @Component
-class ProEPaymentGenerator(private val paymentChecker: PaymentChecker, val financeDateProvider: FinanceDateProvider, val bicMapper: BicMapper) {
+class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financeDateProvider: FinanceDateProvider, val bicMapper: BicMapper) {
 
     data class Result(
         val sendResult: PaymentIntegrationClient.SendResult = PaymentIntegrationClient.SendResult(),

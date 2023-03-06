@@ -7,20 +7,23 @@ package fi.turku.evakaturku.invoice.service
 import fi.turku.evakaturku.SftpProperties
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.*
+import java.text.SimpleDateFormat
+import java.util.*
 
-internal class InvoiceSenderTest {
+internal class SftpSenderTest {
 
     @Test
-    fun `should send invoice`() {
+    fun `should send SAP material with same name`() {
         val path = "/some/path"
         val sftpProperties = SftpProperties("", path, "", "")
-        val proEInvoice = "one"
+        val sapMaterial = "one"
         val sftpConnector = mock<SftpConnector>()
+        val filename = SimpleDateFormat("'LAVAK_1002'yyMMdd-hhmmss'.xml'").format(Date())
         val sftpSender = SftpSender(
             sftpProperties, sftpConnector
         )
 
-        sftpSender.send(proEInvoice)
+        sftpSender.send(sapMaterial, filename)
 
         verify(sftpConnector).connect(sftpProperties.address, sftpProperties.username, sftpProperties.password)
         val fileNamePattern = """$path/LAVAK_1002\d{6}-\d{6}.xml"""
@@ -30,4 +33,5 @@ internal class InvoiceSenderTest {
         )
         verify(sftpConnector).disconnect()
     }
+
 }

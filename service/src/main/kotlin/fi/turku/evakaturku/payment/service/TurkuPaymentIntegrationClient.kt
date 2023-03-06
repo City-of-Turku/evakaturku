@@ -5,11 +5,13 @@ import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.turku.evakaturku.invoice.service.SftpSender
 import mu.KotlinLogging
+import java.text.SimpleDateFormat
+import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
 class TurkuPaymentIntegrationClient(
-    private val paymentGenerator: ProEPaymentGenerator,
+    private val paymentGenerator: SapPaymentGenerator,
     private val sftpSender: SftpSender
 ): PaymentIntegrationClient {
 
@@ -24,7 +26,9 @@ class TurkuPaymentIntegrationClient(
 
         if (!successList.isEmpty()) {
             try {
-                sftpSender.send(generatorResult.paymentString)
+                //TODO: loop every unit and add new number
+                val filename = SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss'-1.xml'").format(Date())
+                sftpSender.send(generatorResult.paymentString, filename)
                 logger.info { "Successfully sent ${successList.size} payments" }
             } catch (e: SftpException) {
                 logger.error { "Failed to send ${successList.size} payments" }
