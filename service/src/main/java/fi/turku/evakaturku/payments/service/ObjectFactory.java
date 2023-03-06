@@ -6,7 +6,7 @@
 //
 
 
-package generated;
+package fi.turku.evakaturku.payment.service;
 
 import jakarta.xml.bind.annotation.XmlRegistry;
 

@@ -6,7 +6,7 @@
 //
 
 
-package generated;
+package fi.turku.evakaturku.payment.service;
 
 import java.util.ArrayList;
 import java.util.List;
