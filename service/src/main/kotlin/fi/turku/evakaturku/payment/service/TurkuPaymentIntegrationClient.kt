@@ -28,7 +28,7 @@ class TurkuPaymentIntegrationClient(
             try {
                 //TODO: loop every unit and add new number
                 val filename = SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss'-1.xml'").format(Date())
-                sftpSender.send(generatorResult.paymentString, filename)
+                sftpSender.send(generatorResult.paymentStrings[0], filename)
                 logger.info { "Successfully sent ${successList.size} payments" }
             } catch (e: SftpException) {
                 logger.error { "Failed to send ${successList.size} payments" }
