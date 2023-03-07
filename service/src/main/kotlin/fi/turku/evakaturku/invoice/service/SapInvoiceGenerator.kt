@@ -471,7 +471,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edkt1.e1EDKT2 = e1edkt2list
         e1edkt1list.add(e1edkt1)
 
-        // ROWS segment - TODO: loop invoice-row-values here
         generateRows(idoc, invoice.rows, invoice.invoiceDate)
 
         return idoc

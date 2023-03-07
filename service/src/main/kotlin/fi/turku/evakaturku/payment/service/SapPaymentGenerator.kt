@@ -34,8 +34,8 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
 
         val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
         succeeded.forEach {
-            // idocs.add(generateIdoc(it))
-            idocs.add(generateIdoc())
+            idocs.add(generateIdoc(it, "1")) //TODO: Add identifier for every invoice
+            //idocs.add(generateIdoc())
             successList.add(it)
         }
 
@@ -51,10 +51,50 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         return Result(PaymentIntegrationClient.SendResult(successList, failedList), paymentStrings)
     }
 
-    // private fun generateIdoc(payment: Payment): FIDCCP02.IDOC {
-    fun generateIdoc(): FIDCCP02.IDOC {
+    fun generateIdoc(payment: Payment, identifier: String): FIDCCP02.IDOC {
+    //fun generateIdoc(): FIDCCP02.IDOC {
         // TODO: mapping here
-        return FIDCCP02.IDOC()
+        val idoc = FIDCCP02.IDOC()
+        idoc.begin = "1"
+
+        // EDI_DC40
+        val edidc40 = FIDCCP02.IDOC.EDIDC40()
+        edidc40.segment = "1"
+        edidc40.tabnam = "EDI_DC40"
+        edidc40.direct = "2"
+        edidc40.idoctyp = "FIDCCP02"
+        edidc40.mestyp = "FIDCC2"
+        edidc40.sndpor = ""
+        edidc40.sndprt = "LS"
+        edidc40.sndprn = "VAK_1002"
+        edidc40.rcvpor = ""
+        edidc40.rcvprt = "LS"
+        edidc40.rcvprn = ""
+        idoc.edidc40 = edidc40
+
+        //E1FIKPF
+        val e1FIKPF = FIDCCP02.IDOC.E1FIKPF()
+        e1FIKPF.segment = "1"
+        e1FIKPF.bukrs = "1002"
+        val dateTimeFormatterE1FIKPF = DateTimeFormatter.ofPattern("MMyy")
+        e1FIKPF.gjahr = payment.paymentDate?.format(dateTimeFormatterE1FIKPF)
+        e1FIKPF.blart = "KR"
+        val dateTimeFormatterE1FIKPFYearMonthDay = DateTimeFormatter.ofPattern("yyyyMMdd")
+        e1FIKPF.bldat = payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonthDay)
+
+        e1FIKPF.budat = payment.dueDate?.format(dateTimeFormatterE1FIKPFYearMonthDay)
+        val dateTimeFormatterE1FIKPFMonth = DateTimeFormatter.ofPattern("MM")
+        e1FIKPF.monat = payment.paymentDate?.format(dateTimeFormatterE1FIKPFMonth)
+        val dateTimeFormatterE1FIKPFYearMonth = DateTimeFormatter.ofPattern("yyyyMM")
+        //var formattedRowNumber = "%08d".format(identifier)
+        e1FIKPF.xblnr = "VAK" + payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonth) + "formattedRowNumber"
+
+
+
+        idoc.e1FIKPF = e1FIKPF
+
+
+        return idoc
     }
 
     fun marshalPayments(idocs: List<FIDCCP02.IDOC>): String {
