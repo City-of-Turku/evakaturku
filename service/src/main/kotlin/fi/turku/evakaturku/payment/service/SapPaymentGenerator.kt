@@ -34,8 +34,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
 
         val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
         succeeded.forEach {
-            idocs.add(generateIdoc(it, "1")) //TODO: Add identifier for every invoice
-            //idocs.add(generateIdoc())
+            idocs.add(generateIdoc(it, 1)) //TODO: Add identifier for every invoice
             successList.add(it)
         }
 
@@ -51,7 +50,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         return Result(PaymentIntegrationClient.SendResult(successList, failedList), paymentStrings)
     }
 
-    fun generateIdoc(payment: Payment, identifier: String): FIDCCP02.IDOC {
+    fun generateIdoc(payment: Payment, identifier: Int): FIDCCP02.IDOC {
     //fun generateIdoc(): FIDCCP02.IDOC {
         // TODO: mapping here
         val idoc = FIDCCP02.IDOC()
@@ -81,17 +80,27 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FIKPF.blart = "KR"
         val dateTimeFormatterE1FIKPFYearMonthDay = DateTimeFormatter.ofPattern("yyyyMMdd")
         e1FIKPF.bldat = payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonthDay)
-
-        e1FIKPF.budat = payment.dueDate?.format(dateTimeFormatterE1FIKPFYearMonthDay)
+        var previousMonth = payment.dueDate?.minusMonths(1)
+        e1FIKPF.budat = previousMonth?.format(dateTimeFormatterE1FIKPFYearMonthDay)
         val dateTimeFormatterE1FIKPFMonth = DateTimeFormatter.ofPattern("MM")
         e1FIKPF.monat = payment.paymentDate?.format(dateTimeFormatterE1FIKPFMonth)
         val dateTimeFormatterE1FIKPFYearMonth = DateTimeFormatter.ofPattern("yyyyMM")
-        //var formattedRowNumber = "%08d".format(identifier)
-        e1FIKPF.xblnr = "VAK" + payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonth) + "formattedRowNumber"
-
-
-
+        var formattedRowNumber = "%08d".format(identifier)
+        e1FIKPF.xblnr = "VAK" + payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonth) + formattedRowNumber
+        e1FIKPF.bktxt = "eVAKA"
+        e1FIKPF.waers = "EUR"
+        e1FIKPF.glvor = "RFBU"
         idoc.e1FIKPF = e1FIKPF
+
+        //E1FISEG
+        val e1FISEGlist : MutableList<FIDCCP02.IDOC.E1FIKPF.E1FISEG> = mutableListOf()
+        val e1FISEG = FIDCCP02.IDOC.E1FIKPF.E1FISEG()
+        e1FISEG.buzei = "001" //TODO: ask what is this?
+
+
+        e1FISEGlist.add(e1FISEG)
+        idoc.e1FIKPF.e1FISEG = e1FISEGlist
+
 
 
         return idoc

@@ -23,7 +23,7 @@ fun validPayment(): Payment {
         DateRange(LocalDate.of(2022, 7, 1), LocalDate.of(2022, 7, 30)),
         657285,
         PaymentStatus.DRAFT,
-        LocalDate.of(2022, 7, 31),
+        LocalDate.of(2022, 8, 3),
         LocalDate.of(2022, 8, 15),
         HelsinkiDateTime.Companion.of(LocalDate.of(2022, 7, 31), LocalTime.of(12, 0, 0)),
         EvakaUserId(UUID.randomUUID())
