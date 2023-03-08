@@ -1,19 +1,15 @@
 package fi.turku.evakaturku.payment.service
 
-import fi.espoo.evaka.daycare.CareType
-import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
-import fi.turku.evakaturku.invoice.service.ORDERS05
-import fi.turku.evakaturku.util.FieldType
 import fi.turku.evakaturku.util.FinanceDateProvider
 import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
 import jakarta.xml.bind.Marshaller
 import org.springframework.stereotype.Component
 import java.io.StringWriter
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 @Component
 class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financeDateProvider: FinanceDateProvider) {
@@ -33,9 +29,11 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         failedList.addAll(failed)
 
         val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
+        var identifier = 1
         succeeded.forEach {
-            idocs.add(generateIdoc(it, 1)) //TODO: Add identifier for every invoice
+            idocs.add(generateIdoc(it, identifier)) //TODO: Add identifier for every invoice
             successList.add(it)
+            identifier++
         }
 
         try {
@@ -75,15 +73,15 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val e1FIKPF = FIDCCP02.IDOC.E1FIKPF()
         e1FIKPF.segment = "1"
         e1FIKPF.bukrs = "1002"
-        val dateTimeFormatterE1FIKPF = DateTimeFormatter.ofPattern("MMyy")
-        e1FIKPF.gjahr = payment.paymentDate?.format(dateTimeFormatterE1FIKPF)
+        val dateTimeFormatterMonthYear = DateTimeFormatter.ofPattern("MMyy")
+        e1FIKPF.gjahr = payment.paymentDate?.format(dateTimeFormatterMonthYear)
         e1FIKPF.blart = "KR"
-        val dateTimeFormatterE1FIKPFYearMonthDay = DateTimeFormatter.ofPattern("yyyyMMdd")
-        e1FIKPF.bldat = payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonthDay)
+        val dateTimeFormatterYearMonthDay = DateTimeFormatter.ofPattern("yyyyMMdd")
+        e1FIKPF.bldat = payment.paymentDate?.format(dateTimeFormatterYearMonthDay)
         var previousMonth = payment.dueDate?.minusMonths(1)
-        e1FIKPF.budat = previousMonth?.format(dateTimeFormatterE1FIKPFYearMonthDay)
-        val dateTimeFormatterE1FIKPFMonth = DateTimeFormatter.ofPattern("MM")
-        e1FIKPF.monat = payment.paymentDate?.format(dateTimeFormatterE1FIKPFMonth)
+        e1FIKPF.budat = previousMonth?.format(dateTimeFormatterYearMonthDay)
+        val dateTimeFormatterMonth = DateTimeFormatter.ofPattern("MM")
+        e1FIKPF.monat = payment.paymentDate?.format(dateTimeFormatterMonth)
         val dateTimeFormatterE1FIKPFYearMonth = DateTimeFormatter.ofPattern("yyyyMM")
         var formattedRowNumber = "%08d".format(identifier)
         e1FIKPF.xblnr = "VAK" + payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonth) + formattedRowNumber
@@ -95,10 +93,34 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         //E1FISEG
         val e1FISEGlist : MutableList<FIDCCP02.IDOC.E1FIKPF.E1FISEG> = mutableListOf()
         val e1FISEG = FIDCCP02.IDOC.E1FIKPF.E1FISEG()
-        e1FISEG.buzei = "001" //TODO: ask what is this?
+        e1FISEG.buzei = "001"
+        e1FISEG.bschl = "31"
+        e1FISEG.shkzg = "H"
+        e1FISEG.wrbtr = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
+        e1FISEG.sgtxt = "eVAKA " + payment.paymentDate?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year
+        e1FISEG.xref3 = ""
+        val e1FINBU = FIDCCP02.IDOC.E1FIKPF.E1FISEG.E1FINBU()
+        e1FINBU.zfbdt = payment.dueDate?.format(dateTimeFormatterYearMonthDay)
+        e1FINBU.zterm = "T000"
+        e1FINBU.skfbt = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
+        e1FINBU.reserve = payment.unit.businessId + ";" + payment.unit.iban
 
-
+        e1FISEG.e1FINBU = e1FINBU
         e1FISEGlist.add(e1FISEG)
+
+        val e1FISEG_2 = FIDCCP02.IDOC.E1FIKPF.E1FISEG()
+
+        e1FISEG_2.buzei = "002"
+        e1FISEG_2.bschl = "40"
+        e1FISEG_2.shkzg = "S"
+        e1FISEG_2.mwskz = "P4"
+        e1FISEG_2.wrbtr = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
+        e1FISEG_2.sgtxt = "eVAKA " + payment.paymentDate?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
+        e1FISEG_2.xref3 = ""
+
+
+        e1FISEGlist.add(e1FISEG_2)
+
         idoc.e1FIKPF.e1FISEG = e1FISEGlist
 
 
