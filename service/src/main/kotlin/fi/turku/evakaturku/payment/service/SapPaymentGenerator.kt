@@ -49,8 +49,6 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
     }
 
     fun generateIdoc(payment: Payment, identifier: Int): FIDCCP02.IDOC {
-    //fun generateIdoc(): FIDCCP02.IDOC {
-        // TODO: mapping here
         val idoc = FIDCCP02.IDOC()
         idoc.begin = "1"
 
@@ -93,6 +91,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         //E1FISEG
         val e1FISEGlist : MutableList<FIDCCP02.IDOC.E1FIKPF.E1FISEG> = mutableListOf()
         val e1FISEG = FIDCCP02.IDOC.E1FIKPF.E1FISEG()
+        e1FISEG.segment = "1"
         e1FISEG.buzei = "001"
         e1FISEG.bschl = "31"
         e1FISEG.shkzg = "H"
@@ -100,6 +99,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FISEG.sgtxt = "eVAKA " + payment.paymentDate?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year
         e1FISEG.xref3 = ""
         val e1FINBU = FIDCCP02.IDOC.E1FIKPF.E1FISEG.E1FINBU()
+        e1FINBU.segment = "1"
         e1FINBU.zfbdt = payment.dueDate?.format(dateTimeFormatterYearMonthDay)
         e1FINBU.zterm = "T000"
         e1FINBU.skfbt = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
@@ -109,14 +109,23 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FISEGlist.add(e1FISEG)
 
         val e1FISEG_2 = FIDCCP02.IDOC.E1FIKPF.E1FISEG()
-
+        e1FISEG_2.segment = "1"
         e1FISEG_2.buzei = "002"
         e1FISEG_2.bschl = "40"
         e1FISEG_2.shkzg = "S"
         e1FISEG_2.mwskz = "P4"
         e1FISEG_2.wrbtr = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
-        e1FISEG_2.sgtxt = "eVAKA " + payment.paymentDate?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
-        e1FISEG_2.xref3 = ""
+        val rowTextWithDaycareName = "eVAKA " + payment.paymentDate?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
+        e1FISEG_2.sgtxt = rowTextWithDaycareName //TODO: only first 50 chars
+        e1FISEG_2.kokrs = "1000"
+        e1FISEG_2.kostl = "0000031440" //TODO: check from customer are we using "Toimittajanumero" field for this?
+        e1FISEG_2.aufnr = "000000000000"
+        e1FISEG_2.hkont = "0000431500"
+        //e1FISEG_2.matnr = "" TODO: asked if we are providing empty value or no value at all
+        e1FISEG_2.prctr = ""
+
+
+
 
 
         e1FISEGlist.add(e1FISEG_2)
