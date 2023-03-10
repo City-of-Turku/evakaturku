@@ -1,5 +1,6 @@
 package fi.turku.evakaturku.payment.service
 
+import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.turku.evakaturku.util.FinanceDateProvider
@@ -31,7 +32,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
         var identifier = 1
         succeeded.forEach {
-            idocs.add(generateIdoc(it, identifier)) //TODO: Add identifier for every invoice
+            idocs.add(generateIdoc(it, identifier, 50000)) //TODO: Add identifier for every invoice and preschool amount
             successList.add(it)
             identifier++
         }
@@ -48,7 +49,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         return Result(PaymentIntegrationClient.SendResult(successList, failedList), paymentStrings)
     }
 
-    fun generateIdoc(payment: Payment, identifier: Int): FIDCCP02.IDOC {
+    fun generateIdoc(payment: Payment, identifier: Int, preSchoolAmount: Int): FIDCCP02.IDOC {
         val idoc = FIDCCP02.IDOC()
         idoc.begin = "1"
 
@@ -71,15 +72,15 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val e1FIKPF = FIDCCP02.IDOC.E1FIKPF()
         e1FIKPF.segment = "1"
         e1FIKPF.bukrs = "1002"
-        val dateTimeFormatterMonthYear = DateTimeFormatter.ofPattern("MMyy")
-        e1FIKPF.gjahr = payment.paymentDate?.format(dateTimeFormatterMonthYear)
+        val dateTimeFormatterYear = DateTimeFormatter.ofPattern("yyyy")
+        e1FIKPF.gjahr = payment.paymentDate?.format(dateTimeFormatterYear)
         e1FIKPF.blart = "KR"
         val dateTimeFormatterYearMonthDay = DateTimeFormatter.ofPattern("yyyyMMdd")
         e1FIKPF.bldat = payment.paymentDate?.format(dateTimeFormatterYearMonthDay)
         var previousMonth = payment.dueDate?.minusMonths(1)
         e1FIKPF.budat = previousMonth?.format(dateTimeFormatterYearMonthDay)
         val dateTimeFormatterMonth = DateTimeFormatter.ofPattern("MM")
-        e1FIKPF.monat = payment.paymentDate?.format(dateTimeFormatterMonth)
+        e1FIKPF.monat = previousMonth?.format(dateTimeFormatterMonth)
         val dateTimeFormatterE1FIKPFYearMonth = DateTimeFormatter.ofPattern("yyyyMM")
         var formattedRowNumber = "%08d".format(identifier)
         e1FIKPF.xblnr = "VAK" + payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonth) + formattedRowNumber
@@ -103,7 +104,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FINBU.zfbdt = payment.dueDate?.format(dateTimeFormatterYearMonthDay)
         e1FINBU.zterm = "T000"
         e1FINBU.skfbt = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
-        e1FINBU.reserve = payment.unit.businessId + ";" + payment.unit.iban
+        e1FINBU.reserve = payment.unit.businessId + ";" + payment.unit.iban?.replace(" ", "")
 
         e1FISEG.e1FINBU = e1FINBU
         e1FISEGlist.add(e1FISEG)
@@ -114,26 +115,49 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FISEG_2.bschl = "40"
         e1FISEG_2.shkzg = "S"
         e1FISEG_2.mwskz = "P4"
-        e1FISEG_2.wrbtr = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
+        var daycareAmount = payment.amount - preSchoolAmount
+        e1FISEG_2.wrbtr = String.format(Locale.ENGLISH,"%.2f", daycareAmount.toDouble() / 100)
         val rowTextWithDaycareName = "eVAKA " + payment.paymentDate?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
-        e1FISEG_2.sgtxt = rowTextWithDaycareName //TODO: only first 50 chars
+        e1FISEG_2.sgtxt = rowTextWithDaycareName.substring(0,35)
         e1FISEG_2.kokrs = "1000"
-        e1FISEG_2.kostl = "0000031440" //TODO: check from customer are we using "Toimittajanumero" field for this?
+        if(payment.unit.careType.contains(CareType.FAMILY))
+        {
+            e1FISEG_2.kostl = "0000031442"
+        }
+        else if(payment.unit.careType.contains(CareType.GROUP_FAMILY))
+        {
+            e1FISEG_2.kostl = "0000031444"
+        }
+        else
+        {
+            //TODO: when payment contains unit's language information use 0000031440 for FI and 0000031441 for SV
+            e1FISEG_2.kostl = "0000031440"
+        }
         e1FISEG_2.aufnr = "000000000000"
         e1FISEG_2.hkont = "0000431500"
-        //e1FISEG_2.matnr = "" TODO: asked if we are providing empty value or no value at all
         e1FISEG_2.prctr = ""
-
-
-
-
-
         e1FISEGlist.add(e1FISEG_2)
 
+        if(preSchoolAmount > 0)
+        {
+            val e1FISEG_3 = FIDCCP02.IDOC.E1FIKPF.E1FISEG()
+            e1FISEG_3.segment = "1"
+            e1FISEG_3.buzei = "003"
+            e1FISEG_3.bschl = "40"
+            e1FISEG_3.shkzg = "S"
+            e1FISEG_3.mwskz = "P4"
+            e1FISEG_3.wrbtr = String.format(Locale.ENGLISH,"%.2f", preSchoolAmount.toDouble() / 100)
+            e1FISEG_3.sgtxt = rowTextWithDaycareName.substring(0,35)
+            e1FISEG_3.kokrs = "1000"
+            e1FISEG_3.kostl = "0000031410"
+            e1FISEG_3.aufnr = "000000000000"
+            e1FISEG_3.hkont = "0000430800"
+            e1FISEG_3.prctr = ""
+            e1FISEGlist.add(e1FISEG_3)
+        }
+
+
         idoc.e1FIKPF.e1FISEG = e1FISEGlist
-
-
-
         return idoc
     }
 
