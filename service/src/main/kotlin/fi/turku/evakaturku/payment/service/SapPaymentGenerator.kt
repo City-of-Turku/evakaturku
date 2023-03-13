@@ -83,7 +83,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FIKPF.monat = previousMonth?.format(dateTimeFormatterMonth)
         val dateTimeFormatterE1FIKPFYearMonth = DateTimeFormatter.ofPattern("yyyyMM")
         var formattedRowNumber = "%08d".format(identifier)
-        e1FIKPF.xblnr = "VAK" + payment.paymentDate?.format(dateTimeFormatterE1FIKPFYearMonth) + formattedRowNumber
+        e1FIKPF.xblnr = "VAK" + previousMonth?.format(dateTimeFormatterE1FIKPFYearMonth) + formattedRowNumber
         e1FIKPF.bktxt = "eVAKA"
         e1FIKPF.waers = "EUR"
         e1FIKPF.glvor = "RFBU"
@@ -97,7 +97,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FISEG.bschl = "31"
         e1FISEG.shkzg = "H"
         e1FISEG.wrbtr = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
-        e1FISEG.sgtxt = "eVAKA " + payment.paymentDate?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year
+        e1FISEG.sgtxt = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year
         e1FISEG.xref3 = ""
         val e1FINBU = FIDCCP02.IDOC.E1FIKPF.E1FISEG.E1FINBU()
         e1FINBU.segment = "1"
@@ -117,7 +117,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FISEG_2.mwskz = "P4"
         var daycareAmount = payment.amount - preSchoolAmount
         e1FISEG_2.wrbtr = String.format(Locale.ENGLISH,"%.2f", daycareAmount.toDouble() / 100)
-        val rowTextWithDaycareName = "eVAKA " + payment.paymentDate?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
+        val rowTextWithDaycareName = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
         e1FISEG_2.sgtxt = rowTextWithDaycareName.substring(0,35)
         e1FISEG_2.kokrs = "1000"
         if(payment.unit.careType.contains(CareType.FAMILY))
