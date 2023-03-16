@@ -3,6 +3,8 @@ package fi.turku.evakaturku.payment.service
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
+import fi.espoo.evaka.shared.DaycareId
+import fi.espoo.evaka.shared.db.Database
 import fi.turku.evakaturku.util.FinanceDateProvider
 import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
@@ -20,11 +22,60 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val paymentStrings: MutableList<String> = mutableListOf()
     )
 
-    fun generatePayments(payments: List<Payment> ): Result {
+    data class UnitPreSchoolers(
+            val unitId: DaycareId,
+            val preSchoolers: Int
+    )
+
+    data class UnitLanguage(
+            val unitId: DaycareId,
+            val language: String
+    )
+
+    fun Database.Read.fetchPreschoolers(payments: List<Payment>): List<UnitPreSchoolers> {
+        val units: MutableSet<DaycareId> = mutableSetOf()
+        payments.forEach { units.add(it.unit.id) }
+
+        return createQuery("""
+            SELECT id as unitId,count(*) as preSchoolers
+            FROM daycare
+            JOIN placement
+            ON daycare.id = placement.unit_id
+            WHERE daycare.id in :ids
+            AND placement.type in ('PRESCHOOL', 'PRESCHOOL_DAYCARE')
+            GROUP BY daycare.id
+        """
+        )
+        .bind("ids", units)
+        .mapTo<UnitPreSchoolers>()
+        .toList()
+    }
+
+    fun Database.Read.fetchUnitLanguages(payments: List<Payment>): List<UnitLanguage> {
+        val units: MutableSet<DaycareId> = mutableSetOf()
+        payments.forEach { units.add(it.unit.id) }
+
+        return createQuery("""
+            SELECT id as unitId,language
+            FROM daycare
+            WHERE daycare.id in :ids
+        """
+        )
+                .bind("ids", units)
+                .mapTo<UnitLanguage>()
+                .toList()
+    }
+
+    fun generatePayments(payments: List<Payment>, tx: Database.Transaction): Result {
         var successList = mutableListOf<Payment>()
         var failedList = mutableListOf<Payment>()
 
         val paymentStrings = mutableListOf<String>()
+
+        val preSchoolerMap: MutableMap<DaycareId, UnitPreSchoolers> = mutableMapOf()
+        tx.fetchPreschoolers(payments).forEach { preSchoolerMap[it.unitId] = it }
+        val languageMap: MutableMap<DaycareId, UnitLanguage> = mutableMapOf()
+        tx.fetchUnitLanguages(payments).forEach { languageMap[it.unitId] = it }
 
         val (failed, succeeded) = payments.partition { payment -> paymentChecker.shouldFail(payment) }
         failedList.addAll(failed)
@@ -32,7 +83,10 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
         var identifier = 1
         succeeded.forEach {
-            idocs.add(generateIdoc(it, identifier, 50000)) //TODO: Add identifier for every invoice and preschool amount
+            // TODO: make preschool price configurable, take August into account
+            val preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * 520
+            val language = languageMap[it.unit.id]?.language ?: "fi"
+            idocs.add(generateIdoc(it, identifier, preSchoolAmount, language)) //TODO: Add identifier for every invoice and preschool amount
             successList.add(it)
             identifier++
         }
@@ -49,7 +103,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         return Result(PaymentIntegrationClient.SendResult(successList, failedList), paymentStrings)
     }
 
-    fun generateIdoc(payment: Payment, identifier: Int, preSchoolAmount: Int): FIDCCP02.IDOC {
+    fun generateIdoc(payment: Payment, identifier: Int, preSchoolAmount: Int, language: String): FIDCCP02.IDOC {
         val idoc = FIDCCP02.IDOC()
         idoc.begin = "1"
 
@@ -130,8 +184,12 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         }
         else
         {
-            //TODO: when payment contains unit's language information use 0000031440 for FI and 0000031441 for SV
-            e1FISEG_2.kostl = "0000031440"
+            if (language == "sv") {
+                e1FISEG_2.kostl = "0000031441"
+            }
+            else {
+                e1FISEG_2.kostl = "0000031440"
+            }
         }
         e1FISEG_2.aufnr = "000000000000"
         e1FISEG_2.hkont = "0000431500"

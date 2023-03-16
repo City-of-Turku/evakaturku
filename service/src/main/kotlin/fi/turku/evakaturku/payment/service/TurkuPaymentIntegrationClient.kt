@@ -3,6 +3,7 @@ package fi.turku.evakaturku.payment.service
 import com.jcraft.jsch.SftpException
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
+import fi.espoo.evaka.shared.db.Database
 import fi.turku.evakaturku.invoice.service.SftpSender
 import mu.KotlinLogging
 import java.text.SimpleDateFormat
@@ -15,12 +16,12 @@ class TurkuPaymentIntegrationClient(
     private val sftpSender: SftpSender
 ): PaymentIntegrationClient {
 
-    override fun send(payments: List<Payment>): PaymentIntegrationClient.SendResult {
+    override fun send(payments: List<Payment>, tx: Database.Transaction): PaymentIntegrationClient.SendResult {
 
         var failedList: MutableList<Payment> = mutableListOf()
 
         logger.info { "TurkuPaymentIntegrationClient.send() called with ${payments.size} payments" }
-        val generatorResult = paymentGenerator.generatePayments(payments)
+        val generatorResult = paymentGenerator.generatePayments(payments, tx)
         var successList = generatorResult.sendResult.succeeded
         failedList.addAll(generatorResult.sendResult.failed)
 
