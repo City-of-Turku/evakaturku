@@ -37,16 +37,18 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         payments.forEach { units.add(it.unit.id) }
 
         return createQuery("""
-            SELECT id as unitId,count(*) as preSchoolers
+            SELECT daycare.id as unitId,count(*) as preSchoolers
             FROM daycare
             JOIN placement
             ON daycare.id = placement.unit_id
-            WHERE daycare.id in :ids
+            WHERE daycare.id in ('80f8e550-6a92-11ed-8f00-87d840c1688a')
             AND placement.type in ('PRESCHOOL', 'PRESCHOOL_DAYCARE')
+            AND daterange(start_date,end_date,'[]') && :period
             GROUP BY daycare.id
         """
         )
         .bind("ids", units)
+        .bind("period", payments[0].period)
         .mapTo<UnitPreSchoolers>()
         .toList()
     }
