@@ -440,9 +440,8 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             e1edka1_5.orT01 = invoice.codebtor?.postOffice
             e1edka1_5.land1 = "FI"
             e1edka1list.add(e1edka1_5)
-
-            idoc.e1EDKA1 = e1edka1list
         }
+        idoc.e1EDKA1 = e1edka1list
 
         // E1EDK02
         val e1edk02list : MutableList<ORDERS05.IDOC.E1EDK02> = mutableListOf()
@@ -492,7 +491,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             e1edp01.menge = String.format(Locale.ENGLISH,"%.3f", formattedUnitAmount)
             e1edp01.werks = "102S"
             e1edp01list.add(e1edp01)
-            idoc.e1EDP01 = e1edp01list
+
 
             // E1EDP02 ROWS - segment
             val e1edp02list : MutableList<ORDERS05.IDOC.E1EDP01.E1EDP02> = mutableListOf()
@@ -603,6 +602,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
             rowNumber++
         }
+        idoc.e1EDP01 = e1edp01list
 
     }
 

@@ -14,7 +14,6 @@ class SftpSender(val sftpProperties: SftpProperties, val sftpConnector: SftpConn
     fun send(content: String, fileName: String) {
         val path = sftpProperties.path
 
-        //val fileName = SimpleDateFormat("'LAVAK_1002'yyMMdd-hhmmss'.xml'").format(Date())
         val filepath = "$path/$fileName"
 
         sftpConnector.connect(sftpProperties.address, sftpProperties.username, sftpProperties.password)
