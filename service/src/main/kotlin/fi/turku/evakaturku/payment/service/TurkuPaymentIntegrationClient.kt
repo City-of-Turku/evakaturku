@@ -13,7 +13,8 @@ private val logger = KotlinLogging.logger {}
 
 class TurkuPaymentIntegrationClient(
     private val paymentGenerator: SapPaymentGenerator,
-    private val sftpSender: SftpSender
+    private val sftpSender: SftpSender,
+    private val preSchoolAccountingValue: Int
 ): PaymentIntegrationClient {
 
     override fun send(payments: List<Payment>, tx: Database.Transaction): PaymentIntegrationClient.SendResult {
@@ -21,7 +22,7 @@ class TurkuPaymentIntegrationClient(
         var failedList: MutableList<Payment> = mutableListOf()
 
         logger.info { "TurkuPaymentIntegrationClient.send() called with ${payments.size} payments" }
-        val generatorResult = paymentGenerator.generatePayments(payments, tx)
+        val generatorResult = paymentGenerator.generatePayments(payments, preSchoolAccountingValue, tx)
         var successList = generatorResult.sendResult.succeeded
         failedList.addAll(generatorResult.sendResult.failed)
 

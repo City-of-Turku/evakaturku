@@ -13,6 +13,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 data class EvakaTurkuProperties(
     val sapInvoicing: SftpProperties,
     val sapPayments: SftpProperties,
+    // accounting amount for a preschooler when doing payments
+    val preschoolPaymentAmount: Int
 )
 
 data class SftpProperties(

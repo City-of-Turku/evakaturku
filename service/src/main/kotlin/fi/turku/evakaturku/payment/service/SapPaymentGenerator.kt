@@ -66,7 +66,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
                 .toList()
     }
 
-    fun generatePayments(payments: List<Payment>, tx: Database.Transaction): Result {
+    fun generatePayments(payments: List<Payment>, preSchoolAccountingAmount: Int, tx: Database.Transaction): Result {
         var successList = mutableListOf<Payment>()
         var failedList = mutableListOf<Payment>()
 
@@ -83,8 +83,8 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
         var identifier = 1
         succeeded.forEach {
-            // TODO: make preschool price configurable, take August into account
-            val preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * 520
+            // TODO: take August into account
+            val preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * preSchoolAccountingAmount
             val language = languageMap[it.unit.id]?.language ?: "fi"
             idocs.add(generateIdoc(it, identifier, preSchoolAmount, language)) //TODO: Add identifier for every invoice and preschool amount
             successList.add(it)
