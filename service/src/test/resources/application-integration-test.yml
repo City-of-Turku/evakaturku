@@ -66,6 +66,7 @@ evakaturku:
     password: pass
     address: address
     path: path
+  preschoolPaymentAmount: 520
 spring:
   main:
     allow-bean-definition-overriding: true # for redisPool
