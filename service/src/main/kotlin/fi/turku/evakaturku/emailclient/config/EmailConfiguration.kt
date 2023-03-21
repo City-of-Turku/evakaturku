@@ -8,6 +8,7 @@ import fi.espoo.evaka.EvakaEnv
 import fi.espoo.evaka.daycare.domain.Language
 import fi.espoo.evaka.emailclient.EmailContent
 import fi.espoo.evaka.emailclient.IEmailMessageProvider
+import fi.espoo.evaka.invoicing.service.IncomeNotificationType
 import fi.espoo.evaka.messaging.MessageThreadStub
 import fi.espoo.evaka.messaging.MessageType
 import fi.espoo.evaka.shared.ChildId
@@ -438,6 +439,322 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
         """
                 .trimIndent()
+        )
+    }
+
+    override fun outdatedIncomeNotification(
+            notificationType: IncomeNotificationType,
+            language: Language
+    ): EmailContent {
+        return when (notificationType) {
+            IncomeNotificationType.INITIAL_EMAIL -> outdatedIncomeNotificationInitial(language)
+            IncomeNotificationType.REMINDER_EMAIL -> outdatedIncomeNotificationReminder(language)
+            IncomeNotificationType.EXPIRED_EMAIL -> outdatedIncomeNotificationExpired()
+        }
+    }
+
+    fun outdatedIncomeNotificationInitial(language: Language): EmailContent {
+        val documentsUrl = "${baseUrl(language)}/income"
+        return EmailContent(
+                subject =
+                "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
+                text =
+                """
+                Hyvä asiakkaamme
+                
+                Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.
+                
+                Pyydämme toimittamaan tuloselvityksen eVakassa 14 päivän kuluessa tästä ilmoituksesta.eVakassa voitte myös antaa suostumuksen korkeimpaan maksuluokkaan tai tulorekisterin käyttöön.
+                
+                Mikäli ette toimita uusia tulotietoja, asiakasmaksu määräytyy korkeimman maksuluokan mukaan. Puuttuvilla tulotiedoilla määrättyä maksua ei korjata takautuvasti.
+                
+                Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki
+                
+                Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi
+                
+                Tulotiedot: $documentsUrl
+                
+                Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
+                
+                -----
+                
+                Bästa klient
+                
+                Inkomstuppgifterna som ligger till grund för klientavgiften för småbarnspedagogik eller servicesedelns egenandel granskas årligen.
+                
+                Vi ber att du skickar en inkomstutredning via eVaka inom 14 dagar från den här anmälan. I eVaka kan du också ge ditt samtycke till den högsta avgiften eller till användning av inkomstregistret.
+                
+                Om du inte lämnar in en ny inkomstutredning bestäms din klientavgift enligt den högsta avgiften. En avgift som fastställts på grund av bristfälliga inkomstuppgifter korrigeras inte retroaktivt.
+                
+                Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad
+                
+                Mer information: paivahoitomaksut@turku.fi
+                
+                Inkomstuppgifterna: $documentsUrl
+                
+                Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
+                
+                -----
+
+                Dear client
+                
+                The income information used for determining the early childhood education fee or the out-of-pocket cost of a service voucher is reviewed every year.
+                
+                We ask you to submit your income statement through eVaka within 14 days of this notification. Through eVaka, you can also give your consent to the highest fee or the use of the Incomes Register.
+                
+                If you do not provide your latest income information, your client fee will be determined based on the highest fee category. We will not retroactively reimburse you for fees charged in a situation where you have not provided your income information.
+                
+                If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku
+                
+                Inquiries: paivahoitomaksut@turku.fi.
+
+                Income information: $documentsUrl    
+
+                This is an automatic message from the eVaka system. Do not reply to this message.  
+        """
+                        .trimIndent(),
+                html =
+                """
+                <p>Hyvä asiakkaamme</p>
+                
+                <p>Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.</p>
+                
+                <p>Pyydämme toimittamaan tuloselvityksen eVakassa 14 päivän kuluessa tästä ilmoituksesta. eVakassa voitte myös antaa suostumuksen korkeimpaan maksuluokkaan tai tulorekisterin käyttöön. </p>
+                
+                <p>Mikäli ette toimita uusia tulotietoja, asiakasmaksu määräytyy korkeimman maksuluokan mukaan. Puuttuvilla tulotiedoilla määrättyä maksua ei korjata takautuvasti.</p>
+                
+                <p>Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki</p>
+                
+                <p>Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi</p>
+                
+                <p>Tulotiedot: <a href="$documentsUrl">$documentsUrl</a></p>
+                
+                <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+            
+                <hr>
+                
+                <p>Bästa klient</p>
+                                
+                <p>Inkomstuppgifterna som ligger till grund för klientavgiften för småbarnspedagogik eller servicesedelns egenandel granskas årligen.</p>
+                                
+                <p>Vi ber att du skickar en inkomstutredning via eVaka inom 14 dagar från den här anmälan. I eVaka kan du också ge ditt samtycke till den högsta avgiften eller till användning av inkomstregistret.</p>
+                                
+                <p>Om du inte lämnar in en ny inkomstutredning bestäms din klientavgift enligt den högsta avgiften. En avgift som fastställts på grund av bristfälliga inkomstuppgifter korrigeras inte retroaktivt.</p>
+                                
+                <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
+                                
+                <p>Mer information: paivahoitomaksut@turku.fi</p>
+                                
+                <p>Inkomstuppgifterna: <a href="$documentsUrl">$documentsUrl</a></p>
+                                                
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>          
+                
+                <hr>
+                
+                <p>Dear client</p>
+                
+                <p>The income information used for determining the early childhood education fee or the out-of-pocket cost of a service voucher is reviewed every year.</p>
+                
+                <p>We ask you to submit your income statement through eVaka within 14 days of this notification. Through eVaka, you can also give your consent to the highest fee or the use of the Incomes Register.</p>
+                
+                <p>If you do not provide your latest income information, your client fee will be determined based on the highest fee category. We will not retroactively reimburse you for fees charged in a situation where you have not provided your income information.</p>
+                
+                <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
+                
+                <p>Inquiries: paivahoitomaksut@turku.fi</p>
+                
+                <p>Income information: <a href="$documentsUrl">$documentsUrl</a></p>
+
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
+        """
+                        .trimIndent()
+        )
+    }
+
+    fun outdatedIncomeNotificationReminder(language: Language): EmailContent {
+        val documentsUrl = "${baseUrl(language)}/income"
+        return EmailContent(
+                subject =
+                "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
+                text =
+                """
+                Hyvä asiakkaamme
+                
+                Ette ole vielä toimittaneet uusia tulotietoja. Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.
+                
+                Pyydämme toimittamaan tuloselvityksen eVakassa 7 päivän kuluessa tästä ilmoituksesta. eVakassa voitte myös antaa suostumuksen korkeimpaan maksuluokkaan tai tulorekisterin käyttöön.
+                
+                Mikäli ette toimita uusia tulotietoja, asiakasmaksu määräytyy korkeimman maksuluokan mukaan. Puuttuvilla tulotiedoilla määrättyä maksua ei korjata takautuvasti.
+                
+                Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki    
+                
+                Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi
+                
+                Tulotiedot: $documentsUrl
+                
+                Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
+                
+                -----
+                
+                Bästa klient
+                
+                Du har ännu inte lämnat in en ny inkomstutredning. Inkomstuppgifterna som ligger till grund för klientavgiften för småbarnspedagogik eller servicesedelns egenandel granskas årligen.
+                
+                Vi ber att du skickar en inkomstutredning via eVaka inom sju dagar från denna anmälan. I eVaka kan du också ge ditt samtycke till den högsta avgiften eller till användning av inkomstregistret.
+                
+                Om du inte lämnar in en ny inkomstutredning bestäms din klientavgift enligt den högsta avgiften. En avgift som fastställts på grund av bristfälliga inkomstuppgifter korrigeras inte retroaktivt.
+                
+                Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad
+                
+                Mer information: paivahoitomaksut@turku.fi
+                
+                Inkomstuppgifterna: $documentsUrl
+                
+                Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
+                
+                -----
+
+                Dear client
+                
+                You have not yet submitted your latest income information. The income information used for determining the early childhood education fee or the out-of-pocket cost of a service voucher is reviewed every year.
+                
+                We ask you to submit your income statement through eVaka within 7 days of this notification. Through eVaka, you can also give your consent to the highest fee or the use of the Incomes Register.
+                
+                If you do not provide your latest income information, your client fee will be determined based on the highest fee category. We will not retroactively reimburse you for fees charged in a situation where you have not provided your income information. 
+                
+                If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku
+                
+                Inquiries: paivahoitomaksut@turku.fi
+                
+                Income information: $documentsUrl
+                
+                This is an automatic message from the eVaka system. Do not reply to this message.  
+        """
+                        .trimIndent(),
+                html =
+                """
+                <p>Hyvä asiakkaamme</p>
+                
+                <p>Ette ole vielä toimittaneet uusia tulotietoja. Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.</p>
+                
+                <p>Pyydämme toimittamaan tuloselvityksen eVakassa 7 päivän kuluessa tästä ilmoituksesta. eVakassa voitte myös antaa suostumuksen korkeimpaan maksuluokkaan tai tulorekisterin käyttöön.</p>
+                
+                <p>Mikäli ette toimita uusia tulotietoja, asiakasmaksu määräytyy korkeimman maksuluokan mukaan. Puuttuvilla tulotiedoilla määrättyä maksua ei korjata takautuvasti.</p>
+                
+                <p>Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki</p>
+                
+                <p>Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi</p>
+                
+                <p>Tulotiedot: <a href="$documentsUrl">$documentsUrl</a></p>
+                
+                <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+            
+                <hr>
+                
+                <p>Bästa klient</p>
+                                
+                <p>Du har ännu inte lämnat in en ny inkomstutredning. Inkomstuppgifterna som ligger till grund för klientavgiften för småbarnspedagogik eller servicesedelns egenandel granskas årligen.</p>
+                                
+                <p>Vi ber att du skickar en inkomstutredning via eVaka inom sju dagar från denna anmälan. I eVaka kan du också ge ditt samtycke till den högsta avgiften eller till användning av inkomstregistret.</p>
+                                
+                <p>Om du inte lämnar in en ny inkomstutredning bestäms din klientavgift enligt den högsta avgiften. En avgift som fastställts på grund av bristfälliga inkomstuppgifter korrigeras inte retroaktivt.</p>
+                                
+                <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
+                                
+                <p>Mer information: paivahoitomaksut@turku.fi</p>
+                                
+                <p>Inkomstuppgifterna: <a href="$documentsUrl">$documentsUrl</a></p>
+                                
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
+                                
+                <hr>
+                
+                <p>Dear client</p>
+                                
+                <p>You have not yet submitted your latest income information. The income information used for determining the early childhood education fee or the out-of-pocket cost of a service voucher is reviewed every year.</p>
+                
+                <p>We ask you to submit your income statement through eVaka within 7 days of this notification. Through eVaka, you can also give your consent to the highest fee or the use of the Incomes Register.</p>
+                
+                <p>If you do not provide your latest income information, your client fee will be determined based on the highest fee category. We will not retroactively reimburse you for fees charged in a situation where you have not provided your income information.</p> 
+                
+                <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
+                               
+                <p>Inquiries: paivahoitomaksut@turku.fi</p>
+                                
+                <p>Income information: <a href="$documentsUrl">$documentsUrl</a></p>
+                                                
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
+        """
+                        .trimIndent()
+        )
+    }
+
+    fun outdatedIncomeNotificationExpired(): EmailContent {
+        return EmailContent(
+                subject =
+                "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
+                text =
+                """
+                Hyvä asiakkaamme
+                
+                Seuraava asiakasmaksunne määräytyy korkeimman maksuluokan mukaan, sillä ette ole toimittaneet uusia tulotietoja määräaikaan mennessä.
+                
+                Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi
+                
+                Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
+                
+                -----
+                
+                Bästä klient
+                
+                Din följande klientavgift bestäms enligt den högsta avgiften, eftersom du inte har lämnat in en inkomstutredning inom utsatt tid.
+                
+                Mer information: paivahoitomaksut@turku.fi
+                
+                Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
+                
+                -----
+                
+                Dear client
+                
+                Your next client fee will be determined based on the highest fee category as you did not provide your latest income information by the deadline.
+                
+                Inquiries: paivahoitomaksut@turku.fi
+
+                This is an automatic message from the eVaka system. Do not reply to this message.  
+        """
+                        .trimIndent(),
+                html =
+                """
+                <p>Hyvä asiakkaamme</p>
+                
+                <p>Seuraava asiakasmaksunne määräytyy korkeimman maksuluokan mukaan, sillä ette ole toimittaneet uusia tulotietoja määräaikaan mennessä.</p>
+                
+                <p>Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi</p>
+                
+                <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+            
+                <hr>
+                
+                <p>Bästä klient</p>
+                
+                <p>Din följande klientavgift bestäms enligt den högsta avgiften, eftersom du inte har lämnat in en inkomstutredning inom utsatt tid.</p>
+                
+                <p>Mer information: paivahoitomaksut@turku.fi</p>
+                
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>  
+                
+                <hr>
+                
+                <p>Dear client</p>
+                
+                <p>Your next client fee will be determined based on the highest fee category as you did not provide your latest income information by the deadline.</p>
+                
+                <p>Inquiries: paivahoitomaksut@turku.fi</p>
+
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
+               """
+                        .trimIndent()
         )
     }
 
