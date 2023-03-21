@@ -85,8 +85,11 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
         var identifier = 1
         succeeded.forEach {
-            // TODO: take August into account
-            val preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * preSchoolAccountingAmount
+            var preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * preSchoolAccountingAmount
+            if(it.period.start.monthValue == 8)
+            {
+                preSchoolAmount /= 2
+            }
             val language = languageMap[it.unit.id]?.language ?: "fi"
             idocs.add(generateIdoc(it, identifier, preSchoolAmount, language)) //TODO: Add identifier for every invoice and preschool amount
             successList.add(it)
