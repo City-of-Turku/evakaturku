@@ -434,7 +434,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             }
             else
             {
-                e1edka1_5.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+                e1edka1_5.name1 = nameOfCodebtorY1
             }
 
             val streetAddressCodebtorY1 = invoice.codebtor?.streetAddress
@@ -548,6 +548,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             {
                 sign = "-"
             }
+
             val formattedUnitPrice = abs(row.unitPrice.toDouble() / 100)
             e1edp05.krate = String.format(Locale.ENGLISH,"%.2f", formattedUnitPrice) + sign
             e1edp05list.add(e1edp05)
