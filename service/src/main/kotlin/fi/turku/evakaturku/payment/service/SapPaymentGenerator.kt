@@ -11,6 +11,7 @@ import jakarta.xml.bind.JAXBException
 import jakarta.xml.bind.Marshaller
 import org.springframework.stereotype.Component
 import java.io.StringWriter
+import java.lang.Math.min
 import java.time.format.DateTimeFormatter
 import java.util.*
 
@@ -178,7 +179,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         var daycareAmount = payment.amount - preSchoolAmount
         e1FISEG_2.wrbtr = String.format(Locale.ENGLISH,"%.2f", daycareAmount.toDouble() / 100)
         val rowTextWithDaycareName = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
-        e1FISEG_2.sgtxt = rowTextWithDaycareName.substring(0,35)
+        e1FISEG_2.sgtxt = rowTextWithDaycareName.substring(0, min(rowTextWithDaycareName.length, 35))
         e1FISEG_2.kokrs = "1000"
         if(payment.unit.careType.contains(CareType.FAMILY))
         {
@@ -211,7 +212,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             e1FISEG_3.shkzg = "S"
             e1FISEG_3.mwskz = "P4"
             e1FISEG_3.wrbtr = String.format(Locale.ENGLISH,"%.2f", preSchoolAmount.toDouble() / 100)
-            e1FISEG_3.sgtxt = rowTextWithDaycareName.substring(0,35)
+            e1FISEG_3.sgtxt = rowTextWithDaycareName.substring(0, min(rowTextWithDaycareName.length, 35))
             e1FISEG_3.kokrs = "1000"
             e1FISEG_3.kostl = "0000031410"
             e1FISEG_3.aufnr = "000000000000"
