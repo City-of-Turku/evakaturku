@@ -202,6 +202,10 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
                 e1edka1.strs2 = streetAddressAG.substring(35, streetAddressAG.length)
             }
         }
+        else
+        {
+            e1edka1.stras = streetAddressAG
+        }
 
         e1edka1.pstlz = invoice.headOfFamily.postalCode
         e1edka1.orT01 = invoice.headOfFamily.postOffice
@@ -260,6 +264,10 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
                 e1edka1_2.strs2 = streetAddressRE.substring(35, streetAddressRE.length)
             }
         }
+        else
+        {
+            e1edka1_2.strs2 = streetAddressRE
+        }
 
         e1edka1_2.pstlz = invoice.headOfFamily.postalCode
         e1edka1_2.orT01 = invoice.headOfFamily.postOffice
@@ -316,6 +324,11 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
                 e1edka1_3.strs2 = streetAddressRG.substring(35, streetAddressRG.length)
             }
         }
+        else
+        {
+            e1edka1_3.strs2 = streetAddressRG
+        }
+
 
         e1edka1_3.pstlz = invoice.headOfFamily.postalCode
         e1edka1_3.orT01 = invoice.headOfFamily.postOffice
@@ -372,6 +385,11 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
                 e1edka1_4.strs2 = streetAddressWE.substring(35, streetAddressWE.length)
             }
         }
+        else
+        {
+            e1edka1_4.strs2 = streetAddressWE
+        }
+
 
         e1edka1_4.pstlz = invoice.headOfFamily.postalCode
         e1edka1_4.orT01 = invoice.headOfFamily.postOffice
@@ -433,6 +451,10 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
                     {
                         e1edka1_5.strs2 = streetAddressCodebtorY1.substring(35, streetAddressCodebtorY1.length)
                     }
+                }
+                else
+                {
+                    e1edka1_5.strs2 = streetAddressCodebtorY1
                 }
             }
 
