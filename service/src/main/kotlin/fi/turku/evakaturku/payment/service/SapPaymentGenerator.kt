@@ -44,7 +44,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             WHERE daycare.id in ('80f8e550-6a92-11ed-8f00-87d840c1688a')
             AND placement.type in ('PRESCHOOL', 'PRESCHOOL_DAYCARE')
             AND daterange(start_date,end_date,'[]') && :period
-            AND daycare.id IN :ids
+            AND daycare.id = ANY(:ids)
             GROUP BY daycare.id
         """
         )
@@ -61,7 +61,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         return createQuery("""
             SELECT id as unitId,language
             FROM daycare
-            WHERE daycare.id in :ids
+            WHERE daycare.id = ANY(:ids)
         """
         )
                 .bind("ids", units)
