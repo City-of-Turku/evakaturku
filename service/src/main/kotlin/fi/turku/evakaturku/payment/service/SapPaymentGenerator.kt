@@ -33,7 +33,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
     )
 
     fun Database.Read.fetchPreschoolers(payments: List<Payment>): List<UnitPreSchoolers> {
-        val units: MutableSet<DaycareId> = mutableSetOf()
+        val units: MutableList<DaycareId> = mutableListOf()
         payments.forEach { units.add(it.unit.id) }
 
         return createQuery("""
@@ -44,6 +44,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             WHERE daycare.id in ('80f8e550-6a92-11ed-8f00-87d840c1688a')
             AND placement.type in ('PRESCHOOL', 'PRESCHOOL_DAYCARE')
             AND daterange(start_date,end_date,'[]') && :period
+            AND daycare.id IN :ids
             GROUP BY daycare.id
         """
         )
@@ -54,7 +55,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
     }
 
     fun Database.Read.fetchUnitLanguages(payments: List<Payment>): List<UnitLanguage> {
-        val units: MutableSet<DaycareId> = mutableSetOf()
+        val units: MutableList<DaycareId> = mutableListOf()
         payments.forEach { units.add(it.unit.id) }
 
         return createQuery("""
