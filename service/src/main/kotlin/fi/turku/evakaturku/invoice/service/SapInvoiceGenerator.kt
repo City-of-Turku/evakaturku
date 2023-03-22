@@ -266,7 +266,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         }
         else
         {
-            e1edka1_2.strs2 = streetAddressRE
+            e1edka1_2.stras = streetAddressRE
         }
 
         e1edka1_2.pstlz = invoice.headOfFamily.postalCode
@@ -326,7 +326,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         }
         else
         {
-            e1edka1_3.strs2 = streetAddressRG
+            e1edka1_3.stras = streetAddressRG
         }
 
 
@@ -387,7 +387,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         }
         else
         {
-            e1edka1_4.strs2 = streetAddressWE
+            e1edka1_4.stras = streetAddressWE
         }
 
 
@@ -454,7 +454,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
                 }
                 else
                 {
-                    e1edka1_5.strs2 = streetAddressCodebtorY1
+                    e1edka1_5.stras = streetAddressCodebtorY1
                 }
             }
 
