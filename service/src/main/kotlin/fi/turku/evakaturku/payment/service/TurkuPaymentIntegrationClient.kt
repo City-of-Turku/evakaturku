@@ -26,16 +26,22 @@ class TurkuPaymentIntegrationClient(
         var successList = generatorResult.sendResult.succeeded
         failedList.addAll(generatorResult.sendResult.failed)
 
+        var serialNumber = 1
+
         if (!successList.isEmpty()) {
-            try {
-                //TODO: loop every unit and add new number
-                val filename = SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss'-1.xml'").format(Date())
-                sftpSender.send(generatorResult.paymentStrings[0], filename)
-                logger.info { "Successfully sent ${successList.size} payments" }
-            } catch (e: SftpException) {
-                logger.error { "Failed to send ${successList.size} payments" }
-                failedList.addAll(successList)
-                successList = listOf()
+            generatorResult.paymentStrings.forEach {
+                try {
+                    //TODO: loop every unit and add new number
+                    val filename = SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date()) + '-' + serialNumber.toString() + ".xml"
+                    sftpSender.send(it, filename)
+                    serialNumber++
+                    logger.info { "Successfully sent ${successList.size} payments" }
+                } catch (e: SftpException) {
+                    logger.error { "Failed to send ${successList.size} payments" }
+                    // TODO: only add payments whose sending failed to failedList
+                    failedList.addAll(successList)
+                    successList = listOf()
+                }
             }
         }
 
