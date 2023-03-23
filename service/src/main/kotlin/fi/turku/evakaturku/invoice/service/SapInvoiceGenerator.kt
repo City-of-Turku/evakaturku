@@ -559,13 +559,13 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             val e1edp19 = ORDERS05.IDOC.E1EDP01.E1EDP19()
             e1edp19.segment = "1"
             e1edp19.qualf = "002"
-            if(row.product.value == Product.DAYCARE.toString())
-            {
-                e1edp19.idtnr = "000000000000007246"
-            }
-            else if (row.product.value == Product.PRESCHOOL_WITH_DAYCARE.toString())
+            if (row.product.value == Product.PRESCHOOL_WITH_DAYCARE.toString())
             {
                 e1edp19.idtnr = "000000000000007251"
+            }
+            else
+            {
+                e1edp19.idtnr = "000000000000007246"
             }
             e1edp19list.add(e1edp19)
             e1edp01.e1EDP19= e1edp19list
