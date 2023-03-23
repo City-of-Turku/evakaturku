@@ -31,7 +31,6 @@ class TurkuPaymentIntegrationClient(
         if (!successList.isEmpty()) {
             generatorResult.paymentStrings.forEach {
                 try {
-                    //TODO: loop every unit and add new number
                     val filename = SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date()) + '-' + serialNumber.toString() + ".xml"
                     sftpSender.send(it, filename)
                     serialNumber++

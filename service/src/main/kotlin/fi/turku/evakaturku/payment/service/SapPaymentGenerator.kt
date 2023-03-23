@@ -84,7 +84,6 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val (failed, succeeded) = payments.partition { payment -> paymentChecker.shouldFail(payment) }
         failedList.addAll(failed)
 
-        val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
         var identifier = 1
         succeeded.forEach {
             var preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * preSchoolAccountingAmount
@@ -93,18 +92,17 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
                 preSchoolAmount /= 2
             }
             val language = languageMap[it.unit.id]?.language ?: "fi"
-            idocs.add(generateIdoc(it, identifier, preSchoolAmount, language)) //TODO: Add identifier for every invoice and preschool amount
-            successList.add(it)
+            val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
+            idocs.add(generateIdoc(it, identifier, preSchoolAmount, language))
             identifier++
-        }
 
-        try {
-            paymentStrings.add(marshalPayments(idocs))
-            print(paymentStrings[0])
-        }
-        catch (e: JAXBException) {
-            failedList.addAll(successList)
-            successList.clear()
+            try {
+                paymentStrings.add(marshalPayments(idocs))
+                successList.add(it)
+            }
+            catch (e: JAXBException) {
+                failedList.add(it)
+            }
         }
 
         return Result(PaymentIntegrationClient.SendResult(successList, failedList), paymentStrings)
