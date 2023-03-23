@@ -38,14 +38,13 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         payments.forEach { units.add(it.unit.id) }
 
         return createQuery("""
-            SELECT daycare.id as unitId,count(*) as preSchoolers
-            FROM daycare
-            JOIN placement
-            ON daycare.id = placement.unit_id
-            WHERE placement.type in ('PRESCHOOL', 'PRESCHOOL_DAYCARE')
-            AND daterange(start_date,end_date,'[]') && :period
-            AND daycare.id = ANY(:ids)
-            GROUP BY daycare.id
+            SELECT placement_unit_id as unitId,count(placement_type) as preSchoolers
+            FROM voucher_value_report_decision
+            JOIN voucher_value_decision ON voucher_value_report_decision.decision_id = voucher_value_decision.id
+            WHERE voucher_value_report_decision.realized_period && :period
+            AND voucher_value_decision.placement_unit_id = ANY(:ids)
+            AND voucher_value_decision.placement_type in ('PRESCHOOL','PRESCHOOL_DAYCARE')
+            GROUP BY voucher_value_decision.placement_unit_id;
         """
         )
         .bind("ids", units)
