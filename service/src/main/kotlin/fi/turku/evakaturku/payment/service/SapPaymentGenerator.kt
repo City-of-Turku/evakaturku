@@ -5,6 +5,7 @@ import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.espoo.evaka.shared.DaycareId
 import fi.espoo.evaka.shared.db.Database
+import fi.espoo.evaka.shared.domain.DateRange
 import fi.turku.evakaturku.util.FinanceDateProvider
 import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
@@ -68,7 +69,25 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
                 .toList()
     }
 
-    fun generatePayments(payments: List<Payment>, preSchoolAccountingAmount: Int, tx: Database.Transaction): Result {
+    fun Database.Read.fetchPreschoolAccountingAmount(period: DateRange): Int {
+        return createQuery("""
+            SELECT base_value
+            FROM service_need_option_voucher_value
+            WHERE service_need_option_id=(
+                SELECT id
+                FROM service_need_option
+                WHERE default_option=true
+                AND valid_placement_type='PRESCHOOL')
+            AND validity @> :date;
+        """
+        )
+                .bind("date", period.start)
+                .mapTo<Int>()
+                // this should only ever return one row with one value
+                .first()
+    }
+
+    fun generatePayments(payments: List<Payment>, tx: Database.Transaction): Result {
         var successList = mutableListOf<Payment>()
         var failedList = mutableListOf<Payment>()
 
@@ -78,6 +97,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         tx.fetchPreschoolers(payments).forEach { preSchoolerMap[it.unitId] = it }
         val languageMap: MutableMap<DaycareId, UnitLanguage> = mutableMapOf()
         tx.fetchUnitLanguages(payments).forEach { languageMap[it.unitId] = it }
+        val preSchoolAccountingAmount = tx.fetchPreschoolAccountingAmount(payments[0].period)
 
         val (failed, succeeded) = payments.partition { payment -> paymentChecker.shouldFail(payment) }
         failedList.addAll(failed)
