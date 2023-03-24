@@ -45,6 +45,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             WHERE voucher_value_report_decision.realized_period && :period
             AND voucher_value_decision.placement_unit_id = ANY(:ids)
             AND voucher_value_decision.placement_type in ('PRESCHOOL','PRESCHOOL_DAYCARE')
+            AND voucher_value_report_decision.type='ORIGINAL'
             GROUP BY voucher_value_decision.placement_unit_id;
         """
         )
