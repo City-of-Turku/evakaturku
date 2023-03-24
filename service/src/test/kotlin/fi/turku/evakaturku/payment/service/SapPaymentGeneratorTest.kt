@@ -22,7 +22,7 @@ class SapPaymentGeneratorTest {
     @Disabled    fun `should generate XML for a payment`() {
         val payment = validPayment()
 
-        val result = sapPaymentGenerator.generatePayments(listOf(payment), 52400, mockDb)
+        val result = sapPaymentGenerator.generatePayments(listOf(payment), mockDb)
 
         assert(result.paymentStrings.count() == 1)
     }
@@ -33,7 +33,7 @@ class SapPaymentGeneratorTest {
     fun `should set some values`() {
         val payment = validPayment()
 
-        val result = sapPaymentGenerator.generatePayments(listOf(payment), 52400, mockDb)
+        val result = sapPaymentGenerator.generatePayments(listOf(payment), mockDb)
         val resultString = result.paymentStrings[0]
         assert(resultString == "something")
     }

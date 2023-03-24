@@ -62,7 +62,7 @@ class EVakaTurkuConfig {
     @Bean
     fun paymentIntegrationClient(evakaProperties: EvakaTurkuProperties, paymentGenerator: SapPaymentGenerator, sftpConnector: SftpConnector): PaymentIntegrationClient {
         val sftpSender = SftpSender(evakaProperties.sapPayments, sftpConnector)
-        return TurkuPaymentIntegrationClient(paymentGenerator, sftpSender, evakaProperties.preschoolPaymentAmount)
+        return TurkuPaymentIntegrationClient(paymentGenerator, sftpSender)
     }
 
     @Bean
