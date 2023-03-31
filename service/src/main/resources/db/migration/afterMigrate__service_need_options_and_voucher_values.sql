@@ -105,7 +105,10 @@ VALUES
     --CLUB
     ('ff6ddcd4-fa8a-11eb-8592-2f2b4e398fcb', 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', 'Open early childhood education at most 10h/week', 'CLUB', TRUE, 1.0, 0.54, 10, FALSE, FALSE, 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', null, 1.75, true,0.54,1.75),
     ('4d246a6c-4f92-11ed-8bed-2f5b3226e682', 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', 'Open early childhood education at most 10h/week', 'CLUB', FALSE, 1.0, 0.54, 10, FALSE, FALSE, 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', 'Avoin varhaiskasvatus enintään 10h/vko', 'Öppen småbarnspedagogik högst 10h/vecka', 2700, 1.75, true,0.54,1.75),
-    ('50359334-b961-11eb-b525-f3febdfea5d3', 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', 'Open early childhood education at most 15h/week', 'CLUB', FALSE, 1.0, 0.54, 15, FALSE, FALSE, 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', 2750, 1.75, true,0.54,1.75)
+    ('50359334-b961-11eb-b525-f3febdfea5d3', 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', 'Open early childhood education at most 15h/week', 'CLUB', FALSE, 1.0, 0.54, 15, FALSE, FALSE, 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', 'Avoin varhaiskasvatus enintään 15h/vko', 'Öppen småbarnspedagogik högst 15h/vecka', 2750, 1.75, true,0.54,1.75),
+    ('25d79184-e415-4fe3-bac6-3b719b050685', 'Avoin varhaiskasvatus maksuton kerho/puisto', 'Öppen småbarnspedagogik avgiftsfri klubb/park', 'Open early childhood education free of charge club/park', 'CLUB', FALSE, 0, 0.54, 20, FALSE, FALSE, 'Avoin varhaiskasvatus maksuton kerho/puisto', 'Öppen småbarnspedagogik avgiftsfri klubb/park', 'Avoin varhaiskasvatus maksuton kerho/puisto', 'Öppen småbarnspedagogik avgiftsfri klubb/park', 2800, 1.75, true, 0.54, 1.75)
+
+
 
 ON CONFLICT (id) DO
 UPDATE SET
@@ -243,6 +246,7 @@ VALUES
     ('66a28654-4f92-11ed-8bee-077eea087eb0','4d246a6c-4f92-11ed-8bed-2f5b3226e682',daterange('2022-08-01', '2023-02-28', '[]'),91100,1.0,91100,154900,1.0,154900),
     ('fad5ddb4-4f90-11ed-8bea-8b352f1dca97','d6d5a660-4f90-11ed-8be9-6f76cd90c246',daterange('2022-08-01', '2023-02-28', '[]'),91100,1.0,91100,154900,1.0,154900),
     ('a51ad148-148c-11ed-be1e-0bdf6a5141f9','1b4413f6-d99d-11eb-89ac-a3a978104bce',daterange('2022-08-01', '2023-02-28', '[]'),91100,1.0,91100,154900,1.0,154900),
+    ('7cc131c5-eccc-40f0-90f0-ff90155add2a','25d79184-e415-4fe3-bac6-3b719b050685',daterange('2022-08-01', '2023-02-28', '[]'),91100,1.0,91100,154900,1.0,154900),
 
 
     -- 2023-03-01 ->
@@ -338,6 +342,8 @@ VALUES
     ('4c1f8cf2-c4bb-11ed-9b8a-f7f99cd99363','4d246a6c-4f92-11ed-8bed-2f5b3226e682',daterange('2023-03-01', NULL, '[]'),93700,1.0,93700,159300,1.0,159300),
     ('4c1f8d7e-c4bb-11ed-9b8b-63d8777b55cb','d6d5a660-4f90-11ed-8be9-6f76cd90c246',daterange('2023-03-01', NULL, '[]'),93700,1.0,93700,159300,1.0,159300),
     ('4c1f8e0a-c4bb-11ed-9b8c-c7e5d69365ac','1b4413f6-d99d-11eb-89ac-a3a978104bce',daterange('2023-03-01', NULL, '[]'),93700,1.0,93700,159300,1.0,159300),
+    ('4bda56af-396e-4074-a396-f62b066f3c6f','25d79184-e415-4fe3-bac6-3b719b050685',daterange('2023-03-01', NULL, '[]'),93700,1.0,93700,159300,1.0,159300),
+
 
     -- 2022-05-01 - 2022-07-31
 
