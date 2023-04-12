@@ -103,18 +103,18 @@ class TurkuInvoiceProductProvider : InvoiceProductProvider {
 fun findProduct(key: ProductKey) = Product.values().find { it.key == key } ?: error("Product with key $key not found")
 
 enum class Product(val nameFi: String, val code: String) {
-    DAYCARE("Varhaiskasvatus", ""),
-    DAYCARE_DISCOUNT("Alennus", ""),
-    PRESCHOOL_WITH_DAYCARE("Esiopetusta täydentävä varhaiskasvatus", ""),
-    TEMPORARY_CARE("Tilapäinen varhaiskasvatus", ""),
-    SICK_LEAVE_50("Sairaspoissaolovähennys 50 %", ""),
-    SICK_LEAVE_100("Sairaspoissaolovähennys 100 %", ""),
-    ABSENCE("Poissaolovähennys 50%", ""),
-    FREE_OF_CHARGE("Maksuton päivä", ""),
-    CORRECTION("Oikaisu", ""),
-    FREE_MONTH("Poissaolovähennys 100 %", ""),
-    OVER_CONTRACT("Sovittujen päivien ylitys", ""),
-    PRESCHOOL_DAYCARE_CORRECTION("Kokoaikainen varhaiskasvatus", "");
+    DAYCARE("Varhaiskasvatus", "000000000000007246"),
+    DAYCARE_DISCOUNT("Alennus", "000000000000009952"),
+    PRESCHOOL_WITH_DAYCARE("Esiopetusta täydentävä varhaiskasvatus", "000000000000007251"),
+    TEMPORARY_CARE("Tilapäinen varhaiskasvatus", "000000000000007250"),
+    SICK_LEAVE_50("Sairaspoissaolovähennys 50 %", "000000000000007248"),
+    SICK_LEAVE_100("Sairaspoissaolovähennys 100 %", "000000000000007247"),
+    ABSENCE("Poissaolovähennys 50%", "000000000000007244"),
+    FREE_OF_CHARGE("Maksuton päivä", "000000000000008575"),
+    CORRECTION("Oikaisu", "000000000000007246"),
+    FREE_MONTH("Poissaolovähennys 100 %", "000000000000007243"),
+    OVER_CONTRACT("Sovittujen päivien ylitys", "000000000000009955"),
+    PRESCHOOL_DAYCARE_CORRECTION("Kokoaikainen varhaiskasvatus", "000000000000007246");
 
     val key = ProductKey(this.name)
 }
