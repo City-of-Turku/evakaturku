@@ -1,5 +1,6 @@
 package fi.turku.evakaturku.security
 
+import fi.espoo.evaka.application.ApplicationType
 import fi.espoo.evaka.daycare.domain.ProviderType
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.espoo.evaka.shared.security.Action
@@ -47,7 +48,8 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             sequenceOf(
                 HasGlobalRole(UserRole.ADMIN, UserRole.SERVICE_WORKER, UserRole.DIRECTOR) as ScopedActionRule<in T>
             ) + sequenceOf(
-                HasUnitRole(UserRole.UNIT_SUPERVISOR).inPlacementPlanUnitOfApplication(onlyAllowDeletedForTypes = setOf(ApplicationType.PRESCHOOL)) as ScopedActionRule<in T>
+                HasUnitRole(UserRole.UNIT_SUPERVISOR).inPlacementPlanUnitOfApplication(onlyAllowDeletedForTypes = setOf(
+                    ApplicationType.PRESCHOOL)) as ScopedActionRule<in T>
             )
         }
         Action.Application.READ_ATTACHMENTS -> {
