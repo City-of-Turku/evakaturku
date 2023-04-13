@@ -163,26 +163,8 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             e1edka1.name1 = nameInInvoiceAG.substring(0, 35)
             if (nameInInvoiceAG.length > 70) {
                 e1edka1.name2 = nameInInvoiceAG.substring(35, 70)
-                if (nameInInvoiceAG.length > 105)
-                {
-                    e1edka1.name3 = nameInInvoiceAG.substring(70, 105)
-                    if (nameInInvoiceAG.length > 140)
-                    {
-                        e1edka1.name4 = nameInInvoiceAG.substring(105, 140)
-                    }
-                    else
-                    {
-                        e1edka1.name4 = nameInInvoiceAG.substring(105, nameInInvoiceAG.length)
-                    }
-                }
-                else
-                {
-                    e1edka1.name3 = nameInInvoiceAG.substring(70, nameInInvoiceAG.length)
-                }
-            }
-            else
-            {
-                e1edka1.name2 = nameInInvoiceAG.substring(35, nameInInvoiceAG.length)
+            } else {
+                e1edka1.name2 = nameInInvoiceAG.substring(70, nameInInvoiceAG.length)
             }
         }
         else
@@ -194,13 +176,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         if (streetAddressAG.count() > 35)
         {
             e1edka1.stras = streetAddressAG.substring(0, 35)
-            if (streetAddressAG.length > 70) {
-                e1edka1.strs2 = streetAddressAG.substring(35, 70)
-            }
-            else
-            {
-                e1edka1.strs2 = streetAddressAG.substring(35, streetAddressAG.length)
-            }
         }
         else
         {
@@ -219,32 +194,13 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         e1edka1_2.parvw = "RE"
         e1edka1_2.partn = invoice.headOfFamily.ssn.toString()
         val nameInInvoiceRE = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
-
         if (nameInInvoiceRE.count() > 35)
         {
             e1edka1_2.name1 = nameInInvoiceRE.substring(0, 35)
             if (nameInInvoiceRE.length > 70) {
                 e1edka1_2.name2 = nameInInvoiceRE.substring(35, 70)
-                if (nameInInvoiceRE.length > 105)
-                {
-                    e1edka1_2.name3 = nameInInvoiceRE.substring(70, 105)
-                    if (nameInInvoiceRE.length > 140)
-                    {
-                        e1edka1_2.name4 = nameInInvoiceRE.substring(105, 140)
-                    }
-                    else
-                    {
-                        e1edka1_2.name4 = nameInInvoiceRE.substring(105, nameInInvoiceRE.length)
-                    }
-                }
-                else
-                {
-                    e1edka1_2.name3 = nameInInvoiceRE.substring(70, nameInInvoiceRE.length)
-                }
-            }
-            else
-            {
-                e1edka1_2.name2 = nameInInvoiceRE.substring(35, nameInInvoiceRE.length)
+            } else {
+                e1edka1_2.name2 = nameInInvoiceRE.substring(70, nameInInvoiceRE.length)
             }
         }
         else
@@ -256,13 +212,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         if (streetAddressRE.count() > 35)
         {
             e1edka1_2.stras = streetAddressRE.substring(0, 35)
-            if (streetAddressRE.length > 70) {
-                e1edka1_2.strs2 = streetAddressRE.substring(35, 70)
-            }
-            else
-            {
-                e1edka1_2.strs2 = streetAddressRE.substring(35, streetAddressRE.length)
-            }
         }
         else
         {
@@ -283,28 +232,13 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         if (nameInInvoiceRG.count() > 35)
         {
             e1edka1_3.name1 = nameInInvoiceRG.substring(0, 35)
-            if (nameInInvoiceRG.length > 70) {
+            if (nameInInvoiceRE.length > 70)
+            {
                 e1edka1_3.name2 = nameInInvoiceRG.substring(35, 70)
-                if (nameInInvoiceRG.length > 105)
-                {
-                    e1edka1_3.name3 = nameInInvoiceRG.substring(70, 105)
-                    if (nameInInvoiceRG.length > 140)
-                    {
-                        e1edka1_3.name4 = nameInInvoiceRG.substring(105, 140)
-                    }
-                    else
-                    {
-                        e1edka1_3.name4 = nameInInvoiceRG.substring(105, nameInInvoiceRG.length)
-                    }
-                }
-                else
-                {
-                    e1edka1_3.name3 = nameInInvoiceRG.substring(70, nameInInvoiceRG.length)
-                }
             }
             else
             {
-                e1edka1_3.name2 = nameInInvoiceRG.substring(35, nameInInvoiceRG.length)
+                e1edka1_3.name2 = nameInInvoiceRG.substring(70, nameInInvoiceRG.length)
             }
         }
         else
@@ -316,13 +250,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         if (streetAddressRG.count() > 35)
         {
             e1edka1_3.stras = streetAddressRG.substring(0, 35)
-            if (streetAddressRG.length > 70) {
-                e1edka1_3.strs2 = streetAddressRG.substring(35, 70)
-            }
-            else
-            {
-                e1edka1_3.strs2 = streetAddressRG.substring(35, streetAddressRG.length)
-            }
         }
         else
         {
@@ -344,28 +271,13 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         if (nameInInvoiceWE.count() > 35)
         {
             e1edka1_4.name1 = nameInInvoiceWE.substring(0, 35)
-            if (nameInInvoiceWE.length > 70) {
+            if (nameInInvoiceRE.length > 70)
+            {
                 e1edka1_4.name2 = nameInInvoiceWE.substring(35, 70)
-                if (nameInInvoiceWE.length > 105)
-                {
-                    e1edka1_4.name3 = nameInInvoiceWE.substring(70, 105)
-                    if (nameInInvoiceWE.length > 140)
-                    {
-                        e1edka1_4.name4 = nameInInvoiceWE.substring(105, 140)
-                    }
-                    else
-                    {
-                        e1edka1_4.name4 = nameInInvoiceWE.substring(105, nameInInvoiceWE.length)
-                    }
-                }
-                else
-                {
-                    e1edka1_4.name3 = nameInInvoiceWE.substring(70, nameInInvoiceWE.length)
-                }
             }
             else
             {
-                e1edka1_4.name2 = nameInInvoiceWE.substring(35, nameInInvoiceWE.length)
+                e1edka1_4.name2 = nameInInvoiceWE.substring(70, nameInInvoiceWE.length)
             }
         }
         else
@@ -377,13 +289,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         if (streetAddressWE.count() > 35)
         {
             e1edka1_4.stras = streetAddressWE.substring(0, 35)
-            if (streetAddressWE.length > 70) {
-                e1edka1_4.strs2 = streetAddressWE.substring(35, 70)
-            }
-            else
-            {
-                e1edka1_4.strs2 = streetAddressWE.substring(35, streetAddressWE.length)
-            }
         }
         else
         {
@@ -405,52 +310,30 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             e1edka1_5.partn = invoice.codebtor?.ssn.toString()
 
             val nameOfCodebtorY1 = invoice.codebtor?.lastName + " " + invoice.codebtor?.firstName
+
             if (nameOfCodebtorY1.count() > 35)
             {
                 e1edka1_5.name1 = nameOfCodebtorY1.substring(0, 35)
-                if (nameOfCodebtorY1.length > 70) {
+                if (nameInInvoiceRE.length > 70)
+                {
                     e1edka1_5.name2 = nameOfCodebtorY1.substring(35, 70)
-                    if (nameOfCodebtorY1.length > 105)
-                    {
-                        e1edka1_5.name3 = nameOfCodebtorY1.substring(70, 105)
-                        if (nameOfCodebtorY1.length > 140)
-                        {
-                            e1edka1_5.name4 = nameOfCodebtorY1.substring(105, 140)
-                        }
-                        else
-                        {
-                            e1edka1_5.name4 = nameOfCodebtorY1.substring(105, nameOfCodebtorY1.length)
-                        }
-                    }
-                    else
-                    {
-                        e1edka1_5.name3 = nameOfCodebtorY1.substring(70, nameOfCodebtorY1.length)
-                    }
                 }
                 else
                 {
-                    e1edka1_5.name2 = nameOfCodebtorY1.substring(35, nameOfCodebtorY1.length)
+                    e1edka1_5.name2 = nameOfCodebtorY1.substring(70, nameOfCodebtorY1.length)
                 }
             }
             else
             {
-                e1edka1_5.name1 = nameOfCodebtorY1
+                e1edka1_5.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
             }
 
             val streetAddressCodebtorY1 = invoice.codebtor?.streetAddress
-
-            if(streetAddressCodebtorY1 != null)
+            if (streetAddressCodebtorY1 != null)
             {
                 if (streetAddressCodebtorY1.count() > 35)
                 {
                     e1edka1_5.stras = streetAddressCodebtorY1.substring(0, 35)
-                    if (streetAddressCodebtorY1.length > 70) {
-                        e1edka1_5.strs2 = streetAddressCodebtorY1.substring(35, 70)
-                    }
-                    else
-                    {
-                        e1edka1_5.strs2 = streetAddressCodebtorY1.substring(35, streetAddressCodebtorY1.length)
-                    }
                 }
                 else
                 {
