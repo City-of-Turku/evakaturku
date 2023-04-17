@@ -164,7 +164,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             if (nameInInvoiceAG.length > 70) {
                 e1edka1.name2 = nameInInvoiceAG.substring(35, 70)
             } else {
-                e1edka1.name2 = nameInInvoiceAG.substring(70, nameInInvoiceAG.length)
+                e1edka1.name2 = nameInInvoiceAG.substring(35, nameInInvoiceAG.length)
             }
         }
         else
@@ -200,7 +200,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             if (nameInInvoiceRE.length > 70) {
                 e1edka1_2.name2 = nameInInvoiceRE.substring(35, 70)
             } else {
-                e1edka1_2.name2 = nameInInvoiceRE.substring(70, nameInInvoiceRE.length)
+                e1edka1_2.name2 = nameInInvoiceRE.substring(35, nameInInvoiceRE.length)
             }
         }
         else
@@ -238,7 +238,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             }
             else
             {
-                e1edka1_3.name2 = nameInInvoiceRG.substring(70, nameInInvoiceRG.length)
+                e1edka1_3.name2 = nameInInvoiceRG.substring(35, nameInInvoiceRG.length)
             }
         }
         else
@@ -277,7 +277,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             }
             else
             {
-                e1edka1_4.name2 = nameInInvoiceWE.substring(70, nameInInvoiceWE.length)
+                e1edka1_4.name2 = nameInInvoiceWE.substring(35, nameInInvoiceWE.length)
             }
         }
         else
