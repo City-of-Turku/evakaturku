@@ -169,7 +169,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         }
         else
         {
-            e1edka1.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+            e1edka1.name1 = nameInInvoiceAG
         }
 
         val streetAddressAG = invoice.headOfFamily.streetAddress
@@ -205,7 +205,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         }
         else
         {
-            e1edka1_2.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+            e1edka1_2.name1 = nameInInvoiceRE
         }
 
         val streetAddressRE = invoice.headOfFamily.streetAddress
@@ -243,7 +243,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         }
         else
         {
-            e1edka1_3.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+            e1edka1_3.name1 = nameInInvoiceRG
         }
 
         val streetAddressRG = invoice.headOfFamily.streetAddress
@@ -282,7 +282,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         }
         else
         {
-            e1edka1_4.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+            e1edka1_4.name1 = nameInInvoiceWE
         }
 
         val streetAddressWE = invoice.headOfFamily.streetAddress
@@ -320,12 +320,12 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
                 }
                 else
                 {
-                    e1edka1_5.name2 = nameOfCodebtorY1.substring(70, nameOfCodebtorY1.length)
+                    e1edka1_5.name2 = nameOfCodebtorY1.substring(35, nameOfCodebtorY1.length)
                 }
             }
             else
             {
-                e1edka1_5.name1 = invoice.headOfFamily.lastName + " " + invoice.headOfFamily.firstName
+                e1edka1_5.name1 = nameOfCodebtorY1
             }
 
             val streetAddressCodebtorY1 = invoice.codebtor?.streetAddress

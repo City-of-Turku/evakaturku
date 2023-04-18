@@ -87,15 +87,15 @@ fun validInvoice(): InvoiceDetailed {
 
 fun validPerson() = PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
-        "Matti", "Meikäläinen",
-        "310382-956D", "Meikäläisenkuja 6 B 7", "20100", "TURKU",
+        "Kirsi Marjatta Susanna Kirsi Marjatta Susanna Kirsi Marjatta Susanna", "Paavola-Mäkinen",
+        "310382-956D", "Meikäläisenkuja Teikäläisenkuja Heikäläisenkuja 6 B 7", "20100", "TURKU",
         "", null, "", null, restrictedDetailsEnabled = false
 )
 
 fun validCodebtor() = PersonDetailed(
     PersonId(UUID.randomUUID()), LocalDate.of(1984, 3, 31), null,
-    "Jaana", "Meikäläinen",
-    "310384-956D", "Meikäläisenkuja 6 B 7", "20100", "TURKU",
+    "Jorma Pertti Olavi Jorma Pertti Olavi Jorma Pertti Olavi", "Meikäläinen-Mäkinen",
+    "310384-956D", "Meikäläisenkuja Teikäläisenkuja Heikäläisenkuja 6 B 7", "20100", "TURKU",
     "", null, "", null, restrictedDetailsEnabled = false
 )
 
