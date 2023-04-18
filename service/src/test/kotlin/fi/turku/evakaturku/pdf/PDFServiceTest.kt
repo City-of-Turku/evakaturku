@@ -23,10 +23,10 @@ import fi.espoo.evaka.invoicing.domain.VoucherValueDecisionStatus
 import fi.espoo.evaka.invoicing.domain.VoucherValueDecisionType
 import fi.espoo.evaka.invoicing.service.DocumentLang
 import fi.espoo.evaka.invoicing.service.FeeDecisionPdfData
-import fi.espoo.evaka.pdfgen.Page
-import fi.espoo.evaka.pdfgen.Template
 import fi.espoo.evaka.invoicing.service.VoucherValueDecisionPdfData
+import fi.espoo.evaka.pdfgen.Page
 import fi.espoo.evaka.pdfgen.PdfGenerator
+import fi.espoo.evaka.pdfgen.Template
 import fi.espoo.evaka.placement.PlacementType
 import fi.espoo.evaka.setting.SettingType
 import fi.espoo.evaka.shared.AreaId
@@ -58,6 +58,7 @@ private val settings = mapOf(
     SettingType.DECISION_MAKER_NAME to "Paula Palvelupäällikkö",
     SettingType.DECISION_MAKER_TITLE to "Asiakaspalvelupäällikkö"
 )
+
 @Tag("PDFGenerationTest")
 internal class PDFServiceTest {
 
@@ -68,7 +69,8 @@ internal class PDFServiceTest {
         pdfService = PdfGenerator(
             MessageConfiguration().messageProvider(),
             TemplateConfiguration().templateProvider(),
-            PDFConfig.templateEngine())
+            PDFConfig.templateEngine()
+        )
     }
 
     @Test
@@ -82,7 +84,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, DocumentLang.FI))
 
-        val filepath = "${reportsPath}/PDFServiceTest-fee-decision.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-fee-decision.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -92,7 +94,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, DocumentLang.FI))
 
-        val filepath = "${reportsPath}/PDFServiceTest-fee-decision-head-of-family-income.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-fee-decision-head-of-family-income.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -103,7 +105,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, DocumentLang.FI))
 
-        val filepath = "${reportsPath}/PDFServiceTest-fee-decision-type-$decisionType.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-fee-decision-type-$decisionType.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -120,7 +122,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, DocumentLang.FI))
 
-        val filepath = "${reportsPath}/PDFServiceTest-fee-decision-partner.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-fee-decision-partner.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -132,7 +134,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, DocumentLang.FI))
 
-        val filepath = "${reportsPath}/PDFServiceTest-fee-decision-valid-to.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-fee-decision-valid-to.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -149,7 +151,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, DocumentLang.FI))
 
-        val filepath = "${reportsPath}/PDFServiceTest-fee-decision-empty-address.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-fee-decision-empty-address.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -160,7 +162,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
 
-        val filepath = "${reportsPath}/PDFServiceTest-voucher-value-decision.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-voucher-value-decision.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -171,7 +173,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
 
-        val filepath = "${reportsPath}/PDFServiceTest-voucher-value-decision-head-of-family-income.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-voucher-value-decision-head-of-family-income.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -189,7 +191,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
 
-        val filepath = "${reportsPath}/PDFServiceTest-voucher-value-decision-partner.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-voucher-value-decision-partner.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -200,7 +202,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
 
-        val filepath = "${reportsPath}/PDFServiceTest-voucher-value-decision-valid-to.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-voucher-value-decision-valid-to.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -218,7 +220,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
 
-        val filepath = "${reportsPath}/PDFServiceTest-voucher-value-decision-empty-address.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-voucher-value-decision-empty-address.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -235,7 +237,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
 
-        val filepath = "${reportsPath}/PDFServiceTest-relief-accepted-voucher-value-decision-valid-to.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-relief-accepted-voucher-value-decision-valid-to.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -252,7 +254,7 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
 
-        val filepath = "${reportsPath}/PDFServiceTest-relief-partly-accepted-voucher-value-decision-valid-to.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-relief-partly-accepted-voucher-value-decision-valid-to.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
 
@@ -266,10 +268,9 @@ internal class PDFServiceTest {
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
 
-        val filepath = "${reportsPath}/PDFServiceTest-relief-rejected-voucher-value-decision-valid-to.pdf"
+        val filepath = "$reportsPath/PDFServiceTest-relief-rejected-voucher-value-decision-valid-to.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
-
 }
 
 private val testDecisionIncome = DecisionIncome(
@@ -308,7 +309,7 @@ private fun validFeeDecision() = FeeDecisionDetailed(
             siblingDiscount = 1,
             fee = 1,
             feeAlterations = listOf(
-                FeeAlterationWithEffect(FeeAlteration.Type.RELIEF, 50, false, -10800),
+                FeeAlterationWithEffect(FeeAlteration.Type.RELIEF, 50, false, -10800)
             ),
             finalFee = 1,
             childIncome = null
@@ -333,7 +334,7 @@ private fun validFeeDecision() = FeeDecisionDetailed(
         maxIncomeThreshold = 2,
         incomeMultiplier = BigDecimal.ONE,
         maxFee = 1,
-        minFee = 1,
+        minFee = 1
     ),
     documentKey = null,
     approvedBy = EmployeeWithName(EmployeeId(UUID.randomUUID()), "Markus", "Maksusihteeri"),
@@ -366,7 +367,7 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
         maxIncomeThreshold = 2,
         incomeMultiplier = BigDecimal.ONE,
         maxFee = 1,
-        minFee = 1,
+        minFee = 1
     ),
     PersonDetailed(
         PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,

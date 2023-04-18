@@ -25,20 +25,21 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
     )
 
     data class UnitPreSchoolers(
-            val unitId: DaycareId,
-            val preSchoolers: Int
+        val unitId: DaycareId,
+        val preSchoolers: Int
     )
 
     data class UnitLanguage(
-            val unitId: DaycareId,
-            val language: String
+        val unitId: DaycareId,
+        val language: String
     )
 
     fun Database.Read.fetchPreschoolers(payments: List<Payment>): List<UnitPreSchoolers> {
         val units: MutableList<DaycareId> = mutableListOf()
         payments.forEach { units.add(it.unit.id) }
 
-        return createQuery("""
+        return createQuery(
+            """
             SELECT placement_unit_id as unitId,count(placement_type) as preSchoolers
             FROM voucher_value_report_decision
             JOIN voucher_value_decision ON voucher_value_report_decision.decision_id = voucher_value_decision.id
@@ -49,29 +50,31 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             GROUP BY voucher_value_decision.placement_unit_id;
         """
         )
-        .bind("ids", units)
-        .bind("period", payments[0].period)
-        .mapTo<UnitPreSchoolers>()
-        .toList()
+            .bind("ids", units)
+            .bind("period", payments[0].period)
+            .mapTo<UnitPreSchoolers>()
+            .toList()
     }
 
     fun Database.Read.fetchUnitLanguages(payments: List<Payment>): List<UnitLanguage> {
         val units: MutableList<DaycareId> = mutableListOf()
         payments.forEach { units.add(it.unit.id) }
 
-        return createQuery("""
+        return createQuery(
+            """
             SELECT id as unitId,language
             FROM daycare
             WHERE daycare.id = ANY(:ids)
         """
         )
-                .bind("ids", units)
-                .mapTo<UnitLanguage>()
-                .toList()
+            .bind("ids", units)
+            .mapTo<UnitLanguage>()
+            .toList()
     }
 
     fun Database.Read.fetchPreschoolAccountingAmount(period: DateRange): Int {
-        return createQuery("""
+        return createQuery(
+            """
             SELECT base_value
             FROM service_need_option_voucher_value
             WHERE service_need_option_id=(
@@ -82,10 +85,10 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             AND validity @> :date;
         """
         )
-                .bind("date", period.start)
-                .mapTo<Int>()
-                // this should only ever return one row with one value
-                .first()
+            .bind("date", period.start)
+            .mapTo<Int>()
+            // this should only ever return one row with one value
+            .first()
     }
 
     fun generatePayments(payments: List<Payment>, tx: Database.Transaction): Result {
@@ -106,8 +109,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         var identifier = 1
         succeeded.forEach {
             var preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * preSchoolAccountingAmount
-            if(it.period.start.monthValue == 8)
-            {
+            if (it.period.start.monthValue == 8) {
                 preSchoolAmount /= 2
             }
             val language = languageMap[it.unit.id]?.language ?: "fi"
@@ -118,8 +120,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             try {
                 paymentStrings.add(marshalPayments(idocs))
                 successList.add(it)
-            }
-            catch (e: JAXBException) {
+            } catch (e: JAXBException) {
                 failedList.add(it)
             }
         }
@@ -146,7 +147,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         edidc40.rcvprn = ""
         idoc.edidc40 = edidc40
 
-        //E1FIKPF
+        // E1FIKPF
         val e1FIKPF = FIDCCP02.IDOC.E1FIKPF()
         e1FIKPF.segment = "1"
         e1FIKPF.bukrs = "1002"
@@ -167,21 +168,21 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FIKPF.glvor = "RFBU"
         idoc.e1FIKPF = e1FIKPF
 
-        //E1FISEG
-        val e1FISEGlist : MutableList<FIDCCP02.IDOC.E1FIKPF.E1FISEG> = mutableListOf()
+        // E1FISEG
+        val e1FISEGlist: MutableList<FIDCCP02.IDOC.E1FIKPF.E1FISEG> = mutableListOf()
         val e1FISEG = FIDCCP02.IDOC.E1FIKPF.E1FISEG()
         e1FISEG.segment = "1"
         e1FISEG.buzei = "001"
         e1FISEG.bschl = "31"
         e1FISEG.shkzg = "H"
-        e1FISEG.wrbtr = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
+        e1FISEG.wrbtr = String.format(Locale.ENGLISH, "%.2f", payment.amount.toDouble() / 100)
         e1FISEG.sgtxt = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year
         e1FISEG.xref3 = ""
         val e1FINBU = FIDCCP02.IDOC.E1FIKPF.E1FISEG.E1FINBU()
         e1FINBU.segment = "1"
         e1FINBU.zfbdt = payment.dueDate?.format(dateTimeFormatterYearMonthDay)
         e1FINBU.zterm = "T000"
-        e1FINBU.skfbt = String.format(Locale.ENGLISH,"%.2f", payment.amount.toDouble() / 100)
+        e1FINBU.skfbt = String.format(Locale.ENGLISH, "%.2f", payment.amount.toDouble() / 100)
         e1FINBU.reserve = payment.unit.businessId + ";" + payment.unit.iban?.replace(" ", "")
 
         e1FISEG.e1FINBU = e1FINBU
@@ -194,24 +195,18 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FISEG_2.shkzg = "S"
         e1FISEG_2.mwskz = "P4"
         var daycareAmount = payment.amount - preSchoolAmount
-        e1FISEG_2.wrbtr = String.format(Locale.ENGLISH,"%.2f", daycareAmount.toDouble() / 100)
+        e1FISEG_2.wrbtr = String.format(Locale.ENGLISH, "%.2f", daycareAmount.toDouble() / 100)
         val rowTextWithDaycareName = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
         e1FISEG_2.sgtxt = rowTextWithDaycareName.substring(0, min(rowTextWithDaycareName.length, 35))
         e1FISEG_2.kokrs = "1000"
-        if(payment.unit.careType.contains(CareType.FAMILY))
-        {
+        if (payment.unit.careType.contains(CareType.FAMILY)) {
             e1FISEG_2.kostl = "0000031442"
-        }
-        else if(payment.unit.careType.contains(CareType.GROUP_FAMILY))
-        {
+        } else if (payment.unit.careType.contains(CareType.GROUP_FAMILY)) {
             e1FISEG_2.kostl = "0000031444"
-        }
-        else
-        {
+        } else {
             if (language == "sv") {
                 e1FISEG_2.kostl = "0000031441"
-            }
-            else {
+            } else {
                 e1FISEG_2.kostl = "0000031440"
             }
         }
@@ -220,15 +215,14 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         e1FISEG_2.prctr = ""
         e1FISEGlist.add(e1FISEG_2)
 
-        if(preSchoolAmount > 0)
-        {
+        if (preSchoolAmount > 0) {
             val e1FISEG_3 = FIDCCP02.IDOC.E1FIKPF.E1FISEG()
             e1FISEG_3.segment = "1"
             e1FISEG_3.buzei = "003"
             e1FISEG_3.bschl = "40"
             e1FISEG_3.shkzg = "S"
             e1FISEG_3.mwskz = "P4"
-            e1FISEG_3.wrbtr = String.format(Locale.ENGLISH,"%.2f", preSchoolAmount.toDouble() / 100)
+            e1FISEG_3.wrbtr = String.format(Locale.ENGLISH, "%.2f", preSchoolAmount.toDouble() / 100)
             e1FISEG_3.sgtxt = rowTextWithDaycareName.substring(0, min(rowTextWithDaycareName.length, 35))
             e1FISEG_3.kokrs = "1000"
             e1FISEG_3.kostl = "0000031410"
@@ -237,7 +231,6 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             e1FISEG_3.prctr = ""
             e1FISEGlist.add(e1FISEG_3)
         }
-
 
         idoc.e1FIKPF.e1FISEG = e1FISEGlist
         return idoc

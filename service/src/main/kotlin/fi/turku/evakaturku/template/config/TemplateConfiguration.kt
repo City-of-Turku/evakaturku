@@ -15,7 +15,6 @@ class TemplateConfiguration {
 
     @Bean
     fun templateProvider(): ITemplateProvider = EVakaTurkuTemplateProvider()
-
 }
 
 internal class EVakaTurkuTemplateProvider : ITemplateProvider {

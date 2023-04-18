@@ -4,7 +4,11 @@ import fi.espoo.evaka.application.ApplicationType
 import fi.espoo.evaka.daycare.domain.ProviderType
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.espoo.evaka.shared.security.Action
-import fi.espoo.evaka.shared.security.actionrule.*
+import fi.espoo.evaka.shared.security.actionrule.ActionRuleMapping
+import fi.espoo.evaka.shared.security.actionrule.HasGlobalRole
+import fi.espoo.evaka.shared.security.actionrule.HasUnitRole
+import fi.espoo.evaka.shared.security.actionrule.ScopedActionRule
+import fi.espoo.evaka.shared.security.actionrule.UnscopedActionRule
 
 class EvakaTurkuActionRuleMapping : ActionRuleMapping {
     override fun rulesOf(action: Action.UnscopedAction): Sequence<UnscopedActionRule> = when (action) {
@@ -48,8 +52,11 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             sequenceOf(
                 HasGlobalRole(UserRole.ADMIN, UserRole.SERVICE_WORKER, UserRole.DIRECTOR) as ScopedActionRule<in T>
             ) + sequenceOf(
-                HasUnitRole(UserRole.UNIT_SUPERVISOR).inPlacementPlanUnitOfApplication(onlyAllowDeletedForTypes = setOf(
-                    ApplicationType.PRESCHOOL)) as ScopedActionRule<in T>
+                HasUnitRole(UserRole.UNIT_SUPERVISOR).inPlacementPlanUnitOfApplication(
+                    onlyAllowDeletedForTypes = setOf(
+                        ApplicationType.PRESCHOOL
+                    )
+                ) as ScopedActionRule<in T>
             )
         }
         Action.Application.READ_ATTACHMENTS -> {
@@ -95,7 +102,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         Action.Child.READ_APPLICATION -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
-                HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
+                HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             ) + sequenceOf(
                 HasUnitRole(UserRole.UNIT_SUPERVISOR).inPlacementUnitOfChild() as ScopedActionRule<in T>
             )

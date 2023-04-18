@@ -51,7 +51,6 @@ abstract class AbstractIntegrationTest(private val resetDbBeforeEach: Boolean = 
         }
     }
 
-
     @BeforeEach
     fun setup() {
         if (resetDbBeforeEach) {

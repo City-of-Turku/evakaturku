@@ -59,14 +59,14 @@ class IntegrationTestConfiguration {
 
     @Bean
     fun s3Presigner(evakaEnv: EvakaEnv, bucketEnv: BucketEnv): S3Presigner =
-            S3Presigner.builder()
-                    .region(evakaEnv.awsRegion)
-                    .serviceConfiguration(S3Configuration.builder().pathStyleAccessEnabled(true).build())
-                    .endpointOverride(bucketEnv.s3MockUrl)
-                    .credentialsProvider(
-                            StaticCredentialsProvider.create(AwsBasicCredentials.create("foo", "bar"))
-                    )
-                    .build()
+        S3Presigner.builder()
+            .region(evakaEnv.awsRegion)
+            .serviceConfiguration(S3Configuration.builder().pathStyleAccessEnabled(true).build())
+            .endpointOverride(bucketEnv.s3MockUrl)
+            .credentialsProvider(
+                StaticCredentialsProvider.create(AwsBasicCredentials.create("foo", "bar"))
+            )
+            .build()
 
     @Bean
     fun jwtAlgorithm(): Algorithm {

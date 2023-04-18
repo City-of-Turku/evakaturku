@@ -2,13 +2,11 @@ package fi.turku.evakaturku.invoice.service
 
 import fi.ouka.evakaoulu.invoice.service.validInvoice
 import fi.turku.evakaturku.util.FinanceDateProvider
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class SapInvoiceGeneratorTest {
 
     fun assertTag(tag: String) {
-
         val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
         val invoiceList = listOf(validInvoice())
         val invoiceString = invoiceGenerator.generateInvoice(invoiceList).invoiceString
@@ -34,17 +32,15 @@ class SapInvoiceGeneratorTest {
         assertElement(tag, "")
     }
 
-    //EDIDC40 - Segment
+    // EDIDC40 - Segment
 
     @Test
     fun `invoiceGenerator result should have ORDERS05 root element`() {
-
         assertTag("ORDERS05")
     }
 
     @Test
     fun `invoiceGenerator result should have IDOC with BEGIN element`() {
-
         assertExpectedString("<IDOC BEGIN=\"1\">")
     }
 
@@ -57,7 +53,6 @@ class SapInvoiceGeneratorTest {
     fun `DIRECT should have constant value of 2`() {
         assertElement("DIRECT", "2")
     }
-
 
     @Test
     fun `IDOCTYP should have constant value of ORDERS05`() {
@@ -99,17 +94,18 @@ class SapInvoiceGeneratorTest {
         assertEmptyElement("RCVPRN")
     }
 
-    //E1EDK01 - Segment
+    // E1EDK01 - Segment
     @Test
     fun `ZTERM should be empty element`() {
         assertEmptyElement("ZTERM")
     }
+
     @Test
     fun `AUGRU should be empty element`() {
         assertEmptyElement("AUGRU")
     }
 
-    //E1EDK14 - Segment
+    // E1EDK14 - Segment
 
     fun `QUALF should have constant value of 006`() {
         assertElement("QUALF", "006")
@@ -234,7 +230,6 @@ class SapInvoiceGeneratorTest {
 
     @Test
     fun `BELNR should have YEAR+SalesAgency(A010)+InvoicenumberFromEVaka`() {
-
         assertElement("BELNR", "2021A01012345")
     }
 
@@ -272,7 +267,7 @@ class SapInvoiceGeneratorTest {
         assertElement("QUALF", "048")
     }
 
-    @Test //TODO: same as invoice row number POSEX
+    @Test // TODO: same as invoice row number POSEX
     fun `ZEILE should have constant value of 000010`() {
         assertElement("ZEILE", "000010")
     }
@@ -349,7 +344,4 @@ class SapInvoiceGeneratorTest {
     fun `TDLINE should have constant value of DateTime interval`() {
         assertElement("TDLINE", "01.01.2021-31.01.2021")
     }
-
-
-
 }

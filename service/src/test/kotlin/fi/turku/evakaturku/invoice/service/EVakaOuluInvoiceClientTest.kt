@@ -3,22 +3,11 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 package fi.ouka.evakaoulu.invoice.service
 
-import com.jcraft.jsch.SftpException
-import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
-import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.never
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.whenever
-import org.springframework.boot.test.system.CapturedOutput
 import org.springframework.boot.test.system.OutputCaptureExtension
 
 @ExtendWith(OutputCaptureExtension::class)
 internal class EVakaOuluInvoiceClientTest {
-
 
 /*
     val invoiceGenerator = mock<ProEInvoiceGenerator>()

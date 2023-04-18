@@ -74,4 +74,3 @@ internal val jwtPrivateKey: RSAPrivateCrtKey by lazy {
     val spec = PKCS8EncodedKeySpec(Base64.getMimeDecoder().decode(privateKeyText))
     kf.generatePrivate(spec) as RSAPrivateCrtKey
 }
-

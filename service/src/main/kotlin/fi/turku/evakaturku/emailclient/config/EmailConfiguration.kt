@@ -26,16 +26,14 @@ class EmailConfiguration {
 
     @Bean
     fun emailMessageProvider(env: EvakaEnv): IEmailMessageProvider = EmailMessageProvider(env)
-
 }
 
-internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessageProvider {
+internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessageProvider {
     private val subjectForPendingDecisionEmail: String = "Toimenpiteitäsi odotetaan"
     private val subjectForClubApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     private val subjectForDaycareApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     private val subjectForPreschoolApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     private val subjectForDecisionEmail: String = "Päätös eVakassa"
-
 
     private fun baseUrl(language: Language) =
         when (language) {
@@ -47,21 +45,25 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
         val (typeFi, typeSv, typeEn) =
             when (thread.type) {
                 MessageType.MESSAGE ->
-                    if (thread.urgent)
+                    if (thread.urgent) {
                         Triple(
                             "kiireellinen viesti",
                             "brådskande personligt meddelande",
                             "urgent message"
                         )
-                    else Triple("viesti", "personligt meddelande", "message")
+                    } else {
+                        Triple("viesti", "personligt meddelande", "message")
+                    }
                 MessageType.BULLETIN ->
-                    if (thread.urgent)
+                    if (thread.urgent) {
                         Triple(
                             "kiireellinen tiedote",
                             "brådskande allmänt meddelande",
                             "urgent bulletin"
                         )
-                    else Triple("tiedote", "allmänt meddelande", "bulletin")
+                    } else {
+                        Triple("tiedote", "allmänt meddelande", "bulletin")
+                    }
             }
         return EmailContent(
             subject = "Uusi $typeFi eVakassa / Nytt $typeSv i eVaka / New $typeEn in eVaka",
@@ -88,7 +90,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
             """
                 <p>Sinulle on saapunut uusi $typeFi eVakaan. Lue viesti ${if (thread.urgent) "mahdollisimman pian " else ""}täältä: <a href="$messageUrl">$messageUrl</a></p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
-            
+                
                 <hr>
                 
                 <p>Du har fått ett nytt $typeSv i eVaka. Läs meddelandet ${if (thread.urgent) "så snart som möjligt " else ""}här: <a href="$messageUrl">$messageUrl</a></p>
@@ -103,9 +105,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
         )
     }
 
-
     override fun pendingDecisionNotification(language: Language): EmailContent {
-        return EmailContent(subjectForPendingDecisionEmail,getPendingDecisionEmailText(),getPendingDecisionEmailHtml())
+        return EmailContent(subjectForPendingDecisionEmail, getPendingDecisionEmailText(), getPendingDecisionEmailHtml())
     }
     fun getPendingDecisionEmailHtml(): String {
         return """
@@ -441,7 +442,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
     }
 
     override fun assistanceNeedDecisionNotification(language: Language): EmailContent {
-        return EmailContent(subjectForDecisionEmail, getDecisionEmailText() ,getDecisionEmailHtml())
+        return EmailContent(subjectForDecisionEmail, getDecisionEmailText(), getDecisionEmailHtml())
     }
 
     fun getDecisionEmailHtml(): String {
@@ -473,7 +474,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
         <p>Please go to <a href="https://evaka.turku.fi">evaka.turku.fi</a> to view it.</p>
 
         <p>This message cannot be replied to.</p>       
-    """.trimIndent()
+        """.trimIndent()
     }
 
     fun getDecisionEmailText(): String {
@@ -506,7 +507,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
 
         This message cannot be replied to.
         
-    """.trimIndent()
+        """.trimIndent()
     }
 
     override fun missingReservationsNotification(
@@ -727,13 +728,13 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 You have received a new eVaka document. Read the document here: $documentsUrl
                 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
-        """
+            """
                 .trimIndent(),
             html =
             """
                 <p>Sinulle on saapunut uusi dokumentti eVakaan. Lue dokumentti täältä: <a href="$documentsUrl">$documentsUrl</a></p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
-            
+                
                 <hr>
                 
                 <p>Du har fått ett nytt dokument i eVaka. Läs dokumentet här: <a href="$documentsUrl">$documentsUrl</a></p>
@@ -743,7 +744,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 
                 <p>You have received a new eVaka document. Read the document here: <a href="$documentsUrl">$documentsUrl</a></p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
-        """
+            """
                 .trimIndent()
         )
     }
@@ -770,7 +771,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 You have received a new eVaka pedagogical document. Read the document here: $documentsUrl
                 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
-        """
+            """
                 .trimIndent(),
             html =
             """
@@ -786,14 +787,14 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 
                 <p>You have received a new eVaka pedagogical document. Read the document here: <a href="$documentsUrl">$documentsUrl</a></p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
-        """
+            """
                 .trimIndent()
         )
     }
 
     override fun outdatedIncomeNotification(
-            notificationType: IncomeNotificationType,
-            language: Language
+        notificationType: IncomeNotificationType,
+        language: Language
     ): EmailContent {
         return when (notificationType) {
             IncomeNotificationType.INITIAL_EMAIL -> outdatedIncomeNotificationInitial(language)
@@ -805,10 +806,10 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
     fun outdatedIncomeNotificationInitial(language: Language): EmailContent {
         val documentsUrl = "${baseUrl(language)}/income"
         return EmailContent(
-                subject =
-                "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
-                text =
-                """
+            subject =
+            "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
+            text =
+            """
                 Hyvä asiakkaamme
                 
                 Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.
@@ -860,10 +861,10 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 Income information: $documentsUrl    
 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
-        """
-                        .trimIndent(),
-                html =
-                """
+            """
+                .trimIndent(),
+            html =
+            """
                 <p>Hyvä asiakkaamme</p>
                 
                 <p>Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.</p>
@@ -879,23 +880,23 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 <p>Tulotiedot: <a href="$documentsUrl">$documentsUrl</a></p>
                 
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
-            
+                
                 <hr>
                 
                 <p>Bästa klient</p>
-                                
+                
                 <p>Inkomstuppgifterna som ligger till grund för klientavgiften för småbarnspedagogik eller servicesedelns egenandel granskas årligen.</p>
-                                
+                
                 <p>Vi ber att du skickar en inkomstutredning via eVaka inom 14 dagar från den här anmälan. I eVaka kan du också ge ditt samtycke till den högsta avgiften eller till användning av inkomstregistret.</p>
-                                
+                
                 <p>Om du inte lämnar in en ny inkomstutredning bestäms din klientavgift enligt den högsta avgiften. En avgift som fastställts på grund av bristfälliga inkomstuppgifter korrigeras inte retroaktivt.</p>
-                                
+                
                 <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
-                                
+                
                 <p>Mer information: paivahoitomaksut@turku.fi</p>
-                                
+                
                 <p>Inkomstuppgifterna: <a href="$documentsUrl">$documentsUrl</a></p>
-                                                
+                
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>          
                 
                 <hr>
@@ -913,20 +914,20 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 <p>Inquiries: paivahoitomaksut@turku.fi</p>
                 
                 <p>Income information: <a href="$documentsUrl">$documentsUrl</a></p>
-
+                
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
-        """
-                        .trimIndent()
+            """
+                .trimIndent()
         )
     }
 
     fun outdatedIncomeNotificationReminder(language: Language): EmailContent {
         val documentsUrl = "${baseUrl(language)}/income"
         return EmailContent(
-                subject =
-                "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
-                text =
-                """
+            subject =
+            "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
+            text =
+            """
                 Hyvä asiakkaamme
                 
                 Ette ole vielä toimittaneet uusia tulotietoja. Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.
@@ -978,10 +979,10 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 Income information: $documentsUrl
                 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
-        """
-                        .trimIndent(),
-                html =
-                """
+            """
+                .trimIndent(),
+            html =
+            """
                 <p>Hyvä asiakkaamme</p>
                 
                 <p>Ette ole vielä toimittaneet uusia tulotietoja. Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.</p>
@@ -997,29 +998,29 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 <p>Tulotiedot: <a href="$documentsUrl">$documentsUrl</a></p>
                 
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
-            
+                
                 <hr>
                 
                 <p>Bästa klient</p>
-                                
+                
                 <p>Du har ännu inte lämnat in en ny inkomstutredning. Inkomstuppgifterna som ligger till grund för klientavgiften för småbarnspedagogik eller servicesedelns egenandel granskas årligen.</p>
-                                
+                
                 <p>Vi ber att du skickar en inkomstutredning via eVaka inom sju dagar från denna anmälan. I eVaka kan du också ge ditt samtycke till den högsta avgiften eller till användning av inkomstregistret.</p>
-                                
+                
                 <p>Om du inte lämnar in en ny inkomstutredning bestäms din klientavgift enligt den högsta avgiften. En avgift som fastställts på grund av bristfälliga inkomstuppgifter korrigeras inte retroaktivt.</p>
-                                
+                
                 <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
-                                
+                
                 <p>Mer information: paivahoitomaksut@turku.fi</p>
-                                
+                
                 <p>Inkomstuppgifterna: <a href="$documentsUrl">$documentsUrl</a></p>
-                                
+                
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
-                                
+                
                 <hr>
                 
                 <p>Dear client</p>
-                                
+                
                 <p>You have not yet submitted your latest income information. The income information used for determining the early childhood education fee or the out-of-pocket cost of a service voucher is reviewed every year.</p>
                 
                 <p>We ask you to submit your income statement through eVaka within 7 days of this notification. Through eVaka, you can also give your consent to the highest fee or the use of the Incomes Register.</p>
@@ -1027,23 +1028,23 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 <p>If you do not provide your latest income information, your client fee will be determined based on the highest fee category. We will not retroactively reimburse you for fees charged in a situation where you have not provided your income information.</p> 
                 
                 <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
-                               
+                
                 <p>Inquiries: paivahoitomaksut@turku.fi</p>
-                                
+                
                 <p>Income information: <a href="$documentsUrl">$documentsUrl</a></p>
-                                                
+                
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
-        """
-                        .trimIndent()
+            """
+                .trimIndent()
         )
     }
 
     fun outdatedIncomeNotificationExpired(): EmailContent {
         return EmailContent(
-                subject =
-                "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
-                text =
-                """
+            subject =
+            "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
+            text =
+            """
                 Hyvä asiakkaamme
                 
                 Seuraava asiakasmaksunne määräytyy korkeimman maksuluokan mukaan, sillä ette ole toimittaneet uusia tulotietoja määräaikaan mennessä.
@@ -1071,10 +1072,10 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 Inquiries: paivahoitomaksut@turku.fi
 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
-        """
-                        .trimIndent(),
-                html =
-                """
+            """
+                .trimIndent(),
+            html =
+            """
                 <p>Hyvä asiakkaamme</p>
                 
                 <p>Seuraava asiakasmaksunne määräytyy korkeimman maksuluokan mukaan, sillä ette ole toimittaneet uusia tulotietoja määräaikaan mennessä.</p>
@@ -1082,7 +1083,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 <p>Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi</p>
                 
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
-            
+                
                 <hr>
                 
                 <p>Bästä klient</p>
@@ -1100,12 +1101,10 @@ internal class EmailMessageProvider(private val env: EvakaEnv): IEmailMessagePro
                 <p>Your next client fee will be determined based on the highest fee category as you did not provide your latest income information by the deadline.</p>
                 
                 <p>Inquiries: paivahoitomaksut@turku.fi</p>
-
+                
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
-               """
-                        .trimIndent()
+            """
+                .trimIndent()
         )
     }
-
-
 }

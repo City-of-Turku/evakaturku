@@ -4,7 +4,6 @@
 
 package fi.turku.evakaturku.pdfgen.service
 
-
 import fi.espoo.evaka.pdfgen.Page
 import fi.espoo.evaka.pdfgen.PdfGenerator
 import fi.espoo.evaka.pdfgen.Template
@@ -22,5 +21,4 @@ internal class PDFServiceTest : AbstractIntegrationTest() {
     fun render() {
         pdfService.render(Page(Template("test"), Context()))
     }
-
 }

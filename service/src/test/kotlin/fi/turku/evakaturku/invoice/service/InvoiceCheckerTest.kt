@@ -28,4 +28,3 @@ internal class InvoiceCheckerTest {
         assert(invoiceChecker.shouldSendManually(invoice) == false)
     }
 }
-

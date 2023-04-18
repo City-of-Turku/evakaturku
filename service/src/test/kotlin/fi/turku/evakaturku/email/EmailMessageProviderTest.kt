@@ -40,5 +40,4 @@ internal class EmailMessageProviderTest : AbstractIntegrationTest() {
             .doesNotContainIgnoringCase("espoo")
             .doesNotContainIgnoringCase("esbo")
     }
-
 }

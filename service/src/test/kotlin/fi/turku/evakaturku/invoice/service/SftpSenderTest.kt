@@ -6,7 +6,10 @@ package fi.turku.evakaturku.invoice.service
 
 import fi.turku.evakaturku.SftpProperties
 import org.junit.jupiter.api.Test
-import org.mockito.kotlin.*
+import org.mockito.kotlin.argThat
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.verify
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,7 +23,8 @@ internal class SftpSenderTest {
         val sftpConnector = mock<SftpConnector>()
         val filename = SimpleDateFormat("'LAVAK_1002'yyMMdd-hhmmss'.xml'").format(Date())
         val sftpSender = SftpSender(
-            sftpProperties, sftpConnector
+            sftpProperties,
+            sftpConnector
         )
 
         sftpSender.send(sapMaterial, filename)
@@ -33,5 +37,4 @@ internal class SftpSenderTest {
         )
         verify(sftpConnector).disconnect()
     }
-
 }

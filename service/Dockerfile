@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.5.2-labs
 # SPDX-FileCopyrightText: 2021 City of Turku
 #
 # SPDX-License-Identifier: LGPL-2.1-or-later
@@ -37,8 +38,10 @@ ENV USER_ID 1000
 RUN adduser ${USERNAME} --gecos "" -q --home ${HOME_DIR} --uid ${USER_ID} --disabled-password
 
 # Used for downloading keys from S3
-ADD --chown=evaka:evaka https://github.com/espoon-voltti/s3-downloader/releases/download/v1.3.0/s3downloader-linux-amd64 /usr/local/bin/s3download
-RUN chmod u+x /usr/local/bin/s3download
+ADD --chown=evaka:evaka --chmod=0700 \
+    --checksum=sha256:d0ee074cbc04c1a36fb8cee6f99d9ff591fee89ea38d34a328d0ee1acb039a48 \
+    https://github.com/espoon-voltti/s3-downloader/releases/download/v1.3.0/s3downloader-linux-amd64 \
+    /usr/local/bin/s3download
 
 USER evaka
 WORKDIR /home/evaka

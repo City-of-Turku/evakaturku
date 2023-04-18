@@ -6,24 +6,43 @@ package fi.turku.evakaturku.decision.service
 
 import fi.espoo.evaka.application.ServiceNeed
 import fi.espoo.evaka.application.ServiceNeedOption
-import fi.espoo.evaka.assistanceneed.decision.*
+import fi.espoo.evaka.assistanceneed.decision.AssistanceLevel
+import fi.espoo.evaka.assistanceneed.decision.AssistanceNeedDecision
+import fi.espoo.evaka.assistanceneed.decision.AssistanceNeedDecisionChild
+import fi.espoo.evaka.assistanceneed.decision.AssistanceNeedDecisionEmployee
+import fi.espoo.evaka.assistanceneed.decision.AssistanceNeedDecisionLanguage
+import fi.espoo.evaka.assistanceneed.decision.AssistanceNeedDecisionMaker
+import fi.espoo.evaka.assistanceneed.decision.AssistanceNeedDecisionStatus
+import fi.espoo.evaka.assistanceneed.decision.ServiceOptions
+import fi.espoo.evaka.assistanceneed.decision.StructuralMotivationOptions
+import fi.espoo.evaka.assistanceneed.decision.UnitInfo
 import fi.espoo.evaka.daycare.domain.ProviderType
 import fi.espoo.evaka.daycare.service.DaycareManager
-import fi.espoo.evaka.decision.*
-import fi.espoo.evaka.emailclient.IEmailMessageProvider
+import fi.espoo.evaka.decision.Decision
+import fi.espoo.evaka.decision.DecisionSendAddress
+import fi.espoo.evaka.decision.DecisionStatus
+import fi.espoo.evaka.decision.DecisionType
+import fi.espoo.evaka.decision.DecisionUnit
+import fi.espoo.evaka.decision.createDecisionPdf
 import fi.espoo.evaka.identity.ExternalIdentifier
 import fi.espoo.evaka.invoicing.service.DocumentLang
+import fi.espoo.evaka.pdfgen.Page
+import fi.espoo.evaka.pdfgen.PdfGenerator
+import fi.espoo.evaka.pdfgen.Template
 import fi.espoo.evaka.pis.service.PersonDTO
 import fi.espoo.evaka.setting.SettingType
-import fi.espoo.evaka.shared.*
+import fi.espoo.evaka.shared.ApplicationId
+import fi.espoo.evaka.shared.AssistanceNeedDecisionId
+import fi.espoo.evaka.shared.ChildId
+import fi.espoo.evaka.shared.DaycareId
+import fi.espoo.evaka.shared.DecisionId
+import fi.espoo.evaka.shared.EmployeeId
+import fi.espoo.evaka.shared.PersonId
+import fi.espoo.evaka.shared.ServiceNeedOptionId
 import fi.espoo.evaka.shared.config.PDFConfig
 import fi.espoo.evaka.shared.domain.DateRange
 import fi.espoo.evaka.shared.message.IMessageProvider
 import fi.espoo.evaka.shared.template.ITemplateProvider
-import fi.espoo.evaka.pdfgen.PdfGenerator
-import fi.espoo.evaka.pdfgen.Page
-import fi.espoo.evaka.pdfgen.Template
-import fi.turku.evakaturku.AbstractIntegrationTest
 import fi.turku.evakaturku.message.config.MessageConfiguration
 import fi.turku.evakaturku.template.config.TemplateConfiguration
 import org.junit.jupiter.api.BeforeEach
@@ -31,7 +50,6 @@ import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
-import org.springframework.beans.factory.annotation.Autowired
 import org.thymeleaf.context.Context
 import java.io.FileOutputStream
 import java.nio.file.Paths
@@ -42,6 +60,7 @@ private val settings = mapOf(
     SettingType.DECISION_MAKER_NAME to "Paula Palvelupäällikkö",
     SettingType.DECISION_MAKER_TITLE to "Asiakaspalvelupäällikkö"
 )
+
 @Tag("PDFGenerationTest")
 class DecisionServiceTest {
     private lateinit var messageProvider: IMessageProvider
@@ -54,7 +73,6 @@ class DecisionServiceTest {
         templateProvider = TemplateConfiguration().templateProvider()
         pdfService = PdfGenerator(messageProvider, templateProvider, PDFConfig.templateEngine())
     }
-
 
     @ParameterizedTest
     @EnumSource(
@@ -84,7 +102,7 @@ class DecisionServiceTest {
                         "Palveluntarve 1",
                         "Palveluntarve 1",
                         "Palveluntarve 1",
-                            null
+                        null
                     )
                 )
             },
@@ -113,7 +131,11 @@ class DecisionServiceTest {
                 shiftCare = false,
                 partTime = false,
                 ServiceNeedOption(
-                    ServiceNeedOptionId(UUID.randomUUID()), "Palveluntarve 1", "Palveluntarve 1", "Palveluntarve 1", null
+                    ServiceNeedOptionId(UUID.randomUUID()),
+                    "Palveluntarve 1",
+                    "Palveluntarve 1",
+                    "Palveluntarve 1",
+                    null
                 )
             ),
             lang = DocumentLang.FI,
@@ -145,7 +167,7 @@ class DecisionServiceTest {
                     "Palveluntarve 1",
                     "Palveluntarve 1",
                     "Palveluntarve 1",
-                        null
+                    null
                 )
             ),
             lang = DocumentLang.FI,
@@ -177,7 +199,7 @@ class DecisionServiceTest {
                     "Palveluntarve 1",
                     "Palveluntarve 1",
                     "Palveluntarve 1",
-                        null
+                    null
                 )
             ),
             lang = DocumentLang.FI,
@@ -219,7 +241,7 @@ class DecisionServiceTest {
                     "Palveluntarve 1",
                     "Palveluntarve 1",
                     "Palveluntarve 1",
-                        null
+                    null
                 )
             ),
             lang = DocumentLang.FI,
@@ -230,7 +252,6 @@ class DecisionServiceTest {
             "${Paths.get("build").toAbsolutePath()}/reports/DecisionServiceTest-DAYCARE-restricted-details-enabled.pdf"
         FileOutputStream(filepath).use { it.write(bytes) }
     }
-
 }
 
 private fun validDecision(type: DecisionType, decisionUnit: DecisionUnit) = Decision(
@@ -306,7 +327,6 @@ private fun validChild(restrictedDetailsEnabled: Boolean = false) = PersonDTO(
     restrictedDetailsEnabled = restrictedDetailsEnabled
 )
 
-
 private val validAssistanceNeedDecision = AssistanceNeedDecision(
     id = AssistanceNeedDecisionId(UUID.randomUUID()),
     decisionNumber = 125632424,
@@ -365,8 +385,7 @@ private val validAssistanceNeedDecision = AssistanceNeedDecision(
     annulmentReason = ""
 )
 
-private fun validAddress() = DecisionSendAddress("Kotikatu", "20100", "Turku", "","","")
-
+private fun validAddress() = DecisionSendAddress("Kotikatu", "20100", "Turku", "", "", "")
 
 fun generateAssistanceNeedPdf(
     decision: AssistanceNeedDecision,

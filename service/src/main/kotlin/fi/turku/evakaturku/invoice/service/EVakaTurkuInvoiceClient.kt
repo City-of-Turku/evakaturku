@@ -18,7 +18,6 @@ class EVakaTurkuInvoiceClient(
     private val invoiceGenerator: SapInvoiceGenerator
 ) : InvoiceIntegrationClient {
     override fun send(invoices: List<InvoiceDetailed>): InvoiceIntegrationClient.SendResult {
-
         val failedList = mutableListOf<InvoiceDetailed>()
 
         val generatorResult = invoiceGenerator.generateInvoice(invoices)
@@ -31,7 +30,7 @@ class EVakaTurkuInvoiceClient(
                 val filename = SimpleDateFormat("'LAVAK_1002'yyMMdd-hhmmss'.xml'").format(Date())
                 sftpSender.send(invoiceString, filename)
                 logger.info { "Successfully sent ${successList.size} invoices and created ${manuallySentList.size} manual invoice" }
-            } catch (e: SftpException){
+            } catch (e: SftpException) {
                 failedList.addAll(successList)
                 failedList.addAll(manuallySentList)
                 successList = listOf()
@@ -41,9 +40,7 @@ class EVakaTurkuInvoiceClient(
         }
 
         return InvoiceIntegrationClient.SendResult(successList, failedList, manuallySentList)
-
     }
-
 }
 
 interface StringInvoiceGenerator {
@@ -52,5 +49,4 @@ interface StringInvoiceGenerator {
         val invoiceString: String = ""
     )
     fun generateInvoice(invoices: List<InvoiceDetailed>): StringInvoiceGenerator.InvoiceGeneratorResult
-
 }

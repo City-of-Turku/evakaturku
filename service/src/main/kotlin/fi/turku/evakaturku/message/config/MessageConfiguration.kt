@@ -28,7 +28,6 @@ class MessageConfiguration {
         val messageSource = YamlMessageSource(ClassPathResource("messages.yaml"))
         return EVakaTurkuMessageProvider(messageSource)
     }
-
 }
 
 internal class EVakaTurkuMessageProvider(val messageSource: MessageSource) : IMessageProvider {
@@ -56,7 +55,6 @@ internal class EVakaTurkuMessageProvider(val messageSource: MessageSource) : IMe
 
     override fun getAssistanceNeedDecisionContent(lang: MessageLanguage): String =
         messageSource.getMessage("$PREFIX.ASSISTANCE_NEED_DECISION_CONTENT", null, resolveLocale(lang))
-
 
     override fun getDefaultDecisionAddress(lang: MessageLanguage): DecisionSendAddress = when (lang) {
         MessageLanguage.FI -> DecisionSendAddress(
@@ -110,5 +108,4 @@ internal class YamlMessageSource(resource: Resource) : AbstractMessageSource() {
 
     override fun resolveCode(code: String, locale: Locale): MessageFormat? =
         properties.getProperty("$code.${locale.language.lowercase()}")?.let { MessageFormat(it, locale) }
-
 }

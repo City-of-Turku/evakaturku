@@ -6,7 +6,6 @@ package fi.turku.evakaturku.invoice.service
 
 import com.jcraft.jsch.SftpException
 import fi.turku.evakaturku.SftpProperties
-import java.text.SimpleDateFormat
 import java.util.*
 
 class SftpSender(val sftpProperties: SftpProperties, val sftpConnector: SftpConnector) {
