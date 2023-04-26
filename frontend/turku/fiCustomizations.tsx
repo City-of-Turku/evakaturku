@@ -583,7 +583,8 @@ const fi: DeepPartial<Translations> = {
       paragraph:
         'Huoltajat, joiden lapsi on jo varhaiskasvatuksessa tai esiopetuksessa: hoida lapsesi päivittäisiä varhaiskasvatusasioita kuten lue viestejä ja ilmoita lapsen läsnäoloajat ja poissaolot.',
       link: 'Kirjaudu sisään',
-      infoBoxText: <></>
+      infoBoxText:
+        'Pääset luomaan eVaka-käyttäjätunnuksen Kirjaudu sisään-painikkeesta.'
     }
   },
   map: {
