@@ -37,6 +37,9 @@ const en: DeepPartial<Translations> = {
       selectChildrenInfo: 'Ilmoita tässä vain koko päivän poissaolot.'
     }
   },
+  loginPage: {
+    title: 'City of Turku early childhood education'
+  },
   applications: {
     creation: {
       daycareInfo:
