@@ -455,7 +455,7 @@ const en: DeepPartial<Translations> = {
                 ? 'Select one early childhood education and care unit'
                 : `Select 1–${maxUnits} early childhood education and care units and place them in your order of preference. You can change the order using the arrows.`,
             fi: 'Finnish',
-            fi: 'Swedish',
+            sv: 'Swedish',
             en: 'English',
             moveUp: 'Move up',
             moveDown: 'Move down',
