@@ -15,13 +15,14 @@ import featureFlags from './featureFlags'
 import fiCustomizations from './fiCustomizations'
 import FooterLogo from './footer-logo-citizen.png'
 import mapConfig from './mapConfig'
+import svCustomizations from './svCustomizations'
 
 const customizations: CitizenCustomizations = {
   appConfig: {},
-  langs: ['fi', 'en'],
+  langs: ['fi', 'sv', 'en'],
   translations: {
     fi: fiCustomizations,
-    sv: {},
+    sv: svCustomizations,
     en: enCustomizations
   },
   cityLogo: {
