@@ -60,44 +60,43 @@ internal class EVakaTurkuMessageProvider(val messageSource: MessageSource) : IMe
 
     override fun getDefaultDecisionAddress(lang: MessageLanguage): DecisionSendAddress = when (lang) {
         MessageLanguage.FI -> DecisionSendAddress(
-            street = "PL 487",
-            postalCode = "33101",
-            postOffice = "Tampere",
-            row1 = "Varhaiskasvatus ja esiopetus",
-            row2 = "Asiakaspalvelu",
-            row3 = "PL 487, 33101 Tampere"
+            street = "PL 355",
+            postalCode = "20101",
+            postOffice = "Turku",
+            row1 = "Kasvatuksen ja opetuksen palvelukokonaisuus",
+            row2 = "Varhaiskasvatuksen ja esiopetuksen asiakaspalvelu",
+            row3 = "PL 355, 20101 Turku"
         )
         MessageLanguage.SV -> DecisionSendAddress(
-            street = "PL 487",
-            postalCode = "33101",
-            postOffice = "Tampere",
-            row1 = "Varhaiskasvatus ja esiopetus",
-            row2 = "Asiakaspalvelu",
-            row3 = "PL 487, 33101 Tampere"
+            street = "PB 355",
+            postalCode = "20101",
+            postOffice = "Åbo stad",
+            row1 = "Servicehelheten för fostran och undervisning",
+            row2 = "Klientavgifter för småbarnspedagogik",
+            row3 = "PB 355, 20101 Åbo stad"
         )
     }
 
     override fun getDefaultFinancialDecisionAddress(lang: MessageLanguage): DecisionSendAddress = when (lang) {
         MessageLanguage.FI -> DecisionSendAddress(
-            street = "PL 487",
-            postalCode = "33101",
-            postOffice = "Tampere",
-            row1 = "Varhaiskasvatus ja esiopetus",
-            row2 = "Asiakaspalvelu",
-            row3 = "PL 487, 33101 Tampere"
+            street = "PL 355",
+            postalCode = "20101",
+            postOffice = "Turku",
+            row1 = "Kasvatuksen ja opetuksen palvelukokonaisuus",
+            row2 = "Varhaiskasvatuksen ja esiopetuksen asiakaspalvelu",
+            row3 = "PL 355, 20101 Turku"
         )
         MessageLanguage.SV -> DecisionSendAddress(
-            street = "PL 487",
-            postalCode = "33101",
-            postOffice = "Tampere",
-            row1 = "Varhaiskasvatus ja esiopetus",
-            row2 = "Asiakaspalvelu",
-            row3 = "PL 487, 33101 Tampere"
+            street = "PB 355",
+            postalCode = "20101",
+            postOffice = "Åbo stad",
+            row1 = "Servicehelheten för fostran och undervisning",
+            row2 = "Klientavgifter för småbarnspedagogik",
+            row3 = "PB 355, 20101 Åbo stad"
         )
     }
 
     private fun resolveLocale(lang: MessageLanguage): Locale {
-        if (MessageLanguage.SV.equals(lang)) return resolveLocale(MessageLanguage.FI)
         return Locale(lang.name.lowercase())
     }
 }
