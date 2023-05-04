@@ -704,22 +704,20 @@ const sv: DeepPartial<Translations> = {
             <H3>Inlämnande av en begäran om omprövning</H3>
             <P>
               Begäran om omprövning skickas in inom besvärstiden till
-              Regionförvaltningsverket i Sydvästra Finland på adressen:
+              Regionförvaltiningsverket i Västra och Inre Finland på adressen:
             </P>
             <P>
-              Regionförvaltningsverket i Sydvästra Finland
+              Regionförvaltiningsverket i Västra och Inre Finland
               <br />
-              PB 4, 13035 AVI
+              PB 5, 13035 AVI
               <br />
-              Självständighetsplan 2, 20800 Åbo
+              Wolffskavägen 35
               <br />
-              E-post: kirjaamo.lounais@avi.fi
+              E-post: registratur.vastra@rfv.fi
               <br />
-              Tfn: 0295 018 000
+              Tfn: 0295 018 450
               <br />
               Öppettider för registratorskontoret: 8.00–16.15
-              <br />
-              Fax (02) 2511 820
             </P>
             <P>
               Om begäran om omprövning skickas via post eller med bud sker detta
