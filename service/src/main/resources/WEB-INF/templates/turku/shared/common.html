@@ -447,19 +447,17 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 <span th:fragment="placement-dates">
     <th:block th:switch="${decision.type.toString()}">
         <span th:case="'CLUB'"
-             th:text="${#temporals.format(decision.startDate, 'd.M.yyyy')}
-                  + ' alkaen.'" />
+             th:text="${#temporals.format(decision.startDate, 'd.M.yyyy')}" />
         <span th:case="'PREPARATORY_EDUCATION'"
               th:text="${#temporals.format(decision.startDate, 'd.M.yyyy')}
                   + ' – ' +
-                  ${#temporals.format(decision.endDate, 'd.M.yyyy')} +  ' on'" />
+                  ${#temporals.format(decision.endDate, 'd.M.yyyy')}" />
         <span th:case="'PRESCHOOL'"
                       th:text="${#temporals.format(decision.startDate, 'd.M.yyyy')}
                   + ' – ' +
-                  ${#temporals.format(decision.endDate, 'd.M.yyyy')} +  ' on'" />
+                  ${#temporals.format(decision.endDate, 'd.M.yyyy')}" />
         <span th:case="*"
-              th:text="${#temporals.format(decision.startDate, 'd.M.yyyy')}
-                  + ' alkaen.'" />
+              th:text="${#temporals.format(decision.startDate, 'd.M.yyyy')}" />
     </th:block>
 </span>
 
