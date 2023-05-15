@@ -19,7 +19,6 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 import org.springframework.core.io.Resource
 import org.springframework.util.StreamUtils
-import redis.clients.jedis.JedisPool
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 import java.util.function.Function
@@ -34,9 +33,6 @@ abstract class AbstractIntegrationTest(private val resetDbBeforeEach: Boolean = 
 
     @Autowired
     private lateinit var jdbi: Jdbi
-
-    @Autowired
-    private lateinit var redisPool: JedisPool
 
     protected lateinit var db: Database.Connection
 
@@ -58,7 +54,6 @@ abstract class AbstractIntegrationTest(private val resetDbBeforeEach: Boolean = 
                 it.resetTurkuDatabaseForE2ETests()
             }
         }
-        redisPool.resource.use { it.flushDB() }
     }
 
     @AfterAll
