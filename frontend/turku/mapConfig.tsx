@@ -13,10 +13,10 @@ const mapConfig: MapConfig = {
   initialZoom: 11,
   addressZoom: 14,
   searchAreaRect: {
-    maxLatitude: 65.02936831566872,
-    minLatitude: 65.00209678931624,
-    maxLongitude: 25.55391750178106,
-    minLongitude: 25.448039386735797
+    maxLatitude: 60.7,
+    minLatitude: 60.3,
+    maxLongitude: 22.8,
+    minLongitude: 22.0
   },
   careTypeFilters: ['DAYCARE', 'PRESCHOOL', 'CLUB'],
   unitProviderTypeFilters: [
