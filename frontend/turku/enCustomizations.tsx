@@ -766,6 +766,8 @@ const en: DeepPartial<Translations> = {
     )
   },
   income: {
+    incomesRegisterConsent:
+      'I submit my income information as an attachment and, if necessary, my income can also be checked in the income register',
     description: (
       <>
         <p data-qa="income-description-p1">
@@ -805,8 +807,6 @@ const en: DeepPartial<Translations> = {
           .
         </>
       ),
-      incomesRegisterConsent:
-        'I submit my income information as an attachment and, if necessary, my income can also be checked in the income register',
       startDate: 'Start date',
       endDate: 'End date',
       title: 'Basis for customer ee',

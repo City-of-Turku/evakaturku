@@ -744,6 +744,8 @@ const sv: DeepPartial<Translations> = {
     )
   },
   income: {
+    incomesRegisterConsent:
+      'Jag lämnar in mina inkomstuppgifter som bilaga och vid behov kan även min inkomst kontrolleras i inkomstregistret',
     description: (
       <>
         <p data-qa="income-description-p1">
@@ -781,8 +783,6 @@ const sv: DeepPartial<Translations> = {
           <strong>Fastställande av kundavgift baserat på bruttoinkomst</strong>.
         </>
       ),
-      incomesRegisterConsent:
-        'Jag lämnar in mina inkomstuppgifter som bilaga och vid behov kan även min inkomst kontrolleras i inkomstregistret',
       startDate: 'Gäller från',
       endDate: 'Gäller till',
       title: 'Kundavgifter',
