@@ -787,6 +787,8 @@ const fi: DeepPartial<Translations> = {
           <strong>Asiakasmaksun määritteleminen bruttotulojen mukaan</strong>.
         </>
       ),
+      incomesRegisterConsent:
+        'Toimitan tulotietoni liitteenä ja tarvittaessa tuloni saa tarkistaa myös tulorekisteristä',
       startDate: 'Voimassa alkaen',
       endDate: 'Voimassaolo päättyy',
       title: 'Asiakasmaksun perusteet',
