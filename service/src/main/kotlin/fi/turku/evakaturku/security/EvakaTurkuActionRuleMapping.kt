@@ -85,6 +85,23 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                 HasUnitRole(UserRole.STAFF).inPlacementUnitOfChildOfBackupCare() as ScopedActionRule<in T>
             )
         }
+        Action.Child.CREATE_ABSENCE,
+        Action.Child.DELETE_ABSENCE -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
+            ) + sequenceOf(
+                HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY)
+                    .inPlacementUnitOfChild() as ScopedActionRule<in T>
+            )
+        }
+        Action.Child.CREATE_ATTENDANCE_RESERVATION -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY)
+                    .inPlacementUnitOfChild() as ScopedActionRule<in T>
+            )
+        }
         Action.Child.CREATE_BACKUP_CARE,
         Action.Child.READ_ASSISTANCE_ACTION,
         Action.Child.READ_ASSISTANCE_NEED -> {
@@ -117,6 +134,16 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
+            )
+        }
+        Action.Group.CREATE_ABSENCES,
+        Action.Group.DELETE_ABSENCES -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
+            ) + sequenceOf(
+                HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY)
+                    .inUnitOfGroup() as ScopedActionRule<in T>
             )
         }
         Action.Group.READ_CARETAKERS -> {
