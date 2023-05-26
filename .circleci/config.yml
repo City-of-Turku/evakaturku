@@ -376,7 +376,7 @@ jobs:
       - run: git remote add upstream https://github.com/espoon-voltti/evaka.git
       - run: git fetch -all
       - run: git pull --rebase upstream master
-      - run: git push origin master
+      - run: git push -f origin master
 
   rebase_turku_customization_branch:
     executor: base_executor
