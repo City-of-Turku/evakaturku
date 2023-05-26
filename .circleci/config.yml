@@ -715,7 +715,8 @@ workflows:
   build_test_and_deploy:
     when:
       not:
-        equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
+        - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
+        - equal: ["update upstream", << pipeline.schedule.name >>]
     jobs:
       - checkout_repo
       - fetch_private_dependencies:
