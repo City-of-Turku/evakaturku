@@ -379,17 +379,17 @@ jobs:
       - run: cd evaka && git remote -v
       - run: cd evaka && git fetch --all
       - run: cd evaka && git pull --rebase upstream master
-      #- run: git push -f origin master
+      - run: cd evaka && git status
+      - run: cd evaka && git push -f origin master
 
   rebase_turku_customization_branch:
     executor: base_executor
     steps:
       - checkout
-      - run: cd evaka
-      - run: git fetch --all
-      - run: git checkout turku-customization
-      - run: git rebase master
-      - run: git status
+      - run: cd evaka && git fetch --all
+      - run: cd evaka && git checkout turku-customization
+      - run: cd evaka && git rebase master
+      - run: cd evaka && git status
 
   fetch_private_dependencies:
     <<: *default_config
@@ -852,3 +852,4 @@ workflows:
         - equal: ["update upstream", << pipeline.schedule.name >>]
     jobs:
       - sync_evaka_fork
+      - rebase_turku_customization_branch
