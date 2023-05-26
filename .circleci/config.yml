@@ -371,8 +371,8 @@ jobs:
   sync_evaka_fork:
     executor: base_executor
     steps:
-      - setup_git
       - checkout
+      - setup_git
       - run: git submodule sync
       - run: git submodule update --init
       - run: cd evaka && git checkout master
@@ -386,8 +386,8 @@ jobs:
   rebase_turku_customization_branch:
     executor: base_executor
     steps:
-      - setup_git
       - checkout
+      - setup_git
       - run: cd evaka && git fetch --all
       - run: cd evaka && git checkout turku-customization
       - run: cd evaka && git rebase master
