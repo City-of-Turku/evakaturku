@@ -23,7 +23,6 @@ aliases:
   - &nodejs_image cimg/node:18.16
   - &openjdk_image cimg/openjdk:17.0
   - &postgres_image cimg/postgres:14.6
-  - &redis_image cimg/redis:6.2.6
   - &s3mock_image adobe/s3mock:2.8.0
   - &ubuntu_machine_image ubuntu-2204:2023.04.1
 
@@ -714,6 +713,9 @@ jobs:
 workflows:
   version: 2
   build_test_and_deploy:
+    when:
+      not:
+        equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
     jobs:
       - checkout_repo
       - fetch_private_dependencies:
@@ -824,11 +826,11 @@ workflows:
               only:
                 - /evaka-update\/.*/
 
-update_upstream:
-  # trigger is configured with circleci ui (project settings -> triggers)
-  when:
-    and:
-      - equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-      - equal: ["update upstream", << pipeline.schedule.name >>]
-  jobs:
-    - sync_evaka_fork
+  update_upstream:
+    # trigger is configured with circleci ui (project settings -> triggers)
+    when:
+      and:
+        - equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - equal: ["update upstream", << pipeline.schedule.name >>]
+    jobs:
+      - sync_evaka_fork
