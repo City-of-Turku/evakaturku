@@ -372,7 +372,9 @@ jobs:
     executor: base_executor
     steps:
       - checkout
+      - run: pwd
       - run: cd evaka
+      - run: pwd
       - run: git checkout master
       - run: git remote add upstream https://github.com/espoon-voltti/evaka.git
       - run: git remote -v
