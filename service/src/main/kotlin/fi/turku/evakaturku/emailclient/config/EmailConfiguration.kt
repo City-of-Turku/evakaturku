@@ -814,13 +814,13 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Varhaiskasvatuksen asiakasmaksun tai palvelusetelin omavastuuosuuden perusteena olevat tulotiedot tarkistetaan vuosittain.
                 
-                Pyydämme toimittamaan tuloselvityksen eVakassa 14 päivän kuluessa tästä ilmoituksesta.eVakassa voitte myös antaa suostumuksen korkeimpaan maksuluokkaan tai tulorekisterin käyttöön.
+                Pyydämme toimittamaan tuloselvityksen eVakassa 14 päivän kuluessa tästä ilmoituksesta. eVakassa voitte myös antaa suostumuksen korkeimpaan maksuluokkaan tai tulorekisterin käyttöön.
                 
                 Mikäli ette toimita uusia tulotietoja, asiakasmaksu määräytyy korkeimman maksuluokan mukaan. Puuttuvilla tulotiedoilla määrättyä maksua ei korjata takautuvasti.
                 
                 Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki
                 
-                Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi
+                Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi
                 
                 Tulotiedot: $documentsUrl
                 
@@ -838,7 +838,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad
                 
-                Mer information: paivahoitomaksut@turku.fi
+                Mer information: varhaiskasvatusmaksut@turku.fi
                 
                 Inkomstuppgifterna: $documentsUrl
                 
@@ -856,11 +856,11 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku
                 
-                Inquiries: paivahoitomaksut@turku.fi.
+                Inquiries: varhaiskasvatusmaksut@turku.fi
 
-                Income information: $documentsUrl    
+                Income information: $documentsUrl
 
-                This is an automatic message from the eVaka system. Do not reply to this message.  
+                This is an automatic message from the eVaka system. Do not reply to this message.
             """
                 .trimIndent(),
             html =
@@ -875,7 +875,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki</p>
                 
-                <p>Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi</p>
+                <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>Tulotiedot: <a href="$documentsUrl">$documentsUrl</a></p>
                 
@@ -893,7 +893,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
                 
-                <p>Mer information: paivahoitomaksut@turku.fi</p>
+                <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>Inkomstuppgifterna: <a href="$documentsUrl">$documentsUrl</a></p>
                 
@@ -911,7 +911,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
                 
-                <p>Inquiries: paivahoitomaksut@turku.fi</p>
+                <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>Income information: <a href="$documentsUrl">$documentsUrl</a></p>
                 
@@ -938,7 +938,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki    
                 
-                Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi
+                Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi
                 
                 Tulotiedot: $documentsUrl
                 
@@ -956,7 +956,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad
                 
-                Mer information: paivahoitomaksut@turku.fi
+                Mer information: varhaiskasvatusmaksut@turku.fi
                 
                 Inkomstuppgifterna: $documentsUrl
                 
@@ -974,7 +974,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku
                 
-                Inquiries: paivahoitomaksut@turku.fi
+                Inquiries: varhaiskasvatusmaksut@turku.fi
                 
                 Income information: $documentsUrl
                 
@@ -993,7 +993,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki</p>
                 
-                <p>Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi</p>
+                <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>Tulotiedot: <a href="$documentsUrl">$documentsUrl</a></p>
                 
@@ -1011,7 +1011,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
                 
-                <p>Mer information: paivahoitomaksut@turku.fi</p>
+                <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>Inkomstuppgifterna: <a href="$documentsUrl">$documentsUrl</a></p>
                 
@@ -1029,7 +1029,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
                 
-                <p>Inquiries: paivahoitomaksut@turku.fi</p>
+                <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>Income information: <a href="$documentsUrl">$documentsUrl</a></p>
                 
@@ -1049,7 +1049,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Seuraava asiakasmaksunne määräytyy korkeimman maksuluokan mukaan, sillä ette ole toimittaneet uusia tulotietoja määräaikaan mennessä.
                 
-                Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi
+                Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi
                 
                 Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
                 
@@ -1059,7 +1059,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Din följande klientavgift bestäms enligt den högsta avgiften, eftersom du inte har lämnat in en inkomstutredning inom utsatt tid.
                 
-                Mer information: paivahoitomaksut@turku.fi
+                Mer information: varhaiskasvatusmaksut@turku.fi
                 
                 Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
                 
@@ -1069,7 +1069,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Your next client fee will be determined based on the highest fee category as you did not provide your latest income information by the deadline.
                 
-                Inquiries: paivahoitomaksut@turku.fi
+                Inquiries: varhaiskasvatusmaksut@turku.fi
 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
             """
@@ -1080,7 +1080,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>Seuraava asiakasmaksunne määräytyy korkeimman maksuluokan mukaan, sillä ette ole toimittaneet uusia tulotietoja määräaikaan mennessä.</p>
                 
-                <p>Lisätietoja saatte tarvittaessa: paivahoitomaksut@turku.fi</p>
+                <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
                 
@@ -1090,7 +1090,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>Din följande klientavgift bestäms enligt den högsta avgiften, eftersom du inte har lämnat in en inkomstutredning inom utsatt tid.</p>
                 
-                <p>Mer information: paivahoitomaksut@turku.fi</p>
+                <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>  
                 
@@ -1100,7 +1100,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 <p>Your next client fee will be determined based on the highest fee category as you did not provide your latest income information by the deadline.</p>
                 
-                <p>Inquiries: paivahoitomaksut@turku.fi</p>
+                <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
                 
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
             """
