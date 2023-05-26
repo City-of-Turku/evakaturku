@@ -191,7 +191,7 @@ commands:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "28:10:ed:11:bc:33:ba:47:8b:94:95:ec:df:c6:3d:e7"
+            - "fb:47:3a:e9:dd:b9:c1:fd:93:23:d6:a9:58:14:74:4d"
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run:
           name: Setup git
@@ -371,6 +371,7 @@ jobs:
   sync_evaka_fork:
     executor: base_executor
     steps:
+      - setup_git
       - checkout
       - run: git submodule sync
       - run: git submodule update --init
@@ -385,6 +386,7 @@ jobs:
   rebase_turku_customization_branch:
     executor: base_executor
     steps:
+      - setup_git
       - checkout
       - run: cd evaka && git fetch --all
       - run: cd evaka && git checkout turku-customization
@@ -852,4 +854,6 @@ workflows:
         - equal: ["update upstream", << pipeline.schedule.name >>]
     jobs:
       - sync_evaka_fork
-      - rebase_turku_customization_branch
+      - rebase_turku_customization_branch:
+          requires:
+            - sync_evaka_fork
