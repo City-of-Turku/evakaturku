@@ -373,7 +373,20 @@ jobs:
     steps:
       - checkout
       - run: cd evaka
-      - run: git remote -v
+      - run: git remote add upstream https://github.com/espoon-voltti/evaka.git
+      - run: git fetch -all
+      - run: git pull --rebase upstream master
+      - run: git push origin master
+
+  rebase_turku_customization_branch:
+    executor: base_executor
+    steps:
+      - checkout
+      - run: cd evaka
+      - run: git fetch -all
+      - run: git checkout turku-customization
+      - run: git rebase master
+      - run: git status
 
   fetch_private_dependencies:
     <<: *default_config
