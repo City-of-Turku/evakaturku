@@ -369,6 +369,13 @@ jobs:
             - run: git submodule update --remote --merge
       - store_repo
 
+  sync_evaka_fork:
+    executor: base_executor
+    steps:
+      - checkout
+      - run: cd evaka
+      - run: git remote -v
+
   fetch_private_dependencies:
     <<: *default_config
     executor: aws-cli/default
@@ -817,17 +824,11 @@ workflows:
               only:
                 - /evaka-update\/.*/
 
-#  nightly:
-#    triggers:
-#      - schedule:
-#          cron: "0 3 * * 1-5" # At 03:00 on weekdays (UTC)
-#          filters:
-#            branches:
-#              only:
-#                - main
-#    jobs:
-#      - checkout_repo:
-#          latest_upstream: true
-#      - commit_and_push_branch:
-#          requires:
-#            - checkout_repo
+update_upstream:
+  # trigger is configured with circleci ui (project settings -> triggers)
+  when:
+    and:
+      - equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+      - equal: ["update upstream", << pipeline.schedule.name >>]
+  jobs:
+    - sync_evaka_fork
