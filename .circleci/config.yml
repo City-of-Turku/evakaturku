@@ -372,15 +372,19 @@ jobs:
     executor: base_executor
     steps:
       - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
       - run: pwd
+      - run: ls
       - run: cd evaka
+      - run: ls
       - run: pwd
       - run: git checkout master
       - run: git remote add upstream https://github.com/espoon-voltti/evaka.git
       - run: git remote -v
       - run: git fetch --all
       - run: git pull --rebase upstream master
-      - run: git push -f origin master
+      #- run: git push -f origin master
 
   rebase_turku_customization_branch:
     executor: base_executor
