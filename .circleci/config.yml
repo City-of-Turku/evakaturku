@@ -191,13 +191,25 @@ commands:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "fb:47:3a:e9:dd:b9:c1:fd:93:23:d6:a9:58:14:74:4d"
+            - "16:e5:a8:50:bf:50:96:63:2d:2b:2b:5a:24:ae:df:9a"
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run:
           name: Setup git
           command: |
             git config user.email "97439387+evakaturku-ci@users.noreply.github.com"
             git config user.name "evakaturku-ci"
+
+  setup_git_submodule:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "5e:2f:d4:bf:08:b0:20:a0:e6:06:85:05:79:ec:1a:e6"
+      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - run:
+          name: Setup git
+          command: |
+            git config --global user.email "97439387+evakaturku-ci@users.noreply.github.com"
+            git config --global user.name "evakaturku-ci"
 
   frontend_install:
     steps:
@@ -328,6 +340,7 @@ commands:
           environment:
             HEADLESS: true
             BASE_URL: http://localhost:9999
+            JEST_JUNIT_OUTPUT_DIR: test-results
       - run:
           name: Collect docker-compose logs
           working_directory: *workspace_compose
@@ -354,6 +367,7 @@ jobs:
         type: boolean
         default: false
     executor: base_executor
+    resource_class: small
     steps:
       - checkout
       - when:
@@ -372,7 +386,7 @@ jobs:
     executor: base_executor
     steps:
       - checkout
-      - setup_git
+      - setup_git_submodule
       - run: git submodule sync
       - run: git submodule update --init
       - run: cd evaka && git checkout master
@@ -387,11 +401,18 @@ jobs:
     executor: base_executor
     steps:
       - checkout
-      - setup_git
+      - setup_git_submodule
+      - run: git submodule sync
+      - run: git submodule update --init
       - run: cd evaka && git fetch --all
       - run: cd evaka && git checkout turku-customization
       - run: cd evaka && git rebase master
-      - run: cd evaka && git status
+      - run: cd evaka && git push -f
+      - setup_git
+      - run: git status
+      - run: git add evaka
+      - run: git commit -m "updated core $(date --iso-8601)"
+      - run: git push
 
   fetch_private_dependencies:
     <<: *default_config
@@ -733,9 +754,7 @@ workflows:
   build_test_and_deploy:
     when:
       not:
-        or:
-          - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
-          - equal: ["update upstream", << pipeline.schedule.name >>]
+        equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
     jobs:
       - checkout_repo
       - fetch_private_dependencies:
