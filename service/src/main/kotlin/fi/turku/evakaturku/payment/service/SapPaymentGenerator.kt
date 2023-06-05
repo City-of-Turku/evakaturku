@@ -161,7 +161,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val dateTimeFormatterMonth = DateTimeFormatter.ofPattern("MM")
         e1FIKPF.monat = previousMonth?.format(dateTimeFormatterMonth)
         val dateTimeFormatterE1FIKPFYearMonth = DateTimeFormatter.ofPattern("yyyyMM")
-        var formattedRowNumber = "%07d".format(identifier)
+        var formattedRowNumber = "%07d".format(payment.number)
         e1FIKPF.xblnr = "VAK" + previousMonth?.format(dateTimeFormatterE1FIKPFYearMonth) + formattedRowNumber
         e1FIKPF.bktxt = "eVAKA"
         e1FIKPF.waers = "EUR"
