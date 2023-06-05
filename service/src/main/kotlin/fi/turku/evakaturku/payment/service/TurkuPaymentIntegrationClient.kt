@@ -33,7 +33,7 @@ class TurkuPaymentIntegrationClient(
                 sftpSender.sendAll(contents)
                 logger.info { "Successfully sent ${successList.size} payments" }
             } catch (e: Exception) {
-                logger.error { "Failed to send ${successList.size} payments" }
+                logger.error(e) { "Failed to send ${successList.size} payments" }
                 // TODO: only add payments whose sending failed to failedList
                 failedList.addAll(successList)
                 successList = listOf()
