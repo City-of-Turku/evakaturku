@@ -4,7 +4,6 @@
 
 package fi.turku.evakaturku.invoice.service
 
-import com.jcraft.jsch.SftpException
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import mu.KotlinLogging
@@ -30,7 +29,7 @@ class EVakaTurkuInvoiceClient(
                 val filename = SimpleDateFormat("'LAVAK_1002'yyMMdd-hhmmss'.xml'").format(Date())
                 sftpSender.send(invoiceString, filename)
                 logger.info { "Successfully sent ${successList.size} invoices and created ${manuallySentList.size} manual invoice" }
-            } catch (e: SftpException) {
+            } catch (e: Exception) {
                 failedList.addAll(successList)
                 failedList.addAll(manuallySentList)
                 successList = listOf()

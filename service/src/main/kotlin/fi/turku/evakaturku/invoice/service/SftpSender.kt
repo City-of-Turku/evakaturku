@@ -4,21 +4,44 @@
 
 package fi.turku.evakaturku.invoice.service
 
-import com.jcraft.jsch.SftpException
 import fi.turku.evakaturku.SftpProperties
 import java.util.*
 
 class SftpSender(val sftpProperties: SftpProperties, val sftpConnector: SftpConnector) {
-    @Throws(SftpException::class)
+    @Throws(Exception::class)
     fun send(content: String, fileName: String) {
         val path = sftpProperties.path
 
         val filepath = "$path/$fileName"
 
-        sftpConnector.connect(sftpProperties.address, sftpProperties.username, sftpProperties.password)
+        try {
+            sftpConnector.connect(sftpProperties.address, sftpProperties.username, sftpProperties.password)
 
-        sftpConnector.send(filepath, content)
+            sftpConnector.send(filepath, content)
+        } catch (e: Exception) {
+            throw e
+        } finally {
+            sftpConnector.disconnect()
+        }
+    }
 
-        sftpConnector.disconnect()
+    @Throws(Exception::class)
+    fun sendAll(contents: Map<String, String>) {
+        val path = sftpProperties.path
+
+        try {
+            sftpConnector.connect(sftpProperties.address, sftpProperties.username, sftpProperties.password)
+
+            contents.forEach {
+                val (fileName, content) = it
+
+                val filepath = "$path/$fileName"
+                sftpConnector.send(filepath, content)
+            }
+        } catch (e: Exception) {
+            throw e
+        } finally {
+            sftpConnector.disconnect()
+        }
     }
 }

@@ -1,6 +1,5 @@
 package fi.turku.evakaturku.payment.service
 
-import com.jcraft.jsch.SftpException
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.espoo.evaka.shared.db.Database
@@ -24,21 +23,20 @@ class TurkuPaymentIntegrationClient(
         var successList = generatorResult.sendResult.succeeded
         failedList.addAll(generatorResult.sendResult.failed)
 
-        var serialNumber = 1
+        if (successList.isNotEmpty()) {
+            val contents = generatorResult.paymentStrings.mapIndexed { index, content ->
+                val filename = SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date()) + '-' + (index + 1).toString() + ".xml"
+                filename to content
+            }.toMap()
 
-        if (!successList.isEmpty()) {
-            generatorResult.paymentStrings.forEach {
-                try {
-                    val filename = SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date()) + '-' + serialNumber.toString() + ".xml"
-                    sftpSender.send(it, filename)
-                    serialNumber++
-                    logger.info { "Successfully sent ${successList.size} payments" }
-                } catch (e: SftpException) {
-                    logger.error { "Failed to send ${successList.size} payments" }
-                    // TODO: only add payments whose sending failed to failedList
-                    failedList.addAll(successList)
-                    successList = listOf()
-                }
+            try {
+                sftpSender.sendAll(contents)
+                logger.info { "Successfully sent ${successList.size} payments" }
+            } catch (e: Exception) {
+                logger.error { "Failed to send ${successList.size} payments" }
+                // TODO: only add payments whose sending failed to failedList
+                failedList.addAll(successList)
+                successList = listOf()
             }
         }
 

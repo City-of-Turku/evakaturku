@@ -106,7 +106,6 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val (failed, succeeded) = payments.partition { payment -> paymentChecker.shouldFail(payment) }
         failedList.addAll(failed)
 
-        var identifier = 1
         succeeded.forEach {
             var preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * preSchoolAccountingAmount
             if (it.period.start.monthValue == 8) {
@@ -114,8 +113,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             }
             val language = languageMap[it.unit.id]?.language ?: "fi"
             val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
-            idocs.add(generateIdoc(it, identifier, preSchoolAmount, language))
-            identifier++
+            idocs.add(generateIdoc(it, preSchoolAmount, language))
 
             try {
                 paymentStrings.add(marshalPayments(idocs))
@@ -128,7 +126,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         return Result(PaymentIntegrationClient.SendResult(successList, failedList), paymentStrings)
     }
 
-    fun generateIdoc(payment: Payment, identifier: Int, preSchoolAmount: Int, language: String): FIDCCP02.IDOC {
+    fun generateIdoc(payment: Payment, preSchoolAmount: Int, language: String): FIDCCP02.IDOC {
         val idoc = FIDCCP02.IDOC()
         idoc.begin = "1"
 

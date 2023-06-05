@@ -9,10 +9,12 @@ import java.io.ByteArrayInputStream
 @Component
 class SftpConnector(val jsch: JSch) {
 
+    lateinit var jschSession: Session
     lateinit var channelSftp: ChannelSftp
 
+    @Throws(Exception::class)
     fun connect(address: String, username: String, password: String) {
-        val jschSession: Session = jsch.getSession(username, address)
+        jschSession = jsch.getSession(username, address)
         jschSession.setConfig("StrictHostKeyChecking", "no")
         jschSession.setPassword(password)
         jschSession.connect()
@@ -21,11 +23,13 @@ class SftpConnector(val jsch: JSch) {
         channelSftp.connect()
     }
 
+    @Throws(Exception::class)
     fun send(filePath: String, proEInvoice: String) {
         channelSftp.put(ByteArrayInputStream(proEInvoice.toByteArray(Charsets.UTF_8)), filePath)
     }
 
     fun disconnect() {
         channelSftp.disconnect()
+        jschSession.disconnect()
     }
 }
