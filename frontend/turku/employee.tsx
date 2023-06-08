@@ -326,9 +326,10 @@ const customizations: EmployeeCustomizations = {
           PREPARATORY: 'Valmistava opetus',
           PREPARATORY_DAYCARE: 'Valmistava ja täydentävä varhaiskasvatus',
           DAYCARE_FIVE_YEAR_OLDS: '5-vuotiaiden maksuton varhaiskasvatus',
-          DAYCARE_PART_TIME_FIVE_YEAR_OLDS:'5-vuotiaiden maksuton ja täydentävä varhaiskasvatus',
+          DAYCARE_PART_TIME_FIVE_YEAR_OLDS:
+            '5-vuotiaiden maksuton ja täydentävä varhaiskasvatus',
           CLUB: 'Kerho ja puisto',
-          TEMPORARY_DAYCARE:'Tilapäinen varhaiskasvatus',
+          TEMPORARY_DAYCARE: 'Tilapäinen varhaiskasvatus',
           SCHOOL_SHIFT_CARE: 'Koululaisten vuorohoito'
         }
       },
