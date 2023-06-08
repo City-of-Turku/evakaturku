@@ -320,10 +320,15 @@ const customizations: EmployeeCustomizations = {
       placement: {
         type: {
           DAYCARE: 'Varhaiskasvatus',
-          DAYCARE_PART_TIME: 'Osapäiväinen varhaiskasvatus​',
-          TEMPORARY_DAYCARE: 'Tilapäinen kokopäiväinen varhaiskasvatus',
+          DAYCARE_PART_TIME: 'Osapäiväinen varhaiskasvatus',
+          PRESCHOOL: 'Esiopetus',
           PRESCHOOL_DAYCARE: 'Esiopetusta täydentävä varhaiskasvatus',
-          CLUB: 'Kerho',
+          PREPARATORY: 'Valmistava opetus',
+          PREPARATORY_DAYCARE: 'Valmistava ja täydentävä varhaiskasvatus',
+          DAYCARE_FIVE_YEAR_OLDS: '5-vuotiaiden maksuton varhaiskasvatus',
+          DAYCARE_PART_TIME_FIVE_YEAR_OLDS:'5-vuotiaiden maksuton ja täydentävä varhaiskasvatus',
+          CLUB: 'Kerho ja puisto',
+          TEMPORARY_DAYCARE:'Tilapäinen varhaiskasvatus',
           SCHOOL_SHIFT_CARE: 'Koululaisten vuorohoito'
         }
       },
