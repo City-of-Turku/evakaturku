@@ -322,7 +322,7 @@ const customizations: EmployeeCustomizations = {
           DAYCARE: 'Varhaiskasvatus',
           DAYCARE_PART_TIME: 'Osapäiväinen varhaiskasvatus',
           PRESCHOOL: 'Esiopetus',
-          PRESCHOOL_DAYCARE: 'Esiopetusta täydentävä varhaiskasvatus',
+          PRESCHOOL_DAYCARE: 'Esiopetus ja täydentävä varhaiskasvatus',
           PREPARATORY: 'Valmistava opetus',
           PREPARATORY_DAYCARE: 'Valmistava ja täydentävä varhaiskasvatus',
           DAYCARE_FIVE_YEAR_OLDS: '5-vuotiaiden maksuton varhaiskasvatus',
