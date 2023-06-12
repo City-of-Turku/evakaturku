@@ -19,6 +19,10 @@ const customizations: EmployeeCustomizations = {
   translations: {
     fi: {
       // override translations here
+      incomeStatement: {
+        incomesRegister:
+          'Toimintan tulotietoni liitteenä ja tarvittaessa tuloni saa tarkistaa myös tulorekisteristä'
+      },
       personProfile: {
         income: {
           details: {
