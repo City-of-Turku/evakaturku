@@ -949,7 +949,7 @@ workflows:
             branches:
               only:
                 - main
-		- evaka-hotfix
+                - evaka-hotfix
 
       - merge_branch:
           context:
