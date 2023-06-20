@@ -3,6 +3,8 @@
 # PRINT SOMETHING for testing (should contain DW report exporting logic)
 echo "Hello world!"
 
+curl -s ifconfig.me
+
 DATE=`date +%Y%m%d`
 FILE=test_$DATE.txt
 touch $FILE
