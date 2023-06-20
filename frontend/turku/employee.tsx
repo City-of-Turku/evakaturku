@@ -319,7 +319,7 @@ const customizations: EmployeeCustomizations = {
         }
       },
       login: {
-        loginAD: 'Turku AD'
+        loginAD: 'Kirjaudu edu.turku.fi-tunnuksella'
       },
       placement: {
         type: {
