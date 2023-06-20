@@ -751,6 +751,15 @@ const fi: DeepPartial<Translations> = {
       </P>
     )
   },
+  personalDetails: {
+    description: (
+      <P>
+        Täällä voit tarkistaa ja täydentää omat henkilö- ja yhteystietosi.
+        Nimesi ja osoitteesi haetaan väestötietojärjestelmästä, ja mikäli ne
+        muuttuvat, sinun tulee tehdä ilmoitus väestötietojärjestelmään.
+      </P>
+    )
+  },
   income: {
     incomesRegisterConsent:
       'Toimitan tulotietoni liitteenä ja tarvittaessa tuloni saa tarkistaa myös tulorekisteristä',
