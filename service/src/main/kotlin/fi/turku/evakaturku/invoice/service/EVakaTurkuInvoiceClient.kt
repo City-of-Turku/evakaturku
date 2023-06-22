@@ -34,7 +34,7 @@ class EVakaTurkuInvoiceClient(
                 failedList.addAll(manuallySentList)
                 successList = listOf()
                 manuallySentList = listOf()
-                logger.error { "Failed to send ${failedList.size} invoices" }
+                logger.error(e) { "Failed to send ${failedList.size} invoices" }
             }
         }
 
