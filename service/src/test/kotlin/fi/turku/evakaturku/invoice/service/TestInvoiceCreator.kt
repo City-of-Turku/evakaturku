@@ -1,4 +1,4 @@
-package fi.ouka.evakaoulu.invoice.service
+package fi.turku.evakaturku.invoice.service
 
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed

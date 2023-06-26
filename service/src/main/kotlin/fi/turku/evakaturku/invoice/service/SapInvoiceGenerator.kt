@@ -24,13 +24,13 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
 
     fun generateInvoiceTitle(): String {
         val previousMonth = financeDateProvider.previousMonth()
-        return "Varhaiskasvatus " + previousMonth
+        return "Varhaiskasvatus $previousMonth"
     }
 
     override fun generateInvoice(invoices: List<InvoiceDetailed>): StringInvoiceGenerator.InvoiceGeneratorResult {
-        var successList = mutableListOf<InvoiceDetailed>()
-        var failedList = mutableListOf<InvoiceDetailed>()
-        var manuallySentList = mutableListOf<InvoiceDetailed>()
+        val successList = mutableListOf<InvoiceDetailed>()
+        val failedList = mutableListOf<InvoiceDetailed>()
+        val manuallySentList = mutableListOf<InvoiceDetailed>()
 
         val (manuallySent, succeeded) = invoices.partition { invoice -> invoiceChecker.shouldSendManually(invoice) }
         manuallySentList.addAll(manuallySent)
@@ -338,7 +338,7 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             // E1EDP01 ROWS - segment
             val e1edp01 = ORDERS05.IDOC.E1EDP01()
             e1edp01.segment = "1"
-            var formattedRowNumber = "%06d".format(rowNumber * 10)
+            val formattedRowNumber = "%06d".format(rowNumber * 10)
             e1edp01.posex = formattedRowNumber
             val formattedUnitAmount = row.amount.toDouble()
             e1edp01.menge = String.format(Locale.ENGLISH, "%.3f", formattedUnitAmount)

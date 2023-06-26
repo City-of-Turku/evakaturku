@@ -20,11 +20,11 @@ class EVakaTurkuInvoiceClient(
         val failedList = mutableListOf<InvoiceDetailed>()
 
         val generatorResult = invoiceGenerator.generateInvoice(invoices)
-        var invoiceString = generatorResult.invoiceString
+        val invoiceString = generatorResult.invoiceString
         var successList = generatorResult.sendResult.succeeded
         var manuallySentList = generatorResult.sendResult.manuallySent
 
-        if (!successList.isEmpty()) {
+        if (successList.isNotEmpty()) {
             try {
                 val filename = SimpleDateFormat("'LAVAK_1002'yyMMdd-hhmmss'.xml'").format(Date())
                 sftpSender.send(invoiceString, filename)
@@ -47,5 +47,5 @@ interface StringInvoiceGenerator {
         val sendResult: InvoiceIntegrationClient.SendResult = InvoiceIntegrationClient.SendResult(),
         val invoiceString: String = ""
     )
-    fun generateInvoice(invoices: List<InvoiceDetailed>): StringInvoiceGenerator.InvoiceGeneratorResult
+    fun generateInvoice(invoices: List<InvoiceDetailed>): InvoiceGeneratorResult
 }

@@ -1,15 +1,14 @@
-package fi.ouka.evakaoulu.invoice.service
+package fi.turku.evakaturku.invoice.service
 
-import fi.turku.evakaturku.invoice.service.InvoiceChecker
 import org.junit.jupiter.api.Test
 
 internal class InvoiceCheckerTest {
     @Test
-    fun `should return true for Invoices with restricted head of family details`() {
+    fun `should return false for Invoices with restricted head of family details`() {
         val invoice = validInvoice().copy(headOfFamily = personWithRestrictedDetails())
         val invoiceChecker = InvoiceChecker()
 
-        assert(invoiceChecker.shouldSendManually(invoice) == true)
+        assert(!invoiceChecker.shouldSendManually(invoice))
     }
 
     @Test
@@ -17,7 +16,7 @@ internal class InvoiceCheckerTest {
         val invoice = validInvoice().copy(headOfFamily = personWithoutSSN())
         val invoiceChecker = InvoiceChecker()
 
-        assert(invoiceChecker.shouldSendManually(invoice) == true)
+        assert(invoiceChecker.shouldSendManually(invoice))
     }
 
     @Test
@@ -25,6 +24,6 @@ internal class InvoiceCheckerTest {
         val invoice = validInvoice()
         val invoiceChecker = InvoiceChecker()
 
-        assert(invoiceChecker.shouldSendManually(invoice) == false)
+        assert(!invoiceChecker.shouldSendManually(invoice))
     }
 }

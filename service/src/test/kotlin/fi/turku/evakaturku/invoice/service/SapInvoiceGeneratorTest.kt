@@ -1,6 +1,5 @@
 package fi.turku.evakaturku.invoice.service
 
-import fi.ouka.evakaoulu.invoice.service.validInvoice
 import fi.turku.evakaturku.util.FinanceDateProvider
 import org.junit.jupiter.api.Test
 
@@ -11,8 +10,8 @@ class SapInvoiceGeneratorTest {
         val invoiceList = listOf(validInvoice())
         val invoiceString = invoiceGenerator.generateInvoice(invoiceList).invoiceString
 
-        assert(invoiceString.contains('<' + tag + '>'))
-        assert(invoiceString.contains("</" + tag + '>'))
+        assert(invoiceString.contains("<$tag>"))
+        assert(invoiceString.contains("</$tag>"))
     }
 
     fun assertExpectedString(expectedString: String) {
@@ -24,7 +23,7 @@ class SapInvoiceGeneratorTest {
     }
 
     fun assertElement(element: String, value: String) {
-        val expectedString = '<' + element + '>' + value + "</" + element + '>'
+        val expectedString = "<$element>$value</$element>"
         assertExpectedString(expectedString)
     }
 
