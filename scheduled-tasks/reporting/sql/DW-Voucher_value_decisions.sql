@@ -15,8 +15,9 @@ SELECT
     d.name               AS toimipaikka,
     d.id                 AS toimipaikka_id
 FROM voucher_value_decision vvd
-    JOIN daycare d ON vvd.placement_unit_id = d.id
-    JOIN care_area ca ON d.care_area_id = ca.id
+         JOIN daycare d ON vvd.placement_unit_id = d.id
+         JOIN care_area ca ON d.care_area_id = ca.id
 WHERE vvd.status = 'SENT'
-    AND vvd.decision_number IS NOT NULL -- ei tuoda effican päätöksiä
-    AND current_date - INTERVAL '3 months' <= vvd.valid_to
+  AND vvd.decision_number IS NOT NULL -- ei tuoda effican päätöksiä
+  AND current_date - INTERVAL '3 months' <= vvd.valid_to;
+

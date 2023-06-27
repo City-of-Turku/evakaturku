@@ -1,3 +1,4 @@
+SET TIMEZONE = 'Europe/Helsinki';
 SELECT
     now()                      AS pvm,
     p.id                       AS lapsen_id,
@@ -8,7 +9,6 @@ SELECT
     p.postal_code              AS postinumero,
     p.post_office              AS postitoimipaikka,
     p.nationalities            AS kansalaisuudet,
-    p.language                 AS kieli,
     pl.type                    AS sijoitustyyppi,
     pl.unit_id                 AS sijoitusyksikkö_id,
     d.name                     AS yksikön_nimi,
@@ -19,8 +19,6 @@ SELECT
     d.dw_cost_center           AS kustannuspaikka,
     dg.id                      AS sijoitusryhmä_id,
     dg.name                    AS sijoitusryhmä,
-    dc.amount                  AS henkilökuntaa_ryhmässä,
-    sa.count                   AS henkilökuntaa_läsnä,
     bc.unit_id                 AS varahoitoyksikkö_id,
     bu.name                    AS varahoitoyksikkö,
     bc.group_id                AS varahoitoryhmä_id,
@@ -43,32 +41,37 @@ SELECT
     )                          AS tuentarve,
     anvc.coefficient           AS tuentarpeen_kerroin,
     an.capacity_factor         AS lapsen_kapasiteetti,
-    a.id IS NOT NULL           AS poissaolo,
-    a.absence_type             AS poissaolon_syy
+    array(
+        SELECT absence_type
+        FROM absence
+        WHERE child_id = p.id
+            AND a.date = current_date
+    )                          AS poissaolon_syy
 FROM person p
-    JOIN placement pl ON pl.child_id = p.id AND pl.start_date <= current_date AND pl.end_date >= current_date
-    JOIN daycare d ON pl.unit_id = d.id
-    JOIN care_area ca ON d.care_area_id = ca.id
-    JOIN daycare_group_placement dgp ON pl.id = dgp.daycare_placement_id AND dgp.start_date <= current_date AND dgp.end_date >= current_date
-    JOIN daycare_group dg ON d.id = dg.daycare_id AND dgp.daycare_group_id = dg.id
-    JOIN daycare_caretaker dc ON dg.id = dc.group_id
-        AND dc.start_date <= current_date
-        AND (dc.end_date >= current_date or dc.end_date is null)
-    left JOIN staff_attendance sa ON dg.id = sa.group_id AND sa.date = current_date
-    left JOIN backup_care bc ON p.id = bc.child_id
-        AND bc.start_date <= current_date
-        AND bc.end_date >= current_date
-    left JOIN daycare bu ON bu.id = bc.unit_id
-    left JOIN daycare_group bg ON bg.id = bc.group_id
-    left JOIN service_need sn ON pl.id = sn.placement_id
-        AND sn.start_date <= current_date
-        AND sn.end_date >= current_date
-    JOIN service_need_option sno ON sno.id = sn.option_id
-    left JOIN assistance_need an ON p.id = an.child_id
-        AND an.start_date <= current_date
-        AND an.end_date >= current_date
-    left JOIN assistance_need_voucher_coefficient anvc ON p.id = anvc.child_id
-        AND lower(anvc.validity_period) <= current_date
-        AND upper(anvc.validity_period) >= current_date
-    left JOIN absence a ON p.id = a.child_id AND a.date = current_date
-WHERE pl.start_date <= current_date AND pl.end_date >= current_date
+         JOIN placement pl ON pl.child_id = p.id
+    AND pl.start_date <= current_date
+    AND pl.end_date >= current_date
+         JOIN daycare d ON pl.unit_id = d.id
+         JOIN care_area ca ON d.care_area_id = ca.id
+         JOIN daycare_group_placement dgp ON pl.id = dgp.daycare_placement_id
+    AND dgp.start_date <= current_date
+    AND dgp.end_date >= current_date
+         JOIN daycare_group dg ON d.id = dg.daycare_id
+    AND dgp.daycare_group_id = dg.id
+         LEFT JOIN backup_care bc ON p.id = bc.child_id
+    AND bc.start_date <= current_date
+    AND bc.end_date >= current_date
+         LEFT JOIN daycare bu ON bu.id = bc.unit_id
+         LEFT JOIN daycare_group bg ON bg.id = bc.group_id
+         LEFT JOIN service_need sn ON pl.id = sn.placement_id
+    AND sn.start_date <= current_date
+    AND sn.end_date >= current_date
+         JOIN service_need_option sno ON sno.id = sn.option_id
+         LEFT JOIN assistance_need an ON p.id = an.child_id
+    AND an.start_date <= current_date
+    AND an.end_date >= current_date
+         LEFT JOIN assistance_need_voucher_coefficient anvc ON p.id = anvc.child_id
+    AND lower(anvc.validity_period) <= current_date
+    AND upper(anvc.validity_period) >= current_date
+         LEFT JOIN absence a ON p.id = a.child_id
+    AND a.date = current_date;
