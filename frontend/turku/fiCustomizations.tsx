@@ -277,6 +277,9 @@ const fi: DeepPartial<Translations> = {
         }
       },
       verification: {
+        title: {
+          CLUB: 'Avoimen varhaiskasvatushakemuksen tarkistaminen'
+        },
         serviceNeed: {
           wasOnClubCareYes:
             'Lapsi on ollut avoimessa varhaiskasvatuksessa edellisen toimintakauden aikana.',
