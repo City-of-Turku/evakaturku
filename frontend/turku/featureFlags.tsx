@@ -34,6 +34,7 @@ const features: Features = {
     preschool: true,
     preparatory: true,
     urgencyAttachments: true,
+    childDiscussion: false,
     experimental: {
       leops: true,
       voucherUnitPayments: true,
@@ -62,6 +63,7 @@ const features: Features = {
     urgencyAttachments: true,
     financeDecisionHandlerSelect: false,
     feeDecisionPreschoolClubFilter: true,
+    childDiscussion: false,
     experimental: {
       leops: true,
       voucherUnitPayments: true,
@@ -90,6 +92,7 @@ const features: Features = {
     urgencyAttachments: true,
     financeDecisionHandlerSelect: false,
     feeDecisionPreschoolClubFilter: true,
+    childDiscussion: false,
     experimental: {
       leops: true,
       voucherUnitPayments: true,
