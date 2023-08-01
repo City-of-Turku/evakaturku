@@ -445,6 +445,9 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         return EmailContent(subjectForDecisionEmail, getDecisionEmailText(), getDecisionEmailHtml())
     }
 
+    override fun assistanceNeedPreschoolDecisionNotification(language: Language): EmailContent =
+        assistanceNeedDecisionNotification(language) // currently same content
+
     fun getDecisionEmailHtml(): String {
         return """
         <p>Hei!</p>
