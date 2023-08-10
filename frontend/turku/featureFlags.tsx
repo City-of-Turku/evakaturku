@@ -104,7 +104,7 @@ const features: Features = {
       fosterParents: true,
       serviceWorkerMessaging: true,
       childDocuments: true,
-      intermittentShiftCare: true
+      intermittentShiftCare: false
     }
   }
 }
