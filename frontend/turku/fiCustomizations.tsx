@@ -747,6 +747,138 @@ const fi: DeepPartial<Translations> = {
         )
       }
     },
+    assistancePreschoolDecisions: {
+      appealInstructions: (
+        <>
+          <H3>Oikaisuvaatimusohjeet</H3>
+          <P>
+            Edellä mainittuun päätökseen saa hakea oikaisua Lounais-Suomen
+            aluehallintovirastolta 30 päivän kuluessa päätöksen
+            tiedoksisaannista. Päätökseen ei saa hakea muutosta valittamalla
+            tuomioistuimeen.
+          </P>
+          <P>Oikaisuvaatimuksen saa tehdä</P>
+          <ul>
+            <li>se, johon päätös on kohdistettu </li>
+            <li>
+              {' '}
+              tai jonka oikeuteen, velvollisuuteen tai etuun päätös välittömästi
+              vaikuttaa.
+            </li>
+          </ul>
+          <h3>Tiedoksisaanti</h3>
+          <P>
+            Mikäli päätös annetaan tiedoksi kirjeellä, asianosaisen (lapsen
+            huoltajan) katsotaan saaneen päätöksestä tiedon, jollei muuta
+            näytetä, 7 päivän kuluttua kirjeen lähettämisestä.
+          </P>
+          <P>
+            Käytettäessä tavallista sähköistä tiedoksiantoa katsotaan
+            asianosaisen saaneen tiedon päätöksestä kolmantena päivänä viestin
+            lähettämisestä.
+          </P>
+          <P>
+            Mikäli päätös annetaan tiedoksi henkilökohtaisesti, asianosaisen
+            (lapsen huoltajan) katsotaan saaneen päätöksestä tiedon sinä
+            päivänä, jona päätös on luovutettu asianosaiselle tai hänen
+            lailliselle edustajalleen.
+          </P>
+          <P>
+            Postitse saantitodistusta vastaan lähetetystä asiakirjasta katsotaan
+            asianosaisen saaneen tiedonsaantitodistuksen osoittamana aikana.
+          </P>
+          <P>
+            Tiedoksisaantipäivää ei lueta oikaisuvaatimusaikaan. Jos
+            oikaisuvaatimusajan viimeinen päivä on pyhäpäivä, itsenäisyyspäivä,
+            vapunpäivä, joulu- tai juhannusaatto tai arkilauantai, saa
+            oikaisuvaatimuksen tehdä ensimmäisenä arkipäivänä sen jälkeen.
+          </P>
+          <H3>Oikaisuvaatimuksen sisältö</H3>
+          <P>
+            Oikaisuvaatimus on tehtävä kirjallisesti. Myös sähköinen asiakirja
+            täyttää vaatimuksen kirjallisesta muodosta.
+          </P>
+          <P>Oikaisuvaatimuksessa on ilmoitettava</P>
+          <ul>
+            <li>päätös, johon haetaan oikaisua</li>
+            <li>
+              miltä kohdin päätökseen haetaan oikaisua ja millaista oikaisua
+              siihen vaaditaan tehtäväksi
+            </li>
+            <li>perusteet, joilla oikaisua vaaditaan</li>
+          </ul>
+          <P>
+            Oikaisuvaatimuksessa on ilmoitettava tekijän nimi ja kotikunta. Jos
+            oikaisuvaatimuksen tekijän puhevaltaa käyttää hänen laillinen
+            edustajansa tai asiamiehensä tai jos oikaisuvaatimuksen laatijana on
+            joku muu henkilö, oikaisuvaatimuksessa on ilmoitettava myös tämän
+            nimi ja kotikunta.
+          </P>
+          <P>
+            Oikaisuvaatimuksessa on lisäksi ilmoitettava postiosoite,
+            puhelinnumero ja muut tarvittavat yhteystiedot. Jos
+            oikaisuvaatimusviranomaisen päätös voidaan antaa tiedoksi sähköisenä
+            viestinä, yhteystietona pyydetään ilmoittamaan myös
+            sähköpostiosoite.
+          </P>
+          <P>
+            Oikaisuvaatimuksen tekijän, laillisen edustajan tai asiamiehen on
+            allekirjoitettava oikaisuvaatimus. Sähköistä asiakirjaa ei
+            kuitenkaan tarvitse täydentää allekirjoituksella, jos asiakirjassa
+            on tiedot lähettäjästä eikä asiakirjan alkuperäisyyttä tai eheyttä
+            ole syytä epäillä.
+          </P>
+          <P>Oikaisuvaatimuksessa on liitettävä</P>
+          <ul>
+            <li>
+              päätös, johon haetaan oikaisua, alkuperäisenä tai jäljennöksenä
+            </li>
+            <li>
+              todistus siitä, minä päivänä päätös on annettu tiedoksi, tai muu
+              selvitys oikaisuvaatimusajan alkamisesta
+            </li>
+            <li>
+              asiakirjat, joihin oikaisuvaatimuksen tekijä vetoaa, jollei niitä
+              ole aikaisemmin toimitettu viranomaiselle.
+            </li>
+          </ul>
+          <H3>Oikaisuvaatimuksen toimittaminen</H3>
+          <P>
+            Oikaisuvaatimus on toimitettava oikaisuvaatimusajan kuluessa
+            Lounais-Suomen aluehallintovirastolle osoitteella:
+          </P>
+          <P>
+            Lounais-Suomen aluehallintovirasto
+            <br />
+            PL 4, 13035 AVI
+            <br />
+            Itsenäisyydenaukio 2, 20800 Turku
+            <br />
+            Sähköposti: kirjaamo.lounais@avi.fi
+            <br />
+            Puh: 0295 018 000
+            <br />
+            Kirjaamon aukioloaika: 8.00–16.15
+            <br />
+            Fax (02) 2511 820
+          </P>
+          <P>
+            Omalla vastuulla oikaisuvaatimuksen voi lähettää postitse tai
+            lähetin välityksellä. Postiin oikaisuvaatimusasiakirjat on jätettävä
+            niin ajoissa, että ne ehtivät perille viimeistään
+            oikaisuvaatimusajan viimeisenä päivänä ennen viraston aukioloajan
+            päättymistä.
+          </P>
+          <P>
+            Omalla vastuulla oikaisuvaatimuksen voi toimittaa ennen
+            oikaisuvaatimusajan päättymistä myös telekopiona/faxina tai
+            sähköpostilla. Määräajassa toimitettava asiakirja on lähetettävä
+            ennen määräajan päättymistä siten, että asiakirja on viranomaisen
+            käytettävissä vastaanottolaitteessa tai tietojärjestelmässä.
+          </P>
+        </>
+      )
+    },
     summary: (
       <P width="800px">
         Tälle sivulle saapuvat lapsen varhaiskasvatus- ja kerhohakemuksiin

@@ -16,6 +16,11 @@ import fi.espoo.evaka.assistanceneed.decision.AssistanceNeedDecisionStatus
 import fi.espoo.evaka.assistanceneed.decision.ServiceOptions
 import fi.espoo.evaka.assistanceneed.decision.StructuralMotivationOptions
 import fi.espoo.evaka.assistanceneed.decision.UnitInfo
+import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDecision
+import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDecisionChild
+import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDecisionForm
+import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDecisionGuardian
+import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDecisionType
 import fi.espoo.evaka.daycare.domain.ProviderType
 import fi.espoo.evaka.daycare.service.DaycareManager
 import fi.espoo.evaka.decision.Decision
@@ -33,6 +38,8 @@ import fi.espoo.evaka.pis.service.PersonDTO
 import fi.espoo.evaka.setting.SettingType
 import fi.espoo.evaka.shared.ApplicationId
 import fi.espoo.evaka.shared.AssistanceNeedDecisionId
+import fi.espoo.evaka.shared.AssistanceNeedPreschoolDecisionGuardianId
+import fi.espoo.evaka.shared.AssistanceNeedPreschoolDecisionId
 import fi.espoo.evaka.shared.ChildId
 import fi.espoo.evaka.shared.DaycareId
 import fi.espoo.evaka.shared.DecisionId
@@ -221,6 +228,16 @@ class DecisionServiceTest {
     }
 
     @Test
+    fun generateAssistanceNeedPreschoolPdf() {
+        val decision = validAssistanceNeedPreSchoolDecision
+
+        val bytes = generateAssistanceNeedPreschoolPdf(decision, validAddress(), validGuardian(false), pdfService, templateProvider)
+
+        val filepath = "${Paths.get("build").toAbsolutePath()}/reports/DecisionServiceTest-preschool-assistance-need-decision.pdf"
+        FileOutputStream(filepath).use { it.write(bytes) }
+    }
+
+    @Test
     fun createRestrictedDetailsEnabledPdf() {
         val bytes = createDecisionPdf(
             messageProvider,
@@ -385,6 +402,71 @@ private val validAssistanceNeedDecision = AssistanceNeedDecision(
     annulmentReason = ""
 )
 
+private val validAssistanceNeedPreSchoolDecision = AssistanceNeedPreschoolDecision(
+    id = AssistanceNeedPreschoolDecisionId(UUID.randomUUID()),
+    decisionNumber = 125632424,
+    child = AssistanceNeedPreschoolDecisionChild(
+        id = ChildId(UUID.randomUUID()),
+        name = "Matti Meikäläinen",
+        dateOfBirth = LocalDate.of(2020, 1, 5)
+    ),
+    status = AssistanceNeedDecisionStatus.ACCEPTED,
+    decisionMade = LocalDate.of(2022, 7, 1),
+    decisionMakerHasOpened = false,
+    annulmentReason = "Tyhjä syy",
+    hasDocument = false,
+    sentForDecision = LocalDate.of(2022, 5, 12),
+    unitName = "Amurin päiväkoti",
+    unitStreetAddress = "Amurinpolku 1",
+    unitPostalCode = "33100",
+    unitPostOffice = "Tampere",
+    preparer1Name = "JOHTAJA JORMA PERTTILÄ",
+    preparer2Name = "Paula Palvelupäällikkö",
+    decisionMakerName = "Pate Päättäjä",
+    form = AssistanceNeedPreschoolDecisionForm(
+        language = AssistanceNeedDecisionLanguage.FI,
+        type = AssistanceNeedPreschoolDecisionType.NEW,
+        validFrom = LocalDate.now(),
+        extendedCompulsoryEducation = true,
+        extendedCompulsoryEducationInfo = "Jotai infoo",
+        grantedAssistanceService = true,
+        grantedInterpretationService = false,
+        grantedAssistiveDevices = true,
+        grantedServicesBasis = "Juttuja",
+        selectedUnit = DaycareId(UUID.randomUUID()),
+        primaryGroup = "Eskarilaiset",
+        decisionBasis = "Hyvä syy",
+        basisDocumentPedagogicalReport = true,
+        basisDocumentPsychologistStatement = true,
+        basisDocumentSocialReport = false,
+        basisDocumentDoctorStatement = false,
+        basisDocumentOtherOrMissing = false,
+        basisDocumentOtherOrMissingInfo = "",
+        basisDocumentsInfo = "Juttu homma",
+        guardiansHeardOn = LocalDate.now(),
+        guardianInfo = setOf(
+            AssistanceNeedPreschoolDecisionGuardian(
+                AssistanceNeedPreschoolDecisionGuardianId(UUID.randomUUID()),
+                PersonId(UUID.randomUUID()),
+                name = "Matti Iskä Möttönen",
+                isHeard = true,
+                details = ""
+            )
+        ),
+        otherRepresentativeHeard = false,
+        otherRepresentativeDetails = "",
+        viewOfGuardians = "Olemme täysin samaa mieltä tuen tarpeesta",
+        preparer1EmployeeId = EmployeeId(UUID.randomUUID()),
+        preparer1Title = "Valmistelija 1",
+        preparer1PhoneNumber = "358 40 1234567",
+        preparer2EmployeeId = EmployeeId(UUID.randomUUID()),
+        preparer2Title = "Valmistelija 2",
+        preparer2PhoneNumber = "358 40 1234587",
+        decisionMakerEmployeeId = EmployeeId(UUID.randomUUID()),
+        decisionMakerTitle = "Päättäjä"
+    )
+)
+
 private fun validAddress() = DecisionSendAddress("Kotikatu", "20100", "Turku", "", "", "")
 
 fun generateAssistanceNeedPdf(
@@ -399,6 +481,26 @@ fun generateAssistanceNeedPdf(
             Template(templateProvider.getAssistanceNeedDecisionPath()),
             Context().apply {
                 locale = Locale.Builder().setLanguage(decision.language.name.lowercase()).build()
+                setVariable("decision", decision)
+                setVariable("sentDate", LocalDate.now())
+                setVariable("sendAddress", sendAddress)
+                setVariable("guardian", guardian)
+            }
+        )
+    )
+}
+
+fun generateAssistanceNeedPreschoolPdf(
+    decision: AssistanceNeedPreschoolDecision,
+    sendAddress: DecisionSendAddress? = null,
+    guardian: PersonDTO? = null,
+    pdfService: PdfGenerator,
+    templateProvider: ITemplateProvider
+): ByteArray {
+    return pdfService.render(
+        Page(
+            Template(templateProvider.getAssistanceNeedPreschoolDecisionPath()),
+            Context().apply {
                 setVariable("decision", decision)
                 setVariable("sentDate", LocalDate.now())
                 setVariable("sendAddress", sendAddress)

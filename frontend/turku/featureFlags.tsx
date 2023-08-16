@@ -44,7 +44,9 @@ const features: Features = {
       fosterParents: true,
       serviceWorkerMessaging: true,
       childDocuments: true,
-      intermittentShiftCare: true
+      intermittentShiftCare: true,
+      assistanceNeedPreschoolDecisions: true,
+      citizenEmailNotificationSettings: true
     }
   },
   staging: {
@@ -74,7 +76,9 @@ const features: Features = {
       fosterParents: true,
       serviceWorkerMessaging: true,
       childDocuments: true,
-      intermittentShiftCare: true
+      intermittentShiftCare: true,
+      assistanceNeedPreschoolDecisions: true,
+      citizenEmailNotificationSettings: true
     }
   },
   prod: {
@@ -104,7 +108,9 @@ const features: Features = {
       fosterParents: true,
       serviceWorkerMessaging: true,
       childDocuments: true,
-      intermittentShiftCare: false
+      intermittentShiftCare: false,
+      assistanceNeedPreschoolDecisions: false,
+      citizenEmailNotificationSettings: false
     }
   }
 }
