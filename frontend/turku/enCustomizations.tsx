@@ -764,7 +764,7 @@ const en: DeepPartial<Translations> = {
           <H3>Appeal instructions</H3>
           <P>
             You may file an appeal with the Regional State Administrative Agency
-            for Southwestern Finland against the above decision within 30 days
+            for Southwestern Finland against the above decision within 14 days
             of having been notified of it. The decision cannot be appealed by
             taking the matter to a court of law.
           </P>

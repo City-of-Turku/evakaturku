@@ -287,7 +287,7 @@ const customizations: EmployeeCustomizations = {
               <H3>Oikaisuvaatimusohjeet</H3>
               <P>
                 Edellä mainittuun päätökseen saa hakea oikaisua Lounais-Suomen
-                aluehallintovirastolta 30 päivän kuluessa päätöksen
+                aluehallintovirastolta 14 päivän kuluessa päätöksen
                 tiedoksisaannista. Päätökseen ei saa hakea muutosta valittamalla
                 tuomioistuimeen.
               </P>
