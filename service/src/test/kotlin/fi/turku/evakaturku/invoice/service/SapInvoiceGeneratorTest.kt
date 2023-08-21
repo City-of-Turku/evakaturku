@@ -271,7 +271,6 @@ class SapInvoiceGeneratorTest {
         assertElement("ZEILE", "000010")
     }
 
-
     // E1EDP03 ROWS - segment
     @Test
     fun `IDDAT should have constant value of 002`() {
