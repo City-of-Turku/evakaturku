@@ -271,10 +271,6 @@ class SapInvoiceGeneratorTest {
         assertElement("ZEILE", "000010")
     }
 
-    @Test
-    fun `BSARK should have constant value of 0000003108`() {
-        assertElement("BSARK", "0000003108")
-    }
 
     // E1EDP03 ROWS - segment
     @Test

@@ -351,7 +351,8 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             e1edp02.segment = "1"
             e1edp02.qualf = "048"
             e1edp02.zeile = formattedRowNumber
-            e1edp02.bsark = "0000003108"
+            val costCenter = row.costCenter.padStart(10, '0')
+            e1edp02.bsark = costCenter
             e1edp02list.add(e1edp02)
             e1edp01.e1EDP02 = e1edp02list
 

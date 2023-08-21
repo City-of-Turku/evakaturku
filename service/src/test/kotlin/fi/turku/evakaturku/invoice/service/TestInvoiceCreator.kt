@@ -29,7 +29,7 @@ fun validInvoice(): InvoiceDetailed {
         1, 24300,
         LocalDate.of(2021, 1, 1),
         LocalDate.of(2021, 1, 31),
-        ProductKey("DAYCARE"), DaycareId(UUID.randomUUID()), "Satunnainen päiväkoti 1", setOf(CareType.CENTRE), "2627", null, null, "kuvaus1",
+        ProductKey("DAYCARE"), DaycareId(UUID.randomUUID()), "Satunnainen päiväkoti 1", setOf(CareType.CENTRE), "112627", null, null, "kuvaus1",
         correctionId = null,
         note = null
     )
@@ -44,7 +44,7 @@ fun validInvoice(): InvoiceDetailed {
         1, 48200,
         LocalDate.of(2021, 1, 1),
         LocalDate.of(2021, 1, 31),
-        ProductKey("PRESCHOOL_WITH_DAYCARE"), DaycareId(UUID.randomUUID()), "Satunnainen päiväkoti 2", setOf(CareType.CENTRE), "2627", null, null, "kuvaus2",
+        ProductKey("PRESCHOOL_WITH_DAYCARE"), DaycareId(UUID.randomUUID()), "Satunnainen päiväkoti 2", setOf(CareType.CENTRE), "", null, null, "kuvaus2",
         correctionId = null,
         note = null
     )
