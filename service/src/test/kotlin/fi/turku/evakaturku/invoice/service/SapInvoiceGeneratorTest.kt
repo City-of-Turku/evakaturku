@@ -9,6 +9,7 @@ class SapInvoiceGeneratorTest {
     companion object {
 
         var invoiceXml: String = ""
+
         @BeforeAll
         @JvmStatic
         fun generateXml() {
@@ -33,8 +34,32 @@ class SapInvoiceGeneratorTest {
         assertExpectedString(expectedString)
     }
 
+    fun assertNotExpectedString(xml: String, expectedString: String) {
+        val pattern = Regex(expectedString)
+        assert(!pattern.containsMatchIn(xml))
+    }
+
     fun assertEmptyElement(tag: String) {
         assertElement(tag, "")
+    }
+
+    @Test
+    fun `should not return iDoc if invoice sum is zero`() {
+        val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
+        val invoiceList2 = mutableListOf(validInvoiceZeroSum())
+        invoiceList2.add(validInvoice())
+        var invoiceIdoc = invoiceGenerator.generateInvoice(invoiceList2).invoiceString
+        assertNotExpectedString(invoiceIdoc, "<KRATE>0.00</KRATE>")
+    }
+
+    @Test
+    fun `success list of invoices still contains zero value invoices`() {
+        val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
+        val invoiceList = mutableListOf(validInvoiceZeroSum())
+        invoiceList.add(validInvoice())
+        var invoiceCount = invoiceList.count()
+        var successListCount = invoiceGenerator.generateInvoice(invoiceList).sendResult.succeeded.count()
+        assert(successListCount == invoiceCount)
     }
 
     // EDIDC40 - Segment
@@ -283,21 +308,10 @@ class SapInvoiceGeneratorTest {
         assertElement("IDDAT", "002")
     }
 
-    // E1EDP05 ROWS - segment
-//    @Test
-//    fun `ALCKZ should have constant value of +`() {
-//        assertElement("ALCKZ", "+")
-//    }
-
     @Test
     fun `KSCHL should have constant value of ZPR0`() {
         assertElement("KSCHL", "ZPR0")
     }
-
-//    @Test
-//    fun `KRATE should have constant value of 243.00`() {
-//        assertElement("KRATE", "243.00")
-//    }
 
     // E1EDP19 ROWS - segment
     @Test
@@ -312,18 +326,6 @@ class SapInvoiceGeneratorTest {
     fun `TDID should have constant value of ZZ01`() {
         assertElement("TDID", "ZZ01")
     }
-
-    /*
-    @Test// TODO: daycare name is not possible to set currently
-    fun `TDLINE should have constant value of Testipäiväkoti`() {
-        assertElement("TDLINE", "Testipäiväkoti")
-    }
-    */
-
-//    @Test
-//    fun `TDFORMAT should have constant value of *`() {
-//        assertElement("TDFORMAT", "*")
-//    }
 
     @Test
     fun `TDID should have constant value of ZZ02`() {

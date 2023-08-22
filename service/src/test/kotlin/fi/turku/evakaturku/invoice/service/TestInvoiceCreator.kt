@@ -16,6 +16,43 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
 
+fun validInvoiceZeroSum(): InvoiceDetailed {
+    val headOfFamily = validPerson()
+    val invoiceRow1 = InvoiceRowDetailed(
+        InvoiceRowId(UUID.randomUUID()),
+        PersonDetailed(
+            PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,
+            "Jorma", "Heikäläinen",
+            "210279-9988", "", "", "",
+            "", null, "", null, restrictedDetailsEnabled = false
+        ),
+        1, 0,
+        LocalDate.of(2021, 1, 1),
+        LocalDate.of(2021, 1, 31),
+        ProductKey("DAYCARE"), DaycareId(UUID.randomUUID()), "Satunnainen päiväkoti 2", setOf(CareType.CENTRE), "112627", null, null, "kuvaus1",
+        correctionId = null,
+        note = null
+    )
+    return InvoiceDetailed(
+        (InvoiceId(UUID.randomUUID())),
+        InvoiceStatus.WAITING_FOR_SENDING,
+        LocalDate.of(2022, 5, 5),
+        LocalDate.of(2022, 5, 5),
+        LocalDate.of(2021, 3, 6),
+        LocalDate.of(2021, 2, 4),
+        null,
+        AreaId(UUID.randomUUID()),
+        headOfFamily,
+        validCodebtor(),
+        listOf(invoiceRow1),
+        12345,
+        null,
+        HelsinkiDateTime.Companion.of(
+            LocalDateTime.of(2022, 5, 5, 1, 1)
+        )
+    )
+}
+
 fun validInvoice(): InvoiceDetailed {
     val headOfFamily = validPerson()
     val invoiceRow1 = InvoiceRowDetailed(
