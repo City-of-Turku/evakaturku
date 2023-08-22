@@ -1,25 +1,31 @@
 package fi.turku.evakaturku.invoice.service
 
 import fi.turku.evakaturku.util.FinanceDateProvider
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
 class SapInvoiceGeneratorTest {
 
-    fun assertTag(tag: String) {
-        val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
-        val invoiceList = listOf(validInvoice())
-        val invoiceString = invoiceGenerator.generateInvoice(invoiceList).invoiceString
+    companion object {
 
-        assert(invoiceString.contains("<$tag>"))
-        assert(invoiceString.contains("</$tag>"))
+        var invoiceXml: String = ""
+        @BeforeAll
+        @JvmStatic
+        fun generateXml() {
+            val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
+            val invoiceList = listOf(validInvoice())
+            invoiceXml = invoiceGenerator.generateInvoice(invoiceList).invoiceString
+        }
+    }
+
+    fun assertTag(tag: String) {
+        assert(invoiceXml.contains("<$tag>"))
+        assert(invoiceXml.contains("</$tag>"))
     }
 
     fun assertExpectedString(expectedString: String) {
-        val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
-        val invoiceList = listOf(validInvoice())
-        val invoiceString = invoiceGenerator.generateInvoice(invoiceList).invoiceString
         val pattern = Regex(expectedString)
-        assert(pattern.containsMatchIn(invoiceString))
+        assert(pattern.containsMatchIn(invoiceXml))
     }
 
     fun assertElement(element: String, value: String) {
