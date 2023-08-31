@@ -46,7 +46,6 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         var invoiceString = ""
         try {
             invoiceString = marshalInvoices(idocs)
-            print(invoiceString)
         } catch (e: JAXBException) {
             failedList.addAll(successList)
             successList.clear()
