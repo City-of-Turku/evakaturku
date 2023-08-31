@@ -11,6 +11,8 @@ SELECT
     p.nationalities            AS kansalaisuudet,
     pl.type                    AS sijoitustyyppi,
     pl.unit_id                 AS sijoitusyksikkö_id,
+    pl.start_date			   AS sijoituksen_aloitus_pvm,
+    pl.end_date				   AS sijoituksen_loppu_pvm,
     d.name                     AS yksikön_nimi,
     d.care_area_id             AS palvelualue_id,
     ca.name                    AS palvelualue,
@@ -28,6 +30,8 @@ SELECT
     sno.id                     AS palveluntarve_id,
     sno.part_day               AS osapäiväinen,
     sno.part_week              AS osaviikkoinen,
+    sn.start_date			   AS palveluntarpeen_aloitus_pvm,
+    sn.end_date				   AS palveluntarpeen_loppu_pvm,
     sn.shift_care              AS vuorohoito,
     sno.daycare_hours_per_week AS tunteja_viikossa,
     array(
