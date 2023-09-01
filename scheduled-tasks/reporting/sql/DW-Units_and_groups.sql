@@ -1,6 +1,5 @@
-SET TIMEZONE = 'Europe/Helsinki';
 SELECT
-    now()                                  AS aikaleima,
+    now() AT TIME ZONE 'Europe/Helsinki'   AS aikaleima,
     d.name                                 AS toimintayksikkö,
     d.id                                   AS toimintayksikkö_id,
     d.opening_date                         AS toimintayksikön_alkupvm,
@@ -26,7 +25,7 @@ SELECT
     dg.id                                  AS ryhmä_id,
     dg.start_date                          AS ryhmän_alkupvm,
     dg.end_date                            AS ryhmän_loppupvm,
-    dc.amount                  AS henkilökuntaa_ryhmässä,
+    dc.amount                              AS henkilökuntaa_ryhmässä,
     sum(
             CASE
                 WHEN sar.arrived IS NOT NULL
@@ -41,7 +40,7 @@ SELECT
                     )
                 ELSE sa.count
                 END
-        )                          AS henkilökuntaa_läsnä,
+        )                                  AS henkilökuntaa_läsnä,
     (SELECT count(*)
      FROM daycare_group_placement dgp
      WHERE dgp.daycare_group_id = dg.id
