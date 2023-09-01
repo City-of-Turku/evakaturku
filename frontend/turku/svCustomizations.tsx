@@ -737,6 +737,8 @@ const sv: DeepPartial<Translations> = {
       }
     },
     assistancePreschoolDecisions: {
+        jurisdiction: '',
+        jurisdictionText: '',
       appealInstructions: (
         <>
           <H3>Anvisning om hur man begär omprövning</H3>

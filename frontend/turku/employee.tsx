@@ -282,6 +282,8 @@ const customizations: EmployeeCustomizations = {
           )
         },
         assistanceNeedPreschoolDecision: {
+          jurisdiction: '',
+          jurisdictionText: '',
           appealInstructions: (
             <>
               <H3>Oikaisuvaatimusohjeet</H3>
