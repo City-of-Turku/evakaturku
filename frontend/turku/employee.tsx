@@ -504,6 +504,8 @@ const customizations: EmployeeCustomizations = {
     sv: {
       childInformation: {
         assistanceNeedPreschoolDecision: {
+          jurisdiction: '',
+          jurisdictionText: '',
           appealInstructions: (
             <>
               <H3>Anvisning om hur man begär omprövning</H3>
