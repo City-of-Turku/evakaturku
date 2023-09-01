@@ -748,8 +748,8 @@ const fi: DeepPartial<Translations> = {
       }
     },
     assistancePreschoolDecisions: {
-        jurisdiction: '',
-        jurisdictionText: '',
+      jurisdiction: '',
+      jurisdictionText: '',
       appealInstructions: (
         <>
           <H3>Oikaisuvaatimusohjeet</H3>

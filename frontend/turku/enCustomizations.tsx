@@ -759,8 +759,8 @@ const en: DeepPartial<Translations> = {
       }
     },
     assistancePreschoolDecisions: {
-        jurisdiction: '',
-        jurisdictionText: '',
+      jurisdiction: '',
+      jurisdictionText: '',
       appealInstructions: (
         <>
           <H3>Appeal instructions</H3>
