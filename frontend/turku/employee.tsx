@@ -133,6 +133,14 @@ const customizations: EmployeeCustomizations = {
         linkHref: 'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus'
       },
       childInformation: {
+        assistance: {
+          types: {
+            otherAssistanceMeasureType:{
+              TRANSPORT_BENEFIT: 'Harkinnanvarainen kuljetusetu',
+              ACCULTURATION_SUPPORT: 'Lapsen kotoutumisen tuki (ELY)'
+            }
+          }
+        },
         assistanceNeed: {
           fields: {
             capacityFactor: 'Lapsen paikkatarve',
