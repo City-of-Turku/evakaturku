@@ -19,6 +19,7 @@ import { EmployeeCustomizations } from 'lib-customizations/types'
 import TurkuLogo from './city-logo-citizen.png'
 import featureFlags from './featureFlags'
 
+
 const customizations: EmployeeCustomizations = {
   appConfig: {},
   translations: {
@@ -135,6 +136,10 @@ const customizations: EmployeeCustomizations = {
       childInformation: {
         assistance: {
           types: {
+            preschoolAssistanceLevel: {
+              SPECIAL_SUPPORT_WITH_DECISION_LEVEL_2:
+                  'Erityinen tuki ja pidennetty oppivelvollisuus – erityishuolto-ohjelma'
+            },
             otherAssistanceMeasureType:{
               TRANSPORT_BENEFIT: 'Harkinnanvarainen kuljetusetu',
               ACCULTURATION_SUPPORT: 'Lapsen kotoutumisen tuki (ELY)'
@@ -685,7 +690,9 @@ const customizations: EmployeeCustomizations = {
     'RELIEF_PARTLY_ACCEPTED',
     'RELIEF_REJECTED'
   ],
-  daycareAssistanceLevels: [...daycareAssistanceLevels],
+  daycareAssistanceLevels: daycareAssistanceLevels.filter(
+      (level) => level !== 'GENERAL_SUPPORT'
+  ),
   otherAssistanceMeasureTypes: [...otherAssistanceMeasureTypes],
   placementPlanRejectReasons: ['REASON_1', 'REASON_2', 'OTHER'],
   preschoolAssistanceLevels: [...preschoolAssistanceLevels],
