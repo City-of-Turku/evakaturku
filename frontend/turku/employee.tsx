@@ -19,7 +19,6 @@ import { EmployeeCustomizations } from 'lib-customizations/types'
 import TurkuLogo from './city-logo-citizen.png'
 import featureFlags from './featureFlags'
 
-
 const customizations: EmployeeCustomizations = {
   appConfig: {},
   translations: {
@@ -138,9 +137,9 @@ const customizations: EmployeeCustomizations = {
           types: {
             preschoolAssistanceLevel: {
               SPECIAL_SUPPORT_WITH_DECISION_LEVEL_2:
-                  'Erityinen tuki ja pidennetty oppivelvollisuus – erityishuolto-ohjelma'
+                'Erityinen tuki ja pidennetty oppivelvollisuus – erityishuolto-ohjelma'
             },
-            otherAssistanceMeasureType:{
+            otherAssistanceMeasureType: {
               TRANSPORT_BENEFIT: 'Harkinnanvarainen kuljetusetu',
               ACCULTURATION_SUPPORT: 'Lapsen kotoutumisen tuki (ELY)'
             }
@@ -516,6 +515,135 @@ const customizations: EmployeeCustomizations = {
     },
     sv: {
       childInformation: {
+        assistanceNeedDecision: {
+          jurisdiction: '',
+          jurisdictionText: '',
+          appealInstructions: (
+            <>
+              <H3>Anvisning om hur man begär omprövning</H3>
+              <P>
+                Du kan begära om omprövning av ovanstående beslut hos
+                Regionförvaltningsverket i Sydvästra Finland inom 14 dagar från
+                dagen för delfående av beslutet. Beslutet kan inte överklagas
+                genom besvär hos förvaltningsdomstolen.
+              </P>
+              <P>En begäran om omprövning</P>
+              <ul>
+                <li>får göras av den person som beslutet gäller </li>
+                <li>
+                  {' '}
+                  eller den person vars rätt, skyldighet eller fördel direkt
+                  påverkas av beslutet.
+                </li>
+              </ul>
+              <h3>Delfående</h3>
+              <P>
+                Om beslutet delgivits per brev, anses den berörda parten
+                (barnets vårdnadshavare) ha tagit del av beslutet, om inte annat
+                bevisas, 7 dagar efter det att brevet skickades.
+              </P>
+              <P>
+                Om beslutet skickas elektroniskt anses den berörda parten ha
+                tagit del av beslutet tre dagar efter att meddelandet skickades.
+              </P>
+              <P>
+                Om beslutet delges personligen, anses den berörda parten
+                (barnets vårdnadshavare) ha tagit del av beslutet den dag då
+                beslutet delgivits till den berörda parten eller deras lagliga
+                företrädare.
+              </P>
+              <P>
+                Om dokumentet skickas med post mot ett mottagningsbevis , anses
+                den berörda parten ha tagit del av beslutet vid den tidpunkt som
+                anges i mottagningsbeviset.
+              </P>
+              <P>
+                Själva delfåendedagen räknas inte med i besvärstiden. Om
+                besvärstidens sista dag infaller på en helgdag,
+                självständighetsdagen, första maj, jul- eller midsommarafton
+                eller en helgfri lördag är den första dagen då man får göra en
+                begäran om omprövning den följande vardagen.
+              </P>
+              <H3>Innehållet i begäran om omprövning</H3>
+              <P>
+                Begäran ska vara skriftlig. Ett elektroniskt dokument fyller
+                också kravet på en skriftlig begäran.
+              </P>
+              <P>I begäran om omprövning ska det framgå</P>
+              <ul>
+                <li>vilket beslut begäran handlar om</li>
+                <li>
+                  vilka punkter i beslutet begäran berör och hurdan omprövning
+                  som begärs
+                </li>
+                <li>på vilka grunder omprövning begärs</li>
+              </ul>
+              <P>
+                Begäran om omprövning måste innehålla namnet och hemorten till
+                den som begär omprövning. Om begäran bereds av en laglig
+                företrädare till den som begär omprövning eller hens
+                representant, eller om begäran bereds av en annan person, ska
+                också dennes namn och hemort anges i begäran.
+              </P>
+              <P>
+                En begäran om omprövning ska även innehålla dennes postadress,
+                telefonnummer och andra relevanta kontaktuppgifter. Om beslutet
+                kan meddelas elektroniskt, bör även e-postadress anges.
+              </P>
+              <P>
+                Den som framställt begäran eller dennes lagliga företrädare
+                eller ombud ska underteckna begäran. Ett elektroniskt dokument
+                behöver inte undertecknas om dokumentet innehåller avsändarens
+                uppgifter och det finns ingen anledning att tvivla på dess
+                äkthet eller integritet.
+              </P>
+              <P>Till begäran om omprövning bifogas</P>
+              <ul>
+                <li>beslutet som begäran gäller (originalet eller en kopia)</li>
+                <li>
+                  ett intyg från vilket det framgår när beslutet delgavs eller
+                  en annan utredning där det framgår när besvärstiden började.
+                </li>
+                <li>
+                  dokumenten som den som skickat in begäran åberopar i fall
+                  dessa inte tidigare skickats till myndigheten.
+                </li>
+              </ul>
+              <H3>Inlämnande av en begäran om omprövning</H3>
+              <P>
+                Begäran om omprövning skickas in inom besvärstiden till
+                Regionförvaltiningsverket i Västra och Inre Finland på adressen:
+              </P>
+              <P>
+                Regionförvaltiningsverket i Västra och Inre Finland
+                <br />
+                PB 5, 13035 AVI
+                <br />
+                Wolffskavägen 35
+                <br />
+                E-post: registratur.vastra@rfv.fi
+                <br />
+                Tfn: 0295 018 450
+                <br />
+                Öppettider för registratorskontoret: 8.00–16.15
+              </P>
+              <P>
+                Om begäran om omprövning skickas via post eller med bud sker
+                detta på avsändarens eget ansvar. Dokumenten i begäran om
+                omprövning ska skickas per post i så god tid att de hinner fram
+                senast under besvärstidens sista dag innan registratorskontoret
+                stänger.
+              </P>
+              <P>
+                Begäran om omprövning kan också skickas in via fax eller e-post
+                innan besvärstiden upphör, men detta sker på avsändarens eget
+                ansvar. Avsändaren ska se till att dokumentet levereras så att
+                det befinner sig i myndighetens mottagningsenhet eller
+                informationssystem innan tidsfristen.
+              </P>
+            </>
+          )
+        },
         assistanceNeedPreschoolDecision: {
           jurisdiction: '',
           jurisdictionText: '',
@@ -691,7 +819,7 @@ const customizations: EmployeeCustomizations = {
     'RELIEF_REJECTED'
   ],
   daycareAssistanceLevels: daycareAssistanceLevels.filter(
-      (level) => level !== 'GENERAL_SUPPORT'
+    (level) => level !== 'GENERAL_SUPPORT'
   ),
   otherAssistanceMeasureTypes: [...otherAssistanceMeasureTypes],
   placementPlanRejectReasons: ['REASON_1', 'REASON_2', 'OTHER'],
