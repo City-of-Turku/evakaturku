@@ -41,7 +41,7 @@ class EVakaTurkuConfig {
         enabledChildConsentTypes = setOf(),
         curriculumDocumentPermissionToShareRequired = true,
         assistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
-        requestedStartUpperLimit = 7,
+        requestedStartUpperLimit = 14,
         partialAbsenceThresholdsEnabled = false,
         postOffice = "TURKU",
         municipalMessageAccountName = "Turun kaupunki",
