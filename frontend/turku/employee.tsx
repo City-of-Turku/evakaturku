@@ -294,6 +294,44 @@ const customizations: EmployeeCustomizations = {
           )
         },
         assistanceNeedPreschoolDecision: {
+          validFromInfo: (): React.ReactNode => (
+            <ul>
+              <li>
+                Erityinen tuki alkaa merkitään huoltajien kuulemispäivämäärästä
+                tai esiopetuksen alkamispäivästä (jos päätös tehdään ennen
+                esiopetuksen alkua)
+              </li>
+              <li>
+                Erityinen tuki jatkuu merkitään, kun lapsi vaihtaa
+                esiopetusyksikköä/tukimuotoihin (esim. lapsi siirtyy
+                erityisryhmään) tulee muutoksia/saa päätöksen koululykkäyksestä
+              </li>
+              <li>
+                Erityinen tuki päättyy merkitään, kun erityinen tuki
+                esiopetuksessa puretaan
+              </li>
+            </ul>
+          ),
+          grantedAssistanceSectionInfo: (): React.ReactNode =>
+            'Merkitään jos lapselle myönnetään avustamis-/tulkitsemispalveluita tai apuvälineitä. Kirjataan perusteluihin ”Lapselle myönnetään perusopetuslain 31§ mukaisena tukipalveluna avustamispalvelua/tarvittavat erityiset apuvälineet/tulkitsemispalvelua/opetuksen poikkeava järjestäminen”. ',
+          primaryGroupInfo: (): React.ReactNode =>
+            'Kirjaa tähän ryhmän muoto erityisryhmä, alueellinen integroitu ryhmä/esiopetusryhmä/muu mikä? ',
+          decisionBasisInfo: (): React.ReactNode =>
+            'Kirjaa mihin selvityksiin päätös perustuu (pedagoginen selvitys ja/tai psykologinen tai lääketieteellinen lausunto sekä päivämäärät). Kirjaa tähän mikä pidennetyn oppivelvollisuuden vaihtoehto lapselle on valittu.',
+          documentBasisInfo: (): React.ReactNode =>
+            'Merkitse mihin asiakirjoihin päätös perustuu.',
+          heardGuardiansInfo: (): React.ReactNode =>
+            'Kirjaa tähän millä keinoin huoltajaa on kuultu (esim. palaveri, etäyhteys, huoltajan kirjallinen vastine). Jos huoltajaa ei ole kuultu, kirjaa tähän selvitys siitä, miten ja milloin hänet on kutsuttu kuultavaksi, ja miten ja milloin lapsen esiopetuksen oppimissuunnitelma on annettu huoltajalle tiedoksi. Kaikilla lapsen huoltajilla tulee olla mahdollisuus tulla kuulluksi.',
+          viewOfGuardiansInfo: (): React.ReactNode => (
+            <div>
+              <p>Kirjaa tähän huoltajien näkemys lapselle esitetystä tuesta.</p>
+              <p>
+                Kirjaa tähän myös lapsen mielipide asiaan tai kirjaa ”lapsi ei
+                ikänsä ja/tai kehitystasonsa puolesta pysty ilmaisemaan
+                mielipidettään”.
+              </p>
+            </div>
+          ),
           jurisdiction: '',
           jurisdictionText: '',
           appealInstructions: (
@@ -646,6 +684,47 @@ const customizations: EmployeeCustomizations = {
           )
         },
         assistanceNeedPreschoolDecision: {
+          validFromInfo: (): React.ReactNode => (
+            <ul>
+              <li>
+                Starten för särskilt stöd markeras från datumet för samrådet med
+                föräldrarna eller starten av förskoleundervisningen (om beslutet
+                fattas före starten av förskoleundervisningen).
+              </li>
+              <li>
+                Särskilt stöd fortsätter att registreras när barnet byter
+                förskoleenhet/stödform (t.ex. barnet flyttas till en särskild
+                grupp) byter/tar emot ett beslut om avstängning från skolan.
+              </li>
+              <li>
+                Upphörande av särskilt stöd registreras när särskilt stöd i
+                förskoleverksamhet upphör
+              </li>
+            </ul>
+          ),
+          grantedAssistanceSectionInfo: (): React.ReactNode =>
+            'Anges om barnet har tillgång till assistans/tolkningstjänster eller hjälpmedel. Anges i motiveringen "Barnet har tillgång till assistanstjänster/särskilda hjälpmedel/tolktjänster/exceptionell organisation av undervisningen som en stödtjänst i enlighet med § 31 i lagen om grundläggande utbildning".',
+          primaryGroupInfo: (): React.ReactNode =>
+            'Ange här typ av grupp specialgrupp, regional integrerad grupp/förskolegrupp/annat vad?',
+          decisionBasisInfo: (): React.ReactNode =>
+            'Ange vilka rapporter som ligger till grund för beslutet (pedagogisk utredning och/eller psykologisk eller medicinsk utredning samt datum). Ange här vilket alternativ av förlängd läroplikt som har valts för barnet.',
+          documentBasisInfo: (): React.ReactNode =>
+            'Ange vilka dokument som beslutet baseras på',
+          heardGuardiansInfo: (): React.ReactNode =>
+            'Ange här på vilket sätt vårdnadshavaren hördes (t.ex. möte, distanskontakt, skriftligt svar från vårdnadshavaren). Om vårdnadshavaren inte hördes, ange här en förklaring till hur och när han eller hon bjöds in till hörandet och hur och när barnets plan för lärande i förskolan meddelades vårdnadshavaren. Alla vårdnadshavare måste få möjlighet att höras.',
+          viewOfGuardiansInfo: (): React.ReactNode => (
+            <div>
+              <p>
+                Anteckna här vårdnadshavarnas åsikter om det stöd som ges till
+                barnet.
+              </p>
+              <p>
+                Skriv också barnets åsikt i frågan eller skriv &quot;barnet kan
+                inte uttrycka sin åsikt på grund av sin ålder och/eller
+                utvecklingsnivå&quot;.
+              </p>
+            </div>
+          ),
           jurisdiction: '',
           jurisdictionText: '',
           appealInstructions: (
