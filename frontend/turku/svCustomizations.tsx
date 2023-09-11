@@ -607,7 +607,9 @@ const sv: DeepPartial<Translations> = {
   },
   decisions: {
     assistanceDecisions: {
+      title: 'Beslut om behov av stöd inom småbarnspedagogik',
       decision: {
+        pageTitle: 'Beslut om behov av stöd inom småbarnspedagogik',
         jurisdiction: '',
         jurisdictionText: '',
         appealInstructionsTitle: 'Anvisning om hur man begär omprövning',

@@ -516,6 +516,7 @@ const customizations: EmployeeCustomizations = {
     sv: {
       childInformation: {
         assistanceNeedDecision: {
+          pageTitle: 'Beslut om behov av stöd inom småbarnspedagogik',
           jurisdiction: '',
           jurisdictionText: '',
           appealInstructions: (
