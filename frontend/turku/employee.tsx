@@ -473,7 +473,7 @@ const customizations: EmployeeCustomizations = {
         assistanceAction: {
           title: 'Tukitoimet ja tukipalvelut',
           fields: {
-            actions: 'Tukitoimet ja tukipalvelut',
+            actions: 'Rakenteelliset tukitoimet',
             measureTypes: {
               SPECIAL_ASSISTANCE_DECISION: 'Erityisen tuen päätös',
               SPECIAL_ASSISTANCE_DECISION_INFO:
