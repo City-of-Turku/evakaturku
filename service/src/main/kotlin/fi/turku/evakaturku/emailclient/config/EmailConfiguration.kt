@@ -789,16 +789,17 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             """
                 <p>Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti täältä: ${childLink(Language.fi, childId)}</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
-            
+                $unsubscribeFi
                 <hr>
                 
                 <p>Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet här: ${childLink(Language.sv, childId)}</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>          
-                
+                $unsubscribeSv
                 <hr>
                 
                 <p>You have received a new eVaka pedagogical document. Read the document here: ${childLink(Language.en, childId)}</p>
-                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>       
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p> 
+                $unsubscribeEn
             """
                 .trimIndent()
         )
