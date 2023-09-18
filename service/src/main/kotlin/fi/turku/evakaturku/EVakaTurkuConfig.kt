@@ -41,6 +41,7 @@ class EVakaTurkuConfig {
         enabledChildConsentTypes = setOf(),
         curriculumDocumentPermissionToShareRequired = true,
         assistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
+        preschoolAssistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
         requestedStartUpperLimit = 14,
         partialAbsenceThresholdsEnabled = false,
         postOffice = "TURKU",
