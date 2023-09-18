@@ -154,6 +154,18 @@ const customizations: EmployeeCustomizations = {
           }
         },
         assistanceNeedDecision: {
+          pedagogicalMotivationInfo:
+            'Kirjataan ”Pedagogisten tuen muotojen perustelut käyvät ilmi lapsen varhaiskasvatussuunnitelmasta”.',
+          structuralMotivationInfo:
+            'Kirjataan: ”Rakenteelliset tuen muotojen perustelut käyvät ilmi lapsen varhaiskasvatussuunnitelmasta”. Pienryhmä voi tarkoittaa sekä alueellista integroitua ryhmää että pienennettyä ryhmää. Kirjoita tarkennus avoimeen kenttään koskien myös henkilöresurssin lisäystä (esim. tuen hoitaja ryhmässä).',
+          careMotivationInfo:
+            'Hoidollisen tuen muotojen perustelut käyvät ilmi lapsen varhaiskasvatussuunnitelmasta.',
+          servicesInfo:
+            'Valitse lapselle esitettävät tukipalvelut. Lisää mahdollinen perustelu.',
+          guardiansHeardInfo:
+            'Kirjaa tähän millä keinoin huoltajaa on kuultu (esim. palaveri, etäyhteys, huoltajan kirjallinen vastine). Jos huoltajaa ei ole kuultu, kirjaa tähän selvitys siitä, miten ja milloin hänet on kutsuttu kuultavaksi, ja miten ja milloin lapsen varhaiskasvatussuunnitelma on annettu huoltajalle tiedoksi. Kaikilla lapsen huoltajilla tulee olla mahdollisuus tulla kuulluksi.',
+          viewOfTheGuardiansInfo:
+            'Kirjaa tähän huoltajien näkemys lapselle esitetystä tuesta.',
           jurisdiction: '',
           jurisdictionText: '',
           appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
@@ -555,6 +567,18 @@ const customizations: EmployeeCustomizations = {
       childInformation: {
         assistanceNeedDecision: {
           pageTitle: 'Beslut om behov av stöd inom småbarnspedagogik',
+          pedagogicalMotivationInfo:
+            'Beskriv "Motiveringen för formerna av pedagogiskt stöd anges i barnets plan för småbarnspedagogik".',
+          structuralMotivationInfo:
+            'Beskriv: "Den strukturella motiveringen för stödformerna anges i barnets plan för småbarnspedagogik". Små grupp kan betyda både en regional integrerad grupp och en reducerad grupp. Ange ett förtydligande i det öppna fältet om även en ökning av personalresurserna (t.ex. en stödsköterska i gruppen).',
+          careMotivationInfo:
+            'Motiveringen för formerna av vårdrinktande stöd anges i barnets plan för smäbarnspedagogik.',
+          servicesInfo:
+            'Välj de stödtjänster som ska presenteras för barnet. Lägg till en motivering, om tillämpligt.',
+          guardiansHeardInfo:
+            'Ange här på vilket sätt vårdnadshavaren rådfrågades (t.ex. möte, distanskontakt, skriftligt svar från vårdnadshavaren). Om vårdnadshavaren inte rådfrågades, ange här en förklaring av hur och när han eller hon bjöds in till utfrågningen och hur och när planen för småbarnspedagogik meddelades vårdnadshavaren. Alla vårdnadshavare måste få möjlighet att höras.',
+          viewOfTheGuardiansInfo:
+            'Anteckna här vårdnadshavarnas syn på det stöd som ges till barnet.',
           jurisdiction: '',
           jurisdictionText: '',
           appealInstructions: (
