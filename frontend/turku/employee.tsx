@@ -485,27 +485,7 @@ const customizations: EmployeeCustomizations = {
         assistanceAction: {
           title: 'Tukitoimet ja tukipalvelut',
           fields: {
-            actions: 'Rakenteelliset tukitoimet',
-            measureTypes: {
-              SPECIAL_ASSISTANCE_DECISION: 'Erityisen tuen päätös',
-              SPECIAL_ASSISTANCE_DECISION_INFO:
-                'Lapsella on pidennetty oppivelvollisuus. (Tieto menee KOSKI-palveluun)',
-              INTENSIFIED_ASSISTANCE: 'Tehostettu tuki',
-              INTENSIFIED_ASSISTANCE_INFO:
-                'Lapsella on avustamispalvelu tai lapsi on pedagogisesti vahvistetussa ryhmässä. Koskee myös osaa laaja-alaisen veon tukea saavista lapsista. ',
-              EXTENDED_COMPULSORY_EDUCATION: 'Pidennetty oppivelvollisuus',
-              EXTENDED_COMPULSORY_EDUCATION_INFO:
-                'Päätös tehdään perusopetuksessa. (Tieto menee KOSKI-palveluun)',
-              CHILD_SERVICE: 'Lastensuojelu',
-              CHILD_SERVICE_INFO:
-                'Merkitään lapselle, jolla varhaiskasvatus on lastensuojelun avohuollon tukitoimena perhe- ja sosiaalipalvelujen päätöksellä.',
-              CHILD_ACCULTURATION_SUPPORT: 'Lapsen kotoutumisen tuki (ELY)',
-              CHILD_ACCULTURATION_SUPPORT_INFO:
-                'Lapsen tuen tarpeen perusteella järjestäjälle myönnetty korvaus (ELY)',
-              TRANSPORT_BENEFIT: 'Harkinnanvarainen kuljetusetu',
-              TRANSPORT_BENEFIT_INFO:
-                'Harkinnanvarainen kuljetusetu. (Tieto menee KOSKI-palveluun)'
-            }
+            actions: 'Rakenteelliset tukitoimet'
           }
         },
         dailyServiceTimes: {
