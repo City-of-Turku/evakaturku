@@ -103,8 +103,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             )
         }
         Action.Child.CREATE_BACKUP_CARE,
-        Action.Child.READ_ASSISTANCE_ACTION,
-        Action.Child.READ_ASSISTANCE_NEED -> {
+        Action.Child.READ_ASSISTANCE_ACTION -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasUnitRole(UserRole.STAFF).inPlacementUnitOfChild() as ScopedActionRule<in T>
