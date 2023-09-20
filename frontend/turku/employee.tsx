@@ -869,13 +869,6 @@ const customizations: EmployeeCustomizations = {
     alt: 'Turku logo'
   },
   featureFlags,
-  assistanceMeasures: [
-    'SPECIAL_ASSISTANCE_DECISION',
-    'INTENSIFIED_ASSISTANCE',
-    'EXTENDED_COMPULSORY_EDUCATION',
-    'CHILD_ACCULTURATION_SUPPORT',
-    'TRANSPORT_BENEFIT'
-  ],
   placementTypes: [
     'DAYCARE',
     'DAYCARE_PART_TIME',
