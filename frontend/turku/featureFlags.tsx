@@ -46,7 +46,8 @@ const features: Features = {
       childDocuments: true,
       intermittentShiftCare: true,
       assistanceNeedPreschoolDecisions: true,
-      feeDecisionIgnoredStatus: true
+      feeDecisionIgnoredStatus: true,
+      hojks: true
     }
   },
   staging: {
@@ -78,7 +79,8 @@ const features: Features = {
       childDocuments: true,
       intermittentShiftCare: true,
       assistanceNeedPreschoolDecisions: true,
-      feeDecisionIgnoredStatus: true
+      feeDecisionIgnoredStatus: true,
+      hojks: true
     }
   },
   prod: {
@@ -110,7 +112,8 @@ const features: Features = {
       childDocuments: true,
       intermittentShiftCare: false,
       assistanceNeedPreschoolDecisions: true,
-      feeDecisionIgnoredStatus: false
+      feeDecisionIgnoredStatus: false,
+      hojks: false
     }
   }
 }
