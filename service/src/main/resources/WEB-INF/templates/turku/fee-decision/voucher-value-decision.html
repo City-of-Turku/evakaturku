@@ -43,18 +43,14 @@ SPDX-License-Identifier: LGPL-2.1-or-later
     <p th:if="${isReliefDecision}"
        th:text="#{text.relief.decision(${coPayment}, ${validFrom})}"></p>
 
+
+    <div>
+        <span th:text="#{decision.serviceNeed}"></span>
+        <span th:text="${voucherValueDescription}"></span>
+    </div>
+
     <table class="narrow">
         <tbody>
-            <tr>
-                <td th:text="#{decision.serviceNeed}"></td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td class="text-right">
-                    <span th:text="${voucherValueDescription}"></span>
-                </td>
-            </tr>
             <tr>
                 <td th:text="#{decision.familySize}">
                 </td>

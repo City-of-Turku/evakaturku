@@ -40,14 +40,15 @@ SPDX-License-Identifier: LGPL-2.1-or-later
     <p th:unless="${isReliefDecision}"
        th:utext="${not #strings.isEmpty(validTo)} ? #{text.decision_retroactive(${totalFee}, ${validFrom}, ${validTo})} : #{text.decision(${totalFee}, ${validFrom})}"></p>
 
+    <tbody th:each="part: ${parts}">
+    <div>
+        <span th:text="${part.childName}"></span>
+        <span th:text="${part.serviceNeedDescription}"></span>
+        <span th:text="${part.feeFormatted}"></span>
+    </div>
+    </tbody>
+
     <table class="narrow">
-        <tbody th:each="part: ${parts}">
-        <tr>
-            <td colspan="2" th:text="${part.childName}"></td>
-            <td th:text="${part.serviceNeedDescription}"></td>
-            <td class="text-right" th:text="${part.feeFormatted}"></td>
-        </tr>
-        </tbody>
         <tbody>
         <tr>
             <td></td>

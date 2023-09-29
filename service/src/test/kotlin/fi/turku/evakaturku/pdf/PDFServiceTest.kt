@@ -303,7 +303,7 @@ private fun validFeeDecision() = FeeDecisionDetailed(
                 language = "fi"
             ),
             serviceNeedFeeCoefficient = BigDecimal.ONE,
-            serviceNeedDescriptionFi = "Palveluntarve 1",
+            serviceNeedDescriptionFi = "Palveluntarve 1 Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve",
             serviceNeedDescriptionSv = "Palveluntarve 1 (sv)",
             serviceNeedOptionId = ServiceNeedOptionId(UUID.randomUUID()),
             serviceNeedMissing = false,
@@ -392,7 +392,7 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
         voucherValueCoefficient = BigDecimal.ONE,
         feeDescriptionFi = "eka",
         feeDescriptionSv = "toka",
-        voucherValueDescriptionFi = "kolmas",
+        voucherValueDescriptionFi = "kolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas",
         voucherValueDescriptionSv = "neljäs",
         missing = false
     ),

@@ -106,7 +106,7 @@ class DecisionServiceTest {
                     partTime = false,
                     ServiceNeedOption(
                         ServiceNeedOptionId(UUID.randomUUID()),
-                        "Palveluntarve 1",
+                        "Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve",
                         "Palveluntarve 1",
                         "Palveluntarve 1",
                         null
