@@ -3,17 +3,14 @@ package fi.turku.evakaturku.payment.service
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
-import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
-import jakarta.xml.bind.Marshaller
 import org.springframework.stereotype.Component
-import java.io.StringWriter
 import java.lang.Math.min
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 @Component
-class SapPaymentGenerator(private val paymentChecker: PaymentChecker) {
+class SapPaymentGenerator(private val paymentChecker: PaymentChecker, private val paymentMarshaller: PaymentMarshaller) {
 
     data class Result(
         val sendResult: PaymentIntegrationClient.SendResult = PaymentIntegrationClient.SendResult(),
@@ -43,7 +40,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker) {
             idocs.add(generateIdoc(it, preSchoolAmount, language))
 
             try {
-                paymentStrings.add(marshalPayments(idocs))
+                paymentStrings.add(paymentMarshaller.marshal(idocs))
                 successList.add(it)
             } catch (e: JAXBException) {
                 failedList.add(it)
@@ -159,19 +156,5 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker) {
 
         idoc.e1FIKPF.e1FISEG = e1FISEGlist
         return idoc
-    }
-
-    fun marshalPayments(idocs: List<FIDCCP02.IDOC>): String {
-        val contextObj: JAXBContext = JAXBContext.newInstance(FIDCCP02::class.java)
-
-        val marshallerObj: Marshaller = contextObj.createMarshaller()
-        marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true)
-
-        val fidccp02 = fi.turku.evakaturku.payment.service.FIDCCP02()
-        fidccp02.idoc = idocs
-
-        val stringWriter = StringWriter()
-        marshallerObj.marshal(fidccp02, stringWriter)
-        return stringWriter.toString()
     }
 }
