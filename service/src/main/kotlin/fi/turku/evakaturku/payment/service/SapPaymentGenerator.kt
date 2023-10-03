@@ -6,7 +6,6 @@ import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.espoo.evaka.shared.DaycareId
 import fi.espoo.evaka.shared.db.Database
 import fi.espoo.evaka.shared.domain.DateRange
-import fi.turku.evakaturku.util.FinanceDateProvider
 import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
 import jakarta.xml.bind.Marshaller
@@ -17,7 +16,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 @Component
-class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financeDateProvider: FinanceDateProvider) {
+class SapPaymentGenerator(private val paymentChecker: PaymentChecker) {
 
     data class Result(
         val sendResult: PaymentIntegrationClient.SendResult = PaymentIntegrationClient.SendResult(),
