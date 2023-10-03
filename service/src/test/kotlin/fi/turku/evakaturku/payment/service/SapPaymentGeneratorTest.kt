@@ -12,13 +12,14 @@ class SapPaymentGeneratorTest {
     val financeDateProvider = FinanceDateProvider()
     val sapPaymentGenerator = SapPaymentGenerator(paymentChecker)
     val mockDb = mock<Database.Transaction>()
+    val mockFetcher = mock<PreschoolValuesFetcher>()
 
     @Test
     @Disabled
     fun `should generate XML for a payment`() {
         val payment = validPayment()
 
-        val result = sapPaymentGenerator.generatePayments(listOf(payment), mockDb)
+        val result = sapPaymentGenerator.generatePayments(listOf(payment), mockFetcher)
 
         assert(result.paymentStrings.count() == 1)
     }
@@ -28,7 +29,7 @@ class SapPaymentGeneratorTest {
     fun `should set some values`() {
         val payment = validPayment()
 
-        val result = sapPaymentGenerator.generatePayments(listOf(payment), mockDb)
+        val result = sapPaymentGenerator.generatePayments(listOf(payment), mockFetcher)
         val resultString = result.paymentStrings[0]
         assert(resultString == "something")
     }

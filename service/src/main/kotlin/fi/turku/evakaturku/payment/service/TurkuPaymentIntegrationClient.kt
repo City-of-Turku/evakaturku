@@ -19,7 +19,8 @@ class TurkuPaymentIntegrationClient(
         var failedList: MutableList<Payment> = mutableListOf()
 
         logger.info { "TurkuPaymentIntegrationClient.send() called with ${payments.size} payments" }
-        val generatorResult = paymentGenerator.generatePayments(payments, tx)
+        val preschoolFetcher = PreschoolValuesFetcher(tx)
+        val generatorResult = paymentGenerator.generatePayments(payments, preschoolFetcher)
         var successList = generatorResult.sendResult.succeeded
         failedList.addAll(generatorResult.sendResult.failed)
 
