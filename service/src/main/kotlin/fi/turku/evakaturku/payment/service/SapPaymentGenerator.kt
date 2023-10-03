@@ -24,20 +24,7 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
         val paymentStrings: MutableList<String> = mutableListOf()
     )
 
-    data class UnitPreSchoolers(
-        val unitId: DaycareId,
-        val preSchoolers: Int
-    )
-
-    data class UnitLanguage(
-        val unitId: DaycareId,
-        val language: String
-    )
-
-    fun Database.Read.fetchPreschoolers(payments: List<Payment>): List<UnitPreSchoolers> {
-        val units: MutableList<DaycareId> = mutableListOf()
-        payments.forEach { units.add(it.unit.id) }
-
+    fun Database.Read.fetchPreschoolers(payments: List<Payment>): Map<DaycareId, Int> {
         return createQuery(
             """
             SELECT placement_unit_id as unitId,count(placement_type) as preSchoolers
@@ -50,16 +37,13 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             GROUP BY voucher_value_decision.placement_unit_id;
         """
         )
-            .bind("ids", units)
+            .bind("ids", payments.map { it.unit.id })
             .bind("period", payments[0].period)
-            .mapTo<UnitPreSchoolers>()
-            .toList()
+            .mapTo<Pair<DaycareId, Int>>()
+            .toMap()
     }
 
-    fun Database.Read.fetchUnitLanguages(payments: List<Payment>): List<UnitLanguage> {
-        val units: MutableList<DaycareId> = mutableListOf()
-        payments.forEach { units.add(it.unit.id) }
-
+    fun Database.Read.fetchUnitLanguages(payments: List<Payment>): Map<DaycareId, String> {
         return createQuery(
             """
             SELECT id as unitId,language
@@ -67,9 +51,9 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
             WHERE daycare.id = ANY(:ids)
         """
         )
-            .bind("ids", units)
-            .mapTo<UnitLanguage>()
-            .toList()
+            .bind("ids", payments.map { it.unit.id })
+            .mapTo<Pair<DaycareId, String>>()
+            .toMap()
     }
 
     fun Database.Read.fetchPreschoolAccountingAmount(period: DateRange): Int {
@@ -97,21 +81,19 @@ class SapPaymentGenerator(private val paymentChecker: PaymentChecker, val financ
 
         val paymentStrings = mutableListOf<String>()
 
-        val preSchoolerMap: MutableMap<DaycareId, UnitPreSchoolers> = mutableMapOf()
-        tx.fetchPreschoolers(payments).forEach { preSchoolerMap[it.unitId] = it }
-        val languageMap: MutableMap<DaycareId, UnitLanguage> = mutableMapOf()
-        tx.fetchUnitLanguages(payments).forEach { languageMap[it.unitId] = it }
+        val preSchoolerMap = tx.fetchPreschoolers(payments)
+        val languageMap = tx.fetchUnitLanguages(payments)
         val preSchoolAccountingAmount = tx.fetchPreschoolAccountingAmount(payments[0].period)
 
         val (failed, succeeded) = payments.partition { payment -> paymentChecker.shouldFail(payment) }
         failedList.addAll(failed)
 
         succeeded.forEach {
-            var preSchoolAmount = (preSchoolerMap[it.unit.id]?.preSchoolers ?: 0) * preSchoolAccountingAmount
+            var preSchoolAmount = (preSchoolerMap[it.unit.id] ?: 0) * preSchoolAccountingAmount
             if (it.period.start.monthValue == 8) {
                 preSchoolAmount /= 2
             }
-            val language = languageMap[it.unit.id]?.language ?: "fi"
+            val language = languageMap[it.unit.id] ?: "fi"
             val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
             idocs.add(generateIdoc(it, preSchoolAmount, language))
 
