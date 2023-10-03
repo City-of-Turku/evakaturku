@@ -11,7 +11,8 @@ class SapPaymentGeneratorTest {
     val paymentChecker = PaymentChecker()
     val financeDateProvider = FinanceDateProvider()
     val mockMarshaller = mock<PaymentMarshaller>()
-    val sapPaymentGenerator = SapPaymentGenerator(paymentChecker, mockMarshaller)
+    val mockIdocGenerator = mock<IdocGenerator>()
+    val sapPaymentGenerator = SapPaymentGenerator(paymentChecker, mockMarshaller, mockIdocGenerator)
     val mockDb = mock<Database.Transaction>()
     val mockFetcher = mock<PreschoolValuesFetcher>()
 
