@@ -930,25 +930,25 @@ workflows:
           requires:
             - scheduled_tasks_reporting_build_image
 
-      - trigger_deploy:
-          context:
-            - evakaturku-infra
-            - slack-secrets
-          requires:
-            - check_licenses
-            - apigw_push_image
-            - frontend_test
-            - frontend_upload_archive
-            - proxy_push_image
-            - service_test
-            - service_push_image
-            - auth_push_image
-            - scheduled_tasks_reporting_push_image
-            - e2e_test
-          filters:
-            branches:
-              only:
-                - main
+#      - trigger_deploy:
+#          context:
+#            - evakaturku-infra
+#            - slack-secrets
+#          requires:
+#            - check_licenses
+#            - apigw_push_image
+#            - frontend_test
+#            - frontend_upload_archive
+#            - proxy_push_image
+#            - service_test
+#            - service_push_image
+#            - auth_push_image
+#            - scheduled_tasks_reporting_push_image
+#            - e2e_test
+#          filters:
+#            branches:
+#              only:
+#                - main
 
       - merge_branch:
           context:
