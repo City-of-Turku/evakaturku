@@ -562,6 +562,7 @@ const customizations: EmployeeCustomizations = {
             'Anteckna här vårdnadshavarnas syn på det stöd som ges till barnet.',
           jurisdiction: '',
           jurisdictionText: '',
+          unitMayChange: 'Enheten kan ändras under semestertider',
           appealInstructions: (
             <>
               <H3>Anvisning om hur man begär omprövning</H3>

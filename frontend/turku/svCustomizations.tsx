@@ -612,6 +612,7 @@ const sv: DeepPartial<Translations> = {
         pageTitle: 'Beslut om behov av stöd inom småbarnspedagogik',
         jurisdiction: '',
         jurisdictionText: '',
+        unitMayChange: 'Enheten kan ändras under semestertider',
         appealInstructionsTitle: 'Anvisning om hur man begär omprövning',
         appealInstructions: (
           <>
