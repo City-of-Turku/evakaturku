@@ -3,6 +3,7 @@ package fi.turku.evakaturku.payment.service
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.shared.DaycareId
 import fi.espoo.evaka.shared.db.Database
+import fi.espoo.evaka.shared.db.mapColumn
 import fi.espoo.evaka.shared.domain.DateRange
 
 class PreschoolValuesFetcher(val tx: Database.Transaction) {
@@ -26,7 +27,7 @@ class PreschoolValuesFetcher(val tx: Database.Transaction) {
         )
             .bind("ids", payments.map { it.unit.id })
             .bind("period", payments[0].period)
-            .mapTo<Pair<DaycareId, Int>>()
+            .map { row -> row.mapColumn<DaycareId>("unitId") to row.mapColumn<Int>("preSchoolers") }
             .toMap()
     }
 
@@ -43,7 +44,7 @@ class PreschoolValuesFetcher(val tx: Database.Transaction) {
         """
         )
             .bind("ids", payments.map { it.unit.id })
-            .mapTo<Pair<DaycareId, String>>()
+            .map { row -> row.mapColumn<DaycareId>("unitId") to row.mapColumn<String>("language") }
             .toMap()
     }
 
