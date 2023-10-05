@@ -612,6 +612,7 @@ const fi: DeepPartial<Translations> = {
       decision: {
         jurisdiction: '',
         jurisdictionText: '',
+        unitMayChange: 'Loma-aikoina tuen järjestämispaikka saattaa muuttua.',
         appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
         appealInstructions: (
           <>

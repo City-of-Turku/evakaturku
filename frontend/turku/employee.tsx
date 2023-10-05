@@ -168,6 +168,7 @@ const customizations: EmployeeCustomizations = {
             'Kirjaa tähän huoltajien näkemys lapselle esitetystä tuesta.',
           jurisdiction: '',
           jurisdictionText: '',
+          unitMayChange: 'Loma-aikoina tuen järjestämispaikka saattaa muuttua.',
           appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
           appealInstructions: (
             <>
