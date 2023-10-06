@@ -47,7 +47,7 @@ eVakaTurku is published under **LGPL-2.1-or-later** license. Please refer to
 ### Bulk-licensing
 
 Bulk-licensing is applied to certain directories that will never contain
-anything but binary-like files (e.g. certificates) with
+anything but binary-like files (e.g. certificates) with.
 [a DEP5 file](./.reuse/dep5) (see
 [docs](https://reuse.software/faq/#bulk-license)).
 
