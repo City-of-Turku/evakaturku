@@ -1079,11 +1079,11 @@ const sv: DeepPartial<Translations> = {
     formDescription: (
       <>
         <P data-qa="income-formDescription-p1">
-          Inkomstutredningen och dess bilagor skickas in inom en månad efter att
-          barnet har börjat inom småbarnspedagogiken. Ifall uppgifterna är
-          ofullständiga kan avgiften fastställas så att den är den högsta
-          möjliga. Ofullständiga inkomstuppgifter korrigeras inte retroaktivt
-          efter att besvärstiden har gått ut.
+          Inkomstutredning inklusive bilagor returneras under den månad då
+          småbarnspedagogiken inleds. Ifall uppgifterna är ofullständiga kan
+          avgiften fastställas så att den är den högsta möjliga. Ofullständiga
+          inkomstuppgifter korrigeras inte retroaktivt efter att besvärstiden
+          har gått ut.
         </P>
         <P>
           Avgiften tas ut från och med den dag då småbarnspedagogiken började.
