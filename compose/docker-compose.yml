@@ -51,7 +51,7 @@ services:
       retries: 5
 
   evakaturku-srv:
-    image: evakaturku/service
+    image: ${EVAKA_SRV_IMAGE}
     ports:
       - "8888:8888"
     hostname: evakaturku-srv
