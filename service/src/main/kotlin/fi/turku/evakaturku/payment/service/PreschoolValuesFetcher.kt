@@ -3,7 +3,6 @@ package fi.turku.evakaturku.payment.service
 import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.shared.DaycareId
 import fi.espoo.evaka.shared.db.Database
-import fi.espoo.evaka.shared.db.mapColumn
 import fi.espoo.evaka.shared.domain.DateRange
 
 class PreschoolValuesFetcher(val tx: Database.Transaction) {
@@ -27,8 +26,9 @@ class PreschoolValuesFetcher(val tx: Database.Transaction) {
         )
             .bind("ids", payments.map { it.unit.id })
             .bind("period", payments[0].period)
-            .map { row -> row.mapColumn<DaycareId>("unitId") to row.mapColumn<Int>("preSchoolers") }
-            .toMap()
+            .toMap {
+                columnPair<DaycareId, Int>("unitId", "preSchoolers")
+            }
     }
 
     fun fetchUnitLanguages(payments: List<Payment>): Map<DaycareId, String> {
@@ -44,8 +44,9 @@ class PreschoolValuesFetcher(val tx: Database.Transaction) {
         """
         )
             .bind("ids", payments.map { it.unit.id })
-            .map { row -> row.mapColumn<DaycareId>("unitId") to row.mapColumn<String>("language") }
-            .toMap()
+            .toMap {
+                columnPair<DaycareId, String>("unitId", "language")
+            }
     }
 
     fun fetchPreschoolAccountingAmount(period: DateRange): Int {
