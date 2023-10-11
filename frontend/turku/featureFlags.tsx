@@ -105,7 +105,7 @@ const features: Features = {
     personDuplicate: false,
     citizenAttendanceSummary: false,
     noAbsenceType: false,
-    hojks: false
+    hojks: true
   }
 }
 
