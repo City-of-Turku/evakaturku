@@ -618,20 +618,20 @@ workflows:
             - checkout_repo
 
 
-#      - trigger_deploy:
-#          context:
-#            - evakaturku-infra
-#            - slack-secrets
-#          requires:
-#            - check_licenses
-#            - auth_build_image
-#            - scheduled_tasks_reporting_build_image
-#            - scheduled_tasks_logs_build_image
-#            - e2e_test
-#          filters:
-#            branches:
-#              only:
-#                - main
+      - trigger_deploy:
+          context:
+            - evakaturku-infra
+            - slack-secrets
+          requires:
+            - check_licenses
+            - auth_build_image
+            - scheduled_tasks_reporting_build_image
+            - scheduled_tasks_logs_build_image
+            - e2e_test
+          filters:
+            branches:
+              only:
+                - main
 
       - merge_branch:
           context:
