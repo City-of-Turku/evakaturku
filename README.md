@@ -15,7 +15,7 @@ This repository contains the code for customizing, configuring and extending the
 See [eVaka README](evaka/compose/README.md#Dependencies)
 
 
-### Starting eVakaTurku dev environment:
+### Starting eVakaTurku dev environment
 1. `cd compose`
 2. `docker-compose -f docker-compose-dbs.yml up -d --build`
 3. `pm2 start` (starts all apps)
