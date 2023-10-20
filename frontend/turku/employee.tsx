@@ -140,7 +140,7 @@ const customizations: EmployeeCustomizations = {
                 'Erityinen tuki ja pidennetty oppivelvollisuus – erityishuolto-ohjelma'
             },
             otherAssistanceMeasureType: {
-              TRANSPORT_BENEFIT: 'Harkinnanvarainen kuljetusetu',
+              TRANSPORT_BENEFIT: 'Esiopetuksen kuljetusetu',
               ACCULTURATION_SUPPORT: 'Lapsen kotoutumisen tuki (ELY)'
             }
           }
