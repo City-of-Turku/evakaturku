@@ -157,17 +157,17 @@ FROM daycare CROSS JOIN generate_series(1, 3) AS r;
 INSERT INTO message_account (daycare_group_id)
 SELECT id FROM daycare_group;
 
-INSERT INTO employee (id, first_name, last_name, email, external_id, roles) VALUES
-    ('00000000-0000-0000-0000-000000000001', 'Päivi', 'Pääkäyttäjä', 'paivi.paakayttaja@turku.fi', 'turku-ad:00000000-0000-0000-0000-000000000001', '{ADMIN, SERVICE_WORKER, FINANCE_ADMIN}'::user_role[]),
-    ('00000000-0000-0000-0001-000000000000', 'Paula', 'Palveluohjaaja', 'paula.palveluohjaaja@turku.fi', 'turku-ad:00000000-0000-0000-0001-000000000000', '{SERVICE_WORKER}'::user_role[]),
-    ('00000000-0000-0000-0002-000000000000', 'Lasse', 'Laskuttaja', 'lasse.laskuttaja@turku.fi', 'turku-ad:00000000-0000-0000-0002-000000000000', '{FINANCE_ADMIN}'::user_role[]),
-    ('00000000-0000-0000-0003-000000000000', 'Raisa', 'Raportoija', 'raisa.raportoija@turku.fi', 'turku-ad:00000000-0000-0000-0003-000000000000', '{DIRECTOR}'::user_role[]);
-INSERT INTO employee (id, first_name, last_name, email, external_id) VALUES
-    ('00000000-0000-0000-0004-000000000000', 'Essi', 'Esimies', 'essi.esimies@turku.fi', 'turku-ad:00000000-0000-0000-0004-000000000000'),
-    ('00000000-0000-0000-0004-000000000001', 'Eemeli', 'Esimies', 'eemeli.esimies@turku.fi', 'turku-ad:00000000-0000-0000-0004-000000000001'),
-    ('00000000-0000-0000-0005-000000000000', 'Kaisa', 'Kasvattaja', 'kaisa.kasvattaja@turku.fi', 'turku-ad:00000000-0000-0000-0005-000000000000'),
-    ('00000000-0000-0000-0005-000000000001', 'Kalle', 'Kasvattaja', 'kalle.kasvattaja@turku.fi', 'turku-ad:00000000-0000-0000-0005-000000000001'),
-    ('00000000-0000-0000-0006-000000000000', 'Erkki', 'Erityisopettaja', 'erkki.erityisopettaja@turku.fi', 'turku-ad:00000000-0000-0000-0006-000000000000');
+INSERT INTO employee (id, first_name, last_name, email, external_id, roles, active) VALUES
+    ('00000000-0000-0000-0000-000000000001', 'Päivi', 'Pääkäyttäjä', 'paivi.paakayttaja@turku.fi', 'turku-ad:00000000-0000-0000-0000-000000000001', '{ADMIN, SERVICE_WORKER, FINANCE_ADMIN}'::user_role[], true),
+    ('00000000-0000-0000-0001-000000000000', 'Paula', 'Palveluohjaaja', 'paula.palveluohjaaja@turku.fi', 'turku-ad:00000000-0000-0000-0001-000000000000', '{SERVICE_WORKER}'::user_role[], true),
+    ('00000000-0000-0000-0002-000000000000', 'Lasse', 'Laskuttaja', 'lasse.laskuttaja@turku.fi', 'turku-ad:00000000-0000-0000-0002-000000000000', '{FINANCE_ADMIN}'::user_role[], true),
+    ('00000000-0000-0000-0003-000000000000', 'Raisa', 'Raportoija', 'raisa.raportoija@turku.fi', 'turku-ad:00000000-0000-0000-0003-000000000000', '{DIRECTOR}'::user_role[], true);
+INSERT INTO employee (id, first_name, last_name, email, external_id, active) VALUES
+    ('00000000-0000-0000-0004-000000000000', 'Essi', 'Esimies', 'essi.esimies@turku.fi', 'turku-ad:00000000-0000-0000-0004-000000000000', true),
+    ('00000000-0000-0000-0004-000000000001', 'Eemeli', 'Esimies', 'eemeli.esimies@turku.fi', 'turku-ad:00000000-0000-0000-0004-000000000001', true),
+    ('00000000-0000-0000-0005-000000000000', 'Kaisa', 'Kasvattaja', 'kaisa.kasvattaja@turku.fi', 'turku-ad:00000000-0000-0000-0005-000000000000', true),
+    ('00000000-0000-0000-0005-000000000001', 'Kalle', 'Kasvattaja', 'kalle.kasvattaja@turku.fi', 'turku-ad:00000000-0000-0000-0005-000000000001', true),
+    ('00000000-0000-0000-0006-000000000000', 'Erkki', 'Erityisopettaja', 'erkki.erityisopettaja@turku.fi', 'turku-ad:00000000-0000-0000-0006-000000000000', true);
 
 INSERT INTO daycare_acl (daycare_id, employee_id, role) VALUES
     ('340ea27a-a1bc-11eb-b5d2-dfc0dc6d2fcb', '00000000-0000-0000-0004-000000000000', 'UNIT_SUPERVISOR'),
