@@ -89,7 +89,7 @@ const customizations: EmployeeCustomizations = {
           UNKNOWN_ABSENCE:
             'Käytetään silloin, kun huoltaja ei ole ilmoittanut poissaolosta, vaikuttaa heinäkuussa myös laskutukseen. Koodi muutetaan vain, jos kyseessä on sairauspoissaolo, jonka jatkumisesta huoltaja ilmoittaa seuraavana päivänä.',
           PLANNED_ABSENCE:
-            'Palveluntarvesopimuksen (enintään 147h/kk, enintään 166h/kk, tai enintään 84h/kk mukaiset etukäteen ilmoitetut poissaolot',
+            'Palveluntarvesopimuksen (enintään 147h/kk, enintään 116h/kk, tai enintään 84h/kk mukaiset etukäteen ilmoitetut poissaolot',
           TEMPORARY_RELOCATION:
             'Lapselle on tehty varasijoitus toiseen yksikköön. Poissa omasta, läsnä muualla.',
           PARENTLEAVE:
