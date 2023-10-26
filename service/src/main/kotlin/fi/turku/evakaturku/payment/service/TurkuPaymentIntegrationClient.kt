@@ -15,7 +15,7 @@ class TurkuPaymentIntegrationClient(
     private val sftpSender: SftpSender
 ) : PaymentIntegrationClient {
 
-    override fun send(payments: List<Payment>, tx: Database.Transaction): PaymentIntegrationClient.SendResult {
+    override fun send(payments: List<Payment>, tx: Database.Read): PaymentIntegrationClient.SendResult {
         var failedList: MutableList<Payment> = mutableListOf()
 
         logger.info { "TurkuPaymentIntegrationClient.send() called with ${payments.size} payments" }
