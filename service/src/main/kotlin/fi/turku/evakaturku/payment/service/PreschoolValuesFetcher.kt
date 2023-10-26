@@ -5,7 +5,7 @@ import fi.espoo.evaka.shared.DaycareId
 import fi.espoo.evaka.shared.db.Database
 import fi.espoo.evaka.shared.domain.DateRange
 
-class PreschoolValuesFetcher(val tx: Database.Transaction) {
+class PreschoolValuesFetcher(val tx: Database.Read) {
 
     fun fetchPreschoolers(payments: List<Payment>): Map<DaycareId, Int> {
         return tx.fetchPreschoolers(payments)
@@ -69,6 +69,6 @@ class PreschoolValuesFetcher(val tx: Database.Transaction) {
             .bind("date", period.start)
             .mapTo<Int>()
             // this should only ever return one row with one value
-            .first()
+            .exactlyOne()
     }
 }
