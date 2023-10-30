@@ -46,7 +46,7 @@ const features: Features = {
     citizenAttendanceSummary: false,
     noAbsenceType: false,
     hojks: true,
-    sensitiveMessaging: false
+    sensitiveMessaging: true
   },
   staging: {
     citizenShiftCareAbsence: true,
@@ -77,7 +77,7 @@ const features: Features = {
     citizenAttendanceSummary: false,
     noAbsenceType: false,
     hojks: true,
-    sensitiveMessaging: false
+    sensitiveMessaging: true
   },
   prod: {
     citizenShiftCareAbsence: true,
