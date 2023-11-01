@@ -95,20 +95,23 @@ run_history_bulk_and_send_file() {
 
 DATE=$(date --iso-8601)
 
-if [[ -v HISTORY_ENABLED && $HISTORY_ENABLED == true && -v HISTORY_FROM_DATE ]]; then
-    echo "Running history batches enabled"
-    run_history_batch_and_send_file sql/DW-Daily_info.sql daily_info
-    run_history_batch_and_send_file sql/DW-Units_and_groups.sql units_and_groups
+# Disabling history batches completely for now, because of the daily dw reports query data containing 3 years history
+# History batch logic should be removed completely if not needed at all
+#if [[ -v HISTORY_ENABLED && $HISTORY_ENABLED == true && -v HISTORY_FROM_DATE ]]; then
+#    echo "Running history batches enabled"
+#    run_history_batch_and_send_file sql/DW-Daily_info.sql daily_info
+#    run_history_batch_and_send_file sql/DW-Units_and_groups.sql units_and_groups
 
-    echo "Running history bulk"
-    run_history_bulk_and_send_file sql/history_bulk/DW-Fee_decisions_bulk.sql fee_decisions
-    run_history_bulk_and_send_file sql/history_bulk/DW-Voucher_value_decisions_bulk.sql voucher_value_decisions
-    run_history_bulk_and_send_file sql/history_bulk/DW-Assistance_need_decisions_bulk.sql assistance_need_decisions
-fi
+#    echo "Running history bulk"
+#    run_history_bulk_and_send_file sql/history_bulk/DW-Fee_decisions_bulk.sql fee_decisions
+#    run_history_bulk_and_send_file sql/history_bulk/DW-Voucher_value_decisions_bulk.sql voucher_value_decisions
+#    run_history_bulk_and_send_file sql/history_bulk/DW-Assistance_need_decisions_bulk.sql assistance_need_decisions
+#fi
 
-run_query_and_send_file sql/DW-Daily_info.sql daily_info_$DATE.csv $DATE
-run_query_and_send_file sql/DW-Units_and_groups.sql units_and_groups_$DATE.csv $DATE
-run_query_and_send_file sql/DW-Fee_decisions.sql fee_decisions_$DATE.csv $DATE
-run_query_and_send_file sql/DW-Voucher_value_decisions.sql voucher_value_decisions_$DATE.csv $DATE
-run_query_and_send_file sql/DW-Assistance_need_decisions.sql assistance_need_decisions_$DATE.csv $DATE
-run_query_and_send_file sql/DW-Child_aggregate.sql child_aggregate_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Daily_info.sql daily_info_3v_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Units_and_groups.sql units_and_groups_3v_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Daily_units_and_groups_attendance.sql daily_units_and_groups_attendance_3v_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Fee_decisions.sql fee_decisions_3v_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Voucher_value_decisions.sql voucher_value_decisions_3v_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Assistance_need_decisions.sql assistance_need_decisions_3v_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Child_aggregate.sql child_aggregate_3v_$DATE.csv $DATE

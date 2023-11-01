@@ -1,6 +1,6 @@
 SELECT
     now() AT TIME ZONE 'Europe/Helsinki'    AS pvm,
-    p.id                                    AS lapsen_id,
+    p.id			                        AS lapsen_id,
     p.social_security_number                AS henkilöturvatunnus,
     p.date_of_birth                         AS syntymäaika,
     p.language                              AS kieli,
@@ -18,9 +18,13 @@ SELECT
     d.type                                  AS toimintamuoto,
     d.provider_type                         AS järjestämistapa,
     d.dw_cost_center                        AS kustannuspaikka,
+    dgp.start_date							as sijoitusryhmä_aloitus_pvm,
+    dgp.end_date							as sijoitysryhmä_loppu_pvm,
     dg.id                                   AS sijoitusryhmä_id,
     dg.name                                 AS sijoitusryhmä,
     bc.unit_id                              AS varahoitoyksikkö_id,
+    bc.start_date 							AS varahoitoyksikkö_aloitus_pvm,
+    bc.end_date 							AS varahoitoyksikkö_loppu_pvm,
     bu.name                                 AS varahoitoyksikkö,
     bc.group_id                             AS varahoitoryhmä_id,
     bg.name                                 AS varahoitoryhmä,
@@ -42,37 +46,36 @@ SELECT
             WHERE need_id = an.id
         )
     )                                       AS tuentarve,
+    an.start_date							as tuentarpeen_aloitus_pvm,
+    an.end_date								as tuentarpeen_loppu_pvm,
     anvc.coefficient                        AS tuentarpeen_kerroin,
+    lower(anvc.validity_period)				as kerroin_aloitus_pvm,
+    upper(anvc.validity_period)				as kerroin_loppu_pvm,
     an.capacity_factor                      AS lapsen_kapasiteetti,
     array(
         SELECT distinct absence_type
         FROM absence
         WHERE child_id = p.id
-            AND absence.date = :date_val::DATE
+            AND absence.date >= pl.start_date
+            AND absence.date <= pl.end_date
     )                                       AS poissaolon_syy
 FROM person p
     JOIN placement pl ON pl.child_id = p.id
-        AND pl.start_date <= :date_val::DATE
-        AND pl.end_date >= :date_val::DATE
+        AND pl.end_date >= :date_val::DATE - INTERVAL '3 years'
     JOIN daycare d ON pl.unit_id = d.id
     JOIN care_area ca ON d.care_area_id = ca.id
     JOIN daycare_group_placement dgp ON pl.id = dgp.daycare_placement_id
-        AND dgp.start_date <= :date_val::DATE
-        AND dgp.end_date >= :date_val::DATE
+        AND daterange(dgp.start_date, dgp.end_date, '[]') && daterange(pl.start_date, pl.end_date, '[]')
     JOIN daycare_group dg ON d.id = dg.daycare_id
         AND dgp.daycare_group_id = dg.id
     LEFT JOIN backup_care bc ON p.id = bc.child_id
-        AND bc.start_date <= :date_val::DATE
-        AND bc.end_date >= :date_val::DATE
+        AND daterange(bc.start_date, bc.end_date, '[]') && daterange(dgp.start_date, dgp.end_date, '[]')
     LEFT JOIN daycare bu ON bu.id = bc.unit_id
     LEFT JOIN daycare_group bg ON bg.id = bc.group_id
     LEFT JOIN service_need sn ON pl.id = sn.placement_id
-        AND sn.start_date <= :date_val::DATE
-        AND sn.end_date >= :date_val::DATE
-    JOIN service_need_option sno ON sno.id = sn.option_id
+        AND daterange(sn.start_date, sn.end_date, '[]') && daterange(pl.start_date, pl.end_date, '[]')
+    LEFT JOIN service_need_option sno ON sno.id = sn.option_id
     LEFT JOIN assistance_need an ON p.id = an.child_id
-        AND an.start_date <= :date_val::DATE
-        AND an.end_date >= :date_val::DATE
+        AND daterange(an.start_date, an.end_date, '[]') && daterange(pl.start_date, pl.end_date, '[]')
     LEFT JOIN assistance_need_voucher_coefficient anvc ON p.id = anvc.child_id
-        AND lower(anvc.validity_period) <= :date_val::DATE
-        AND upper(anvc.validity_period) >= :date_val::DATE;
+        AND anvc.validity_period && daterange(sn.start_date, sn.end_date, '[]');
