@@ -47,7 +47,7 @@ const features: Features = {
     noAbsenceType: false,
     hojks: true,
     employeeMobileStaffAttendanceEdit: true,
-    voucherValueDecisionIgnoredStatus: false
+    voucherValueDecisionIgnoredStatus: true
   },
   staging: {
     citizenShiftCareAbsence: true,
@@ -79,7 +79,7 @@ const features: Features = {
     noAbsenceType: false,
     hojks: true,
     employeeMobileStaffAttendanceEdit: true,
-    voucherValueDecisionIgnoredStatus: false
+    voucherValueDecisionIgnoredStatus: true
   },
   prod: {
     citizenShiftCareAbsence: true,
