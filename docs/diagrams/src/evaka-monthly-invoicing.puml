@@ -1,0 +1,40 @@
+' SPDX-FileCopyrightText: 2017-2021 City of Espoo
+'
+' SPDX-License-Identifier: LGPL-2.1-or-later
+
+@startuml evaka-monthly-invoicing
+title eVakan kuukausilaskutusprosessi
+:Asiakas hakee varhaiskasvatuspaikkaa;
+:Asiakas täyttää tuloselvityksen;
+:Talouskoordinaattori (TK) lisää asiakkaalle tulotiedot;
+:Syntyy maksupäätösluonnos
+(palveluseteliyksikölle arvopäätösluonnos);
+:TK korjaa tietoja Puuttuvat palveluntarpeet ja päämiehet -raportin ja
+Varhaiskasvatuksessa aloittavat lapset -raportin avulla päiväkodin kanssa;
+:Muutos päivittää talouspäätösluonnoksen;
+:TK hyväksyy oman alueensa talouspäätösluonnokset
+arvopäätöksiksi ennen palveluseteliraportin lukitsemista ja 
+maksupäätöksiksi kuun viimeinen arkipäivä;
+split
+    :TK tarkastaa, että kaikki hänen oman alueensa
+    maksupäätökset on lähetetty;
+    :TK tarkistaa koko kaupungin tyhjät nollapäätökset
+    (katkaisee laskutuksen) ja lähettää ne;
+    :TK luo laskuluonnokset massana
+    kaikille asiakkaille ennen laskujen lähettämistä;
+    :TK siirtää oman alueensa laskut laskutusjärjestelmään;
+    :TK tarkistaa oman alueensa laskujen täsmäytyksen;
+    kill
+split again
+    if (Huoltajalla Suomi.fi-viestit käytössä?) then (kyllä)
+      :Päätös Suomi.fi-viestinä;
+    else (ei)
+      if (Hakijalla turvakielto) then (kyllä)
+        :TK selvittää turvakiellollisen osoitteen;
+      else (ei)
+      endif
+      :TK lähettää päätöksen maapostissa;
+    endif
+    kill
+end split
+@enduml
