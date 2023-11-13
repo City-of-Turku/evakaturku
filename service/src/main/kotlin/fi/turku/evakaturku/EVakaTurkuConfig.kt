@@ -8,6 +8,7 @@ import fi.espoo.evaka.s3.DocumentService
 import fi.espoo.evaka.shared.FeatureConfig
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.espoo.evaka.shared.security.actionrule.ActionRuleMapping
+import fi.espoo.evaka.titania.TitaniaEmployeeIdConverter
 import fi.turku.evakaturku.invoice.service.SftpConnector
 import fi.turku.evakaturku.invoice.service.SftpSender
 import fi.turku.evakaturku.payment.service.SapPaymentGenerator
@@ -71,5 +72,11 @@ class EVakaTurkuConfig {
     fun tomcatCustomizer(env: Environment) =
         WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
             it.addContextValves(defaultAccessLoggingValve(env))
+        }
+
+    @Bean
+    fun titaniaEmployeeIdConverter(): TitaniaEmployeeIdConverter =
+        object : TitaniaEmployeeIdConverter {
+            override fun fromTitania(employeeId: String): String = employeeId.trimStart('0')
         }
 }
