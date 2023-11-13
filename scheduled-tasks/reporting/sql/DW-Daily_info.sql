@@ -37,21 +37,16 @@ SELECT
     sn.end_date				                AS palveluntarpeen_loppu_pvm,
     sn.shift_care                           AS vuorohoito,
     sno.daycare_hours_per_week              AS tunteja_viikossa,
-    array(
-        SELECT name_fi
-        FROM assistance_basis_option
-        WHERE id IN (
-            SELECT option_id
-            FROM assistance_basis_option_ref
-            WHERE need_id = an.id
-        )
-    )                                       AS tuentarve,
-    an.start_date							as tuentarpeen_aloitus_pvm,
-    an.end_date								as tuentarpeen_loppu_pvm,
+    da.level                                AS tuentarve_varhaiskasvatuksessa,
+    lower(da.valid_during)				    AS tuentarve_varha_aloitus_pvm,
+    upper(da.valid_during)				    AS tuentarve_varha_loppu_pvm,
+    pa.level							    AS tuentarve_esiopetuksessa,
+    lower(pa.valid_during)				    AS tuentarve_esiop_aloitus_pvm,
+    upper(pa.valid_during)				    AS tuentarve_esiop_loppu_pvm,
     anvc.coefficient                        AS tuentarpeen_kerroin,
-    lower(anvc.validity_period)				as kerroin_aloitus_pvm,
-    upper(anvc.validity_period)				as kerroin_loppu_pvm,
-    an.capacity_factor                      AS lapsen_kapasiteetti,
+    lower(anvc.validity_period)				AS kerroin_aloitus_pvm,
+    upper(anvc.validity_period)				AS kerroin_loppu_pvm,
+    af.capacity_factor                      AS lapsen_kapasiteetti,
     array(
         SELECT distinct absence_type
         FROM absence
@@ -75,7 +70,11 @@ FROM person p
     LEFT JOIN service_need sn ON pl.id = sn.placement_id
         AND daterange(sn.start_date, sn.end_date, '[]') && daterange(pl.start_date, pl.end_date, '[]')
     LEFT JOIN service_need_option sno ON sno.id = sn.option_id
-    LEFT JOIN assistance_need an ON p.id = an.child_id
-        AND daterange(an.start_date, an.end_date, '[]') && daterange(pl.start_date, pl.end_date, '[]')
+    LEFT JOIN daycare_assistance da ON p.id = da.child_id
+        AND da.valid_during && daterange(pl.start_date, pl.end_date, '[]')
+    LEFT JOIN preschool_assistance pa ON p.id = pa.child_id
+        AND pa.valid_during && daterange(pl.start_date, pl.end_date, '[]')
+    LEFT JOIN assistance_factor af ON p.id = af.child_id
+        AND af.valid_during && daterange(pl.start_date, pl.end_date, '[]')
     LEFT JOIN assistance_need_voucher_coefficient anvc ON p.id = anvc.child_id
         AND anvc.validity_period && daterange(sn.start_date, sn.end_date, '[]');
