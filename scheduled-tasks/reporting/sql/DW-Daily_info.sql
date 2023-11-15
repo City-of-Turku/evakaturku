@@ -47,6 +47,8 @@ SELECT
     lower(anvc.validity_period)				AS kerroin_aloitus_pvm,
     upper(anvc.validity_period)				AS kerroin_loppu_pvm,
     af.capacity_factor                      AS lapsen_kapasiteetti,
+    lower(af.valid_during)				    AS kapasiteetti_aloitus_pvm,
+    upper(af.valid_during)				    AS kapasiteetti_loppu_pvm,
     array(
         SELECT distinct absence_type
         FROM absence
