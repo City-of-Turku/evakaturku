@@ -111,7 +111,7 @@ const features: Features = {
     noAbsenceType: false,
     hojks: true,
     employeeMobileStaffAttendanceEdit: false,
-    voucherValueDecisionIgnoredStatus: false
+    voucherValueDecisionIgnoredStatus: true
   }
 }
 
