@@ -10,7 +10,6 @@ import React from 'react'
 
 import {
   daycareAssistanceLevels,
-  otherAssistanceMeasureTypes,
   preschoolAssistanceLevels
 } from 'lib-common/generated/api-types/assistance'
 import { H3, P } from 'lib-components/typography'
@@ -900,7 +899,11 @@ const customizations: EmployeeCustomizations = {
   daycareAssistanceLevels: daycareAssistanceLevels.filter(
     (level) => level !== 'GENERAL_SUPPORT'
   ),
-  otherAssistanceMeasureTypes: [...otherAssistanceMeasureTypes],
+  otherAssistanceMeasureTypes: [
+    'TRANSPORT_BENEFIT',
+    'ACCULTURATION_SUPPORT',
+    'ANOMALOUS_EDUCATION_START'
+  ],
   placementPlanRejectReasons: ['REASON_1', 'REASON_2', 'OTHER'],
   preschoolAssistanceLevels: [...preschoolAssistanceLevels],
   unitProviderTypes: [
