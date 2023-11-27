@@ -6,10 +6,9 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 */
 }
 import React from 'react'
-
 import styled from 'styled-components'
 
-import { desktopMin, tabletMin,  } from 'lib-components/breakpoints'
+import { desktopMin, tabletMin } from 'lib-components/breakpoints'
 import { CitizenCustomizations } from 'lib-customizations/types'
 
 import TurkuLogo from './city-logo-citizen.png'
@@ -50,9 +49,9 @@ const TurkuFooterImg = styled.img`
 `
 
 const TurkuFooter = (
-    <TurkuFooterLogo>
-      <TurkuFooterImg src={TurkuLogo} alt="Turku footer logo"/>
-    </TurkuFooterLogo>
+  <TurkuFooterLogo>
+    <TurkuFooterImg src={TurkuLogo} alt="Turku footer logo" />
+  </TurkuFooterLogo>
 )
 
 const customizations: CitizenCustomizations = {

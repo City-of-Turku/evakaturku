@@ -101,9 +101,9 @@ const en: DeepPartial<Translations> = {
               <P>
                 Children take part in pre-primary education one year before the
                 start of compulsory education. Pre-primary education is free.
-                Enrol for pre-primary education for the 2023/24 school year 2–17
-                January 2023. Pre-primary education begins on 10 August 2023.
-                10.8.2023.
+                Enrol for pre-primary education for the 2024/25 school year 1–14
+                January 2023. Pre-primary education begins on 8th of August
+                2024.
               </P>
               <P>
                 Decisions will appear in the
