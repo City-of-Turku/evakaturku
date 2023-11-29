@@ -102,7 +102,7 @@ const features: Features = {
     childDiscussion: false,
     placementGuarantee: false,
     voucherUnitPayments: true,
-    assistanceNeedDecisionsLanguageSelect: false,
+    assistanceNeedDecisionsLanguageSelect: true,
     staffAttendanceTypes: true,
     childDocuments: true,
     intermittentShiftCare: false,
