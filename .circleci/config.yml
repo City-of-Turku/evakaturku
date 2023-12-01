@@ -478,6 +478,17 @@ jobs:
           dir: scheduled-tasks/logs
       - slack-notification
 
+  scheduled_tasks_certificate_check_build_image:
+    executor: aws_executor
+    resource_class: medium
+    steps:
+      - restore_repo
+      - setup_authenticated_remote_docker:
+          docker_layer_caching: true
+      - build_docker_image:
+          image: evakaturku/scheduled-task/certificate-check
+          dir: scheduled-tasks/certificate-check
+      - slack-notification
 
   trigger_deploy:
     executor: base_executor
@@ -615,6 +626,13 @@ workflows:
           requires:
             - checkout_repo
 
+      - scheduled_tasks_certificate_check_build_image:
+          context:
+            - evakaturku-dev
+            - slack-secrets
+          requires:
+            - checkout_repo
+
 
       - trigger_deploy:
           context:
@@ -625,6 +643,7 @@ workflows:
             - auth_build_image
             - scheduled_tasks_reporting_build_image
             - scheduled_tasks_logs_build_image
+            - scheduled_tasks_certificate_check_build_image
             - e2e_test
           filters:
             branches:
@@ -639,6 +658,7 @@ workflows:
             - auth_build_image
             - scheduled_tasks_reporting_build_image
             - scheduled_tasks_logs_build_image
+            - scheduled_tasks_certificate_check_build_image
             - e2e_test
           filters:
             branches:
