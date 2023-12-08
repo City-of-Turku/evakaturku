@@ -135,8 +135,10 @@ const customizations: EmployeeCustomizations = {
         assistance: {
           types: {
             preschoolAssistanceLevel: {
+              SPECIAL_SUPPORT_WITH_DECISION_LEVEL_1:
+                'Erityinen tuki ja pidennetty oppivelvollisuus - muu kuin vaikeimmin kehitysvammainen (Koskeen)',
               SPECIAL_SUPPORT_WITH_DECISION_LEVEL_2:
-                'Erityinen tuki ja pidennetty oppivelvollisuus – erityishuolto-ohjelma'
+                'Erityinen tuki ja pidennetty oppivelvollisuus - vaikeimmin kehitysvammainen (Koskeen)'
             },
             otherAssistanceMeasureType: {
               TRANSPORT_BENEFIT: 'Esiopetuksen kuljetusetu',
