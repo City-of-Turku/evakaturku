@@ -5,5 +5,5 @@ if [ -n "$topic" ]; then
   aws sns publish --topic-arn $topic --message "foobar"
   echo "message sent"
 else
-  echo "no sns topic, message not sent"
+  echo "no sns topic found, message not sent"
 fi
