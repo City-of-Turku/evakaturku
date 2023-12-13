@@ -104,7 +104,7 @@ const features: Features = {
     citizenAttendanceSummary: false,
     noAbsenceType: false,
     hojks: true,
-    employeeMobileStaffAttendanceEdit: false,
+    employeeMobileStaffAttendanceEdit: true,
     employeeMobileChildAttendanceReservationEdit: true
   }
 }
