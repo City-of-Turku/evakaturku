@@ -45,7 +45,8 @@ const features: Features = {
     noAbsenceType: false,
     hojks: true,
     employeeMobileStaffAttendanceEdit: true,
-    employeeMobileChildAttendanceReservationEdit: true
+    employeeMobileChildAttendanceReservationEdit: true,
+    employeeMobileConfirmedDaysReservations: true
   },
   staging: {
     citizenShiftCareAbsence: true,
@@ -75,7 +76,8 @@ const features: Features = {
     noAbsenceType: false,
     hojks: true,
     employeeMobileStaffAttendanceEdit: true,
-    employeeMobileChildAttendanceReservationEdit: true
+    employeeMobileChildAttendanceReservationEdit: true,
+    employeeMobileConfirmedDaysReservations: true
   },
   prod: {
     citizenShiftCareAbsence: true,
@@ -105,7 +107,8 @@ const features: Features = {
     noAbsenceType: false,
     hojks: true,
     employeeMobileStaffAttendanceEdit: true,
-    employeeMobileChildAttendanceReservationEdit: true
+    employeeMobileChildAttendanceReservationEdit: true,
+    employeeMobileConfirmedDaysReservations: false
   }
 }
 
