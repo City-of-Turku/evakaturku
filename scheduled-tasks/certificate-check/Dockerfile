@@ -5,4 +5,4 @@
 FROM alpine:3.18.5
 RUN apk add --no-cache bash coreutils aws-cli jq
 ADD check.sh check.sh
-CMD ["./check.sh $ENVIRONMENT --check --notify"]
+CMD ./check.sh $ENVIRONMENT --check --notify
