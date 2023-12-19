@@ -3,6 +3,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
 
 FROM alpine:3.18.5
-RUN apk add --no-cache bash coreutils aws-cli jq
+RUN apk add --no-cache bash coreutils aws-cli jq openssl
 ADD check.sh check.sh
 CMD ./check.sh $ENVIRONMENT --check --notify
