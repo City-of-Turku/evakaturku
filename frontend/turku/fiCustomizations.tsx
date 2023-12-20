@@ -609,6 +609,7 @@ const fi: DeepPartial<Translations> = {
   },
   decisions: {
     assistanceDecisions: {
+      title: 'Päätös tuesta varhaiskasvatuksessa',
       decision: {
         jurisdiction: '',
         jurisdictionText: '',
