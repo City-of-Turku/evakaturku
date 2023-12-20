@@ -36,10 +36,29 @@ SELECT
             END
     )                                      AS henkilökuntaa_läsnä,
     (
+        SELECT count(*)
+		FROM child_attendance child_att
+		WHERE child_att.date = :date_val::DATE
+		    AND child_att.unit_id = d.id
+            AND EXISTS (
+                SELECT *
+                FROM daycare_group_placement dgp2
+                    JOIN placement p2 on p2.id = dgp2.daycare_placement_id
+                WHERE dgp2.daycare_group_id = dg.id
+                    AND p2.child_id = child_att.child_id
+                    AND dgp2.start_date <= :date_val::DATE
+                    AND :date_val::DATE <= dgp2.end_date)
+    )                                      AS lapsia_läsnä_ryhmässä,
+    (
+        SELECT COUNT(*)
+        FROM child_attendance child_att
+        WHERE child_att.date = :date_val::DATE AND child_att.unit_id = d.id
+    )                                      AS lapsia_läsnä_yksikössä,
+    (
         SELECT count(distinct p.child_id)
         FROM daycare_group_placement dgp
             JOIN placement p ON dgp.daycare_placement_id = p.id
-         WHERE dgp.daycare_group_id = dg.id
+        WHERE dgp.daycare_group_id = dg.id
             AND dgp.start_date <= :date_val::DATE
             AND :date_val::DATE <= dgp.end_date
     )                                      AS ryhmän_lapsimäärä,
