@@ -4,7 +4,7 @@ SPDX-FileCopyrightText: 2021 City of Turku
 SPDX-License-Identifier: LGPL-2.1-or-later
 -->
 
-# eVakaTurku
+# eVakaTurku 
 eVakaTurku aka eVaka Turku – ERP for early childhood education in Turku.
 
 This repository contains the code for customizing, configuring and extending the Espoo eVaka ERP for use in Turku early education. 
