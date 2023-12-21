@@ -225,7 +225,10 @@ then
     then
 	cat $TMPDIR/output
     else
-	aws sns publish --topic-arn $SNS_TOPIC_ARN --message file://$TMPDIR/output
+	echo "Expiring certificates in $ENVIRONMENT" > $TMPDIR/output2
+	echo >> $TMPDIR/output2
+	cat $TMPDIR/output >> $TMPDIR/output2
+	aws sns publish --topic-arn $SNS_TOPIC_ARN --message file://$TMPDIR/output2
     fi
 fi
 
