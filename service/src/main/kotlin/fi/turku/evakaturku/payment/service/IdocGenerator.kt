@@ -32,13 +32,13 @@ class IdocGenerator {
         val e1FIKPF = FIDCCP02.IDOC.E1FIKPF()
         e1FIKPF.segment = "1"
         e1FIKPF.bukrs = "1002"
-        val dateTimeFormatterYear = DateTimeFormatter.ofPattern("yyyy")
-        e1FIKPF.gjahr = payment.paymentDate?.format(dateTimeFormatterYear)
         e1FIKPF.blart = "KR"
         val dateTimeFormatterYearMonthDay = DateTimeFormatter.ofPattern("yyyyMMdd")
         e1FIKPF.bldat = payment.paymentDate?.format(dateTimeFormatterYearMonthDay)
         var previousMonth = payment.dueDate?.minusMonths(1)
         e1FIKPF.budat = previousMonth?.format(dateTimeFormatterYearMonthDay)
+        val dateTimeFormatterYear = DateTimeFormatter.ofPattern("yyyy")
+        e1FIKPF.gjahr = previousMonth?.format(dateTimeFormatterYear)
         val dateTimeFormatterMonth = DateTimeFormatter.ofPattern("MM")
         e1FIKPF.monat = previousMonth?.format(dateTimeFormatterMonth)
         val dateTimeFormatterE1FIKPFYearMonth = DateTimeFormatter.ofPattern("yyyyMM")
@@ -57,7 +57,7 @@ class IdocGenerator {
         e1FISEG.bschl = "31"
         e1FISEG.shkzg = "H"
         e1FISEG.wrbtr = String.format(Locale.ENGLISH, "%.2f", payment.amount.toDouble() / 100)
-        e1FISEG.sgtxt = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year
+        e1FISEG.sgtxt = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + previousMonth?.format(dateTimeFormatterYear)
         e1FISEG.xref3 = ""
         val e1FINBU = FIDCCP02.IDOC.E1FIKPF.E1FISEG.E1FINBU()
         e1FINBU.segment = "1"
@@ -77,7 +77,7 @@ class IdocGenerator {
         e1FISEG_2.mwskz = "P4"
         var daycareAmount = payment.amount - preSchoolAmount
         e1FISEG_2.wrbtr = String.format(Locale.ENGLISH, "%.2f", daycareAmount.toDouble() / 100)
-        val rowTextWithDaycareName = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + payment.paymentDate?.year + " " + payment.unit.name
+        val rowTextWithDaycareName = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + previousMonth?.format(dateTimeFormatterYear) + " " + payment.unit.name
         e1FISEG_2.sgtxt = rowTextWithDaycareName.substring(0, Math.min(rowTextWithDaycareName.length, 35))
         e1FISEG_2.kokrs = "1000"
         if (payment.unit.careType.contains(CareType.FAMILY)) {
