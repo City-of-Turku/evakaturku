@@ -42,3 +42,5 @@ run_query_and_send_file sql/DW-Fee_decisions.sql fee_decisions_3v_$DATE.csv $DAT
 run_query_and_send_file sql/DW-Voucher_value_decisions.sql voucher_value_decisions_3v_$DATE.csv $DATE
 run_query_and_send_file sql/DW-Assistance_need_decisions.sql assistance_need_decisions_3v_$DATE.csv $DATE
 run_query_and_send_file sql/DW-Child_aggregate.sql child_aggregate_3v_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Daily_units_occupancy_confirmed.sql daily_units_occupancy_confirmed_$DATE.csv $DATE
+run_query_and_send_file sql/DW-Daily_units_occupancy_realized.sql daily_units_occupancy_realized_$DATE.csv $DATE
