@@ -13,7 +13,7 @@ class IdocGenerator {
         val idoc = FIDCCP02.IDOC()
         idoc.begin = "1"
 
-        // EDI_DC40
+        // EDI_DC40 - first
         val edidc40 = FIDCCP02.IDOC.EDIDC40()
         edidc40.segment = "1"
         edidc40.tabnam = "EDI_DC40"
