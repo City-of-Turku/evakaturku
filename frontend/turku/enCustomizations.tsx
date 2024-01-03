@@ -173,7 +173,7 @@ const en: DeepPartial<Translations> = {
           info: {
             DAYCARE: [],
             PRESCHOOL: [
-              'Pre-primary education in Finnish and Swedish begins on 10 August 2023. If you need early childhood education and care to complement pre-primary education, you can apply for it under Early childhood education and care complementing pre-primary education. If a child transfers from private early childhood education and care to municipal, submit an application for supplementary early childhood education and care.'
+              'Pre-primary education in Finnish and Swedish begins on 8 August 2024. If you need early childhood education and care to complement pre-primary education, you can apply for it under Early childhood education and care complementing pre-primary education. If a child transfers from private early childhood education and care to municipal, submit an application for supplementary early childhood education and care.'
             ],
             CLUB: [
               'Open early childhood education and care clubs and playground activities follow as a rule the pre-primary education school and holiday periods. A child can participate in one open early childhood education and care service at a time, excluding clubs for families with children.'

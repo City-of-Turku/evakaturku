@@ -162,7 +162,7 @@ const fi: DeepPartial<Translations> = {
           info: {
             DAYCARE: [],
             PRESCHOOL: [
-              'Suomen- ja ruotsinkielinen esiopetus alkaa 10.8.2023. Jos tarvitsette esiopetukseen täydentävää varhaiskasvatusta, voitte hakea sitä kohdassa Esiopetuksen täydentävä varhaiskasvatus. Jos lapsi siirtyy yksityisestä varhaiskasvatuksesta kunnalliseen, tehkää hakemus täydentävään varhaiskasvatukseen.'
+              'Suomen- ja ruotsinkielinen esiopetus alkaa 8.8.2024. Jos tarvitsette esiopetukseen täydentävää varhaiskasvatusta, voitte hakea sitä kohdassa Esiopetuksen täydentävä varhaiskasvatus. Jos lapsi siirtyy yksityisestä varhaiskasvatuksesta kunnalliseen, tehkää hakemus täydentävään varhaiskasvatukseen.'
             ],
             CLUB: [
               'Avoimen varhaiskasvatuksen kerhot ja leikkipuistotoiminta noudattavat pääsääntöisesti esiopetuksen työ- ja loma-aikoja. Lapsi voi osallistua yhteen avoimen varhaiskasvatuspalveluun kerralla, poissulkien perhekerhot.'

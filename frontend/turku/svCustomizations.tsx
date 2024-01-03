@@ -166,7 +166,7 @@ const sv: DeepPartial<Translations> = {
           info: {
             DAYCARE: [],
             PRESCHOOL: [
-              'Den finsk- och svenskspråkiga förskoleundervisningen inleds den 10 augusti 2023. Ansök om kompletterande småbarnspedagogik för barn i förskoleåldern under punkten Kompletterande småbarnspedagogik för barn i förskoleåldern. Om barnet övergår från privat till kommunal småbarnspedagogik, ska du också göra en ansökan till kompletterande småbarnspedagogik.'
+              'Den finsk- och svenskspråkiga förskoleundervisningen inleds den 8 augusti 2024. Ansök om kompletterande småbarnspedagogik för barn i förskoleåldern under punkten Kompletterande småbarnspedagogik för barn i förskoleåldern. Om barnet övergår från privat till kommunal småbarnspedagogik, ska du också göra en ansökan till kompletterande småbarnspedagogik.'
             ],
             CLUB: [
               'Klubbarna och lekparksverksamheten som ingår i den öppna småbarnspedagogiken följer förskoleundervisningens arbets- och semestertider. Barnet kan delta i en verksamhet inom den öppna småbarnspedagogiken åt gången, med undantag för familjeklubbar.'
