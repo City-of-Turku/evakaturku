@@ -866,12 +866,7 @@ const sv: DeepPartial<Translations> = {
         </>
       )
     },
-    summary: (
-      <P width="800px">
-        På denna sida hittar du beslut och meddelanden som gäller barnets
-        ansökan till småbarnspedagogik och klubbverksamhet.
-      </P>
-    )
+    summary: <P width="800px">Alla barnets beslut kommer på denna sidan.</P>
   },
   income: {
     incomesRegisterConsent:

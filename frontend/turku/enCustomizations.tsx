@@ -888,8 +888,7 @@ const en: DeepPartial<Translations> = {
     },
     summary: (
       <P width="800px">
-        Decisions and notifications concerning early childhood education and
-        care and club applications are posted on this page.
+        This page displays the received decisions regarding your child.
       </P>
     )
   },

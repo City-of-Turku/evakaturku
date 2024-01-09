@@ -884,10 +884,7 @@ const fi: DeepPartial<Translations> = {
       )
     },
     summary: (
-      <P width="800px">
-        Tälle sivulle saapuvat lapsen varhaiskasvatus- ja kerhohakemuksiin
-        liittyvät päätökset ja ilmoitukset.
-      </P>
+      <P width="800px">Tälle sivulle saapuvat kaikki lapsen päätökset.</P>
     )
   },
   personalDetails: {
