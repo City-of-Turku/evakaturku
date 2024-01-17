@@ -324,6 +324,18 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             )
         }
+        Action.Unit.READ_ASSISTANCE_NEEDS_AND_ACTIONS_REPORT_BY_CHILD -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.ADMIN) as ScopedActionRule<in T>,
+            ) + sequenceOf(
+                HasUnitRole(
+                    UserRole.UNIT_SUPERVISOR,
+                    UserRole.SPECIAL_EDUCATION_TEACHER,
+                    UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY,
+                ).inUnit() as ScopedActionRule<in T>,
+            )
+        }
         else -> action.defaultRules.asSequence()
     }
 }
