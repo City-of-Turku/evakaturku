@@ -32,7 +32,8 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         Action.Global.READ_STARTING_PLACEMENTS_REPORT,
         Action.Global.READ_INCOME_TYPES,
         Action.Global.READ_INVOICE_CODES,
-        Action.Global.READ_EMPLOYEES
+        Action.Global.READ_EMPLOYEES,
+        Action.Global.READ_DOCUMENT_TEMPLATE
         -> {
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR)
@@ -151,7 +152,8 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         Action.Child.READ_GUARDIANS,
         Action.Child.READ_FEE_ALTERATIONS,
         Action.Child.READ_CHILD_RECIPIENTS,
-        Action.Child.READ_CHILD_CONSENTS -> {
+        Action.Child.READ_CHILD_CONSENTS,
+        Action.Child.READ_CHILD_DOCUMENT -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
@@ -334,6 +336,12 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                     UserRole.SPECIAL_EDUCATION_TEACHER,
                     UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY
                 ).inUnit() as ScopedActionRule<in T>
+            )
+        }
+        Action.ChildDocument.READ -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             )
         }
         else -> action.defaultRules.asSequence()
