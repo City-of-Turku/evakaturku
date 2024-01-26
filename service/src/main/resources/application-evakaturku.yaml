@@ -23,3 +23,10 @@ evaka:
     organizer_oid: "1.2.246.562.10.56820737825"
     organizer_id: "5"
     municipality_code: "853"
+  integration:
+    sfi:
+      contact_organization:
+        name: "eVaka Turku"
+        street_address: "PL 355"
+        postal_code: "20101"
+        post_office: "Turku"
