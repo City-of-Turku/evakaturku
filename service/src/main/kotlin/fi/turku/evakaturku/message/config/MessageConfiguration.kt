@@ -101,7 +101,7 @@ internal class EVakaTurkuMessageProvider(val messageSource: MessageSource) : IMe
     }
 
     private fun resolveLocale(lang: MessageLanguage): Locale {
-        return Locale(lang.name.lowercase())
+        return Locale.of(lang.name.lowercase())
     }
 }
 
