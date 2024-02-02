@@ -39,7 +39,6 @@ class EVakaTurkuConfig {
         assistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
         preschoolAssistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
         requestedStartUpperLimit = 14,
-        partialAbsenceThresholdsEnabled = false,
         preferredStartRelativeApplicationDueDate = true,
         postOffice = "TURKU",
         municipalMessageAccountName = "Turun kaupunki",
