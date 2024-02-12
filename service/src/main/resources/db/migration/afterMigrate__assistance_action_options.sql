@@ -7,7 +7,7 @@ INSERT INTO assistance_action_option
 VALUES
     ('10', 'Lapsikohtainen avustaja', NULL, 10),
     ('20', 'Ryhmäkohtainen avustaja', NULL, 20),
-    ('40', 'Tuen hoitaja', 'TH on resurssi, mitä ei lasketa suhdelukuun. Pedagogisesti vahvistettu ryhmä', 40),
+    ('40', 'Ryhmäkohtainen varhaiskasvatuksen lastenhoitaja (ei mitoitukseen laskettavat)', 'Resurssi, mitä ei lasketa suhdelukuun. Pedagogisesti vahvistettu ryhmä.', 40),
     ('50', 'Pienennetty ryhmä', 'Ryhmän rakenne: VO, LH ja avustaja tai TH. Lapsiluku 13 kpl, joista kolmella lapsella tuen tarve', 50),
     ('60', 'Alueellinen integroitu ryhmä', 'Ryhmän rakenne: VEO/VO, VO ja kaksi LH. Lapsiluku 14 kpl, joista viidellä tuen tarve', 60),
     ('70', 'Erityisryhmä', 'Sarat-ryhmä. Ryhmän rakenne: VO, SH ja kaksi LH. Lapsiluku 8 kpl, joista kaikilla erityisen tuen tarve', 70),
