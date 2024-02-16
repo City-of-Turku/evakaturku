@@ -805,7 +805,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         )
     }
 
-    override fun outdatedIncomeNotification(
+    override fun incomeNotification(
         notificationType: IncomeNotificationType,
         language: Language
     ): EmailContent {
@@ -813,6 +813,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             IncomeNotificationType.INITIAL_EMAIL -> outdatedIncomeNotificationInitial()
             IncomeNotificationType.REMINDER_EMAIL -> outdatedIncomeNotificationReminder()
             IncomeNotificationType.EXPIRED_EMAIL -> outdatedIncomeNotificationExpired()
+            IncomeNotificationType.NEW_CUSTOMER -> newCustomerIncomeNotification()
         }
     }
 
@@ -1000,6 +1001,73 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Income information: ${incomeLink(Language.en)}</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>  
+                $unsubscribeEn
+            """
+                .trimIndent()
+        )
+    }
+
+    fun newCustomerIncomeNotification(): EmailContent {
+        return EmailContent(
+            subject =
+            "Tulotietojen tarkastuskehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
+            text =
+            """
+                Hyvä asiakkaamme
+                
+                Lapsenne on aloittamassa varhaiskasvatuksessa tämän kuukauden aikana. Pyydämme teitä toimittamaan tulotiedot eVaka-järjestelmän kautta tämän kuukauden loppuun mennessä.
+                
+                Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi
+                
+                Tulotiedot: ${incomeLink(Language.fi)}
+                
+                Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
+                
+                -----
+                
+                Bästä klient
+                
+                Ditt barn börjar småbarnspedagogiken under den här månaden. Vi ber dig att lämna in din inkomstinformation via eVaka-systemet senast i slutet av denna månad.
+                
+                Mer information: varhaiskasvatusmaksut@turku.fi
+                
+                Inkomstuppgifterna: ${incomeLink(Language.sv)}
+                
+                Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.
+                
+                -----
+                
+                Dear client
+                
+                Your child is starting early childhood education during this month. We ask you to submit your income information via eVaka system by the end of this month.
+                
+                Inquiries: varhaiskasvatusmaksut@turku.fi
+                
+                Income information: ${incomeLink(Language.en)}
+                
+                This is an automatic message from the eVaka system. Do not reply to this message.
+            """.trimIndent(),
+            html =
+            """
+                <p>Hyvä asiakkaamme</p>
+                <p>Lapsenne on aloittamassa varhaiskasvatuksessa tämän kuukauden aikana. Pyydämme teitä toimittamaan tulotiedot eVaka-järjestelmän kautta tämän kuukauden loppuun mennessä.</p>
+                <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
+                <p>Tulotiedot: ${incomeLink(Language.fi)}</p>
+                <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+                $unsubscribeFi
+                <hr>
+                <p>Bästä klient</p>
+                <p>Ditt barn börjar småbarnspedagogiken under den här månaden. Vi ber dig att lämna in din inkomstinformation via eVaka-systemet senast i slutet av denna månad.</p>
+                <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
+                <p>Inkomstuppgifterna: ${incomeLink(Language.sv)}</p>
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
+                $unsubscribeSv
+                <hr>
+                <p>Dear client</p>
+                <p>Your child is starting early childhood education during this month. We ask you to submit your income information via eVaka system by the end of this month.</p>
+                <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
+                <p>Income information: ${incomeLink(Language.en)}</p>
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $unsubscribeEn
             """
                 .trimIndent()
