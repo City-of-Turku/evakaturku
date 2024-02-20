@@ -23,7 +23,7 @@ See [eVaka README](evaka/compose/README.md#Dependencies)
 
 ## Running eVakaTurku frontend tests
 
-### e2e ([Playwright](https://playwright.dev/))
+### e2e ([Playwright](https://playwright.dev/)):
 
 1. Start eVakaTurku dev environment
 2. `cd frontend`
