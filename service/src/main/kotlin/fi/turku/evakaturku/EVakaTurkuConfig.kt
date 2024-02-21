@@ -43,7 +43,8 @@ class EVakaTurkuConfig {
         postOffice = "TURKU",
         municipalMessageAccountName = "Turun kaupunki",
         serviceWorkerMessageAccountName = "Turun kaupunki",
-        applyPlacementUnitFromDecision = false
+        applyPlacementUnitFromDecision = false,
+        fiveYearsOldDaycareEnabled = false
     )
 
     @Bean
