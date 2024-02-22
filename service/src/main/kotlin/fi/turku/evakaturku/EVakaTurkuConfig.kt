@@ -3,6 +3,7 @@ package fi.turku.evakaturku
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.espoo.evaka.invoicing.service.DefaultInvoiceGenerationLogic
 import fi.espoo.evaka.logging.defaultAccessLoggingValve
+import fi.espoo.evaka.lookup
 import fi.espoo.evaka.shared.FeatureConfig
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.espoo.evaka.shared.security.actionrule.ActionRuleMapping
@@ -22,7 +23,7 @@ import org.springframework.core.env.Environment
 class EVakaTurkuConfig {
 
     @Bean
-    fun featureConfig(): FeatureConfig = FeatureConfig(
+    fun featureConfig(env: Environment): FeatureConfig = FeatureConfig(
         valueDecisionCapacityFactorEnabled = false,
         daycareApplicationServiceNeedOptionsEnabled = false,
         citizenReservationThresholdHours = 6 * 24 + 12, // Mon 12:00
@@ -44,7 +45,7 @@ class EVakaTurkuConfig {
         municipalMessageAccountName = "Turun kaupunki",
         serviceWorkerMessageAccountName = "Turun kaupunki",
         applyPlacementUnitFromDecision = false,
-        fiveYearsOldDaycareEnabled = false
+        fiveYearsOldDaycareEnabled = env.lookup("evaka.five_years_old_daycare.enabled") ?: false
     )
 
     @Bean
