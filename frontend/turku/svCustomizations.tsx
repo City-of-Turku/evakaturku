@@ -610,8 +610,8 @@ const sv: DeepPartial<Translations> = {
       title: 'Beslut om behov av stöd inom småbarnspedagogik',
       decision: {
         pageTitle: 'Beslut om behov av stöd inom småbarnspedagogik',
-        jurisdiction: '',
-        jurisdictionText: '',
+        jurisdiction: 'Befogenhet',
+        jurisdictionText: 'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
         unitMayChange: 'Enheten kan ändras under semestertider',
         appealInstructionsTitle: 'Anvisning om hur man begär omprövning',
         appealInstructions: (
@@ -740,8 +740,8 @@ const sv: DeepPartial<Translations> = {
       }
     },
     assistancePreschoolDecisions: {
-      jurisdiction: '',
-      jurisdictionText: '',
+      jurisdiction: 'Befogenhet',
+      jurisdictionText: 'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
       appealInstructions: (
         <>
           <H3>Anvisning om hur man begär omprövning</H3>

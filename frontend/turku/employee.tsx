@@ -167,8 +167,8 @@ const customizations: EmployeeCustomizations = {
             'Kirjaa tähän millä keinoin huoltajaa on kuultu (esim. palaveri, etäyhteys, huoltajan kirjallinen vastine). Jos huoltajaa ei ole kuultu, kirjaa tähän selvitys siitä, miten ja milloin hänet on kutsuttu kuultavaksi, ja miten ja milloin lapsen varhaiskasvatussuunnitelma on annettu huoltajalle tiedoksi. Kaikilla lapsen huoltajilla tulee olla mahdollisuus tulla kuulluksi.',
           viewOfTheGuardiansInfo:
             'Kirjaa tähän huoltajien näkemys lapselle esitetystä tuesta.',
-          jurisdiction: '',
-          jurisdictionText: '',
+          jurisdiction: 'Toimivalta',
+          jurisdictionText: 'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
           unitMayChange: 'Loma-aikoina tuen järjestämispaikka saattaa muuttua.',
           appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
           appealInstructions: (
@@ -346,8 +346,8 @@ const customizations: EmployeeCustomizations = {
               </p>
             </div>
           ),
-          jurisdiction: '',
-          jurisdictionText: '',
+          jurisdiction: 'Toimivalta',
+          jurisdictionText: 'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
           appealInstructions: (
             <>
               <H3>Oikaisuvaatimusohjeet</H3>
@@ -561,8 +561,8 @@ const customizations: EmployeeCustomizations = {
             'Ange här på vilket sätt vårdnadshavaren rådfrågades (t.ex. möte, distanskontakt, skriftligt svar från vårdnadshavaren). Om vårdnadshavaren inte rådfrågades, ange här en förklaring av hur och när han eller hon bjöds in till utfrågningen och hur och när planen för småbarnspedagogik meddelades vårdnadshavaren. Alla vårdnadshavare måste få möjlighet att höras.',
           viewOfTheGuardiansInfo:
             'Anteckna här vårdnadshavarnas syn på det stöd som ges till barnet.',
-          jurisdiction: '',
-          jurisdictionText: '',
+          jurisdiction: 'Befogenhet',
+          jurisdictionText: 'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
           unitMayChange: 'Enheten kan ändras under semestertider',
           appealInstructions: (
             <>
@@ -732,8 +732,8 @@ const customizations: EmployeeCustomizations = {
               </p>
             </div>
           ),
-          jurisdiction: '',
-          jurisdictionText: '',
+          jurisdiction: 'Befogenhet',
+          jurisdictionText: 'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
           appealInstructions: (
             <>
               <H3>Anvisning om hur man begär omprövning</H3>
