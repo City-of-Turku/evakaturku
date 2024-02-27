@@ -72,7 +72,7 @@ const features: Features = {
     timeUsageInfo:true
   },
   prod: {
-    citizenShiftCareAbsence: true,
+    citizenShiftCareAbsence: false,
     assistanceActionOther: true,
     daycareApplication: {
       dailyTimes: true
