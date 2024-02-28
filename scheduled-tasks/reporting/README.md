@@ -131,6 +131,7 @@ NOTE refactor proposal: Should this be normalized regarding daycare and preschoo
 * tuentarve_esiop_loppu_pvm
 
 The above listed daycare and preschool assistance fields could be normalized into dedicated DW reports like in [eVaka Oulu](https://github.com/Oulunkaupunki/evakaoulu/blob/main/scheduled-tasks/reporting/sql):
+* This change should be proposed to DW representatives, if they would benefit from this change
 * [Preschool assistance report](https://github.com/Oulunkaupunki/evakaoulu/blob/main/scheduled-tasks/reporting/sql/DW-Preschool_assistances.sql)
 * [Daycare assistance report](https://github.com/Oulunkaupunki/evakaoulu/blob/main/scheduled-tasks/reporting/sql/DW-Daycare_assistances.sql)
 
