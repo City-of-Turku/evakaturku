@@ -16,23 +16,27 @@ Assistance need decisions -report contains all decisions from the last three yea
 SQL script: [DW-Assistance_need_decisions.sql](./sql/DW-Assistance_need_decisions.sql)
 
 Fields in csv -report:
-* aikaleima                     
-* päätos_tuesta                    
-* lapsen_id                        
-* tuen_alkupvm                     
-* tuen_loppupvm                    
-* pienennetty_ryhmä                
-* erityisryhmä                     
-* pienryhmä                        
-* ryhmäkohtainen_avustaja          
-* lapsikohtainen_avustaja          
-* henkilöresurssien_lisäys         
-* veon_antama_konsultaatio         
-* veon_osa_aikainen_opetus         
-* veon_kokoaikainen_opetus         
-* tulkitsemis_ja_avustamispalvelut
-* apuvälineet                      
-* tuen_taso
+
+| Name                              | Type   |
+|-----------------------------------|--------|
+| aikaleima                         |        |
+| päätos_tuesta                     |        |
+| päätos_tuesta                     |        |
+| lapsen_id                         |        |
+| tuen_alkupvm                      |        |
+| tuen_loppupvm                     |        |
+| pienennetty_ryhmä                 |        |
+| erityisryhmä                      |        |
+| pienryhmä                         |        |
+| ryhmäkohtainen_avustaja           |        |
+| lapsikohtainen_avustaja           |        |
+| henkilöresurssien_lisäys          |        |
+| veon_antama_konsultaatio          |        |
+| veon_osa_aikainen_opetus          |        |
+| veon_kokoaikainen_opetus          |        |
+| tulkitsemis_ja_avustamispalvelut  |        |
+| apuvälineet                       |        |
+| tuen_taso                         |        |
              
 
 ### Child aggregate
@@ -41,15 +45,18 @@ This child aggregate report aims to gather all child information that are presen
 SQL script: [DW-Child_aggregate.sql](./sql/DW-Child_aggregate.sql) 
           
 Fields in csv -report:
-* pvm                
-* lapsen_id        
-* henkilöturvatunnus
-* syntymäaika      
-* kieli            
-* postiosoite      
-* postinumero      
-* postitoimipaikka 
-* kansalaisuudet  
+
+| Name                | Type   |
+|---------------------|--------|
+| pvm                 |        |
+| lapsen_id           |        |
+| henkilöturvatunnus  |        |
+| syntymäaika         |        |
+| kieli               |        |
+| postiosoite         |        |
+| postinumero         |        |
+| postitoimipaikka    |        |
+| kansalaisuudet      |        |
 
 
 ### Daily info
@@ -58,57 +65,60 @@ Daily info contains -report contains all placement related data per child from t
 SQL script: [DW-Daily_info.sql](./sql/DW-Daily_info.sql)
 
 Fields in csv -report:
-* pvm                               
-* lapsen_id                          
-* henkilöturvatunnus                 
-* syntymäaika                        
-* kieli                              
-* postiosoite                        
-* postinumero                        
-* postitoimipaikka                   
-* kansalaisuudet                     
-* sijoitustyyppi                     
-* sijoitusyksikkö_id                 
-* sijoituksen_aloitus_pvm            
-* sijoituksen_loppu_pvm            
-* yksikön_nimi                       
-* palvelualue_id                     
-* palvelualue                        
-* toimintamuoto                      
-* järjestämistapa                    
-* kustannuspaikka                    
-* sijoitusryhmä_aloitus_pvm          
-* sijoitysryhmä_loppu_pvm            
-* sijoitusryhmä_id                   
-* sijoitusryhmä                      
-* varahoitoyksikkö_id                
-* varahoitoyksikkö_aloitus_pvm       
-* varahoitoyksikkö_loppu_pvm         
-* varahoitoyksikkö                   
-* varahoitoryhmä_id                  
-* varahoitoryhmä                     
-* palveluntarve_merkitty             
-* palveluntarve                      
-* palveluntarve_id                   
-* osapäiväinen                       
-* osaviikkoinen                      
-* palveluntarpeen_aloitus_pvm        
-* palveluntarpeen_loppu_pvm          
-* vuorohoito                         
-* tunteja_viikossa                   
-* tuentarve_varhaiskasvatuksessa     
-* tuentarve_varha_aloitus_pvm        
-* tuentarve_varha_loppu_pvm          
-* tuentarve_esiopetuksessa           
-* tuentarve_esiop_aloitus_pvm       
-* tuentarve_esiop_loppu_pvm          
-* tuentarpeen_kerroin                
-* kerroin_aloitus_pvm                
-* kerroin_loppu_pvm                
-* lapsen_kapasiteetti            
-* kapasiteetti_aloitus_pvm        
-* kapasiteetti_loppu_pvm
-* poissaolon_syy
+
+| Name                           | Type   |
+|--------------------------------|--------|
+| pvm                            |        |
+| lapsen_id                      |        |
+| henkilöturvatunnus             |        |
+| syntymäaika                    |        |
+| kieli                          |        |
+| postiosoite                    |        |
+| postinumero                    |        |
+| postitoimipaikka               |        |
+| kansalaisuudet                 |        |
+| sijoitustyyppi                 |        |
+| sijoitusyksikkö_id             |        |
+| sijoituksen_aloitus_pvm        |        |
+| sijoituksen_loppu_pvm          |        |
+| yksikön_nimi                   |        |
+| palvelualue_id                 |        |
+| palvelualue                    |        |
+| toimintamuoto                  |        |
+| järjestämistapa                |        |
+| kustannuspaikka                |        |
+| sijoitusryhmä_aloitus_pvm      |        |
+| sijoitysryhmä_loppu_pvm        |        |
+| sijoitusryhmä_id               |        |
+| sijoitusryhmä                  |        |
+| varahoitoyksikkö_id            |        |
+| varahoitoyksikkö_aloitus_pvm   |        |
+| varahoitoyksikkö_loppu_pvm     |        |
+| varahoitoyksikkö               |        |
+| varahoitoryhmä_id              |        |
+| varahoitoryhmä                 |        |
+| palveluntarve_merkitty         |        |
+| palveluntarve                  |        |
+| palveluntarve_id               |        |
+| osapäiväinen                   |        |
+| osaviikkoinen                  |        |
+| palveluntarpeen_aloitus_pvm    |        |
+| palveluntarpeen_loppu_pvm      |        |
+| vuorohoito                     |        |
+| tunteja_viikossa               |        |
+| tuentarve_varhaiskasvatuksessa |        |
+| tuentarve_varha_aloitus_pvm    |        |
+| tuentarve_varha_loppu_pvm      |        |
+| tuentarve_esiopetuksessa       |        |
+| tuentarve_esiop_aloitus_pvm    |        |
+| tuentarve_esiop_loppu_pvm      |        |
+| tuentarpeen_kerroin            |        |
+| kerroin_aloitus_pvm            |        |
+| kerroin_loppu_pvm              |        |
+| lapsen_kapasiteetti            |        |
+| kapasiteetti_aloitus_pvm       |        |
+| kapasiteetti_loppu_pvm         |        |
+| poissaolon_syy                 |        |
 
 
 ### Daily units and groups attendance
@@ -117,23 +127,26 @@ Daily units and groups attendance -report contains daily aggregated staff and ch
 SQL script: [DW-Daily_units_and_groups_attendance.sql](./sql/DW-Daily_units_and_groups_attendance.sql)
 
 Fields in csv -report:
-* aikaleima
-* poiminta_ajalta_pvm
-* toimintayksikkö
-* toimintayksikkö_id
-* toimintayksikön_lapsimäärä
-* toimintayksikön_lapsimäärä_ed_kuun_lopussa
-* ryhmä
-* ryhmä_id
-* henkilökuntaa_ryhmässä
-* henkilökuntaa_läsnä
-* lapsia_läsnä_ryhmässä
-* laskennallinen_lapsia_läsnä_ryhmässä
-* lapsia_läsnä_yksikössä
-* ryhmän_lapsimäärä
-* laskennallinen_ryhmän_lapsimäärä
-* ryhmän_lapsimäärä_ed_kuun_lopussa
-    
+
+| Name                                       | Type   |
+|--------------------------------------------|--------|
+| aikaleima                                  |        |
+| poiminta_ajalta_pvm                        |        |
+| toimintayksikkö                            |        |
+| toimintayksikkö_id                         |        |
+| toimintayksikön_lapsimäärä                 |        |
+| toimintayksikön_lapsimäärä_ed_kuun_lopussa |        |
+| ryhmä                                      |        |
+| ryhmä_id                                   |        |
+| henkilökuntaa_ryhmässä                     |        |
+| henkilökuntaa_läsnä                        |        |
+| lapsia_läsnä_ryhmässä                      |        |
+| laskennallinen_lapsia_läsnä_ryhmässä       |        |
+| lapsia_läsnä_yksikössä                     |        |
+| ryhmän_lapsimäärä                          |        |
+| laskennallinen_ryhmän_lapsimäärä           |        |
+| ryhmän_lapsimäärä_ed_kuun_lopussa          |        |
+
 
 ### Fee decicions
 Fee decisions -report contains all sent (status = SENT) fee decisions from the last three years.
@@ -141,22 +154,25 @@ Fee decisions -report contains all sent (status = SENT) fee decisions from the l
 SQL script: [DW-Fee_decisions.sql](./sql/DW-Fee_decisions.sql)
 
 Fields in csv -report:
-* aikaleima 
-* maksupäätöksen_numero
-* maksupäätös_id
-* alkupvm
-* loppupvm
-* huojennustyyppi
-* perhekoko
-* kokonaismaksu
-* lapsi_id
-* lapsikohtainen_maksu
-* toimintamuoto
-* palvelualue
-* palvelualue_id
-* toimipaikka
-* toimipaikka_id
-* kustannuspaikka
+
+| Name                  | Type   |
+|-----------------------|--------|
+| aikaleima             |        |
+| maksupäätöksen_numero |        |
+| maksupäätös_id        |        |
+| alkupvm               |        |
+| loppupvm              |        |
+| huojennustyyppi       |        |
+| perhekoko             |        |
+| kokonaismaksu         |        |
+| lapsi_id              |        |
+| lapsikohtainen_maksu  |        |
+| toimintamuoto         |        |
+| palvelualue           |        |
+| palvelualue_id        |        |
+| toimipaikka           |        |
+| toimipaikka_id        |        |
+| kustannuspaikka       |        |
         
 
 ### Units and groups
@@ -165,23 +181,26 @@ Units and groups -report gathers general daycare unit and group information from
 SQL script: [DW-Units_and_groups.sql](./sql/DW-Units_and_groups.sql)
 
 Fields in csv -report:
-* aikaleima               
-* toimintayksikkö         
-* toimintayksikkö_id      
-* toimintayksikön_alkupvm
-* toimintayksikön_loppupvm
-* toimintamuoto           
-* järjestämistapa         
-* palvelualue             
-* palvelualue_id          
-* dw_kustannuspaikka
-* toimintayksikön_lapsimäärä
-* ryhmä                      
-* ryhmä_id                   
-* ryhmän_alkupvm             
-* ryhmän_loppupvm
-* henkilökuntaa_ryhmässä_viim
-* ryhmän_lapsimäärä
+
+| Name                        | Type   |
+|-----------------------------|--------|
+| aikaleima                   |        |
+| toimintayksikkö             |        |
+| toimintayksikkö_id          |        |
+| toimintayksikön_alkupvm     |        |
+| toimintayksikön_loppupvm    |        |
+| toimintamuoto               |        |
+| järjestämistapa             |        |
+| palvelualue                 |        |
+| palvelualue_id              |        |
+| dw_kustannuspaikka          |        |
+| toimintayksikön_lapsimäärä  |        |
+| ryhmä                       |        |
+| ryhmä_id                    |        |
+| ryhmän_alkupvm              |        |
+| ryhmän_loppupvm             |        |
+| henkilökuntaa_ryhmässä_viim |        |
+| ryhmän_lapsimäärä           |        |
 
 
 ### Voucher value decisions
@@ -190,17 +209,20 @@ Voucher value decisions -report contains all sent (status = SENT) voucher value 
 SQL script: [DW-Voucher_value_decisions](./sql/DW-Voucher_value_decisions)
 
 Fields in csv -report:
-* aikaleima,           
-* arvopäätöksen_numero,
-* alkupvm,             
-* loppupvm,            
-* huojennustyyppi,     
-* perhekoko,           
-* palvelusetelin_arvo,
-* omavastuuosuus,      
-* lapsen_id,           
-* toimintamuoto,       
-* palvelualue,         
-* palvelualue_id,      
-* toimipaikka,         
-* toimipaikka_id       
+
+| Name                 | Type   |
+|----------------------|--------|
+| aikaleima            |        |
+| arvopäätöksen_numero |        |
+| alkupvm              |        |
+| loppupvm             |        |
+| huojennustyyppi      |        |
+| perhekoko            |        |
+| palvelusetelin_arvo  |        |
+| omavastuuosuus       |        |
+| lapsen_id            |        |
+| toimintamuoto        |        |
+| palvelualue          |        |
+| palvelualue_id       |        |
+| toimipaikka          |        |
+| toimipaikka_id       |        | 
