@@ -17,26 +17,25 @@ SQL script: [DW-Assistance_need_decisions.sql](./sql/DW-Assistance_need_decision
 
 Fields in csv -report:
 
-| Name                              | Type   |
-|-----------------------------------|--------|
-| aikaleima                         |        |
-| päätos_tuesta                     |        |
-| päätos_tuesta                     |        |
-| lapsen_id                         |        |
-| tuen_alkupvm                      |        |
-| tuen_loppupvm                     |        |
-| pienennetty_ryhmä                 |        |
-| erityisryhmä                      |        |
-| pienryhmä                         |        |
-| ryhmäkohtainen_avustaja           |        |
-| lapsikohtainen_avustaja           |        |
-| henkilöresurssien_lisäys          |        |
-| veon_antama_konsultaatio          |        |
-| veon_osa_aikainen_opetus          |        |
-| veon_kokoaikainen_opetus          |        |
-| tulkitsemis_ja_avustamispalvelut  |        |
-| apuvälineet                       |        |
-| tuen_taso                         |        |
+| Name                              | Type                                                         |
+|-----------------------------------|--------------------------------------------------------------|
+| aikaleima                         | timestamp                                                    |
+| päätos_tuesta                     | Number                                                       |
+| lapsen_id                         | UUID                                                         |
+| tuen_alkupvm                      | Date                                                         |
+| tuen_loppupvm                     | Date                                                         |
+| pienennetty_ryhmä                 | Boolean                                                      |
+| erityisryhmä                      | Boolean                                                      |
+| pienryhmä                         | Boolean                                                      |
+| ryhmäkohtainen_avustaja           | Boolean                                                      |
+| lapsikohtainen_avustaja           | Boolean                                                      |
+| henkilöresurssien_lisäys          | Boolean                                                      |
+| veon_antama_konsultaatio          | Boolean                                                      |
+| veon_osa_aikainen_opetus          | Boolean                                                      |
+| veon_kokoaikainen_opetus          | Boolean                                                      |
+| tulkitsemis_ja_avustamispalvelut  | Boolean                                                      |
+| apuvälineet                       | Boolean                                                      |
+| tuen_taso                         | Enum: fi.espoo.evaka.assistanceneed.decision.AssistanceLevel |
              
 
 ### Child aggregate
@@ -46,17 +45,17 @@ SQL script: [DW-Child_aggregate.sql](./sql/DW-Child_aggregate.sql)
           
 Fields in csv -report:
 
-| Name                | Type   |
-|---------------------|--------|
-| pvm                 |        |
-| lapsen_id           |        |
-| henkilöturvatunnus  |        |
-| syntymäaika         |        |
-| kieli               |        |
-| postiosoite         |        |
-| postinumero         |        |
-| postitoimipaikka    |        |
-| kansalaisuudet      |        |
+| Name                | Type      |
+|---------------------|-----------|
+| pvm                 | timestamp |
+| lapsen_id           | UUID      |
+| henkilöturvatunnus  | String    |
+| syntymäaika         | Date      |
+| kieli               | String    |
+| postiosoite         | String    |
+| postinumero         | String    |
+| postitoimipaikka    | String    |
+| kansalaisuudet      | String[]  |
 
 
 ### Daily info
@@ -66,59 +65,59 @@ SQL script: [DW-Daily_info.sql](./sql/DW-Daily_info.sql)
 
 Fields in csv -report:
 
-| Name                           | Type   |
-|--------------------------------|--------|
-| pvm                            |        |
-| lapsen_id                      |        |
-| henkilöturvatunnus             |        |
-| syntymäaika                    |        |
-| kieli                          |        |
-| postiosoite                    |        |
-| postinumero                    |        |
-| postitoimipaikka               |        |
-| kansalaisuudet                 |        |
-| sijoitustyyppi                 |        |
-| sijoitusyksikkö_id             |        |
-| sijoituksen_aloitus_pvm        |        |
-| sijoituksen_loppu_pvm          |        |
-| yksikön_nimi                   |        |
-| palvelualue_id                 |        |
-| palvelualue                    |        |
-| toimintamuoto                  |        |
-| järjestämistapa                |        |
-| kustannuspaikka                |        |
-| sijoitusryhmä_aloitus_pvm      |        |
-| sijoitysryhmä_loppu_pvm        |        |
-| sijoitusryhmä_id               |        |
-| sijoitusryhmä                  |        |
-| varahoitoyksikkö_id            |        |
-| varahoitoyksikkö_aloitus_pvm   |        |
-| varahoitoyksikkö_loppu_pvm     |        |
-| varahoitoyksikkö               |        |
-| varahoitoryhmä_id              |        |
-| varahoitoryhmä                 |        |
-| palveluntarve_merkitty         |        |
-| palveluntarve                  |        |
-| palveluntarve_id               |        |
-| osapäiväinen                   |        |
-| osaviikkoinen                  |        |
-| palveluntarpeen_aloitus_pvm    |        |
-| palveluntarpeen_loppu_pvm      |        |
-| vuorohoito                     |        |
-| tunteja_viikossa               |        |
-| tuentarve_varhaiskasvatuksessa |        |
-| tuentarve_varha_aloitus_pvm    |        |
-| tuentarve_varha_loppu_pvm      |        |
-| tuentarve_esiopetuksessa       |        |
-| tuentarve_esiop_aloitus_pvm    |        |
-| tuentarve_esiop_loppu_pvm      |        |
-| tuentarpeen_kerroin            |        |
-| kerroin_aloitus_pvm            |        |
-| kerroin_loppu_pvm              |        |
-| lapsen_kapasiteetti            |        |
-| kapasiteetti_aloitus_pvm       |        |
-| kapasiteetti_loppu_pvm         |        |
-| poissaolon_syy                 |        |
+| Name                           | Type                                                       |
+|--------------------------------|------------------------------------------------------------|
+| pvm                            | timestamp                                                  |
+| lapsen_id                      | UUID                                                       |
+| henkilöturvatunnus             | String                                                     |
+| syntymäaika                    | Date                                                       |
+| kieli                          | String                                                     |
+| postiosoite                    | String                                                     |
+| postinumero                    | String                                                     |
+| postitoimipaikka               | String                                                     |
+| kansalaisuudet                 | String[]                                                   |
+| sijoitustyyppi                 | Enum: fi.espoo.evaka.placement.PlacementType               |
+| sijoitusyksikkö_id             | UUID                                                       |
+| sijoituksen_aloitus_pvm        | Date                                                       |
+| sijoituksen_loppu_pvm          | Date                                                       |
+| yksikön_nimi                   | String                                                     |
+| palvelualue_id                 | UUID                                                       |
+| palvelualue                    | String                                                     |
+| toimintamuoto                  | Enum: fi.espoo.evaka.daycare.CareType                      |
+| järjestämistapa                | Enum: fi.espoo.evaka.daycare.domain.ProviderType           |
+| kustannuspaikka                | String                                                     |
+| sijoitusryhmä_aloitus_pvm      | Date                                                       |
+| sijoitysryhmä_loppu_pvm        | Date                                                       |
+| sijoitusryhmä_id               | UUID                                                       |
+| sijoitusryhmä                  | String                                                     |
+| varahoitoyksikkö_id            | UUID                                                       |
+| varahoitoyksikkö_aloitus_pvm   | Date                                                       |
+| varahoitoyksikkö_loppu_pvm     | Date                                                       |
+| varahoitoyksikkö               | String                                                     |
+| varahoitoryhmä_id              | UUID                                                       |
+| varahoitoryhmä                 | String                                                     |
+| palveluntarve_merkitty         | Boolean                                                    |
+| palveluntarve                  | String                                                     |
+| palveluntarve_id               | UUID                                                       |
+| osapäiväinen                   | Boolean                                                    |
+| osaviikkoinen                  | Boolean                                                    |
+| palveluntarpeen_aloitus_pvm    | Date                                                       |
+| palveluntarpeen_loppu_pvm      | Date                                                       |
+| vuorohoito                     | Enum: fi.espoo.evaka.serviceneed.ShiftCareType             |
+| tunteja_viikossa               | Number                                                     |
+| tuentarve_varhaiskasvatuksessa | Enum: fi.espoo.evaka.assistance.DaycareAssistanceLevel     |
+| tuentarve_varha_aloitus_pvm    | Date                                                       |
+| tuentarve_varha_loppu_pvm      | Date                                                       |
+| tuentarve_esiopetuksessa       | Enum: fi.espoo.evaka.assistance.OtherAssistanceMeasureType |
+| tuentarve_esiop_aloitus_pvm    | Date                                                       |
+| tuentarve_esiop_loppu_pvm      | Date                                                       |
+| tuentarpeen_kerroin            | Number                                                     |
+| kerroin_aloitus_pvm            | Date                                                       |
+| kerroin_loppu_pvm              | Date                                                       |
+| lapsen_kapasiteetti            | Number                                                     |
+| kapasiteetti_aloitus_pvm       | Date                                                       |
+| kapasiteetti_loppu_pvm         | Date                                                       |
+| poissaolon_syy                 | Enum: fi.espoo.evaka.absence.AbsenceType                   |
 
 
 ### Daily units and groups attendance
@@ -128,24 +127,24 @@ SQL script: [DW-Daily_units_and_groups_attendance.sql](./sql/DW-Daily_units_and_
 
 Fields in csv -report:
 
-| Name                                       | Type   |
-|--------------------------------------------|--------|
-| aikaleima                                  |        |
-| poiminta_ajalta_pvm                        |        |
-| toimintayksikkö                            |        |
-| toimintayksikkö_id                         |        |
-| toimintayksikön_lapsimäärä                 |        |
-| toimintayksikön_lapsimäärä_ed_kuun_lopussa |        |
-| ryhmä                                      |        |
-| ryhmä_id                                   |        |
-| henkilökuntaa_ryhmässä                     |        |
-| henkilökuntaa_läsnä                        |        |
-| lapsia_läsnä_ryhmässä                      |        |
-| laskennallinen_lapsia_läsnä_ryhmässä       |        |
-| lapsia_läsnä_yksikössä                     |        |
-| ryhmän_lapsimäärä                          |        |
-| laskennallinen_ryhmän_lapsimäärä           |        |
-| ryhmän_lapsimäärä_ed_kuun_lopussa          |        |
+| Name                                       | Type      |
+|--------------------------------------------|-----------|
+| aikaleima                                  | timestamp |
+| poiminta_ajalta_pvm                        | Date      |
+| toimintayksikkö                            | String    |
+| toimintayksikkö_id                         | UUID      |
+| toimintayksikön_lapsimäärä                 | Number    |
+| toimintayksikön_lapsimäärä_ed_kuun_lopussa | Number    |
+| ryhmä                                      | String    |
+| ryhmä_id                                   | UUID      |
+| henkilökuntaa_ryhmässä                     | Number    |
+| henkilökuntaa_läsnä                        | Number    |
+| lapsia_läsnä_ryhmässä                      | Number    |
+| laskennallinen_lapsia_läsnä_ryhmässä       | Number    |
+| lapsia_läsnä_yksikössä                     | Number    |
+| ryhmän_lapsimäärä                          | Number    |
+| laskennallinen_ryhmän_lapsimäärä           | Number    |
+| ryhmän_lapsimäärä_ed_kuun_lopussa          | Number    |
 
 
 ### Fee decicions
@@ -155,24 +154,24 @@ SQL script: [DW-Fee_decisions.sql](./sql/DW-Fee_decisions.sql)
 
 Fields in csv -report:
 
-| Name                  | Type   |
-|-----------------------|--------|
-| aikaleima             |        |
-| maksupäätöksen_numero |        |
-| maksupäätös_id        |        |
-| alkupvm               |        |
-| loppupvm              |        |
-| huojennustyyppi       |        |
-| perhekoko             |        |
-| kokonaismaksu         |        |
-| lapsi_id              |        |
-| lapsikohtainen_maksu  |        |
-| toimintamuoto         |        |
-| palvelualue           |        |
-| palvelualue_id        |        |
-| toimipaikka           |        |
-| toimipaikka_id        |        |
-| kustannuspaikka       |        |
+| Name                  | Type                                         |
+|-----------------------|----------------------------------------------|
+| aikaleima             | timestamp                                    |
+| maksupäätöksen_numero | Number                                       |
+| maksupäätös_id        | UUID                                         |
+| alkupvm               | Date                                         |
+| loppupvm              | Date                                         |
+| huojennustyyppi       | Enum: fi.espoo.evaka.decision.DecisionType   |
+| perhekoko             | Number                                       |
+| kokonaismaksu         | Number                                       |
+| lapsi_id              | UUID                                         |
+| lapsikohtainen_maksu  | Number                                       |
+| toimintamuoto         | Enum: fi.espoo.evaka.placement.PlacementType |
+| palvelualue           | String                                       |
+| palvelualue_id        | UUID                                         |
+| toimipaikka           | String                                       |
+| toimipaikka_id        | UUID                                         |
+| kustannuspaikka       | String                                       |
         
 
 ### Units and groups
@@ -182,25 +181,25 @@ SQL script: [DW-Units_and_groups.sql](./sql/DW-Units_and_groups.sql)
 
 Fields in csv -report:
 
-| Name                        | Type   |
-|-----------------------------|--------|
-| aikaleima                   |        |
-| toimintayksikkö             |        |
-| toimintayksikkö_id          |        |
-| toimintayksikön_alkupvm     |        |
-| toimintayksikön_loppupvm    |        |
-| toimintamuoto               |        |
-| järjestämistapa             |        |
-| palvelualue                 |        |
-| palvelualue_id              |        |
-| dw_kustannuspaikka          |        |
-| toimintayksikön_lapsimäärä  |        |
-| ryhmä                       |        |
-| ryhmä_id                    |        |
-| ryhmän_alkupvm              |        |
-| ryhmän_loppupvm             |        |
-| henkilökuntaa_ryhmässä_viim |        |
-| ryhmän_lapsimäärä           |        |
+| Name                        | Type                                             |
+|-----------------------------|--------------------------------------------------|
+| aikaleima                   | timestamp                                        |
+| toimintayksikkö             | String                                           |
+| toimintayksikkö_id          | UUID                                             |
+| toimintayksikön_alkupvm     | Date                                             |
+| toimintayksikön_loppupvm    | Date                                             |
+| toimintamuoto               | Enum: fi.espoo.evaka.daycare.CareType            |
+| järjestämistapa             | Enum: fi.espoo.evaka.daycare.domain.ProviderType |
+| palvelualue                 | String                                           |
+| palvelualue_id              | UUID                                             |
+| dw_kustannuspaikka          | String                                           |
+| toimintayksikön_lapsimäärä  | Number                                           |
+| ryhmä                       | String                                           |
+| ryhmä_id                    | UUID                                             |
+| ryhmän_alkupvm              | Date                                             |
+| ryhmän_loppupvm             | Date                                             |
+| henkilökuntaa_ryhmässä_viim | Number                                           |
+| ryhmän_lapsimäärä           | Number                                           |
 
 
 ### Voucher value decisions
@@ -210,19 +209,19 @@ SQL script: [DW-Voucher_value_decisions](./sql/DW-Voucher_value_decisions)
 
 Fields in csv -report:
 
-| Name                 | Type   |
-|----------------------|--------|
-| aikaleima            |        |
-| arvopäätöksen_numero |        |
-| alkupvm              |        |
-| loppupvm             |        |
-| huojennustyyppi      |        |
-| perhekoko            |        |
-| palvelusetelin_arvo  |        |
-| omavastuuosuus       |        |
-| lapsen_id            |        |
-| toimintamuoto        |        |
-| palvelualue          |        |
-| palvelualue_id       |        |
-| toimipaikka          |        |
-| toimipaikka_id       |        | 
+| Name                 | Type                                                           |
+|----------------------|----------------------------------------------------------------|
+| aikaleima            | timestamp                                                      |
+| arvopäätöksen_numero | Nubmer                                                         |
+| alkupvm              | Date                                                           |
+| loppupvm             | Date                                                           |
+| huojennustyyppi      | Enum: fi.espoo.evaka.invoicing.domain.VoucherValueDecisionType |
+| perhekoko            | Number                                                         |
+| palvelusetelin_arvo  | Number                                                         |
+| omavastuuosuus       | Number                                                         |
+| lapsen_id            | UUID                                                           |
+| toimintamuoto        | Enum: fi.espoo.evaka.placement.PlacementType                   |
+| palvelualue          | String                                                         |
+| palvelualue_id       | UUID                                                           |
+| toimipaikka          | String                                                         |
+| toimipaikka_id       | UUID                                                           | 
