@@ -61,6 +61,8 @@ Fields in csv -report:
 ### Daily info
 Daily info contains -report contains all placement related data per child from the last three years.
 
+ 
+
 SQL script: [DW-Daily_info.sql](./sql/DW-Daily_info.sql)
 
 Fields in csv -report:
@@ -118,6 +120,19 @@ Fields in csv -report:
 | kapasiteetti_aloitus_pvm       | Date                                                       |
 | kapasiteetti_loppu_pvm         | Date                                                       |
 | poissaolon_syy                 | Enum: fi.espoo.evaka.absence.AbsenceType                   |
+
+
+NOTE refactor proposal: Should this be normalized regarding daycare and preschool assistance fields(?):
+* tuentarve_varhaiskasvatuksessa
+* tuentarve_varha_aloitus_pvm
+* tuentarve_varha_loppu_pvm    
+* tuentarve_esiopetuksessa    
+* tuentarve_esiop_aloitus_pvm
+* tuentarve_esiop_loppu_pvm
+
+The above listed daycare and preschool assistance fields could be normalized into dedicated DW reports like in [eVaka Oulu](https://github.com/Oulunkaupunki/evakaoulu/blob/main/scheduled-tasks/reporting/sql):
+* [Preschool assistance report](https://github.com/Oulunkaupunki/evakaoulu/blob/main/scheduled-tasks/reporting/sql/DW-Preschool_assistances.sql)
+* [Daycare assistance report](https://github.com/Oulunkaupunki/evakaoulu/blob/main/scheduled-tasks/reporting/sql/DW-Daycare_assistances.sql)
 
 
 ### Daily units and groups attendance
