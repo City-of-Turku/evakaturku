@@ -169,7 +169,9 @@ done
 
 TMPDIR=`mktemp -d`
 
-check_certificate api-gw saml_suomifi_public_key.pem "suomi.fi identification"
+# suomi.fi identification does not check certificate expiration in metadata
+# check_certificate api-gw saml_suomifi_public_key.pem "suomi.fi identification"
+
 check_certificate api-gw auth_citizen_public_key.pem "Keycloak Citizen realm"
 check_certificate api-gw saml_ad_public_key.pem "AD SAML"
 
