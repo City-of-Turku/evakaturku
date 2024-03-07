@@ -298,7 +298,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         }
         Action.Unit.READ_APPLICATIONS_AND_PLACEMENT_PLANS,
         Action.Unit.READ_ATTENDANCES,
-        Action.Unit.READ_EXCEEDED_SERVICE_NEEDS_REPORT-> {
+        Action.Unit.READ_EXCEEDED_SERVICE_NEEDS_REPORT -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.ADMIN, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
