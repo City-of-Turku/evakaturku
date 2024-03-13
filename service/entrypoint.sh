@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# SPDX-FileCopyrightText: 2021 City of Oulu
+# SPDX-FileCopyrightText: 2021 City of Turku
 #
 # SPDX-License-Identifier: LGPL-2.1-or-later
 
@@ -16,4 +16,4 @@ fi
 
 # Run as exec so the application can receive any Unix signals sent to the container, e.g.,
 # Ctrl + C.
-exec java -cp . -server $JAVA_OPTS org.springframework.boot.loader.JarLauncher "$@"
+exec java -cp . -server $JAVA_OPTS org.springframework.boot.loader.launch.JarLauncher "$@"
