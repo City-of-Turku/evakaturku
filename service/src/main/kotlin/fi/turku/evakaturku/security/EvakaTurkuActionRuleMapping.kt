@@ -313,9 +313,23 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         Action.Unit.READ_PLACEMENT,
         Action.Unit.READ_PLACEMENT_PLAN,
         Action.Unit.READ_APPLICATIONS_REPORT,
-        Action.Unit.READ_CHILD_IN_DIFFERENT_ADDRESS_REPORT,
+        Action.Unit.READ_CHILD_IN_DIFFERENT_ADDRESS_REPORT -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.ADMIN, UserRole.SERVICE_WORKER, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
+            ) + sequenceOf(
+                HasUnitRole(UserRole.UNIT_SUPERVISOR).inUnit() as ScopedActionRule<in T>
+            )
+        }
         Action.Unit.READ_FAMILY_CONFLICT_REPORT,
-        Action.Unit.READ_PARTNERS_IN_DIFFERENT_ADDRESS_REPORT,
+        Action.Unit.READ_PARTNERS_IN_DIFFERENT_ADDRESS_REPORT -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.ADMIN, UserRole.SERVICE_WORKER, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
+            ) + sequenceOf(
+                HasUnitRole(UserRole.UNIT_SUPERVISOR).inUnit() as ScopedActionRule<in T>
+            )
+        }
         Action.Unit.READ_SERVICE_VOUCHER_VALUES_REPORT,
         Action.Unit.READ_MISSING_GROUP_PLACEMENTS -> {
             @Suppress("UNCHECKED_CAST")
