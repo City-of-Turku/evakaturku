@@ -69,7 +69,7 @@ const features: Features = {
     personDuplicate: false,
     citizenAttendanceSummary: false,
     noAbsenceType: false,
-    timeUsageInfo:true
+    timeUsageInfo: true
   },
   prod: {
     citizenShiftCareAbsence: false,

@@ -168,7 +168,8 @@ const customizations: EmployeeCustomizations = {
           viewOfTheGuardiansInfo:
             'Kirjaa tähän huoltajien näkemys lapselle esitetystä tuesta.',
           jurisdiction: 'Toimivalta',
-          jurisdictionText: 'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
+          jurisdictionText:
+            'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
           unitMayChange: 'Loma-aikoina tuen järjestämispaikka saattaa muuttua.',
           appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
           appealInstructions: (
@@ -347,7 +348,8 @@ const customizations: EmployeeCustomizations = {
             </div>
           ),
           jurisdiction: 'Toimivalta',
-          jurisdictionText: 'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
+          jurisdictionText:
+            'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
           appealInstructions: (
             <>
               <H3>Oikaisuvaatimusohjeet</H3>
@@ -517,9 +519,10 @@ const customizations: EmployeeCustomizations = {
           PRESCHOOL_DAYCARE: 'Esiopetus ja täydentävä varhaiskasvatus',
           PREPARATORY: 'Valmistava opetus',
           PREPARATORY_DAYCARE: 'Valmistava ja täydentävä varhaiskasvatus',
-          DAYCARE_FIVE_YEAR_OLDS: '5-vuotiaiden maksuton varhaiskasvatus',
-          DAYCARE_PART_TIME_FIVE_YEAR_OLDS:
+          DAYCARE_FIVE_YEAR_OLDS:
             '5-vuotiaiden maksuton ja täydentävä varhaiskasvatus',
+          DAYCARE_PART_TIME_FIVE_YEAR_OLDS:
+            '5-vuotiaiden maksuton varhaiskasvatus',
           CLUB: 'Kerho ja puisto',
           TEMPORARY_DAYCARE: 'Tilapäinen varhaiskasvatus',
           SCHOOL_SHIFT_CARE: 'Koululaisten vuorohoito'
@@ -562,7 +565,8 @@ const customizations: EmployeeCustomizations = {
           viewOfTheGuardiansInfo:
             'Anteckna här vårdnadshavarnas syn på det stöd som ges till barnet.',
           jurisdiction: 'Befogenhet',
-          jurisdictionText: 'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
+          jurisdictionText:
+            'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
           unitMayChange: 'Enheten kan ändras under semestertider',
           appealInstructions: (
             <>
@@ -733,7 +737,8 @@ const customizations: EmployeeCustomizations = {
             </div>
           ),
           jurisdiction: 'Befogenhet',
-          jurisdictionText: 'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
+          jurisdictionText:
+            'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
           appealInstructions: (
             <>
               <H3>Anvisning om hur man begär omprövning</H3>

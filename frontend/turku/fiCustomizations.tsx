@@ -612,7 +612,8 @@ const fi: DeepPartial<Translations> = {
       title: 'Päätös tuesta varhaiskasvatuksessa',
       decision: {
         jurisdiction: 'Toimivalta',
-        jurisdictionText: 'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
+        jurisdictionText:
+          'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
         unitMayChange: 'Loma-aikoina tuen järjestämispaikka saattaa muuttua.',
         appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
         appealInstructions: (
@@ -751,7 +752,8 @@ const fi: DeepPartial<Translations> = {
     },
     assistancePreschoolDecisions: {
       jurisdiction: 'Toimivalta',
-      jurisdictionText: 'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
+      jurisdictionText:
+        'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
       appealInstructions: (
         <>
           <H3>Oikaisuvaatimusohjeet</H3>
