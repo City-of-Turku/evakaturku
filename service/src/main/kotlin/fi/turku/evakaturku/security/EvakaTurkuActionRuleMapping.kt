@@ -34,8 +34,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         Action.Global.READ_INVOICE_CODES,
         Action.Global.READ_EMPLOYEES,
         Action.Global.READ_DOCUMENT_TEMPLATE,
-        Action.Global.READ_VASU_TEMPLATE
-        -> {
+        Action.Global.READ_VASU_TEMPLATE -> {
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR)
             )
@@ -91,6 +90,12 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
+            )
+        }
+        Action.AssistanceFactor.READ -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.DIRECTOR, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
             )
         }
         Action.AssistanceNeedDecision.READ,
@@ -169,15 +174,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             )
         }
         Action.Child.READ_ASSISTANCE,
-        Action.Child.READ_ASSISTANCE_FACTORS
-        -> {
-            @Suppress("UNCHECKED_CAST")
-            action.defaultRules.asSequence() + sequenceOf(
-                HasGlobalRole(UserRole.DIRECTOR, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
-            )
-        }
-        Action.AssistanceFactor.READ
-        -> {
+        Action.Child.READ_ASSISTANCE_FACTORS -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
@@ -185,36 +182,31 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         }
         Action.Child.READ_DAYCARE_ASSISTANCES,
         Action.Child.READ_PRESCHOOL_ASSISTANCES,
-        Action.Child.READ_OTHER_ASSISTANCE_MEASURES
-        -> {
+        Action.Child.READ_OTHER_ASSISTANCE_MEASURES -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             )
         }
-        Action.DaycareAssistance.READ
-        -> {
+        Action.DaycareAssistance.READ -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             )
         }
-        Action.PreschoolAssistance.READ
-        -> {
+        Action.PreschoolAssistance.READ -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             )
         }
-        Action.AssistanceAction.READ
-        -> {
+        Action.AssistanceAction.READ -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             )
         }
-        Action.OtherAssistanceMeasure.READ
-        -> {
+        Action.OtherAssistanceMeasure.READ -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
@@ -298,14 +290,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         }
         Action.Unit.READ_APPLICATIONS_AND_PLACEMENT_PLANS,
         Action.Unit.READ_ATTENDANCES,
-        Action.Unit.READ_EXCEEDED_SERVICE_NEEDS_REPORT -> {
-            @Suppress("UNCHECKED_CAST")
-            action.defaultRules.asSequence() + sequenceOf(
-                HasGlobalRole(UserRole.ADMIN, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
-            ) + sequenceOf(
-                HasUnitRole(UserRole.UNIT_SUPERVISOR).inUnit() as ScopedActionRule<in T>
-            )
-        }
         Action.Unit.READ_GROUP_DETAILS,
         Action.Unit.READ_GROUPS,
         Action.Unit.READ_CHILD_CAPACITY_FACTORS,
@@ -313,23 +297,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
         Action.Unit.READ_PLACEMENT,
         Action.Unit.READ_PLACEMENT_PLAN,
         Action.Unit.READ_APPLICATIONS_REPORT,
-        Action.Unit.READ_CHILD_IN_DIFFERENT_ADDRESS_REPORT -> {
-            @Suppress("UNCHECKED_CAST")
-            action.defaultRules.asSequence() + sequenceOf(
-                HasGlobalRole(UserRole.ADMIN, UserRole.SERVICE_WORKER, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
-            ) + sequenceOf(
-                HasUnitRole(UserRole.UNIT_SUPERVISOR).inUnit() as ScopedActionRule<in T>
-            )
-        }
         Action.Unit.READ_FAMILY_CONFLICT_REPORT,
-        Action.Unit.READ_PARTNERS_IN_DIFFERENT_ADDRESS_REPORT -> {
-            @Suppress("UNCHECKED_CAST")
-            action.defaultRules.asSequence() + sequenceOf(
-                HasGlobalRole(UserRole.ADMIN, UserRole.SERVICE_WORKER, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
-            ) + sequenceOf(
-                HasUnitRole(UserRole.UNIT_SUPERVISOR).inUnit() as ScopedActionRule<in T>
-            )
-        }
         Action.Unit.READ_SERVICE_VOUCHER_VALUES_REPORT,
         Action.Unit.READ_MISSING_GROUP_PLACEMENTS -> {
             @Suppress("UNCHECKED_CAST")
@@ -337,13 +305,22 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             )
         }
-        Action.Unit.READ_CHILD_ATTENDANCES -> {
+        Action.Unit.READ_CHILD_IN_DIFFERENT_ADDRESS_REPORT,
+        Action.Unit.READ_PARTNERS_IN_DIFFERENT_ADDRESS_REPORT -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
-                HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
+                HasUnitRole(UserRole.UNIT_SUPERVISOR).inUnit() as ScopedActionRule<in T>
             )
         }
-        Action.VoucherValueDecision.READ -> {
+        Action.Unit.READ_EXCEEDED_SERVICE_NEEDS_REPORT -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>
+            ) + sequenceOf(
+                HasUnitRole(UserRole.UNIT_SUPERVISOR).inUnit() as ScopedActionRule<in T>
+            )
+        }
+        Action.Unit.READ_CHILD_ATTENDANCES -> {
             @Suppress("UNCHECKED_CAST")
             action.defaultRules.asSequence() + sequenceOf(
                 HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
@@ -359,6 +336,12 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                     UserRole.SPECIAL_EDUCATION_TEACHER,
                     UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY
                 ).inUnit() as ScopedActionRule<in T>
+            )
+        }
+        Action.VoucherValueDecision.READ -> {
+            @Suppress("UNCHECKED_CAST")
+            action.defaultRules.asSequence() + sequenceOf(
+                HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>
             )
         }
         Action.DocumentTemplate.READ,
