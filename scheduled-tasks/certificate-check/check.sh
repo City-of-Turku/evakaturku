@@ -13,6 +13,19 @@ copy_to_tmp() {
     aws s3 cp s3://${ENVIRONMENT}-deployment/$S3_DIR/$FILE $TMPDIR/$TARGET > /dev/null
 }
 
+dump_cert_from_db_to_tmp() {
+
+    SQL_FILE="sql/auth_certificate.sql"
+    CLIENT_ID=$1
+    TARGET=$2
+
+    if [ -z "$TARGET" ]; then TARGET="db_certificate.pem"; fi
+
+    echo "-----BEGIN CERTIFICATE-----" > $TMPDIR/$TARGET
+    psql -v client_val="'${CLIENT_ID}'" < $SQL_FILE | tail -n 3 | head -n 1 >> $TMPDIR/$TARGET
+    echo "-----END CERTIFICATE-----" >> $TMPDIR/$TARGET
+}
+
 dump_cert() {
 
     CERT_FILE=$1
@@ -115,6 +128,30 @@ check_certificate() {
     fi
 }
 
+check_db_certificate() {
+
+    CLIENT_ID=$1
+    LOCAL_FILE=$2
+    CERTNAME=$3
+
+    if [ -z "$LOCAL_FILE" ]; then
+        LOCAL_FILE="db_certificate.pem"
+    fi
+
+    dump_cert_from_db_to_tmp $CLIENT_ID $LOCAL_FILE
+    VALID_FROM=$(get_valid_from $LOCAL_FILE)
+    EXPIRATION=$(get_expiration $LOCAL_FILE)
+
+    if [[ $ACTION == 'list' ]]; then
+        echo "$CERTNAME certificate valid from $VALID_FROM, expiration at $EXPIRATION" >>$TMPDIR/output
+    else
+        EXPIRATION_IN=$(days_to_date "$EXPIRATION")
+        if ((EXPIRATION_IN <= 60)); then
+            echo "$CERTNAME certification expires in $EXPIRATION_IN days" >>$TMPDIR/output
+        fi
+    fi
+}
+
 check_keystore() {
 
     S3_DIR=$1
@@ -172,7 +209,10 @@ TMPDIR=`mktemp -d`
 # suomi.fi identification does not check certificate expiration in metadata
 # check_certificate api-gw saml_suomifi_public_key.pem "suomi.fi identification"
 
-check_certificate api-gw auth_citizen_public_key.pem "Keycloak Citizen realm"
+# Keycloak certificate is checked from db
+# check_certificate api-gw auth_citizen_public_key.pem "Keycloak Citizen realm"
+check_db_certificate evaka-customer keycloak_citizen_certificate.pem "Keycloak Citizen realm"
+
 check_certificate api-gw saml_ad_public_key.pem "AD SAML"
 
 if [[ "ENVIRONMENT" == evakaturku-prod ]]; then
@@ -184,7 +224,9 @@ fi
 
 # TODO staging env also like in previous lines
 
-check_certificate api-gw auth_employees_public_key.pem "Keycloak Employee realm" internal_auth_public_key.pem
+# Keycloak certificate is checked from db
+# check_certificate api-gw auth_employees_public_key.pem "Keycloak Employee realm" internal_auth_public_key.pem
+check_db_certificate evaka keycloak_employee_certificate.pem "Keycloak Employee realm"
 
 if [ -z "$KEYSTORE_PASS" ]
 then
