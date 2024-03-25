@@ -159,39 +159,33 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         return """
             <p>Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
             
-            <p>Tähän viestiin ei voi vastata. Tarvittaessa ole yhteydessä varhaiskasvatuksen palveluohjaukseen p. 02 262 5610, puhelinpäivystys arkisin klo 9.00–15.00 (keskiviikkoisin 9–12).</p>
+            <p>Tähän viestiin ei voi vastata.</p>
             
             <p>
             Ystävällisesti,<br/>
             Varhaiskasvatuksen palveluohjaus<br/>
-            varhaiskasvatus@turku.fi<br/>
-            p. 02 262 5610<br/>
             </p>
             $unsubscribeFi
             <hr>
             
             <p>Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
 
-            <p>Svara inte på detta meddelande. Vid behov kan du kontakta småbarnspedagogikens servicehandledning på tfn 02 262 5610, öppet vardagar 9–15 (på onsdagar 9–12).</p>
+            <p>Svara inte på detta meddelande.</p>
 
             <p>
             Med vänliga hälsningar,<br/>
             småbarnspedagogikens servicehandledning<br/>
-            varhaiskasvatus@turku.fi<br/>
-            tfn 02 262 5610<br/>
             </p>
             $unsubscribeSv
             <hr>
             
             <p>You have one decision from Turku early childhood education and care that you have not replied to. The decision must be accepted or rejected at <a href="https://evaka.turku.fi">evaka.turku.fi</a> within two weeks from the date you received it.</p>
 
-            <p>This message cannot be replied to. If necessary, please contact early childhood education and care service guidance, tel. +358 2 262 5610 on weekdays between 9 am and 3 pm (Wednesdays 9 to 12 am).</p>
+            <p>This message cannot be replied to.</p>
 
             <p>
             Best regards,<br/>
             Early childhood education and care service guidance<br/>
-            varhaiskasvatus@turku.fi<br/>
-            Tel. +358 2 262 5610<br/>
             </p>
             $unsubscribeEn
         """.trimIndent()
@@ -199,36 +193,30 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
 
     fun getPendingDecisionEmailText(): String {
         return """
-            Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi
+            Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi.
             
-            Tähän viestiin ei voi vastata. Tarvittaessa ole yhteydessä varhaiskasvatuksen palveluohjaukseen p. 02 262 5610, puhelinpäivystys arkisin klo 9.00–15.00 (keskiviikkoisin 9–12).
+            Tähän viestiin ei voi vastata.
             
             Ystävällisesti,
             Varhaiskasvatuksen palveluohjaus
-            varhaiskasvatus@turku.fi
-            p. 02 262 5610
             
             -----
             
-            Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi
+            Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi.
 
-            Svara inte på detta meddelande. Vid behov kan du kontakta småbarnspedagogikens servicehandledning på tfn 02 262 5610, öppet vardagar 9–15 (på onsdagar 9–12).
+            Svara inte på detta meddelande.
 
             Med vänliga hälsningar,
             småbarnspedagogikens servicehandledning
-            varhaiskasvatus@turku.fi
-            tfn 02 262 5610
             
             -----
             
             You have one decision from Turku early childhood education and care that you have not replied to. The decision must be accepted or rejected at evaka.turku.fi within two weeks from the date you received it.
 
-            This message cannot be replied to. If necessary, please contact early childhood education and care service guidance, tel. +358 2 262 5610 on weekdays between 9 am and 3 pm (Wednesdays 9 to 12 am).
+            This message cannot be replied to.
 
             Best regards,
             Early childhood education and care service guidance
-            varhaiskasvatus@turku.fi
-            Tel. +358 2 262 5610
             
         """.trimIndent()
     }
