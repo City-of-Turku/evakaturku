@@ -96,7 +96,7 @@ const features: Features = {
     personDuplicate: false,
     citizenAttendanceSummary: false,
     noAbsenceType: false,
-    timeUsageInfo: false
+    timeUsageInfo: true
   }
 }
 
