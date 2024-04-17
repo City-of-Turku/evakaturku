@@ -19,22 +19,13 @@ SELECT
     dg.id                                  AS ryhmä_id,
     dg.start_date                          AS ryhmän_alkupvm,
     dg.end_date                            AS ryhmän_loppupvm,
-    (
-        SELECT dc.amount AS latest_amount
-        FROM daycare_caretaker dc
-        WHERE dc.group_id = dg.id
-        ORDER BY dc.start_date DESC LIMIT 1
-    )                                      AS henkilökuntaa_ryhmässä_viim,
-    (
-        SELECT count(distinct p.child_id)
-        FROM daycare_group_placement dgp
-            JOIN placement p ON dgp.daycare_placement_id = p.id
-        WHERE dgp.daycare_group_id = dg.id
-            AND daterange(dgp.start_date, dgp.end_date, '[]') && daterange(dg.start_date, dg.end_date, '[]')
-    )                                      AS ryhmän_lapsimäärä
+    dc.start_date                          AS ryhman_henkilokunnan_alkupvm,
+    dc.end_date                            AS ryhman_henkilokunnan_loppupvm,
+    dc.amount                              AS henkilökuntaa_ryhmässä_viim
 FROM daycare_group dg
     JOIN daycare d on dg.daycare_id = d.id
     JOIN care_area ca on ca.id = d.care_area_id
+    JOIN daycare_caretaker dc on dc.group_id = dg.id
 WHERE (:date_val::DATE - interval '3 years' <= d.closing_date OR d.closing_date is null)
   AND (:date_val::DATE - interval '3 years' <= dg.end_date OR dg.end_date is null)
 GROUP BY
@@ -50,4 +41,7 @@ GROUP BY
     dg.name,
     dg.id,
     dg.start_date,
-    dg.end_date;
+    dg.end_date,
+    dc.start_date,
+    dc.end_date,
+    dc.amount;
