@@ -25,7 +25,7 @@ SELECT
 FROM daycare_group dg
     JOIN daycare d on dg.daycare_id = d.id
     JOIN care_area ca on ca.id = d.care_area_id
-    JOIN daycare_caretaker dc on dc.group_id = dg.id
+    LEFT JOIN daycare_caretaker dc on dg.id = dc.group_id
 WHERE (:date_val::DATE - interval '3 years' <= d.closing_date OR d.closing_date is null)
   AND (:date_val::DATE - interval '3 years' <= dg.end_date OR dg.end_date is null)
 GROUP BY
