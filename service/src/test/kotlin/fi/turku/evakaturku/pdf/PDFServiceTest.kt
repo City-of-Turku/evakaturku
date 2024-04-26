@@ -343,7 +343,8 @@ private fun validFeeDecision() = FeeDecisionDetailed(
     approvedAt = HelsinkiDateTime.now(),
     sentAt = null,
     financeDecisionHandlerFirstName = "Jonne",
-    financeDecisionHandlerLastName = "Johtaja"
+    financeDecisionHandlerLastName = "Johtaja",
+    documentContainsContactInfo = false
 )
 
 private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
@@ -411,5 +412,6 @@ private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
     sentAt = null,
     created = HelsinkiDateTime.now(),
     financeDecisionHandlerFirstName = "Satu",
-    financeDecisionHandlerLastName = "Leppänen"
+    financeDecisionHandlerLastName = "Leppänen",
+    documentContainsContactInfo = false
 )
