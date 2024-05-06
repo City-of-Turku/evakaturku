@@ -8,11 +8,11 @@ import fi.espoo.evaka.shared.db.Database
 import fi.espoo.evaka.shared.dev.runDevScript
 
 fun Database.Transaction.ensureTurkuDevData() {
-    if (createQuery("SELECT count(*) FROM daycare").mapTo<Int>().exactlyOne() == 0) {
+    if (createQuery { sql("SELECT count(*) FROM daycare") }.mapTo<Int>().exactlyOne() == 0) {
         listOf("turku-dev-data.sql").forEach { runDevScript(it) }
     }
 }
 
 fun Database.Transaction.resetTurkuDatabaseForE2ETests() {
-    execute("SELECT reset_turku_database_for_e2e_tests()")
+    execute { sql("SELECT reset_turku_database_for_e2e_tests()") }
 }

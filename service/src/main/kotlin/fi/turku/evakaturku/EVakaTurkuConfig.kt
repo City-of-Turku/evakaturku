@@ -4,6 +4,8 @@ import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.espoo.evaka.invoicing.service.DefaultInvoiceGenerationLogic
 import fi.espoo.evaka.logging.defaultAccessLoggingValve
 import fi.espoo.evaka.lookup
+import fi.espoo.evaka.mealintegration.DefaultMealTypeMapper
+import fi.espoo.evaka.mealintegration.MealTypeMapper
 import fi.espoo.evaka.shared.FeatureConfig
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.espoo.evaka.shared.security.actionrule.ActionRuleMapping
@@ -70,4 +72,7 @@ class EVakaTurkuConfig {
         object : TitaniaEmployeeIdConverter {
             override fun fromTitania(employeeId: String): String = employeeId.trimStart('0')
         }
+
+    @Bean
+    fun mealTypeMapper(): MealTypeMapper = DefaultMealTypeMapper
 }
