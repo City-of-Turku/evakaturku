@@ -47,7 +47,8 @@ class EVakaTurkuConfig {
         serviceWorkerMessageAccountName = "Turun kaupunki",
         applyPlacementUnitFromDecision = false,
         fiveYearsOldDaycareEnabled = env.lookup("evaka.five_years_old_daycare.enabled") ?: false,
-        archiveMetadataOrganization = "Turun kaupungin varhaiskasvatus"
+        archiveMetadataOrganization = "Turun kaupungin varhaiskasvatus",
+        archiveMetadataConfigs = emptyMap()
     )
 
     @Bean
