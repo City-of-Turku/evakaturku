@@ -152,4 +152,5 @@ WHERE
     service_need_option.show_for_citizen <> EXCLUDED.show_for_citizen OR
     service_need_option.daycare_hours_per_month <> EXCLUDED.daycare_hours_per_month OR
     service_need_option.valid_from <> EXCLUDED.valid_from OR
-    service_need_option.valid_to <> EXCLUDED.valid_to;
+    service_need_option.valid_to <> EXCLUDED.valid_to OR
+    (service_need_option.valid_to is null AND EXCLUDED.valid_to is not null);
