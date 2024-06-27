@@ -52,33 +52,33 @@ class EVakaTurkuConfig {
             fiveYearsOldDaycareEnabled = env.lookup("evaka.five_years_old_daycare.enabled") ?: false,
             archiveMetadataOrganization = "Turun kaupungin varhaiskasvatus",
             archiveMetadataConfigs =
-            mapOf(
-                ArchiveProcessType.APPLICATION_DAYCARE to
-                    ArchiveProcessConfig(
-                        processDefinitionNumber = "12.06.01.02",
-                        archiveDurationMonths = 12 * 12
-                    ),
-                ArchiveProcessType.APPLICATION_PRESCHOOL to
-                    ArchiveProcessConfig(
-                        processDefinitionNumber = "12.06.01.02",
-                        archiveDurationMonths = 12 * 12
-                    ),
-                ArchiveProcessType.APPLICATION_CLUB to
-                    ArchiveProcessConfig(
-                        processDefinitionNumber = "12.06.01.02",
-                        archiveDurationMonths = 12 * 12
-                    ),
-                ArchiveProcessType.ASSISTANCE_NEED_DECISION_DAYCARE to
-                    ArchiveProcessConfig(
-                        processDefinitionNumber = "12.06.01.00",
-                        archiveDurationMonths = 120 * 12
-                    ),
-                ArchiveProcessType.ASSISTANCE_NEED_DECISION_PRESCHOOL to
-                    ArchiveProcessConfig(
-                        processDefinitionNumber = "12.06.01.01",
-                        archiveDurationMonths = 120 * 12
-                    )
-            )
+                mapOf(
+                    ArchiveProcessType.APPLICATION_DAYCARE to
+                        ArchiveProcessConfig(
+                            processDefinitionNumber = "12.06.01.02",
+                            archiveDurationMonths = 12 * 12,
+                        ),
+                    ArchiveProcessType.APPLICATION_PRESCHOOL to
+                        ArchiveProcessConfig(
+                            processDefinitionNumber = "12.06.01.02",
+                            archiveDurationMonths = 12 * 12,
+                        ),
+                    ArchiveProcessType.APPLICATION_CLUB to
+                        ArchiveProcessConfig(
+                            processDefinitionNumber = "12.06.01.02",
+                            archiveDurationMonths = 12 * 12,
+                        ),
+                    ArchiveProcessType.ASSISTANCE_NEED_DECISION_DAYCARE to
+                        ArchiveProcessConfig(
+                            processDefinitionNumber = "12.06.01.00",
+                            archiveDurationMonths = 120 * 12,
+                        ),
+                    ArchiveProcessType.ASSISTANCE_NEED_DECISION_PRESCHOOL to
+                        ArchiveProcessConfig(
+                            processDefinitionNumber = "12.06.01.01",
+                            archiveDurationMonths = 120 * 12,
+                        ),
+                ),
         )
 
     @Bean
