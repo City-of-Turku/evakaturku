@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 internal class SftpSenderTest {
-
     private val sftpConnector = mock<SftpConnector>()
 
     @Test
@@ -27,10 +26,11 @@ internal class SftpSenderTest {
         val sftpProperties = SftpProperties("", path, "", "")
         val sapMaterial = "one"
         val filename = SimpleDateFormat("'LAVAK_1002'yyMMdd-hhmmss'.xml'").format(Date())
-        val sftpSender = SftpSender(
-            sftpProperties,
-            sftpConnector
-        )
+        val sftpSender =
+            SftpSender(
+                sftpProperties,
+                sftpConnector,
+            )
 
         sftpSender.send(sapMaterial, filename)
 
@@ -38,7 +38,7 @@ internal class SftpSenderTest {
         val fileNamePattern = """$path/LAVAK_1002\d{6}-\d{6}.xml"""
         verify(sftpConnector).send(
             argThat { filePath -> filePath.matches(Regex(fileNamePattern)) },
-            eq("one")
+            eq("one"),
         )
         verify(sftpConnector).disconnect()
     }
@@ -47,15 +47,17 @@ internal class SftpSenderTest {
     fun `should send multiple materials with same names`() {
         val path = "/some/path"
         val sftpProperties = SftpProperties("", path, "", "")
-        val sapMaterials = mapOf(
-            "${SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date())}-1.xml" to "one",
-            "${SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date())}-2.xml" to "two",
-            "${SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date())}-3.xml" to "three"
-        )
-        val sftpSender = SftpSender(
-            sftpProperties,
-            sftpConnector
-        )
+        val sapMaterials =
+            mapOf(
+                "${SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date())}-1.xml" to "one",
+                "${SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date())}-2.xml" to "two",
+                "${SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date())}-3.xml" to "three",
+            )
+        val sftpSender =
+            SftpSender(
+                sftpProperties,
+                sftpConnector,
+            )
 
         sftpSender.sendAll(sapMaterials)
 
@@ -65,15 +67,15 @@ internal class SftpSenderTest {
         val fileNamePattern3 = """$path/OLVAK_1002_0000001_\d{6}-\d{6}-3.xml"""
         verify(sftpConnector).send(
             argThat { filePath -> filePath.matches(Regex(fileNamePattern1)) },
-            eq("one")
+            eq("one"),
         )
         verify(sftpConnector).send(
             argThat { filePath -> filePath.matches(Regex(fileNamePattern2)) },
-            eq("two")
+            eq("two"),
         )
         verify(sftpConnector).send(
             argThat { filePath -> filePath.matches(Regex(fileNamePattern3)) },
-            eq("three")
+            eq("three"),
         )
         verify(sftpConnector).disconnect()
     }
@@ -83,10 +85,11 @@ internal class SftpSenderTest {
         whenever(sftpConnector.connect(any(), any(), any())).thenThrow(JSchException("test message"))
         val path = "/some/path"
         val sftpProperties = SftpProperties("", path, "", "")
-        val sftpSender = SftpSender(
-            sftpProperties,
-            sftpConnector
-        )
+        val sftpSender =
+            SftpSender(
+                sftpProperties,
+                sftpConnector,
+            )
 
         val e = assertThrows<JSchException> { sftpSender.send("foo", "bar") }
         assert(e.message == "test message")

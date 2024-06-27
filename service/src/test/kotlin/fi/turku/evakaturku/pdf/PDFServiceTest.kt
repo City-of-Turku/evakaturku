@@ -55,23 +55,24 @@ import java.util.UUID
 
 private val reportsPath: String = "${Paths.get("build").toAbsolutePath()}/reports"
 
-private val settings = mapOf(
-    SettingType.DECISION_MAKER_NAME to "Paula Palvelupäällikkö",
-    SettingType.DECISION_MAKER_TITLE to "Asiakaspalvelupäällikkö"
-)
+private val settings =
+    mapOf(
+        SettingType.DECISION_MAKER_NAME to "Paula Palvelupäällikkö",
+        SettingType.DECISION_MAKER_TITLE to "Asiakaspalvelupäällikkö",
+    )
 
 @Tag("PDFGenerationTest")
 internal class PDFServiceTest {
-
     private lateinit var pdfService: PdfGenerator
 
     @BeforeEach
     fun setup() {
-        pdfService = PdfGenerator(
-            MessageConfiguration().messageProvider(),
-            TemplateConfiguration().templateProvider(),
-            PDFConfig.templateEngine()
-        )
+        pdfService =
+            PdfGenerator(
+                MessageConfiguration().messageProvider(),
+                TemplateConfiguration().templateProvider(),
+                PDFConfig.templateEngine(),
+            )
     }
 
     @Test
@@ -112,14 +113,16 @@ internal class PDFServiceTest {
 
     @Test
     fun generateFeeDecisionPdfPartner() {
-        val decision = validFeeDecision().copy(
-            partner = PersonDetailed(
-                PersonId(UUID.randomUUID()), LocalDate.of(1980, 6, 14), null,
-                "Mikko", "Meikäläinen",
-                "140680-9239", "", "", "",
-                "", null, "", null, restrictedDetailsEnabled = false
+        val decision =
+            validFeeDecision().copy(
+                partner =
+                    PersonDetailed(
+                        PersonId(UUID.randomUUID()), LocalDate.of(1980, 6, 14), null,
+                        "Mikko", "Meikäläinen",
+                        "140680-9239", "", "", "",
+                        "", null, "", null, restrictedDetailsEnabled = false,
+                    ),
             )
-        )
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, OfficialLanguage.FI))
 
@@ -141,14 +144,16 @@ internal class PDFServiceTest {
 
     @Test
     fun generateFeeDecisionPdfEmptyAddress() {
-        val decision = validFeeDecision().copy(
-            headOfFamily = PersonDetailed(
-                PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
-                "Maija", "Meikäläinen",
-                "310382-956D", "", "", "",
-                "", null, "", null, restrictedDetailsEnabled = false
+        val decision =
+            validFeeDecision().copy(
+                headOfFamily =
+                    PersonDetailed(
+                        PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
+                        "Maija", "Meikäläinen",
+                        "310382-956D", "", "", "",
+                        "", null, "", null, restrictedDetailsEnabled = false,
+                    ),
             )
-        )
 
         val bytes = pdfService.generateFeeDecisionPdf(FeeDecisionPdfData(decision, settings, OfficialLanguage.FI))
 
@@ -180,14 +185,16 @@ internal class PDFServiceTest {
 
     @Test
     fun generateVoucherValueDecisionPdfPartner() {
-        val decision = validVoucherValueDecision().copy(
-            partner = PersonDetailed(
-                PersonId(UUID.randomUUID()), LocalDate.of(1980, 6, 14), null,
-                "Mikko", "Meikäläinen",
-                "140680-9239", "", "", "",
-                "", null, "", null, restrictedDetailsEnabled = false
+        val decision =
+            validVoucherValueDecision().copy(
+                partner =
+                    PersonDetailed(
+                        PersonId(UUID.randomUUID()), LocalDate.of(1980, 6, 14), null,
+                        "Mikko", "Meikäläinen",
+                        "140680-9239", "", "", "",
+                        "", null, "", null, restrictedDetailsEnabled = false,
+                    ),
             )
-        )
         val data = VoucherValueDecisionPdfData(decision, settings, OfficialLanguage.FI)
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
@@ -209,14 +216,16 @@ internal class PDFServiceTest {
 
     @Test
     fun generateVoucherValueDecisionPdfEmptyAddress() {
-        val decision = validVoucherValueDecision().copy(
-            headOfFamily = PersonDetailed(
-                PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
-                "Maija", "Meikäläinen",
-                "310382-956D", "", "", "",
-                "", null, "", null, restrictedDetailsEnabled = false
+        val decision =
+            validVoucherValueDecision().copy(
+                headOfFamily =
+                    PersonDetailed(
+                        PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
+                        "Maija", "Meikäläinen",
+                        "310382-956D", "", "", "",
+                        "", null, "", null, restrictedDetailsEnabled = false,
+                    ),
             )
-        )
         val data = VoucherValueDecisionPdfData(decision, settings, OfficialLanguage.FI)
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
@@ -227,13 +236,15 @@ internal class PDFServiceTest {
 
     @Test
     fun generateReliefAcceptedVoucherValueDecisionPdfValidTo() {
-        val decision = validVoucherValueDecision().copy(
-            validTo = LocalDate.now().plusYears(1),
-            decisionType = VoucherValueDecisionType.RELIEF_ACCEPTED,
-            feeAlterations = listOf(
-                FeeAlterationWithEffect(FeeAlterationType.RELIEF, 50, false, -10800)
+        val decision =
+            validVoucherValueDecision().copy(
+                validTo = LocalDate.now().plusYears(1),
+                decisionType = VoucherValueDecisionType.RELIEF_ACCEPTED,
+                feeAlterations =
+                    listOf(
+                        FeeAlterationWithEffect(FeeAlterationType.RELIEF, 50, false, -10800),
+                    ),
             )
-        )
         val data = VoucherValueDecisionPdfData(decision, settings, OfficialLanguage.FI)
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
@@ -244,13 +255,15 @@ internal class PDFServiceTest {
 
     @Test
     fun generateReliefPartlyAcceptedVoucherValueDecisionPdfValidTo() {
-        val decision = validVoucherValueDecision().copy(
-            validTo = LocalDate.now().plusYears(1),
-            decisionType = VoucherValueDecisionType.RELIEF_PARTLY_ACCEPTED,
-            feeAlterations = listOf(
-                FeeAlterationWithEffect(FeeAlterationType.RELIEF, 50, false, -100)
+        val decision =
+            validVoucherValueDecision().copy(
+                validTo = LocalDate.now().plusYears(1),
+                decisionType = VoucherValueDecisionType.RELIEF_PARTLY_ACCEPTED,
+                feeAlterations =
+                    listOf(
+                        FeeAlterationWithEffect(FeeAlterationType.RELIEF, 50, false, -100),
+                    ),
             )
-        )
         val data = VoucherValueDecisionPdfData(decision, settings, OfficialLanguage.FI)
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
@@ -261,10 +274,11 @@ internal class PDFServiceTest {
 
     @Test
     fun generateReliefRejectedVoucherValueDecisionPdfValidTo() {
-        val decision = validVoucherValueDecision().copy(
-            validTo = LocalDate.now().plusYears(1),
-            decisionType = VoucherValueDecisionType.RELIEF_REJECTED
-        )
+        val decision =
+            validVoucherValueDecision().copy(
+                validTo = LocalDate.now().plusYears(1),
+                decisionType = VoucherValueDecisionType.RELIEF_REJECTED,
+            )
         val data = VoucherValueDecisionPdfData(decision, settings, OfficialLanguage.FI)
 
         val bytes = pdfService.generateVoucherValueDecisionPdf(data)
@@ -274,144 +288,158 @@ internal class PDFServiceTest {
     }
 }
 
-private val testDecisionIncome = DecisionIncome(
-    effect = IncomeEffect.INCOME,
-    data = mapOf("MAIN_INCOME" to 314100),
-    totalIncome = 314100,
-    totalExpenses = 0,
-    total = 314100,
-    worksAtECHA = false
+private val testDecisionIncome =
+    DecisionIncome(
+        effect = IncomeEffect.INCOME,
+        data = mapOf("MAIN_INCOME" to 314100),
+        totalIncome = 314100,
+        totalExpenses = 0,
+        total = 314100,
+        worksAtECHA = false,
+    )
 
-)
-
-private fun validFeeDecision() = FeeDecisionDetailed(
-    FeeDecisionId(UUID.randomUUID()),
-    children = listOf(
-        FeeDecisionChildDetailed(
-            child = PersonDetailed(
-                PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,
-                "Matti", "Meikäläinen",
-                null, "", "", "",
-                "", null, "", null, restrictedDetailsEnabled = false
+private fun validFeeDecision() =
+    FeeDecisionDetailed(
+        FeeDecisionId(UUID.randomUUID()),
+        children =
+            listOf(
+                FeeDecisionChildDetailed(
+                    child =
+                        PersonDetailed(
+                            PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,
+                            "Matti", "Meikäläinen",
+                            null, "", "", "",
+                            "", null, "", null, restrictedDetailsEnabled = false,
+                        ),
+                    placementType = PlacementType.DAYCARE,
+                    placementUnit =
+                        UnitData(
+                            DaycareId(UUID.randomUUID()),
+                            name = "Yksikkö 1",
+                            areaId = AreaId(UUID.randomUUID()),
+                            areaName = "Alue 1",
+                            language = "fi",
+                        ),
+                    serviceNeedFeeCoefficient = BigDecimal.ONE,
+                    serviceNeedDescriptionFi =
+                        """
+                        Palveluntarve 1 Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve                        
+                        """.trimIndent(),
+                    serviceNeedDescriptionSv = "Palveluntarve 1 (sv)",
+                    serviceNeedOptionId = ServiceNeedOptionId(UUID.randomUUID()),
+                    serviceNeedMissing = false,
+                    baseFee = 1,
+                    siblingDiscount = 1,
+                    fee = 1,
+                    feeAlterations =
+                        listOf(
+                            FeeAlterationWithEffect(FeeAlterationType.RELIEF, 50, false, -10800),
+                        ),
+                    finalFee = 1,
+                    childIncome = null,
+                ),
             ),
-            placementType = PlacementType.DAYCARE,
-            placementUnit = UnitData(
-                DaycareId(UUID.randomUUID()),
-                name = "Yksikkö 1",
-                areaId = AreaId(UUID.randomUUID()),
-                areaName = "Alue 1",
-                language = "fi"
+        validDuring = DateRange(LocalDate.now(), null),
+        FeeDecisionStatus.WAITING_FOR_SENDING,
+        decisionNumber = 123456,
+        FeeDecisionType.NORMAL,
+        headOfFamily =
+            PersonDetailed(
+                PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
+                "Maija", "Meikäläinen",
+                "310382-956D", "Meikäläisenkuja 6 B 7", "20100", "TURKU",
+                "", null, "", null, restrictedDetailsEnabled = false,
             ),
-            serviceNeedFeeCoefficient = BigDecimal.ONE,
-            serviceNeedDescriptionFi = "Palveluntarve 1 Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve1 pitkänimi Palveluntarve 1 pitkänimi Palveluntarve",
-            serviceNeedDescriptionSv = "Palveluntarve 1 (sv)",
-            serviceNeedOptionId = ServiceNeedOptionId(UUID.randomUUID()),
-            serviceNeedMissing = false,
-            baseFee = 1,
-            siblingDiscount = 1,
-            fee = 1,
-            feeAlterations = listOf(
-                FeeAlterationWithEffect(FeeAlterationType.RELIEF, 50, false, -10800)
-            ),
-            finalFee = 1,
-            childIncome = null
-        )
-    ),
-    validDuring = DateRange(LocalDate.now(), null),
-    FeeDecisionStatus.WAITING_FOR_SENDING,
-    decisionNumber = 123456,
-    FeeDecisionType.NORMAL,
-    headOfFamily = PersonDetailed(
-        PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
-        "Maija", "Meikäläinen",
-        "310382-956D", "Meikäläisenkuja 6 B 7", "20100", "TURKU",
-        "", null, "", null, restrictedDetailsEnabled = false
-    ),
-    partner = null,
-    headOfFamilyIncome = null,
-    partnerIncome = null,
-    familySize = 1,
-    FeeDecisionThresholds(
-        minIncomeThreshold = 1,
-        maxIncomeThreshold = 2,
-        incomeMultiplier = BigDecimal.ONE,
-        maxFee = 1,
-        minFee = 1
-    ),
-    documentKey = null,
-    approvedBy = EmployeeWithName(EmployeeId(UUID.randomUUID()), "Markus", "Maksusihteeri"),
-    approvedAt = HelsinkiDateTime.now(),
-    sentAt = null,
-    financeDecisionHandlerFirstName = "Jonne",
-    financeDecisionHandlerLastName = "Johtaja",
-    documentContainsContactInfo = false
-)
-
-private fun validVoucherValueDecision() = VoucherValueDecisionDetailed(
-    VoucherValueDecisionId(UUID.randomUUID()),
-    LocalDate.now(),
-    null,
-    VoucherValueDecisionStatus.WAITING_FOR_SENDING,
-    decisionNumber = null,
-    decisionType = VoucherValueDecisionType.NORMAL,
-    headOfFamily = PersonDetailed(
-        PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
-        "Maija", "Meikäläinen",
-        "310382-956D", "Meikäläisenkuja 6 B 7", "20100", "TURKU",
-        "", null, "", null, restrictedDetailsEnabled = false
-    ),
-    partner = null,
-    headOfFamilyIncome = null,
-    partnerIncome = null,
-    childIncome = null,
-    familySize = 1,
-    FeeDecisionThresholds(
-        minIncomeThreshold = 1,
-        maxIncomeThreshold = 2,
-        incomeMultiplier = BigDecimal.ONE,
-        maxFee = 1,
-        minFee = 1
-    ),
-    PersonDetailed(
-        PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,
-        "Olli", "Turkulainen",
-        null, "", "", "",
-        "", null, "", null, restrictedDetailsEnabled = false
-    ),
-    VoucherValueDecisionPlacementDetailed(
-        UnitData(
-            DaycareId(UUID.randomUUID()),
-            name = "Jäkärlän kerho",
-            areaId = AreaId(UUID.randomUUID()),
-            areaName = "Etelä",
-            language = "fi"
+        partner = null,
+        headOfFamilyIncome = null,
+        partnerIncome = null,
+        familySize = 1,
+        FeeDecisionThresholds(
+            minIncomeThreshold = 1,
+            maxIncomeThreshold = 2,
+            incomeMultiplier = BigDecimal.ONE,
+            maxFee = 1,
+            minFee = 1,
         ),
-        type = PlacementType.DAYCARE
-    ),
-    VoucherValueDecisionServiceNeed(
-        feeCoefficient = BigDecimal.ONE,
-        voucherValueCoefficient = BigDecimal.ONE,
-        feeDescriptionFi = "eka",
-        feeDescriptionSv = "toka",
-        voucherValueDescriptionFi = "kolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas",
-        voucherValueDescriptionSv = "neljäs",
-        missing = false
-    ),
-    baseCoPayment = 1,
-    siblingDiscount = 1,
-    coPayment = 1,
-    feeAlterations = emptyList(),
-    finalCoPayment = 1,
-    baseValue = 1,
-    childAge = 1,
-    assistanceNeedCoefficient = BigDecimal.ONE,
-    voucherValue = 1,
-    documentKey = null,
-    approvedBy = EmployeeWithName(EmployeeId(UUID.randomUUID()), "Markus", "Maksusihteeri"),
-    approvedAt = HelsinkiDateTime.now(),
-    sentAt = null,
-    created = HelsinkiDateTime.now(),
-    financeDecisionHandlerFirstName = "Satu",
-    financeDecisionHandlerLastName = "Leppänen",
-    documentContainsContactInfo = false
-)
+        documentKey = null,
+        approvedBy = EmployeeWithName(EmployeeId(UUID.randomUUID()), "Markus", "Maksusihteeri"),
+        approvedAt = HelsinkiDateTime.now(),
+        sentAt = null,
+        financeDecisionHandlerFirstName = "Jonne",
+        financeDecisionHandlerLastName = "Johtaja",
+        documentContainsContactInfo = false,
+    )
+
+private fun validVoucherValueDecision() =
+    VoucherValueDecisionDetailed(
+        VoucherValueDecisionId(UUID.randomUUID()),
+        LocalDate.now(),
+        null,
+        VoucherValueDecisionStatus.WAITING_FOR_SENDING,
+        decisionNumber = null,
+        decisionType = VoucherValueDecisionType.NORMAL,
+        headOfFamily =
+            PersonDetailed(
+                PersonId(UUID.randomUUID()), LocalDate.of(1982, 3, 31), null,
+                "Maija", "Meikäläinen",
+                "310382-956D", "Meikäläisenkuja 6 B 7", "20100", "TURKU",
+                "", null, "", null, restrictedDetailsEnabled = false,
+            ),
+        partner = null,
+        headOfFamilyIncome = null,
+        partnerIncome = null,
+        childIncome = null,
+        familySize = 1,
+        FeeDecisionThresholds(
+            minIncomeThreshold = 1,
+            maxIncomeThreshold = 2,
+            incomeMultiplier = BigDecimal.ONE,
+            maxFee = 1,
+            minFee = 1,
+        ),
+        PersonDetailed(
+            PersonId(UUID.randomUUID()), LocalDate.of(2018, 1, 1), null,
+            "Olli", "Turkulainen",
+            null, "", "", "",
+            "", null, "", null, restrictedDetailsEnabled = false,
+        ),
+        VoucherValueDecisionPlacementDetailed(
+            UnitData(
+                DaycareId(UUID.randomUUID()),
+                name = "Jäkärlän kerho",
+                areaId = AreaId(UUID.randomUUID()),
+                areaName = "Etelä",
+                language = "fi",
+            ),
+            type = PlacementType.DAYCARE,
+        ),
+        VoucherValueDecisionServiceNeed(
+            feeCoefficient = BigDecimal.ONE,
+            voucherValueCoefficient = BigDecimal.ONE,
+            feeDescriptionFi = "eka",
+            feeDescriptionSv = "toka",
+            voucherValueDescriptionFi =
+                """
+                kolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas neljäskolmas
+                """.trimIndent(),
+            voucherValueDescriptionSv = "neljäs",
+            missing = false,
+        ),
+        baseCoPayment = 1,
+        siblingDiscount = 1,
+        coPayment = 1,
+        feeAlterations = emptyList(),
+        finalCoPayment = 1,
+        baseValue = 1,
+        childAge = 1,
+        assistanceNeedCoefficient = BigDecimal.ONE,
+        voucherValue = 1,
+        documentKey = null,
+        approvedBy = EmployeeWithName(EmployeeId(UUID.randomUUID()), "Markus", "Maksusihteeri"),
+        approvedAt = HelsinkiDateTime.now(),
+        sentAt = null,
+        created = HelsinkiDateTime.now(),
+        financeDecisionHandlerFirstName = "Satu",
+        financeDecisionHandlerLastName = "Leppänen",
+        documentContainsContactInfo = false,
+    )

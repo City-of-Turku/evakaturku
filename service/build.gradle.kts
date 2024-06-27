@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.spring)
@@ -10,7 +12,7 @@ plugins {
 java.sourceCompatibility = JavaVersion.VERSION_21
 
 object Version {
-    const val openTracing = "0.33.0"
+    const val OPEN_TRACING = "0.33.0"
 }
 
 repositories {
@@ -49,8 +51,8 @@ dependencies {
 
     implementation("software.amazon.awssdk:s3")
 
-    api("io.opentracing:opentracing-api:${Version.openTracing}")
-    api("io.opentracing:opentracing-util:${Version.openTracing}")
+    api("io.opentracing:opentracing-api:${Version.OPEN_TRACING}")
+    api("io.opentracing:opentracing-util:${Version.OPEN_TRACING}")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude("com.vaadin.external.google", "android-json")
@@ -73,9 +75,9 @@ springBoot {
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
+    compilerOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "21"
+        jvmTarget = JvmTarget.fromTarget(libs.versions.java.get())
     }
 }
 

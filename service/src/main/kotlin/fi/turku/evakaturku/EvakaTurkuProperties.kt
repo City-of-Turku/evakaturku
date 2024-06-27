@@ -14,12 +14,12 @@ data class EvakaTurkuProperties(
     val sapInvoicing: SftpProperties,
     val sapPayments: SftpProperties,
     // accounting amount for a preschooler when doing payments
-    val preschoolPaymentAmount: Int
+    val preschoolPaymentAmount: Int,
 )
 
 data class SftpProperties(
     val address: String,
     val path: String,
     val username: String,
-    val password: String
+    val password: String,
 )

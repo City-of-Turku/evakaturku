@@ -6,7 +6,6 @@ import fi.espoo.evaka.shared.db.Database
 import fi.espoo.evaka.shared.domain.DateRange
 
 class PreschoolValuesFetcher(val tx: Database.Read) {
-
     fun fetchPreschoolers(payments: List<Payment>): Map<DaycareId, Int> {
         return tx.fetchPreschoolers(payments)
     }
@@ -23,7 +22,7 @@ class PreschoolValuesFetcher(val tx: Database.Read) {
             AND voucher_value_decision.placement_type in ('PRESCHOOL','PRESCHOOL_DAYCARE')
             AND voucher_value_report_decision.type='ORIGINAL'
             GROUP BY voucher_value_decision.placement_unit_id;
-        """
+        """,
             )
         }
             .bind("ids", payments.map { it.unit.id })
@@ -44,7 +43,7 @@ class PreschoolValuesFetcher(val tx: Database.Read) {
             SELECT id as unitId,language
             FROM daycare
             WHERE daycare.id = ANY(:ids)
-        """
+        """,
             )
         }
             .bind("ids", payments.map { it.unit.id })
@@ -69,7 +68,7 @@ class PreschoolValuesFetcher(val tx: Database.Read) {
                 WHERE default_option=true
                 AND valid_placement_type='PRESCHOOL')
             AND validity @> :date;
-        """
+        """,
             )
         }
             .bind("date", period.start)

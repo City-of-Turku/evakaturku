@@ -7,7 +7,6 @@ import java.io.StringWriter
 
 @Component
 class PaymentMarshaller {
-
     fun marshal(idocs: List<FIDCCP02.IDOC>): String {
         val contextObj: JAXBContext = JAXBContext.newInstance(FIDCCP02::class.java)
 

@@ -2,6 +2,9 @@
 //
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
+// ktlint doesn't like the SAP element names
+@file:Suppress("ktlint:standard:property-naming")
+
 package fi.turku.evakaturku.invoice.service
 
 import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
@@ -16,12 +19,14 @@ import org.springframework.stereotype.Component
 import java.io.StringWriter
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.*
+import java.util.Locale
 import kotlin.math.abs
 
 @Component
-class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financeDateProvider: FinanceDateProvider) : StringInvoiceGenerator {
-
+class SapInvoiceGenerator(
+    private val invoiceChecker: InvoiceChecker,
+    val financeDateProvider: FinanceDateProvider,
+) : StringInvoiceGenerator {
     fun generateInvoiceTitle(): String {
         val previousMonth = financeDateProvider.previousMonth()
         return "Varhaiskasvatus $previousMonth"
@@ -55,9 +60,9 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
             InvoiceIntegrationClient.SendResult(
                 successList,
                 failedList,
-                manuallySentList
+                manuallySentList,
             ),
-            invoiceString
+            invoiceString,
         )
     }
 
@@ -331,7 +336,11 @@ class SapInvoiceGenerator(private val invoiceChecker: InvoiceChecker, val financ
         return idoc
     }
 
-    private fun generateRows(idoc: ORDERS05.IDOC, rows: List<InvoiceRowDetailed>, invoiceDate: LocalDate) {
+    private fun generateRows(
+        idoc: ORDERS05.IDOC,
+        rows: List<InvoiceRowDetailed>,
+        invoiceDate: LocalDate,
+    ) {
         var rowNumber = 1
         val e1edp01list: MutableList<ORDERS05.IDOC.E1EDP01> = mutableListOf()
 

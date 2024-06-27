@@ -1,15 +1,21 @@
+// ktlint doesn't like the SAP element names
+@file:Suppress("ktlint:standard:property-naming")
+
 package fi.turku.evakaturku.payment.service
 
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.invoicing.domain.Payment
 import org.springframework.stereotype.Component
 import java.time.format.DateTimeFormatter
-import java.util.*
+import java.util.Locale
 
 @Component
 class IdocGenerator {
-
-    fun generate(payment: Payment, preSchoolAmount: Int, language: String): FIDCCP02.IDOC {
+    fun generate(
+        payment: Payment,
+        preSchoolAmount: Int,
+        language: String,
+    ): FIDCCP02.IDOC {
         val idoc = FIDCCP02.IDOC()
         idoc.begin = "1"
 
@@ -77,7 +83,9 @@ class IdocGenerator {
         e1FISEG_2.mwskz = "P4"
         var daycareAmount = payment.amount - preSchoolAmount
         e1FISEG_2.wrbtr = String.format(Locale.ENGLISH, "%.2f", daycareAmount.toDouble() / 100)
-        val rowTextWithDaycareName = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + previousMonth?.format(dateTimeFormatterYear) + " " + payment.unit.name
+        val rowTextWithDaycareName =
+            "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" +
+                previousMonth?.format(dateTimeFormatterYear) + " " + payment.unit.name
         e1FISEG_2.sgtxt = rowTextWithDaycareName.substring(0, Math.min(rowTextWithDaycareName.length, 35))
         e1FISEG_2.kokrs = "1000"
         if (payment.unit.careType.contains(CareType.FAMILY)) {

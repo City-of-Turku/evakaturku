@@ -5,9 +5,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
 class SapInvoiceGeneratorTest {
-
     companion object {
-
         var invoiceXml: String = ""
 
         @BeforeAll
@@ -29,12 +27,18 @@ class SapInvoiceGeneratorTest {
         assert(pattern.containsMatchIn(invoiceXml))
     }
 
-    fun assertElement(element: String, value: String) {
+    fun assertElement(
+        element: String,
+        value: String,
+    ) {
         val expectedString = "<$element>$value</$element>"
         assertExpectedString(expectedString)
     }
 
-    fun assertNotExpectedString(xml: String, expectedString: String) {
+    fun assertNotExpectedString(
+        xml: String,
+        expectedString: String,
+    ) {
         val pattern = Regex(expectedString)
         assert(!pattern.containsMatchIn(xml))
     }

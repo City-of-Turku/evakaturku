@@ -8,13 +8,13 @@ import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import mu.KotlinLogging
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 private val logger = KotlinLogging.logger {}
 
 class EVakaTurkuInvoiceClient(
     private val sftpSender: SftpSender,
-    private val invoiceGenerator: SapInvoiceGenerator
+    private val invoiceGenerator: SapInvoiceGenerator,
 ) : InvoiceIntegrationClient {
     override fun send(invoices: List<InvoiceDetailed>): InvoiceIntegrationClient.SendResult {
         val failedList = mutableListOf<InvoiceDetailed>()
@@ -45,7 +45,8 @@ class EVakaTurkuInvoiceClient(
 interface StringInvoiceGenerator {
     data class InvoiceGeneratorResult(
         val sendResult: InvoiceIntegrationClient.SendResult = InvoiceIntegrationClient.SendResult(),
-        val invoiceString: String = ""
+        val invoiceString: String = "",
     )
+
     fun generateInvoice(invoices: List<InvoiceDetailed>): InvoiceGeneratorResult
 }

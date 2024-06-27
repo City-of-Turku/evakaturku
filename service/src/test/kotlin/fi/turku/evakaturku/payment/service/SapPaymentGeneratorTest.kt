@@ -12,7 +12,6 @@ import org.mockito.kotlin.whenever
 import java.time.LocalDate
 
 class SapPaymentGeneratorTest {
-
     val paymentChecker = PaymentChecker()
     val financeDateProvider = FinanceDateProvider()
     val mockMarshaller = mock<PaymentMarshaller>()

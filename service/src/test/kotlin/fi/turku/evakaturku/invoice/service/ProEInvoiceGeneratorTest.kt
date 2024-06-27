@@ -1,8 +1,7 @@
 package fi.turku.evakaturku.invoice.service
 
 internal class ProEInvoiceGeneratorTest {
-
-/*
+    /*
     val financeDateProvider = mock<FinanceDateProvider>()
     val proEInvoiceGenerator = ProEInvoiceGenerator(InvoiceChecker(), financeDateProvider)
 

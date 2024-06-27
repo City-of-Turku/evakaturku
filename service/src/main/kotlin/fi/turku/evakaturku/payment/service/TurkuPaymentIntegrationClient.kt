@@ -6,16 +6,18 @@ import fi.espoo.evaka.shared.db.Database
 import fi.turku.evakaturku.invoice.service.SftpSender
 import mu.KotlinLogging
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 private val logger = KotlinLogging.logger {}
 
 class TurkuPaymentIntegrationClient(
     private val paymentGenerator: SapPaymentGenerator,
-    private val sftpSender: SftpSender
+    private val sftpSender: SftpSender,
 ) : PaymentIntegrationClient {
-
-    override fun send(payments: List<Payment>, tx: Database.Read): PaymentIntegrationClient.SendResult {
+    override fun send(
+        payments: List<Payment>,
+        tx: Database.Read,
+    ): PaymentIntegrationClient.SendResult {
         var failedList: MutableList<Payment> = mutableListOf()
 
         logger.info { "TurkuPaymentIntegrationClient.send() called with ${payments.size} payments" }
@@ -25,10 +27,14 @@ class TurkuPaymentIntegrationClient(
         failedList.addAll(generatorResult.sendResult.failed)
 
         if (successList.isNotEmpty()) {
-            val contents = generatorResult.paymentStrings.mapIndexed { index, content ->
-                val filename = SimpleDateFormat("'OLVAK_1002_0000001_'yyMMdd-hhmmss").format(Date()) + '-' + (index + 1).toString() + ".xml"
-                filename to content
-            }.toMap()
+            val contents =
+                generatorResult.paymentStrings.mapIndexed { index, content ->
+                    val filename =
+                        SimpleDateFormat(
+                            "'OLVAK_1002_0000001_'yyMMdd-hhmmss",
+                        ).format(Date()) + '-' + (index + 1).toString() + ".xml"
+                    filename to content
+                }.toMap()
 
             try {
                 sftpSender.sendAll(contents)

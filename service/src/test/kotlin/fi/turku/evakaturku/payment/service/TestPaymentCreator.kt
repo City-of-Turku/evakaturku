@@ -11,7 +11,7 @@ import fi.espoo.evaka.shared.domain.DateRange
 import fi.espoo.evaka.shared.domain.HelsinkiDateTime
 import java.time.LocalDate
 import java.time.LocalTime
-import java.util.*
+import java.util.UUID
 
 fun validPayment(): Payment {
     return Payment(
@@ -26,7 +26,7 @@ fun validPayment(): Payment {
         LocalDate.of(2022, 8, 3),
         LocalDate.of(2022, 8, 15),
         HelsinkiDateTime.Companion.of(LocalDate.of(2022, 7, 31), LocalTime.of(12, 0, 0)),
-        EvakaUserId(UUID.randomUUID())
+        EvakaUserId(UUID.randomUUID()),
     )
 }
 
@@ -37,6 +37,6 @@ fun validPaymentUnit(): PaymentUnit {
         "1234567-8",
         "FI01 2345 6789 0123 4567 89",
         "PROVIDERID",
-        setOf(CareType.CENTRE)
+        setOf(CareType.CENTRE),
     )
 }

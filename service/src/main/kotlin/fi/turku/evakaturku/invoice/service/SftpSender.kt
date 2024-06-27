@@ -5,11 +5,13 @@
 package fi.turku.evakaturku.invoice.service
 
 import fi.turku.evakaturku.SftpProperties
-import java.util.*
 
 class SftpSender(val sftpProperties: SftpProperties, val sftpConnector: SftpConnector) {
     @Throws(Exception::class)
-    fun send(content: String, fileName: String) {
+    fun send(
+        content: String,
+        fileName: String,
+    ) {
         val path = sftpProperties.path
 
         val filepath = "$path/$fileName"
