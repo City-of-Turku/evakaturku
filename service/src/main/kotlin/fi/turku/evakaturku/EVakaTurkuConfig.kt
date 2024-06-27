@@ -6,6 +6,8 @@ import fi.espoo.evaka.logging.defaultAccessLoggingValve
 import fi.espoo.evaka.lookup
 import fi.espoo.evaka.mealintegration.DefaultMealTypeMapper
 import fi.espoo.evaka.mealintegration.MealTypeMapper
+import fi.espoo.evaka.shared.ArchiveProcessConfig
+import fi.espoo.evaka.shared.ArchiveProcessType
 import fi.espoo.evaka.shared.FeatureConfig
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.espoo.evaka.shared.security.actionrule.ActionRuleMapping
@@ -49,7 +51,34 @@ class EVakaTurkuConfig {
             applyPlacementUnitFromDecision = false,
             fiveYearsOldDaycareEnabled = env.lookup("evaka.five_years_old_daycare.enabled") ?: false,
             archiveMetadataOrganization = "Turun kaupungin varhaiskasvatus",
-            archiveMetadataConfigs = emptyMap(),
+            archiveMetadataConfigs =
+            mapOf(
+                ArchiveProcessType.APPLICATION_DAYCARE to
+                    ArchiveProcessConfig(
+                        processDefinitionNumber = "12.06.01.02",
+                        archiveDurationMonths = 12 * 12
+                    ),
+                ArchiveProcessType.APPLICATION_PRESCHOOL to
+                    ArchiveProcessConfig(
+                        processDefinitionNumber = "12.06.01.02",
+                        archiveDurationMonths = 12 * 12
+                    ),
+                ArchiveProcessType.APPLICATION_CLUB to
+                    ArchiveProcessConfig(
+                        processDefinitionNumber = "12.06.01.02",
+                        archiveDurationMonths = 12 * 12
+                    ),
+                ArchiveProcessType.ASSISTANCE_NEED_DECISION_DAYCARE to
+                    ArchiveProcessConfig(
+                        processDefinitionNumber = "12.06.01.00",
+                        archiveDurationMonths = 120 * 12
+                    ),
+                ArchiveProcessType.ASSISTANCE_NEED_DECISION_PRESCHOOL to
+                    ArchiveProcessConfig(
+                        processDefinitionNumber = "12.06.01.01",
+                        archiveDurationMonths = 120 * 12
+                    )
+            )
         )
 
     @Bean
