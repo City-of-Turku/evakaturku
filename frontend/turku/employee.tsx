@@ -545,7 +545,7 @@ const customizations: EmployeeCustomizations = {
         }
       },
       welcomePage: {
-        text: 'Olet kirjautunut sisään eVaka-Turku palveluun. Käyttäjätunnuksellesi ei ole vielä annettu oikeuksia, jotka mahdollistavat palvelun käytön. Tarvittavat käyttöoikeudet saat eVakan pääkäyttäjältä ilmoittamalla kirjautumisestasi varkas.tietojarjestelmat@turku.fi'
+        text: 'Olet kirjautunut eVaka-Turku palveluun. Käyttäjätunnuksellesi ei ole vielä annettu oikeuksia, jotka mahdollistavat palvelun käytön. Päiväkodin henkilökunnan käyttäjäoikeudet saat yksikön lähijohtajalta. Muut käyttöoikeudet saa eVakan pääkäyttäjältä ilmoittamalla kirjautumisesta varkas.tietojarjestelmat@turku.fi'
       }
     },
     sv: {
