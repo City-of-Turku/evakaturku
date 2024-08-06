@@ -509,7 +509,7 @@ jobs:
 
   e2e_test:
     executor: e2e_executor
-    resource_class: xlarge
+    resource_class: large
     steps:
       - restore_repo
       - login_ecr
