@@ -51,7 +51,7 @@ dependencies {
 
     implementation("software.amazon.awssdk:s3")
 
-    implementation("org.unbescape:unbescape:1.0")
+    implementation("org.unbescape:unbescape:1.1.6.RELEASE")
 
     api("io.opentracing:opentracing-api:${Version.OPEN_TRACING}")
     api("io.opentracing:opentracing-util:${Version.OPEN_TRACING}")
