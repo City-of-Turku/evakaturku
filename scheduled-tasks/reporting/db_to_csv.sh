@@ -97,16 +97,19 @@ DATE=$(date --iso-8601)
 
 # Disabling history batches completely for now, because of the daily dw reports query data containing 3 years history
 # History batch logic should be removed completely if not needed at all
-#if [[ -v HISTORY_ENABLED && $HISTORY_ENABLED == true && -v HISTORY_FROM_DATE ]]; then
-#    echo "Running history batches enabled"
-#    run_history_batch_and_send_file sql/DW-Daily_info.sql daily_info
-#    run_history_batch_and_send_file sql/DW-Units_and_groups.sql units_and_groups
+if [[ -v HISTORY_ENABLED && $HISTORY_ENABLED == true && -v HISTORY_FROM_DATE ]]; then
+    echo "Running history batches enabled"
+    run_history_batch_and_send_file sql/DW-Daily_info.sql daily_info
+    run_history_batch_and_send_file sql/DW-Units_and_groups.sql units_and_groups
+    run_history_batch_and_send_file sql/DW-Daily_units_occupancy_confirmed.sql daily_units_occupancy_confirmed
+    run_history_batch_and_send_file sql/DW-Daily_units_occupancy_realized.sql daily_units_occupancy_realized
 
-#    echo "Running history bulk"
-#    run_history_bulk_and_send_file sql/history_bulk/DW-Fee_decisions_bulk.sql fee_decisions
-#    run_history_bulk_and_send_file sql/history_bulk/DW-Voucher_value_decisions_bulk.sql voucher_value_decisions
-#    run_history_bulk_and_send_file sql/history_bulk/DW-Assistance_need_decisions_bulk.sql assistance_need_decisions
-#fi
+    echo "Running history bulk"
+    run_history_bulk_and_send_file sql/history_bulk/DW-Fee_decisions_bulk.sql fee_decisions
+    run_history_bulk_and_send_file sql/history_bulk/DW-Voucher_value_decisions_bulk.sql voucher_value_decisions
+    run_history_bulk_and_send_file sql/history_bulk/DW-Assistance_need_decisions_bulk.sql assistance_need_decisions
+    run_history_bulk_and_send_file sql/history_bulk/DW-Child_aggregate_bulk.sql child_aggregate
+fi
 
 run_query_and_send_file sql/DW-Daily_info.sql daily_info_3v_$DATE.csv $DATE
 run_query_and_send_file sql/DW-Units_and_groups.sql units_and_groups_3v_$DATE.csv $DATE
