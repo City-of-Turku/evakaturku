@@ -340,21 +340,21 @@ private fun validFeeDecision() =
                 ),
                 FeeDecisionChildDetailed(
                     child =
-                    PersonDetailed(
-                        PersonId(UUID.randomUUID()), LocalDate.of(2020, 1, 1), null,
-                        "Liisa", "Meikäläinen",
-                        null, "", "", "",
-                        "", null, "", null, restrictedDetailsEnabled = false,
-                    ),
+                        PersonDetailed(
+                            PersonId(UUID.randomUUID()), LocalDate.of(2020, 1, 1), null,
+                            "Liisa", "Meikäläinen",
+                            null, "", "", "",
+                            "", null, "", null, restrictedDetailsEnabled = false,
+                        ),
                     placementType = PlacementType.DAYCARE,
                     placementUnit =
-                    UnitData(
-                        DaycareId(UUID.randomUUID()),
-                        name = "Yksikkö 2",
-                        areaId = AreaId(UUID.randomUUID()),
-                        areaName = "Alue 2",
-                        language = "fi",
-                    ),
+                        UnitData(
+                            DaycareId(UUID.randomUUID()),
+                            name = "Yksikkö 2",
+                            areaId = AreaId(UUID.randomUUID()),
+                            areaName = "Alue 2",
+                            language = "fi",
+                        ),
                     serviceNeedFeeCoefficient = BigDecimal.ONE,
                     serviceNeedDescriptionFi = "Palveluntarve 2 (fi)",
                     serviceNeedDescriptionSv = "Palveluntarve 2 (sv)",
@@ -364,9 +364,9 @@ private fun validFeeDecision() =
                     siblingDiscount = 5000,
                     fee = 9600,
                     feeAlterations =
-                    listOf(
-                        FeeAlterationWithEffect(FeeAlterationType.DISCOUNT, 50, true, -5000),
-                    ),
+                        listOf(
+                            FeeAlterationWithEffect(FeeAlterationType.DISCOUNT, 50, true, -5000),
+                        ),
                     finalFee = 5000,
                     childIncome = null,
                 ),
