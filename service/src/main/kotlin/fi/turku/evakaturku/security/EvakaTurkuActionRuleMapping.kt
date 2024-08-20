@@ -182,7 +182,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Child.READ_PLACEMENT,
             Action.Child.READ_GUARDIANS,
             Action.Child.READ_FEE_ALTERATIONS,
-            Action.Child.READ_CHILD_RECIPIENTS,
             Action.Child.READ_CHILD_DOCUMENT,
             Action.Child.READ_VASU_DOCUMENT,
             -> {
