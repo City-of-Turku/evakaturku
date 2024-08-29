@@ -5,8 +5,8 @@
 package fi.turku.evakaturku
 
 import fi.espoo.evaka.shared.db.Database
-import fi.espoo.evaka.shared.noopTracer
 import fi.espoo.evaka.shared.dev.runDevScript
+import fi.espoo.evaka.shared.noopTracer
 import fi.turku.evakaturku.database.resetTurkuDatabaseForE2ETests
 import org.jdbi.v3.core.Jdbi
 import org.junit.jupiter.api.AfterAll
