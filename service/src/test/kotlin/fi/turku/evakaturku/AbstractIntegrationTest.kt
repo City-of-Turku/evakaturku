@@ -5,9 +5,9 @@
 package fi.turku.evakaturku
 
 import fi.espoo.evaka.shared.db.Database
+import fi.espoo.evaka.shared.noopTracer
 import fi.espoo.evaka.shared.dev.runDevScript
 import fi.turku.evakaturku.database.resetTurkuDatabaseForE2ETests
-import io.opentracing.noop.NoopTracerFactory
 import org.jdbi.v3.core.Jdbi
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
@@ -30,7 +30,7 @@ abstract class AbstractIntegrationTest(private val resetDbBeforeEach: Boolean = 
 
     @BeforeAll
     protected fun initializeJdbi() {
-        db = Database(jdbi, NoopTracerFactory.create()).connectWithManualLifecycle()
+        db = Database(jdbi, noopTracer()).connectWithManualLifecycle()
         db.transaction {
             it.runDevScript("reset-turku-database-for-e2e-tests.sql")
             if (!resetDbBeforeEach) {
