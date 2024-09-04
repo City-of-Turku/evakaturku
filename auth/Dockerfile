@@ -22,5 +22,5 @@ ADD --chmod=0644 \
     https://raw.githubusercontent.com/danielmiessler/SecLists/2023.1/Passwords/xato-net-10-million-passwords-1000000.txt \
     /opt/keycloak/data/password-blacklists/default.txt
 COPY --from=theme evaka /opt/keycloak/themes/evaka
-RUN /opt/keycloak/bin/kc.sh build --cache=ispn --cache-stack=kubernetes --db=postgres --features=persistent-user-sessions --http-relative-path=/auth --health-enabled=true
+RUN /opt/keycloak/bin/kc.sh build --db=postgres --features=persistent-user-sessions --http-relative-path=/auth --health-enabled=true
 CMD ["start","--optimized"]
