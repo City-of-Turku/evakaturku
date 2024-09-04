@@ -22,7 +22,6 @@ import fi.espoo.evaka.shared.domain.FiniteDateRange
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
-import org.unbescape.html.HtmlEscape
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
