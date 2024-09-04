@@ -124,7 +124,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             subject = "Uusi $typeFi eVakassa / Nytt $typeSv i eVaka / New $typeEn in eVaka",
             html =
                 """
-                <p>Sinulle on saapunut uusi $typeFi eVakaan${if (showSubjectInBody) " otsikolla \"" +thread.title + "\"" else ""}. Lue viesti ${if (thread.urgent) "mahdollisimman pian " else ""}täältä: ${messageLink(
+                <p>Sinulle on saapunut uusi $typeFi eVakaan${if (showSubjectInBody) " otsikolla \"" + thread.title + "\"" else ""}. Lue viesti ${if (thread.urgent) "mahdollisimman pian " else ""}täältä: ${messageLink(
                     Language.fi,
                     thread.id,
                 )}</p>
