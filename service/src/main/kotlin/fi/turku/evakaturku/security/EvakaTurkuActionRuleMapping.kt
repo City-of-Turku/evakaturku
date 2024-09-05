@@ -60,6 +60,12 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inAnyUnit(),
                     )
             }
+            Action.Global.PERSONAL_MOBILE_DEVICE_PAGE -> {
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasUnitRole(UserRole.SPECIAL_EDUCATION_TEACHER).inAnyUnit(),
+                    )
+            }
             Action.Global.PIN_CODE_PAGE ->
                 sequenceOf(
                     // removed director from default rules
