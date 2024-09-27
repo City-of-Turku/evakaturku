@@ -35,7 +35,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Global.READ_INVOICE_CODES,
             Action.Global.READ_EMPLOYEES,
             Action.Global.READ_DOCUMENT_TEMPLATE,
-            Action.Global.READ_VASU_TEMPLATE,
             -> {
                 action.defaultRules.asSequence() +
                     sequenceOf(
@@ -191,7 +190,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Child.READ_GUARDIANS,
             Action.Child.READ_FEE_ALTERATIONS,
             Action.Child.READ_CHILD_DOCUMENT,
-            Action.Child.READ_VASU_DOCUMENT,
             -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
@@ -414,15 +412,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             }
             Action.DocumentTemplate.READ,
             Action.ChildDocument.READ,
-            -> {
-                @Suppress("UNCHECKED_CAST")
-                action.defaultRules.asSequence() +
-                    sequenceOf(
-                        HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
-                    )
-            }
-            Action.VasuTemplate.READ,
-            Action.VasuDocument.READ,
             -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +

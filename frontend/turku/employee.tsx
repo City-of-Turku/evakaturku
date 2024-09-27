@@ -868,10 +868,6 @@ const customizations: EmployeeCustomizations = {
       }
     }
   },
-  vasuTranslations: {
-    FI: {},
-    SV: {}
-  },
   cityLogo: {
     src: TurkuLogo,
     alt: 'Turku logo'

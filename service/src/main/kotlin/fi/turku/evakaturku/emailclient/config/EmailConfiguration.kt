@@ -174,13 +174,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         )
     }
 
-    override fun vasuNotification(
-        language: Language,
-        childId: ChildId,
-    ): EmailContent {
-        return childDocumentNotification(language, childId)
-    }
-
     override fun pendingDecisionNotification(language: Language): EmailContent {
         return EmailContent(subjectForPendingDecisionEmail, getPendingDecisionEmailText(), getPendingDecisionEmailHtml())
     }
