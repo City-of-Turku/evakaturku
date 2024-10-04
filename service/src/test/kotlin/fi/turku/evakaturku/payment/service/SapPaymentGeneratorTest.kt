@@ -1,23 +1,17 @@
 package fi.turku.evakaturku.payment.service
 
-import fi.espoo.evaka.shared.db.Database
-import fi.espoo.evaka.shared.domain.DateRange
-import fi.turku.evakaturku.util.FinanceDateProvider
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import java.time.LocalDate
 
 class SapPaymentGeneratorTest {
     val paymentChecker = PaymentChecker()
-    val financeDateProvider = FinanceDateProvider()
     val mockMarshaller = mock<PaymentMarshaller>()
     val mockIdocGenerator = mock<IdocGenerator>()
     val sapPaymentGenerator = SapPaymentGenerator(paymentChecker, mockMarshaller, mockIdocGenerator)
-    val mockDb = mock<Database.Transaction>()
     val mockFetcher = mock<PreschoolValuesFetcher>()
 
     @Test
