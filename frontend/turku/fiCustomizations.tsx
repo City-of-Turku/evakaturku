@@ -733,6 +733,10 @@ const fi: DeepPartial<Translations> = {
               Fax (02) 2511 820
             </P>
             <P>
+                Oikaisuvaatimuksen aluehallintovirastolle voi tehdä myös sähköisessä asiointipalvelussa
+                https://www.avi.fi -> henkilöasiakas -> oikaisuvaatimukset -> sähköinen asiointi.
+            </P>
+            <P>
               Omalla vastuulla oikaisuvaatimuksen voi lähettää postitse tai
               lähetin välityksellä. Postiin oikaisuvaatimusasiakirjat on
               jätettävä niin ajoissa, että ne ehtivät perille viimeistään
