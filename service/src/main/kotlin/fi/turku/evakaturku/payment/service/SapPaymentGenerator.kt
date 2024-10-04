@@ -4,7 +4,6 @@ import fi.espoo.evaka.invoicing.domain.Payment
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import jakarta.xml.bind.JAXBException
 import org.springframework.stereotype.Component
-import kotlin.math.ceil
 
 @Component
 class SapPaymentGenerator(
@@ -34,15 +33,7 @@ class SapPaymentGenerator(
         failedList.addAll(failed)
 
         succeeded.forEach {
-            val monthlyAccountingAmount =
-                if (it.period.start.monthValue == 8) {
-                    ceil(
-                        preSchoolAccountingAmount.toDouble() / 2,
-                    ).toInt()
-                } else {
-                    preSchoolAccountingAmount
-                }
-            var preSchoolAmount = (preSchoolerMap[it.unit.id] ?: 0) * monthlyAccountingAmount
+            var preSchoolAmount = (preSchoolerMap[it.unit.id] ?: 0) * preSchoolAccountingAmount
             val language = languageMap[it.unit.id] ?: "fi"
             val idocs: MutableList<FIDCCP02.IDOC> = mutableListOf()
             idocs.add(idocGenerator.generate(it, preSchoolAmount, language))
