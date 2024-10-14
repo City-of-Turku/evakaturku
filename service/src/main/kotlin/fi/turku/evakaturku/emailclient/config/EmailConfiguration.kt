@@ -17,7 +17,6 @@ import fi.espoo.evaka.invoicing.domain.FinanceDecisionType
 import fi.espoo.evaka.invoicing.service.IncomeNotificationType
 import fi.espoo.evaka.messaging.MessageType
 import fi.espoo.evaka.shared.ChildId
-import fi.espoo.evaka.shared.MessageThreadId
 import fi.espoo.evaka.shared.domain.FiniteDateRange
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -40,49 +39,18 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
     private val subjectForPreschoolApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     private val subjectForDecisionEmail: String = "Päätös eVakassa"
 
-    private fun link(
-        language: Language,
-        path: String,
-    ): String {
-        val baseUrl =
-            when (language) {
-                Language.sv -> env.frontendBaseUrlSv
-                else -> env.frontendBaseUrlFi
-            }
-        val url = "$baseUrl$path"
-        return """<a href="$url">$url</a>"""
-    }
-
-    private fun frontPageLink(language: Language) = link(language, "")
-
-    private fun calendarLink(language: Language) = link(language, "/calendar")
-
-    private fun messageLink(
-        language: Language,
-        threadId: MessageThreadId,
-    ) = link(language, "/messages/$threadId")
-
-    private fun childLink(
-        language: Language,
-        childId: ChildId,
-    ) = link(language, "/children/$childId")
-
-    private fun incomeLink(language: Language) = link(language, "/income")
-
-    private fun unsubscribeLink(language: Language) = link(language, "/personal-details#notifications")
-
     private val unsubscribeFi =
-        """<p><small>Jos et halua enää saada tämänkaltaisia viestejä, voit muuttaa asetuksia eVakan Omat tiedot -sivulla: ${unsubscribeLink(
-            Language.fi,
-        )}</small></p>"""
+        """
+        <p><small>Jos et halua enää saada tämänkaltaisia viestejä, voit muuttaa asetuksia eVakan Omat tiedot -sivulla.</small></p>
+        """.trimIndent()
     private val unsubscribeSv =
-        """<p><small>Om du inte längre vill ta emot meddelanden som detta, kan du ändra dina inställningar på eVakas Personuppgifter-sida: ${unsubscribeLink(
-            Language.sv,
-        )}</small></p>"""
+        """
+        <p><small>Om du inte längre vill ta emot meddelanden som detta, kan du ändra dina inställningar på eVakas Personuppgifter-sida.</small></p>
+        """.trimIndent()
     private val unsubscribeEn =
-        """<p><small>If you no longer want to receive messages like this, you can change your settings on eVaka's Personal information page: ${unsubscribeLink(
-            Language.en,
-        )}</small></p>"""
+        """
+        <p><small>If you no longer want to receive messages like this, you can change your settings on eVaka's Personal information page.</small></p>
+        """.trimIndent()
 
     override fun messageNotification(
         language: Language,
@@ -124,27 +92,16 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             subject = "Uusi $typeFi eVakassa / Nytt $typeSv i eVaka / New $typeEn in eVaka",
             html =
                 """
-                <p>Sinulle on saapunut uusi $typeFi eVakaan${if (showSubjectInBody) " otsikolla \"" + thread.title + "\"" else ""}. Lue viesti ${if (thread.urgent) "mahdollisimman pian " else ""}täältä: ${messageLink(
-                    Language.fi,
-                    thread.id,
-                )}</p>
+                <p>Sinulle on saapunut uusi $typeFi eVakaan${if (showSubjectInBody) " otsikolla \"" + thread.title + "\"" else ""}. Lue viesti ${if (thread.urgent) "mahdollisimman pian " else ""}eVakassa.</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
                 $unsubscribeFi
                 <hr>
-                
-                <p>Du har fått ett nytt $typeSv i eVaka${if (showSubjectInBody) " med titeln \"" + thread.title + "\"" else ""}. Läs meddelandet ${if (thread.urgent) "så snart som möjligt " else ""}här:  ${messageLink(
-                    Language.sv,
-                    thread.id,
-                )}</p>
-                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>          
+                <p>Du har fått ett nytt $typeSv i eVaka${if (showSubjectInBody) " med titeln \"" + thread.title + "\"" else ""}. Läs meddelandet ${if (thread.urgent) "så snart som möjligt " else ""} i eVaka.</p>
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>        
                 $unsubscribeSv
                 <hr>
-                
-                <p>You have received a new $typeEn in eVaka${if (showSubjectInBody) " with title \"" + thread.title + "\"" else ""}. Read the message ${if (thread.urgent) "as soon as possible " else ""}here:  ${messageLink(
-                    Language.en,
-                    thread.id,
-                )}</p>
-                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>    
+                <p>You have received a new $typeEn in eVaka${if (showSubjectInBody) " with title \"" + thread.title + "\"" else ""}. Read the message ${if (thread.urgent) "as soon as possible " else ""} in eVaka.</p>
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>  
                 $unsubscribeEn
         """
                     .trimIndent(),
@@ -159,17 +116,18 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             subject = "Uusi dokumentti eVakassa / Nytt dokument i eVaka / New document in eVaka",
             html =
                 """
-                <p>Sinulle on saapunut uusi dokumentti eVakaan. Lue dokumentti täältä: ${childLink(Language.fi, childId)}</p>
+                <p>Sinulle on saapunut uusi dokumentti eVakaan. Lue dokumentti eVakassa.</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
                 $unsubscribeFi
                 <hr>
-                <p>Du har fått ett nytt dokument i eVaka. Läs dokumentet här: ${childLink(Language.sv, childId)}</p>
+                <p>Du har fått ett nytt dokument i eVaka. Läs dokumentet i eVaka.</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
                 $unsubscribeSv
                 <hr>
-                <p>You have received a new eVaka document. Read the document here: ${childLink(Language.en, childId)}</p>
+                <p>You have received a new eVaka document. Read the document in eVaka.</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $unsubscribeEn
+                
 """,
         )
     }
@@ -180,7 +138,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
 
     fun getPendingDecisionEmailHtml(): String {
         return """
-            <p>Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
+            <p>Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. 
+            Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi</p>
             
             <p>Tähän viestiin ei voi vastata.</p>
             
@@ -191,7 +150,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             $unsubscribeFi
             <hr>
             
-            <p>Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
+            <p>Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. 
+            Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi</p>
 
             <p>Svara inte på detta meddelande.</p>
 
@@ -202,7 +162,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             $unsubscribeSv
             <hr>
             
-            <p>You have one decision from Turku early childhood education and care that you have not replied to. The decision must be accepted or rejected at <a href="https://evaka.turku.fi">evaka.turku.fi</a> within two weeks from the date you received it.</p>
+            <p>You have one decision from Turku early childhood education and care that you have not replied to. 
+            The decision must be accepted or rejected at evaka.turku.fi within two weeks from the date you received it.</p>
 
             <p>This message cannot be replied to.</p>
 
@@ -216,7 +177,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
 
     fun getPendingDecisionEmailText(): String {
         return """
-            Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi.
+            Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. 
+            Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi.
             
             Tähän viestiin ei voi vastata.
             
@@ -225,7 +187,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             -----
             
-            Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi.
+            Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. 
+            Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi.
 
             Svara inte på detta meddelande.
 
@@ -234,7 +197,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             -----
             
-            You have one decision from Turku early childhood education and care that you have not replied to. The decision must be accepted or rejected at evaka.turku.fi within two weeks from the date you received it.
+            You have one decision from Turku early childhood education and care that you have not replied to. 
+            The decision must be accepted or rejected at evaka.turku.fi within two weeks from the date you received it.
 
             This message cannot be replied to.
 
@@ -256,13 +220,14 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         return """
             <p>Hei!</p>
             
-            <p>Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa.</p>
+            <p>Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. 
+            Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa.</p>
             
             <p>Hakemuksia käsitellään pääsääntöisesti vastaanottopäivämäärän mukaan.</p>
             
             <p>Tähän viestiin ei voi vastata.</p>
             
-            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.</p>
             
             <p>
             Ystävällisesti, <br/>
@@ -273,13 +238,14 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             <p>Hej!</p>
 
-            <p>Vi har mottagit ditt barns ansökan till den öppna småbarnspedagogiken. Vänligen kontakta chefen vid enheten för öppen småbarnspedagogik direkt och fråga efter en plats.</p>
+            <p>Vi har mottagit ditt barns ansökan till den öppna småbarnspedagogiken. 
+            Vänligen kontakta chefen vid enheten för öppen småbarnspedagogik direkt och fråga efter en plats.</p>
 
             <p>Ansökningarna behandlas i ankomstordning.</p>
 
             <p>Svara inte på detta meddelande.</p>
 
-            <p>Du kan läsa och godkänna/avvisa beslutet på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.</p>
 
             <p>
             Med vänliga hälsningar,<br/> 
@@ -290,13 +256,14 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             <p>Hi!</p>
 
-            <p>We have received your child’s application for open early childhood education and care. Please contact directly the open unit’s regional manager to enquire about a place in open early childhood education and care.</p>
+            <p>We have received your child’s application for open early childhood education and care. 
+            Please contact directly the open unit’s regional manager to enquire about a place in open early childhood education and care.</p>
 
             <p>Applications are processed as a rule in the order they arrive.</p>
 
             <p>This message cannot be replied to.</p>
 
-            <p>You can view and then either accept or reject the decision at <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>You can view and then either accept or reject the decision at evaka.turku.fi.</p>
 
             <p> 
             Best regards,<br/>
@@ -309,7 +276,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         return """
             Hei! 
             
-            Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa. 
+            Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. 
+            Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa. 
             
             Hakemuksia käsitellään pääsääntöisesti vastaanottopäivämäärän mukaan.
 
@@ -324,7 +292,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             Hej!
 
-            Vi har mottagit ditt barns ansökan till den öppna småbarnspedagogiken. Vänligen kontakta chefen vid enheten för öppen småbarnspedagogik direkt och fråga efter en plats.
+            Vi har mottagit ditt barns ansökan till den öppna småbarnspedagogiken. 
+            Vänligen kontakta chefen vid enheten för öppen småbarnspedagogik direkt och fråga efter en plats.
 
             Ansökningarna behandlas i ankomstordning.
 
@@ -339,7 +308,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
 
             Hi!
 
-            We have received your child’s application for open early childhood education and care. Please contact directly the open unit’s regional manager to enquire about a place in open early childhood education and care.
+            We have received your child’s application for open early childhood education and care. 
+            Please contact directly the open unit’s regional manager to enquire about a place in open early childhood education and care.
 
             Applications are processed as a rule in the order they arrive.
 
@@ -364,17 +334,21 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         return """
             <p>Hei!</p>
             
-            <p>Lapsenne varhaiskasvatushakemus on vastaanotettu. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa <a href="https://evaka.turku.fi">evaka.turku.fi</a> siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Varhaiskasvatuspaikan hakuaika on neljä kuukautta. Mikäli kyseessä on vanhemman äkillinen työllistyminen tai opintojen alkaminen, järjestelyaika on kaksi viikkoa. Toimittakaa tällöin työ- tai opiskelutodistus hakemuksen liitteeksi. Kahden viikon järjestelyaika alkaa todistuksen saapumispäivämäärästä. Vuorohoidon palveluita järjestetään vanhempien vuorotyön perusteella, jolloin pyydämme työvuoroista todistuksen.</p>
+            <p>Lapsenne varhaiskasvatushakemus on vastaanotettu. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. 
+            Varhaiskasvatuspaikan hakuaika on neljä kuukautta. Mikäli kyseessä on vanhemman äkillinen työllistyminen tai opintojen alkaminen, järjestelyaika on kaksi viikkoa. 
+            Toimittakaa tällöin työ- tai opiskelutodistus hakemuksen liitteeksi. Kahden viikon järjestelyaika alkaa todistuksen saapumispäivämäärästä. Vuorohoidon palveluita järjestetään vanhempien vuorotyön perusteella, jolloin pyydämme työvuoroista todistuksen.</p>
             
-            <p><b>Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta</b>, ilmoitamme teille paikan noin kuukautta ennen varhaiskasvatuksen toivottua aloitusajankohtaa. Huomioittehan, että paikka voi järjestyä muualta kuin ensisijaisista hakutoiveista.</p>
+            <p><b>Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta</b>, ilmoitamme teille paikan noin kuukautta ennen varhaiskasvatuksen toivottua aloitusajankohtaa. 
+            Huomioittehan, että paikka voi järjestyä muualta kuin ensisijaisista hakutoiveista.</p>
             
-            <p><b>Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin tai yksityisen perhepäivähoitajan</b>, olkaa suoraan yhteydessä kyseiseen palveluntuottajaan varmistaaksenne varhaiskasvatuspaikan saamisen. Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen.</p> 
+            <p><b>Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin tai yksityisen perhepäivähoitajan</b>, olkaa suoraan yhteydessä kyseiseen palveluntuottajaan varmistaaksenne varhaiskasvatuspaikan saamisen. 
+            Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen.</p> 
             
             <p><b>Siirtohakemukset</b> (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.</p>
             
             <p><b>Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta</b>, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.</p>
             
-            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
+            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi</p>
             
             <p>Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p> 
 
@@ -389,17 +363,23 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             <p>Hej!</p>
 
-            <p>Vi har mottagit ditt barns ansökan till småbarnspedagogik. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a> fram till det att den behandlas av servicehandledningen. Ansökningstiden för platser inom småbarnspedagogiken är fyra månader. Om ansökan har gjorts på grund av ny arbetsplats eller studieplats är handläggningstiden två veckor. Då ska vårdnadshavaren lämna in ett arbets- eller studieintyg. Handläggningstiden på två veckor börjar från och med dagen då intyget tas emot. Om ansökan handlar om skiftvård ber vi att vårdnadshavarna skickar in ett intyg om skiftarbete.</p>
+            <p>Vi har mottagit ditt barns ansökan till småbarnspedagogik. 
+            Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. 
+            Ansökningstiden för platser inom småbarnspedagogiken är fyra månader. Om ansökan har gjorts på grund av ny arbetsplats eller studieplats är handläggningstiden två veckor. 
+            Då ska vårdnadshavaren lämna in ett arbets- eller studieintyg. Handläggningstiden på två veckor börjar från och med dagen då intyget tas emot. 
+            Om ansökan handlar om skiftvård ber vi att vårdnadshavarna skickar in ett intyg om skiftarbete.</p>
 
-            <p><b>Om vi kan ordna en dagvårdsplats på något av de kommunala enheterna för småbarnspedagogik som ni valde i er ansökan</b>, kommer vi att meddela er om platsen ungefär en månad före önskat startdatum. Vänligen observera att platsen ni tilldelas inte nödvändigtvis är på någon av de önskade enheterna.</p>
+            <p><b>Om vi kan ordna en dagvårdsplats på något av de kommunala enheterna för småbarnspedagogik som ni valde i er ansökan</b>, kommer vi att meddela er om platsen ungefär en månad före önskat startdatum. 
+            Vänligen observera att platsen ni tilldelas inte nödvändigtvis är på någon av de önskade enheterna.</p>
 
-            <p><b>Om ditt förstahandsval var ett privat daghem eller en privat familjedagvårdare</b>, vänligen kontakta dem direkt för att säkra barnets plats där. Om det inte gick att erbjuda en plats på någon av era önskade platser, vänligen kontakta småbarnspedagogikens servicehandledning.</p>
+            <p><b>Om ditt förstahandsval var ett privat daghem eller en privat familjedagvårdare</b>, vänligen kontakta dem direkt för att säkra barnets plats där. 
+            Om det inte gick att erbjuda en plats på någon av era önskade platser, vänligen kontakta småbarnspedagogikens servicehandledning.</p>
 
             <p><b>Överföringsansökning</b> (barnet har redan en plats på en enhet för småbarnspedagogik i Åbo) handläggs i huvudsak i ankomstordning.</p>
 
             <p><b>Om du har angett att barnet behöver särskilt stöd</b> kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.</p>
 
-            <p>Du kan läsa och godkänna/avvisa beslutet på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
+            <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi</p>
 
             <p>Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.</p>
 
@@ -414,17 +394,24 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             <p>Hello!</p>
 
-            <p>We have received your child’s early childhood education and care application. The parent or guardian who sent the application can make changes to the application at <a href="https://evaka.turku.fi">evaka.turku.fi</a> until the early childhood education and care service guidance begins to process it. The application period for early childhood education and care is four months. If the parent needs to start work or studies on short notice, the minimum period of processing is two weeks. If this is the case, please attach the relevant documentation for work or study. The two-week period begins from the date we have received such documentation. Childcare for children with parents doing shift work are planned on the basis of work rosters, which we will need to obtain from you.</p>
+            <p>We have received your child’s early childhood education and care application. 
+            The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. 
+            The application period for early childhood education and care is four months. 
+            If the parent needs to start work or studies on short notice, the minimum period of processing is two weeks. If this is the case, please attach the relevant documentation for work or study. 
+            The two-week period begins from the date we have received such documentation. 
+            Childcare for children with parents doing shift work are planned on the basis of work rosters, which we will need to obtain from you.</p>
 
-            <p><b>If early childhood education and care can be provided to your child in some other municipal provider than you applied for</b>, we will inform you about this about two months before your desired starting date. Please note that we may find a place for your child somewhere else than your primary choices.</p>
+            <p><b>If early childhood education and care can be provided to your child in some other municipal provider than you applied for</b>, we will inform you about this about two months before your desired starting date. 
+            Please note that we may find a place for your child somewhere else than your primary choices.</p>
 
-            <p><b>If your first choice was a private daycare provider or private family daycarer</b>, please contact them directly. If they are unable to care for your child, please contact the early childhood education and care service guidance.</p>
+            <p><b>If your first choice was a private daycare provider or private family daycarer</b>, please contact them directly. 
+            If they are unable to care for your child, please contact the early childhood education and care service guidance.</p>
 
             <p><b>As a rule, transfer applications</b> (meaning that the City of Turku’s early childhood education and care unit already provides early childhood education and care to the child) are processed in the order they arrive.</p>
 
             <p><b>If you said in your application that your child requires support</b>, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.</p>
 
-            <p>You can view and either accept or reject the decision at <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>You can view and either accept or reject the decision at evaka.turku.fi.</p>
 
             <p>Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
 
@@ -441,11 +428,15 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         return """
             Hei! 
             
-            Lapsenne varhaiskasvatushakemus on vastaanotettu. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Varhaiskasvatuspaikan hakuaika on neljä kuukautta. Mikäli kyseessä on vanhemman äkillinen työllistyminen tai opintojen alkaminen, järjestelyaika on kaksi viikkoa. Toimittakaa tällöin työ- tai opiskelutodistus hakemuksen liitteeksi. Kahden viikon järjestelyaika alkaa todistuksen saapumispäivämäärästä. Vuorohoidon palveluita järjestetään vanhempien vuorotyön perusteella, jolloin pyydämme työvuoroista todistuksen. 
+            Lapsenne varhaiskasvatushakemus on vastaanotettu. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Varhaiskasvatuspaikan hakuaika on neljä kuukautta. 
+            Mikäli kyseessä on vanhemman äkillinen työllistyminen tai opintojen alkaminen, järjestelyaika on kaksi viikkoa. 
+            Toimittakaa tällöin työ- tai opiskelutodistus hakemuksen liitteeksi. Kahden viikon järjestelyaika alkaa todistuksen saapumispäivämäärästä. Vuorohoidon palveluita järjestetään vanhempien vuorotyön perusteella, jolloin pyydämme työvuoroista todistuksen. 
             
-            Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta, ilmoitamme teille paikan noin kuukautta ennen varhaiskasvatuksen toivottua aloitusajankohtaa. Huomioittehan, että paikka voi järjestyä muualta kuin ensisijaisista hakutoiveista.  
+            Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta, ilmoitamme teille paikan noin kuukautta ennen varhaiskasvatuksen toivottua aloitusajankohtaa. 
+            Huomioittehan, että paikka voi järjestyä muualta kuin ensisijaisista hakutoiveista.  
             
-            Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin tai yksityisen perhepäivähoitajan, olkaa suoraan yhteydessä kyseiseen palveluntuottajaan varmistaaksenne varhaiskasvatuspaikan saamisen. Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen. 
+            Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin tai yksityisen perhepäivähoitajan, olkaa suoraan yhteydessä kyseiseen palveluntuottajaan varmistaaksenne varhaiskasvatuspaikan saamisen. 
+            Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen. 
             
             Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.
             
@@ -464,9 +455,12 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             Hej!
 
-            Vi har mottagit ditt barns ansökan till småbarnspedagogik. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. Ansökningstiden för platser inom småbarnspedagogiken är fyra månader. Om ansökan har gjorts på grund av ny arbetsplats eller studieplats är handläggningstiden två veckor. Då ska vårdnadshavaren lämna in ett arbets- eller studieintyg. Handläggningstiden på två veckor börjar från och med dagen då intyget tas emot. Om ansökan handlar om skiftvård ber vi att vårdnadshavarna skickar in ett intyg om skiftarbete.
+            Vi har mottagit ditt barns ansökan till småbarnspedagogik. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. 
+            Ansökningstiden för platser inom småbarnspedagogiken är fyra månader. Om ansökan har gjorts på grund av ny arbetsplats eller studieplats är handläggningstiden två veckor. 
+            Då ska vårdnadshavaren lämna in ett arbets- eller studieintyg. Handläggningstiden på två veckor börjar från och med dagen då intyget tas emot. Om ansökan handlar om skiftvård ber vi att vårdnadshavarna skickar in ett intyg om skiftarbete.
 
-            Om vi kan ordna en dagvårdsplats på något av de kommunala enheterna för småbarnspedagogik som ni valde i er ansökan, kommer vi att meddela er om platsen ungefär en månad före önskat startdatum. Vänligen observera att platsen ni tilldelas inte nödvändigtvis är på någon av de önskade enheterna.
+            Om vi kan ordna en dagvårdsplats på något av de kommunala enheterna för småbarnspedagogik som ni valde i er ansökan, kommer vi att meddela er om platsen ungefär en månad före önskat startdatum. 
+            Vänligen observera att platsen ni tilldelas inte nödvändigtvis är på någon av de önskade enheterna.
 
             Om ditt förstahandsval var ett privat daghem eller en privat familjedagvårdare, vänligen kontakta dem direkt för att säkra barnets plats där. Om det inte gick att erbjuda en plats på någon av era önskade platser, vänligen kontakta småbarnspedagogikens servicehandledning.
 
@@ -521,7 +515,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             <p>Lapsellenne on tehty päätös.</p>
             
-            <p>Päätös on nähtävissä eVakassa osoitteessa <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>Päätös on nähtävissä eVakassa osoitteessa evaka.turku.fi.</p>
             
             <p>Tähän viestiin ei voi vastata.</p>
             $unsubscribeFi
@@ -531,7 +525,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
 
             <p>Vi har fattat ett beslut gällande ert barn.</p>
 
-            <p>Ni kan läsa beslutet på eVaka på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>Ni kan läsa beslutet på eVaka på adressen evaka.turku.fi.</p>
 
             <p>Svara inte på detta meddelande.</p>
             $unsubscribeSv
@@ -541,7 +535,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
 
             <p>We have made a decision about your child.</p>
 
-            <p>Please go to <a href="https://evaka.turku.fi">evaka.turku.fi</a> to view it.</p>
+            <p>Please go to evaka.turku.fi to view it.</p>
 
             <p>This message cannot be replied to.</p>  
             $unsubscribeEn
@@ -635,7 +629,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         return """
             <p>Hei!</p>
             
-            <p>Olemme vastaanottaneet lapsenne hakemuksen esiopetukseen. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa <a href="https://evaka.turku.fi">evaka.turku.fi</a> siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Päätös on nähtävissä ja hyväksyttävissä/hylättävissä <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>Olemme vastaanottaneet lapsenne hakemuksen esiopetukseen. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.</p>
             
             <p>Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.</p>
             
@@ -650,7 +644,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             <li>Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.</li>
             </ul></p>
             
-            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
+            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi</p>
             
             <p>Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
             
@@ -663,7 +657,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             <p>Hej!</p>
 
-            <p>Vi har mottagit ditt barns ansökan till förskoleundervisning. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a> fram till det att den behandlas av servicehandledningen. Du kan läsa och godkänna/avvisa beslutet på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>Vi har mottagit ditt barns ansökan till förskoleundervisning. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.</p>
 
             <p>Om du har angett att barnet behöver särskilt stöd kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.</p>
 
@@ -678,7 +672,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             <li>Ansökningar om överlåtelse (barnet har redan en förskoleplats vid Åbo stads förskoleenhet) behandlas i allmänhet enligt ansökningsdagen.</li>
             </ul></p>
             
-            <p>Du kan läsa och godkänna/avvisa beslutet på adressen <a href="https://evaka.turku.fi">evaka.turku.fi</a></p>
+            <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi</p>
 
             <p>Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.</p>
 
@@ -691,7 +685,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             
             <p>Hello!</p>
 
-            <p>We have received your child’s application for pre-primary education. The parent or guardian who sent the application can make changes to the application at <a href="https://evaka.turku.fi">evaka.turku.fi</a> until the early childhood education and care service guidance begins to process it. You can view and either accept or reject the decision at <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>We have received your child’s application for pre-primary education. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. You can view and either accept or reject the decision at evaka.turku.fi.</p>
 
             <p>If you said in your application that your child requires support, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.</p>
 
@@ -706,7 +700,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             <li>Transfer applications (the child already has an early childhood education place in the early childhood education unit of the city of Turku) are generally processed according to the date of arrival of the application.</li>
             </ul></p>
 
-            <p>You can view and either accept or reject the decision at <a href="https://evaka.turku.fi">evaka.turku.fi</a>.</p>
+            <p>You can view and either accept or reject the decision at evaka.turku.fi.</p>
 
             <p>Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
 
@@ -797,36 +791,34 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 "Uusi pedagoginen dokumentti eVakassa / Nytt pedagogiskt dokument i eVaka / New pedagogical document in eVaka",
             text =
                 """
-                Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti täältä: ${childLink(Language.fi, childId)}
+                Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti eVakassa.
                 
                 Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
                 
                 -----
        
-                Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet här: ${childLink(Language.sv, childId)}
+                Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet i eVaka.
                 
                 Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
                 
                 -----
                 
-                You have received a new eVaka pedagogical document. Read the document here: ${childLink(Language.en, childId)}
+                You have received a new eVaka pedagogical document. Read the document in eVaka.
                 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
             """
                     .trimIndent(),
             html =
                 """
-                <p>Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti täältä: ${childLink(Language.fi, childId)}</p>
+                <p>Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti eVakassa.</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
                 $unsubscribeFi
                 <hr>
-                
-                <p>Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet här: ${childLink(Language.sv, childId)}</p>
-                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>          
+                <p>Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet i eVaka.</p>
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>        
                 $unsubscribeSv
                 <hr>
-                
-                <p>You have received a new eVaka pedagogical document. Read the document here: ${childLink(Language.en, childId)}</p>
+                <p>You have received a new eVaka pedagogical document. Read the document in eVaka.</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p> 
                 $unsubscribeEn
             """
@@ -864,8 +856,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi
                 
-                Tulotiedot: ${incomeLink(Language.fi)}
-                
                 Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
                 
                 -----
@@ -881,8 +871,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad
                 
                 Mer information: varhaiskasvatusmaksut@turku.fi
-                
-                Inkomstuppgifterna: ${incomeLink(Language.sv)}
                 
                 Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
                 
@@ -900,8 +888,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Inquiries: varhaiskasvatusmaksut@turku.fi
 
-                Income information: ${incomeLink(Language.en)}
-
                 This is an automatic message from the eVaka system. Do not reply to this message.
             """
                     .trimIndent(),
@@ -913,7 +899,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Mikäli ette toimita uusia tulotietoja, asiakasmaksu määräytyy korkeimman maksuluokan mukaan. Puuttuvilla tulotiedoilla määrättyä maksua ei korjata takautuvasti.</p>
                 <p>Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki</p>
                 <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Tulotiedot: ${incomeLink(Language.fi)}</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
                 $unsubscribeFi
                 <hr>
@@ -923,8 +908,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Om du inte lämnar in en ny inkomstutredning bestäms din klientavgift enligt den högsta avgiften. En avgift som fastställts på grund av bristfälliga inkomstuppgifter korrigeras inte retroaktivt.</p>
                 <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
                 <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Inkomstuppgifterna: ${incomeLink(Language.sv)}</p>
-                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>          
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>   
                 $unsubscribeSv
                 <hr>
                 <p>Dear client</p>
@@ -933,8 +917,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>If you do not provide your latest income information, your client fee will be determined based on the highest fee category. We will not retroactively reimburse you for fees charged in a situation where you have not provided your income information.</p>
                 <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
                 <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Income information: ${incomeLink(Language.en)}</p>
-                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>      
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -959,8 +942,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi
                 
-                Tulotiedot: ${incomeLink(Language.fi)}
-                
                 Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
                 
                 -----
@@ -976,8 +957,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad
                 
                 Mer information: varhaiskasvatusmaksut@turku.fi
-                
-                Inkomstuppgifterna: ${incomeLink(Language.sv)}
                 
                 Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
                 
@@ -995,8 +974,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Inquiries: varhaiskasvatusmaksut@turku.fi
                 
-                Income information: ${incomeLink(Language.en)}
-                
                 This is an automatic message from the eVaka system. Do not reply to this message.  
             """
                     .trimIndent(),
@@ -1008,7 +985,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Mikäli ette toimita uusia tulotietoja, asiakasmaksu määräytyy korkeimman maksuluokan mukaan. Puuttuvilla tulotiedoilla määrättyä maksua ei korjata takautuvasti.</p>
                 <p>Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki</p>
                 <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Tulotiedot: ${incomeLink(Language.fi)}</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
                 $unsubscribeFi
                 <hr>
@@ -1018,7 +994,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Om du inte lämnar in en ny inkomstutredning bestäms din klientavgift enligt den högsta avgiften. En avgift som fastställts på grund av bristfälliga inkomstuppgifter korrigeras inte retroaktivt.</p>
                 <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
                 <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Inkomstuppgifterna: ${incomeLink(Language.sv)}</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
                 $unsubscribeSv
                 <hr>
@@ -1028,8 +1003,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>If you do not provide your latest income information, your client fee will be determined based on the highest fee category. We will not retroactively reimburse you for fees charged in a situation where you have not provided your income information.</p> 
                 <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
                 <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Income information: ${incomeLink(Language.en)}</p>
-                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>  
+                <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -1048,8 +1022,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi
                 
-                Tulotiedot: ${incomeLink(Language.fi)}
-                
                 Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
                 
                 -----
@@ -1059,8 +1031,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 Ditt barn börjar småbarnspedagogiken under den här månaden. Vi ber dig att lämna in din inkomstinformation via eVaka-systemet senast i slutet av denna månad.
                 
                 Mer information: varhaiskasvatusmaksut@turku.fi
-                
-                Inkomstuppgifterna: ${incomeLink(Language.sv)}
                 
                 Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.
                 
@@ -1072,8 +1042,6 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 
                 Inquiries: varhaiskasvatusmaksut@turku.fi
                 
-                Income information: ${incomeLink(Language.en)}
-                
                 This is an automatic message from the eVaka system. Do not reply to this message.
                 """.trimIndent(),
             html =
@@ -1081,21 +1049,18 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Hyvä asiakkaamme</p>
                 <p>Lapsenne on aloittamassa varhaiskasvatuksessa tämän kuukauden aikana. Pyydämme teitä toimittamaan tulotiedot eVaka-järjestelmän kautta tämän kuukauden loppuun mennessä.</p>
                 <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Tulotiedot: ${incomeLink(Language.fi)}</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
                 $unsubscribeFi
                 <hr>
                 <p>Bästä klient</p>
                 <p>Ditt barn börjar småbarnspedagogiken under den här månaden. Vi ber dig att lämna in din inkomstinformation via eVaka-systemet senast i slutet av denna månad.</p>
                 <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Inkomstuppgifterna: ${incomeLink(Language.sv)}</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
                 $unsubscribeSv
                 <hr>
                 <p>Dear client</p>
                 <p>Your child is starting early childhood education during this month. We ask you to submit your income information via eVaka system by the end of this month.</p>
                 <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Income information: ${incomeLink(Language.en)}</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $unsubscribeEn
             """
@@ -1149,7 +1114,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Bästä klient</p>
                 <p>Din följande klientavgift bestäms enligt den högsta avgiften, eftersom du inte har lämnat in en inkomstutredning inom utsatt tid.</p>
                 <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
-                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>  
+                <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
                 $unsubscribeSv
                 <hr>
                 <p>Dear client</p>
@@ -1185,18 +1150,18 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 """
             <p>eVakaan on lisätty uusia kalenteritapahtumia:</p>
             $eventsHtml
-            <p>Katso lisää kalenterissa: ${calendarLink(Language.fi)}</p>
             $unsubscribeFi
+            <p>Katso lisää kalenterissa eVakassa.</p>
             <hr>
             <p>Nya kalenderhändelser i eVaka:</p>
             $eventsHtml
-            <p>Se mer i kalendern: ${calendarLink(Language.sv)}</p>
             $unsubscribeSv
+            <p>Se mer i kalendern i eVaka.</p>
             <hr>
             <p>New calendar events in eVaka:</p>
             $eventsHtml
-            <p>See more in the calendar: ${calendarLink(Language.en)}</p>
             $unsubscribeEn
+            <p>See more in the calendar in eVaka.</p>
             """
                     .trimIndent(),
         )
@@ -1208,19 +1173,13 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 "Loma-ajan ilmoitus sulkeutuu / Semesteranmälan löper ut / Holiday notification period closing",
             html =
                 """
-<p>Loma-ajan kysely sulkeutuu kahden päivän päästä. Jos lapseltanne/lapsiltanne puuttuu loma-ajan ilmoitus yhdeltä tai useammalta lomapäivältä, teettehän ilmoituksen eVakan kalenterissa mahdollisimman pian: ${calendarLink(
-                    Language.fi,
-                )}</p>
+<p>Loma-ajan kysely sulkeutuu kahden päivän päästä. Jos lapseltanne/lapsiltanne puuttuu loma-ajan ilmoitus yhdeltä tai useammalta lomapäivältä, teettehän ilmoituksen eVakan kalenterissa mahdollisimman pian eVakassa.</p>
 $unsubscribeFi
 <hr>
-<p>Förfrågan om barnets frånvaro i semestertider stängs om två dagar. Om ditt/dina barn saknar anmälan för en eller flera helgdagar, vänligen gör anmälan i eVaka-kalendern så snart som möjligt: ${calendarLink(
-                    Language.sv,
-                )}</p>
+<p>Förfrågan om barnets frånvaro i semestertider stängs om två dagar. Om ditt/dina barn saknar anmälan för en eller flera helgdagar, vänligen gör anmälan i eVaka-kalendern så snart som möjligt i eVaka.</p>
 $unsubscribeSv
 <hr>
-<p>Two days left to submit a holiday notification. If you have not submitted a notification for each day, please submit them through the eVaka calendar as soon as possible: ${calendarLink(
-                    Language.en,
-                )}</p>
+<p>Two days left to submit a holiday notification. If you have not submitted a notification for each day, please submit them through the eVaka calendar as soon as possible in eVaka.</p>
 $unsubscribeEn
 """,
         )
@@ -1240,15 +1199,15 @@ $unsubscribeEn
             html =
                 """
                 <p>Sinulle on saapunut uusi $decisionTypeFi eVakaan.</p>
-                <p>Päätös on nähtävissä eVakassa osoitteessa ${frontPageLink(Language.fi)}.</p>
+                <p>Päätös on nähtävissä eVakassa.</p>
                 $unsubscribeFi
                 <hr>
                 <p>Du har fått ett nytt $decisionTypeSv i eVaka.</p>
-                <p>Beslutet finns att se i eVaka på ${frontPageLink(Language.sv)}.</p>
+                <p>Beslutet finns att se i eVaka.</p>
                 $unsubscribeSv
                 <hr>
                 <p>You have received a new $decisionTypeEn in eVaka.</p>
-                <p>The decision can be viewed on eVaka at ${frontPageLink(Language.en)}.</p>
+                <p>The decision can be viewed on eVaka.</p>
                 $unsubscribeEn
             """
                     .trimIndent(),
