@@ -1224,7 +1224,6 @@ $unsubscribeEn
             html =
                 """
                 <p>Uusi keskusteluaika varattu / Ett nytt diskussionsmöte bokad / New discussion time reserved</p>
-                <p>${notificationDetails.title}</p>
                 <p>${notificationDetails.calendarEventTime.date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</p>
                 <p>${notificationDetails.calendarEventTime.startTime.format(
                     DateTimeFormatter.ofPattern("HH:mm"),
@@ -1249,7 +1248,6 @@ $unsubscribeEn
             html =
                 """
                 <p>Varattu keskusteluaika peruttu / Bokad diskussionsmöte avbruten / Reserved discussion time cancelled</p>
-                <p>${notificationDetails.title}</p>
                 <p>${notificationDetails.calendarEventTime.date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</p>
                 <p>${notificationDetails.calendarEventTime.startTime.format(
                     DateTimeFormatter.ofPattern("HH:mm"),
@@ -1298,8 +1296,6 @@ $unsubscribeEn
             html =
                 """
 <p>Lapsellenne on varattu keskusteluaika</p>
-<p>${reminderData.title}</p>
-<p>${reminderData.firstName} ${reminderData.lastName}</p>
 <p>${reminderData.date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</p>
 <p>${reminderData.startTime.format(DateTimeFormatter.ofPattern("HH:mm"))} - ${
                     reminderData.endTime.format(
@@ -1310,8 +1306,6 @@ $unsubscribeEn
 $unsubscribeFi
 <hr>
 <p>New discussion time reserved for your child</p>
-<p>${reminderData.title}</p>
-<p>${reminderData.firstName} ${reminderData.lastName}</p>
 <p>${reminderData.date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</p>
 <p>${reminderData.startTime.format(DateTimeFormatter.ofPattern("HH:mm"))} - ${
                     reminderData.endTime.format(
