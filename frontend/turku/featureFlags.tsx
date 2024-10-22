@@ -47,6 +47,7 @@ const features: Features = {
     discussionReservations: true,
     forceUnpublishDocumentTemplate: true,
     serviceApplications: false,
+    titaniaErrorsReport: false,
   },
   staging: {
     environmentLabel: 'Staging',
@@ -78,6 +79,7 @@ const features: Features = {
     discussionReservations: true,
     forceUnpublishDocumentTemplate: true,
     serviceApplications: false,
+    titaniaErrorsReport: false,
   },
   prod: {
     environmentLabel: null,
@@ -109,6 +111,7 @@ const features: Features = {
     discussionReservations: false,
     forceUnpublishDocumentTemplate: false,
     serviceApplications: false,
+    titaniaErrorsReport: false,
   }
 }
 
