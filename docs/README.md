@@ -47,4 +47,4 @@ given city.
 The most up-to-date schema can be found from the related kotlin [data classes](../service/src/main/kotlin/fi/espoo/evaka/vasu/Vasu.kt).
 
 Example json of a new draft document with default questions was last exported 20.9.2021 (subject to change):
-[Examples of vasu json content](./vasu-json-examples).
+[Examples of vasu json content](./vasu-json-examples)
