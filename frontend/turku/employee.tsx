@@ -168,7 +168,7 @@ const customizations: EmployeeCustomizations = {
           viewOfTheGuardiansInfo:
             'Kirjaa tähän huoltajien näkemys lapselle esitetystä tuesta.',
           jurisdiction: 'Toimivalta',
-          jurisdictionText:
+          jurisdictionText: (): React.ReactNode =>
             'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
           unitMayChange: 'Loma-aikoina tuen järjestämispaikka saattaa muuttua.',
           appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
@@ -569,7 +569,7 @@ const customizations: EmployeeCustomizations = {
           viewOfTheGuardiansInfo:
             'Anteckna här vårdnadshavarnas syn på det stöd som ges till barnet.',
           jurisdiction: 'Befogenhet',
-          jurisdictionText:
+          jurisdictionText: (): React.ReactNode =>
             'Beslut om organisation för nämnden för fostran och undervisning, 3 kap. 11 §',
           unitMayChange: 'Enheten kan ändras under semestertider',
           appealInstructions: (

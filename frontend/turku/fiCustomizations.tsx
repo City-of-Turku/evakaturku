@@ -612,7 +612,7 @@ const fi: DeepPartial<Translations> = {
       title: 'Päätös tuesta varhaiskasvatuksessa',
       decision: {
         jurisdiction: 'Toimivalta',
-        jurisdictionText:
+        jurisdictionText: (): React.ReactNode =>
           'Kasvatuksen ja opetuksen palvelukokonaisuuden hallinnon järjestämispäätös 3 luku 11 §',
         unitMayChange: 'Loma-aikoina tuen järjestämispaikka saattaa muuttua.',
         appealInstructionsTitle: 'Oikaisuvaatimusohjeet',
