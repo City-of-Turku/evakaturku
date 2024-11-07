@@ -34,8 +34,6 @@ FROM (
         LEFT JOIN service_need sn ON pl.id = sn.placement_id
             AND daterange(sn.start_date, sn.end_date, '[]') && daterange(pl.start_date, pl.end_date, '[]')
         LEFT JOIN service_need_option sno ON sno.id = sn.option_id
-        LEFT JOIN assistance_need an ON p.id = an.child_id
-            AND daterange(an.start_date, an.end_date, '[]') && daterange(pl.start_date, pl.end_date, '[]')
         LEFT JOIN assistance_need_voucher_coefficient anvc ON p.id = anvc.child_id
             AND anvc.validity_period && daterange(sn.start_date, sn.end_date, '[]')
     UNION
