@@ -30,7 +30,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Global.READ_ENDED_PLACEMENTS_REPORT,
             Action.Global.READ_INVOICE_REPORT,
             Action.Global.READ_MISSING_HEAD_OF_FAMILY_REPORT,
-            Action.Global.READ_STARTING_PLACEMENTS_REPORT,
             Action.Global.READ_INCOME_TYPES,
             Action.Global.READ_INVOICE_CODES,
             Action.Global.READ_EMPLOYEES,
