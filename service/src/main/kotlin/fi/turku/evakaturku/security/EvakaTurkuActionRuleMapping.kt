@@ -354,6 +354,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Unit.READ_APPLICATIONS_REPORT,
             Action.Unit.READ_FAMILY_CONFLICT_REPORT,
             Action.Unit.READ_SERVICE_VOUCHER_VALUES_REPORT,
+            Action.Unit.READ_STARTING_PLACEMENTS_REPORT,
             Action.Unit.READ_MISSING_GROUP_PLACEMENTS,
             -> {
                 @Suppress("UNCHECKED_CAST")
