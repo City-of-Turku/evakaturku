@@ -213,16 +213,15 @@ TMPDIR=`mktemp -d`
 # check_certificate api-gw auth_citizen_public_key.pem "Keycloak Citizen realm"
 check_db_certificate evaka-customer keycloak_citizen_certificate.pem "Keycloak Citizen realm"
 
-check_certificate api-gw saml_ad_public_key.pem "AD SAML"
-
-if [[ "ENVIRONMENT" == evakaturku-prod ]]; then
-copy_to_tmp api-gw turkuad-internal-prod.pem
-TURKUAD_VALID_FROM=`get_valid_from turkuad-internal-prod.pem`
-TURKUAD_EXPIRATION=`get_expiration turkuad-internal-prod.pem`
-echo "TURKU AD certificate valid from $TURKUAD_VALID_FROM, expiration at $TURKUAD_EXPIRATION" >> $TMPDIR/output
-fi
-
-# TODO staging env also like in previous lines
+# turku ad moved to
+#check_certificate api-gw saml_ad_public_key.pem "AD SAML"
+#
+#if [[ "ENVIRONMENT" == evakaturku-prod ]]; then
+#copy_to_tmp api-gw turkuad-internal-prod.pem
+#TURKUAD_VALID_FROM=`get_valid_from turkuad-internal-prod.pem`
+#TURKUAD_EXPIRATION=`get_expiration turkuad-internal-prod.pem`
+#echo "TURKU AD certificate valid from $TURKUAD_VALID_FROM, expiration at $TURKUAD_EXPIRATION" >> $TMPDIR/output
+#fi
 
 # Keycloak certificate is checked from db
 # check_certificate api-gw auth_employees_public_key.pem "Keycloak Employee realm" internal_auth_public_key.pem
