@@ -1,8 +1,8 @@
 WITH caretaker_counts_on_date AS (
     SELECT
         u.id                           AS unit_id,
-        g.id						   AS group_id,
-        t::date						   AS date,
+        g.id                           AS group_id,
+        t::date                        AS date,
         COALESCE(
             SUM(
                 CASE
@@ -33,10 +33,7 @@ WITH caretaker_counts_on_date AS (
         ) saa ON g.id = saa.group_id
         LEFT JOIN staff_attendance s ON g.id = s.group_id
             AND t::DATE = s.date
-        LEFT JOIN holiday h ON t::DATE = h.date
-            AND NOT u.operation_days @> ARRAY[1, 2, 3, 4, 5, 6, 7]
     WHERE date_part('isodow', t::DATE) = ANY(u.operation_days)
-        AND h.date IS NULL
         AND daterange(u.opening_date, u.closing_date, '[]') @> t::DATE
     GROUP BY u.id, g.id, t
 ),
@@ -53,16 +50,16 @@ default_sn_coefficients AS (
 daycare_group_placements_aggregate AS (
     SELECT
         dgp.id                                              AS group_placement_id,
-        dgp.daycare_group_id								AS group_id,
-        dgp.start_date 										AS start_date,
-        dgp.end_date										AS end_date,
+        dgp.daycare_group_id                                AS group_id,
+        dgp.start_date                                      AS start_date,
+        dgp.end_date                                        AS end_date,
         pl.child_id                                         AS child_id,
         pl.unit_id                                          AS unit_id,
-        pl.type												AS pl_type,
-        sn.start_date										AS sn_start,
-        sn.end_date											AS sn_end,
-        sno.id												AS sno_id,
-        p.date_of_birth										AS child_birth_date
+        pl.type                                             AS pl_type,
+        sn.start_date                                       AS sn_start,
+        sn.end_date                                         AS sn_end,
+        sno.id                                              AS sno_id,
+        p.date_of_birth                                     AS child_birth_date
     FROM daycare_group_placement dgp
         JOIN placement pl ON dgp.daycare_placement_id = pl.id
         JOIN daycare u ON u.id = pl.unit_id
@@ -74,7 +71,7 @@ daycare_group_placements_aggregate AS (
 )
 SELECT
     now() AT TIME ZONE 'Europe/Helsinki'       AS aikaleima,
-    ccod.date 						   		   AS poiminta_ajalta_pvm,
+    ccod.date                                  AS poiminta_ajalta_pvm,
     d.name                                     AS toimintayksikkö,
     d.id                                       AS toimintayksikkö_id,
     (
@@ -94,7 +91,7 @@ SELECT
     dg.name                                    AS ryhmä,
     dg.id                                      AS ryhmä_id,
     dc.amount                                  AS henkilökuntaa_ryhmässä,
-    ccod.caretaker_count					   AS henkilökuntaa_läsnä,
+    ccod.caretaker_count                       AS henkilökuntaa_läsnä,
     (
         SELECT count(distinct child_att.child_id)
         FROM child_attendance child_att
