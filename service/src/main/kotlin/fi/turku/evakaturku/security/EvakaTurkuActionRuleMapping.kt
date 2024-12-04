@@ -403,6 +403,13 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         ).inUnit() as ScopedActionRule<in T>,
                     )
             }
+            Action.Unit.READ_HOLIDAY_PERIOD_ATTENDANCE_REPORT -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inUnit() as ScopedActionRule<in T>,
+                    )
+            }
             Action.VoucherValueDecision.READ -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
