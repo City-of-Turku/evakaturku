@@ -15,12 +15,12 @@ import { Gap } from 'lib-components/white-space'
 import { Translations } from 'lib-customizations/citizen'
 import { DeepPartial } from 'lib-customizations/types'
 
-const customerContactText = function () {
+const customerContactText = function() {
   return (
     <>
       {' '}
       early childhood education service guidance tel.{' '}
-      <a href="tel:+35822625610">02 2625610</a>.
+      <a href='tel:+35822625610'>02 2625610</a>.
     </>
   )
 }
@@ -230,13 +230,41 @@ const en: DeepPartial<Translations> = {
         shiftCare: {
           instructions:
             'By evening and nonstandard hour childcare we primarily mean early childhood education and care outside the hours of 6 am and 6 pm, or during weekends or round the clock. If you need evening or nonstandard hour childcare, please specify your need under Additional information.',
-          message: {
-            text: 'Evening and nonstandard hour childcare is for children whose both parents do shift work or study as a rule during evenings and/or weekends. The application must include documentation for shift work by the employer or the need for care in evenings or weekends owing to studies. If you cannot add attachments electronically, phone Early childhood education and care service guidance on +358 2 262 5610. You can also post attachments to Varhaiskasvatuksen palveluohjaus PL 355, 20101, Turun kaupunki or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.'
-          },
           attachmentsMessage: {
-            text: 'Evening and nonstandard hour childcare is for children whose both parents do shift work or study as a rule during evenings and/or weekends. The application must include documentation for shift work by the employer or the need for care in evenings or weekends owing to studies. If you cannot add attachments electronically, phone Early childhood education and care service guidance on +358 2 262 5610. You can also post attachments to Varhaiskasvatuksen palveluohjaus PL 355, 20101, Turun kaupunki or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.',
-            subtitle:
-              'Add here documentation for both parents or guardians on shift work or study in evenings and/or weekends.'
+            DAYCARE: (
+              <P>
+                Evening and nonstandard hour childcare is for children whose both parents
+                do shift work or study as a rule during evenings and/or weekends. The
+                application must include documentation for shift work by the employer or
+                the need for care in evenings or weekends owing to studies. If you cannot
+                add attachments electronically, phone Early childhood education and care
+                service guidance on +358 2 262 5610. You can also post attachments to
+                Varhaiskasvatuksen palveluohjaus PL 355, 20101, Turun kaupunki or taking
+                them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+              </P>
+            ),
+            PRESCHOOL: (
+              <>
+                <P>
+                  If a guardian living in the same household does regular shift
+                  work or attends evening studies full-time, they must provide
+                  proof of this (a document issued by their employer or the
+                  educational institution) together with the application for
+                  pre-primary education. The documents must be dated in the year
+                  when the application for pre-primary education is submitted.
+                </P>
+                <P>
+                  Evening and nonstandard hour childcare is for children whose both parents
+                  do shift work or study as a rule during evenings and/or weekends. The
+                  application must include documentation for shift work by the employer or
+                  the need for care in evenings or weekends owing to studies. If you cannot
+                  add attachments electronically, phone Early childhood education and care
+                  service guidance on +358 2 262 5610. You can also post attachments to
+                  Varhaiskasvatuksen palveluohjaus PL 355, 20101, Turun kaupunki or taking
+                  them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+                </P>
+              </>
+            )
           }
         },
         assistanceNeedInstructions: {

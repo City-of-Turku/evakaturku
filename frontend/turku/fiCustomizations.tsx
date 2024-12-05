@@ -102,9 +102,9 @@ const fi: DeepPartial<Translations> = {
               <P>
                 Päätökset tulevat{' '}
                 <a
-                  href="https://www.suomi.fi/viestit"
-                  target="_blank"
-                  rel="noreferrer"
+                  href='https://www.suomi.fi/viestit'
+                  target='_blank'
+                  rel='noreferrer'
                 >
                   Suomi.fi-viestit
                 </a>{' '}
@@ -132,8 +132,8 @@ const fi: DeepPartial<Translations> = {
                 Lisätietoa avoimesta varhaiskasvatuksesta Turun kaupungin
                 verkkosivuilta:{' '}
                 <ExternalLink
-                  text="Kerhot, leikkipuistotoiminta ja avoimet päiväkodit."
-                  href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/kerhot-leikkipuistotoiminta-ja-avoimet-paivakodit"
+                  text='Kerhot, leikkipuistotoiminta ja avoimet päiväkodit.'
+                  href='https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/kerhot-leikkipuistotoiminta-ja-avoimet-paivakodit'
                   newTab
                 />
               </P>
@@ -221,14 +221,44 @@ const fi: DeepPartial<Translations> = {
         shiftCare: {
           instructions:
             'Ilta- ja vuorohoidolla tarkoitetaan pääasiassa klo 6.00–18.00 ulkopuolella ja viikonloppuisin sekä ympärivuorokautisesti tapahtuvaa varhaiskasvatusta. Mikäli tarvitset ilta- tai vuorohoitoa, täsmennä tarvetta hakemuksen Muut lisätiedot -kohdassa.',
-          message: {
-            text: 'Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610. Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.'
-          },
           attachmentsMessage: {
-            text: 'Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610. Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.',
-            subtitle:
-              'Lisää tähän selvitys vuorotyöstä tai iltaisin ja/tai viikonloppuisin tapahtuvasta opiskelusta molempien huoltajien osalta.'
-          }
+            DAYCARE: (
+              <P>
+                Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat
+                ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin.
+                Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan
+                todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon
+                tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole
+                yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610.
+                Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen
+                palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin
+                Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+              </P>
+            ),
+            PRESCHOOL: (
+              <>
+                <P>
+                  Esiopetushakemukselle pyydämme liittämään samassa taloudessa
+                  asuvien huoltajien osalta todistukset työnantajalta
+                  säännöllisestä vuorotyöstä tai oppilaitoksen edustajalta
+                  päätoimisesta iltaopiskelusta. Dokumenttien tulee olla
+                  kirjattu sinä vuonna, kun hakemus esiopetukseen tehdään.
+                </P>
+                <P>
+                  Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat
+                  ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin.
+                  Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan
+                  todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon
+                  tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole
+                  yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610.
+                  Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen
+                  palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin
+                  Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+                </P>
+              </>
+            )
+          },
+          attachmentsSubtitle: 'Lisää tähän molemmilta vanhemmilta joko työnantajan todistus vuorotyöstä tai todistus opiskelusta iltaisin/viikonloppuisin.'
         },
         assistanceNeedInstructions: {
           DAYCARE:

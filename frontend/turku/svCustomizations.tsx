@@ -225,13 +225,43 @@ const sv: DeepPartial<Translations> = {
         shiftCare: {
           instructions:
             'Med kvälls- och skiftesvård avses småbarnspedagogik som ordnas som dygnetruntvård utanför tiden 6.00–18.00 och under veckoslut. Du kan ange eventuellt behov av kvälls- eller skiftesvård i fältet Ytterligare information.',
-          message: {
-            text: 'Kvälls- och skiftesvård är avsett för barn vars båda föräldrar arbetar i skift eller studerar huvudsakligen på kvällar och/eller under veckoslut. Båda vårdnadshavare bifogar ett intyg om sitt skiftesarbete eller ett intyg om behovet av kvälls- eller skiftesvård. Om du inte kan lägga till bilagorna elektroniskt, vänligen kontakta Småbarnspedagogikens servicehandledning per telefon på numret 02 2625610. Du kan också skicka bilagorna per post till adressen Småbarnspedagogikens servicehandledning PB 355, 20101 Åbo stad eller genom att lämna in dem vid Salutorgets Monitori, Småbarnspedagogikens servicehandledning, Auragatan 8.'
-          },
           attachmentsMessage: {
-            text: 'Kvälls- och skiftesvård är avsett för barn vars båda föräldrar arbetar i skift eller studerar huvudsakligen på kvällar och/eller under veckoslut. Båda vårdnadshavare bifogar ett intyg om sitt skiftesarbete eller ett intyg om behovet av kvälls- eller skiftesvård. Om du inte kan lägga till bilagorna elektroniskt, vänligen kontakta Småbarnspedagogikens servicehandledning per telefon på numret 02 2625610. Du kan också skicka bilagorna per post till adressen Småbarnspedagogikens servicehandledning PB 355, 20101 Åbo eller genom att lämna in dem till Salutorgets Monitori, Småbarnspedagogikens servicehandledning, Auragatan 8.',
-            subtitle:
-              'Lägg till intygen över vårdnadshavarnas skiftarbete eller studier på kvällstid och/eller veckoslut här.'
+              DAYCARE: (
+                  <P>
+                      Kvälls- och skiftesvård är avsett för barn vars båda föräldrar arbetar
+                      i skift eller studerar huvudsakligen på kvällar och/eller under veckoslut.
+                      Båda vårdnadshavare bifogar ett intyg om sitt skiftesarbete eller ett
+                      intyg om behovet av kvälls- eller skiftesvård. Om du inte kan lägga till
+                      bilagorna elektroniskt, vänligen kontakta Småbarnspedagogikens servicehandledning
+                      per telefon på numret 02 2625610. Du kan också skicka bilagorna per post till
+                      adressen Småbarnspedagogikens servicehandledning PB 355, 20101 Åbo eller genom
+                      att lämna in dem till Salutorgets Monitori, Småbarnspedagogikens
+                      servicehandledning, Auragatan 8.
+                  </P>
+              ),
+              PRESCHOOL: (
+                  <>
+                      <P>
+                          Kvälls- och skiftesvård är avsett för barn vars båda föräldrar arbetar
+                          i skift eller studerar huvudsakligen på kvällar och/eller under veckoslut.
+                          Båda vårdnadshavare bifogar ett intyg om sitt skiftesarbete eller ett
+                          intyg om behovet av kvälls- eller skiftesvård. Om du inte kan lägga till
+                          bilagorna elektroniskt, vänligen kontakta Småbarnspedagogikens servicehandledning
+                          per telefon på numret 02 2625610. Du kan också skicka bilagorna per post till
+                          adressen Småbarnspedagogikens servicehandledning PB 355, 20101 Åbo eller genom
+                          att lämna in dem till Salutorgets Monitori, Småbarnspedagogikens
+                          servicehandledning, Auragatan 8
+                      </P>
+                      <P>
+                          Om en vårdnadshavare som bor i samma hushåll regelbundet utför
+                          skiftarbete eller avlägger kvällsstudier som huvudsyssla, ska
+                          du bifoga ett intyg över detta (av arbetsgivaren eller en
+                          representant för läroanstalten) till ansökan om
+                          förskoleundervisning. Dokumenten ska ha registrerats det år då
+                          ansökan om förskoleundervisning görs.
+                      </P>
+                  </>
+              )
           }
         },
         assistanceNeedInstructions: {
