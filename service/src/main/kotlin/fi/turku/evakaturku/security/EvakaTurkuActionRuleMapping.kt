@@ -77,6 +77,12 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY,
                     ).inAnyUnit(),
                 )
+            Action.Global.READ_HOLIDAY_PERIODS -> {
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inAnyUnit(),
+                    )
+            }
             Action.Global.SUBMIT_PATU_REPORT -> sequenceOf()
             else -> action.defaultRules.asSequence()
         }
@@ -346,7 +352,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Unit.READ_APPLICATIONS_AND_PLACEMENT_PLANS,
             Action.Unit.READ_ATTENDANCES,
             Action.Unit.READ_GROUP_DETAILS,
-            Action.Unit.READ_GROUPS,
             Action.Unit.READ_CHILD_CAPACITY_FACTORS,
             Action.Unit.READ_BACKUP_CARE,
             Action.Unit.READ_PLACEMENT,
@@ -406,6 +411,16 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Unit.READ_HOLIDAY_PERIOD_ATTENDANCE_REPORT -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inUnit() as ScopedActionRule<in T>,
+                    )
+            }
+            Action.Unit.READ_GROUPS -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
+                    ) +
                     sequenceOf(
                         HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inUnit() as ScopedActionRule<in T>,
                     )
