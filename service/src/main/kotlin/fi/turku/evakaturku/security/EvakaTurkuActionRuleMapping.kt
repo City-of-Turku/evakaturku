@@ -77,7 +77,9 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY,
                     ).inAnyUnit(),
                 )
-            Action.Global.READ_HOLIDAY_PERIODS -> {
+            Action.Global.READ_HOLIDAY_PERIODS,
+            Action.Global.REPORTS_PAGE,
+            -> {
                 action.defaultRules.asSequence() +
                     sequenceOf(
                         HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inAnyUnit(),
