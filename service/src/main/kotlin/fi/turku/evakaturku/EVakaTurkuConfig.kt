@@ -77,6 +77,16 @@ class EVakaTurkuConfig {
                             processDefinitionNumber = "12.06.01.01",
                             archiveDurationMonths = 120 * 12,
                         ),
+                    ArchiveProcessType.FEE_DECISION to
+                        ArchiveProcessConfig(
+                            processDefinitionNumber = "12.06.01.06",
+                            archiveDurationMonths = 144,
+                        ),
+                    ArchiveProcessType.VOUCHER_VALUE_DECISION to
+                        ArchiveProcessConfig(
+                            processDefinitionNumber = "12.06.01.06",
+                            archiveDurationMonths = 144,
+                        ),
                 ),
         )
 
