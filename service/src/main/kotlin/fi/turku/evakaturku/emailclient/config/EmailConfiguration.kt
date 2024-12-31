@@ -1269,20 +1269,25 @@ $unsubscribeEn
     ): EmailContent {
         return EmailContent.fromHtml(
             subject =
-                "Varaa keskusteluaika varhaiskasvatukseen / Reserve a discussion time for early childhood education",
+                "Varaa keskusteluaika varhaiskasvatukseen / Boka tid till diskussionsmöte / Reserve a discussion time for early childhood education",
             html =
                 """
-<p>${notificationDetails.eventTitle}</p>
-<p>${notificationDetails.eventDescription}</p>
-<p>Ajan voi varata eVakan kalenterinäkymästä</p>
-$unsubscribeFi
-<hr>
-<p>${notificationDetails.eventTitle}</p>
-<p>${notificationDetails.eventDescription}</p>
-<p>You can reserve a time using eVaka calendar view</p>
-$unsubscribeEn
-<hr>
-            """
+                    <p>${notificationDetails.eventTitle}</p>
+                    <p>${notificationDetails.eventDescription}</p>
+                    <p>Ajan voi varata eVakan kalenterinäkymästä</p>
+                    $unsubscribeFi
+                    <hr>
+                    <p>${notificationDetails.eventTitle}</p>
+                    <p>${notificationDetails.eventDescription}</p>
+                    <p>Diskussionsmöte kan bokas via eVaka kalender</p>
+                    $unsubscribeSv
+                    <hr>
+                    <p>${notificationDetails.eventTitle}</p>
+                    <p>${notificationDetails.eventDescription}</p>
+                    <p>You can reserve a time using eVaka calendar view</p>
+                    $unsubscribeEn
+                    <hr>
+                """
                     .trimIndent(),
         )
     }
