@@ -97,8 +97,8 @@ const sv: DeepPartial<Translations> = {
               <P>
                 Förskoleundervisningen börjar året innan läroplikten börjar.
                 Förskoleundervisningen är avgiftsfri. Anmälningstiden till
-                förskoleundervisningen för läsåret 2024–2025 är 1.1–14.1.2024.
-                Förskoleundervisningen inleds 8.8.2024.
+                förskoleundervisningen för läsåret 2025–2026 är 1.1–15.1.2025.
+                Förskoleundervisningen inleds 7.8.2024.
               </P>
               <P>
                 Beslutet skickas till{' '}
@@ -166,7 +166,7 @@ const sv: DeepPartial<Translations> = {
           info: {
             DAYCARE: [],
             PRESCHOOL: [
-              'Den finsk- och svenskspråkiga förskoleundervisningen inleds den 8 augusti 2024. Ansök om kompletterande småbarnspedagogik för barn i förskoleåldern under punkten Kompletterande småbarnspedagogik för barn i förskoleåldern. Om barnet övergår från privat till kommunal småbarnspedagogik, ska du också göra en ansökan till kompletterande småbarnspedagogik.'
+              'Den finsk- och svenskspråkiga förskoleundervisningen inleds den 7 augusti 2025. Ansök om kompletterande småbarnspedagogik för barn i förskoleåldern under punkten Kompletterande småbarnspedagogik för barn i förskoleåldern. Om barnet övergår från privat till kommunal småbarnspedagogik, ska du också göra en ansökan till kompletterande småbarnspedagogik.'
             ],
             CLUB: [
               'Klubbarna och lekparksverksamheten som ingår i den öppna småbarnspedagogiken följer förskoleundervisningens arbets- och semestertider. Barnet kan delta i en verksamhet inom den öppna småbarnspedagogiken åt gången, med undantag för familjeklubbar.'

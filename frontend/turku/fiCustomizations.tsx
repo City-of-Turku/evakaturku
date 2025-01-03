@@ -95,9 +95,9 @@ const fi: DeepPartial<Translations> = {
             <>
               <P>
                 Esiopetukseen osallistutaan vuosi ennen oppivelvollisuuden
-                alkamista. Esiopetus on maksutonta. Lukuvuoden 2024–2025
-                esiopetukseen ilmoittaudutaan 1.1-14.1.2024. Esiopetus alkaa
-                8.8.2024.
+                alkamista. Esiopetus on maksutonta. Lukuvuoden 2025–2026
+                esiopetukseen ilmoittaudutaan 1.1-15.1.2025. Esiopetus alkaa
+                7.8.2025.
               </P>
               <P>
                 Päätökset tulevat{' '}
@@ -162,7 +162,7 @@ const fi: DeepPartial<Translations> = {
           info: {
             DAYCARE: [],
             PRESCHOOL: [
-              'Suomen- ja ruotsinkielinen esiopetus alkaa 8.8.2024. Jos tarvitsette esiopetukseen täydentävää varhaiskasvatusta, voitte hakea sitä kohdassa Esiopetuksen täydentävä varhaiskasvatus. Jos lapsi siirtyy yksityisestä varhaiskasvatuksesta kunnalliseen, tehkää hakemus täydentävään varhaiskasvatukseen.'
+              'Suomen- ja ruotsinkielinen esiopetus alkaa 7.8.2025. Jos tarvitsette esiopetukseen täydentävää varhaiskasvatusta, voitte hakea sitä kohdassa Esiopetuksen täydentävä varhaiskasvatus. Jos lapsi siirtyy yksityisestä varhaiskasvatuksesta kunnalliseen, tehkää hakemus täydentävään varhaiskasvatukseen.'
             ],
             CLUB: [
               'Avoimen varhaiskasvatuksen kerhot ja leikkipuistotoiminta noudattavat pääsääntöisesti esiopetuksen työ- ja loma-aikoja. Lapsi voi osallistua yhteen avoimen varhaiskasvatuspalveluun kerralla, poissulkien perhekerhot.'

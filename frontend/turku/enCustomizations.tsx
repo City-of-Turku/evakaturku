@@ -101,9 +101,9 @@ const en: DeepPartial<Translations> = {
               <P>
                 Children take part in pre-primary education one year before the
                 start of compulsory education. Pre-primary education is free.
-                Enrol for pre-primary education for the 2024/25 school year 1–14
-                January 2023. Pre-primary education begins on 8th of August
-                2024.
+                Enrol for pre-primary education for the 2025/26 school year 1–15
+                January 2025. Pre-primary education begins on 7th of August
+                2025.
               </P>
               <P>
                 Decisions will appear in the
@@ -173,7 +173,7 @@ const en: DeepPartial<Translations> = {
           info: {
             DAYCARE: [],
             PRESCHOOL: [
-              'Pre-primary education in Finnish and Swedish begins on 8 August 2024. If you need early childhood education and care to complement pre-primary education, you can apply for it under Early childhood education and care complementing pre-primary education. If a child transfers from private early childhood education and care to municipal, submit an application for supplementary early childhood education and care.'
+              'Pre-primary education in Finnish and Swedish begins on 7 August 2025. If you need early childhood education and care to complement pre-primary education, you can apply for it under Early childhood education and care complementing pre-primary education. If a child transfers from private early childhood education and care to municipal, submit an application for supplementary early childhood education and care.'
             ],
             CLUB: [
               'Open early childhood education and care clubs and playground activities follow as a rule the pre-primary education school and holiday periods. A child can participate in one open early childhood education and care service at a time, excluding clubs for families with children.'
