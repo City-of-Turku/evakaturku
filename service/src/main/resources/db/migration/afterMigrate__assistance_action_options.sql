@@ -12,7 +12,11 @@ VALUES
     ('60', 'Alueellinen integroitu ryhmä', 'Ryhmän rakenne: VEO/VO, VO ja kaksi LH. Lapsiluku 14 kpl, joista viidellä tuen tarve', 60),
     ('70', 'Erityisryhmä', 'Sarat-ryhmä. Ryhmän rakenne: VO, SH ja kaksi LH. Lapsiluku 8 kpl, joista kaikilla erityisen tuen tarve', 70),
     ('80', 'Ryhmän pienennyspäätös', 'Tehdään harkinnanvaraisesti', 80),
-    ('90', 'KV-laki', NULL, 90)
+    ('90', 'KV-laki', NULL, 90),
+    ('100', 'Varhaiskasvatuksen erityisopettajan konsultaatio', NULL, 100),
+    ('110', 'Varhaiskasvatuksen erityisopettajan osa-aikainen opetus', NULL, 110),
+    ('120', 'Varhaiskasvatuksen erityisopettajan kokoaikainen opetus', NULL, 120)
+
 ON CONFLICT (value) DO
 UPDATE SET
     name_fi = EXCLUDED.name_fi,
