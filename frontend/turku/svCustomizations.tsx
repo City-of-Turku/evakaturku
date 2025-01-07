@@ -98,7 +98,7 @@ const sv: DeepPartial<Translations> = {
                 Förskoleundervisningen börjar året innan läroplikten börjar.
                 Förskoleundervisningen är avgiftsfri. Anmälningstiden till
                 förskoleundervisningen för läsåret 2025–2026 är 1.1–15.1.2025.
-                Förskoleundervisningen inleds 7.8.2024.
+                Förskoleundervisningen inleds 7.8.2025.
               </P>
               <P>
                 Beslutet skickas till{' '}
