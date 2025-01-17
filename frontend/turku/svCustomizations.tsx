@@ -896,7 +896,9 @@ const sv: DeepPartial<Translations> = {
             informationssystem innan tidsfristen.
           </P>
         </>
-      )
+      ),
+      disclaimer:
+        '17§ kan förverkligas även om någon sökt ändring av beslutet.'
     },
     summary: <P width="800px">Alla barnets beslut kommer på denna sidan.</P>
   },
