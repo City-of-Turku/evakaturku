@@ -331,6 +331,8 @@ const customizations: EmployeeCustomizations = {
               </li>
             </ul>
           ),
+          disclaimer:
+              'Perusopetuslain 17 §:n mukaan tämä päätös voidaan panna täytäntöön muutoksenhausta huolimatta.',
           grantedAssistanceSectionInfo: (): React.ReactNode =>
             'Merkitään jos lapselle myönnetään avustamis-/tulkitsemispalveluita tai apuvälineitä. Kirjataan perusteluihin ”Lapselle myönnetään perusopetuslain 31§ mukaisena tukipalveluna avustamispalvelua/tarvittavat erityiset apuvälineet/tulkitsemispalvelua/opetuksen poikkeava järjestäminen”. ',
           primaryGroupInfo: (): React.ReactNode =>

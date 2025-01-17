@@ -917,7 +917,9 @@ const fi: DeepPartial<Translations> = {
             käytettävissä vastaanottolaitteessa tai tietojärjestelmässä.
           </P>
         </>
-      )
+      ),
+      disclaimer:
+          'Perusopetuslain 17 §:n mukaan tämä päätös voidaan panna täytäntöön muutoksenhausta huolimatta.'
     },
     summary: (
       <P width="800px">Tälle sivulle saapuvat kaikki lapsen päätökset.</P>
