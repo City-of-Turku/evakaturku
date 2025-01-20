@@ -20,8 +20,8 @@ import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDe
 import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDecisionForm
 import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDecisionGuardian
 import fi.espoo.evaka.assistanceneed.preschooldecision.AssistanceNeedPreschoolDecisionType
+import fi.espoo.evaka.daycare.UnitManager
 import fi.espoo.evaka.daycare.domain.ProviderType
-import fi.espoo.evaka.daycare.service.DaycareManager
 import fi.espoo.evaka.decision.Decision
 import fi.espoo.evaka.decision.DecisionSendAddress
 import fi.espoo.evaka.decision.DecisionStatus
@@ -116,7 +116,8 @@ class DecisionServiceTest {
                             )
                     },
                 lang = OfficialLanguage.FI,
-                DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                unitManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                preschoolManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
             )
 
         val filepath = "${Paths.get("build").toAbsolutePath()}/reports/DecisionServiceTest-$decisionType.pdf"
@@ -148,7 +149,8 @@ class DecisionServiceTest {
                         ),
                     ),
                 lang = OfficialLanguage.FI,
-                DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                unitManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                preschoolManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
             )
 
         val filepath = "${Paths.get("build").toAbsolutePath()}/reports/DecisionServiceTest-DAYCARE-without-settings.pdf"
@@ -180,7 +182,8 @@ class DecisionServiceTest {
                         ),
                     ),
                 lang = OfficialLanguage.FI,
-                DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                unitManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                preschoolManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
             )
 
         val filepath = "${Paths.get("build").toAbsolutePath()}/reports/DecisionServiceTest-DAYCARE-transfer.pdf"
@@ -212,7 +215,8 @@ class DecisionServiceTest {
                         ),
                     ),
                 lang = OfficialLanguage.FI,
-                DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                unitManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                preschoolManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
             )
 
         val filepath = "${Paths.get("build").toAbsolutePath()}/reports/DecisionServiceTest-DAYCARE-voucher.pdf"
@@ -264,7 +268,8 @@ class DecisionServiceTest {
                         ),
                     ),
                 lang = OfficialLanguage.FI,
-                DaycareManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                unitManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
+                preschoolManager = UnitManager("Päivi Päiväkodinjohtaja", "paivi.paivakodinjohtaja@example.com", "0451231234"),
             )
 
         val filepath =

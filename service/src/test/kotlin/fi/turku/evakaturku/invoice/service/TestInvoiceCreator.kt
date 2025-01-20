@@ -76,6 +76,7 @@ fun validInvoiceZeroSum(): InvoiceDetailed {
         replacedInvoiceId = null,
         replacementNotes = null,
         replacementReason = null,
+        attachments = emptyList(),
     )
 }
 
@@ -243,6 +244,7 @@ fun validInvoice(): InvoiceDetailed {
         replacedInvoiceId = null,
         replacementNotes = null,
         replacementReason = null,
+        attachments = emptyList(),
     )
 }
 
