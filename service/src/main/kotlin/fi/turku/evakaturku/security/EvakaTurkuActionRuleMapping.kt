@@ -86,7 +86,8 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                     )
             }
             Action.Global.READ_TAMPERE_REGIONAL_SURVEY_REPORT,
-            Action.Global.SUBMIT_PATU_REPORT -> sequenceOf()
+            Action.Global.SUBMIT_PATU_REPORT,
+            -> sequenceOf()
             else -> action.defaultRules.asSequence()
         }
 
