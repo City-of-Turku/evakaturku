@@ -85,6 +85,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inAnyUnit(),
                     )
             }
+            Action.Global.READ_TAMPERE_REGIONAL_SURVEY_REPORT,
             Action.Global.SUBMIT_PATU_REPORT -> sequenceOf()
             else -> action.defaultRules.asSequence()
         }
