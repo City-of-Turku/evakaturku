@@ -1222,10 +1222,10 @@ $unsubscribeEn
     ): EmailContent {
         return EmailContent.fromHtml(
             subject =
-                "Uusi keskusteluaika varattu eVakassa / Ett nytt diskussionsmöte bokad i eVaka / New discussion time reserved in eVaka",
+                "Uusi keskusteluaika varattu eVakassa / Ett nytt diskussionsmöte bokat i eVaka / New discussion time reserved in eVaka",
             html =
                 """
-                <p>Uusi keskusteluaika varattu / Ett nytt diskussionsmöte bokad / New discussion time reserved</p>
+                <p>Uusi keskusteluaika varattu / Ett nytt diskussionsmöte bokat / New discussion time reserved</p>
                 <p>${notificationDetails.calendarEventTime.date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</p>
                 <p>${notificationDetails.calendarEventTime.startTime.format(
                     DateTimeFormatter.ofPattern("HH:mm"),
