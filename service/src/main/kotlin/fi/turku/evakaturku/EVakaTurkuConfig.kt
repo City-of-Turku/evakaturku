@@ -38,7 +38,6 @@ class EVakaTurkuConfig {
             freeSickLeaveOnContractDays = true,
             alwaysUseDaycareFinanceDecisionHandler = true,
             freeAbsenceGivesADailyRefund = true,
-            invoiceNumberSeriesStart = 1,
             paymentNumberSeriesStart = 1,
             unplannedAbsencesAreContractSurplusDays = false,
             maxContractDaySurplusThreshold = 13,
