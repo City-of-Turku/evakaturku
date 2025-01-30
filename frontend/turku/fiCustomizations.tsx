@@ -34,6 +34,12 @@ const fi: DeepPartial<Translations> = {
       selectChildrenInfo: 'Ilmoita tässä vain koko päivän poissaolot.'
     }
   },
+  children: {
+    serviceApplication: {
+        startDateInfo:
+            'Valitse päivä, jolloin haluaisit uuden palveluntarpeen alkavan. Palveluntarvetta voi vaihtaa vain kuukauden alusta ja sen tulee olla voimassa vähintään 4 kuukautta.',
+    },
+  },
   applications: {
     creation: {
       daycareInfo:
