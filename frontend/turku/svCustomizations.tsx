@@ -35,6 +35,12 @@ const sv: DeepPartial<Translations> = {
         'Anmäl frånvaron här bara om barnet är frånvarande hela dagen.'
     }
   },
+    children: {
+        serviceApplication: {
+            startDateInfo:
+                'Välj det datum då du vill att det nya servicebehovet ska börja. Servicebehovet kan endast ändras från början av månaden och måste vara i kraft i minst fyra (4) månader.',
+        },
+    },
   applications: {
     creation: {
       daycareInfo:

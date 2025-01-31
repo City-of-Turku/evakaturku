@@ -34,6 +34,12 @@ const en: DeepPartial<Translations> = {
       selectChildrenInfo: 'Enter here only full-day absences.'
     }
   },
+    children: {
+        serviceApplication: {
+            startDateInfo:
+                'Choose the date when you want the new service need to start. The service need can only be changed from the beginning of the month and must be valid for at least four (4) months.',
+        },
+    },
   applications: {
     creation: {
       daycareInfo:
