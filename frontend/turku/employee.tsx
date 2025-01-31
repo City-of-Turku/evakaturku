@@ -579,7 +579,7 @@ const customizations: EmployeeCustomizations = {
               <H3>Anvisning om hur man begär omprövning</H3>
               <P>
                 Du kan begära om omprövning av ovanstående beslut hos
-                Regionförvaltningsverket i Sydvästra Finland inom 14 dagar från
+                Regionförvaltningsverket i Sydvästra Finland inom 30 dagar från
                 dagen för delfående av beslutet. Beslutet kan inte överklagas
                 genom besvär hos förvaltningsdomstolen.
               </P>
