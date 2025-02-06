@@ -625,7 +625,7 @@ const fi: DeepPartial<Translations> = {
       infoBoxText: (
         <>
           <P>
-            Pääset luomaan eVaka-käyttäjätunnuksen Kirjaudu sisään-painikkeesta.
+              Voit luoda eVaka käyttäjätunnuksen kirjautumalla vahvasti tunnistautuen.
           </P>
         </>
       )

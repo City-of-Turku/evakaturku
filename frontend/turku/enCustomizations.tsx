@@ -639,7 +639,7 @@ const en: DeepPartial<Translations> = {
       link: 'Log in',
       infoBoxText: (
         <>
-          <P>You can create an eVaka user ID from the Log in button.</P>
+          <P>You can create an eVaka username by logging in with strong authentication.</P>
         </>
       )
     }

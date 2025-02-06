@@ -624,7 +624,7 @@ const sv: DeepPartial<Translations> = {
       link: 'Logga in',
       infoBoxText: (
         <>
-          <P>Du kan skapa ett eVaka-användar-ID från knappen Logga in.</P>
+          <P>Du kan skapa ett eVaka-användarnamn genom att logga in med stark autentisering.</P>
         </>
       )
     }
