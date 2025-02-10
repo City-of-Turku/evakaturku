@@ -122,7 +122,7 @@ const features: Features = {
     titaniaErrorsReport: false,
     multiSelectDeparture: true,
     voucherValueSeparation: false,
-    weakLogin: false,
+    weakLogin: true,
     employeeSfiLogin: true,
   }
 }
