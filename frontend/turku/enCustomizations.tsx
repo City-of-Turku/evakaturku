@@ -928,7 +928,7 @@ const en: DeepPartial<Translations> = {
   },
   income: {
     incomesRegisterConsent:
-      'I submit my income information as an attachment and, if necessary, my income can also be checked in the income register',
+      ' consent to my income-related information being reviewed from the income register and I will provide any benefit information as attachments.',
     description: (
       <>
         <p data-qa="income-description-p1">

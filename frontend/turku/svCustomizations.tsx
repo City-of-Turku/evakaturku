@@ -910,7 +910,7 @@ const sv: DeepPartial<Translations> = {
   },
   income: {
     incomesRegisterConsent:
-      'Jag lämnar in mina inkomstuppgifter som bilaga och vid behov kan även min inkomst kontrolleras i inkomstregistret',
+      'Jag godkänner att uppgifter om mina inkomster granskas från inkomstregistret och jag kommer att bifoga eventuella förmånsuppgifter som bilagor.',
     description: (
       <>
         <p data-qa="income-description-p1">

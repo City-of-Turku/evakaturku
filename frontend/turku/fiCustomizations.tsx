@@ -942,7 +942,7 @@ const fi: DeepPartial<Translations> = {
   },
   income: {
     incomesRegisterConsent:
-      'Toimitan tulotietoni liitteenä ja tarvittaessa tuloni saa tarkistaa myös tulorekisteristä',
+      'Hyväksyn, että tuloihini liittyviä tietoja tarkastellaan tulorekisteristä, ja toimitan mahdolliset etuustiedot liitteinä.',
     description: (
       <>
         <p data-qa="income-description-p1">
