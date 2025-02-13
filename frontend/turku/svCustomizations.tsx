@@ -1089,13 +1089,17 @@ const sv: DeepPartial<Translations> = {
         INTEREST_AND_INVESTMENT_INCOME:
           'Intyg över ränte- och utdelningsinkomster',
         RENTAL_INCOME: 'Intyg över hyresinkomst och bolagsvederlag',
-        PAYSLIP: 'Nyaste lönebesked',
+        PAYSLIP_GROSS: 'Nyaste lönebesked',
+        PAYSLIP_LLC: 'Nyaste lönebesked',
         STARTUP_GRANT: 'Beslut om startpeng',
-        ACCOUNTANT_REPORT:
-          'Bokförarens utredning över löner och naturaförmåner',
+        ACCOUNTANT_REPORT_PARTNERSHIP:
+          'Bokförarens utredning av lön och naturaförmåner',
         ACCOUNTANT_REPORT_LLC:
           'Bokförarens utredning över naturaförmåner och utdelningar',
-        PROFIT_AND_LOSS_STATEMENT: 'Resultat- och balansräkning',
+        PROFIT_AND_LOSS_STATEMENT_SELF_EMPLOYED:
+          'Resultaträkning och balansräkning eller beskattningsbeslut',
+        PROFIT_AND_LOSS_STATEMENT_PARTNERSHIP:
+          'Resultaträkning och balansräkning',
         SALARY: 'Kvitton på betalning av löner och arbetsersättningar',
         PROOF_OF_STUDIES:
           'Studieintyg eller beslut om Arbetslöshetskassans studiestöd/Sysselsättningsfondens utbildningsstöd',
