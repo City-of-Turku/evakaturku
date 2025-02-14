@@ -1007,18 +1007,8 @@ const sv: DeepPartial<Translations> = {
     },
     entrepreneurIncome: {
       title: 'Fyll i företagarens inkomstuppgifter',
-      description: (
-        <>
-          Vid behov kan du använda samma blankett för att ange
-          inkomstuppgifterna för flera företag genom att kryssa för alla rutor
-          som berör dina företag. Vänligen ge mer detaljerad, företagsspecifik
-          information som bilaga.
-          <br />
-          En lista på nödvändiga bilagor hittar du i nedre delen av blanketten
-          under: “Bilagor relaterade till inkomsterna och avgiften för
-          småbarnspedagogik”.
-        </>
-      ),
+      description:
+          'Med denna blankett kan du vid behov fylla i uppgifterna för flera företag genom att välja de punkter som gäller alla dina företag.',
       fullTimeLabel: 'Är du heltids- eller deltidsföretagare?',
       fullTime: 'Heltidsföretagare',
       partTime: 'Deltidsföretagare',
