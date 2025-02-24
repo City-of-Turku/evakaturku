@@ -7,7 +7,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 # eVakaTurku 
 eVakaTurku aka eVaka Turku – ERP for early childhood education in Turku.
 
-This repository contains the code for customizing, configuring and extending the Espoo eVaka ERP for use in Turku early education. 
+This repository contains the code for customizing, configuring and extending the Espoo eVaka ERP for use in Turku early education.
 
 ## Getting eVakaTurku dev environment up and running
 
@@ -36,7 +36,8 @@ Install a tool for running X Window System, eg. [GWSL](https://www.microsoft.com
 
 
 ## Submodules
-eVakaTurku utilizes the [eVaka-repository](https://github.com/espoon-voltti/evaka) as its submodule. When cloning the repository use `--recurse-submodules` or manually initialize and update the submodule after cloning with `git submodule update --init`.
+eVakaTurku utilizes the [eVaka-repository](https://github.com/espoon-voltti/evaka) as its submodule. When cloning the repository use `--recurse-submodules`
+or manually initialize and update the submodule after cloning with `git submodule update --init`.
 
 
 ## License
