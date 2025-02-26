@@ -4,6 +4,7 @@ import fi.espoo.evaka.application.ApplicationType
 import fi.espoo.evaka.daycare.domain.ProviderType
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.espoo.evaka.shared.security.Action
+import fi.espoo.evaka.shared.security.PilotFeature
 import fi.espoo.evaka.shared.security.actionrule.ActionRuleMapping
 import fi.espoo.evaka.shared.security.actionrule.HasGlobalRole
 import fi.espoo.evaka.shared.security.actionrule.HasUnitRole
@@ -63,7 +64,10 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             -> {
                 action.defaultRules.asSequence() +
                     sequenceOf(
-                        HasUnitRole(UserRole.SPECIAL_EDUCATION_TEACHER).inAnyUnit(),
+                        HasUnitRole(UserRole.SPECIAL_EDUCATION_TEACHER)
+                            .withUnitProviderTypes(ProviderType.MUNICIPAL, ProviderType.MUNICIPAL_SCHOOL)
+                            .withUnitFeatures(PilotFeature.MOBILE)
+                            .inAnyUnit(),
                     )
             }
             Action.Global.PIN_CODE_PAGE ->
@@ -75,7 +79,9 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         UserRole.STAFF,
                         UserRole.SPECIAL_EDUCATION_TEACHER,
                         UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY,
-                    ).inAnyUnit(),
+                    )
+                        .withUnitFeatures(PilotFeature.MOBILE)
+                        .inAnyUnit(),
                 )
             Action.Global.READ_HOLIDAY_PERIODS,
             Action.Global.REPORTS_PAGE,
