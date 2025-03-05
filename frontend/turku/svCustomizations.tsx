@@ -909,8 +909,6 @@ const sv: DeepPartial<Translations> = {
     summary: <P width="800px">Alla barnets beslut kommer på denna sidan.</P>
   },
   income: {
-    incomesRegisterConsent:
-      'Jag godkänner att uppgifter om mina inkomster granskas från inkomstregistret och jag kommer att bifoga eventuella förmånsuppgifter som bilagor.',
     description: (
       <>
         <p data-qa="income-description-p1">
@@ -965,6 +963,8 @@ const sv: DeepPartial<Translations> = {
         </>
       ),
       incomeSource: 'Inlämnande av inkomstuppgifter',
+      incomesRegisterConsent:
+        'Jag godkänner att uppgifter om mina inkomster granskas från inkomstregistret och jag kommer att bifoga eventuella förmånsuppgifter som bilagor.',
       provideAttachments: 'Jag lämnar in mina inkomstuppgifter som bilaga',
       estimate: 'Uppskattad bruttoinkomst',
       estimatedMonthlyIncome:

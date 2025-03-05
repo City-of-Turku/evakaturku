@@ -941,8 +941,6 @@ const fi: DeepPartial<Translations> = {
     )
   },
   income: {
-    incomesRegisterConsent:
-      'Hyväksyn, että tuloihini liittyviä tietoja tarkastellaan tulorekisteristä, ja toimitan mahdolliset etuustiedot liitteinä.',
     description: (
       <>
         <p data-qa="income-description-p1">
@@ -995,6 +993,8 @@ const fi: DeepPartial<Translations> = {
         </>
       ),
       incomeSource: 'Tulotietojen toimitus',
+      incomesRegisterConsent:
+        'Hyväksyn, että tuloihini liittyviä tietoja tarkastellaan tulorekisteristä, ja toimitan mahdolliset etuustiedot liitteinä.',
       provideAttachments: 'Toimitan tulotietoni liitteenä',
       estimate: 'Arvio bruttotuloistani',
       estimatedMonthlyIncome: 'Keskimääräiset tulot sisältäen lomarahat, €/kk',

@@ -927,8 +927,6 @@ const en: DeepPartial<Translations> = {
     )
   },
   income: {
-    incomesRegisterConsent:
-      'I consent to my income-related information being reviewed from the income register and I will provide any benefit information as attachments.',
     description: (
       <>
         <p data-qa="income-description-p1">
@@ -986,6 +984,8 @@ const en: DeepPartial<Translations> = {
         </>
       ),
       incomeSource: 'Income data submitted',
+      incomesRegisterConsent:
+        'I consent to my income-related information being reviewed from the income register and I will provide any benefit information as attachments.',
       provideAttachments: 'I will submit my income details in an attachment',
       estimate: 'Estimate of my gross income',
       estimatedMonthlyIncome: 'Average monthly income including holiday pay, €',
