@@ -974,7 +974,6 @@ const en: DeepPartial<Translations> = {
       highestFeeInfo:
         'The highest fee for the service required is valid until further notice or until my child’s early childhood education and care ends. (No need to submit income details)',
       grossIncome: 'Fee determined by gross income',
-      entrepreneurIncome: 'Entrepreneur’s income details'
     },
     grossIncome: {
       title: 'Entering gross income',
@@ -1028,9 +1027,6 @@ const en: DeepPartial<Translations> = {
       title: 'Entering entrepreneur’s income details',
       description:
           'If necessary, you can fill in the information for more than one company by ticking the boxes that apply to all of your companies.',
-      fullTimeLabel: 'Is the business full-time or part-time?',
-      fullTime: 'Full-time',
-      partTime: 'Part-time',
       startOfEntrepreneurship: 'Entrepreneurship began',
       spouseWorksInCompany: 'Does your spouse work in the company?',
       yes: 'Yes',

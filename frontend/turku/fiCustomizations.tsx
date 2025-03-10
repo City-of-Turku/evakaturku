@@ -983,7 +983,6 @@ const fi: DeepPartial<Translations> = {
       highestFeeInfo:
         'Palveluntarpeen mukainen korkein maksu on voimassa toistaiseksi siihen saakka, kunnes toisin ilmoitan tai kunnes lapseni varhaiskasvatus päättyy. (Tulotietoja ei tarvitse toimittaa)',
       grossIncome: 'Maksun määritteleminen bruttotulojen mukaan',
-      entrepreneurIncome: 'Yrittäjän tulotiedot'
     },
     grossIncome: {
       title: 'Bruttotulotietojen täyttäminen',
@@ -1037,9 +1036,6 @@ const fi: DeepPartial<Translations> = {
       title: 'Yrittäjän tulotietojen täyttäminen',
       description:
           'Tällä lomakkeella voit tarvittaessa täyttää tiedot myös useammalle yritykselle valitsemalla kaikkia yrityksiäsi koskevat kohdat.',
-      fullTimeLabel: 'Onko yritystoiminta päätoimista vai sivutoimista?',
-      fullTime: 'Päätoimista',
-      partTime: 'Sivutoimista',
       startOfEntrepreneurship: 'Yrittäjyys alkanut',
       spouseWorksInCompany: 'Työskenteleekö puoliso yrityksessä?',
       yes: 'Kyllä',

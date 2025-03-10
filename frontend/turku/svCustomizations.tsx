@@ -953,7 +953,6 @@ const sv: DeepPartial<Translations> = {
       highestFeeInfo:
         'Den högsta avgiften, relaterat till servicebehovet, gäller tills vidare eller tills jag anmäl annat eller mitt barn inte längre deltar i småbarnspedagogiken. (Jag behöver inte skicka in mina inkomstuppgifter)',
       grossIncome: 'Fastställande av avgift baserat på bruttoinkomst',
-      entrepreneurIncome: 'Information om företagares inkomster'
     },
     grossIncome: {
       title: 'Fylla i information om bruttoinkomst',
@@ -1009,9 +1008,6 @@ const sv: DeepPartial<Translations> = {
       title: 'Fyll i företagarens inkomstuppgifter',
       description:
           'Med denna blankett kan du vid behov fylla i uppgifterna för flera företag genom att välja de punkter som gäller alla dina företag.',
-      fullTimeLabel: 'Är du heltids- eller deltidsföretagare?',
-      fullTime: 'Heltidsföretagare',
-      partTime: 'Deltidsföretagare',
       startOfEntrepreneurship: 'Företaget grundades',
       spouseWorksInCompany: 'Arbetar din make/maka på företaget?',
       yes: 'Ja',
