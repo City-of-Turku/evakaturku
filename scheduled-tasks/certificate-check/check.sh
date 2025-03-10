@@ -130,7 +130,7 @@ TMPDIR=$(mktemp -d)
 
 if [ -z "$VTJ_KEYSTORE_PASS" ]
 then
-    VTJ_KEYSTORE_PASS=`get_password /${ENVIRONMENT}/service/xroad/keystore/password`
+    VTJ_KEYSTORE_PASS=$(get_password /${ENVIRONMENT}/service/xroad/keystore/password)
 fi
 
 check_keystore evaka-srv/vtj keystore.p12 $VTJ_KEYSTORE_PASS "eVaka X-Road certificate"
@@ -145,9 +145,9 @@ if [ -f $TMPDIR/output ]; then
     if [[ $OUTPUT == "print" ]]; then
         cat $TMPDIR/output
     else
-        echo "Expiring certificates in $ENVIRONMENT" >$TMPDIR/output2
-        echo >>$TMPDIR/output2
-        cat $TMPDIR/output >>$TMPDIR/output2
+        echo "Expiring certificates in $ENVIRONMENT" > $TMPDIR/output2
+        echo >> $TMPDIR/output2
+        cat $TMPDIR/output >> $TMPDIR/output2
         aws sns publish --topic-arn $SNS_TOPIC_ARN --message file://$TMPDIR/output2
     fi
 fi
