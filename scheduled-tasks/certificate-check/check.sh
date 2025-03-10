@@ -202,8 +202,9 @@ check_db_certificate evaka-customer keycloak_citizen_certificate.pem "Keycloak C
 # Keycloak certificate is checked from db
 check_db_certificate evaka keycloak_employee_certificate.pem "Keycloak Employee realm"
 
-if [ -z "$KEYSTORE_PASS" ]; then
-    KEYSTORE_PASS=$(get_password /${ENVIRONMENT}/message-service/keystore/password)
+if [ -z "$VTJ_KEYSTORE_PASS" ]
+then
+    VTJ_KEYSTORE_PASS=`get_password /${ENVIRONMENT}/service/xroad/keystore/password`
 fi
 
 check_keystore evaka-srv/vtj keystore.p12 $VTJ_KEYSTORE_PASS "eVaka X-Road certificate"
