@@ -939,13 +939,6 @@ const sv: DeepPartial<Translations> = {
       </>
     ),
     incomeType: {
-      description: (
-        <>
-          Om du är en företagare men har också andra inkomster ska du välja både{' '}
-          <strong>Information om företagares inkomster</strong>, och{' '}
-          <strong>Fastställande av kundavgift baserat på bruttoinkomst</strong>.
-        </>
-      ),
       startDate: 'Gäller från',
       endDate: 'Gäller till',
       title: 'Kundavgifter',

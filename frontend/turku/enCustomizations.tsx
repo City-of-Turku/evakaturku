@@ -956,16 +956,6 @@ const en: DeepPartial<Translations> = {
       </>
     ),
     incomeType: {
-      description: (
-        <>
-          If you are an entrepreneur but also have other income, select both{' '}
-          <strong>Entrepreneur’s income details</strong> and{' '}
-          <strong>
-            Determining the customer fee on the basis of gross income
-          </strong>
-          .
-        </>
-      ),
       startDate: 'Start date',
       endDate: 'End date',
       title: 'Basis for customer ee',
