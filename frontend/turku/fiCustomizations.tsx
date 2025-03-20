@@ -36,9 +36,9 @@ const fi: DeepPartial<Translations> = {
   },
   children: {
     serviceApplication: {
-        startDateInfo:
-            'Valitse päivä, jolloin haluaisit uuden palveluntarpeen alkavan. Palveluntarvetta voi vaihtaa vain kuukauden alusta ja sen tulee olla voimassa vähintään 4 kuukautta.',
-    },
+      startDateInfo:
+        'Valitse päivä, jolloin haluaisit uuden palveluntarpeen alkavan. Palveluntarvetta voi vaihtaa vain kuukauden alusta ja sen tulee olla voimassa vähintään 4 kuukautta.'
+    }
   },
   applications: {
     creation: {
@@ -108,9 +108,9 @@ const fi: DeepPartial<Translations> = {
               <P>
                 Päätökset tulevat{' '}
                 <a
-                  href='https://www.suomi.fi/viestit'
-                  target='_blank'
-                  rel='noreferrer'
+                  href="https://www.suomi.fi/viestit"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Suomi.fi-viestit
                 </a>{' '}
@@ -138,8 +138,8 @@ const fi: DeepPartial<Translations> = {
                 Lisätietoa avoimesta varhaiskasvatuksesta Turun kaupungin
                 verkkosivuilta:{' '}
                 <ExternalLink
-                  text='Kerhot, leikkipuistotoiminta ja avoimet päiväkodit.'
-                  href='https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/kerhot-leikkipuistotoiminta-ja-avoimet-paivakodit'
+                  text="Kerhot, leikkipuistotoiminta ja avoimet päiväkodit."
+                  href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/kerhot-leikkipuistotoiminta-ja-avoimet-paivakodit"
                   newTab
                 />
               </P>
@@ -230,15 +230,17 @@ const fi: DeepPartial<Translations> = {
           attachmentsMessage: {
             DAYCARE: (
               <P>
-                Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat
-                ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin.
-                Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan
-                todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon
-                tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole
-                yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610.
-                Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen
-                palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin
-                Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+                Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat
+                vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti
+                iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi
+                toimitetaan molempien vanhempien osalta työnantajan todistus
+                vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon
+                tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti,
+                ole yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen
+                02 2625610. Voit myös lähettää liitteet postitse osoitteeseen
+                Varhaiskasvatuksen palveluohjaus PL 355, 20101 Turun kaupunki
+                tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen
+                palveluohjaus, Aurakatu 8.
               </P>
             ),
             PRESCHOOL: (
@@ -251,20 +253,23 @@ const fi: DeepPartial<Translations> = {
                   kirjattu sinä vuonna, kun hakemus esiopetukseen tehdään.
                 </P>
                 <P>
-                  Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat vanhemmat
-                  ovat vuorotyössä tai opiskelevat pääsääntöisesti iltaisin ja/tai viikonloppuisin.
-                  Hakemuksen liitteeksi toimitetaan molempien vanhempien osalta työnantajan
-                  todistus vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon
-                  tarpeesta. Jos et voi lisätä liitteitä hakemukselle sähköisesti, ole
-                  yhteydessä puhelimitse Varhaiskasvatuksen palveluohjaukseen 02 2625610.
-                  Voit myös lähettää liitteet postitse osoitteeseen Varhaiskasvatuksen
-                  palveluohjaus PL 355, 20101 Turun kaupunki tai toimittamalla Kauppatorin
-                  Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+                  Ilta-, ja vuorohoito on tarkoitettu lapsille, joiden molemmat
+                  vanhemmat ovat vuorotyössä tai opiskelevat pääsääntöisesti
+                  iltaisin ja/tai viikonloppuisin. Hakemuksen liitteeksi
+                  toimitetaan molempien vanhempien osalta työnantajan todistus
+                  vuorotyöstä tai opiskelusta johtuvasta ilta- tai vuorohoidon
+                  tarpeesta. Jos et voi lisätä liitteitä hakemukselle
+                  sähköisesti, ole yhteydessä puhelimitse Varhaiskasvatuksen
+                  palveluohjaukseen 02 2625610. Voit myös lähettää liitteet
+                  postitse osoitteeseen Varhaiskasvatuksen palveluohjaus PL 355,
+                  20101 Turun kaupunki tai toimittamalla Kauppatorin Monitoriin,
+                  Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
                 </P>
               </>
             )
           },
-          attachmentsSubtitle: 'Lisää tähän molemmilta vanhemmilta joko työnantajan todistus vuorotyöstä tai todistus opiskelusta iltaisin/viikonloppuisin.'
+          attachmentsSubtitle:
+            'Lisää tähän molemmilta vanhemmilta joko työnantajan todistus vuorotyöstä tai todistus opiskelusta iltaisin/viikonloppuisin.'
         },
         assistanceNeedInstructions: {
           DAYCARE:
@@ -625,7 +630,8 @@ const fi: DeepPartial<Translations> = {
       infoBoxText: (
         <>
           <P>
-              Voit luoda eVaka käyttäjätunnuksen kirjautumalla vahvasti tunnistautuen.
+            Voit luoda eVaka käyttäjätunnuksen kirjautumalla vahvasti
+            tunnistautuen.
           </P>
         </>
       )
@@ -769,8 +775,10 @@ const fi: DeepPartial<Translations> = {
               Fax (02) 2511 820
             </P>
             <P>
-                Oikaisuvaatimuksen aluehallintovirastolle voi tehdä myös sähköisessä asiointipalvelussa
-                https://www.avi.fi -{'>'} henkilöasiakas -{'>'} oikaisuvaatimukset -{'>'} sähköinen asiointi.
+              Oikaisuvaatimuksen aluehallintovirastolle voi tehdä myös
+              sähköisessä asiointipalvelussa https://www.avi.fi -{'>'}{' '}
+              henkilöasiakas -{'>'} oikaisuvaatimukset -{'>'} sähköinen
+              asiointi.
             </P>
             <P>
               Omalla vastuulla oikaisuvaatimuksen voi lähettää postitse tai
@@ -925,7 +933,7 @@ const fi: DeepPartial<Translations> = {
         </>
       ),
       disclaimer:
-          'Perusopetuslain 17 §:n mukaan tämä päätös voidaan panna täytäntöön muutoksenhausta huolimatta.'
+        'Perusopetuslain 17 §:n mukaan tämä päätös voidaan panna täytäntöön muutoksenhausta huolimatta.'
     },
     summary: (
       <P width="800px">Tälle sivulle saapuvat kaikki lapsen päätökset.</P>
@@ -975,7 +983,7 @@ const fi: DeepPartial<Translations> = {
       agreeToHighestFee: 'Suostun korkeimpaan varhaiskasvatusmaksuun',
       highestFeeInfo:
         'Palveluntarpeen mukainen korkein maksu on voimassa toistaiseksi siihen saakka, kunnes toisin ilmoitan tai kunnes lapseni varhaiskasvatus päättyy. (Tulotietoja ei tarvitse toimittaa)',
-      grossIncome: 'Maksun määritteleminen bruttotulojen mukaan',
+      grossIncome: 'Maksun määritteleminen bruttotulojen mukaan'
     },
     grossIncome: {
       title: 'Bruttotulotietojen täyttäminen',
@@ -1028,7 +1036,7 @@ const fi: DeepPartial<Translations> = {
     entrepreneurIncome: {
       title: 'Yrittäjän tulotietojen täyttäminen',
       description:
-          'Tällä lomakkeella voit tarvittaessa täyttää tiedot myös useammalle yritykselle valitsemalla kaikkia yrityksiäsi koskevat kohdat.',
+        'Tällä lomakkeella voit tarvittaessa täyttää tiedot myös useammalle yritykselle valitsemalla kaikkia yrityksiäsi koskevat kohdat.',
       startOfEntrepreneurship: 'Yrittäjyys alkanut',
       spouseWorksInCompany: 'Työskenteleekö puoliso yrityksessä?',
       yes: 'Kyllä',
@@ -1223,14 +1231,13 @@ const fi: DeepPartial<Translations> = {
       </P>
       <ul>
         <li>
-          Viestit-sivulla liikkuminen näppäimistöllä tai ruudunlukijalla vaatii
-          vielä korjauksia siirtymien ja kohdistettavien elementtien osalta.
+          Palvelun päivämäärävalitsinta ja monivalintojen alasvetovalikkoa ei
+          ole optimoitu käytettäväksi ruudunlukijalla.
         </li>
         <li>
-          Palvelun yksikkökartassa ei pysty liikkumaan
-          näppäimistöllä/ruudunlukijalla, mutta yksikköjä voi selata samassa
-          näkymässä olevalta listalta. Palvelussa käytetty kartta on kolmannen
-          osapuolen tuottama.
+            Palvelun yksikkökartassa ei pysty liikkumaan näppäimistöllä/ruudunlukijalla
+            , mutta yksikköjä voi selata samassa näkymässä olevalta listalta.
+            Palvelussa käytetty kartta on kolmannen osapuolen tuottama
         </li>
       </ul>
       <H2>Kolmannet osapuolet</H2>
@@ -1239,7 +1246,6 @@ const fi: DeepPartial<Translations> = {
         joiden saavutettavuudesta emme voi vastata.
       </P>
       <ul>
-        <li>Keycloak käyttäjän tunnistautumispalvelu</li>
         <li>Suomi.fi-tunnistautuminen</li>
         <li>Leaflet-karttapalvelu</li>
       </ul>
@@ -1266,30 +1272,27 @@ const fi: DeepPartial<Translations> = {
       <H2>Valvontaviranomainen</H2>
       <P>
         Jos huomaat sivustolla saavutettavuusongelmia, anna ensin palautetta
-        meille sivuston ylläpitäjille. Vastauksessa voi mennä 14 päivää. Jos et
-        ole tyytyväinen saamaasi vastaukseen, tai et saa vastausta lainkaan
-        kahden viikon aikana, voit antaa palautteen Etelä-Suomen
-        aluehallintovirastoon. Etelä-Suomen aluehallintoviraston sivulla
-        kerrotaan tarkasti, miten valituksen voi tehdä, ja miten asia
-        käsitellään.
+        meille sivuston ylläpitäjille. Vastauksessa voi mennä 14 päivää. Jos ole
+        tyytyväinen saamaasi vastaukseen, tai et saa vastausta lainkaan kahden
+        viikon aikana, voit antaa palautteen Liikenne- ja viestintävirasto
+        Traficomiin. Liikenne- ja viestintävirasto Traficomin sivulla kerrotaan
+        tarkasti, miten valituksen voi tehdä, ja miten asia käsitellään.
       </P>
-
       <P>
         <strong>Valvontaviranomaisen yhteystiedot </strong>
         <br />
-        Etelä-Suomen aluehallintovirasto <br />
-        Saavutettavuuden valvonnan yksikkö
+        Liikenne- ja viestintävirasto Traficom
+        <br />
+        Digitaalisen esteettömyyden ja saavutettavuuden valvontayksikkö
         <br />
         <ExternalLink
           href="www.saavutettavuusvaatimukset.fi"
           text="www.saavutettavuusvaatimukset.fi"
         />
         <br />
-        <a href="mailto:saavutettavuus@avi.fi">saavutettavuus@avi.fi</a>
+        <a href="saavutettavuus@traficom.fi">saavutettavuus@traficom.fi</a>
         <br />
-        puhelinnumero vaihde 0295 016 000
-        <br />
-        Avoinna: ma-pe klo 8.00–16.15
+        puhelinnumero vaihde 029 534 5000
       </P>
     </>
   )
