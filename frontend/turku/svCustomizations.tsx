@@ -1200,15 +1200,10 @@ const sv: DeepPartial<Translations> = {
       </P>
       <ul>
         <li>
-          Att röra på sig på Meddelanden-sidan med hjälp av tangentbordet eller
-          skärmläsaren kräver fortfarande korrigeras vad gäller förflyttning och
-          inriktning av olika element.
+            Tjänstens datum- och flervalsfält är inte optimerade för att användas med skärmläsare
         </li>
         <li>
-          Det går inte att röra på sig med hjälp av tangentbordet eller
-          skärmläsaren, men det går att bläddra bland enheter i en lista som
-          finns på samma sida. Kartan som tjänsten använder tillhandahålls av en
-          tredje part.
+            Det går inte att navigera på serviceenhetskartan med tangentbordet/skärmläsaren, men man kan bläddra bland enheterna på listan i samma vy. Kartan som används i tjänsten är framtagen av en tredje part.
         </li>
       </ul>
       <H2>Tredje parter</H2>
@@ -1217,7 +1212,6 @@ const sv: DeepPartial<Translations> = {
         tillgänglighet vi inte ansvarar för.
       </P>
       <ul>
-        <li>Keycloak-tjänsten för att identifiera användare</li>
         <li>Suomi.fi-identifikation</li>
         <li>Leaflet-karttjänsten</li>
       </ul>
@@ -1244,30 +1238,28 @@ const sv: DeepPartial<Translations> = {
       </P>
       <H2>Tillsynsmyndighet</H2>
       <P>
-        Om du märker brister med webbplatsens tillgänglighet, vänligen kontakta
-        administratörerna först. Det kan ta upp till 14 dagar innan du får ett
-        svar. Om du inte är nöjd med svaret eller om du inte får ett svar inom
-        två veckor kan du skicka feedback till Regionförvaltningsverket i Södra
-        Finland. På webbplatsen för Regionförvaltningsverket i Södra Finland
-        förklaras hur man kan lämna in ett klagomål och hur ärendet handläggs.
+          Om du märker brister med webbplatsens tillgänglighet, vänligen kontakta
+          administratörerna först. Det kan ta upp till 14 dagar innan du får ett
+          svar. Om du inte är nöjd med svaret eller om du inte får ett svar inom
+          två veckor kan du skicka feedback till Transport- och kommunikationsverket
+          Traficom. På webbplatsen för Transport- och kommunikationsverket Traficom
+          förklaras hur man kan lämna in ett klagomål och hur ärendet handläggs.
       </P>
 
       <P>
         <strong>Kontaktuppgifter till tillsynsmyndigheten </strong>
         <br />
-        Regionförvaltningsverket i Södra Finland <br />
-        Enheten för tillgänglighetstillsyn
+          Transport- och kommunikationsverket Traficom <br />
+          Enheten för tillsyn över digital tillgänglighet
         <br />
         <ExternalLink
           href="www.saavutettavuusvaatimukset.fi"
           text="www.saavutettavuusvaatimukset.fi"
         />
         <br />
-        <a href="mailto:saavutettavuus@avi.fi">saavutettavuus@avi.fi</a>
+        <a href="mailto:tillganglighet@traficom.fi">tillganglighet@traficom.fi</a>
         <br />
-        tfn växel 0295 016 000
-        <br />
-        Öppet: mån-fre 8.00-16.15
+          telefonnummer växeln 029 534 5000
       </P>
     </>
   )
