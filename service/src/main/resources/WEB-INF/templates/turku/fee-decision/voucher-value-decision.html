@@ -155,6 +155,9 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 
 <div class="page last-page">
     <div class="decision-details-container">
+
+        <div th:utext="#{decision.jurisdiction}"></div>
+
         <div>
             <strong th:text="#{decision.sentDate}">Päätöspäivä</strong>
             <strong th:text="${approvedAt}"></strong>
