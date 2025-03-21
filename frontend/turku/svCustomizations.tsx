@@ -1253,8 +1253,8 @@ const sv: DeepPartial<Translations> = {
           Enheten för tillsyn över digital tillgänglighet
         <br />
         <ExternalLink
-          href="www.saavutettavuusvaatimukset.fi"
-          text="www.saavutettavuusvaatimukset.fi"
+          href="www.saavutettavuusvaatimukset.fi/sv"
+          text="Tillgänglighetskrav"
         />
         <br />
         <a href="mailto:tillganglighet@traficom.fi">tillganglighet@traficom.fi</a>

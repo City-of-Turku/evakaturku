@@ -1275,8 +1275,8 @@ const en: DeepPartial<Translations> = {
           Digital Accessibility Supervision Unit
         <br />
         <ExternalLink
-          href="www.webaccessibility.fi/"
-          text="www.webaccessibility.fi/"
+          href="https://saavutettavuusvaatimukset.fi/en/"
+          text="Web accessibility"
         />
         <br />
         <a href="mailto:saavutettavuus@traficom.fi">saavutettavuus@traficom.fi</a>

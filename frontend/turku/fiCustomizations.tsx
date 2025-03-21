@@ -1286,8 +1286,8 @@ const fi: DeepPartial<Translations> = {
         Digitaalisen esteettömyyden ja saavutettavuuden valvontayksikkö
         <br />
         <ExternalLink
-          href="www.saavutettavuusvaatimukset.fi"
-          text="www.saavutettavuusvaatimukset.fi"
+          href="www.saavutettavuusvaatimukset.fi/fi"
+          text="Saavutettavuusvaatimukset"
         />
         <br />
         <a href="saavutettavuus@traficom.fi">saavutettavuus@traficom.fi</a>
