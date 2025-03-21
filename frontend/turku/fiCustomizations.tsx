@@ -1286,7 +1286,7 @@ const fi: DeepPartial<Translations> = {
         Digitaalisen esteettömyyden ja saavutettavuuden valvontayksikkö
         <br />
         <ExternalLink
-          href="www.saavutettavuusvaatimukset.fi/fi"
+          href="https://www.saavutettavuusvaatimukset.fi/fi"
           text="Saavutettavuusvaatimukset"
         />
         <br />
