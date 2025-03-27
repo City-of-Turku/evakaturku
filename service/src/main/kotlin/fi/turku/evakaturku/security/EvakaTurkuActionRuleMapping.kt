@@ -415,6 +415,15 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inUnit() as ScopedActionRule<in T>,
                     )
             }
+            Action.Unit.READ_TRANSFER_APPLICATIONS -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasUnitRole(UserRole.UNIT_SUPERVISOR)
+                            .withUnitProviderTypes(ProviderType.MUNICIPAL, ProviderType.MUNICIPAL_SCHOOL)
+                            .inUnit() as ScopedActionRule<in T>,
+                    )
+            }
             Action.VoucherValueDecision.READ -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
