@@ -50,6 +50,7 @@ const features: Features = {
     titaniaErrorsReport: false,
     multiSelectDeparture: true,
     voucherValueSeparation: false,
+    citizenChildDocumentTypes: true,
   },
   staging: {
     environmentLabel: 'Staging',
@@ -84,6 +85,7 @@ const features: Features = {
     titaniaErrorsReport: false,
     multiSelectDeparture: true,
     voucherValueSeparation: false,
+    citizenChildDocumentTypes: true,
   },
   prod: {
     environmentLabel: null,
@@ -118,6 +120,7 @@ const features: Features = {
     titaniaErrorsReport: false,
     multiSelectDeparture: true,
     voucherValueSeparation: false,
+    citizenChildDocumentTypes: false,
   }
 }
 
