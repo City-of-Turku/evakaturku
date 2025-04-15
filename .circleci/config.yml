@@ -214,7 +214,7 @@ commands:
                 working_directory: *workspace_turku_frontend
                 command: |
                   yarn install --immutable
-                  yarn playwright install
+                  yarn playwright install chromium
             - save_cache:
                 name: Store e2e yarn cache
                 key: yarn-cache-e2e-v3-{{ checksum "frontend/yarn.lock" }}
