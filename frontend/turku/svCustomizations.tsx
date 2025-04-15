@@ -611,7 +611,7 @@ const sv: DeepPartial<Translations> = {
         href="https://opaskartta.turku.fi/efeedback"
         text="Skicka feedback"
         newTab={true}
-        data-qa="footer-policy-link"
+        data-qa="footer-feedback-link"
       />
     )
   },

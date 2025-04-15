@@ -616,7 +616,7 @@ const fi: DeepPartial<Translations> = {
         href="https://opaskartta.turku.fi/efeedback"
         text="Lähetä palautetta"
         newTab={true}
-        data-qa="footer-policy-link"
+        data-qa="footer-feedback-link"
       />
     )
   },
