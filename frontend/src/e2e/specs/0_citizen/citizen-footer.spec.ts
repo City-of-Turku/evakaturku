@@ -19,7 +19,7 @@ afterEach(async () => {
 describe('Citizen footer', () => {
   test('Turku footer label', async () => {
     await waitUntilEqual(
-      () => page.find('[data-qa="footer-citylabel"]').innerText,
+      () => page.find('[data-qa="footer-citylabel"]').text,
       '© Turun kaupunki'
     )
   })
