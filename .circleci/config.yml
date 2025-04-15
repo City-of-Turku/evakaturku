@@ -218,7 +218,9 @@ commands:
                   - playwright-browser-cache-
             - run:
                 working_directory: *workspace_turku_frontend
-                command: yarn install --immutable
+                command: |
+                  yarn install --immutable
+                  yarn playwright install
             - save_cache:
                 name: Store playwright browser cache
                 key: playwright-browser-cache-v1-{{ checksum "frontend/yarn.lock" }}
