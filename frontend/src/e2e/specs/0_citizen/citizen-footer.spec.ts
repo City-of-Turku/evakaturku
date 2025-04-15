@@ -32,7 +32,7 @@ describe('Citizen footer', () => {
   test('Turku feedback link', async () => {
     await waitUntilEqual(
       () => page.find('[data-qa="footer-feedback-link"]').getAttribute('href'),
-      'https://www.turku.fi/palaute'
+      'https://opaskartta.turku.fi/efeedback'
     )
   })
 })
