@@ -77,7 +77,7 @@ services:
       EVAKA_ASYNC_JOB_RUNNER_DISABLE_RUNNER: "true"
       EVAKA_BUCKET_DECISIONS: evaka-daycaredecisions-dev
       EVAKA_BUCKET_FEE_DECISIONS: evaka-paymentdecisions-dev
-      EVAKA_LOCAL_S3_URL: https://s3-mock:9191
+      EVAKA_LOCAL_S3_URL: https://s3:9191
       EVAKA_BUCKET_PROXY_THROUGH_NGINX: "true"
       EVAKA_PASSWORD_BLACKLIST_DIRECTORY: /opt/password-blacklists
       ESPOO_INTEGRATION_INVOICE_ENABLED: "false"
