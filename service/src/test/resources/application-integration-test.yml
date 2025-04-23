@@ -54,7 +54,7 @@ evaka:
       xroad:
         address: address
   local_s3:
-    url: "http://localhost:9191"
+    url: "http://localhost:9090"
 evakaturku:
   sapInvoicing:
     username: user

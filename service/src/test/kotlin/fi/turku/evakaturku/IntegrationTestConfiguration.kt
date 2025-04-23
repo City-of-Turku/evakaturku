@@ -25,7 +25,9 @@ class IntegrationTestConfiguration {
                 .serviceConfiguration(S3Configuration.builder().pathStyleAccessEnabled(true).build())
                 .endpointOverride(bucketEnv.localS3Url)
                 .credentialsProvider(
-                    StaticCredentialsProvider.create(AwsBasicCredentials.create("foo", "bar")),
+                    StaticCredentialsProvider.create(
+                        AwsBasicCredentials.create(bucketEnv.localS3AccessKeyId, bucketEnv.localS3SecretAccessKey),
+                    ),
                 )
                 .build()
 
