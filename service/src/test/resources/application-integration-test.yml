@@ -53,8 +53,8 @@ evaka:
       password: pass
       xroad:
         address: address
-  s3mock:
-    url: "http://localhost:9090"
+  local_s3:
+    url: "http://localhost:9191"
 evakaturku:
   sapInvoicing:
     username: user
