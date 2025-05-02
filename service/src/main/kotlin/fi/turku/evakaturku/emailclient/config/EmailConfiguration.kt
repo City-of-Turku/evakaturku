@@ -41,6 +41,18 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
     private val subjectForPreschoolApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     private val subjectForDecisionEmail: String = "Päätös eVakassa"
 
+    private val securityFi =
+        """
+        <p><small>Tietoturvasyistä eVaka-viesteistä saamasi sähköpostit eivät koskaan sisällä linkkejä. Siksi emme ohjaa sinua lukemaan viestiä suoran linkin kautta.</small></p>
+        """.trimIndent()
+    private val securitySv =
+        """
+        <p><small>Av säkerhetsskäl innehåller e-postmeddelanden från eVaka aldrig länkar. Därför hänvisar vi dig inte till att läsa meddelandet via en direkt länk.</small></p>
+        """.trimIndent()
+    private val securityEn =
+        """
+        <p><small>For security reasons, the emails you receive from eVaka never contain links. Therefore, we do not direct you to read the message via a direct link.</small></p>
+        """.trimIndent()
     private val unsubscribeFi =
         """
         <p><small>Jos et halua enää saada tämänkaltaisia viestejä, voit muuttaa asetuksia eVakan Omat tiedot -sivulla.</small></p>
@@ -96,14 +108,17 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 """
                 <p>Sinulle on saapunut uusi $typeFi eVakaan lähettäjältä ${thread.senderName}${if (showSubjectInBody) " otsikolla \"" + thread.title + "\"" else ""}. Lue viesti ${if (thread.urgent) "mahdollisimman pian " else ""}eVakassa.</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Du har fått ett nytt $typeSv i eVaka från ${thread.senderName}${if (showSubjectInBody) " med titeln \"" + thread.title + "\"" else ""}. Läs meddelandet ${if (thread.urgent) "så snart som möjligt " else ""} i eVaka.</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>        
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>You have received a new $typeEn in eVaka from ${thread.senderName}${if (showSubjectInBody) " with title \"" + thread.title + "\"" else ""}. Read the message ${if (thread.urgent) "as soon as possible " else ""} in eVaka.</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>  
+                $securityEn
                 $unsubscribeEn
         """
                     .trimIndent(),
@@ -120,14 +135,17 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 """
                 <p>Sinulle on saapunut uusi dokumentti eVakaan. Lue dokumentti eVakassa.</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Du har fått ett nytt dokument i eVaka. Läs dokumentet i eVaka.</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>You have received a new eVaka document. Read the document in eVaka.</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
+                $securityEn
                 $unsubscribeEn
                 
 """,
@@ -149,6 +167,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             Ystävällisesti,<br/>
             Varhaiskasvatuksen palveluohjaus<br/>
             </p>
+            $securityFi
             $unsubscribeFi
             <hr>
             
@@ -161,6 +180,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             Med vänliga hälsningar,<br/>
             småbarnspedagogikens servicehandledning<br/>
             </p>
+            $securitySv
             $unsubscribeSv
             <hr>
             
@@ -173,6 +193,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             Best regards,<br/>
             Early childhood education and care service guidance<br/>
             </p>
+            $securityEn
             $unsubscribeEn
             """.trimIndent()
     }
@@ -520,6 +541,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             <p>Päätös on nähtävissä eVakassa osoitteessa evaka.turku.fi.</p>
             
             <p>Tähän viestiin ei voi vastata.</p>
+            $securityFi
             $unsubscribeFi
             <hr>
             
@@ -530,6 +552,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             <p>Ni kan läsa beslutet på eVaka på adressen evaka.turku.fi.</p>
 
             <p>Svara inte på detta meddelande.</p>
+            $securitySv
             $unsubscribeSv
             <hr>
             
@@ -540,6 +563,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             <p>Please go to evaka.turku.fi to view it.</p>
 
             <p>This message cannot be replied to.</p>  
+            $securityEn
             $unsubscribeEn
             """.trimIndent()
     }
@@ -604,12 +628,15 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             html =
                 """
                 <p>Läsnäolovarauksia puuttuu $start alkavalta viikolta. Käythän merkitsemässä ne mahdollisimman pian.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Det finns några närvarobokningar som saknas för veckan som börjar $start. Vänligen markera dem så snart som möjligt.</p>
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>There are missing attendance reservations for week starting $start. Please mark them as soon as possible.</p>
+                $securityEn
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -814,14 +841,17 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 """
                 <p>Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti eVakassa.</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet i eVaka.</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>        
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>You have received a new eVaka pedagogical document. Read the document in eVaka.</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p> 
+                $securityEn
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -902,6 +932,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki</p>
                 <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Bästa klient</p>
@@ -911,6 +942,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
                 <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>   
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>Dear client</p>
@@ -920,6 +952,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
                 <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
+                $securityEn
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -988,6 +1021,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Voitte tarvittaessa toimittaa tulotiedot myös postitse osoitteeseen: Turun kaupunki / Kasvatuksen ja opetuksen palveluokokonaisuus, varhaiskasvatuksen asiakasmaksut/ PL 355 20101 Turun kaupunki</p>
                 <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Bästa klient</p>
@@ -997,6 +1031,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Du kan vid behov också skicka inkomstutredningen per post till adressen: Åbo stad / Servicehelheten för fostran och undervisning, klientavgifter för småbarnspedagogik / PB 355 20101 Åbo stad</p>
                 <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>Dear client</p>
@@ -1006,6 +1041,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>If necessary, you can also send your income information by post to the following address: City of Turku / Education Services, Early childhood education client fees / P.O. Box 355, 20101 City of Turku</p>
                 <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
+                $securityEn
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -1052,18 +1088,21 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Lapsenne on aloittamassa varhaiskasvatuksessa tämän kuukauden aikana. Pyydämme teitä toimittamaan tulotiedot eVaka-järjestelmän kautta tämän kuukauden loppuun mennessä.</p>
                 <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Bästä klient</p>
                 <p>Ditt barn börjar småbarnspedagogiken under den här månaden. Vi ber dig att lämna in din inkomstinformation via eVaka-systemet senast i slutet av denna månad.</p>
                 <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>Dear client</p>
                 <p>Your child is starting early childhood education during this month. We ask you to submit your income information via eVaka system by the end of this month.</p>
                 <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
+                $securityEn
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -1111,18 +1150,21 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>Seuraava asiakasmaksunne määräytyy korkeimman maksuluokan mukaan, sillä ette ole toimittaneet uusia tulotietoja määräaikaan mennessä.</p>
                 <p>Lisätietoja saatte tarvittaessa: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Bästä klient</p>
                 <p>Din följande klientavgift bestäms enligt den högsta avgiften, eftersom du inte har lämnat in en inkomstutredning inom utsatt tid.</p>
                 <p>Mer information: varhaiskasvatusmaksut@turku.fi</p>
                 <p>Detta besked skickas automatiskt av eVaka. Svara inte på detta besked.</p>
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>Dear client</p>
                 <p>Your next client fee will be determined based on the highest fee category as you did not provide your latest income information by the deadline.</p>
                 <p>Inquiries: varhaiskasvatusmaksut@turku.fi</p>
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
+                $securityEn
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -1152,16 +1194,19 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 """
             <p>eVakaan on lisätty uusia kalenteritapahtumia:</p>
             $eventsHtml
+            $securityFi
             $unsubscribeFi
             <p>Katso lisää kalenterissa eVakassa.</p>
             <hr>
             <p>Nya kalenderhändelser i eVaka:</p>
             $eventsHtml
+            $securitySv
             $unsubscribeSv
             <p>Se mer i kalendern i eVaka.</p>
             <hr>
             <p>New calendar events in eVaka:</p>
             $eventsHtml
+            $securityEn
             $unsubscribeEn
             <p>See more in the calendar in eVaka.</p>
             """
@@ -1176,12 +1221,15 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
             html =
                 """
 <p>Loma-ajan kysely sulkeutuu kahden päivän päästä. Jos lapseltanne/lapsiltanne puuttuu loma-ajan ilmoitus yhdeltä tai useammalta lomapäivältä, teettehän ilmoituksen eVakan kalenterissa mahdollisimman pian eVakassa.</p>
+$securityFi
 $unsubscribeFi
 <hr>
 <p>Förfrågan om barnets frånvaro i semestertider stängs om två dagar. Om ditt/dina barn saknar anmälan för en eller flera helgdagar, vänligen gör anmälan i eVaka-kalendern så snart som möjligt i eVaka.</p>
+$securitySv
 $unsubscribeSv
 <hr>
 <p>Two days left to submit a holiday notification. If you have not submitted a notification for each day, please submit them through the eVaka calendar as soon as possible in eVaka.</p>
+$securityEn
 $unsubscribeEn
 """,
         )
@@ -1202,14 +1250,17 @@ $unsubscribeEn
                 """
                 <p>Sinulle on saapunut uusi $decisionTypeFi eVakaan.</p>
                 <p>Päätös on nähtävissä eVakassa.</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>Du har fått ett nytt $decisionTypeSv i eVaka.</p>
                 <p>Beslutet finns att se i eVaka.</p>
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>You have received a new $decisionTypeEn in eVaka.</p>
                 <p>The decision can be viewed on eVaka.</p>
+                $securityEn
                 $unsubscribeEn
             """
                     .trimIndent(),
@@ -1231,8 +1282,11 @@ $unsubscribeEn
                     DateTimeFormatter.ofPattern("HH:mm"),
                 )} - ${notificationDetails.calendarEventTime.endTime.format(DateTimeFormatter.ofPattern("HH:mm"))}</p>
                 <hr>
+                $securityFi
                 $unsubscribeFi
+                $securitySv
                 $unsubscribeSv
+                $securityEn
                 $unsubscribeEn
                 <hr>
             """
@@ -1255,8 +1309,11 @@ $unsubscribeEn
                     DateTimeFormatter.ofPattern("HH:mm"),
                 )} - ${notificationDetails.calendarEventTime.endTime.format(DateTimeFormatter.ofPattern("HH:mm"))}</p>
                 <hr>
+                $securityFi
                 $unsubscribeFi
+                $securitySv
                 $unsubscribeSv
+                $securityEn
                 $unsubscribeEn
                 <hr>
             """
@@ -1277,16 +1334,19 @@ $unsubscribeEn
                 <p>${notificationDetails.eventTitle}</p>
                 <p>${notificationDetails.eventDescription}</p>
                 <p>Ajan voi varata eVakan kalenterinäkymästä</p>
+                $securityFi
                 $unsubscribeFi
                 <hr>
                 <p>${notificationDetails.eventTitle}</p>
                 <p>${notificationDetails.eventDescription}</p>
                 <p>Diskussionsmöte kan bokas via eVaka kalender</p>
+                $securitySv
                 $unsubscribeSv
                 <hr>
                 <p>${notificationDetails.eventTitle}</p>
                 <p>${notificationDetails.eventDescription}</p>
                 <p>You can reserve a time using eVaka calendar view</p>
+                $securityEn
                 $unsubscribeEn
                 <hr>
             """
@@ -1311,6 +1371,7 @@ $unsubscribeEn
                     )
                 }</p>
 <p>Varauksen voi peruuttaa 2 arkipäivää ennen varattua aikaa suoraan eVakan kalenterinäkymästä. Myöhempää peruutusta varten ota yhteyttä henkilökuntaan.</p>
+$securityFi
 $unsubscribeFi
 <hr>
 <p>New discussion time reserved for your child</p>
@@ -1321,6 +1382,7 @@ $unsubscribeFi
                     )
                 }</p>
 <p>Reservation can be cancelled 2 business days before the reserved time using the eVaka calendar view. For later cancellations contact the daycare staff.</p>
+$securityEn
 $unsubscribeEn
 <hr>
             """
@@ -1335,14 +1397,17 @@ $unsubscribeEn
                 """
 <p>Sinulle on saapunut uusi päätös eVakaan.</p>
 <p>Päätös on nähtävissä eVakassa.</p>
+$securityFi
 $unsubscribeFi
 <hr>
 <p>Du har fått ett nytt beslut i eVaka.</p>
 <p>Beslutet finns att se i eVaka.</p>
+$securitySv
 $unsubscribeSv
 <hr>
 <p>You have received a new decision in eVaka.</p>
 <p>The decision can be viewed on eVaka.</p>
+$securityEn
 $unsubscribeEn
             """
                     .trimIndent(),
@@ -1363,20 +1428,26 @@ $unsubscribeEn
                 if (accepted) {
                     """
                 <p>Ehdottamasi palveluntarve on hyväksytty $start alkaen.</p>
+                $securityFi
                 $unsubscribeFi
                 <p>Det tjänstebehov som ni föreslår har godkänts från och med den $start.</p>
+                $securitySv
                 $unsubscribeSv
                 <p>The service request you proposed has been approved starting from $start.</p>
+                $securityEn
                 $unsubscribeEn
             """
                         .trimIndent()
                 } else {
                     """
                 <p>Ehdottamasi palveluntarve on hylätty, lue lisätiedot hylkäyksestä eVakassa.</p>
+                $securityFi
                 $unsubscribeFi
                 <p>Din föreslagna serviceförfrågan har avvisats, läs mer om avvisandet i eVaka.</p>
+                $securitySv
                 $unsubscribeSv
                 <p>The service request you proposed has been rejected.</p>
+                $securityEn
                 $unsubscribeEn
             """
                         .trimIndent()
