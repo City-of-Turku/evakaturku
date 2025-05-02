@@ -38,9 +38,6 @@ dependencies {
     implementation("jakarta.xml.bind:jakarta.xml.bind-api")
     implementation("com.sun.xml.bind:jaxb-impl")
 
-    implementation("org.apache.httpcomponents:httpclient:4.5.14") {
-        exclude("commons-logging", "commons-logging")
-    }
     implementation("com.github.kittinunf.fuel:fuel")
     implementation("org.jdbi:jdbi3-core")
     implementation("com.jcraft:jsch:0.1.55")
