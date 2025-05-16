@@ -145,6 +145,36 @@ Vi har gjort en förifylld ansökan om förskoleundervisning för ditt barn.
                     .trimIndent()
         }
 
+    override fun getChildDocumentDecisionHeader(lang: OfficialLanguage): String =
+        when (lang) {
+            OfficialLanguage.FI -> "Turun varhaiskasvatukseen liittyvät päätökset"
+            OfficialLanguage.SV -> "Beslut gällande Åbo småbarnspedagogik"
+        }
+
+    override fun getChildDocumentDecisionContent(lang: OfficialLanguage): String =
+        when (lang) {
+            OfficialLanguage.FI ->
+                """
+            Lapsellenne on tehty päätös. Voit katsella päätöstä eVakassa.
+    
+            Koska olette ottanut Suomi.fi -palvelun käyttöönne, on päätös myös luettavissa alla olevista liitteistä.
+            
+            In English:
+            
+            A decision has been made for your child. You can view the decision on eVaka.
+            
+            As you are a user of Suomi.fi, you can also find the decision in the attachments below.
+            """
+                    .trimIndent()
+            OfficialLanguage.SV ->
+                """
+            Beslut har fattats för ditt barn. Du kan se beslutet i eVaka.
+            
+            Eftersom du har tagit Suomi.fi-tjänsten i bruk, kan du också läsa beslutet i bilagorna nedan.
+            """
+                    .trimIndent()
+        }
+
     private fun resolveLocale(lang: OfficialLanguage): Locale {
         return Locale.of(lang.name.lowercase())
     }
