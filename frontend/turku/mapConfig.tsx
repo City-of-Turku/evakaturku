@@ -6,7 +6,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 */
 }
 
-import { MapConfig } from 'lib-customizations/types'
+import type { MapConfig } from 'lib-customizations/types'
 
 const mapConfig: MapConfig = {
   center: [60.451389, 22.266667],
