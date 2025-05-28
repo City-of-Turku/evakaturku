@@ -53,6 +53,7 @@ const features: Features = {
     voucherValueSeparation: false,
     citizenChildDocumentTypes: true,
     decisionChildDocumentTypes: true,
+    absenceApplications: true,
   },
   staging: {
     environmentLabel: 'Staging',
@@ -89,6 +90,7 @@ const features: Features = {
     voucherValueSeparation: false,
     citizenChildDocumentTypes: true,
     decisionChildDocumentTypes: true,
+    absenceApplications: true,
   },
   prod: {
     environmentLabel: null,
@@ -125,6 +127,7 @@ const features: Features = {
     voucherValueSeparation: false,
     citizenChildDocumentTypes: false,
     decisionChildDocumentTypes: false,
+    absenceApplications: false,
   }
 }
 
