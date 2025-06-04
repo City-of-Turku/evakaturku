@@ -15,7 +15,7 @@ WITH caretaker_counts_on_date AS (
                 END
             ), 0.0
         )                               AS caretaker_count
-    FROM generate_series(:date_val::DATE - interval '1 week', :date_val::DATE, '1 day') t
+    FROM generate_series(:date_val::DATE - interval '2 week', :date_val::DATE, '1 day') t
         CROSS JOIN daycare_group g
         JOIN daycare u ON g.daycare_id = u.id
             AND daterange(g.start_date, g.end_date, '[]') @> t::DATE
@@ -24,12 +24,12 @@ WITH caretaker_counts_on_date AS (
             FROM staff_attendance_realtime
             WHERE departed IS NOT NULL
                 AND type = ANY('{PRESENT,OVERTIME,JUSTIFIED_CHANGE}'::staff_attendance_type[])
-                AND (:date_val::DATE - interval '1 week' <= DATE(arrived) OR :date_val::DATE - interval '1 week' <= DATE(departed))
+                AND (:date_val::DATE - interval '2 week' <= DATE(arrived) OR :date_val::DATE - interval '2 week' <= DATE(departed))
             UNION ALL
             SELECT group_id, arrived, departed, occupancy_coefficient
             FROM staff_attendance_external
             WHERE departed IS NOT NULL
-                AND (:date_val::DATE - interval '1 week' <= DATE(arrived) OR :date_val::DATE - interval '1 week' <= DATE(departed))
+                AND (:date_val::DATE - interval '2 week' <= DATE(arrived) OR :date_val::DATE - interval '2 week' <= DATE(departed))
         ) saa ON g.id = saa.group_id
         LEFT JOIN staff_attendance s ON g.id = s.group_id
             AND t::DATE = s.date
@@ -67,7 +67,7 @@ daycare_group_placements_aggregate AS (
         LEFT JOIN service_need sn ON sn.placement_id = pl.id
             AND daterange(sn.start_date, sn.end_date, '[]') && daterange(dgp.start_date, dgp.end_date, '[]')
         LEFT JOIN service_need_option sno ON sn.option_id = sno.id
-    WHERE :date_val::DATE - interval '1 week' <= dgp.end_date
+    WHERE :date_val::DATE - interval '2 week' <= dgp.end_date
 )
 SELECT
     now() AT TIME ZONE 'Europe/Helsinki'       AS aikaleima,
