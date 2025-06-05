@@ -405,6 +405,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inUnit() as ScopedActionRule<in T>,
                     )
             }
+            Action.Unit.READ_HOLIDAY_QUESTIONNAIRE_REPORT -> sequenceOf()
             Action.Unit.READ_GROUPS -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
