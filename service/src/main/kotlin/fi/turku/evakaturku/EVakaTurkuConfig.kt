@@ -99,7 +99,7 @@ class EVakaTurkuConfig {
                             archiveDurationMonths = 144,
                         )
                 }
-            }
+            },
         )
 
     @Bean
