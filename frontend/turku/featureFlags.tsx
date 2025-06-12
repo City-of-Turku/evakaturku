@@ -130,7 +130,7 @@ const features: Features = {
     citizenChildDocumentTypes: false,
     decisionChildDocumentTypes: false,
     absenceApplications: false,
-    showCitizenApplicationPreschoolTerms: false,
+    showCitizenApplicationPreschoolTerms: true,
   }
 }
 
