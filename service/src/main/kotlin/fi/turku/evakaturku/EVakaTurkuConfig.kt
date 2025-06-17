@@ -1,5 +1,6 @@
 package fi.turku.evakaturku
 
+import fi.espoo.evaka.application.ApplicationStatus
 import fi.espoo.evaka.espoo.DefaultPasswordSpecification
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
 import fi.espoo.evaka.invoicing.service.DefaultInvoiceGenerationLogic
@@ -100,6 +101,7 @@ class EVakaTurkuConfig {
                         )
                 }
             },
+            placementToolApplicationStatus = ApplicationStatus.WAITING_PLACEMENT,
         )
 
     @Bean
