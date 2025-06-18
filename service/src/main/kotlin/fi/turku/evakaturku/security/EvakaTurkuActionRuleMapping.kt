@@ -85,6 +85,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                 )
             Action.Global.READ_HOLIDAY_PERIODS,
             Action.Global.REPORTS_PAGE,
+            Action.Global.READ_PLACEMENT_COUNT_REPORT,
             -> {
                 action.defaultRules.asSequence() +
                     sequenceOf(
