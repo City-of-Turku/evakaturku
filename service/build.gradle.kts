@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.gitProperties
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.spring)
@@ -94,4 +96,8 @@ tasks.register<Test>("pdfGenerationTest") {
 
 tasks.withType<Jar> {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+gitProperties {
+    dotGitDirectory = project.rootProject.layout.projectDirectory.dir("../.git")
 }
