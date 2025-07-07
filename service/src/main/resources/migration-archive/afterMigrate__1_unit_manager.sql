@@ -1,3 +1,7 @@
+-- SPDX-FileCopyrightText: 2023-2025 City of Turku
+--
+-- SPDX-License-Identifier: LGPL-2.1-or-later
+
 INSERT INTO public.unit_manager (id, name, phone, email)
 VALUES
     ('66aa4a74-590b-11ed-843c-73443603b474','Minna Pöyhönen','358504128087','minna.poyhonen@edu.turku.fi'),

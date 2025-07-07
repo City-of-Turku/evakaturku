@@ -56,21 +56,15 @@ SPDX-FileCopyrightText = "2021 City of Turku"
 SPDX-License-Identifier = "LGPL-2.1-or-later"
 
 [[annotations]]
-path = ".env"
+path = "compose/.env"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2021 City of Turku"
 SPDX-License-Identifier = "LGPL-2.1-or-later"
 
 [[annotations]]
-path = "infra/deploy/.terraform-version"
+path = "compose/node_moduler/.yarn-integrity"
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2023-2024 City of Turku"
-SPDX-License-Identifier = "LGPL-2.1-or-later"
-
-[[annotations]]
-path = "infra/deploy/.terraform.lock.hcl"
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2023-2024 City of Turku"
+SPDX-FileCopyrightText = "2021 City of Turku"
 SPDX-License-Identifier = "LGPL-2.1-or-later"
 
 [[annotations]]

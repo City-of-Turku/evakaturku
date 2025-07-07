@@ -1,3 +1,7 @@
+-- SPDX-FileCopyrightText: 2023-2025 City of Turku
+--
+-- SPDX-License-Identifier: LGPL-2.1-or-later
+
 WITH
 caretaker_counts AS (
     SELECT

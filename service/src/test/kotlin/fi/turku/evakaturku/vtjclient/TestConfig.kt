@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023-2025 City of Turku
+//
+// SPDX-License-Identifier: LGPL-2.1-or-later
+
 package fi.turku.evakaturku.vtjclient
 
 import org.springframework.context.annotation.Bean

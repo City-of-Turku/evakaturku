@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# SPDX-FileCopyrightText: 2023-2025 City of Turku
+#
+# SPDX-License-Identifier: LGPL-2.1-or-later
+
 export SSHPASS=$SFTP_PASS
 
 run_query() {
