@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 package fi.turku.evakaturku.invoice.service
 
-
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.system.OutputCaptureExtension
 
