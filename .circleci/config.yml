@@ -509,7 +509,6 @@ jobs:
           name: Lint customizations
           working_directory: *workspace_frontend
           command: ./link.sh && ./lint.sh
-      - slack-notification
 
 workflows:
   version: 2
