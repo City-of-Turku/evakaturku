@@ -1,13 +1,14 @@
-// SPDX-FileCopyrightText: 2021 City of Oulu
+// SPDX-FileCopyrightText: 2021 City of Turku
 //
 // SPDX-License-Identifier: LGPL-2.1-or-later
-package fi.ouka.evakaoulu.invoice.service
+package fi.turku.evakaturku.invoice.service
+
 
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.system.OutputCaptureExtension
 
 @ExtendWith(OutputCaptureExtension::class)
-internal class EVakaOuluInvoiceClientTest {
+internal class EVakaTurkuInvoiceClientTest {
     /*
     val invoiceGenerator = mock<ProEInvoiceGenerator>()
     val sftpSender = mock<SftpSender>()

@@ -26,7 +26,7 @@ See [eVaka README](evaka/compose/README.md#Dependencies)
 ### e2e ([Playwright](https://playwright.dev/)):
 
 1. Start eVakaTurku dev environment
-2. `cd frontend`
+2. `cd e2e`
 3. `yarn e2e-playwright`
 
 

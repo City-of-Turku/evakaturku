@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# SPDX-FileCopyrightText: 2021 City of Oulu
+# SPDX-FileCopyrightText: 2021 City of Turku
 #
 # SPDX-License-Identifier: LGPL-2.1-or-later
 
