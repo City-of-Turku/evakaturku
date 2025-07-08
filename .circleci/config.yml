@@ -534,14 +534,14 @@ workflows:
           requires:
             - checkout_repo
 
-#      - e2e_test:
-#          context:
-#            - evakaturku-dev
-#            - slack-secrets
-#          requires:
-#            - frontend_build_image
-#            - apigw_build_image
-#            - service_build_image
+      - e2e_test:
+          context:
+            - evakaturku-dev
+            - slack-secrets
+          requires:
+            - frontend_build_image
+            - apigw_build_image
+            - service_build_image
 
       - frontend_build_image:
           context:
@@ -587,7 +587,7 @@ workflows:
             - scheduled_tasks_reporting_build_image
             - scheduled_tasks_logs_build_image
             - scheduled_tasks_certificate_check_build_image
-#            - e2e_test
+            - e2e_test
             - frontend_build_image
             - apigw_build_image
             - service_build_image
@@ -604,7 +604,7 @@ workflows:
             - scheduled_tasks_reporting_build_image
             - scheduled_tasks_logs_build_image
             - scheduled_tasks_certificate_check_build_image
-#            - e2e_test
+            - e2e_test
             - frontend_build_image
             - apigw_build_image
             - service_build_image
