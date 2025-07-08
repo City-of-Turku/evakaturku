@@ -653,14 +653,14 @@ const fi: DeepPartial<Translations> = {
     applicationDecisions: {
       decision: 'Päätös',
       type: {
-          CLUB: 'kerhosta',
-          DAYCARE: 'varhaiskasvatuksesta',
-          DAYCARE_PART_TIME: 'osa-aikaisesta varhaiskasvatuksesta',
-          PRESCHOOL: 'esiopetuksesta',
-          PRESCHOOL_DAYCARE: 'täydentävästä varhaiskasvatuksesta',
-          PRESCHOOL_CLUB: 'esiopetuksen kerhosta',
-          PREPARATORY_EDUCATION: 'valmistavasta opetuksesta'
-      },
+        CLUB: 'kerhosta',
+        DAYCARE: 'varhaiskasvatuksesta',
+        DAYCARE_PART_TIME: 'osa-aikaisesta varhaiskasvatuksesta',
+        PRESCHOOL: 'esiopetuksesta',
+        PRESCHOOL_DAYCARE: 'täydentävästä varhaiskasvatuksesta',
+        PRESCHOOL_CLUB: 'esiopetuksen kerhosta',
+        PREPARATORY_EDUCATION: 'valmistavasta opetuksesta'
+      }
     },
     assistanceDecisions: {
       title: 'Päätös tuesta varhaiskasvatuksessa',
@@ -1247,9 +1247,10 @@ const fi: DeepPartial<Translations> = {
           ole optimoitu käytettäväksi ruudunlukijalla.
         </li>
         <li>
-            Palvelun yksikkökartassa ei pysty liikkumaan näppäimistöllä/ruudunlukijalla
-            , mutta yksikköjä voi selata samassa näkymässä olevalta listalta.
-            Palvelussa käytetty kartta on kolmannen osapuolen tuottama
+          Palvelun yksikkökartassa ei pysty liikkumaan
+          näppäimistöllä/ruudunlukijalla , mutta yksikköjä voi selata samassa
+          näkymässä olevalta listalta. Palvelussa käytetty kartta on kolmannen
+          osapuolen tuottama
         </li>
       </ul>
       <H2>Kolmannet osapuolet</H2>

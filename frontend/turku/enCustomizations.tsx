@@ -15,12 +15,12 @@ import { Gap } from 'lib-components/white-space'
 import type { Translations } from 'lib-customizations/citizen'
 import type { DeepPartial } from 'lib-customizations/types'
 
-const customerContactText = function() {
+const customerContactText = function () {
   return (
     <>
       {' '}
       early childhood education service guidance tel.{' '}
-      <a href='tel:+35822625610'>02 2625610</a>.
+      <a href="tel:+35822625610">02 2625610</a>.
     </>
   )
 }
@@ -34,12 +34,12 @@ const en: DeepPartial<Translations> = {
       selectChildrenInfo: 'Enter here only full-day absences.'
     }
   },
-    children: {
-        serviceApplication: {
-            startDateInfo:
-                'Choose the date when you want the new service need to start. The service need can only be changed from the beginning of the month and must be valid for at least four (4) months.',
-        },
-    },
+  children: {
+    serviceApplication: {
+      startDateInfo:
+        'Choose the date when you want the new service need to start. The service need can only be changed from the beginning of the month and must be valid for at least four (4) months.'
+    }
+  },
   applications: {
     creation: {
       daycareInfo:
@@ -239,14 +239,16 @@ const en: DeepPartial<Translations> = {
           attachmentsMessage: {
             DAYCARE: (
               <P>
-                Evening and nonstandard hour childcare is for children whose both parents
-                do shift work or study as a rule during evenings and/or weekends. The
-                application must include documentation for shift work by the employer or
-                the need for care in evenings or weekends owing to studies. If you cannot
-                add attachments electronically, phone Early childhood education and care
-                service guidance on +358 2 262 5610. You can also post attachments to
-                Varhaiskasvatuksen palveluohjaus PL 355, 20101, Turun kaupunki or taking
-                them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+                Evening and nonstandard hour childcare is for children whose
+                both parents do shift work or study as a rule during evenings
+                and/or weekends. The application must include documentation for
+                shift work by the employer or the need for care in evenings or
+                weekends owing to studies. If you cannot add attachments
+                electronically, phone Early childhood education and care service
+                guidance on +358 2 262 5610. You can also post attachments to
+                Varhaiskasvatuksen palveluohjaus PL 355, 20101, Turun kaupunki
+                or taking them in person to Kauppatori Monitori,
+                Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
               </P>
             ),
             PRESCHOOL: (
@@ -260,14 +262,16 @@ const en: DeepPartial<Translations> = {
                   when the application for pre-primary education is submitted.
                 </P>
                 <P>
-                  Evening and nonstandard hour childcare is for children whose both parents
-                  do shift work or study as a rule during evenings and/or weekends. The
-                  application must include documentation for shift work by the employer or
-                  the need for care in evenings or weekends owing to studies. If you cannot
-                  add attachments electronically, phone Early childhood education and care
-                  service guidance on +358 2 262 5610. You can also post attachments to
-                  Varhaiskasvatuksen palveluohjaus PL 355, 20101, Turun kaupunki or taking
-                  them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+                  Evening and nonstandard hour childcare is for children whose
+                  both parents do shift work or study as a rule during evenings
+                  and/or weekends. The application must include documentation
+                  for shift work by the employer or the need for care in
+                  evenings or weekends owing to studies. If you cannot add
+                  attachments electronically, phone Early childhood education
+                  and care service guidance on +358 2 262 5610. You can also
+                  post attachments to Varhaiskasvatuksen palveluohjaus PL 355,
+                  20101, Turun kaupunki or taking them in person to Kauppatori
+                  Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
                 </P>
               </>
             )
@@ -639,7 +643,10 @@ const en: DeepPartial<Translations> = {
       link: 'Log in',
       infoBoxText: (
         <>
-          <P>You can create an eVaka username by logging in with strong authentication.</P>
+          <P>
+            You can create an eVaka username by logging in with strong
+            authentication.
+          </P>
         </>
       )
     }
@@ -963,7 +970,7 @@ const en: DeepPartial<Translations> = {
         'I agree to pay the highest early childhood education and care fee',
       highestFeeInfo:
         'The highest fee for the service required is valid until further notice or until my child’s early childhood education and care ends. (No need to submit income details)',
-      grossIncome: 'Fee determined by gross income',
+      grossIncome: 'Fee determined by gross income'
     },
     grossIncome: {
       title: 'Entering gross income',
@@ -1016,7 +1023,7 @@ const en: DeepPartial<Translations> = {
     entrepreneurIncome: {
       title: 'Entering entrepreneur’s income details',
       description:
-          'If necessary, you can fill in the information for more than one company by ticking the boxes that apply to all of your companies.',
+        'If necessary, you can fill in the information for more than one company by ticking the boxes that apply to all of your companies.',
       startOfEntrepreneurship: 'Entrepreneurship began',
       spouseWorksInCompany: 'Does your spouse work in the company?',
       yes: 'Yes',
@@ -1219,13 +1226,13 @@ const en: DeepPartial<Translations> = {
       </P>
       <ul>
         <li>
-            Date pickers and multi-select dropdowns in the service are not
-            optimised to be used with a screen reader.
+          Date pickers and multi-select dropdowns in the service are not
+          optimised to be used with a screen reader.
         </li>
         <li>
-            The service’s unit map cannot be navigated using the keyboard/screen
-            reader, but the units can be browsed on the list available in the
-            same view. The map used in the service is produced by a third party.
+          The service’s unit map cannot be navigated using the keyboard/screen
+          reader, but the units can be browsed on the list available in the same
+          view. The map used in the service is produced by a third party.
         </li>
       </ul>
       <H2>Third parties</H2>
@@ -1259,29 +1266,31 @@ const en: DeepPartial<Translations> = {
       </P>
       <H2>Supervisory authority</H2>
       <P>
-          If you detect any accessibility problems on the website, please
-          first give feedback to the site administrators. It may take 14
-          days until you get a reply. If you are not happy with the response
-          or do not receive a reply in two weeks, you can send your feedback
-          to the Finnish Transport and Communications Agency Traficom. Finnish
-          Transport and Communications Agency Traficom will tell you in
-          detail how to file a complaint and how the matter will be dealt with.
+        If you detect any accessibility problems on the website, please first
+        give feedback to the site administrators. It may take 14 days until you
+        get a reply. If you are not happy with the response or do not receive a
+        reply in two weeks, you can send your feedback to the Finnish Transport
+        and Communications Agency Traficom. Finnish Transport and Communications
+        Agency Traficom will tell you in detail how to file a complaint and how
+        the matter will be dealt with.
       </P>
 
       <P>
         <strong>Contact details of the supervisory authority</strong>
         <br />
-          Finnish Transport and Communications Agency Traficom <br />
-          Digital Accessibility Supervision Unit
+        Finnish Transport and Communications Agency Traficom <br />
+        Digital Accessibility Supervision Unit
         <br />
         <ExternalLink
           href="https://saavutettavuusvaatimukset.fi/en/"
           text="Web accessibility"
         />
         <br />
-        <a href="mailto:saavutettavuus@traficom.fi">saavutettavuus@traficom.fi</a>
+        <a href="mailto:saavutettavuus@traficom.fi">
+          saavutettavuus@traficom.fi
+        </a>
         <br />
-          telephone switchboard 029 534 5000
+        telephone switchboard 029 534 5000
       </P>
     </>
   )

@@ -13,9 +13,7 @@ import type { Env } from './env'
 
 type Features = {
   default: FeatureFlags
-} & {
-  [k in Env]: FeatureFlags
-}
+} & Record<Env, FeatureFlags>
 
 const features: Features = {
   default: {
@@ -54,7 +52,7 @@ const features: Features = {
     citizenChildDocumentTypes: true,
     decisionChildDocumentTypes: true,
     absenceApplications: true,
-    showCitizenApplicationPreschoolTerms: true,
+    showCitizenApplicationPreschoolTerms: true
   },
   staging: {
     environmentLabel: 'Staging',
@@ -92,7 +90,7 @@ const features: Features = {
     citizenChildDocumentTypes: true,
     decisionChildDocumentTypes: true,
     absenceApplications: true,
-    showCitizenApplicationPreschoolTerms: true,
+    showCitizenApplicationPreschoolTerms: true
   },
   prod: {
     environmentLabel: null,
@@ -130,7 +128,7 @@ const features: Features = {
     citizenChildDocumentTypes: false,
     decisionChildDocumentTypes: false,
     absenceApplications: false,
-    showCitizenApplicationPreschoolTerms: true,
+    showCitizenApplicationPreschoolTerms: true
   }
 }
 

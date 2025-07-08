@@ -27,35 +27,36 @@ const customizations: EmployeeCustomizations = {
           connectedLabel: 'Täydentävä varhaiskasvatus',
           connectedValue: 'Haen myös täydentävää varhaiskasvatusta',
           connectedDaycarePreferredStartDateLabel:
-              'Täydentävän varhaiskasvatuksen toivottu aloituspäivä',
+            'Täydentävän varhaiskasvatuksen toivottu aloituspäivä'
         },
         decisions: {
-            types: {
-                CLUB: 'Kerhopäätös',
-                DAYCARE: 'Varhaiskasvatuspäätös',
-                DAYCARE_PART_TIME: 'Varhaiskasvatuspäätös (osapäiväinen)',
-                PRESCHOOL: 'Esiopetuspäätös',
-                PRESCHOOL_DAYCARE: 'Täydentävä varhaiskasvatuspäätös',
-                PRESCHOOL_CLUB: 'Esiopetuksen kerho',
-                PREPARATORY_EDUCATION: 'Valmistavan opetuksen päätös'
-            }
+          types: {
+            CLUB: 'Kerhopäätös',
+            DAYCARE: 'Varhaiskasvatuspäätös',
+            DAYCARE_PART_TIME: 'Varhaiskasvatuspäätös (osapäiväinen)',
+            PRESCHOOL: 'Esiopetuspäätös',
+            PRESCHOOL_DAYCARE: 'Täydentävä varhaiskasvatuspäätös',
+            PRESCHOOL_CLUB: 'Esiopetuksen kerho',
+            PREPARATORY_EDUCATION: 'Valmistavan opetuksen päätös'
           }
+        }
       },
       placementDraft: {
-        preschoolDaycare: 'Täydentävä varhaiskasvatus',
+        preschoolDaycare: 'Täydentävä varhaiskasvatus'
       },
       decisionDraft: {
         types: {
-            CLUB: 'Kerho',
-            DAYCARE: 'Varhaiskasvatus',
-            DAYCARE_PART_TIME: 'Osapäiväinen varhaiskasvatus',
-            PRESCHOOL_DAYCARE: 'Esiopetusta täydentävä varhaiskasvatus',
-            PRESCHOOL_CLUB: 'Esiopetuksen kerho',
-            PRESCHOOL: 'Esiopetus',
-            PREPARATORY: 'Valmistava opetus',
-            PREPARATORY_EDUCATION: 'Valmistava opetus',
-            PREPARATORY_DAYCARE: 'Valmistavaan opetusta täydentävä varhaiskasvatus'
-        },
+          CLUB: 'Kerho',
+          DAYCARE: 'Varhaiskasvatus',
+          DAYCARE_PART_TIME: 'Osapäiväinen varhaiskasvatus',
+          PRESCHOOL_DAYCARE: 'Esiopetusta täydentävä varhaiskasvatus',
+          PRESCHOOL_CLUB: 'Esiopetuksen kerho',
+          PRESCHOOL: 'Esiopetus',
+          PREPARATORY: 'Valmistava opetus',
+          PREPARATORY_EDUCATION: 'Valmistava opetus',
+          PREPARATORY_DAYCARE:
+            'Valmistavaan opetusta täydentävä varhaiskasvatus'
+        }
       },
       incomeStatement: {
         incomesRegister:
@@ -325,8 +326,10 @@ const customizations: EmployeeCustomizations = {
                 Fax (02) 2511 820
               </P>
               <P>
-                Oikaisuvaatimuksen aluehallintovirastolle voi tehdä myös sähköisessä asiointipalvelussa
-                https://www.avi.fi -{'>'} henkilöasiakas -{'>'} oikaisuvaatimukset -{'>'} sähköinen asiointi.
+                Oikaisuvaatimuksen aluehallintovirastolle voi tehdä myös
+                sähköisessä asiointipalvelussa https://www.avi.fi -{'>'}{' '}
+                henkilöasiakas -{'>'} oikaisuvaatimukset -{'>'} sähköinen
+                asiointi.
               </P>
               <P>
                 Omalla vastuulla oikaisuvaatimuksen voi lähettää postitse tai
@@ -366,7 +369,7 @@ const customizations: EmployeeCustomizations = {
             </ul>
           ),
           disclaimer:
-              'Perusopetuslain 17 §:n mukaan tämä päätös voidaan panna täytäntöön muutoksenhausta huolimatta.',
+            'Perusopetuslain 17 §:n mukaan tämä päätös voidaan panna täytäntöön muutoksenhausta huolimatta.',
           grantedAssistanceSectionInfo: (): React.ReactNode =>
             'Merkitään jos lapselle myönnetään avustamis-/tulkitsemispalveluita tai apuvälineitä. Kirjataan perusteluihin ”Lapselle myönnetään perusopetuslain 31§ mukaisena tukipalveluna avustamispalvelua/tarvittavat erityiset apuvälineet/tulkitsemispalvelua/opetuksen poikkeava järjestäminen”. ',
           primaryGroupInfo: (): React.ReactNode =>

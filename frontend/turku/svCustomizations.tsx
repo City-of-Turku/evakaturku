@@ -35,12 +35,12 @@ const sv: DeepPartial<Translations> = {
         'Anmäl frånvaron här bara om barnet är frånvarande hela dagen.'
     }
   },
-    children: {
-        serviceApplication: {
-            startDateInfo:
-                'Välj det datum då du vill att det nya servicebehovet ska börja. Servicebehovet kan endast ändras från början av månaden och måste vara i kraft i minst fyra (4) månader.',
-        },
-    },
+  children: {
+    serviceApplication: {
+      startDateInfo:
+        'Välj det datum då du vill att det nya servicebehovet ska börja. Servicebehovet kan endast ändras från början av månaden och måste vara i kraft i minst fyra (4) månader.'
+    }
+  },
   applications: {
     creation: {
       daycareInfo:
@@ -232,42 +232,46 @@ const sv: DeepPartial<Translations> = {
           instructions:
             'Med kvälls- och skiftesvård avses småbarnspedagogik som ordnas som dygnetruntvård utanför tiden 6.00–18.00 och under veckoslut. Du kan ange eventuellt behov av kvälls- eller skiftesvård i fältet Ytterligare information.',
           attachmentsMessage: {
-              DAYCARE: (
-                  <P>
-                      Kvälls- och skiftesvård är avsett för barn vars båda föräldrar arbetar
-                      i skift eller studerar huvudsakligen på kvällar och/eller under veckoslut.
-                      Båda vårdnadshavare bifogar ett intyg om sitt skiftesarbete eller ett
-                      intyg om behovet av kvälls- eller skiftesvård. Om du inte kan lägga till
-                      bilagorna elektroniskt, vänligen kontakta Småbarnspedagogikens servicehandledning
-                      per telefon på numret 02 2625610. Du kan också skicka bilagorna per post till
-                      adressen Småbarnspedagogikens servicehandledning PB 355, 20101 Åbo eller genom
-                      att lämna in dem till Salutorgets Monitori, Småbarnspedagogikens
-                      servicehandledning, Auragatan 8.
-                  </P>
-              ),
-              PRESCHOOL: (
-                  <>
-                      <P>
-                          Kvälls- och skiftesvård är avsett för barn vars båda föräldrar arbetar
-                          i skift eller studerar huvudsakligen på kvällar och/eller under veckoslut.
-                          Båda vårdnadshavare bifogar ett intyg om sitt skiftesarbete eller ett
-                          intyg om behovet av kvälls- eller skiftesvård. Om du inte kan lägga till
-                          bilagorna elektroniskt, vänligen kontakta Småbarnspedagogikens servicehandledning
-                          per telefon på numret 02 2625610. Du kan också skicka bilagorna per post till
-                          adressen Småbarnspedagogikens servicehandledning PB 355, 20101 Åbo eller genom
-                          att lämna in dem till Salutorgets Monitori, Småbarnspedagogikens
-                          servicehandledning, Auragatan 8
-                      </P>
-                      <P>
-                          Om en vårdnadshavare som bor i samma hushåll regelbundet utför
-                          skiftarbete eller avlägger kvällsstudier som huvudsyssla, ska
-                          du bifoga ett intyg över detta (av arbetsgivaren eller en
-                          representant för läroanstalten) till ansökan om
-                          förskoleundervisning. Dokumenten ska ha registrerats det år då
-                          ansökan om förskoleundervisning görs.
-                      </P>
-                  </>
-              )
+            DAYCARE: (
+              <P>
+                Kvälls- och skiftesvård är avsett för barn vars båda föräldrar
+                arbetar i skift eller studerar huvudsakligen på kvällar
+                och/eller under veckoslut. Båda vårdnadshavare bifogar ett intyg
+                om sitt skiftesarbete eller ett intyg om behovet av kvälls-
+                eller skiftesvård. Om du inte kan lägga till bilagorna
+                elektroniskt, vänligen kontakta Småbarnspedagogikens
+                servicehandledning per telefon på numret 02 2625610. Du kan
+                också skicka bilagorna per post till adressen
+                Småbarnspedagogikens servicehandledning PB 355, 20101 Åbo eller
+                genom att lämna in dem till Salutorgets Monitori,
+                Småbarnspedagogikens servicehandledning, Auragatan 8.
+              </P>
+            ),
+            PRESCHOOL: (
+              <>
+                <P>
+                  Kvälls- och skiftesvård är avsett för barn vars båda föräldrar
+                  arbetar i skift eller studerar huvudsakligen på kvällar
+                  och/eller under veckoslut. Båda vårdnadshavare bifogar ett
+                  intyg om sitt skiftesarbete eller ett intyg om behovet av
+                  kvälls- eller skiftesvård. Om du inte kan lägga till bilagorna
+                  elektroniskt, vänligen kontakta Småbarnspedagogikens
+                  servicehandledning per telefon på numret 02 2625610. Du kan
+                  också skicka bilagorna per post till adressen
+                  Småbarnspedagogikens servicehandledning PB 355, 20101 Åbo
+                  eller genom att lämna in dem till Salutorgets Monitori,
+                  Småbarnspedagogikens servicehandledning, Auragatan 8
+                </P>
+                <P>
+                  Om en vårdnadshavare som bor i samma hushåll regelbundet utför
+                  skiftarbete eller avlägger kvällsstudier som huvudsyssla, ska
+                  du bifoga ett intyg över detta (av arbetsgivaren eller en
+                  representant för läroanstalten) till ansökan om
+                  förskoleundervisning. Dokumenten ska ha registrerats det år då
+                  ansökan om förskoleundervisning görs.
+                </P>
+              </>
+            )
           }
         },
         assistanceNeedInstructions: {
@@ -624,7 +628,10 @@ const sv: DeepPartial<Translations> = {
       link: 'Logga in',
       infoBoxText: (
         <>
-          <P>Du kan skapa ett eVaka-användarnamn genom att logga in med stark autentisering.</P>
+          <P>
+            Du kan skapa ett eVaka-användarnamn genom att logga in med stark
+            autentisering.
+          </P>
         </>
       )
     }
@@ -945,7 +952,7 @@ const sv: DeepPartial<Translations> = {
       agreeToHighestFee: 'Jag samtycker till den högsta avgiften',
       highestFeeInfo:
         'Den högsta avgiften, relaterat till servicebehovet, gäller tills vidare eller tills jag anmäl annat eller mitt barn inte längre deltar i småbarnspedagogiken. (Jag behöver inte skicka in mina inkomstuppgifter)',
-      grossIncome: 'Fastställande av avgift baserat på bruttoinkomst',
+      grossIncome: 'Fastställande av avgift baserat på bruttoinkomst'
     },
     grossIncome: {
       title: 'Fylla i information om bruttoinkomst',
@@ -1000,7 +1007,7 @@ const sv: DeepPartial<Translations> = {
     entrepreneurIncome: {
       title: 'Fyll i företagarens inkomstuppgifter',
       description:
-          'Med denna blankett kan du vid behov fylla i uppgifterna för flera företag genom att välja de punkter som gäller alla dina företag.',
+        'Med denna blankett kan du vid behov fylla i uppgifterna för flera företag genom att välja de punkter som gäller alla dina företag.',
       startOfEntrepreneurship: 'Företaget grundades',
       spouseWorksInCompany: 'Arbetar din make/maka på företaget?',
       yes: 'Ja',
@@ -1200,10 +1207,14 @@ const sv: DeepPartial<Translations> = {
       </P>
       <ul>
         <li>
-            Tjänstens datum- och flervalsfält är inte optimerade för att användas med skärmläsare
+          Tjänstens datum- och flervalsfält är inte optimerade för att användas
+          med skärmläsare
         </li>
         <li>
-            Det går inte att navigera på serviceenhetskartan med tangentbordet/skärmläsaren, men man kan bläddra bland enheterna på listan i samma vy. Kartan som används i tjänsten är framtagen av en tredje part.
+          Det går inte att navigera på serviceenhetskartan med
+          tangentbordet/skärmläsaren, men man kan bläddra bland enheterna på
+          listan i samma vy. Kartan som används i tjänsten är framtagen av en
+          tredje part.
         </li>
       </ul>
       <H2>Tredje parter</H2>
@@ -1238,28 +1249,31 @@ const sv: DeepPartial<Translations> = {
       </P>
       <H2>Tillsynsmyndighet</H2>
       <P>
-          Om du märker brister med webbplatsens tillgänglighet, vänligen kontakta
-          administratörerna först. Det kan ta upp till 14 dagar innan du får ett
-          svar. Om du inte är nöjd med svaret eller om du inte får ett svar inom
-          två veckor kan du skicka feedback till Transport- och kommunikationsverket
-          Traficom. På webbplatsen för Transport- och kommunikationsverket Traficom
-          förklaras hur man kan lämna in ett klagomål och hur ärendet handläggs.
+        Om du märker brister med webbplatsens tillgänglighet, vänligen kontakta
+        administratörerna först. Det kan ta upp till 14 dagar innan du får ett
+        svar. Om du inte är nöjd med svaret eller om du inte får ett svar inom
+        två veckor kan du skicka feedback till Transport- och
+        kommunikationsverket Traficom. På webbplatsen för Transport- och
+        kommunikationsverket Traficom förklaras hur man kan lämna in ett
+        klagomål och hur ärendet handläggs.
       </P>
 
       <P>
         <strong>Kontaktuppgifter till tillsynsmyndigheten </strong>
         <br />
-          Transport- och kommunikationsverket Traficom <br />
-          Enheten för tillsyn över digital tillgänglighet
+        Transport- och kommunikationsverket Traficom <br />
+        Enheten för tillsyn över digital tillgänglighet
         <br />
         <ExternalLink
           href="https://www.saavutettavuusvaatimukset.fi/sv"
           text="Tillgänglighetskrav"
         />
         <br />
-        <a href="mailto:tillganglighet@traficom.fi">tillganglighet@traficom.fi</a>
+        <a href="mailto:tillganglighet@traficom.fi">
+          tillganglighet@traficom.fi
+        </a>
         <br />
-          telefonnummer växeln 029 534 5000
+        telefonnummer växeln 029 534 5000
       </P>
     </>
   )
