@@ -158,33 +158,33 @@ INSERT INTO message_account (daycare_group_id)
 SELECT id FROM daycare_group;
 
 INSERT INTO employee (id, first_name, last_name, email, external_id, roles, active) VALUES
-    ('00000000-0000-0000-0000-000000000001', 'Päivi', 'Pääkäyttäjä', 'paivi.paakayttaja@turku.fi', 'turku-ad:00000000-0000-0000-0000-000000000001', '{ADMIN, SERVICE_WORKER, FINANCE_ADMIN}'::user_role[], true),
-    ('00000000-0000-0000-0001-000000000000', 'Paula', 'Palveluohjaaja', 'paula.palveluohjaaja@turku.fi', 'turku-ad:00000000-0000-0000-0001-000000000000', '{SERVICE_WORKER}'::user_role[], true),
-    ('00000000-0000-0000-0002-000000000000', 'Lasse', 'Laskuttaja', 'lasse.laskuttaja@turku.fi', 'turku-ad:00000000-0000-0000-0002-000000000000', '{FINANCE_ADMIN}'::user_role[], true),
-    ('00000000-0000-0000-0003-000000000000', 'Raisa', 'Raportoija', 'raisa.raportoija@turku.fi', 'turku-ad:00000000-0000-0000-0003-000000000000', '{DIRECTOR}'::user_role[], true);
+    ('00000000-0000-4000-4000-000000000001', 'Päivi', 'Pääkäyttäjä', 'paivi.paakayttaja@turku.fi', 'turku-ad:00000000-0000-4000-4000-000000000001', '{ADMIN, SERVICE_WORKER, FINANCE_ADMIN}'::user_role[], true),
+    ('00000000-0000-4000-4001-000000000000', 'Paula', 'Palveluohjaaja', 'paula.palveluohjaaja@turku.fi', 'turku-ad:00000000-0000-4000-4001-000000000000', '{SERVICE_WORKER}'::user_role[], true),
+    ('00000000-0000-4000-4002-000000000000', 'Lasse', 'Laskuttaja', 'lasse.laskuttaja@turku.fi', 'turku-ad:00000000-0000-4000-4002-000000000000', '{FINANCE_ADMIN}'::user_role[], true),
+    ('00000000-0000-4000-4003-000000000000', 'Raisa', 'Raportoija', 'raisa.raportoija@turku.fi', 'turku-ad:00000000-0000-4000-4003-000000000000', '{DIRECTOR}'::user_role[], true);
 INSERT INTO employee (id, first_name, last_name, email, external_id, active) VALUES
-    ('00000000-0000-0000-0004-000000000000', 'Essi', 'Esimies', 'essi.esimies@turku.fi', 'turku-ad:00000000-0000-0000-0004-000000000000', true),
-    ('00000000-0000-0000-0004-000000000001', 'Eemeli', 'Esimies', 'eemeli.esimies@turku.fi', 'turku-ad:00000000-0000-0000-0004-000000000001', true),
-    ('00000000-0000-0000-0005-000000000000', 'Kaisa', 'Kasvattaja', 'kaisa.kasvattaja@turku.fi', 'turku-ad:00000000-0000-0000-0005-000000000000', true),
-    ('00000000-0000-0000-0005-000000000001', 'Kalle', 'Kasvattaja', 'kalle.kasvattaja@turku.fi', 'turku-ad:00000000-0000-0000-0005-000000000001', true),
-    ('00000000-0000-0000-0006-000000000000', 'Erkki', 'Erityisopettaja', 'erkki.erityisopettaja@turku.fi', 'turku-ad:00000000-0000-0000-0006-000000000000', true);
+    ('00000000-0000-4000-8004-000000000000', 'Essi', 'Esimies', 'essi.esimies@turku.fi', 'turku-ad:00000000-0000-4000-8004-000000000000', true),
+    ('00000000-0000-4000-8004-000000000001', 'Eemeli', 'Esimies', 'eemeli.esimies@turku.fi', 'turku-ad:00000000-0000-4000-8004-000000000001', true),
+    ('00000000-0000-4000-8005-000000000000', 'Kaisa', 'Kasvattaja', 'kaisa.kasvattaja@turku.fi', 'turku-ad:00000000-0000-4000-8005-000000000000', true),
+    ('00000000-0000-4000-8005-000000000001', 'Kalle', 'Kasvattaja', 'kalle.kasvattaja@turku.fi', 'turku-ad:00000000-0000-4000-8005-000000000001', true),
+    ('00000000-0000-4000-8006-000000000000', 'Erkki', 'Erityisopettaja', 'erkki.erityisopettaja@turku.fi', 'turku-ad:00000000-0000-4000-8006-000000000000', true);
 INSERT INTO employee (id, first_name, last_name, social_security_number, active) VALUES
-    ('00000000-0000-0000-0007-000000000000', 'Hannele', 'Finström', '060195-966B', true);
+    ('00000000-0000-4000-8007-000000000000', 'Hannele', 'Finström', '060195-966B', true);
 
 INSERT INTO daycare_acl (daycare_id, employee_id, role) VALUES
-    ('340ea27a-a1bc-11eb-b5d2-dfc0dc6d2fcb', '00000000-0000-0000-0004-000000000000', 'UNIT_SUPERVISOR'),
-    ('3f667508-a1bc-11eb-b62e-9bdec02ff105', '00000000-0000-0000-0004-000000000000', 'UNIT_SUPERVISOR'),
-    ('49c57f12-a1bc-11eb-b686-53a2520d8ee3', '00000000-0000-0000-0004-000000000001', 'UNIT_SUPERVISOR'),
-    ('3f66844e-a1bc-11eb-b65b-87ccd093b485', '00000000-0000-0000-0004-000000000001', 'UNIT_SUPERVISOR'),
-    ('340ed088-a1bc-11eb-b601-e3f8e80e9e6b', '00000000-0000-0000-0007-000000000000', 'UNIT_SUPERVISOR');
+    ('340ea27a-a1bc-11eb-b5d2-dfc0dc6d2fcb', '00000000-0000-4000-8004-000000000000', 'UNIT_SUPERVISOR'),
+    ('3f667508-a1bc-11eb-b62e-9bdec02ff105', '00000000-0000-4000-8004-000000000000', 'UNIT_SUPERVISOR'),
+    ('49c57f12-a1bc-11eb-b686-53a2520d8ee3', '00000000-0000-4000-8004-000000000001', 'UNIT_SUPERVISOR'),
+    ('3f66844e-a1bc-11eb-b65b-87ccd093b485', '00000000-0000-4000-8004-000000000001', 'UNIT_SUPERVISOR'),
+    ('340ed088-a1bc-11eb-b601-e3f8e80e9e6b', '00000000-0000-4000-8007-000000000000', 'UNIT_SUPERVISOR');
 
 INSERT INTO daycare_acl (daycare_id, employee_id, role) VALUES
-    ('340ea27a-a1bc-11eb-b5d2-dfc0dc6d2fcb', '00000000-0000-0000-0005-000000000000', 'STAFF'),
-    ('3f667508-a1bc-11eb-b62e-9bdec02ff105', '00000000-0000-0000-0005-000000000000', 'STAFF'),
-    ('49c57f12-a1bc-11eb-b686-53a2520d8ee3', '00000000-0000-0000-0005-000000000001', 'STAFF'),
-    ('3f66844e-a1bc-11eb-b65b-87ccd093b485', '00000000-0000-0000-0005-000000000001', 'STAFF'),
-    ('340ea27a-a1bc-11eb-b5d2-dfc0dc6d2fcb', '00000000-0000-0000-0006-000000000000', 'SPECIAL_EDUCATION_TEACHER'),
-    ('3f667508-a1bc-11eb-b62e-9bdec02ff105', '00000000-0000-0000-0006-000000000000', 'SPECIAL_EDUCATION_TEACHER');
+    ('340ea27a-a1bc-11eb-b5d2-dfc0dc6d2fcb', '00000000-0000-4000-8005-000000000000', 'STAFF'),
+    ('3f667508-a1bc-11eb-b62e-9bdec02ff105', '00000000-0000-4000-8005-000000000000', 'STAFF'),
+    ('49c57f12-a1bc-11eb-b686-53a2520d8ee3', '00000000-0000-4000-8005-000000000001', 'STAFF'),
+    ('3f66844e-a1bc-11eb-b65b-87ccd093b485', '00000000-0000-4000-8005-000000000001', 'STAFF'),
+    ('340ea27a-a1bc-11eb-b5d2-dfc0dc6d2fcb', '00000000-0000-4000-8006-000000000000', 'SPECIAL_EDUCATION_TEACHER'),
+    ('3f667508-a1bc-11eb-b62e-9bdec02ff105', '00000000-0000-4000-8006-000000000000', 'SPECIAL_EDUCATION_TEACHER');
 
 INSERT INTO message_account (employee_id)
 SELECT id
