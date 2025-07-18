@@ -4,6 +4,8 @@
 
 package fi.turku.evakaturku
 
+import fi.espoo.evaka.BucketEnv
+import fi.espoo.evaka.ScheduledJobsEnv
 import fi.espoo.evaka.application.ApplicationStatus
 import fi.espoo.evaka.espoo.DefaultPasswordSpecification
 import fi.espoo.evaka.invoicing.domain.PaymentIntegrationClient
@@ -15,23 +17,35 @@ import fi.espoo.evaka.mealintegration.MealTypeMapper
 import fi.espoo.evaka.shared.ArchiveProcessConfig
 import fi.espoo.evaka.shared.ArchiveProcessType
 import fi.espoo.evaka.shared.FeatureConfig
+import fi.espoo.evaka.shared.async.AsyncJobRunner
 import fi.espoo.evaka.shared.auth.PasswordConstraints
 import fi.espoo.evaka.shared.auth.PasswordSpecification
 import fi.espoo.evaka.shared.auth.UserRole
 import fi.espoo.evaka.shared.security.actionrule.ActionRuleMapping
 import fi.espoo.evaka.titania.TitaniaEmployeeIdConverter
+import fi.turku.evakaturku.dw.DWExportClient
+import fi.turku.evakaturku.dw.DWExportJob
+import fi.turku.evakaturku.dw.FileDWExportClient
 import fi.turku.evakaturku.invoice.service.SftpConnector
 import fi.turku.evakaturku.invoice.service.SftpSender
 import fi.turku.evakaturku.payment.service.SapPaymentGenerator
 import fi.turku.evakaturku.payment.service.TurkuPaymentIntegrationClient
 import fi.turku.evakaturku.security.EvakaTurkuActionRuleMapping
+import io.opentelemetry.api.trace.Tracer
+import org.jdbi.v3.core.Jdbi
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory
 import org.springframework.boot.web.server.WebServerFactoryCustomizer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Import
+import org.springframework.context.annotation.Profile
 import org.springframework.core.env.Environment
+import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
+import software.amazon.awssdk.regions.Region
+import software.amazon.awssdk.services.s3.S3AsyncClient
 
 @Configuration
+@Import(EvakaTurkuAsyncJobRegistration::class)
 class EVakaTurkuConfig {
     @Bean
     fun featureConfig(env: Environment): FeatureConfig =
@@ -138,6 +152,58 @@ class EVakaTurkuConfig {
 
     @Bean
     fun mealTypeMapper(): MealTypeMapper = DefaultMealTypeMapper
+
+    @Bean
+    @Profile("production")
+    fun productionS3AsyncClient(
+        bucketEnv: BucketEnv,
+        credentialsProvider: AwsCredentialsProvider,
+    ): S3AsyncClient =
+        S3AsyncClient.crtBuilder()
+            .credentialsProvider(credentialsProvider)
+            .build()
+
+    @Bean
+    @Profile("local")
+    fun localS3AsyncClient(
+        bucketEnv: BucketEnv,
+        credentialsProvider: AwsCredentialsProvider,
+    ): S3AsyncClient =
+        S3AsyncClient.crtBuilder()
+            .region(Region.EU_WEST_1)
+            .credentialsProvider(credentialsProvider)
+            .build()
+
+    @Bean
+    fun fileDWExportClient(
+        asyncClient: S3AsyncClient,
+        sftpConnector: SftpConnector,
+        properties: EvakaTurkuProperties,
+    ): DWExportClient = FileDWExportClient(asyncClient, SftpSender(properties.dwExport.sftp, sftpConnector), properties)
+
+    @Bean
+    fun evakaTurkuAsyncJobRunner(
+        jdbi: Jdbi,
+        tracer: Tracer,
+        env: Environment,
+    ): AsyncJobRunner<EvakaTurkuAsyncJob> = AsyncJobRunner(EvakaTurkuAsyncJob::class, listOf(EvakaTurkuAsyncJob.pool), jdbi, tracer)
+
+    @Bean
+    fun evakaTurkuDWJob(dwExportClient: DWExportClient) = DWExportJob(dwExportClient)
+
+    @Bean
+    fun evakaTurkuScheduledJobEnv(env: Environment): ScheduledJobsEnv<EvakaTurkuScheduledJob> =
+        ScheduledJobsEnv.fromEnvironment(
+            EvakaTurkuScheduledJob.entries.associateWith { it.defaultSettings },
+            "turku.job",
+            env,
+        )
+
+    @Bean
+    fun evakaTurkuScheduledJobs(
+        evakaTurkuRunner: AsyncJobRunner<EvakaTurkuAsyncJob>,
+        env: ScheduledJobsEnv<EvakaTurkuScheduledJob>,
+    ): EvakaTurkuScheduledJobs = EvakaTurkuScheduledJobs(evakaTurkuRunner, env)
 
     @Bean
     fun passwordSpecification(): PasswordSpecification =
