@@ -127,7 +127,7 @@ const features: Features = {
     titaniaErrorsReport: false,
     multiSelectDeparture: true,
     voucherValueSeparation: false,
-    citizenChildDocumentTypes: false,
+    citizenChildDocumentTypes: true,
     decisionChildDocumentTypes: false,
     absenceApplications: false,
     showCitizenApplicationPreschoolTerms: true,
