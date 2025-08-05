@@ -128,7 +128,7 @@ const features: Features = {
     multiSelectDeparture: true,
     voucherValueSeparation: false,
     citizenChildDocumentTypes: true,
-    decisionChildDocumentTypes: false,
+    decisionChildDocumentTypes: true,
     absenceApplications: false,
     showCitizenApplicationPreschoolTerms: true,
     showMetadataToCitizen: true
