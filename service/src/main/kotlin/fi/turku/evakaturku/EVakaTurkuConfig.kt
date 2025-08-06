@@ -112,7 +112,7 @@ class EVakaTurkuConfig {
     fun actionRuleMapping(): ActionRuleMapping = EvakaTurkuActionRuleMapping()
 
     @Bean
-    fun invoiceGenerationLogicChooser() = DefaultInvoiceGenerationLogic // TODO: implement
+    fun invoiceGenerationLogicChooser() = DefaultInvoiceGenerationLogic
 
     @Bean
     fun paymentIntegrationClient(
