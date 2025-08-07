@@ -4,7 +4,6 @@
 
 package fi.turku.evakaturku.invoice.service
 
-import fi.turku.evakaturku.util.FinanceDateProvider
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
@@ -15,7 +14,7 @@ class SapInvoiceGeneratorTest {
         @BeforeAll
         @JvmStatic
         fun generateXml() {
-            val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
+            val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker())
             val invoiceList = listOf(validInvoice())
             invoiceXml = invoiceGenerator.generateInvoice(invoiceList).invoiceString
         }
@@ -53,7 +52,7 @@ class SapInvoiceGeneratorTest {
 
     @Test
     fun `should not return iDoc if invoice sum is zero`() {
-        val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
+        val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker())
         val invoiceList2 = mutableListOf(validInvoiceZeroSum())
         invoiceList2.add(validInvoice())
         var invoiceIdoc = invoiceGenerator.generateInvoice(invoiceList2).invoiceString
@@ -62,7 +61,7 @@ class SapInvoiceGeneratorTest {
 
     @Test
     fun `success list of invoices still contains zero value invoices`() {
-        val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker(), FinanceDateProvider())
+        val invoiceGenerator = SapInvoiceGenerator(InvoiceChecker())
         val invoiceList = mutableListOf(validInvoiceZeroSum())
         invoiceList.add(validInvoice())
         var invoiceCount = invoiceList.count()
