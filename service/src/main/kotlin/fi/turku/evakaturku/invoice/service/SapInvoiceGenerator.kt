@@ -11,7 +11,6 @@ import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
 import fi.espoo.evaka.invoicing.domain.InvoiceRowDetailed
 import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
 import fi.turku.evakaturku.invoice.config.Product
-import fi.turku.evakaturku.util.FinanceDateProvider
 import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
 import jakarta.xml.bind.Marshaller
@@ -25,13 +24,7 @@ import kotlin.math.abs
 @Component
 class SapInvoiceGenerator(
     private val invoiceChecker: InvoiceChecker,
-    val financeDateProvider: FinanceDateProvider,
 ) : StringInvoiceGenerator {
-    fun generateInvoiceTitle(): String {
-        val previousMonth = financeDateProvider.previousMonth()
-        return "Varhaiskasvatus $previousMonth"
-    }
-
     override fun generateInvoice(invoices: List<InvoiceDetailed>): StringInvoiceGenerator.InvoiceGeneratorResult {
         val successList = mutableListOf<InvoiceDetailed>()
         val failedList = mutableListOf<InvoiceDetailed>()
