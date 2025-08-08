@@ -71,15 +71,13 @@ private val settings =
 
 @Tag("PDFGenerationTest")
 class DecisionServiceTest {
-    private lateinit var messageProvider: IMessageProvider
     private lateinit var templateProvider: ITemplateProvider
     private lateinit var pdfService: PdfGenerator
 
     @BeforeEach
     fun setup() {
-        messageProvider = MessageConfiguration().messageProvider()
         templateProvider = TemplateConfiguration().templateProvider()
-        pdfService = PdfGenerator(messageProvider, templateProvider, PDFConfig.templateEngine())
+        pdfService = PdfGenerator(templateProvider, PDFConfig.templateEngine())
     }
 
     @ParameterizedTest

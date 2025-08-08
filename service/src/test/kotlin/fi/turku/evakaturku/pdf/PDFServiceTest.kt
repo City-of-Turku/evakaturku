@@ -69,7 +69,6 @@ internal class PDFServiceTest {
     fun setup() {
         pdfService =
             PdfGenerator(
-                MessageConfiguration().messageProvider(),
                 TemplateConfiguration().templateProvider(),
                 PDFConfig.templateEngine(),
             )
