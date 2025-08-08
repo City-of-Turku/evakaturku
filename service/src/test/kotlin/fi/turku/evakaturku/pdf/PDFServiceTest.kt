@@ -39,7 +39,6 @@ import fi.espoo.evaka.shared.config.PDFConfig
 import fi.espoo.evaka.shared.domain.FiniteDateRange
 import fi.espoo.evaka.shared.domain.HelsinkiDateTime
 import fi.espoo.evaka.shared.domain.OfficialLanguage
-import fi.turku.evakaturku.message.config.MessageConfiguration
 import fi.turku.evakaturku.template.config.TemplateConfiguration
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Tag
