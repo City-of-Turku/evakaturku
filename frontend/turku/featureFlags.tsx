@@ -129,7 +129,7 @@ const features: Features = {
     voucherValueSeparation: false,
     citizenChildDocumentTypes: true,
     decisionChildDocumentTypes: true,
-    absenceApplications: false,
+    absenceApplications: true,
     showCitizenApplicationPreschoolTerms: true,
     showMetadataToCitizen: true
   }

@@ -1487,19 +1487,23 @@ $unsubscribeEn
         return EmailContent.fromHtml(
             subject =
                 if (accepted) {
-                    "Esiopetuksen poissaolohakemus hyväksytty"
+                    "Esiopetuksen poissaolohakemus hyväksytty / Ansökan om frånvaro från förskoleundervisningen har godkänts / The pre-primary education absence request has been approved"
                 } else {
-                    "Esiopetuksen poissaolohakemus hylätty"
+                    "Esiopetuksen poissaolohakemus hylätty / Ansökan om frånvaro från förskoleundervisningen har avslagits / The pre-primary education absence request has been denied"
                 },
             html =
                 if (accepted) {
                     """
                 <p>Lapsesi esiopetuksen poissaolohakemus ajalle $range on hyväksytty ja poissaolot on merkitty eVakaan. Lue lisää eVakasta.</p>
+                <p>Ditt barns ansökan om frånvaro från förskoleundervisningen under perioden $range har godkänts och frånvaron har markerats i eVaka. Läs mer om eVaka.</p>
+                <p>Your child's application for absence from pre-primary education for the period $range has been approved, and the absence has been recorded in eVaka. Read more about eVaka.</p>
             """
                         .trimIndent()
                 } else {
                     """
                 <p>Lapsesi esiopetuksen poissaolohakemus ajalle $range on hylätty. Lue lisää eVakasta.</p>
+                <p>Ansökan om frånvaro från förskoleundervisningen för ditt barn under perioden $range har avslagits. Läs mer om eVaka.</p>
+                <p>Your child's application for absence from pre-primary education for the period $range has been declined. Read more about eVaka.</p>
             """
                         .trimIndent()
                 },
