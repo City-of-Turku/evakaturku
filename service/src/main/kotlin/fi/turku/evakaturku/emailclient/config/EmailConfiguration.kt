@@ -1488,10 +1488,10 @@ $unsubscribeEn
             subject =
                 if (accepted) {
                     "Esiopetuksen poissaolohakemus hyväksytty / Ansökan om frånvaro från förskoleundervisningen har " +
-                            "godkänts / The pre-primary education absence request has been approved"
+                        "godkänts / The pre-primary education absence request has been approved"
                 } else {
                     "Esiopetuksen poissaolohakemus hylätty / Ansökan om frånvaro från förskoleundervisningen har avslagits /" +
-                            " The pre-primary education absence request has been denied"
+                        " The pre-primary education absence request has been denied"
                 },
             html =
                 if (accepted) {
