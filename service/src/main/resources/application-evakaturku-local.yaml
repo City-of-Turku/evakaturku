@@ -46,3 +46,12 @@ evakaturku:
     password: pass
     address: address
     path: path
+  bucket:
+    export: evakaturku-export-it
+  dwExport:
+    prefix: reports
+    sftp:
+      username: user
+      password: pass
+      address: address
+      path: path

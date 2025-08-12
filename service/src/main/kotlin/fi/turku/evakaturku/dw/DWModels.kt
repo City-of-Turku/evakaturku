@@ -7,6 +7,7 @@ import fi.espoo.evaka.assistance.PreschoolAssistanceLevel
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.daycare.domain.ProviderType
 import fi.espoo.evaka.invoicing.domain.FeeDecisionType
+import fi.espoo.evaka.invoicing.domain.VoucherValueDecisionType
 import fi.espoo.evaka.placement.PlacementType
 import fi.espoo.evaka.serviceneed.ShiftCareType
 import java.time.LocalDate
@@ -189,21 +190,17 @@ data class DWUnitAndGroup(
 
 data class DWVoucherValueDecision(
     val aikaleima: LocalDateTime,
-    val toimintayksikkö: String,
-    val toimintayksikköId: UUID,
-    val toimintayksikönAlkupvm: LocalDate?,
-    val toimintayksikönLoppupvm: LocalDate?,
-    val toimintamuoto: List<CareType>,
-    val järjestämistapa: ProviderType,
+    val arvopäätöksenNumero: String?,
+    val alkupvm: LocalDate,
+    val loppupvm: LocalDate,
+    val huojennustyyppi: VoucherValueDecisionType,
+    val perhekoko: Int,
+    val palvelusetelinArvo: Int,
+    val omavastuuosuus: Int,
+    val lapsenId: UUID,
+    val toimintamuoto: PlacementType?,
     val palvelualue: String,
     val palvelualueId: UUID,
-    val dwKustannuspaikka: String?,
-    val toimintayksikönLapsimäärä: Int,
-    val ryhmä: String,
-    val ryhmäId: UUID,
-    val ryhmänAlkupvm: LocalDate,
-    val ryhmänLoppupvm: LocalDate?,
-    val ryhmanHenkilokunnanAlkupvm: LocalDate?,
-    val ryhmanHenkilokunnanLoppupvm: LocalDate?,
-    val henkilökuntaaRyhmässäViim: Int?,
+    val toimipaikka: String,
+    val toimipaikkaId: UUID
 )

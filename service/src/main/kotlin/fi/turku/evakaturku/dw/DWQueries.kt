@@ -645,14 +645,14 @@ object DWQueries {
                         JOIN daycare u ON pl.unit_id = u.id
                     where daterange(pl.start_date, pl.end_date, '[]') @> current_date::DATE
                         AND NOT EXISTS(
-                            SELECT id, created, updated, child_id, unit_id, group_id, start_date, end_date
+                            SELECT *
                             FROM backup_care bc
                             WHERE daterange(bc.start_date, bc.end_date, '[]') @> current_date::DATE
                                 AND daterange(bc.start_date, bc.end_date, '[]') && daterange(pl.start_date, pl.end_date, '[]')
                                 AND bc.child_id = pl.child_id
                         )
                         AND NOT EXISTS (
-                            SELECT id, child_id, date, absence_type, modified_at, modified_by, category, questionnaire_id
+                            SELECT *
                             FROM absence a
                             WHERE a.child_id = pl.child_id
                                 AND current_date::DATE = a.date
