@@ -9,5 +9,6 @@ enum class DWQuery(val queryName: String, val query: DWQueries.CsvQuery) {
     DailyUnitOccupancyConfirmed("dailyUnitsOccupanciesConfirmed", DWQueries.getDailyUnitsOccupanciesConfirmed),
     DailyUnitOccupancyRealized("dailyUnitsOccupanciesRealized", DWQueries.getDailyUnitsOccupanciesRealized),
     FeeDecision("feeDecisions", DWQueries.getFeeDecisions),
+    UnitAndGroup("unitsAndGroups", DWQueries.getUnitsAndGroups),
     VoucherValueDecision("voucherValueDecisions", DWQueries.getVoucherValueDecisions),
 }

@@ -35,7 +35,7 @@ class IntegrationTestConfiguration {
         val client =
             S3Client.builder()
                 .httpClient(DefaultSdkHttpClientBuilder().buildWithDefaults(attrs))
-                .region(Region.US_WEST_1)
+                .region(Region.EU_WEST_1)
                 .serviceConfiguration(S3Configuration.builder().pathStyleAccessEnabled(true).build())
                 .endpointOverride(bucketEnv.localS3Url)
                 .credentialsProvider(

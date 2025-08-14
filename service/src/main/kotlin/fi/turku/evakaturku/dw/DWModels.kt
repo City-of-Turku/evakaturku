@@ -202,5 +202,5 @@ data class DWVoucherValueDecision(
     val palvelualue: String,
     val palvelualueId: UUID,
     val toimipaikka: String,
-    val toimipaikkaId: UUID
+    val toimipaikkaId: UUID,
 )
