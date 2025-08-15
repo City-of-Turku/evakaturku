@@ -147,7 +147,7 @@ class SapInvoiceGeneratorTest {
     }
 
     // E1EDK14 - Segment
-
+    @Test
     fun `QUALF should have constant value of 006`() {
         assertElement("QUALF", "006")
     }
@@ -258,11 +258,6 @@ class SapInvoiceGeneratorTest {
         assertElement("PARTN", "310384-956D")
     }
 
-    @Test
-    fun `PARTN should have null value of codedebtor ssn (310384-956D)`() {
-        assertElement("PARTN", "310384-956D")
-    }
-
     // E1EDK02 - segment
     @Test
     fun `QUALF should have constant value of 001`() {
@@ -356,5 +351,11 @@ class SapInvoiceGeneratorTest {
     @Test
     fun `TDLINE should have constant value of DateTime interval`() {
         assertElement("TDLINE", "01.01.2021-31.01.2021")
+    }
+
+    @Test
+    fun `result should be equal to a known good format`() {
+        val correctInvoice = object {}.javaClass.getResource("/invoice-client/CorrectSapInvoice.txt")?.readText()
+        assert(invoiceXml.equals(correctInvoice))
     }
 }
