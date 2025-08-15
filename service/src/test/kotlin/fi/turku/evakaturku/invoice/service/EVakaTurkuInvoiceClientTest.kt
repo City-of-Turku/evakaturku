@@ -3,25 +3,38 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 package fi.turku.evakaturku.invoice.service
 
+import com.jcraft.jsch.SftpException
+import fi.espoo.evaka.invoicing.domain.InvoiceDetailed
+import fi.espoo.evaka.invoicing.integration.InvoiceIntegrationClient
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.kotlin.argThat
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.never
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.whenever
+import org.springframework.boot.test.system.CapturedOutput
 import org.springframework.boot.test.system.OutputCaptureExtension
 
 @ExtendWith(OutputCaptureExtension::class)
 internal class EVakaTurkuInvoiceClientTest {
-    /*
-    val invoiceGenerator = mock<ProEInvoiceGenerator>()
-    val sftpSender = mock<SftpSender>()
-    val eVakaOuluInvoiceClient = EVakaOuluInvoiceClient(sftpSender, invoiceGenerator)
+
+    private val invoiceGenerator = mock<SapInvoiceGenerator>()
+    private val sftpSender = mock<SftpSender>()
+    private val eVakaTurkuInvoiceClient = EVakaTurkuInvoiceClient(sftpSender, invoiceGenerator)
+    private val fileNamePattern = """LAVAK_1002\d{6}-\d{6}.xml"""
 
     @Test
     fun `should pass invoices to the invoice generator`() {
         val validInvoice = validInvoice()
         val invoiceList = listOf(validInvoice)
-        val proEInvoice1 = ""
-        val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(), proEInvoice1)
+        val sapInvoice1 = "<SOME><XML><HERE></HERE></SOME></XML>"
+        val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(), sapInvoice1)
         whenever(invoiceGenerator.generateInvoice(invoiceList)).thenReturn(invoiceGeneratorResult)
 
-        eVakaOuluInvoiceClient.send(invoiceList)
+        eVakaTurkuInvoiceClient.send(invoiceList)
 
         verify(invoiceGenerator).generateInvoice(invoiceList)
     }
@@ -30,15 +43,14 @@ internal class EVakaTurkuInvoiceClientTest {
     fun `should send generated invoices`() {
         val validInvoice = validInvoice()
         val invoiceList = listOf(validInvoice)
-        val proEInvoice1 = ""
-        val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), proEInvoice1)
+        val sapInvoice1 = "<SOME><XML><HERE></HERE></SOME></XML>"
+        val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), sapInvoice1)
         whenever(invoiceGenerator.generateInvoice(invoiceList)).thenReturn(invoiceGeneratorResult)
 
-        eVakaOuluInvoiceClient.send(invoiceList)
+        eVakaTurkuInvoiceClient.send(invoiceList)
 
-        verify(sftpSender).send(proEInvoice1)
+        verify(sftpSender).send(eq(sapInvoice1), argThat { filePath -> filePath.matches(Regex(fileNamePattern)) })
     }
-
 
     @Test
     fun `should not send anything if there are no sendable invoices`() {
@@ -46,19 +58,20 @@ internal class EVakaTurkuInvoiceClientTest {
         val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(), "")
         whenever(invoiceGenerator.generateInvoice(invoiceList)).thenReturn(invoiceGeneratorResult)
 
-        eVakaOuluInvoiceClient.send(invoiceList)
+        eVakaTurkuInvoiceClient.send(invoiceList)
 
-        verify(sftpSender, never()).send("")
+        verify(sftpSender, never()).send(eq(""), argThat { filePath -> filePath.matches(Regex(fileNamePattern)) })
     }
+
     @Test
     fun `should return successfully sent invoices in success list`() {
         val validInvoice = validInvoice()
         val invoiceList = listOf(validInvoice)
-        val proEInvoice1 = ""
-        val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), proEInvoice1)
+        val sapInvoice1 = "<SOME><XML><HERE></HERE></SOME></XML>"
+        val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), sapInvoice1)
         whenever(invoiceGenerator.generateInvoice(invoiceList)).thenReturn(invoiceGeneratorResult)
 
-        val sendResult = eVakaOuluInvoiceClient.send(invoiceList)
+        val sendResult = eVakaTurkuInvoiceClient.send(invoiceList)
 
         assertThat(sendResult.succeeded).hasSize(1)
     }
@@ -68,12 +81,13 @@ internal class EVakaTurkuInvoiceClientTest {
         val validInvoice = validInvoice()
         val invoiceWithoutSSN = validInvoice().copy(headOfFamily = personWithoutSSN())
         val invoiceList = listOf(validInvoice, invoiceWithoutSSN)
-        val proEInvoice1 = ""
-        val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), proEInvoice1)
+        val sapInvoice1 = "<SOME><XML><HERE></HERE></SOME></XML>"
+        val invoiceGeneratorResult = StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), sapInvoice1)
         whenever(invoiceGenerator.generateInvoice(invoiceList)).thenReturn(invoiceGeneratorResult)
-        whenever(sftpSender.send(proEInvoice1)).thenThrow(SftpException::class.java)
+        whenever(sftpSender.send(eq(sapInvoice1), argThat { filePath -> filePath.matches(Regex(fileNamePattern)) })).thenThrow(
+            SftpException::class.java)
 
-        val sendResult = eVakaOuluInvoiceClient.send(invoiceList)
+        val sendResult = eVakaTurkuInvoiceClient.send(invoiceList)
 
         assertThat(sendResult.failed).hasSize(2)
     }
@@ -82,14 +96,14 @@ internal class EVakaTurkuInvoiceClientTest {
     fun `should send more invoices at once`() {
         val validInvoice = validInvoice()
         val invoiceList = listOf(validInvoice, validInvoice)
-        val proEInvoice1 = "xx"
+        val sapInvoice1 = "<SOME><XML><HERE></HERE></SOME></XML>"
         whenever(invoiceGenerator.generateInvoice(invoiceList)).thenReturn(
-            StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), "xx")
+            StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), sapInvoice1)
         )
-        val sendResult = eVakaOuluInvoiceClient.send(invoiceList)
+        val sendResult = eVakaTurkuInvoiceClient.send(invoiceList)
 
         assertThat(sendResult.succeeded).hasSize(2)
-        verify(sftpSender).send(proEInvoice1)
+        verify(sftpSender).send(eq(sapInvoice1), argThat { filePath -> filePath.matches(Regex(fileNamePattern)) })
     }
 
     @Test
@@ -97,15 +111,15 @@ internal class EVakaTurkuInvoiceClientTest {
         val validInvoice = validInvoice()
         val invoiceWithRestrictedDetails = validInvoice().copy(headOfFamily = personWithRestrictedDetails())
         val invoiceList = listOf(validInvoice, invoiceWithRestrictedDetails)
-        val proEInvoice1 = "x"
+        val sapInvoice1 = "<SOME><XML><HERE></HERE></SOME></XML>"
         whenever(invoiceGenerator.generateInvoice(invoiceList)).thenReturn(
-                StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(listOf(validInvoice), listOf(), listOf(invoiceWithRestrictedDetails)), "x")
+                StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(listOf(validInvoice), listOf(), listOf(invoiceWithRestrictedDetails)), sapInvoice1)
         )
-        val sendResult = eVakaOuluInvoiceClient.send(invoiceList)
+        val sendResult = eVakaTurkuInvoiceClient.send(invoiceList)
 
         assertThat(sendResult.succeeded).hasSize(1)
         assertThat(sendResult.manuallySent).hasSize(1)
-        verify(sftpSender).send(proEInvoice1)
+        verify(sftpSender).send(eq(sapInvoice1), argThat { filePath -> filePath.matches(Regex(fileNamePattern)) })
     }
 
     @Test
@@ -117,7 +131,7 @@ internal class EVakaTurkuInvoiceClientTest {
                 StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(listOf(validInvoice), listOf(), listOf(invoiceWithoutSSN)), "x")
         )
 
-        eVakaOuluInvoiceClient.send(invoiceList)
+        eVakaTurkuInvoiceClient.send(invoiceList)
 
         assertThat(output).contains("Successfully sent 1 invoices and created 1 manual invoice")
     }
@@ -127,15 +141,14 @@ internal class EVakaTurkuInvoiceClientTest {
         val validInvoice = validInvoice()
         val invoiceWithoutSSN = validInvoice().copy(headOfFamily = personWithoutSSN())
         val invoiceList = listOf(validInvoice, invoiceWithoutSSN)
-        val proEInvoice1 = ""
+        val sapInvoice1 = "<SOME><XML><HERE></HERE></SOME></XML>"
         whenever(invoiceGenerator.generateInvoice(invoiceList)).thenReturn(
-                StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), proEInvoice1)
+                StringInvoiceGenerator.InvoiceGeneratorResult(InvoiceIntegrationClient.SendResult(invoiceList, listOf(), listOf()), sapInvoice1)
         )
 
-        whenever(sftpSender.send(proEInvoice1)).thenThrow(SftpException::class.java)
-        eVakaOuluInvoiceClient.send(invoiceList)
+        whenever(sftpSender.send(eq(sapInvoice1), argThat { filePath -> filePath.matches(Regex(fileNamePattern)) })).thenThrow(SftpException::class.java)
+        eVakaTurkuInvoiceClient.send(invoiceList)
 
         assertThat(output).contains("Failed to send 2 invoices")
     }
-*/
 }
