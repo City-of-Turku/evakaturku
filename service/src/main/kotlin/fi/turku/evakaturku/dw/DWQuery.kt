@@ -1,6 +1,9 @@
 package fi.turku.evakaturku.dw
 
-enum class DWQuery(val queryName: String, val query: DWQueries.CsvQuery) {
+enum class DWQuery(
+    val queryName: String,
+    val query: DWQueries.CsvQuery,
+) {
     Absence("absences", DWQueries.getAbsences),
     AssistanceNeedDecision("assistanceNeedDecisions", DWQueries.getAssistanceNeedDecisions),
     ChildAggregate("childAggregate", DWQueries.getChildAggregate),

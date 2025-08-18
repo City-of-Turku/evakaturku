@@ -8,7 +8,9 @@ import fi.turku.evakaturku.dw.DWExportJob
 import fi.turku.evakaturku.dw.DWQuery
 
 sealed interface EvakaTurkuAsyncJob : AsyncJobPayload {
-    data class SendDWQuery(val query: DWQuery) : EvakaTurkuAsyncJob {
+    data class SendDWQuery(
+        val query: DWQuery,
+    ) : EvakaTurkuAsyncJob {
         override val user: AuthenticatedUser? = null
     }
 
