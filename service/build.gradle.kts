@@ -4,9 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.spring.boot)
+    alias(libs.plugins.ktlint.gradle)
     id("org.unbroken-dome.xjc") version "2.0.0"
     id("com.gorylenko.gradle-git-properties") version "2.5.2"
-    id("org.jlleitschuh.gradle.ktlint") version "12.3.0"
 }
 
 java {
@@ -99,5 +99,15 @@ tasks.withType<Jar> {
 }
 
 gitProperties {
-    dotGitDirectory = project.rootProject.layout.projectDirectory.dir("../.git")
+    dotGitDirectory =
+        project.rootProject.layout.projectDirectory
+            .dir("../.git")
+}
+
+configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+    version.set(
+        libs.versions.ktlint
+            .asProvider()
+            .get(),
+    )
 }
