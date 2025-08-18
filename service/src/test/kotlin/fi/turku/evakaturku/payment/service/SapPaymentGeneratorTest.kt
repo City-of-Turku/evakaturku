@@ -4,7 +4,6 @@
 
 package fi.turku.evakaturku.payment.service
 
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
@@ -12,30 +11,20 @@ import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
 class SapPaymentGeneratorTest {
-    val paymentChecker = PaymentChecker()
-    val mockMarshaller = mock<PaymentMarshaller>()
-    val mockIdocGenerator = mock<IdocGenerator>()
-    val sapPaymentGenerator = SapPaymentGenerator(paymentChecker, mockMarshaller, mockIdocGenerator)
-    val mockFetcher = mock<PreschoolValuesFetcher>()
+    private val paymentChecker = PaymentChecker()
+    private val mockMarshaller = mock<PaymentMarshaller>()
+    private val mockIdocGenerator = mock<IdocGenerator>()
+    private val sapPaymentGenerator = SapPaymentGenerator(paymentChecker, mockMarshaller, mockIdocGenerator)
+    private val mockFetcher = mock<PreschoolValuesFetcher>()
 
     @Test
-    @Disabled
-    fun `should generate XML for a payment`() {
+    fun `result should be equal to a known good format`() {
         val payment = validPayment()
-
-        val result = sapPaymentGenerator.generatePayments(listOf(payment), mockFetcher)
+        val correctPayment = object {}.javaClass.getResource("/payment-client/CorrectSapPayment.txt")?.readText()
+        val result = SapPaymentGenerator(paymentChecker, PaymentMarshaller(), IdocGenerator()).generatePayments(listOf(payment), mockFetcher)
 
         assert(result.paymentStrings.count() == 1)
-    }
-
-    @Test
-    @Disabled
-    fun `should set some values`() {
-        val payment = validPayment()
-
-        val result = sapPaymentGenerator.generatePayments(listOf(payment), mockFetcher)
-        val resultString = result.paymentStrings[0]
-        assert(resultString == "something")
+        assert(result.paymentStrings[0] == correctPayment)
     }
 
     @Test
