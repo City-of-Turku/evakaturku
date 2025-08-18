@@ -6,7 +6,10 @@ package fi.turku.evakaturku.invoice.service
 
 import fi.turku.evakaturku.SftpProperties
 
-class SftpSender(val sftpProperties: SftpProperties, val sftpConnector: SftpConnector) {
+class SftpSender(
+    val sftpProperties: SftpProperties,
+    val sftpConnector: SftpConnector,
+) {
     @Throws(Exception::class)
     fun send(
         content: String,

@@ -32,13 +32,14 @@ class TurkuPaymentIntegrationClient(
 
         if (successList.isNotEmpty()) {
             val contents =
-                generatorResult.paymentStrings.mapIndexed { index, content ->
-                    val filename =
-                        SimpleDateFormat(
-                            "'OLVAK_1002_0000001_'yyMMdd-hhmmss",
-                        ).format(Date()) + '-' + (index + 1).toString() + ".xml"
-                    filename to content
-                }.toMap()
+                generatorResult.paymentStrings
+                    .mapIndexed { index, content ->
+                        val filename =
+                            SimpleDateFormat(
+                                "'OLVAK_1002_0000001_'yyMMdd-hhmmss",
+                            ).format(Date()) + '-' + (index + 1).toString() + ".xml"
+                        filename to content
+                    }.toMap()
 
             try {
                 sftpSender.sendAll(contents)

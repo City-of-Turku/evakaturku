@@ -17,7 +17,9 @@ class PaymentMarshaller {
         val marshallerObj: Marshaller = contextObj.createMarshaller()
         marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true)
 
-        val fidccp02 = fi.turku.evakaturku.payment.service.FIDCCP02()
+        val fidccp02 =
+            fi.turku.evakaturku.payment.service
+                .FIDCCP02()
         fidccp02.idoc = idocs
 
         val stringWriter = StringWriter()

@@ -26,9 +26,7 @@ class TurkuDevApi(
     private val asyncJobRunner: AsyncJobRunner<AsyncJob>,
 ) {
     @GetMapping
-    fun healthCheck(): ResponseEntity<Unit> {
-        return ResponseEntity.noContent().build()
-    }
+    fun healthCheck(): ResponseEntity<Unit> = ResponseEntity.noContent().build()
 
     @PostMapping("/reset-turku-db-for-e2e-tests")
     fun resetTurkuDatabaseForE2ETests(

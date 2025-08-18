@@ -8,7 +8,5 @@ import org.springframework.stereotype.Component
 
 @Component
 class InvoiceChecker {
-    fun shouldSendManually(invoice: InvoiceDetailed): Boolean {
-        return invoice.headOfFamily.ssn == null
-    }
+    fun shouldSendManually(invoice: InvoiceDetailed): Boolean = invoice.headOfFamily.ssn == null
 }

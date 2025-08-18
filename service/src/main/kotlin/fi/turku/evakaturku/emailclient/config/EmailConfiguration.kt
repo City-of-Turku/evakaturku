@@ -35,7 +35,9 @@ class EmailConfiguration {
     fun emailMessageProvider(env: EvakaEnv): IEmailMessageProvider = EmailMessageProvider(env)
 }
 
-internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessageProvider {
+internal class EmailMessageProvider(
+    private val env: EvakaEnv,
+) : IEmailMessageProvider {
     private val subjectForPendingDecisionEmail: String = "Toimenpiteitäsi odotetaan"
     private val subjectForClubApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     private val subjectForDaycareApplicationReceivedEmail: String = "Hakemus vastaanotettu"
@@ -121,8 +123,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>  
                 $securityEn
                 $unsubscribeEn
-        """
-                    .trimIndent(),
+                """.trimIndent(),
         )
     }
 
@@ -174,454 +175,442 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
         )
     }
 
-    override fun pendingDecisionNotification(language: Language): EmailContent {
-        return EmailContent(subjectForPendingDecisionEmail, getPendingDecisionEmailText(), getPendingDecisionEmailHtml())
-    }
+    override fun pendingDecisionNotification(language: Language): EmailContent =
+        EmailContent(subjectForPendingDecisionEmail, getPendingDecisionEmailText(), getPendingDecisionEmailHtml())
 
-    fun getPendingDecisionEmailHtml(): String {
-        return """
-            <p>Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. 
-            Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi</p>
-            
-            <p>Tähän viestiin ei voi vastata.</p>
-            
-            <p>
-            Ystävällisesti,<br/>
-            Varhaiskasvatuksen palveluohjaus<br/>
-            </p>
-            $securityFi
-            $unsubscribeFi
-            <hr>
-            
-            <p>Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. 
-            Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi</p>
+    fun getPendingDecisionEmailHtml(): String =
+        """
+        <p>Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. 
+        Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi</p>
+        
+        <p>Tähän viestiin ei voi vastata.</p>
+        
+        <p>
+        Ystävällisesti,<br/>
+        Varhaiskasvatuksen palveluohjaus<br/>
+        </p>
+        $securityFi
+        $unsubscribeFi
+        <hr>
+        
+        <p>Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. 
+        Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi</p>
 
-            <p>Svara inte på detta meddelande.</p>
+        <p>Svara inte på detta meddelande.</p>
 
-            <p>
-            Med vänliga hälsningar,<br/>
-            småbarnspedagogikens servicehandledning<br/>
-            </p>
-            $securitySv
-            $unsubscribeSv
-            <hr>
-            
-            <p>You have one decision from Turku early childhood education and care that you have not replied to. 
-            The decision must be accepted or rejected at evaka.turku.fi within two weeks from the date you received it.</p>
+        <p>
+        Med vänliga hälsningar,<br/>
+        småbarnspedagogikens servicehandledning<br/>
+        </p>
+        $securitySv
+        $unsubscribeSv
+        <hr>
+        
+        <p>You have one decision from Turku early childhood education and care that you have not replied to. 
+        The decision must be accepted or rejected at evaka.turku.fi within two weeks from the date you received it.</p>
 
-            <p>This message cannot be replied to.</p>
+        <p>This message cannot be replied to.</p>
 
-            <p>
-            Best regards,<br/>
-            Early childhood education and care service guidance<br/>
-            </p>
-            $securityEn
-            $unsubscribeEn
-            """.trimIndent()
-    }
+        <p>
+        Best regards,<br/>
+        Early childhood education and care service guidance<br/>
+        </p>
+        $securityEn
+        $unsubscribeEn
+        """.trimIndent()
 
-    fun getPendingDecisionEmailText(): String {
-        return """
-            Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. 
-            Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi.
-            
-            Tähän viestiin ei voi vastata.
-            
-            Ystävällisesti,
-            Varhaiskasvatuksen palveluohjaus
-            
-            -----
-            
-            Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. 
-            Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi.
+    fun getPendingDecisionEmailText(): String =
+        """
+        Sinulla on vastaamaton päätös Turun varhaiskasvatukselta. 
+        Päätös tulee hyväksyä tai hylätä kahden viikon sisällä sen saapumisesta osoitteessa evaka.turku.fi.
+        
+        Tähän viestiin ei voi vastata.
+        
+        Ystävällisesti,
+        Varhaiskasvatuksen palveluohjaus
+        
+        -----
+        
+        Du har ett obesvarat beslut från Åbo stads småbarnspedagogik. 
+        Godkänn eller avslå beslutet inom två veckor från mottagandedatum på adressen evaka.turku.fi.
 
-            Svara inte på detta meddelande.
+        Svara inte på detta meddelande.
 
-            Med vänliga hälsningar,
-            småbarnspedagogikens servicehandledning
-            
-            -----
-            
-            You have one decision from Turku early childhood education and care that you have not replied to. 
-            The decision must be accepted or rejected at evaka.turku.fi within two weeks from the date you received it.
+        Med vänliga hälsningar,
+        småbarnspedagogikens servicehandledning
+        
+        -----
+        
+        You have one decision from Turku early childhood education and care that you have not replied to. 
+        The decision must be accepted or rejected at evaka.turku.fi within two weeks from the date you received it.
 
-            This message cannot be replied to.
+        This message cannot be replied to.
 
-            Best regards,
-            Early childhood education and care service guidance
-            
-            """.trimIndent()
-    }
+        Best regards,
+        Early childhood education and care service guidance
+        
+        """.trimIndent()
 
-    override fun clubApplicationReceived(language: Language): EmailContent {
-        return EmailContent(
+    override fun clubApplicationReceived(language: Language): EmailContent =
+        EmailContent(
             subjectForClubApplicationReceivedEmail,
             getClubApplicationReceivedEmailText(),
             getClubApplicationReceivedEmailHtml(),
         )
-    }
 
-    fun getClubApplicationReceivedEmailHtml(): String {
-        return """
-            <p>Hei!</p>
-            
-            <p>Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. 
-            Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa.</p>
-            
-            <p>Hakemuksia käsitellään pääsääntöisesti vastaanottopäivämäärän mukaan.</p>
-            
-            <p>Tähän viestiin ei voi vastata.</p>
-            
-            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.</p>
-            
-            <p>
-            Ystävällisesti, <br/>
-            Varhaiskasvatuksen palveluohjaus<br/> 
-            </p>
-            
-            <hr>
-            
-            <p>Hej!</p>
+    fun getClubApplicationReceivedEmailHtml(): String =
+        """
+        <p>Hei!</p>
+        
+        <p>Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. 
+        Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa.</p>
+        
+        <p>Hakemuksia käsitellään pääsääntöisesti vastaanottopäivämäärän mukaan.</p>
+        
+        <p>Tähän viestiin ei voi vastata.</p>
+        
+        <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.</p>
+        
+        <p>
+        Ystävällisesti, <br/>
+        Varhaiskasvatuksen palveluohjaus<br/> 
+        </p>
+        
+        <hr>
+        
+        <p>Hej!</p>
 
-            <p>Vi har mottagit ditt barns ansökan till den öppna småbarnspedagogiken. 
-            Vänligen kontakta chefen vid enheten för öppen småbarnspedagogik direkt och fråga efter en plats.</p>
+        <p>Vi har mottagit ditt barns ansökan till den öppna småbarnspedagogiken. 
+        Vänligen kontakta chefen vid enheten för öppen småbarnspedagogik direkt och fråga efter en plats.</p>
 
-            <p>Ansökningarna behandlas i ankomstordning.</p>
+        <p>Ansökningarna behandlas i ankomstordning.</p>
 
-            <p>Svara inte på detta meddelande.</p>
+        <p>Svara inte på detta meddelande.</p>
 
-            <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.</p>
+        <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.</p>
 
-            <p>
-            Med vänliga hälsningar,<br/> 
-            småbarnspedagogikens servicehandledning<br/> 
-            </p>
-            
-            <hr>
-            
-            <p>Hi!</p>
+        <p>
+        Med vänliga hälsningar,<br/> 
+        småbarnspedagogikens servicehandledning<br/> 
+        </p>
+        
+        <hr>
+        
+        <p>Hi!</p>
 
-            <p>We have received your child’s application for open early childhood education and care. 
-            Please contact directly the open unit’s regional manager to enquire about a place in open early childhood education and care.</p>
+        <p>We have received your child’s application for open early childhood education and care. 
+        Please contact directly the open unit’s regional manager to enquire about a place in open early childhood education and care.</p>
 
-            <p>Applications are processed as a rule in the order they arrive.</p>
+        <p>Applications are processed as a rule in the order they arrive.</p>
 
-            <p>This message cannot be replied to.</p>
+        <p>This message cannot be replied to.</p>
 
-            <p>You can view and then either accept or reject the decision at evaka.turku.fi.</p>
+        <p>You can view and then either accept or reject the decision at evaka.turku.fi.</p>
 
-            <p> 
-            Best regards,<br/>
-            Early childhood education and care service guidance<br/>
-            </p>
-            """.trimIndent()
-    }
+        <p> 
+        Best regards,<br/>
+        Early childhood education and care service guidance<br/>
+        </p>
+        """.trimIndent()
 
-    fun getClubApplicationReceivedEmailText(): String {
-        return """
-            Hei! 
-            
-            Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. 
-            Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa. 
-            
-            Hakemuksia käsitellään pääsääntöisesti vastaanottopäivämäärän mukaan.
+    fun getClubApplicationReceivedEmailText(): String =
+        """
+        Hei! 
+        
+        Olemme vastaanottaneet lapsenne hakemuksen avoimeen varhaiskasvatukseen. 
+        Pyydämme teitä olemaan yhteydessä suoraan avoimen yksikön lähijohtajaan ja tiedustelemaan vapaata avoimen varhaiskasvatuksen paikkaa. 
+        
+        Hakemuksia käsitellään pääsääntöisesti vastaanottopäivämäärän mukaan.
 
-            Tähän viestiin ei voi vastata.
-             
-            Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.
-            
-            Ystävällisesti, 
-            Varhaiskasvatuksen palveluohjaus 
-            
-            -----
-            
-            Hej!
+        Tähän viestiin ei voi vastata.
+         
+        Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.
+        
+        Ystävällisesti, 
+        Varhaiskasvatuksen palveluohjaus 
+        
+        -----
+        
+        Hej!
 
-            Vi har mottagit ditt barns ansökan till den öppna småbarnspedagogiken. 
-            Vänligen kontakta chefen vid enheten för öppen småbarnspedagogik direkt och fråga efter en plats.
+        Vi har mottagit ditt barns ansökan till den öppna småbarnspedagogiken. 
+        Vänligen kontakta chefen vid enheten för öppen småbarnspedagogik direkt och fråga efter en plats.
 
-            Ansökningarna behandlas i ankomstordning.
+        Ansökningarna behandlas i ankomstordning.
 
-            Svara inte på detta meddelande.
+        Svara inte på detta meddelande.
 
-            Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.
+        Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.
 
-            Med vänliga hälsningar,
-            småbarnspedagogikens servicehandledning
-            
-            -----
+        Med vänliga hälsningar,
+        småbarnspedagogikens servicehandledning
+        
+        -----
 
-            Hi!
+        Hi!
 
-            We have received your child’s application for open early childhood education and care. 
-            Please contact directly the open unit’s regional manager to enquire about a place in open early childhood education and care.
+        We have received your child’s application for open early childhood education and care. 
+        Please contact directly the open unit’s regional manager to enquire about a place in open early childhood education and care.
 
-            Applications are processed as a rule in the order they arrive.
+        Applications are processed as a rule in the order they arrive.
 
-            This message cannot be replied to.
+        This message cannot be replied to.
 
-            You can view and then either accept or reject the decision at evaka.turku.fi.
+        You can view and then either accept or reject the decision at evaka.turku.fi.
 
-            Best regards,
-            Early childhood education and care service guidance
-            """.trimIndent()
-    }
+        Best regards,
+        Early childhood education and care service guidance
+        """.trimIndent()
 
-    override fun daycareApplicationReceived(language: Language): EmailContent {
-        return EmailContent(
+    override fun daycareApplicationReceived(language: Language): EmailContent =
+        EmailContent(
             subjectForDaycareApplicationReceivedEmail,
             getDaycareApplicationReceivedEmailText(),
             getDaycareApplicationReceivedEmailHtml(),
         )
-    }
 
-    fun getDaycareApplicationReceivedEmailHtml(): String {
-        return """
-            <p>Hei!</p>
-            
-            <p>Lapsenne varhaiskasvatushakemus on vastaanotettu. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. 
-            Varhaiskasvatuspaikan hakuaika on neljä kuukautta. Mikäli kyseessä on vanhemman äkillinen työllistyminen tai opintojen alkaminen, järjestelyaika on kaksi viikkoa. 
-            Toimittakaa tällöin työ- tai opiskelutodistus hakemuksen liitteeksi. Kahden viikon järjestelyaika alkaa todistuksen saapumispäivämäärästä. Vuorohoidon palveluita järjestetään vanhempien vuorotyön perusteella, jolloin pyydämme työvuoroista todistuksen.</p>
-            
-            <p><b>Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta</b>, ilmoitamme teille paikan noin kuukautta ennen varhaiskasvatuksen toivottua aloitusajankohtaa. 
-            Huomioittehan, että paikka voi järjestyä muualta kuin ensisijaisista hakutoiveista.</p>
-            
-            <p><b>Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin tai yksityisen perhepäivähoitajan</b>, olkaa suoraan yhteydessä kyseiseen palveluntuottajaan varmistaaksenne varhaiskasvatuspaikan saamisen. 
-            Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen.</p> 
-            
-            <p><b>Siirtohakemukset</b> (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.</p>
-            
-            <p><b>Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta</b>, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.</p>
-            
-            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi</p>
-            
-            <p>Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p> 
+    fun getDaycareApplicationReceivedEmailHtml(): String =
+        """
+        <p>Hei!</p>
+        
+        <p>Lapsenne varhaiskasvatushakemus on vastaanotettu. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. 
+        Varhaiskasvatuspaikan hakuaika on neljä kuukautta. Mikäli kyseessä on vanhemman äkillinen työllistyminen tai opintojen alkaminen, järjestelyaika on kaksi viikkoa. 
+        Toimittakaa tällöin työ- tai opiskelutodistus hakemuksen liitteeksi. Kahden viikon järjestelyaika alkaa todistuksen saapumispäivämäärästä. Vuorohoidon palveluita järjestetään vanhempien vuorotyön perusteella, jolloin pyydämme työvuoroista todistuksen.</p>
+        
+        <p><b>Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta</b>, ilmoitamme teille paikan noin kuukautta ennen varhaiskasvatuksen toivottua aloitusajankohtaa. 
+        Huomioittehan, että paikka voi järjestyä muualta kuin ensisijaisista hakutoiveista.</p>
+        
+        <p><b>Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin tai yksityisen perhepäivähoitajan</b>, olkaa suoraan yhteydessä kyseiseen palveluntuottajaan varmistaaksenne varhaiskasvatuspaikan saamisen. 
+        Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen.</p> 
+        
+        <p><b>Siirtohakemukset</b> (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.</p>
+        
+        <p><b>Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta</b>, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.</p>
+        
+        <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi</p>
+        
+        <p>Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p> 
 
-            <p>
-            Ystävällisesti, <br/>
-            Varhaiskasvatuksen palveluohjaus<br/> 
-            </p>
-            
-            <p>Tämä on automaattinen viesti, joka kertoo lomakkeen tallennuksesta. Viestiin ei voi vastata reply-/ vastaa-toiminnolla.</p>
-            
-            <hr>
-            
-            <p>Hej!</p>
+        <p>
+        Ystävällisesti, <br/>
+        Varhaiskasvatuksen palveluohjaus<br/> 
+        </p>
+        
+        <p>Tämä on automaattinen viesti, joka kertoo lomakkeen tallennuksesta. Viestiin ei voi vastata reply-/ vastaa-toiminnolla.</p>
+        
+        <hr>
+        
+        <p>Hej!</p>
 
-            <p>Vi har mottagit ditt barns ansökan till småbarnspedagogik. 
-            Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. 
-            Ansökningstiden för platser inom småbarnspedagogiken är fyra månader. Om ansökan har gjorts på grund av ny arbetsplats eller studieplats är handläggningstiden två veckor. 
-            Då ska vårdnadshavaren lämna in ett arbets- eller studieintyg. Handläggningstiden på två veckor börjar från och med dagen då intyget tas emot. 
-            Om ansökan handlar om skiftvård ber vi att vårdnadshavarna skickar in ett intyg om skiftarbete.</p>
+        <p>Vi har mottagit ditt barns ansökan till småbarnspedagogik. 
+        Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. 
+        Ansökningstiden för platser inom småbarnspedagogiken är fyra månader. Om ansökan har gjorts på grund av ny arbetsplats eller studieplats är handläggningstiden två veckor. 
+        Då ska vårdnadshavaren lämna in ett arbets- eller studieintyg. Handläggningstiden på två veckor börjar från och med dagen då intyget tas emot. 
+        Om ansökan handlar om skiftvård ber vi att vårdnadshavarna skickar in ett intyg om skiftarbete.</p>
 
-            <p><b>Om vi kan ordna en dagvårdsplats på något av de kommunala enheterna för småbarnspedagogik som ni valde i er ansökan</b>, kommer vi att meddela er om platsen ungefär en månad före önskat startdatum. 
-            Vänligen observera att platsen ni tilldelas inte nödvändigtvis är på någon av de önskade enheterna.</p>
+        <p><b>Om vi kan ordna en dagvårdsplats på något av de kommunala enheterna för småbarnspedagogik som ni valde i er ansökan</b>, kommer vi att meddela er om platsen ungefär en månad före önskat startdatum. 
+        Vänligen observera att platsen ni tilldelas inte nödvändigtvis är på någon av de önskade enheterna.</p>
 
-            <p><b>Om ditt förstahandsval var ett privat daghem eller en privat familjedagvårdare</b>, vänligen kontakta dem direkt för att säkra barnets plats där. 
-            Om det inte gick att erbjuda en plats på någon av era önskade platser, vänligen kontakta småbarnspedagogikens servicehandledning.</p>
+        <p><b>Om ditt förstahandsval var ett privat daghem eller en privat familjedagvårdare</b>, vänligen kontakta dem direkt för att säkra barnets plats där. 
+        Om det inte gick att erbjuda en plats på någon av era önskade platser, vänligen kontakta småbarnspedagogikens servicehandledning.</p>
 
-            <p><b>Överföringsansökning</b> (barnet har redan en plats på en enhet för småbarnspedagogik i Åbo) handläggs i huvudsak i ankomstordning.</p>
+        <p><b>Överföringsansökning</b> (barnet har redan en plats på en enhet för småbarnspedagogik i Åbo) handläggs i huvudsak i ankomstordning.</p>
 
-            <p><b>Om du har angett att barnet behöver särskilt stöd</b> kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.</p>
+        <p><b>Om du har angett att barnet behöver särskilt stöd</b> kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.</p>
 
-            <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi</p>
+        <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi</p>
 
-            <p>Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.</p>
+        <p>Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.</p>
 
-            <p>
-            Med vänliga hälsningar,<br/> 
-            småbarnspedagogikens servicehandledning<br/> 
-            </p>
+        <p>
+        Med vänliga hälsningar,<br/> 
+        småbarnspedagogikens servicehandledning<br/> 
+        </p>
 
-            <p>Detta är ett automatiskt meddelande som informerar dig om att formuläret har sparats. Du kan inte svara på meddelandet med svara-funktionen.</p>
-            
-            <hr>
-            
-            <p>Hello!</p>
+        <p>Detta är ett automatiskt meddelande som informerar dig om att formuläret har sparats. Du kan inte svara på meddelandet med svara-funktionen.</p>
+        
+        <hr>
+        
+        <p>Hello!</p>
 
-            <p>We have received your child’s early childhood education and care application. 
-            The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. 
-            The application period for early childhood education and care is four months. 
-            If the parent needs to start work or studies on short notice, the minimum period of processing is two weeks. If this is the case, please attach the relevant documentation for work or study. 
-            The two-week period begins from the date we have received such documentation. 
-            Childcare for children with parents doing shift work are planned on the basis of work rosters, which we will need to obtain from you.</p>
+        <p>We have received your child’s early childhood education and care application. 
+        The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. 
+        The application period for early childhood education and care is four months. 
+        If the parent needs to start work or studies on short notice, the minimum period of processing is two weeks. If this is the case, please attach the relevant documentation for work or study. 
+        The two-week period begins from the date we have received such documentation. 
+        Childcare for children with parents doing shift work are planned on the basis of work rosters, which we will need to obtain from you.</p>
 
-            <p><b>If early childhood education and care can be provided to your child in some other municipal provider than you applied for</b>, we will inform you about this about two months before your desired starting date. 
-            Please note that we may find a place for your child somewhere else than your primary choices.</p>
+        <p><b>If early childhood education and care can be provided to your child in some other municipal provider than you applied for</b>, we will inform you about this about two months before your desired starting date. 
+        Please note that we may find a place for your child somewhere else than your primary choices.</p>
 
-            <p><b>If your first choice was a private daycare provider or private family daycarer</b>, please contact them directly. 
-            If they are unable to care for your child, please contact the early childhood education and care service guidance.</p>
+        <p><b>If your first choice was a private daycare provider or private family daycarer</b>, please contact them directly. 
+        If they are unable to care for your child, please contact the early childhood education and care service guidance.</p>
 
-            <p><b>As a rule, transfer applications</b> (meaning that the City of Turku’s early childhood education and care unit already provides early childhood education and care to the child) are processed in the order they arrive.</p>
+        <p><b>As a rule, transfer applications</b> (meaning that the City of Turku’s early childhood education and care unit already provides early childhood education and care to the child) are processed in the order they arrive.</p>
 
-            <p><b>If you said in your application that your child requires support</b>, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.</p>
+        <p><b>If you said in your application that your child requires support</b>, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.</p>
 
-            <p>You can view and either accept or reject the decision at evaka.turku.fi.</p>
+        <p>You can view and either accept or reject the decision at evaka.turku.fi.</p>
 
-            <p>Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
+        <p>Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
 
-            <p>
-            Best regards,<br/>
-            Early childhood education and care service guidance<br/>
-            </p>
-             
-            <p>This is an automatic message on how the form is stored. You cannot reply to this message.</p>
-            """.trimIndent()
-    }
+        <p>
+        Best regards,<br/>
+        Early childhood education and care service guidance<br/>
+        </p>
+         
+        <p>This is an automatic message on how the form is stored. You cannot reply to this message.</p>
+        """.trimIndent()
 
-    fun getDaycareApplicationReceivedEmailText(): String {
-        return """
-            Hei! 
-            
-            Lapsenne varhaiskasvatushakemus on vastaanotettu. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Varhaiskasvatuspaikan hakuaika on neljä kuukautta. 
-            Mikäli kyseessä on vanhemman äkillinen työllistyminen tai opintojen alkaminen, järjestelyaika on kaksi viikkoa. 
-            Toimittakaa tällöin työ- tai opiskelutodistus hakemuksen liitteeksi. Kahden viikon järjestelyaika alkaa todistuksen saapumispäivämäärästä. Vuorohoidon palveluita järjestetään vanhempien vuorotyön perusteella, jolloin pyydämme työvuoroista todistuksen. 
-            
-            Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta, ilmoitamme teille paikan noin kuukautta ennen varhaiskasvatuksen toivottua aloitusajankohtaa. 
-            Huomioittehan, että paikka voi järjestyä muualta kuin ensisijaisista hakutoiveista.  
-            
-            Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin tai yksityisen perhepäivähoitajan, olkaa suoraan yhteydessä kyseiseen palveluntuottajaan varmistaaksenne varhaiskasvatuspaikan saamisen. 
-            Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen. 
-            
-            Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.
-            
-            Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa. 
-            
-            Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi
-            
-            Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
-            
-            Ystävällisesti, 
-            Varhaiskasvatuksen palveluohjaus 
+    fun getDaycareApplicationReceivedEmailText(): String =
+        """
+        Hei! 
+        
+        Lapsenne varhaiskasvatushakemus on vastaanotettu. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Varhaiskasvatuspaikan hakuaika on neljä kuukautta. 
+        Mikäli kyseessä on vanhemman äkillinen työllistyminen tai opintojen alkaminen, järjestelyaika on kaksi viikkoa. 
+        Toimittakaa tällöin työ- tai opiskelutodistus hakemuksen liitteeksi. Kahden viikon järjestelyaika alkaa todistuksen saapumispäivämäärästä. Vuorohoidon palveluita järjestetään vanhempien vuorotyön perusteella, jolloin pyydämme työvuoroista todistuksen. 
+        
+        Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta, ilmoitamme teille paikan noin kuukautta ennen varhaiskasvatuksen toivottua aloitusajankohtaa. 
+        Huomioittehan, että paikka voi järjestyä muualta kuin ensisijaisista hakutoiveista.  
+        
+        Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin tai yksityisen perhepäivähoitajan, olkaa suoraan yhteydessä kyseiseen palveluntuottajaan varmistaaksenne varhaiskasvatuspaikan saamisen. 
+        Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen. 
+        
+        Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.
+        
+        Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa. 
+        
+        Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi
+        
+        Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+        
+        Ystävällisesti, 
+        Varhaiskasvatuksen palveluohjaus 
 
-            Tämä on automaattinen viesti, joka kertoo lomakkeen tallennuksesta. Viestiin ei voi vastata reply-/ vastaa-toiminnolla.
-            
-            -----
-            
-            Hej!
+        Tämä on automaattinen viesti, joka kertoo lomakkeen tallennuksesta. Viestiin ei voi vastata reply-/ vastaa-toiminnolla.
+        
+        -----
+        
+        Hej!
 
-            Vi har mottagit ditt barns ansökan till småbarnspedagogik. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. 
-            Ansökningstiden för platser inom småbarnspedagogiken är fyra månader. Om ansökan har gjorts på grund av ny arbetsplats eller studieplats är handläggningstiden två veckor. 
-            Då ska vårdnadshavaren lämna in ett arbets- eller studieintyg. Handläggningstiden på två veckor börjar från och med dagen då intyget tas emot. Om ansökan handlar om skiftvård ber vi att vårdnadshavarna skickar in ett intyg om skiftarbete.
+        Vi har mottagit ditt barns ansökan till småbarnspedagogik. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. 
+        Ansökningstiden för platser inom småbarnspedagogiken är fyra månader. Om ansökan har gjorts på grund av ny arbetsplats eller studieplats är handläggningstiden två veckor. 
+        Då ska vårdnadshavaren lämna in ett arbets- eller studieintyg. Handläggningstiden på två veckor börjar från och med dagen då intyget tas emot. Om ansökan handlar om skiftvård ber vi att vårdnadshavarna skickar in ett intyg om skiftarbete.
 
-            Om vi kan ordna en dagvårdsplats på något av de kommunala enheterna för småbarnspedagogik som ni valde i er ansökan, kommer vi att meddela er om platsen ungefär en månad före önskat startdatum. 
-            Vänligen observera att platsen ni tilldelas inte nödvändigtvis är på någon av de önskade enheterna.
+        Om vi kan ordna en dagvårdsplats på något av de kommunala enheterna för småbarnspedagogik som ni valde i er ansökan, kommer vi att meddela er om platsen ungefär en månad före önskat startdatum. 
+        Vänligen observera att platsen ni tilldelas inte nödvändigtvis är på någon av de önskade enheterna.
 
-            Om ditt förstahandsval var ett privat daghem eller en privat familjedagvårdare, vänligen kontakta dem direkt för att säkra barnets plats där. Om det inte gick att erbjuda en plats på någon av era önskade platser, vänligen kontakta småbarnspedagogikens servicehandledning.
+        Om ditt förstahandsval var ett privat daghem eller en privat familjedagvårdare, vänligen kontakta dem direkt för att säkra barnets plats där. Om det inte gick att erbjuda en plats på någon av era önskade platser, vänligen kontakta småbarnspedagogikens servicehandledning.
 
-            Överföringsansökning (barnet har redan en plats på en enhet för småbarnspedagogik i Åbo) handläggs i huvudsak i ankomstordning.
+        Överföringsansökning (barnet har redan en plats på en enhet för småbarnspedagogik i Åbo) handläggs i huvudsak i ankomstordning.
 
-            Om du har angett att barnet behöver särskilt stöd kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.
+        Om du har angett att barnet behöver särskilt stöd kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.
 
-            Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi
+        Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi
 
-            Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.
+        Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.
 
-            Med vänliga hälsningar,
-            småbarnspedagogikens servicehandledning
+        Med vänliga hälsningar,
+        småbarnspedagogikens servicehandledning
 
-            Detta är ett automatiskt meddelande som informerar dig om att formuläret har sparats. Du kan inte svara på meddelandet med svara-funktionen.
-            
-            -----
-            
-            Hello!
+        Detta är ett automatiskt meddelande som informerar dig om att formuläret har sparats. Du kan inte svara på meddelandet med svara-funktionen.
+        
+        -----
+        
+        Hello!
 
-            We have received your child’s early childhood education and care application. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. The application period for early childhood education and care is four months. If the parent needs to start work or studies on short notice, the minimum period of processing is two weeks. If this is the case, please attach the relevant documentation for work or study. The two-week period begins from the date we have received such documentation. Childcare for children with parents doing shift work are planned on the basis of work rosters, which we will need to obtain from you.
+        We have received your child’s early childhood education and care application. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. The application period for early childhood education and care is four months. If the parent needs to start work or studies on short notice, the minimum period of processing is two weeks. If this is the case, please attach the relevant documentation for work or study. The two-week period begins from the date we have received such documentation. Childcare for children with parents doing shift work are planned on the basis of work rosters, which we will need to obtain from you.
 
-            If early childhood education and care can be provided to your child in some other municipal provider than you applied for, we will inform you about this about two months before your desired starting date. Please note that we may find a place for your child somewhere else than your primary choices.
+        If early childhood education and care can be provided to your child in some other municipal provider than you applied for, we will inform you about this about two months before your desired starting date. Please note that we may find a place for your child somewhere else than your primary choices.
 
-            If your first choice was a private daycare provider or private family daycarer, please contact them directly. If they are unable to care for your child, please contact the early childhood education and care service guidance.
+        If your first choice was a private daycare provider or private family daycarer, please contact them directly. If they are unable to care for your child, please contact the early childhood education and care service guidance.
 
-            As a rule, transfer applications (meaning that the City of Turku’s early childhood education and care unit already provides early childhood education and care to the child) are processed in the order they arrive.
+        As a rule, transfer applications (meaning that the City of Turku’s early childhood education and care unit already provides early childhood education and care to the child) are processed in the order they arrive.
 
-            If you said in your application that your child requires support, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.
+        If you said in your application that your child requires support, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.
 
-            You can view and either accept or reject the decision at evaka.turku.fi.
+        You can view and either accept or reject the decision at evaka.turku.fi.
 
-            Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+        Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
 
-            Best regards,
-            Early childhood education and care service guidance
+        Best regards,
+        Early childhood education and care service guidance
 
-            This is an automatic message on how the form is stored. You cannot reply to this message.
-            """.trimIndent()
-    }
+        This is an automatic message on how the form is stored. You cannot reply to this message.
+        """.trimIndent()
 
-    override fun assistanceNeedDecisionNotification(language: Language): EmailContent {
-        return EmailContent(subjectForDecisionEmail, getDecisionEmailText(), getDecisionEmailHtml())
-    }
+    override fun assistanceNeedDecisionNotification(language: Language): EmailContent =
+        EmailContent(subjectForDecisionEmail, getDecisionEmailText(), getDecisionEmailHtml())
 
     override fun assistanceNeedPreschoolDecisionNotification(language: Language): EmailContent =
         assistanceNeedDecisionNotification(language) // currently same content
 
-    fun getDecisionEmailHtml(): String {
-        return """
-            <p>Hei!</p>
-            
-            <p>Lapsellenne on tehty päätös.</p>
-            
-            <p>Päätös on nähtävissä eVakassa osoitteessa evaka.turku.fi.</p>
-            
-            <p>Tähän viestiin ei voi vastata.</p>
-            $securityFi
-            $unsubscribeFi
-            <hr>
-            
-            <p>Hej!</p>
+    fun getDecisionEmailHtml(): String =
+        """
+        <p>Hei!</p>
+        
+        <p>Lapsellenne on tehty päätös.</p>
+        
+        <p>Päätös on nähtävissä eVakassa osoitteessa evaka.turku.fi.</p>
+        
+        <p>Tähän viestiin ei voi vastata.</p>
+        $securityFi
+        $unsubscribeFi
+        <hr>
+        
+        <p>Hej!</p>
 
-            <p>Vi har fattat ett beslut gällande ert barn.</p>
+        <p>Vi har fattat ett beslut gällande ert barn.</p>
 
-            <p>Ni kan läsa beslutet på eVaka på adressen evaka.turku.fi.</p>
+        <p>Ni kan läsa beslutet på eVaka på adressen evaka.turku.fi.</p>
 
-            <p>Svara inte på detta meddelande.</p>
-            $securitySv
-            $unsubscribeSv
-            <hr>
-            
-            <p>Hello!</p>
+        <p>Svara inte på detta meddelande.</p>
+        $securitySv
+        $unsubscribeSv
+        <hr>
+        
+        <p>Hello!</p>
 
-            <p>We have made a decision about your child.</p>
+        <p>We have made a decision about your child.</p>
 
-            <p>Please go to evaka.turku.fi to view it.</p>
+        <p>Please go to evaka.turku.fi to view it.</p>
 
-            <p>This message cannot be replied to.</p>  
-            $securityEn
-            $unsubscribeEn
-            """.trimIndent()
-    }
+        <p>This message cannot be replied to.</p>  
+        $securityEn
+        $unsubscribeEn
+        """.trimIndent()
 
-    fun getDecisionEmailText(): String {
-        return """
-            Hei!
-            
-            Lapsellenne on tehty päätös.
-            
-            Päätös on nähtävissä eVakassa osoitteessa https://evaka.turku.fi/.
-            
-            Tähän viestiin ei voi vastata.
-            
-            -----
-            
-            Hej!
+    fun getDecisionEmailText(): String =
+        """
+        Hei!
+        
+        Lapsellenne on tehty päätös.
+        
+        Päätös on nähtävissä eVakassa osoitteessa https://evaka.turku.fi/.
+        
+        Tähän viestiin ei voi vastata.
+        
+        -----
+        
+        Hej!
 
-            Vi har fattat ett beslut gällande ert barn.
+        Vi har fattat ett beslut gällande ert barn.
 
-            Ni kan läsa beslutet på eVaka på adressen https://evaka.turku.fi/.
+        Ni kan läsa beslutet på eVaka på adressen https://evaka.turku.fi/.
 
-            Svara inte på detta meddelande.
-            
-            -----
-            
-            Hello!
+        Svara inte på detta meddelande.
+        
+        -----
+        
+        Hello!
 
-            We have made a decision about your child.
+        We have made a decision about your child.
 
-            Please go to evaka.turku.fi to view it.
+        Please go to evaka.turku.fi to view it.
 
-            This message cannot be replied to.
-            
-            """.trimIndent()
-    }
+        This message cannot be replied to.
+        
+        """.trimIndent()
 
     override fun missingReservationsNotification(
         language: Language,
@@ -645,8 +634,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 ----
                 
                 There are missing attendance reservations for the week starting $start. Please mark them as soon as possible.
-                """
-                    .trimIndent(),
+                """.trimIndent(),
             html =
                 """
                 <p>Läsnäolovarauksia puuttuu $start alkavalta viikolta. Käythän merkitsemässä ne mahdollisimman pian.</p>
@@ -660,184 +648,180 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>There are missing attendance reservations for week starting $start. Please mark them as soon as possible.</p>
                 $securityEn
                 $unsubscribeEn
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
     }
 
     override fun preschoolApplicationReceived(
         language: Language,
         withinApplicationPeriod: Boolean,
-    ): EmailContent {
-        return EmailContent(
+    ): EmailContent =
+        EmailContent(
             subjectForPreschoolApplicationReceivedEmail,
             getPreschoolApplicationReceivedEmailText(),
             getPreschoolApplicationReceivedEmailHtml(),
         )
-    }
 
-    fun getPreschoolApplicationReceivedEmailHtml(): String {
-        return """
-            <p>Hei!</p>
-            
-            <p>Olemme vastaanottaneet lapsenne hakemuksen esiopetukseen. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.</p>
-            
-            <p>Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.</p>
-            
-            <p>ESIOPETUKSEN TÄYDENTÄVÄ VARHAISKASVATUS</p>
-            
-            <p>Mikäli hait esiopetukseen täydentävää varhaiskasvatusta, otathan huomioon:</p>
-            
-            <p><ul>
-            <li>Vuorohoidon palveluita järjestetään vanhempien vuorotyön tai iltaisin ja/tai viikonloppuisin tapahtuvan opiskelun perusteella.</li>
-            <li>Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta, ilmoitamme teille paikan viimeistään kaksi viikkoa ennen varhaiskasvatuksen toivottua aloitusajankohtaa.</li>
-            <li>Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin, olkaa suoraan yhteydessä kyseiseen yksikköön varmistaaksenne varhaiskasvatuspaikan saamisen. Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen.</li>
-            <li>Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.</li>
-            </ul></p>
-            
-            <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi</p>
-            
-            <p>Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
-            
-            <p>
-            Ystävällisesti,<br/>
-            Varhaiskasvatuksen palveluohjaus<br/>
-            </p>
-            
-            <hr>
-            
-            <p>Hej!</p>
+    fun getPreschoolApplicationReceivedEmailHtml(): String =
+        """
+        <p>Hei!</p>
+        
+        <p>Olemme vastaanottaneet lapsenne hakemuksen esiopetukseen. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.</p>
+        
+        <p>Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.</p>
+        
+        <p>ESIOPETUKSEN TÄYDENTÄVÄ VARHAISKASVATUS</p>
+        
+        <p>Mikäli hait esiopetukseen täydentävää varhaiskasvatusta, otathan huomioon:</p>
+        
+        <p><ul>
+        <li>Vuorohoidon palveluita järjestetään vanhempien vuorotyön tai iltaisin ja/tai viikonloppuisin tapahtuvan opiskelun perusteella.</li>
+        <li>Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta, ilmoitamme teille paikan viimeistään kaksi viikkoa ennen varhaiskasvatuksen toivottua aloitusajankohtaa.</li>
+        <li>Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin, olkaa suoraan yhteydessä kyseiseen yksikköön varmistaaksenne varhaiskasvatuspaikan saamisen. Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen.</li>
+        <li>Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.</li>
+        </ul></p>
+        
+        <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi</p>
+        
+        <p>Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
+        
+        <p>
+        Ystävällisesti,<br/>
+        Varhaiskasvatuksen palveluohjaus<br/>
+        </p>
+        
+        <hr>
+        
+        <p>Hej!</p>
 
-            <p>Vi har mottagit ditt barns ansökan till förskoleundervisning. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.</p>
+        <p>Vi har mottagit ditt barns ansökan till förskoleundervisning. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.</p>
 
-            <p>Om du har angett att barnet behöver särskilt stöd kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.</p>
+        <p>Om du har angett att barnet behöver särskilt stöd kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.</p>
 
-            <p>KOMPLETTERANDE SMÅBARNSPEDAGOGIK FÖR BARN I FÖRSKOLEÅLDERN</p>
+        <p>KOMPLETTERANDE SMÅBARNSPEDAGOGIK FÖR BARN I FÖRSKOLEÅLDERN</p>
 
-            <p>Om du har ansökt om kompletterande småbarnspedagogik för ett barn i förskoleåldern, vänligen ta hänsyn till följande:</p>
-            
-            <p><ul>
-            <li>Skiftvården ordnas utifrån föräldrars skiftarbete eller studier på kvällar och/eller helger.</li>
-            <li>Om det ordnas en förskoleplats för ditt barn från någon av de kommunala förskoleplatser som du begärt i ansökan, meddelar vi dig platsen senast två veckor innan önskad starttid för förskoleutbildningen.</li>
-            <li>Om du valde ett privat daghem som din första ansökan, kontakta den aktuella enheten direkt för att säkerställa att du får en förskoleplats. Om den tjänsteleverantör du önskar inte kan erbjuda en vårdplats ber vi dig att kontakta förskoletjänstens vägledning.</li>
-            <li>Ansökningar om överlåtelse (barnet har redan en förskoleplats vid Åbo stads förskoleenhet) behandlas i allmänhet enligt ansökningsdagen.</li>
-            </ul></p>
-            
-            <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi</p>
+        <p>Om du har ansökt om kompletterande småbarnspedagogik för ett barn i förskoleåldern, vänligen ta hänsyn till följande:</p>
+        
+        <p><ul>
+        <li>Skiftvården ordnas utifrån föräldrars skiftarbete eller studier på kvällar och/eller helger.</li>
+        <li>Om det ordnas en förskoleplats för ditt barn från någon av de kommunala förskoleplatser som du begärt i ansökan, meddelar vi dig platsen senast två veckor innan önskad starttid för förskoleutbildningen.</li>
+        <li>Om du valde ett privat daghem som din första ansökan, kontakta den aktuella enheten direkt för att säkerställa att du får en förskoleplats. Om den tjänsteleverantör du önskar inte kan erbjuda en vårdplats ber vi dig att kontakta förskoletjänstens vägledning.</li>
+        <li>Ansökningar om överlåtelse (barnet har redan en förskoleplats vid Åbo stads förskoleenhet) behandlas i allmänhet enligt ansökningsdagen.</li>
+        </ul></p>
+        
+        <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi</p>
 
-            <p>Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.</p>
+        <p>Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.</p>
 
-            <p>
-            Med vänliga hälsningar,<br/>
-            småbarnspedagogikens servicehandledning<br/>
-            </p>
-            
-            <hr>
-            
-            <p>Hello!</p>
+        <p>
+        Med vänliga hälsningar,<br/>
+        småbarnspedagogikens servicehandledning<br/>
+        </p>
+        
+        <hr>
+        
+        <p>Hello!</p>
 
-            <p>We have received your child’s application for pre-primary education. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. You can view and either accept or reject the decision at evaka.turku.fi.</p>
+        <p>We have received your child’s application for pre-primary education. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. You can view and either accept or reject the decision at evaka.turku.fi.</p>
 
-            <p>If you said in your application that your child requires support, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.</p>
+        <p>If you said in your application that your child requires support, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.</p>
 
-            <p>EARLY CHILDHOOD EDUCATION AND CARE COMPLEMENTING PRE-PRIMARY EDUCATION</p>
+        <p>EARLY CHILDHOOD EDUCATION AND CARE COMPLEMENTING PRE-PRIMARY EDUCATION</p>
 
-            <p>If you applied for early childhood education and care to complement pre-primary education, please take note of the following:</p>
-            
-            <p><ul>
-            <li>Shift care services are arranged based on parents' shift work or studying in the evenings and/or weekends.</li>
-            <li>If an early childhood education place is arranged for your child from one of the municipal early childhood education places you requested in the application, we will inform you of the place no later than two weeks before the desired start time of early childhood education.</li>
-            <li>If you chose a private daycare center as your first application, please contact the unit in question directly to ensure that you get an early childhood education place. If the service provider you want is not able to offer a place of care, we ask you to contact the early childhood education service guidance.</li>
-            <li>Transfer applications (the child already has an early childhood education place in the early childhood education unit of the city of Turku) are generally processed according to the date of arrival of the application.</li>
-            </ul></p>
+        <p>If you applied for early childhood education and care to complement pre-primary education, please take note of the following:</p>
+        
+        <p><ul>
+        <li>Shift care services are arranged based on parents' shift work or studying in the evenings and/or weekends.</li>
+        <li>If an early childhood education place is arranged for your child from one of the municipal early childhood education places you requested in the application, we will inform you of the place no later than two weeks before the desired start time of early childhood education.</li>
+        <li>If you chose a private daycare center as your first application, please contact the unit in question directly to ensure that you get an early childhood education place. If the service provider you want is not able to offer a place of care, we ask you to contact the early childhood education service guidance.</li>
+        <li>Transfer applications (the child already has an early childhood education place in the early childhood education unit of the city of Turku) are generally processed according to the date of arrival of the application.</li>
+        </ul></p>
 
-            <p>You can view and either accept or reject the decision at evaka.turku.fi.</p>
+        <p>You can view and either accept or reject the decision at evaka.turku.fi.</p>
 
-            <p>Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
+        <p>Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
 
-            <p>
-            Best regards,<br/>
-            Early childhood education and care service guidance<br/>
-            </p>
-            """.trimIndent()
-    }
+        <p>
+        Best regards,<br/>
+        Early childhood education and care service guidance<br/>
+        </p>
+        """.trimIndent()
 
-    fun getPreschoolApplicationReceivedEmailText(): String {
-        return """
-            Hei! 
-            
-            Olemme vastaanottaneet lapsenne hakemuksen esiopetukseen. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.
-            
-            Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.
+    fun getPreschoolApplicationReceivedEmailText(): String =
+        """
+        Hei! 
+        
+        Olemme vastaanottaneet lapsenne hakemuksen esiopetukseen. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.
+        
+        Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.
 
-            ESIOPETUKSEN TÄYDENTÄVÄ VARHAISKASVATUS 
+        ESIOPETUKSEN TÄYDENTÄVÄ VARHAISKASVATUS 
 
-            Mikäli hait esiopetukseen täydentävää varhaiskasvatusta, otathan huomioon: 
-            •	Vuorohoidon palveluita järjestetään vanhempien vuorotyön tai iltaisin ja/tai viikonloppuisin tapahtuvan opiskelun perusteella. 
-            •	Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta, ilmoitamme teille paikan viimeistään kaksi viikkoa ennen varhaiskasvatuksen toivottua aloitusajankohtaa.
-            •	Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin, olkaa suoraan yhteydessä kyseiseen yksikköön varmistaaksenne varhaiskasvatuspaikan saamisen. Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen. 
-            •	Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.
-             
-            Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi
-             
-            Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+        Mikäli hait esiopetukseen täydentävää varhaiskasvatusta, otathan huomioon: 
+        •	Vuorohoidon palveluita järjestetään vanhempien vuorotyön tai iltaisin ja/tai viikonloppuisin tapahtuvan opiskelun perusteella. 
+        •	Mikäli lapsellenne järjestyy varhaiskasvatuspaikka jostakin hakemuksessa toivomastanne kunnallisesta varhaiskasvatuspaikasta, ilmoitamme teille paikan viimeistään kaksi viikkoa ennen varhaiskasvatuksen toivottua aloitusajankohtaa.
+        •	Mikäli valitsitte ensimmäiseksi hakutoiveeksi yksityisen päiväkodin, olkaa suoraan yhteydessä kyseiseen yksikköön varmistaaksenne varhaiskasvatuspaikan saamisen. Mikäli toivomanne palveluntuottaja ei pysty tarjoamaan hoitopaikkaa, pyydämme teitä olemaan yhteydessä varhaiskasvatuksen palveluohjaukseen. 
+        •	Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.
+         
+        Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi
+         
+        Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
 
-            Ystävällisesti, 
-            Varhaiskasvatuksen palveluohjaus
-            
-            -----
-            
-            Hej!
+        Ystävällisesti, 
+        Varhaiskasvatuksen palveluohjaus
+        
+        -----
+        
+        Hej!
 
-            Vi har mottagit ditt barns ansökan till förskoleundervisning. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.
+        Vi har mottagit ditt barns ansökan till förskoleundervisning. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.
 
-            Om du har angett att barnet behöver särskilt stöd kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.
+        Om du har angett att barnet behöver särskilt stöd kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.
 
-            KOMPLETTERANDE SMÅBARNSPEDAGOGIK FÖR BARN I FÖRSKOLEÅLDERN
+        KOMPLETTERANDE SMÅBARNSPEDAGOGIK FÖR BARN I FÖRSKOLEÅLDERN
 
-            Om du har ansökt om kompletterande småbarnspedagogik för ett barn i förskoleåldern, vänligen ta hänsyn till följande:
-            •   Skiftvården ordnas utifrån föräldrars skiftarbete eller studier på kvällar och/eller helger.
-            •   Om det ordnas en förskoleplats för ditt barn från någon av de kommunala förskoleplatser som du begärt i ansökan, meddelar vi dig platsen senast två veckor innan önskad starttid för förskoleutbildningen.
-            •   Om du valde ett privat daghem som din första ansökan, kontakta den aktuella enheten direkt för att säkerställa att du får en förskoleplats. Om den tjänsteleverantör du önskar inte kan erbjuda en vårdplats ber vi dig att kontakta förskoletjänstens vägledning.
-            •   Ansökningar om överlåtelse (barnet har redan en förskoleplats vid Åbo stads förskoleenhet) behandlas i allmänhet enligt ansökningsdagen.
+        Om du har ansökt om kompletterande småbarnspedagogik för ett barn i förskoleåldern, vänligen ta hänsyn till följande:
+        •   Skiftvården ordnas utifrån föräldrars skiftarbete eller studier på kvällar och/eller helger.
+        •   Om det ordnas en förskoleplats för ditt barn från någon av de kommunala förskoleplatser som du begärt i ansökan, meddelar vi dig platsen senast två veckor innan önskad starttid för förskoleutbildningen.
+        •   Om du valde ett privat daghem som din första ansökan, kontakta den aktuella enheten direkt för att säkerställa att du får en förskoleplats. Om den tjänsteleverantör du önskar inte kan erbjuda en vårdplats ber vi dig att kontakta förskoletjänstens vägledning.
+        •   Ansökningar om överlåtelse (barnet har redan en förskoleplats vid Åbo stads förskoleenhet) behandlas i allmänhet enligt ansökningsdagen.
 
-            Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi
+        Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi
 
-            Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.
+        Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.
 
-            Med vänliga hälsningar,
-            småbarnspedagogikens servicehandledning
-            
-            -----
-            
-            Hello!
+        Med vänliga hälsningar,
+        småbarnspedagogikens servicehandledning
+        
+        -----
+        
+        Hello!
 
-            We have received your child’s application for pre-primary education. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. You can view and either accept or reject the decision at evaka.turku.fi.
+        We have received your child’s application for pre-primary education. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. You can view and either accept or reject the decision at evaka.turku.fi.
 
-            If you said in your application that your child requires support, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.
+        If you said in your application that your child requires support, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.
 
-            EARLY CHILDHOOD EDUCATION AND CARE COMPLEMENTING PRE-PRIMARY EDUCATION
+        EARLY CHILDHOOD EDUCATION AND CARE COMPLEMENTING PRE-PRIMARY EDUCATION
 
-            If you applied for early childhood education and care to complement pre-primary education, please take note of the following:
-            •   Shift care services are arranged based on parents' shift work or studying in the evenings and/or weekends.
-            •   If an early childhood education place is arranged for your child from one of the municipal early childhood education places you requested in the application, we will inform you of the place no later than two weeks before the desired start time of early childhood education.
-            •   If you chose a private daycare center as your first application, please contact the unit in question directly to ensure that you get an early childhood education place. If the service provider you want is not able to offer a place of care, we ask you to contact the early childhood education service guidance.
-            •   Transfer applications (the child already has an early childhood education place in the early childhood education unit of the city of Turku) are generally processed according to the date of arrival of the application.
+        If you applied for early childhood education and care to complement pre-primary education, please take note of the following:
+        •   Shift care services are arranged based on parents' shift work or studying in the evenings and/or weekends.
+        •   If an early childhood education place is arranged for your child from one of the municipal early childhood education places you requested in the application, we will inform you of the place no later than two weeks before the desired start time of early childhood education.
+        •   If you chose a private daycare center as your first application, please contact the unit in question directly to ensure that you get an early childhood education place. If the service provider you want is not able to offer a place of care, we ask you to contact the early childhood education service guidance.
+        •   Transfer applications (the child already has an early childhood education place in the early childhood education unit of the city of Turku) are generally processed according to the date of arrival of the application.
 
-            You can view and either accept or reject the decision at evaka.turku.fi.
+        You can view and either accept or reject the decision at evaka.turku.fi.
 
-            Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
+        Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.
 
-            Best regards,
-            Early childhood education and care service guidance
-            """.trimIndent()
-    }
+        Best regards,
+        Early childhood education and care service guidance
+        """.trimIndent()
 
     override fun pedagogicalDocumentNotification(
         language: Language,
         childId: ChildId,
-    ): EmailContent {
-        return EmailContent(
+    ): EmailContent =
+        EmailContent(
             subject =
                 "Uusi pedagoginen dokumentti eVakassa / Nytt pedagogiskt dokument i eVaka / New pedagogical document in eVaka",
             text =
@@ -847,7 +831,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 Tämä on eVaka-järjestelmän automaattisesti lähettämä ilmoitus. Älä vastaa tähän viestiin.
                 
                 -----
-       
+                
                 Du har fått ett nytt pedagogiskt dokument i eVaka. Läs dokumentet i eVaka.
                 
                 Detta besked skickas automatiskt av eVaka. Svara inte på detta besked. 
@@ -857,8 +841,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 You have received a new eVaka pedagogical document. Read the document in eVaka.
                 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
-            """
-                    .trimIndent(),
+                """.trimIndent(),
             html =
                 """
                 <p>Sinulle on saapunut uusi pedagoginen dokumentti eVakaan. Lue dokumentti eVakassa.</p>
@@ -875,25 +858,22 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p> 
                 $securityEn
                 $unsubscribeEn
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
     override fun incomeNotification(
         notificationType: IncomeNotificationType,
         language: Language,
-    ): EmailContent {
-        return when (notificationType) {
+    ): EmailContent =
+        when (notificationType) {
             IncomeNotificationType.INITIAL_EMAIL -> outdatedIncomeNotificationInitial()
             IncomeNotificationType.REMINDER_EMAIL -> outdatedIncomeNotificationReminder()
             IncomeNotificationType.EXPIRED_EMAIL -> outdatedIncomeNotificationExpired()
             IncomeNotificationType.NEW_CUSTOMER -> newCustomerIncomeNotification()
         }
-    }
 
-    fun outdatedIncomeNotificationInitial(): EmailContent {
-        return EmailContent(
+    fun outdatedIncomeNotificationInitial(): EmailContent =
+        EmailContent(
             subject =
                 "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
             text =
@@ -943,8 +923,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 Inquiries: varhaiskasvatusmaksut@turku.fi
 
                 This is an automatic message from the eVaka system. Do not reply to this message.
-            """
-                    .trimIndent(),
+                """.trimIndent(),
             html =
                 """
                 <p>Hyvä asiakkaamme</p>
@@ -976,13 +955,11 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $securityEn
                 $unsubscribeEn
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
-    fun outdatedIncomeNotificationReminder(): EmailContent {
-        return EmailContent(
+    fun outdatedIncomeNotificationReminder(): EmailContent =
+        EmailContent(
             subject =
                 "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
             text =
@@ -1032,8 +1009,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 Inquiries: varhaiskasvatusmaksut@turku.fi
                 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
-            """
-                    .trimIndent(),
+                """.trimIndent(),
             html =
                 """
                 <p>Hyvä asiakkaamme</p>
@@ -1065,13 +1041,11 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $securityEn
                 $unsubscribeEn
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
-    fun newCustomerIncomeNotification(): EmailContent {
-        return EmailContent(
+    fun newCustomerIncomeNotification(): EmailContent =
+        EmailContent(
             subject =
                 "Tulotietojen tarkastuskehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
             text =
@@ -1126,13 +1100,11 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $securityEn
                 $unsubscribeEn
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
-    fun outdatedIncomeNotificationExpired(): EmailContent {
-        return EmailContent(
+    fun outdatedIncomeNotificationExpired(): EmailContent =
+        EmailContent(
             subject =
                 "Tulotietojen tarkastus- kehotus / Uppmaning att göra en inkomstutredning / Request to review income information",
             text =
@@ -1164,8 +1136,7 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 Inquiries: varhaiskasvatusmaksut@turku.fi
 
                 This is an automatic message from the eVaka system. Do not reply to this message.  
-            """
-                    .trimIndent(),
+                """.trimIndent(),
             html =
                 """
                 <p>Hyvä asiakkaamme</p>
@@ -1188,10 +1159,8 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 <p>This is an automatic message from the eVaka system. Do not reply to this message.</p>
                 $securityEn
                 $unsubscribeEn
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
     override fun calendarEventNotification(
         language: Language,
@@ -1214,30 +1183,29 @@ internal class EmailMessageProvider(private val env: EvakaEnv) : IEmailMessagePr
                 "Uusia kalenteritapahtumia eVakassa / Nya kalenderhändelser i eVaka / New calendar events in eVaka",
             html =
                 """
-            <p>eVakaan on lisätty uusia kalenteritapahtumia:</p>
-            $eventsHtml
-            $securityFi
-            $unsubscribeFi
-            <p>Katso lisää kalenterissa eVakassa.</p>
-            <hr>
-            <p>Nya kalenderhändelser i eVaka:</p>
-            $eventsHtml
-            $securitySv
-            $unsubscribeSv
-            <p>Se mer i kalendern i eVaka.</p>
-            <hr>
-            <p>New calendar events in eVaka:</p>
-            $eventsHtml
-            $securityEn
-            $unsubscribeEn
-            <p>See more in the calendar in eVaka.</p>
-            """
-                    .trimIndent(),
+                <p>eVakaan on lisätty uusia kalenteritapahtumia:</p>
+                $eventsHtml
+                $securityFi
+                $unsubscribeFi
+                <p>Katso lisää kalenterissa eVakassa.</p>
+                <hr>
+                <p>Nya kalenderhändelser i eVaka:</p>
+                $eventsHtml
+                $securitySv
+                $unsubscribeSv
+                <p>Se mer i kalendern i eVaka.</p>
+                <hr>
+                <p>New calendar events in eVaka:</p>
+                $eventsHtml
+                $securityEn
+                $unsubscribeEn
+                <p>See more in the calendar in eVaka.</p>
+                """.trimIndent(),
         )
     }
 
-    override fun missingHolidayReservationsNotification(language: Language): EmailContent {
-        return EmailContent.fromHtml(
+    override fun missingHolidayReservationsNotification(language: Language): EmailContent =
+        EmailContent.fromHtml(
             subject =
                 "Loma-ajan ilmoitus sulkeutuu / Semesteranmälan löper ut / Holiday notification period closing",
             html =
@@ -1255,7 +1223,6 @@ $securityEn
 $unsubscribeEn
 """,
         )
-    }
 
     override fun financeDecisionNotification(decisionType: FinanceDecisionType): EmailContent {
         val (decisionTypeFi, decisionTypeSv, decisionTypeEn) =
@@ -1284,16 +1251,15 @@ $unsubscribeEn
                 <p>The decision can be viewed on eVaka.</p>
                 $securityEn
                 $unsubscribeEn
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
     }
 
     override fun discussionSurveyReservationNotification(
         language: Language,
         notificationDetails: DiscussionSurveyReservationNotificationData,
-    ): EmailContent {
-        return EmailContent.fromHtml(
+    ): EmailContent =
+        EmailContent.fromHtml(
             subject =
                 "Uusi keskusteluaika varattu eVakassa / Ett nytt diskussionsmöte bokat i eVaka / New discussion time reserved in eVaka",
             html =
@@ -1311,16 +1277,14 @@ $unsubscribeEn
                 $securityEn
                 $unsubscribeEn
                 <hr>
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
     override fun discussionSurveyReservationCancellationNotification(
         language: Language,
         notificationDetails: DiscussionSurveyReservationNotificationData,
-    ): EmailContent {
-        return EmailContent.fromHtml(
+    ): EmailContent =
+        EmailContent.fromHtml(
             subject =
                 "Keskusteluaika peruttu eVakassa / Diskussionsmöte avbokad i eVaka / Discussion time cancelled in eVaka",
             html =
@@ -1338,16 +1302,14 @@ $unsubscribeEn
                 $securityEn
                 $unsubscribeEn
                 <hr>
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
     override fun discussionSurveyCreationNotification(
         language: Language,
         notificationDetails: DiscussionSurveyCreationNotificationData,
-    ): EmailContent {
-        return EmailContent.fromHtml(
+    ): EmailContent =
+        EmailContent.fromHtml(
             subject =
                 "Varaa keskusteluaika varhaiskasvatukseen / Boka tid till diskussionsmöte / " +
                     "Reserve a discussion time for early childhood education",
@@ -1371,16 +1333,14 @@ $unsubscribeEn
                 $securityEn
                 $unsubscribeEn
                 <hr>
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
     override fun discussionTimeReservationReminder(
         language: Language,
         reminderData: DiscussionTimeReminderData,
-    ): EmailContent {
-        return EmailContent.fromHtml(
+    ): EmailContent =
+        EmailContent.fromHtml(
             subject =
                 "Muistutus tulevasta keskusteluajasta / Reminder for an upcoming discussion time",
             html =
@@ -1407,13 +1367,11 @@ $unsubscribeFi
 $securityEn
 $unsubscribeEn
 <hr>
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
-    override fun decisionNotification(): EmailContent {
-        return EmailContent.fromHtml(
+    override fun decisionNotification(): EmailContent =
+        EmailContent.fromHtml(
             subject = "Uusi päätös eVakassa / Nytt beslut i eVaka / New decision in eVaka",
             html =
                 """
@@ -1431,10 +1389,8 @@ $unsubscribeSv
 <p>The decision can be viewed on eVaka.</p>
 $securityEn
 $unsubscribeEn
-            """
-                    .trimIndent(),
+                """.trimIndent(),
         )
-    }
 
     override fun serviceApplicationDecidedNotification(
         accepted: Boolean,
@@ -1449,30 +1405,28 @@ $unsubscribeEn
             html =
                 if (accepted) {
                     """
-                <p>Ehdottamasi palveluntarve on hyväksytty $start alkaen.</p>
-                $securityFi
-                $unsubscribeFi
-                <p>Det tjänstebehov som ni föreslår har godkänts från och med den $start.</p>
-                $securitySv
-                $unsubscribeSv
-                <p>The service request you proposed has been approved starting from $start.</p>
-                $securityEn
-                $unsubscribeEn
-            """
-                        .trimIndent()
+                    <p>Ehdottamasi palveluntarve on hyväksytty $start alkaen.</p>
+                    $securityFi
+                    $unsubscribeFi
+                    <p>Det tjänstebehov som ni föreslår har godkänts från och med den $start.</p>
+                    $securitySv
+                    $unsubscribeSv
+                    <p>The service request you proposed has been approved starting from $start.</p>
+                    $securityEn
+                    $unsubscribeEn
+                    """.trimIndent()
                 } else {
                     """
-                <p>Ehdottamasi palveluntarve on hylätty, lue lisätiedot hylkäyksestä eVakassa.</p>
-                $securityFi
-                $unsubscribeFi
-                <p>Din föreslagna serviceförfrågan har avvisats, läs mer om avvisandet i eVaka.</p>
-                $securitySv
-                $unsubscribeSv
-                <p>The service request you proposed has been rejected.</p>
-                $securityEn
-                $unsubscribeEn
-            """
-                        .trimIndent()
+                    <p>Ehdottamasi palveluntarve on hylätty, lue lisätiedot hylkäyksestä eVakassa.</p>
+                    $securityFi
+                    $unsubscribeFi
+                    <p>Din föreslagna serviceförfrågan har avvisats, läs mer om avvisandet i eVaka.</p>
+                    $securitySv
+                    $unsubscribeSv
+                    <p>The service request you proposed has been rejected.</p>
+                    $securityEn
+                    $unsubscribeEn
+                    """.trimIndent()
                 },
         )
     }
@@ -1496,19 +1450,17 @@ $unsubscribeEn
             html =
                 if (accepted) {
                     """
-                <p>Lapsesi esiopetuksen poissaolohakemus on hyväksytty ja poissaolot on merkitty eVakaan. Lue lisää eVakasta.</p>
-                <p>Ditt barns ansökan om frånvaro från förskoleundervisningen har godkänts och frånvaron har markerats i eVaka. Läs mer om eVaka.</p>
-                <p>Your child's application for absence from pre-primary education has been approved, and the absence has been 
-                recorded in eVaka. Read more about eVaka.</p>
-            """
-                        .trimIndent()
+                    <p>Lapsesi esiopetuksen poissaolohakemus on hyväksytty ja poissaolot on merkitty eVakaan. Lue lisää eVakasta.</p>
+                    <p>Ditt barns ansökan om frånvaro från förskoleundervisningen har godkänts och frånvaron har markerats i eVaka. Läs mer om eVaka.</p>
+                    <p>Your child's application for absence from pre-primary education has been approved, and the absence has been 
+                    recorded in eVaka. Read more about eVaka.</p>
+                    """.trimIndent()
                 } else {
                     """
-                <p>Lapsesi esiopetuksen poissaolohakemus on hylätty. Lue lisää eVakasta.</p>
-                <p>Ansökan om frånvaro från förskoleundervisningen för ditt barn  har avslagits. Läs mer om eVaka.</p>
-                <p>Your child's application for absence from pre-primary educationhas been declined. Read more about eVaka.</p>
-            """
-                        .trimIndent()
+                    <p>Lapsesi esiopetuksen poissaolohakemus on hylätty. Lue lisää eVakasta.</p>
+                    <p>Ansökan om frånvaro från förskoleundervisningen för ditt barn  har avslagits. Läs mer om eVaka.</p>
+                    <p>Your child's application for absence from pre-primary educationhas been declined. Read more about eVaka.</p>
+                    """.trimIndent()
                 },
         )
     }

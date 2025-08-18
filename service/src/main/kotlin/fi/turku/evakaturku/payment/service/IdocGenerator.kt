@@ -69,7 +69,9 @@ class IdocGenerator {
         e1FISEG.wrbtr = String.format(Locale.ENGLISH, "%.2f", payment.amount.toDouble() / 100)
         e1FISEG.sgtxt = "eVAKA " + previousMonth?.format(dateTimeFormatterMonth) + "/" + previousMonth?.format(dateTimeFormatterYear)
         e1FISEG.xref3 = ""
-        val e1FINBU = FIDCCP02.IDOC.E1FIKPF.E1FISEG.E1FINBU()
+        val e1FINBU =
+            FIDCCP02.IDOC.E1FIKPF.E1FISEG
+                .E1FINBU()
         e1FINBU.segment = "1"
         e1FINBU.zfbdt = payment.dueDate?.format(dateTimeFormatterYearMonthDay)
         e1FINBU.zterm = "T000"

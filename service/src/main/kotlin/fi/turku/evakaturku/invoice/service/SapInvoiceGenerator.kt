@@ -413,7 +413,9 @@ class SapInvoiceGenerator(
             e1edp01.e1EDPT1 = e1edpt1list
 
             val e1edpt2list: MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
-            val e1edpt2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+            val e1edpt2 =
+                ORDERS05.IDOC.E1EDP01.E1EDPT1
+                    .E1EDPT2()
             e1edpt2.segment = "1"
             e1edpt2.tdline = row.unitName
             e1edpt2.tdformat = "*"
@@ -428,7 +430,9 @@ class SapInvoiceGenerator(
             e1edpt1list.add(e1edpt1_2)
 
             val e1edpt2_2list: MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
-            val e1edpt2_2 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+            val e1edpt2_2 =
+                ORDERS05.IDOC.E1EDP01.E1EDPT1
+                    .E1EDPT2()
             e1edpt2_2.segment = "1"
             e1edpt2_2.tdline = row.child.firstName + " " + row.child.lastName
             e1edpt2_2.tdformat = "*"
@@ -443,7 +447,9 @@ class SapInvoiceGenerator(
             e1edpt1list.add(e1edpt1_3)
 
             val e1edpt2_3list: MutableList<ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2> = mutableListOf()
-            val e1edpt2_3 = ORDERS05.IDOC.E1EDP01.E1EDPT1.E1EDPT2()
+            val e1edpt2_3 =
+                ORDERS05.IDOC.E1EDP01.E1EDPT1
+                    .E1EDPT2()
             e1edpt2_3.segment = "1"
 
             val pattern = "dd.MM.yyyy"

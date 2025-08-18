@@ -51,13 +51,14 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasGlobalRole(UserRole.DIRECTOR),
                     ) +
                     sequenceOf(
-                        HasUnitRole(UserRole.UNIT_SUPERVISOR).withUnitProviderTypes(
-                            ProviderType.MUNICIPAL,
-                            ProviderType.PURCHASED,
-                            ProviderType.PRIVATE,
-                            ProviderType.MUNICIPAL_SCHOOL,
-                            ProviderType.EXTERNAL_PURCHASED,
-                        ).inAnyUnit(),
+                        HasUnitRole(UserRole.UNIT_SUPERVISOR)
+                            .withUnitProviderTypes(
+                                ProviderType.MUNICIPAL,
+                                ProviderType.PURCHASED,
+                                ProviderType.PRIVATE,
+                                ProviderType.MUNICIPAL_SCHOOL,
+                                ProviderType.EXTERNAL_PURCHASED,
+                            ).inAnyUnit(),
                     ) +
                     sequenceOf(
                         HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inAnyUnit(),
@@ -83,8 +84,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         UserRole.STAFF,
                         UserRole.SPECIAL_EDUCATION_TEACHER,
                         UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY,
-                    )
-                        .withUnitFeatures(PilotFeature.MOBILE)
+                    ).withUnitFeatures(PilotFeature.MOBILE)
                         .inAnyUnit(),
                 )
             Action.Global.READ_HOLIDAY_PERIODS,

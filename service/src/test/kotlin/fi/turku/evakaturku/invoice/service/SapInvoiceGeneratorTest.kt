@@ -66,7 +66,11 @@ class SapInvoiceGeneratorTest {
         val invoiceList = mutableListOf(validInvoiceZeroSum())
         invoiceList.add(validInvoice())
         var invoiceCount = invoiceList.count()
-        var successListCount = invoiceGenerator.generateInvoice(invoiceList).sendResult.succeeded.count()
+        var successListCount =
+            invoiceGenerator
+                .generateInvoice(invoiceList)
+                .sendResult.succeeded
+                .count()
         assert(successListCount == invoiceCount)
     }
 

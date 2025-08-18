@@ -9,13 +9,13 @@ import fi.espoo.evaka.shared.DaycareId
 import fi.espoo.evaka.shared.db.Database
 import fi.espoo.evaka.shared.domain.DateRange
 
-class PreschoolValuesFetcher(val tx: Database.Read) {
-    fun fetchPreschoolers(payments: List<Payment>): Map<DaycareId, Int> {
-        return tx.fetchPreschoolers(payments)
-    }
+class PreschoolValuesFetcher(
+    val tx: Database.Read,
+) {
+    fun fetchPreschoolers(payments: List<Payment>): Map<DaycareId, Int> = tx.fetchPreschoolers(payments)
 
-    fun Database.Read.fetchPreschoolers(payments: List<Payment>): Map<DaycareId, Int> {
-        return createQuery {
+    fun Database.Read.fetchPreschoolers(payments: List<Payment>): Map<DaycareId, Int> =
+        createQuery {
             sql(
                 """
             SELECT placement_unit_id as unitId,count(placement_type) as preSchoolers
@@ -28,20 +28,16 @@ class PreschoolValuesFetcher(val tx: Database.Read) {
             GROUP BY voucher_value_decision.placement_unit_id;
         """,
             )
-        }
-            .bind("ids", payments.map { it.unit.id })
+        }.bind("ids", payments.map { it.unit.id })
             .bind("period", payments[0].period)
             .toMap {
                 columnPair<DaycareId, Int>("unitId", "preSchoolers")
             }
-    }
 
-    fun fetchUnitLanguages(payments: List<Payment>): Map<DaycareId, String> {
-        return tx.fetchUnitLanguages(payments)
-    }
+    fun fetchUnitLanguages(payments: List<Payment>): Map<DaycareId, String> = tx.fetchUnitLanguages(payments)
 
-    fun Database.Read.fetchUnitLanguages(payments: List<Payment>): Map<DaycareId, String> {
-        return createQuery {
+    fun Database.Read.fetchUnitLanguages(payments: List<Payment>): Map<DaycareId, String> =
+        createQuery {
             sql(
                 """
             SELECT id as unitId,language
@@ -49,19 +45,15 @@ class PreschoolValuesFetcher(val tx: Database.Read) {
             WHERE daycare.id = ANY(:ids)
         """,
             )
-        }
-            .bind("ids", payments.map { it.unit.id })
+        }.bind("ids", payments.map { it.unit.id })
             .toMap {
                 columnPair<DaycareId, String>("unitId", "language")
             }
-    }
 
-    fun fetchPreschoolAccountingAmount(period: DateRange): Int {
-        return tx.fetchPreschoolAccountingAmount(period)
-    }
+    fun fetchPreschoolAccountingAmount(period: DateRange): Int = tx.fetchPreschoolAccountingAmount(period)
 
-    fun Database.Read.fetchPreschoolAccountingAmount(period: DateRange): Int {
-        return createQuery {
+    fun Database.Read.fetchPreschoolAccountingAmount(period: DateRange): Int =
+        createQuery {
             sql(
                 """
             SELECT base_value
@@ -74,10 +66,8 @@ class PreschoolValuesFetcher(val tx: Database.Read) {
             AND validity @> :date;
         """,
             )
-        }
-            .bind("date", period.start)
+        }.bind("date", period.start)
             .mapTo<Int>()
             // this should only ever return one row with one value
             .exactlyOne()
-    }
 }
