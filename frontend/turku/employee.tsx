@@ -8,9 +8,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 
 import React from 'react'
 
-import {
-  daycareAssistanceLevels
-} from 'lib-common/generated/api-types/assistance'
+import { daycareAssistanceLevels } from 'lib-common/generated/api-types/assistance'
 import { H3, P } from 'lib-components/typography'
 import type { EmployeeCustomizations } from 'lib-customizations/types'
 
