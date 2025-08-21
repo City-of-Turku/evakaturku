@@ -950,7 +950,15 @@ const customizations: EmployeeCustomizations = {
     'ANOMALOUS_EDUCATION_START'
   ],
   placementPlanRejectReasons: ['REASON_1', 'REASON_2', 'OTHER'],
-  preschoolAssistanceLevels: [...preschoolAssistanceLevels],
+  preschoolAssistanceLevels: [
+    'INTENSIFIED_SUPPORT',
+    'SPECIAL_SUPPORT',
+    'SPECIAL_SUPPORT_WITH_DECISION_LEVEL_1',
+    'SPECIAL_SUPPORT_WITH_DECISION_LEVEL_2',
+    'CHILD_SUPPORT',
+    'CHILD_SUPPORT_AND_EXTENDED_COMPULSORY_EDUCATION',
+    'CHILD_SUPPORT_AND_OLD_EXTENDED_COMPULSORY_EDUCATION'
+  ],
   unitProviderTypes: [
     'MUNICIPAL',
     'PURCHASED',
