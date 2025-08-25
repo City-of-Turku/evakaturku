@@ -53,7 +53,8 @@ const features: Features = {
     decisionChildDocumentTypes: true,
     absenceApplications: true,
     showCitizenApplicationPreschoolTerms: true,
-    showMetadataToCitizen: true
+    showMetadataToCitizen: true,
+    hideOvertimeSelection: false
   },
   staging: {
     environmentLabel: 'Staging',
@@ -92,7 +93,8 @@ const features: Features = {
     decisionChildDocumentTypes: true,
     absenceApplications: true,
     showCitizenApplicationPreschoolTerms: true,
-    showMetadataToCitizen: true
+    showMetadataToCitizen: true,
+    hideOvertimeSelection: false
   },
   prod: {
     environmentLabel: null,
@@ -131,7 +133,8 @@ const features: Features = {
     decisionChildDocumentTypes: true,
     absenceApplications: true,
     showCitizenApplicationPreschoolTerms: true,
-    showMetadataToCitizen: true
+    showMetadataToCitizen: true,
+    hideOvertimeSelection: false
   }
 }
 
