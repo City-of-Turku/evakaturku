@@ -4,9 +4,9 @@ import fi.espoo.evaka.shared.db.Database
 import fi.espoo.evaka.shared.db.QuerySql
 import kotlin.reflect.KClass
 
-object DWQueries {
+object DwQueries {
     val getAbsences =
-        csvQuery<DWAbsence> {
+        csvQuery<DwAbsence> {
             sql(
                 """
                 SELECT
@@ -26,7 +26,7 @@ object DWQueries {
         }
 
     val getAssistanceNeedDecisions =
-        csvQuery<DWAssistanceNeedDecision> {
+        csvQuery<DwAssistanceNeedDecision> {
             sql(
                 """
                 SELECT
@@ -54,7 +54,7 @@ object DWQueries {
         }
 
     val getChildAggregate =
-        csvQuery<DWChildAggregate> {
+        csvQuery<DwChildAggregate> {
             sql(
                 """
                 SELECT distinct
@@ -149,7 +149,7 @@ object DWQueries {
         }
 
     val getDailyInfos =
-        csvQuery<DWDailyInfo> {
+        csvQuery<DwDailyInfo> {
             sql(
                 """
                 SELECT
@@ -241,7 +241,7 @@ object DWQueries {
         }
 
     val getDailyUnitsAndGroupsAttendances =
-        csvQuery<DWDailyUnitAndGroupAttendance> {
+        csvQuery<DwDailyUnitAndGroupAttendance> {
             sql(
                 """
                 WITH caretaker_counts_on_date AS (
@@ -451,7 +451,7 @@ object DWQueries {
         }
 
     val getDailyUnitsOccupanciesConfirmed =
-        csvQuery<DWDailyUnitOccupancyConfirmed> {
+        csvQuery<DwDailyUnitOccupancyConfirmed> {
             sql(
                 """
                 WITH
@@ -560,7 +560,7 @@ object DWQueries {
         }
 
     val getDailyUnitsOccupanciesRealized =
-        csvQuery<DWDailyUnitOccupancyRealized> {
+        csvQuery<DwDailyUnitOccupancyRealized> {
             sql(
                 """
                 WITH
@@ -710,7 +710,7 @@ object DWQueries {
         }
 
     val getUnitsAndGroups =
-        csvQuery<DWUnitAndGroup> {
+        csvQuery<DwUnitAndGroup> {
             sql(
                 """
                 SELECT
@@ -765,7 +765,7 @@ object DWQueries {
         }
 
     val getFeeDecisions =
-        csvQuery<DWFeeDecision> {
+        csvQuery<DwFeeDecision> {
             sql(
                 """
                 SELECT
@@ -797,7 +797,7 @@ object DWQueries {
         }
 
     val getVoucherValueDecisions =
-        csvQuery<DWVoucherValueDecision> {
+        csvQuery<DwVoucherValueDecision> {
             sql(
                 """
                 SELECT

@@ -4,12 +4,12 @@ import fi.espoo.evaka.shared.async.AsyncJobPayload
 import fi.espoo.evaka.shared.async.AsyncJobPool
 import fi.espoo.evaka.shared.async.AsyncJobRunner
 import fi.espoo.evaka.shared.auth.AuthenticatedUser
-import fi.turku.evakaturku.dw.DWExportJob
-import fi.turku.evakaturku.dw.DWQuery
+import fi.turku.evakaturku.dw.DwExportJob
+import fi.turku.evakaturku.dw.DwQuery
 
 sealed interface EvakaTurkuAsyncJob : AsyncJobPayload {
     data class SendDWQuery(
-        val query: DWQuery,
+        val query: DwQuery,
     ) : EvakaTurkuAsyncJob {
         override val user: AuthenticatedUser? = null
     }
@@ -26,9 +26,9 @@ sealed interface EvakaTurkuAsyncJob : AsyncJobPayload {
 
 class EvakaTurkuAsyncJobRegistration(
     runner: AsyncJobRunner<EvakaTurkuAsyncJob>,
-    dwExportJob: DWExportJob,
+    dwExportJob: DwExportJob,
 ) {
     init {
-        dwExportJob.let { runner.registerHandler(it::sendDWQuery) }
+        dwExportJob.let { runner.registerHandler(it::sendDwQuery) }
     }
 }

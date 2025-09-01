@@ -14,7 +14,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
 
-data class DWAbsence(
+data class DwAbsence(
     val lapsenid: UUID,
     val poissaolonpvm: LocalDate,
     val poissaolontyyppi: AbsenceType,
@@ -22,7 +22,7 @@ data class DWAbsence(
     val sijoitustyyppi: PlacementType,
 )
 
-data class DWAssistanceNeedDecision(
+data class DwAssistanceNeedDecision(
     val aikaleima: LocalDateTime,
     val päätosTuesta: Int,
     val lapsenId: UUID,
@@ -42,7 +42,7 @@ data class DWAssistanceNeedDecision(
     val tuenTaso: List<String>,
 )
 
-data class DWChildAggregate(
+data class DwChildAggregate(
     val pvm: LocalDate,
     val lapsenId: UUID,
     val henkilöturvatunnus: String?,
@@ -54,7 +54,7 @@ data class DWChildAggregate(
     val kansalaisuudet: List<String>,
 )
 
-data class DWDailyInfo(
+data class DwDailyInfo(
     val pvm: LocalDate,
     val lapsenId: UUID,
     val henkilöturvatunnus: String?,
@@ -109,7 +109,7 @@ data class DWDailyInfo(
     val poissaolonSyy: String?,
 )
 
-data class DWDailyUnitAndGroupAttendance(
+data class DwDailyUnitAndGroupAttendance(
     val aikaleima: LocalDateTime,
     val poimintaAjaltaPvm: LocalDate?,
     val toimintayksikkö: String,
@@ -128,7 +128,7 @@ data class DWDailyUnitAndGroupAttendance(
     val ryhmänLapsimääräEdKuunLopussa: Int,
 )
 
-data class DWDailyUnitOccupancyConfirmed(
+data class DwDailyUnitOccupancyConfirmed(
     val pvm: LocalDate,
     val toimintayksikköId: UUID,
     val toimintayksikkö: String,
@@ -138,7 +138,7 @@ data class DWDailyUnitOccupancyConfirmed(
     val täyttöasteProsentteina: Double?,
 )
 
-data class DWDailyUnitOccupancyRealized(
+data class DwDailyUnitOccupancyRealized(
     val pvm: LocalDate,
     val toimintayksikköId: UUID,
     val toimintayksikkö: String,
@@ -148,7 +148,7 @@ data class DWDailyUnitOccupancyRealized(
     val käyttöasteProsentteina: Double?,
 )
 
-data class DWFeeDecision(
+data class DwFeeDecision(
     val aikaleima: LocalDateTime,
     val maksupäätöksenNumero: String?,
     val maksupäätösId: UUID,
@@ -167,7 +167,7 @@ data class DWFeeDecision(
     val kustannuspaikka: String?,
 )
 
-data class DWUnitAndGroup(
+data class DwUnitAndGroup(
     val aikaleima: LocalDateTime,
     val toimintayksikkö: String,
     val toimintayksikköId: UUID,
@@ -188,7 +188,7 @@ data class DWUnitAndGroup(
     val henkilökuntaaRyhmässäViim: Int?,
 )
 
-data class DWVoucherValueDecision(
+data class DwVoucherValueDecision(
     val aikaleima: LocalDateTime,
     val arvopäätöksenNumero: String?,
     val alkupvm: LocalDate,
