@@ -11,7 +11,6 @@ import fi.espoo.evaka.invoicing.domain.VoucherValueDecisionType
 import fi.espoo.evaka.placement.PlacementType
 import fi.espoo.evaka.serviceneed.ShiftCareType
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.util.UUID
 
 data class DwAbsence(
@@ -23,7 +22,7 @@ data class DwAbsence(
 )
 
 data class DwAssistanceNeedDecision(
-    val aikaleima: LocalDateTime,
+    val aikaleima: String,
     val päätosTuesta: Int,
     val lapsenId: UUID,
     val tuenAlkupvm: LocalDate,
@@ -110,7 +109,7 @@ data class DwDailyInfo(
 )
 
 data class DwDailyUnitAndGroupAttendance(
-    val aikaleima: LocalDateTime,
+    val aikaleima: String,
     val poimintaAjaltaPvm: LocalDate?,
     val toimintayksikkö: String,
     val toimintayksikköId: UUID,
@@ -149,7 +148,7 @@ data class DwDailyUnitOccupancyRealized(
 )
 
 data class DwFeeDecision(
-    val aikaleima: LocalDateTime,
+    val aikaleima: String,
     val maksupäätöksenNumero: String?,
     val maksupäätösId: UUID,
     val alkupvm: LocalDate,
@@ -168,7 +167,7 @@ data class DwFeeDecision(
 )
 
 data class DwUnitAndGroup(
-    val aikaleima: LocalDateTime,
+    val aikaleima: String,
     val toimintayksikkö: String,
     val toimintayksikköId: UUID,
     val toimintayksikönAlkupvm: LocalDate?,
@@ -189,7 +188,7 @@ data class DwUnitAndGroup(
 )
 
 data class DwVoucherValueDecision(
-    val aikaleima: LocalDateTime,
+    val aikaleima: String,
     val arvopäätöksenNumero: String?,
     val alkupvm: LocalDate,
     val loppupvm: LocalDate,
