@@ -9,9 +9,10 @@ import java.time.format.DateTimeFormatter
 import java.util.UUID
 import kotlin.reflect.KClass
 import kotlin.reflect.full.declaredMemberProperties
+import kotlin.reflect.full.memberProperties
 
 val CSV_CHARSET = Charsets.UTF_8
-const val CSV_FIELD_SEPARATOR = ","
+const val CSV_FIELD_SEPARATOR = ";"
 const val CSV_RECORD_SEPARATOR = "\r\n"
 
 fun convertToCsv(value: Any?): String =
@@ -36,12 +37,17 @@ fun <T : Any> toCsvRecords(
     values: Sequence<T>,
 ): Sequence<String> {
     check(clazz.isData)
-    val props = clazz.declaredMemberProperties.toList()
+    val props =
+        clazz.declaredMemberProperties
+            .withIndex()
+            .sortedBy { it.index }
+            .map { it.value }
+            .toList()
     val header = props.joinToString(CSV_FIELD_SEPARATOR, postfix = CSV_RECORD_SEPARATOR) { it.name }
     return sequenceOf(header) +
         values.map { record ->
-            props.joinToString(CSV_FIELD_SEPARATOR, postfix = CSV_RECORD_SEPARATOR) {
-                CsvEscape.escapeCsv(converter(it.get(record)))
+            props.joinToString(separator = CSV_FIELD_SEPARATOR, postfix = CSV_RECORD_SEPARATOR) {
+                CsvEscape.escapeCsv(converter(it.get(record))).trim('"')
             }
         }
 }
