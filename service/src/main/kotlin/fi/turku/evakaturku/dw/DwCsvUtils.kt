@@ -37,7 +37,11 @@ fun <T : Any> toCsvRecords(
     values: Sequence<T>,
 ): Sequence<String> {
     check(clazz.isData)
-    val orderByIndex = clazz.primaryConstructor?.parameters?.withIndex()?.associate { it.value.name to it.index }!!
+    val orderByIndex =
+        clazz.primaryConstructor
+            ?.parameters
+            ?.withIndex()
+            ?.associate { it.value.name to it.index }!!
     val props = clazz.declaredMemberProperties.toList().sortedBy { orderByIndex[it.name] }
     val header = props.joinToString(CSV_FIELD_SEPARATOR, postfix = CSV_RECORD_SEPARATOR) { it.name.toSnakeCase() }
     return sequenceOf(header) +
