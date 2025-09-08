@@ -148,6 +148,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Attachment.READ_APPLICATION_ATTACHMENT,
             Action.Attachment.READ_INCOME_STATEMENT_ATTACHMENT,
             Action.Attachment.READ_INCOME_ATTACHMENT,
+            Action.Attachment.READ_PEDAGOGICAL_DOCUMENT_ATTACHMENT,
             -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
@@ -207,6 +208,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Child.READ_GUARDIANS,
             Action.Child.READ_FEE_ALTERATIONS,
             Action.Child.READ_CHILD_DOCUMENT,
+            Action.Child.READ_PEDAGOGICAL_DOCUMENTS,
             -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
