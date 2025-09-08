@@ -121,6 +121,7 @@ if [[ -v HISTORY_ENABLED && $HISTORY_ENABLED == true && -v HISTORY_FROM_DATE ]];
 fi
 
 run_query_and_send_file sql/DW-Absences.sql absences$DATE.csv $DATE
+run_query_and_send_file sql/DW-Assistance_actions.sql assistance_actions$DATE.csv $DATE
 run_query_and_send_file sql/DW-Daily_info.sql daily_info_3v_$DATE.csv $DATE
 run_query_and_send_file sql/DW-Units_and_groups.sql units_and_groups_3v_$DATE.csv $DATE
 run_query_and_send_file sql/DW-Daily_units_and_groups_attendance.sql daily_units_and_groups_attendance_3v_$DATE.csv $DATE
