@@ -30,6 +30,29 @@ Fields in csv -report:
 | poissaolonkategoria | Enum: fi.espoo.evaka.absence.AbsenceCategory |
 | sijoitustyyppi      | Enum: fi.espoo.evaka.placement.PlacementType |
 
+### Assistance actions
+Assistance actions -report contains all assistance actions from the last three months.
+
+SQL script:[DW-Assistance_actions.sql](./sql/DW-Assistance_actions.sql)
+
+Fields in csv -report:
+
+| Name          | Type                                     |
+|---------------|------------------------------------------|
+| pvm           | timestamp                                |
+| lapsen_id     | UUID                                     |
+| tukitoimi     | String                                   |
+| muu_tukitoimi | String                                   |
+| aloitus_pvm   | Date                                     |
+| loppu_pvm     | Date                                     |
+| tuen_tyyppi   | Enum: assistance_action_options_category |
+
+#### Assistance action option category
+
+| Value     | Description              |
+|-----------|--------------------------|
+| DAYCARE   | Daycare action option    |
+| PRESCHOOL | Pre-school action option |
 
 ### Assistance need decisions
 Assistance need decisions -report contains all decisions from the last three years.
