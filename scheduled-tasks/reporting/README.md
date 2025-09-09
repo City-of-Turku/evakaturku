@@ -30,6 +30,7 @@ Fields in csv -report:
 | poissaolonkategoria | Enum: fi.espoo.evaka.absence.AbsenceCategory |
 | sijoitustyyppi      | Enum: fi.espoo.evaka.placement.PlacementType |
 
+
 ### Application info
 Application info -report contains all applications from the last 12 months.
 
@@ -59,22 +60,16 @@ SQL script:[DW-Assistance_actions.sql](./sql/DW-Assistance_actions.sql)
 
 Fields in csv -report:
 
-| Name          | Type                                     |
-|---------------|------------------------------------------|
-| pvm           | timestamp                                |
-| lapsen_id     | UUID                                     |
-| tukitoimi     | String                                   |
-| muu_tukitoimi | String                                   |
-| aloitus_pvm   | Date                                     |
-| loppu_pvm     | Date                                     |
-| tuen_tyyppi   | Enum: assistance_action_options_category |
+| Name          | Type                                                                 |
+|---------------|----------------------------------------------------------------------|
+| pvm           | timestamp                                                            |
+| lapsen_id     | UUID                                                                 |
+| tukitoimi     | String                                                               |
+| muu_tukitoimi | String                                                               |
+| aloitus_pvm   | Date                                                                 |
+| loppu_pvm     | Date                                                                 |
+| tuen_tyyppi   | Enum: fi.espoo.evaka.assistanceaction.AssistanceActionOptionCategory |
 
-#### Assistance action option category
-
-| Value     | Description              |
-|-----------|--------------------------|
-| DAYCARE   | Daycare action option    |
-| PRESCHOOL | Pre-school action option |
 
 ### Assistance need decisions
 Assistance need decisions -report contains all decisions from the last three years.
@@ -350,8 +345,6 @@ Fields in csv -report:
 
 ## Enum values
 
-VoucherValueDecisionType
-
 ### Types
 
 ### AbsenceType
@@ -377,6 +370,7 @@ Billing category of absence.
 | BILLABLE    | Absence is billable     |
 | NONBILLABLE | Absence is not billable |
 
+
 ### ApplicationType
 Type of daycare the application is applying to.
 
@@ -386,6 +380,7 @@ Type of daycare the application is applying to.
 | DAYCARE   | Early childhood education |
 | PRESCHOOL | Pre-primary education     |
 
+
 ### ApplicationOrigin
 Origin of application.
 
@@ -393,6 +388,14 @@ Origin of application.
 |------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ELECTRONIC | Citizen has created application via eVaka                                                                                                  |
 | PAPER      | Employee has created application based on paper application from citizen or together with citizen, or application is made programmatically |
+
+
+### AssistanceActionOptionCategory
+
+| Value     | Description              |
+|-----------|--------------------------|
+| DAYCARE   | Daycare action option    |
+| PRESCHOOL | Pre-school action option |
 
 
 ### CareType
@@ -503,6 +506,7 @@ Level of support for assistance decision.
 | ENHANCED_ASSISTANCE          | Has enhanced assistance                                       |
 | SPECIAL_ASSISTANCE           | Has Special assistance                                        |
 
+
 ### DaycareAssistanceLevel
 Levels of daycare support for child.
 
@@ -512,6 +516,7 @@ Levels of daycare support for child.
 | GENERAL_SUPPORT_WITH_DECISION | General support with assistance need decision |
 | INTENSIFIED_SUPPORT           | Intensified support                           |
 | SPECIAL_SUPPORT               | Special support                               |
+
 
 ### Statuses
 
