@@ -30,6 +30,28 @@ Fields in csv -report:
 | poissaolonkategoria | Enum: fi.espoo.evaka.absence.AbsenceCategory |
 | sijoitustyyppi      | Enum: fi.espoo.evaka.placement.PlacementType |
 
+### Application info
+Application info -report contains all applications from the last 12 months.
+
+SQL script: [DW-Application_info.sql](./sql/DW-Application_info.sql)
+
+Fields in csv -report:
+
+| Name               | Type                                               |
+|--------------------|----------------------------------------------------|
+| tiedoston_ajopaiva | timestamp                                          |
+| hakemuksen_id      | UUID                                               |
+| hakemus_luotu      | timestamp                                          |
+| hakemus_paivitetty | timestamp                                          |
+| tyyppi             | Enum: fi.espoo.evaka.application.ApplicationType   |
+| tilanne            | Enum: fi.espoo.evaka.application.ApplicationStatus |
+| alkupera           | Enum: fi.espoo.evaka.application.ApplicationOrigin |
+| siirtohakemus      | Boolean                                            |
+| lapsen_id          | UUID                                               |
+| yksikot            | String[]                                           |
+| haluttu_aloituspvm | timestamp                                          |
+
+
 ### Assistance actions
 Assistance actions -report contains all assistance actions from the last three months.
 
@@ -350,11 +372,27 @@ Types of absence.
 ### AbsenceCategory
 Billing category of absence.
 
-
 | Value       | Description             |
 |-------------|-------------------------|
 | BILLABLE    | Absence is billable     |
 | NONBILLABLE | Absence is not billable |
+
+### ApplicationType
+Type of daycare the application is applying to.
+
+| Value     | Description               |
+|-----------|---------------------------|
+| CLUB      | Club                      |
+| DAYCARE   | Early childhood education |
+| PRESCHOOL | Pre-primary education     |
+
+### ApplicationOrigin
+Origin of application.
+
+| Value      | Description                                                                                                                                |
+|------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| ELECTRONIC | Citizen has created application via eVaka                                                                                                  |
+| PAPER      | Employee has created application based on paper application from citizen or together with citizen, or application is made programmatically |
 
 
 ### CareType
@@ -474,3 +512,21 @@ Levels of daycare support for child.
 | GENERAL_SUPPORT_WITH_DECISION | General support with assistance need decision |
 | INTENSIFIED_SUPPORT           | Intensified support                           |
 | SPECIAL_SUPPORT               | Special support                               |
+
+### Statuses
+
+### ApplicationStatus
+Status of application is process.
+
+| Value                     | Description                                                                          |
+|---------------------------|--------------------------------------------------------------------------------------|
+| CREATED                   | Initial status of application                                                        |
+| SENT                      | Application is finalized by citizen or employee and is ready to be processed         |
+| WAITING_PLACEMENT         | Processing the application has started                                               |
+| WAITING_UNIT_CONFIRMATION | Placement proposal has been made, unit supervisor needs to confirm the proposal      |
+| WAITING_DECISION          | Proposal is accepted, decision needs to be finalized                                 |
+| WAITING_MAILING           | If decision cannot be delivered to citizen electronically physical mailing is needed |
+| WAITING_CONFIRMATION      | Decision has been delivered which citizen needs to confirm                           |
+| REJECTED                  | Employee has rejected application or citizen has rejected decision                   |
+| ACTIVE                    | Application is active                                                                |
+| CANCELLED                 | Application is no longer needed and it has been cancelled at some point of process   |
