@@ -42,7 +42,7 @@ data class DwAssistanceNeedDecision(
 )
 
 data class DwChildAggregate(
-    val pvm: LocalDate,
+    val pvm: String,
     val lapsenId: UUID,
     val henkilöturvatunnus: String?,
     val syntymäaika: LocalDate,
@@ -54,7 +54,7 @@ data class DwChildAggregate(
 )
 
 data class DwDailyInfo(
-    val pvm: LocalDate,
+    val pvm: String,
     val lapsenId: UUID,
     val henkilöturvatunnus: String?,
     val syntymäaika: LocalDate,
