@@ -81,19 +81,20 @@ class DwExportJobTest : AbstractIntegrationTest() {
             val groupId = tx.insert(DevDaycareGroup(daycareId = daycareId))
             val childId = tx.insert(DevPerson(), DevPersonType.CHILD)
             val guardianId = tx.insert(DevPerson(), DevPersonType.RAW_ROW)
-            val placementId = tx.insert(
-                DevPlacement(
-                    childId = childId,
-                    unitId = daycareId,
-                    createdBy = EvakaUserId(employeeId.raw),
-                    modifiedBy = EvakaUserId(employeeId.raw),
-                ),
-            )
+            val placementId =
+                tx.insert(
+                    DevPlacement(
+                        childId = childId,
+                        unitId = daycareId,
+                        createdBy = EvakaUserId(employeeId.raw),
+                        modifiedBy = EvakaUserId(employeeId.raw),
+                    ),
+                )
             tx.insert(
                 DevDaycareGroupPlacement(
                     daycarePlacementId = placementId,
                     daycareGroupId = groupId,
-                )
+                ),
             )
 
             tx.insert(
@@ -108,7 +109,7 @@ class DwExportJobTest : AbstractIntegrationTest() {
                 DevAssistanceNeedDecision(
                     childId = childId,
                     validityPeriod = DateRange(LocalDate.of(2019, 1, 1), LocalDate.of(2019, 12, 31)),
-                )
+                ),
             )
             tx.insert(
                 DevVoucherValueDecision(
@@ -117,15 +118,14 @@ class DwExportJobTest : AbstractIntegrationTest() {
                     placementUnitId = daycareId,
                     validFrom = LocalDate.of(2019, 1, 1),
                     validTo = LocalDate.of(2019, 12, 31),
-                )
+                ),
             )
             tx.insert(
                 DevFeeDecision(
                     validDuring = FiniteDateRange(LocalDate.of(2019, 1, 1), LocalDate.of(2019, 12, 31)),
                     headOfFamilyId = guardianId,
-                )
+                ),
             )
-            // fee decision
         }
     }
 }
