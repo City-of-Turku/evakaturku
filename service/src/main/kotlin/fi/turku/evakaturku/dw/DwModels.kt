@@ -4,6 +4,8 @@ import fi.espoo.evaka.absence.AbsenceCategory
 import fi.espoo.evaka.absence.AbsenceType
 import fi.espoo.evaka.assistance.DaycareAssistanceLevel
 import fi.espoo.evaka.assistance.PreschoolAssistanceLevel
+import fi.espoo.evaka.assistanceaction.AssistanceActionOption
+import fi.espoo.evaka.assistanceaction.AssistanceActionOptionCategory
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.daycare.domain.ProviderType
 import fi.espoo.evaka.invoicing.domain.FeeDecisionType
@@ -19,6 +21,16 @@ data class DwAbsence(
     val poissaolontyyppi: AbsenceType,
     val poissaolonkategoria: AbsenceCategory,
     val sijoitustyyppi: PlacementType,
+)
+
+data class DwAssistanceActions(
+    val pvm: LocalDate,
+    val lapsen_id: UUID,
+    val tukitoimi: String,
+    val muu_tukitoimi: String,
+    val aloitus_pvm: LocalDate,
+    val loppu_pvm: LocalDate,
+    val tuen_tyyppi: AssistanceActionOptionCategory,
 )
 
 data class DwAssistanceNeedDecision(
