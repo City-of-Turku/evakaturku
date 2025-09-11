@@ -2,6 +2,9 @@ package fi.turku.evakaturku.dw
 
 import fi.espoo.evaka.absence.AbsenceCategory
 import fi.espoo.evaka.absence.AbsenceType
+import fi.espoo.evaka.application.ApplicationOrigin
+import fi.espoo.evaka.application.ApplicationStatus
+import fi.espoo.evaka.application.ApplicationType
 import fi.espoo.evaka.assistance.DaycareAssistanceLevel
 import fi.espoo.evaka.assistance.PreschoolAssistanceLevel
 import fi.espoo.evaka.assistanceaction.AssistanceActionOption
@@ -26,23 +29,19 @@ data class DwAbsence(
 data class DwApplicationInfos(
     val tiedoston_ajopaiva: String,
     val hakemuksen_id: UUID,
-    val hakemus_luotu: LocalDate,
-    val hakemusta_paivitetty: LocalDate
-
+    val hakemus_luotu: String,
+    val hakemusta_paivitetty: String,
+    val tyyppi: ApplicationType,
+    val tilanne: ApplicationStatus,
+    val alkupvm: ApplicationOrigin,
+    val siirtohakemus: Boolean,
+    val lapsen_id: UUID,
+    val syntymaaika: LocalDate,
+    val yksikot: String,
+    val haluttu_aloituspaiva: String,
+    val alue_id: UUID,
+    val alue_nimi: String,
 )
-
-//now() AT TIME ZONE 'Europe/Helsinki'    AS tiedoston_ajopaiva,
-//ap.id as hakemuksen_id,
-//ap.created_at as hakemus_luotu,
-//ap.modified_at as hakemusta_paivitetty,
-//ap.type as tyyppi,
-//ap.status as tilanne,
-//ap.origin as alkupera,
-//ap.transferapplication as siirtohakemus,
-//ap.child_id as lapsen_id,
-//pe.date_of_birth as syntymaaika,
-//jsonb_array_elements_text(ap.document->'apply'->'preferredUnits') AS yksikot,
-//ap.document->'preferredStartDate' AS haluttu_aloituspaiva
 
 data class DwAssistanceActions(
     val pvm: String,
