@@ -46,7 +46,7 @@ object DwQueries {
         }
 
     val getApplicationInfos =
-        csvQuery<DwAssistanceNeedDecision> {
+        csvQuery<DwApplicationInfos> {
             sql(
                 """
                 WITH application_infos AS (
