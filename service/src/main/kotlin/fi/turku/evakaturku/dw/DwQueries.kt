@@ -27,8 +27,8 @@ object DwQueries {
 
     val getAssistanceActions =
         csvQuery<DwAssistanceActions> {
-        sql(
-            """
+            sql(
+                """
                 SELECT
                     now() AT TIME ZONE 'Europe/Helsinki'        AS pvm,
                     ac.child_id                                 AS lapsen_id,
@@ -40,10 +40,10 @@ object DwQueries {
                 FROM assistance_action ac
                          LEFT JOIN assistance_action_option_ref aaor ON aaor.action_id = ac.id
                          LEFT JOIN assistance_action_option aao ON aao.id = aaor.option_id
-                WHERE :date_val::DATE - INTERVAL '3 years' <= ac.end_date
-        """.trimIndent(),
-        )
-    }
+                WHERE current_date::DATE - INTERVAL '3 years' <= ac.end_date
+                """.trimIndent(),
+            )
+        }
 
     val getAssistanceNeedDecisions =
         csvQuery<DwAssistanceNeedDecision> {

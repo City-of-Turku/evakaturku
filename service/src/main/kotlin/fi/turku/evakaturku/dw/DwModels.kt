@@ -24,7 +24,7 @@ data class DwAbsence(
 )
 
 data class DwAssistanceActions(
-    val pvm: LocalDate,
+    val pvm: String,
     val lapsen_id: UUID,
     val tukitoimi: String,
     val muu_tukitoimi: String,
