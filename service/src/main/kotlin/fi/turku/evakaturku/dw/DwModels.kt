@@ -27,30 +27,31 @@ data class DwAbsence(
 )
 
 data class DwApplicationInfos(
-    val tiedoston_ajopaiva: String,
-    val hakemuksen_id: UUID,
-    val hakemus_luotu: String,
-    val hakemusta_paivitetty: String,
+    val tiedostonAjopaiva: String,
+    val hakemuksenId: UUID,
+    val hakemusLuotu: String,
+    val hakemustaPaivitetty: String,
     val tyyppi: ApplicationType,
     val tilanne: ApplicationStatus,
-    val alkupvm: ApplicationOrigin,
+    val alkupera: ApplicationOrigin,
     val siirtohakemus: Boolean,
-    val lapsen_id: UUID,
+    val lapsenId: UUID,
     val syntymaaika: LocalDate,
     val yksikot: String,
-    val haluttu_aloituspaiva: String,
-    val alue_id: UUID,
-    val alue_nimi: String,
+    val haluttuAloituspaiva: String,
+    val yksikkoNimi: String,
+    val alueId: UUID,
+    val alueNimi: String,
 )
 
 data class DwAssistanceActions(
     val pvm: String,
-    val lapsen_id: UUID,
+    val lapsenId: UUID,
     val tukitoimi: String,
-    val muu_tukitoimi: String,
-    val aloitus_pvm: LocalDate,
-    val loppu_pvm: LocalDate,
-    val tuen_tyyppi: AssistanceActionOptionCategory,
+    val muuTukitoimi: String,
+    val aloitusPvm: LocalDate,
+    val loppuPvm: LocalDate,
+    val tuenTyyppi: AssistanceActionOptionCategory,
 )
 
 data class DwAssistanceNeedDecision(
