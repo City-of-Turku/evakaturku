@@ -25,26 +25,6 @@ object DwQueries {
             )
         }
 
-    val getAssistanceActions =
-        csvQuery<DwAssistanceActions> {
-            sql(
-                """
-                SELECT
-                    now() AT TIME ZONE 'Europe/Helsinki'        AS pvm,
-                    ac.child_id                                 AS lapsen_id,
-                    aao.name_fi                                 AS tukitoimi,
-                    ac.other_action                             as muu_tukitoimi,
-                    ac.start_date                               AS aloitus_pvm,
-                    ac.end_date                                 AS loppu_pvm,
-                    aao.category                                AS tuen_tyyppi
-                FROM assistance_action ac
-                         LEFT JOIN assistance_action_option_ref aaor ON aaor.action_id = ac.id
-                         LEFT JOIN assistance_action_option aao ON aao.id = aaor.option_id
-                WHERE current_date::DATE - INTERVAL '3 years' <= ac.end_date
-                """.trimIndent(),
-            )
-        }
-
     val getApplicationInfos =
         csvQuery<DwApplicationInfos> {
             sql(
@@ -71,6 +51,26 @@ object DwQueries {
                 FROM application_infos, daycare dg, care_area ca
                 WHERE dg.id IN (application_infos.yksikot::uuid)
                   AND dg.care_area_id = ca.id;
+                """.trimIndent(),
+            )
+        }
+
+    val getAssistanceActions =
+        csvQuery<DwAssistanceActions> {
+            sql(
+                """
+                SELECT
+                    now() AT TIME ZONE 'Europe/Helsinki'        AS pvm,
+                    ac.child_id                                 AS lapsen_id,
+                    aao.name_fi                                 AS tukitoimi,
+                    ac.other_action                             as muu_tukitoimi,
+                    ac.start_date                               AS aloitus_pvm,
+                    ac.end_date                                 AS loppu_pvm,
+                    aao.category                                AS tuen_tyyppi
+                FROM assistance_action ac
+                         LEFT JOIN assistance_action_option_ref aaor ON aaor.action_id = ac.id
+                         LEFT JOIN assistance_action_option aao ON aao.id = aaor.option_id
+                WHERE current_date::DATE - INTERVAL '3 years' <= ac.end_date
                 """.trimIndent(),
             )
         }
