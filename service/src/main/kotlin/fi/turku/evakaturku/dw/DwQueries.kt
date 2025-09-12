@@ -25,6 +25,56 @@ object DwQueries {
             )
         }
 
+    val getApplicationInfos =
+        csvQuery<DwApplicationInfos> {
+            sql(
+                """
+                WITH application_infos AS (
+                    SELECT
+                        now() AT TIME ZONE 'Europe/Helsinki'    AS tiedoston_ajopaiva,
+                        ap.id as hakemuksen_id,
+                        ap.created_at as hakemus_luotu,
+                        ap.modified_at as hakemusta_paivitetty,
+                        ap.type as tyyppi,
+                        ap.status as tilanne,
+                        ap.origin as alkupera,
+                        ap.transferapplication as siirtohakemus,
+                        ap.child_id as lapsen_id,
+                        pe.date_of_birth as syntymaaika,
+                        jsonb_array_elements_text(ap.document->'apply'->'preferredUnits') AS yksikot,
+                        ap.document->'preferredStartDate' AS haluttu_aloituspaiva
+                    FROM application ap, person pe
+                    WHERE current_date::DATE - INTERVAL '12 months' <= ap.created_at
+                    AND ap.child_id = pe.id
+                ORDER BY ap.created_at DESC)
+                SELECT hakemuksen_id, hakemus_luotu, hakemusta_paivitetty, tyyppi, tilanne, alkupera, siirtohakemus, lapsen_id, syntymaaika, yksikot, haluttu_aloituspaiva, dg.name as yksikko_nimi, dg.care_area_id as alue_id, ca.name as alue_nimi
+                FROM application_infos, daycare dg, care_area ca
+                WHERE dg.id IN (application_infos.yksikot::uuid)
+                  AND dg.care_area_id = ca.id;
+                """.trimIndent(),
+            )
+        }
+
+    val getAssistanceActions =
+        csvQuery<DwAssistanceActions> {
+            sql(
+                """
+                SELECT
+                    now() AT TIME ZONE 'Europe/Helsinki'        AS pvm,
+                    ac.child_id                                 AS lapsen_id,
+                    aao.name_fi                                 AS tukitoimi,
+                    ac.other_action                             as muu_tukitoimi,
+                    ac.start_date                               AS aloitus_pvm,
+                    ac.end_date                                 AS loppu_pvm,
+                    aao.category                                AS tuen_tyyppi
+                FROM assistance_action ac
+                         LEFT JOIN assistance_action_option_ref aaor ON aaor.action_id = ac.id
+                         LEFT JOIN assistance_action_option aao ON aao.id = aaor.option_id
+                WHERE current_date::DATE - INTERVAL '3 years' <= ac.end_date
+                """.trimIndent(),
+            )
+        }
+
     val getAssistanceNeedDecisions =
         csvQuery<DwAssistanceNeedDecision> {
             sql(

@@ -5,6 +5,8 @@ enum class DwQuery(
     val query: DwQueries.CsvQuery,
 ) {
     Absence("absences", DwQueries.getAbsences),
+    ApplicationInfos("Application_infos", DwQueries.getApplicationInfos),
+    AssistanceActions("assistance_actions", DwQueries.getAssistanceActions),
     AssistanceNeedDecision("assistance_need_decisions_3v_", DwQueries.getAssistanceNeedDecisions),
     ChildAggregate("child_aggregate_3v_", DwQueries.getChildAggregate),
     DailyInfo("daily_info_3v_", DwQueries.getDailyInfos),

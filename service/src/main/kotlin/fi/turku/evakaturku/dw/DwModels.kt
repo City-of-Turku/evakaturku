@@ -2,8 +2,13 @@ package fi.turku.evakaturku.dw
 
 import fi.espoo.evaka.absence.AbsenceCategory
 import fi.espoo.evaka.absence.AbsenceType
+import fi.espoo.evaka.application.ApplicationOrigin
+import fi.espoo.evaka.application.ApplicationStatus
+import fi.espoo.evaka.application.ApplicationType
 import fi.espoo.evaka.assistance.DaycareAssistanceLevel
 import fi.espoo.evaka.assistance.PreschoolAssistanceLevel
+import fi.espoo.evaka.assistanceaction.AssistanceActionOption
+import fi.espoo.evaka.assistanceaction.AssistanceActionOptionCategory
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.daycare.domain.ProviderType
 import fi.espoo.evaka.invoicing.domain.FeeDecisionType
@@ -19,6 +24,33 @@ data class DwAbsence(
     val poissaolontyyppi: AbsenceType,
     val poissaolonkategoria: AbsenceCategory,
     val sijoitustyyppi: PlacementType,
+)
+
+data class DwApplicationInfos(
+    val hakemuksenId: UUID,
+    val hakemusLuotu: String,
+    val hakemustaPaivitetty: String,
+    val tyyppi: ApplicationType,
+    val tilanne: ApplicationStatus,
+    val alkupera: ApplicationOrigin,
+    val siirtohakemus: Boolean,
+    val lapsenId: UUID,
+    val syntymaaika: LocalDate,
+    val yksikot: String,
+    val haluttuAloituspaiva: String,
+    val yksikkoNimi: String,
+    val alueId: UUID,
+    val alueNimi: String,
+)
+
+data class DwAssistanceActions(
+    val pvm: String,
+    val lapsenId: UUID,
+    val tukitoimi: String,
+    val muuTukitoimi: String,
+    val aloitusPvm: LocalDate,
+    val loppuPvm: LocalDate,
+    val tuenTyyppi: AssistanceActionOptionCategory,
 )
 
 data class DwAssistanceNeedDecision(
