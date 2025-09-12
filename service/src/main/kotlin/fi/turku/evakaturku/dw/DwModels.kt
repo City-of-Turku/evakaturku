@@ -27,7 +27,6 @@ data class DwAbsence(
 )
 
 data class DwApplicationInfos(
-    val tiedostonAjopaiva: String,
     val hakemuksenId: UUID,
     val hakemusLuotu: String,
     val hakemustaPaivitetty: String,
