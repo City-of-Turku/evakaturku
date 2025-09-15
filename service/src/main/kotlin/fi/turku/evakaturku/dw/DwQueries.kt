@@ -10,11 +10,11 @@ object DwQueries {
             sql(
                 """
                 SELECT
-                    ab.child_id as lapsenID,
-                    ab.date as poissaolonpvm,
-                    ab.absence_type as poissaolontyyppi,
-                    ab.category as poissaolonkategoria,
-                    pl.type as sijoitustyyppi
+                    ab.child_id     AS lapsenID,
+                    ab.date         AS poissaolonpvm,
+                    ab.absence_type AS poissaolontyyppi,
+                    ab.category     AS poissaolonkategoria,
+                    pl.type         AS sijoitustyyppi
                 FROM absence ab, placement pl
                 WHERE current_date::DATE - INTERVAL '3 months' <= ab.date
                     AND ab.child_id = pl.child_id
@@ -31,26 +31,40 @@ object DwQueries {
                 """
                 WITH application_infos AS (
                     SELECT
-                        now() AT TIME ZONE 'Europe/Helsinki'    AS tiedoston_ajopaiva,
-                        ap.id as hakemuksen_id,
-                        ap.created_at as hakemus_luotu,
-                        ap.modified_at as hakemusta_paivitetty,
-                        ap.type as tyyppi,
-                        ap.status as tilanne,
-                        ap.origin as alkupera,
-                        ap.transferapplication as siirtohakemus,
-                        ap.child_id as lapsen_id,
-                        pe.date_of_birth as syntymaaika,
+                        now() AT TIME ZONE 'Europe/Helsinki'                              AS tiedoston_ajopaiva,
+                        ap.id                                                             AS hakemuksen_id,
+                        ap.created_at                                                     AS hakemus_luotu,
+                        ap.modified_at                                                    AS hakemusta_paivitetty,
+                        ap.type                                                           AS tyyppi,
+                        ap.status                                                         AS tilanne,
+                        ap.origin                                                         AS alkupera,
+                        ap.transferapplication                                            AS siirtohakemus,
+                        ap.child_id                                                       AS lapsen_id,
+                        pe.date_of_birth                                                  AS syntymaaika,
                         jsonb_array_elements_text(ap.document->'apply'->'preferredUnits') AS yksikot,
-                        ap.document->'preferredStartDate' AS haluttu_aloituspaiva
+                        ap.document->'preferredStartDate'                                 AS haluttu_aloituspaiva
                     FROM application ap, person pe
                     WHERE current_date::DATE - INTERVAL '12 months' <= ap.created_at
                     AND ap.child_id = pe.id
                 ORDER BY ap.created_at DESC)
-                SELECT hakemuksen_id, hakemus_luotu, hakemusta_paivitetty, tyyppi, tilanne, alkupera, siirtohakemus, lapsen_id, syntymaaika, yksikot, haluttu_aloituspaiva, dg.name as yksikko_nimi, dg.care_area_id as alue_id, ca.name as alue_nimi
+                SELECT 
+                    hakemuksen_id,
+                    hakemus_luotu,
+                    hakemusta_paivitetty,
+                    tyyppi,
+                    tilanne,
+                    alkupera,
+                    siirtohakemus,
+                    lapsen_id,
+                    syntymaaika,
+                    yksikot,
+                    haluttu_aloituspaiva,
+                    dg.name                 AS yksikko_nimi,
+                    dg.care_area_id         AS alue_id,
+                    ca.name                 AS alue_nimi
                 FROM application_infos, daycare dg, care_area ca
                 WHERE dg.id IN (application_infos.yksikot::uuid)
-                  AND dg.care_area_id = ca.id;
+                    AND dg.care_area_id = ca.id;
                 """.trimIndent(),
             )
         }
@@ -68,8 +82,8 @@ object DwQueries {
                     ac.end_date                                 AS loppu_pvm,
                     aao.category                                AS tuen_tyyppi
                 FROM assistance_action ac
-                         LEFT JOIN assistance_action_option_ref aaor ON aaor.action_id = ac.id
-                         LEFT JOIN assistance_action_option aao ON aao.id = aaor.option_id
+                    LEFT JOIN assistance_action_option_ref aaor ON aaor.action_id = ac.id
+                    LEFT JOIN assistance_action_option aao ON aao.id = aaor.option_id
                 WHERE current_date::DATE - INTERVAL '3 years' <= ac.end_date
                 """.trimIndent(),
             )
@@ -108,7 +122,7 @@ object DwQueries {
             sql(
                 """
                 SELECT distinct
-                    now() AT TIME ZONE 'Europe/Helsinki'    	AS pvm,
+                    now() AT TIME ZONE 'Europe/Helsinki'        AS pvm,
                     child.id                                    AS lapsen_id,
                     child.social_security_number                AS henkilöturvatunnus,
                     child.date_of_birth                         AS syntymäaika,
@@ -169,7 +183,7 @@ object DwQueries {
                         p.post_office,
                         p.nationalities
                     FROM fee_decision fd
-                        JOIN fee_decision_child fdc on fd.id = fdc.fee_decision_id
+                        JOIN fee_decision_child fdc ON fd.id = fdc.fee_decision_id
                         JOIN person p on fdc.child_id = p.id
                         JOIN daycare d ON fdc.placement_unit_id = d.id
                         JOIN care_area ca ON d.care_area_id = ca.id
@@ -506,12 +520,12 @@ object DwQueries {
                 """
                 WITH
                 caretaker_counts AS (
-                    SELECT 
-                        a.id                                    AS area_id, 
-                        a.name                                  AS area_name, 
-                        u.id                                    AS unit_id, 
-                        u.name                                  AS unit_name, 
-                        current_date::DATE                         AS date,
+                    SELECT
+                        a.id                                    AS area_id,
+                        a.name                                  AS area_name,
+                        u.id                                    AS unit_id,
+                        u.name                                  AS unit_name,
+                        current_date::DATE                      AS date,
                         COALESCE(
                             SUM(c.amount),
                             0.0
@@ -545,7 +559,7 @@ object DwQueries {
                         realized_occupancy_coefficient,
                         realized_occupancy_coefficient_under_3y,
                         valid_placement_type
-                    FROM service_need_option 
+                    FROM service_need_option
                     WHERE default_option
                 ),
                 placements_on_date AS (
@@ -599,7 +613,7 @@ object DwQueries {
                         WHEN pod.caretaker_count IS NULL OR pod.caretaker_count = 0
                             THEN null
                         ELSE (SUM(pod.assistance_coefficient * pod.service_need_coefficient) / (pod.caretaker_count * 7)) * 100
-                    END                                                                AS täyttöaste_prosentteina
+                    END                                                            AS täyttöaste_prosentteina
                 from placements_on_date pod
                     JOIN daycare d ON d.id = pod.unit_id
                 group by
@@ -620,7 +634,7 @@ object DwQueries {
                         a.name                          AS area_name,
                         u.id                            AS unit_id,
                         u.name                          AS unit_name,
-                        current_date::DATE                 AS date,
+                        current_date::DATE              AS date,
                         COALESCE(
                             SUM(
                                 CASE

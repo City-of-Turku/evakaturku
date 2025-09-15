@@ -163,7 +163,7 @@ data class DwDailyUnitOccupancyConfirmed(
     val pvm: LocalDate,
     val toimintayksikköId: UUID,
     val toimintayksikkö: String,
-    val kasvattajienLkm: Int?,
+    val kasvattajienLkm: Double?,
     val sijoituksienLkm: Int?,
     val täyttöasteSumma: Double?,
     val täyttöasteProsentteina: Double?,
@@ -173,9 +173,9 @@ data class DwDailyUnitOccupancyRealized(
     val pvm: LocalDate,
     val toimintayksikköId: UUID,
     val toimintayksikkö: String,
-    val kasvattajienLkm: Int?,
+    val kasvattajienLkm: Double?,
     val sijoituksienLkm: Int?,
-    val käyttöasteSumma: Int?,
+    val käyttöasteSumma: Double?,
     val käyttöasteProsentteina: Double?,
 )
 
