@@ -604,7 +604,7 @@ const sv: DeepPartial<Translations> = {
     cityLabel: '© Åbo stad',
     privacyPolicyLink: (
       <ExternalLink
-        href="https://www.turku.fi/tietosuoja"
+        href="https://www.turku.fi/sv/datasekretess"
         text="Datasekretess"
         newTab={true}
         data-qa="footer-policy-link"
@@ -939,7 +939,7 @@ const sv: DeepPartial<Translations> = {
           småbarnspedagogiken.
         </p>
         <p data-qa="income-description-p4">
-          <a href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli">
+          <a href="https://www.turku.fi/sv/smabarnspedagogik-och-forskoleundervisning/avgifter-understod-och-servicesedlar">
             Ytterligare information om kundavgifter
           </a>
         </p>

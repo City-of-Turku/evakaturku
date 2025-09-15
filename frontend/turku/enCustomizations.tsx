@@ -619,7 +619,7 @@ const en: DeepPartial<Translations> = {
     cityLabel: '© City of Turku',
     privacyPolicyLink: (
       <ExternalLink
-        href="https://www.turku.fi/en/turku-info/privacy-policy"
+        href="https://www.turku.fi/en/data-protection"
         text="Privacy Policy"
         newTab={true}
         data-qa="footer-policy-link"
@@ -956,7 +956,7 @@ const en: DeepPartial<Translations> = {
           period early childhood education and care is required.
         </p>
         <p data-qa="income-description-p4">
-          <a href="https://www.turku.fi/en/daycare-and-education/early-childhood-education/day-care-fees-financial-support-and-service-voucher">
+          <a href="https://www.turku.fi/en/early-childhood-education-and-preschool-education/fees-financial-support-and-service-vouchers">
             More information about customer fees
           </a>
         </p>
