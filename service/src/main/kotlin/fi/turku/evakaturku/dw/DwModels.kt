@@ -7,7 +7,6 @@ import fi.espoo.evaka.application.ApplicationStatus
 import fi.espoo.evaka.application.ApplicationType
 import fi.espoo.evaka.assistance.DaycareAssistanceLevel
 import fi.espoo.evaka.assistance.PreschoolAssistanceLevel
-import fi.espoo.evaka.assistanceaction.AssistanceActionOption
 import fi.espoo.evaka.assistanceaction.AssistanceActionOptionCategory
 import fi.espoo.evaka.daycare.CareType
 import fi.espoo.evaka.daycare.domain.ProviderType
@@ -217,6 +216,8 @@ data class DwUnitAndGroup(
     val ryhmanHenkilokunnanAlkupvm: LocalDate?,
     val ryhmanHenkilokunnanLoppupvm: LocalDate?,
     val henkilökuntaaRyhmässäViim: Int?,
+    val koordinaatit: String?,
+    val koulunYhteydessa: Boolean,
 )
 
 data class DwVoucherValueDecision(
