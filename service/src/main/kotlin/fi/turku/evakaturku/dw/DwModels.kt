@@ -25,7 +25,7 @@ data class DwAbsence(
     val sijoitustyyppi: PlacementType,
 )
 
-data class DwApplicationInfos(
+data class DwApplicationInfo(
     val hakemuksenId: UUID,
     val hakemusLuotu: String,
     val hakemustaPaivitetty: String,
@@ -42,14 +42,14 @@ data class DwApplicationInfos(
     val alueNimi: String,
 )
 
-data class DwAssistanceActions(
+data class DwAssistanceAction(
     val pvm: String,
     val lapsenId: UUID,
-    val tukitoimi: String,
-    val muuTukitoimi: String,
+    val tukitoimi: String?,
+    val muuTukitoimi: String?,
     val aloitusPvm: LocalDate,
     val loppuPvm: LocalDate,
-    val tuenTyyppi: AssistanceActionOptionCategory,
+    val tuenTyyppi: AssistanceActionOptionCategory?,
 )
 
 data class DwAssistanceNeedDecision(

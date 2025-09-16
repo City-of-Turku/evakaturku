@@ -6,6 +6,7 @@ import fi.espoo.evaka.shared.EvakaUserId
 import fi.espoo.evaka.shared.ServiceNeedOptionId
 import fi.espoo.evaka.shared.db.QuerySql
 import fi.espoo.evaka.shared.dev.DevAbsence
+import fi.espoo.evaka.shared.dev.DevAssistanceAction
 import fi.espoo.evaka.shared.dev.DevAssistanceNeedDecision
 import fi.espoo.evaka.shared.dev.DevDaycare
 import fi.espoo.evaka.shared.dev.DevDaycareGroup
@@ -124,6 +125,12 @@ class DwExportJobTest : AbstractIntegrationTest() {
                 DevFeeDecision(
                     validDuring = FiniteDateRange(LocalDate.of(2019, 1, 1), LocalDate.of(2019, 12, 31)),
                     headOfFamilyId = guardianId,
+                ),
+            )
+            tx.insert(
+                DevAssistanceAction(
+                    childId = childId,
+                    modifiedBy = EvakaUserId(employeeId.raw),
                 ),
             )
         }
