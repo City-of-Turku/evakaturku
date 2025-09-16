@@ -316,6 +316,8 @@ Fields in csv -report:
 | ryhman_henkilokunnan_alkupvm  | Date                                             |
 | ryhman_henkilokunnan_loppupvm | Date                                             |
 | henkilökuntaa_ryhmässä_viim   | Number                                           |
+| koordinaatit                  | Point                                            |
+| koulun_yhteydessa             | Boolean                                          |
 
 
 ### Voucher value decisions
