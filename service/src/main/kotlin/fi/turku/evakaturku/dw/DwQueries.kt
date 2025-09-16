@@ -800,7 +800,9 @@ object DwQueries {
                     dg.end_date                            AS ryhmän_loppupvm,
                     dc.start_date                          AS ryhman_henkilokunnan_alkupvm,
                     dc.end_date                            AS ryhman_henkilokunnan_loppupvm,
-                    dc.amount                              AS henkilökuntaa_ryhmässä_viim
+                    dc.amount                              AS henkilökuntaa_ryhmässä_viim,
+                    d.location                             AS koordinaatit,
+                    d.with_school                          AS koulun_yhteydessa
                 FROM daycare_group dg
                     JOIN daycare d on dg.daycare_id = d.id
                     JOIN care_area ca on ca.id = d.care_area_id

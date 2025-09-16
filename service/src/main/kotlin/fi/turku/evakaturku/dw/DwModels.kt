@@ -15,6 +15,7 @@ import fi.espoo.evaka.invoicing.domain.FeeDecisionType
 import fi.espoo.evaka.invoicing.domain.VoucherValueDecisionType
 import fi.espoo.evaka.placement.PlacementType
 import fi.espoo.evaka.serviceneed.ShiftCareType
+import java.awt.Point
 import java.time.LocalDate
 import java.util.UUID
 
@@ -217,6 +218,8 @@ data class DwUnitAndGroup(
     val ryhmanHenkilokunnanAlkupvm: LocalDate?,
     val ryhmanHenkilokunnanLoppupvm: LocalDate?,
     val henkilökuntaaRyhmässäViim: Int?,
+    val koordinaatit: Point?,
+    val koulunYhteydessa: Boolean,
 )
 
 data class DwVoucherValueDecision(
