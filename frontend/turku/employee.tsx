@@ -153,11 +153,6 @@ const customizations: EmployeeCustomizations = {
           absenceSummaryTitle: 'Lapsen poissaolokooste'
         }
       },
-      common: {
-        careTypeLabels: {
-          preschool: 'Esiopetusta täydentävä toiminta'
-        }
-      },
       footer: {
         cityLabel: 'Turun kaupunki',
         linkLabel: 'Turun varhaiskasvatus',
