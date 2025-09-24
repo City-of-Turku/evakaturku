@@ -120,7 +120,7 @@ class EVakaTurkuConfig {
                         )
                 }
             },
-            placementToolApplicationStatus = ApplicationStatus.WAITING_PLACEMENT,
+            placementToolApplicationStatus = ApplicationStatus.WAITING_DECISION,
         )
 
     @Bean
