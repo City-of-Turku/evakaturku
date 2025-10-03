@@ -207,7 +207,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Child.READ_PLACEMENT,
             Action.Child.READ_GUARDIANS,
             Action.Child.READ_FEE_ALTERATIONS,
-            Action.Child.READ_CHILD_DOCUMENT,
             Action.Child.READ_PEDAGOGICAL_DOCUMENTS,
             -> {
                 @Suppress("UNCHECKED_CAST")
@@ -243,6 +242,17 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                 action.defaultRules.asSequence() +
                     sequenceOf(
                         HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
+                    )
+            }
+            Action.Child.READ_CHILD_DOCUMENT -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
+                    ) +
+                    sequenceOf(
+                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY)
+                            .inUnitOfGroup() as ScopedActionRule<in T>,
                     )
             }
             Action.DaycareAssistance.READ -> {
@@ -440,12 +450,22 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                     )
             }
             Action.DocumentTemplate.READ,
+                -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                        sequenceOf(
+                            HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
+                        )
+            }
             Action.ChildDocument.READ,
             -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
                     sequenceOf(
                         HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
+                    ) +
+                    sequenceOf(
+                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inUnit() as ScopedActionRule<in T>,
                     )
             }
             else -> action.defaultRules.asSequence()
