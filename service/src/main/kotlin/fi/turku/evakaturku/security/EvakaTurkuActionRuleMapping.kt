@@ -252,7 +252,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                     ) +
                     sequenceOf(
                         HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY)
-                            .inUnitOfGroup() as ScopedActionRule<in T>,
+                            .inPlacementUnitOfChild() as ScopedActionRule<in T>,
                     )
             }
             Action.DaycareAssistance.READ -> {
@@ -465,7 +465,9 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
                     ) +
                     sequenceOf(
-                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inUnit() as ScopedActionRule<in T>,
+                        HasUnitRole(
+                            UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY,
+                        ).inPlacementUnitOfChildOfChildDocument() as ScopedActionRule<in T>,
                     )
             }
             else -> action.defaultRules.asSequence()
