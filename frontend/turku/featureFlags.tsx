@@ -55,8 +55,8 @@ const features: Features = {
     showMetadataToCitizen: true,
     hideOvertimeSelection: false,
     placementDesktop: false,
-    hideSicknessSelection: false,
-    hideChildSicknessSelection: false
+    hideSicknessSelection: true,
+    hideChildSicknessSelection: true
   },
   staging: {
     environmentLabel: 'Staging',
@@ -139,8 +139,8 @@ const features: Features = {
     showMetadataToCitizen: true,
     hideOvertimeSelection: false,
     placementDesktop: false,
-    hideSicknessSelection: false,
-    hideChildSicknessSelection: false
+    hideSicknessSelection: true,
+    hideChildSicknessSelection: true
   }
 }
 
