@@ -196,6 +196,14 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasUnitRole(UserRole.STAFF).inPlacementUnitOfChild() as ScopedActionRule<in T>,
                     ) + sequenceOf(HasGlobalRole(UserRole.DIRECTOR, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>)
             }
+            Action.Child.CREATE_CHILD_DOCUMENT,
+            -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inPlacementUnitOfChild() as ScopedActionRule<in T>,
+                    )
+            }
             Action.Child.READ,
             Action.Child.READ_ABSENCES,
             Action.Child.READ_FUTURE_ABSENCES,
@@ -449,14 +457,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
                     )
             }
-            Action.DocumentTemplate.READ,
-            -> {
-                @Suppress("UNCHECKED_CAST")
-                action.defaultRules.asSequence() +
-                    sequenceOf(
-                        HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
-                    )
-            }
             Action.ChildDocument.READ,
             -> {
                 @Suppress("UNCHECKED_CAST")
@@ -468,6 +468,27 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                         HasUnitRole(
                             UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY,
                         ).inPlacementUnitOfChildOfChildDocument() as ScopedActionRule<in T>,
+                    )
+            }
+            Action.ChildDocument.DOWNLOAD,
+            Action.ChildDocument.UPDATE,
+            Action.ChildDocument.PUBLISH,
+            Action.ChildDocument.NEXT_STATUS,
+            Action.ChildDocument.PREV_STATUS,
+            Action.ChildDocument.DELETE,
+            Action.ChildDocument.PROPOSE_DECISION,
+            -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasUnitRole(
+                            UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY,
+                        ).inPlacementUnitOfChildOfChildDocument(
+                            editable = true,
+                            deletable = true,
+                            publishable = true,
+                            canGoToPrevStatus = true,
+                        ) as ScopedActionRule<in T>,
                     )
             }
             else -> action.defaultRules.asSequence()
