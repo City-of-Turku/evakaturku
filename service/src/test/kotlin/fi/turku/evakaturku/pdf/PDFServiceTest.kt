@@ -468,6 +468,7 @@ private fun validFeeDecision() =
         financeDecisionHandlerFirstName = "Jonne",
         financeDecisionHandlerLastName = "Johtaja",
         documentContainsContactInfo = false,
+        archivedAt = null,
     )
 
 private fun validVoucherValueDecision() =
@@ -562,4 +563,5 @@ private fun validVoucherValueDecision() =
         financeDecisionHandlerFirstName = "Satu",
         financeDecisionHandlerLastName = "Leppänen",
         documentContainsContactInfo = false,
+        archivedAt = null,
     )
