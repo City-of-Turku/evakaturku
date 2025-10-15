@@ -43,6 +43,9 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                 action.defaultRules.asSequence() +
                     sequenceOf(
                         HasGlobalRole(UserRole.DIRECTOR),
+                    ) +
+                    sequenceOf(
+                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inAnyUnit(),
                     )
             }
             Action.Global.READ_PLACEMENT_SKETCHING_REPORT -> {
