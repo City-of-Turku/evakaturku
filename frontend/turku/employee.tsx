@@ -14,6 +14,7 @@ import type { EmployeeCustomizations } from 'lib-customizations/types'
 
 import TurkuLogo from './city-logo-citizen.png'
 import featureFlags from './featureFlags'
+import { additionalStaffAttendanceTypes } from './shared'
 
 const customizations: EmployeeCustomizations = {
   appConfig: {},
@@ -956,7 +957,8 @@ const customizations: EmployeeCustomizations = {
     'PURCHASED',
     'PRIVATE',
     'PRIVATE_SERVICE_VOUCHER'
-  ]
+  ],
+  additionalStaffAttendanceTypes
 }
 
 export default customizations

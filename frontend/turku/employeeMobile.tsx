@@ -9,6 +9,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 import type { EmployeeMobileCustomizations } from 'lib-customizations/types'
 
 import featureFlags from './featureFlags'
+import { additionalStaffAttendanceTypes } from './shared'
 
 const customizations: EmployeeMobileCustomizations = {
   appConfig: {},
@@ -34,7 +35,8 @@ const customizations: EmployeeMobileCustomizations = {
       }
     }
   },
-  featureFlags
+  featureFlags,
+  additionalStaffAttendanceTypes
 }
 
 export default customizations
