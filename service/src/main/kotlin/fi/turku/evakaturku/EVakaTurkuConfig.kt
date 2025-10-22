@@ -70,7 +70,7 @@ class EVakaTurkuConfig {
             municipalMessageAccountName = "Turun kaupunki",
             serviceWorkerMessageAccountName = "Turun kaupunki",
             applyPlacementUnitFromDecision = false,
-            skipGuardianPreschoolDecisionApproval = false,
+            skipGuardianPreschoolDecisionApproval = true,
             fiveYearsOldDaycareEnabled = env.lookup("evaka.five_years_old_daycare.enabled") ?: false,
             financeMessageAccountName =
                 "Varhaiskasvatuksen asiakasmaksut - Småbarnspedagogikens avgifter - Early childhood education fees",
