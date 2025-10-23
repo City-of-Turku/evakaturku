@@ -80,8 +80,7 @@ const fi: DeepPartial<Translations> = {
                 Varhaiskasvatusta voi hakea ympäri vuoden. Hakemus on jätettävä
                 neljä kuukautta ennen kuin tarvitsette paikan. Mikäli
                 tarvitsette varhaiskasvatusta kiireellisesti työn tai
-                opiskelujen vuoksi, tulee paikkaa hakea viimeistään kaksi
-                viikkoa ennen.
+                opiskelujen vuoksi, tulee paikkaa hakea viimeistään kaksi viikkoa ennen.
               </P>
               <p>
                 Saatte kirjallisen päätöksen varhaiskasvatuspaikasta{' '}
