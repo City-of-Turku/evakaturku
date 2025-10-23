@@ -101,10 +101,10 @@ const sv: DeepPartial<Translations> = {
           PRESCHOOL: (
             <>
               <P>
-                Förskoleundervisningen börjar året innan läroplikten börjar.
-                Förskoleundervisningen är avgiftsfri. Anmälningstiden till
-                förskoleundervisningen för läsåret 2025–2026 är 1.1–15.1.2025.
-                Förskoleundervisningen inleds 7.8.2025.
+                  Förskoleundervisningen börjar året innan läroplikten börjar. Förskoleundervisningen är avgiftsfri.
+                  Anmälningstiden till förskoleundervisningen för läsåret 2026–2027 är 1.1–15.1.2026.
+                  Förskoleundervisningen inleds 11.8.2026. Vid registreringen, vänligen förklara dina
+                  ansökningsalternativ i avsnittet för övriga tillägsuppgifter.
               </P>
               <P>
                 Beslutet skickas till{' '}
@@ -172,7 +172,7 @@ const sv: DeepPartial<Translations> = {
           info: {
             DAYCARE: [],
             PRESCHOOL: [
-              'Den finsk- och svenskspråkiga förskoleundervisningen inleds den 7 augusti 2025. Ansök om kompletterande småbarnspedagogik för barn i förskoleåldern under punkten Kompletterande småbarnspedagogik för barn i förskoleåldern. Om barnet övergår från privat till kommunal småbarnspedagogik, ska du också göra en ansökan till kompletterande småbarnspedagogik.'
+              'Den finsk- och svenskspråkiga förskoleundervisningen inleds den 11 augusti 2026. Ansök om kompletterande småbarnspedagogik för barn i förskoleåldern under punkten Kompletterande småbarnspedagogik för barn i förskoleåldern. Om barnet övergår från privat till kommunal småbarnspedagogik, ska du också göra en ansökan till kompletterande småbarnspedagogik'
             ],
             CLUB: [
               'Klubbarna och lekparksverksamheten som ingår i den öppna småbarnspedagogiken följer förskoleundervisningens arbets- och semestertider. Barnet kan delta i en verksamhet inom den öppna småbarnspedagogiken åt gången, med undantag för familjeklubbar.'
