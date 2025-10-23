@@ -80,7 +80,8 @@ const fi: DeepPartial<Translations> = {
                 Varhaiskasvatusta voi hakea ympäri vuoden. Hakemus on jätettävä
                 neljä kuukautta ennen kuin tarvitsette paikan. Mikäli
                 tarvitsette varhaiskasvatusta kiireellisesti työn tai
-                opiskelujen vuoksi, tulee paikkaa hakea viimeistään kaksi viikkoa ennen.
+                opiskelujen vuoksi, tulee paikkaa hakea viimeistään kaksi
+                viikkoa ennen.
               </P>
               <p>
                 Saatte kirjallisen päätöksen varhaiskasvatuspaikasta{' '}
@@ -99,10 +100,11 @@ const fi: DeepPartial<Translations> = {
           PRESCHOOL: (
             <>
               <P>
-                  Esiopetukseen osallistutaan vuosi ennen oppivelvollisuuden alkamista.
-                  Esiopetus on maksutonta. Lukuvuoden 2026–2027 esiopetukseen
-                  ilmoittaudutaan 1.1-15.1.2026. Esiopetus alkaa 11.8.2026.
-                  Ilmoittautumisen yhteydessä perustele muut lisätiedot kohtaan hakuvaihtoehtosi.
+                Esiopetukseen osallistutaan vuosi ennen oppivelvollisuuden
+                Esiopetus on maksutonta. Lukuvuoden 2026–2027 esiopetukseen
+                ilmoittaudutaan 1.1-15.1.2026. Esiopetus alkaa 11.8.2026.
+                Ilmoittautumisen yhteydessä perustele muut lisätiedot kohtaan
+                hakuvaihtoehtosi.
               </P>
               <P>
                 Päätökset tulevat{' '}

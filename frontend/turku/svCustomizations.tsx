@@ -101,10 +101,12 @@ const sv: DeepPartial<Translations> = {
           PRESCHOOL: (
             <>
               <P>
-                  Förskoleundervisningen börjar året innan läroplikten börjar. Förskoleundervisningen är avgiftsfri.
-                  Anmälningstiden till förskoleundervisningen för läsåret 2026–2027 är 1.1–15.1.2026.
-                  Förskoleundervisningen inleds 11.8.2026. Vid registreringen, vänligen förklara dina
-                  ansökningsalternativ i avsnittet för övriga tillägsuppgifter.
+                Förskoleundervisningen börjar året innan läroplikten börjar.
+                Förskoleundervisningen är avgiftsfri. Anmälningstiden till
+                förskoleundervisningen för läsåret 2026–2027 är 1.1–15.1.2026.
+                Förskoleundervisningen inleds 11.8.2026. Vid registreringen,
+                vänligen förklara dina ansökningsalternativ i avsnittet för
+                övriga tillägsuppgifter.
               </P>
               <P>
                 Beslutet skickas till{' '}

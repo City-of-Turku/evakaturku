@@ -105,11 +105,12 @@ const en: DeepPartial<Translations> = {
           PRESCHOOL: (
             <>
               <P>
-                  Children take part in pre-primary education one year before the start of compulsory education.
-                  Pre-primary education is free. Enrol for pre-primary education for the 2026/27 school
-                  year 1–15 January 2026. Pre-primary education begins on 11th of August 2026.
-                  When registering, please explain your application options in the other additional
-                  information section.
+                Children take part in pre-primary education one year before the
+                start of compulsory education. Pre-primary education is free.
+                Enrol for pre-primary education for the 2026/27 school year 1–15
+                January 2026. Pre-primary education begins on 11th of August
+                When registering, please explain your application options in the
+                information section.
               </P>
               <P>
                 Decisions will appear in the
