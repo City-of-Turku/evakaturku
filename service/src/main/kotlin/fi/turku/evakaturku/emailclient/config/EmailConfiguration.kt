@@ -668,7 +668,7 @@ internal class EmailMessageProvider(
         """
         <p>Hei!</p>
         
-        <p>Olemme vastaanottaneet lapsenne hakemuksen esiopetukseen. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi.</p>
+        <p>Olemme vastaanottaneet lapsenne hakemuksen esiopetukseen. Hakemuksen tehnyt huoltaja voi muokata hakemusta osoitteessa evaka.turku.fi siihen saakka, kunnes varhaiskasvatuksen palveluohjaus ottaa sen käsittelyyn. Esiopetuspäätös on nähtävissä evaka.turku.fi.</p>
         
         <p>Mikäli ilmoititte hakemuksessa lapsenne tuen tarpeesta, varhaiskasvatuksen erityisopettaja on teihin yhteydessä, jotta lapsen tuen tarpeet voidaan ottaa huomioon paikkaa osoitettaessa.</p>
         
@@ -683,7 +683,7 @@ internal class EmailMessageProvider(
         <li>Siirtohakemukset (lapsella on jo varhaiskasvatuspaikka Turun kaupungin varhaiskasvatusyksikössä) käsitellään pääsääntöisesti hakemuksen saapumispäivämäärän mukaan.</li>
         </ul></p>
         
-        <p>Päätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi</p>
+        <p>Varhaiskasvatuspäätös on nähtävissä ja hyväksyttävissä/hylättävissä evaka.turku.fi</p>
         
         <p>Hakemuksen liitteet voi lisätä suoraan sähköiselle hakemukselle tai toimittaa postitse osoitteeseen Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku tai toimittamalla Kauppatorin Monitoriin, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
         
@@ -696,7 +696,7 @@ internal class EmailMessageProvider(
         
         <p>Hej!</p>
 
-        <p>Vi har mottagit ditt barns ansökan till förskoleundervisning. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi.</p>
+        <p>Vi har mottagit ditt barns ansökan till förskoleundervisning. Vårdnadshavaren som skickade in ansökan kan göra ändringar i ansökan på adressen evaka.turku.fi fram till det att den behandlas av servicehandledningen. Du kan läsa förskolebeslutet på adressen evaka.turku.fi.</p>
 
         <p>Om du har angett att barnet behöver särskilt stöd kommer en speciallärare inom småbarnspedagogiken att kontakta er för att säkerställa att barnets behov kan beaktas när barnet tilldelas en plats.</p>
 
@@ -711,7 +711,7 @@ internal class EmailMessageProvider(
         <li>Ansökningar om överlåtelse (barnet har redan en förskoleplats vid Åbo stads förskoleenhet) behandlas i allmänhet enligt ansökningsdagen.</li>
         </ul></p>
         
-        <p>Du kan läsa och godkänna/avvisa beslutet på adressen evaka.turku.fi</p>
+        <p>Du kan läsa och godkänna/avvisa småbarnspedagogikbeslutet på adressen evaka.turku.fi</p>
 
         <p>Du kan bifoga bilagorna till den elektroniska ansökan, skicka dem per post till adressen Småbarnspedagogikens servicehandledning, PB 355, 20101 Åbo eller lämna in dem till Monitori vid Åbo salutorg, Småbarnspedagogikens servicehandledning, Auragatan 8.</p>
 
@@ -724,7 +724,7 @@ internal class EmailMessageProvider(
         
         <p>Hello!</p>
 
-        <p>We have received your child’s application for pre-primary education. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. You can view and either accept or reject the decision at evaka.turku.fi.</p>
+        <p>We have received your child’s application for pre-primary education. The parent or guardian who sent the application can make changes to the application at evaka.turku.fi until the early childhood education and care service guidance begins to process it. You can view the preschool decision at evaka.turku.fi.</p>
 
         <p>If you said in your application that your child requires support, a special needs teacher in early childhood education and care will contact you to ensure that the child’s needs are taken into account when selecting a place.</p>
 
@@ -739,7 +739,7 @@ internal class EmailMessageProvider(
         <li>Transfer applications (the child already has an early childhood education place in the early childhood education unit of the city of Turku) are generally processed according to the date of arrival of the application.</li>
         </ul></p>
 
-        <p>You can view and either accept or reject the decision at evaka.turku.fi.</p>
+        <p>You can view and either accept or reject the early childhood education decision at evaka.turku.fi.</p>
 
         <p>Application attachments can be added directly to your online application or posted to Varhaiskasvatuksen palveluohjaus, PL 355, 20101 Turku, or taking them in person to Kauppatori Monitori, Varhaiskasvatuksen palveluohjaus, Aurakatu 8.</p>
 
