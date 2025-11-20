@@ -341,6 +341,13 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                             .inUnitOfGroup() as ScopedActionRule<in T>,
                     )
             }
+            Action.Group.CREATE_CHILD_DOCUMENTS -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasUnitRole(UserRole.EARLY_CHILDHOOD_EDUCATION_SECRETARY).inUnitOfGroup() as ScopedActionRule<in T>,
+                    )
+            }
             Action.Invoice.READ -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
