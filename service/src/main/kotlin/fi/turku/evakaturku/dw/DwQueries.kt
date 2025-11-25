@@ -212,6 +212,27 @@ object DwQueries {
             )
         }
 
+    val getChildReservations =
+        csvQuery<DwChildReservations> {
+            sql(
+                """
+                SELECT
+                        ca.child_id AS lapsen_id,
+                        COALESCE(ar.date, ca.date) AS päivämäärä,
+                        ar.start_time AS varaus_alkaa,
+                        ar.end_time AS varaus_paattyy,
+                        ca.start_time AS toteuma_alkaa,
+                        ca.end_time AS toteuma_paattyy
+                    FROM person p
+                        LEFT JOIN (SELECT child_id, date, start_time, end_time FROM attendance_reservation) ar ON p.id = ar.child_id
+                        FULL OUTER JOIN (SELECT child_id, date, start_time, end_time FROM child_attendance) ca ON p.id = ca.child_id
+                            AND ca.date = ar.date
+                    WHERE ca.date is not null
+                    ORDER BY ca.date DESC;
+                """.trimIndent(),
+            )
+        }
+
     val getDailyInfos =
         csvQuery<DwDailyInfo> {
             sql(
