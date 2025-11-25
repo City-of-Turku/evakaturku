@@ -64,7 +64,7 @@ internal class EVakaTurkuMessageProvider(
 
     override fun getDefaultDecisionAddress(lang: OfficialLanguage): DecisionSendAddress =
         when (lang) {
-            OfficialLanguage.FI ->
+            OfficialLanguage.FI -> {
                 DecisionSendAddress(
                     street = "PL 355",
                     postalCode = "20101",
@@ -73,7 +73,9 @@ internal class EVakaTurkuMessageProvider(
                     row2 = "Varhaiskasvatuksen ja esiopetuksen asiakaspalvelu",
                     row3 = "PL 355, 20101 Turku",
                 )
-            OfficialLanguage.SV ->
+            }
+
+            OfficialLanguage.SV -> {
                 DecisionSendAddress(
                     street = "PB 355",
                     postalCode = "20101",
@@ -82,11 +84,12 @@ internal class EVakaTurkuMessageProvider(
                     row2 = "Klientavgifter för småbarnspedagogik",
                     row3 = "PB 355, 20101 Åbo stad",
                 )
+            }
         }
 
     override fun getDefaultFinancialDecisionAddress(lang: OfficialLanguage): DecisionSendAddress =
         when (lang) {
-            OfficialLanguage.FI ->
+            OfficialLanguage.FI -> {
                 DecisionSendAddress(
                     street = "PL 355",
                     postalCode = "20101",
@@ -95,7 +98,9 @@ internal class EVakaTurkuMessageProvider(
                     row2 = "Varhaiskasvatuksen ja esiopetuksen asiakaspalvelu",
                     row3 = "PL 355, 20101 Turku",
                 )
-            OfficialLanguage.SV ->
+            }
+
+            OfficialLanguage.SV -> {
                 DecisionSendAddress(
                     street = "PB 355",
                     postalCode = "20101",
@@ -104,18 +109,23 @@ internal class EVakaTurkuMessageProvider(
                     row2 = "Klientavgifter för småbarnspedagogik",
                     row3 = "PB 355, 20101 Åbo stad",
                 )
+            }
         }
 
     override fun getPlacementToolHeader(lang: OfficialLanguage): String =
         when (lang) {
-            OfficialLanguage.FI ->
+            OfficialLanguage.FI -> {
                 "Esitäytetty hakemus esiopetukseen / Pre-filled application for preschool education"
-            OfficialLanguage.SV -> "Förfyllad ansökan om förskoleundervisning"
+            }
+
+            OfficialLanguage.SV -> {
+                "Förfyllad ansökan om förskoleundervisning"
+            }
         }
 
     override fun getPlacementToolContent(lang: OfficialLanguage): String =
         when (lang) {
-            OfficialLanguage.FI ->
+            OfficialLanguage.FI -> {
                 """
 Olemme tehneet lapsellenne esitäytetyn hakemuksen esiopetukseen. Hakemus on tehty lapsen oppilaaksiottoalueen mukaiseen esiopetusyksikköön.
 
@@ -139,10 +149,13 @@ Best regards
 
 Early childhood education in the city of Turku
                 """.trimIndent()
-            OfficialLanguage.SV ->
+            }
+
+            OfficialLanguage.SV -> {
                 """
 Vi har gjort en förifylld ansökan om förskoleundervisning för ditt barn.
                 """.trimIndent()
+            }
         }
 
     override fun getChildDocumentDecisionHeader(lang: OfficialLanguage): String =
@@ -153,7 +166,7 @@ Vi har gjort en förifylld ansökan om förskoleundervisning för ditt barn.
 
     override fun getChildDocumentDecisionContent(lang: OfficialLanguage): String =
         when (lang) {
-            OfficialLanguage.FI ->
+            OfficialLanguage.FI -> {
                 """
                 Lapsellenne on tehty päätös. Voit katsella päätöstä eVakassa.
                 
@@ -165,12 +178,15 @@ Vi har gjort en förifylld ansökan om förskoleundervisning för ditt barn.
                 
                 As you are a user of Suomi.fi, you can also find the decision in the attachments below.
                 """.trimIndent()
-            OfficialLanguage.SV ->
+            }
+
+            OfficialLanguage.SV -> {
                 """
                 Beslut har fattats för ditt barn. Du kan se beslutet i eVaka.
                 
                 Eftersom du har tagit Suomi.fi-tjänsten i bruk, kan du också läsa beslutet i bilagorna nedan.
                 """.trimIndent()
+            }
         }
 
     private fun resolveLocale(lang: OfficialLanguage): Locale = Locale.of(lang.name.lowercase())

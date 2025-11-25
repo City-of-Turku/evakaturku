@@ -83,7 +83,7 @@ internal class EmailMessageProvider(
     ): EmailContent {
         val (typeFi, typeSv, typeEn) =
             when (thread.type) {
-                MessageType.MESSAGE ->
+                MessageType.MESSAGE -> {
                     if (thread.urgent) {
                         Triple(
                             "kiireellinen viesti",
@@ -93,7 +93,9 @@ internal class EmailMessageProvider(
                     } else {
                         Triple("viesti", "personligt meddelande", "message")
                     }
-                MessageType.BULLETIN ->
+                }
+
+                MessageType.BULLETIN -> {
                     if (thread.urgent) {
                         Triple(
                             "kiireellinen tiedote",
@@ -103,6 +105,7 @@ internal class EmailMessageProvider(
                     } else {
                         Triple("tiedote", "allmänt meddelande", "bulletin")
                     }
+                }
             }
 
         val showSubjectInBody = isSenderMunicipalAccount && thread.type == MessageType.BULLETIN
@@ -1229,10 +1232,13 @@ $unsubscribeEn
     override fun financeDecisionNotification(decisionType: FinanceDecisionType): EmailContent {
         val (decisionTypeFi, decisionTypeSv, decisionTypeEn) =
             when (decisionType) {
-                FinanceDecisionType.VOUCHER_VALUE_DECISION ->
+                FinanceDecisionType.VOUCHER_VALUE_DECISION -> {
                     Triple("arvopäätös", "beslut om servicesedel", "voucher value decision")
-                FinanceDecisionType.FEE_DECISION ->
+                }
+
+                FinanceDecisionType.FEE_DECISION -> {
                     Triple("maksupäätös", "betalningsbeslut", "fee decision")
+                }
             }
         return EmailContent.fromHtml(
             subject =

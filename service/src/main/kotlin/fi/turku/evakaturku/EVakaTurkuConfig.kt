@@ -77,47 +77,54 @@ class EVakaTurkuConfig {
             archiveMetadataOrganization = "Turun kaupungin varhaiskasvatus",
             archiveMetadataConfigs = { type: ArchiveProcessType, year: Int ->
                 when (type) {
-                    ArchiveProcessType.APPLICATION_DAYCARE ->
+                    ArchiveProcessType.APPLICATION_DAYCARE -> {
                         ArchiveProcessConfig(
                             processDefinitionNumber = "12.06.01.02",
                             archiveDurationMonths = 12 * 12,
                         )
+                    }
 
-                    ArchiveProcessType.APPLICATION_PRESCHOOL ->
+                    ArchiveProcessType.APPLICATION_PRESCHOOL -> {
                         ArchiveProcessConfig(
                             processDefinitionNumber = "12.06.01.02",
                             archiveDurationMonths = 12 * 12,
                         )
+                    }
 
-                    ArchiveProcessType.APPLICATION_CLUB ->
+                    ArchiveProcessType.APPLICATION_CLUB -> {
                         ArchiveProcessConfig(
                             processDefinitionNumber = "12.06.01.02",
                             archiveDurationMonths = 12 * 12,
                         )
+                    }
 
-                    ArchiveProcessType.ASSISTANCE_NEED_DECISION_DAYCARE ->
+                    ArchiveProcessType.ASSISTANCE_NEED_DECISION_DAYCARE -> {
                         ArchiveProcessConfig(
                             processDefinitionNumber = "12.06.01.00",
                             archiveDurationMonths = 120 * 12,
                         )
+                    }
 
-                    ArchiveProcessType.ASSISTANCE_NEED_DECISION_PRESCHOOL ->
+                    ArchiveProcessType.ASSISTANCE_NEED_DECISION_PRESCHOOL -> {
                         ArchiveProcessConfig(
                             processDefinitionNumber = "12.06.01.01",
                             archiveDurationMonths = 120 * 12,
                         )
+                    }
 
-                    ArchiveProcessType.FEE_DECISION ->
+                    ArchiveProcessType.FEE_DECISION -> {
                         ArchiveProcessConfig(
                             processDefinitionNumber = "12.06.01.06",
                             archiveDurationMonths = 144,
                         )
+                    }
 
-                    ArchiveProcessType.VOUCHER_VALUE_DECISION ->
+                    ArchiveProcessType.VOUCHER_VALUE_DECISION -> {
                         ArchiveProcessConfig(
                             processDefinitionNumber = "12.06.01.06",
                             archiveDurationMonths = 144,
                         )
+                    }
                 }
             },
             placementToolApplicationStatus = ApplicationStatus.WAITING_DECISION,
