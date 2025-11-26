@@ -85,15 +85,14 @@ data class DwChildAggregate(
 )
 
 data class DwChildReservations(
-    val pvm: String,
     val lapsenId: UUID,
-    val henkilöturvatunnus: String?,
-    val syntymäaika: LocalDate,
-    val kieli: String?,
-    val postiosoite: String,
-    val postinumero: String,
-    val postitoimipaikka: String,
-    val kansalaisuudet: List<String>,
+    val paivamaara: LocalDate,
+    val varausAlkaa: String?,
+    val varausPaattyy: String?,
+    val toteumaAlkaa: String?,
+    val toteumaPaattyy: String?,
+    val yksikonId: UUID,
+
 )
 
 data class DwDailyInfo(
