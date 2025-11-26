@@ -92,7 +92,6 @@ data class DwChildReservations(
     val toteumaAlkaa: String?,
     val toteumaPaattyy: String?,
     val yksikonId: UUID,
-
 )
 
 data class DwDailyInfo(
