@@ -20,6 +20,11 @@ const customizations: EmployeeCustomizations = {
   appConfig: {},
   translations: {
     fi: {
+      common: {
+        careTypeLabels: {
+          'connected-daycare': 'Täydentävä'
+        }
+      },
       application: {
         serviceNeed: {
           connectedLabel: 'Täydentävä varhaiskasvatus',
