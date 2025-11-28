@@ -218,7 +218,7 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                     ) + sequenceOf(HasGlobalRole(UserRole.DIRECTOR, UserRole.FINANCE_ADMIN) as ScopedActionRule<in T>)
             }
 
-            Action.Child.CREATE_CHILD_DOCUMENT,
+            Action.Child.CREATE_CHILD_DECISION_DOCUMENT,
             -> {
                 @Suppress("UNCHECKED_CAST")
                 action.defaultRules.asSequence() +
