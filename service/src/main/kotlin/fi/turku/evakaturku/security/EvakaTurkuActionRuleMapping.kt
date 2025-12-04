@@ -552,6 +552,14 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                     )
             }
 
+            Action.ChildDocument.UPDATE_DECISION_VALIDITY -> {
+                @Suppress("UNCHECKED_CAST")
+                action.defaultRules.asSequence() +
+                    sequenceOf(
+                        HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
+                    )
+            }
+
             else -> {
                 action.defaultRules.asSequence()
             }
