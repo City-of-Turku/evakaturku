@@ -12,11 +12,14 @@ fi.turku.evakaturku:
         Olette saaneet päätöksen Turun kaupungin varhaiskasvatuksesta, joka on luettavissa oheisesta liitteestä.
         
         Huomioithan, että vastaus päätökseen tulee antaa kahden viikon kuluessa tämän päätöksen saamisesta joko sähköisesti osoitteessa evaka.turku.fi (vaatii vahvan tunnistautumisen) tai olemalla yhteydessä sen päiväkodin johtajaan, josta paikka myönnettiin.
+
+        Esiopetuspaikka osoitetaan, jolloin siihen ei vaadita erikseen hyväksyntää.
       sv: |
         Ni har fått ett beslut angående Åbo stads småbarnspedagogik. Beslutet finns som bilaga.
         
         Observera att ert svar på beslutet ska lämnas in inom två veckor från det att beslutet har mottagits, antingen elektroniskt på adressen evaka.turku.fi (kräver stark identifiering) eller genom att kontakta föreståndaren vid det daghem där den beviljade platsen finns.
 
+        Förskoleplatsen anvisas, vilket innebär att den inte kräver separat godkännande.
     FEE_DECISION_HEADER:
       fi: Turun varhaiskasvatukseen liittyvät päätökset
       sv: Beslut angående Åbo stads småbarnspedagogik
