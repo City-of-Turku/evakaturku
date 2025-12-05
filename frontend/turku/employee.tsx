@@ -121,12 +121,12 @@ const customizations: EmployeeCustomizations = {
         },
         absenceTypeInfo: {
           OTHER_ABSENCE:
-            'Käytetään aina, kun huoltaja on ilmoittanut poissaolosta mukaan lukien säännölliset vapaat ja loma-aika. Käytetään myös vuoroyksiköissä lasten lomamerkinnöissä tai muissa poissaoloissa, jotka ovat suunniteltujen läsnäolovarausten ulkopuolella.',
+            'Käytetään kuluvan päivän poissaolossa. Edellisenä päivänä tai sitä aiemmin ilmoitetut poissaolot tulee muuttaa sopimuspoissaoloiksi.',
           SICKLEAVE: 'Merkitään kun lapsi on sairaana.',
           UNKNOWN_ABSENCE:
             'Käytetään silloin, kun huoltaja ei ole ilmoittanut poissaolosta, vaikuttaa heinäkuussa myös laskutukseen. Koodi muutetaan vain, jos kyseessä on sairauspoissaolo, jonka jatkumisesta huoltaja ilmoittaa seuraavana päivänä.',
           PLANNED_ABSENCE:
-            'Palveluntarvesopimuksen (enintään 147h/kk, enintään 116h/kk, tai enintään 84h/kk mukaiset etukäteen ilmoitetut poissaolot',
+            'Ennalta ilmoitetut poissaolot. Kaikki edeltävänä päivänä tai sitä aiemmin ilmoitetut poissaolot ovat sopimuspoissaoloja.',
           TEMPORARY_RELOCATION:
             'Lapselle on tehty varasijoitus toiseen yksikköön. Poissa omasta, läsnä muualla.',
           PARENTLEAVE:
