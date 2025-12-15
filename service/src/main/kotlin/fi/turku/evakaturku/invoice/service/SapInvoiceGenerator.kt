@@ -318,7 +318,7 @@ class SapInvoiceGenerator(
         val e1edkt2list: MutableList<ORDERS05.IDOC.E1EDKT1.E1EDKT2> = mutableListOf()
         val e1edkt2 = ORDERS05.IDOC.E1EDKT1.E1EDKT2()
         e1edkt2.segment = "1"
-        e1edkt2.tdline = "Lisätietoja laskun sisällöstä varhaiskasvatusmaksut@turku.fi / 358 22625609"
+        e1edkt2.tdline = "Lisätietoja laskusta varhaiskasvatusmaksut@turku.fi/ 358 022625609"
         e1edkt2.tdformat = "*"
         e1edkt2list.add(e1edkt2)
         e1edkt1.e1EDKT2 = e1edkt2list
