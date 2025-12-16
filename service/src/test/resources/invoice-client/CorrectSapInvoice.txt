@@ -106,7 +106,7 @@
         <E1EDKT1 SEGMENT="1">
             <TDID>Z002</TDID>
             <E1EDKT2 SEGMENT="1">
-                <TDLINE>Lisätietoja laskusta varhaiskasvatusmaksut@turku.fi/ 358 022625609</TDLINE>
+                <TDLINE>Lisätietoja laskusta varhaiskasvatusmaksut@turku.fi/ 02-2625609</TDLINE>
                 <TDFORMAT>*</TDFORMAT>
             </E1EDKT2>
         </E1EDKT1>

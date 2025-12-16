@@ -278,7 +278,7 @@ class SapInvoiceGeneratorTest {
     // E1EDKT2 - TODO: this is optional
     @Test
     fun `TDLINE should have constant value of Lisätietoja laskusta email and phone number`() {
-        assertElement("TDLINE", "Lisätietoja laskusta varhaiskasvatusmaksut@turku.fi/ 358 022625609")
+        assertElement("TDLINE", "Lisätietoja laskusta varhaiskasvatusmaksut@turku.fi/ 02-2625609")
     }
 
     // E1EDP01 ROWS - segment
