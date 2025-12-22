@@ -1158,7 +1158,7 @@ const en: DeepPartial<Translations> = {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.turku.fi/en/daycare-and-education/early-childhood-education/day-care-fees-financial-support-and-service-voucher"
+              href="https://www.turku.fi/en/early-childhood-education-and-preschool-education/fees-financial-support-and-service-vouchers"
             >
               here
             </a>

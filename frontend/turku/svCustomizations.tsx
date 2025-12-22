@@ -1141,7 +1141,7 @@ const sv: DeepPartial<Translations> = {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli"
+              href="https://www.turku.fi/sv/smabarnspedagogik-och-forskoleundervisning/avgifter-understod-och-servicesedlar"
             >
               här
             </a>
