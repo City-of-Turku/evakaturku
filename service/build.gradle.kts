@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.ktlint.gradle)
-    id("org.unbroken-dome.xjc") version "2.0.0"
     id("com.gorylenko.gradle-git-properties") version "2.5.3"
 }
 
@@ -38,9 +37,6 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-web-services")
-
-    implementation("jakarta.xml.bind:jakarta.xml.bind-api")
-    implementation("com.sun.xml.bind:jaxb-impl")
 
     implementation("com.github.kittinunf.fuel:fuel")
     implementation("org.jdbi:jdbi3-core")
