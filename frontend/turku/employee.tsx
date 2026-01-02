@@ -113,7 +113,7 @@ const customizations: EmployeeCustomizations = {
           UNKNOWN_ABSENCE: 'Ilmoittamaton',
           PLANNED_ABSENCE: 'Sopimus',
           TEMPORARY_RELOCATION: 'Varasijoitus',
-          PARENTLEAVE: 'Vanhempainvapaa',
+          PARENTLEAVE: 'Vanh.vap.',
           FORCE_MAJEURE: 'Päiväkohtainen alennus',
           FREE_ABSENCE: 'Maksuton kesäpoissaolo',
           UNAUTHORIZED_ABSENCE: 'Sakko',
