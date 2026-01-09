@@ -54,8 +54,6 @@ class EVakaTurkuConfig {
             valueDecisionCapacityFactorEnabled = false,
             // Mon 12:00
             citizenReservationThresholdHours = 6 * 24 + 12,
-            dailyFeeDivisorOperationalDaysOverride = null,
-            freeSickLeaveOnContractDays = false,
             alwaysUseDaycareFinanceDecisionHandler = true,
             freeAbsenceGivesADailyRefund = true,
             paymentNumberSeriesStart = 1,
