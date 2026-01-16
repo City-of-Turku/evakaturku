@@ -23,7 +23,7 @@ const features: Features = {
     financeDecisionHandlerSelect: false,
     feeDecisionPreschoolClubFilter: true,
     daycareApplication: {
-      dailyTimes: true,
+      dailyTimes: false,
       serviceNeedOption: false
     },
     preschoolApplication: {
@@ -59,7 +59,7 @@ const features: Features = {
     citizenShiftCareAbsence: false,
     assistanceActionOther: true,
     daycareApplication: {
-      dailyTimes: true,
+      dailyTimes: false,
       serviceNeedOption: false
     },
     preschoolApplication: {
