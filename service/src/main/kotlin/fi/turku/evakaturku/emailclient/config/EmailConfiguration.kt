@@ -43,7 +43,6 @@ internal class EmailMessageProvider(
     private val subjectForClubApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     private val subjectForDaycareApplicationReceivedEmail: String = "Hakemus vastaanotettu"
     private val subjectForPreschoolApplicationReceivedEmail: String = "Hakemus vastaanotettu"
-    private val subjectForDecisionEmail: String = "Päätös eVakassa"
 
     private val securityFi =
         """
@@ -542,79 +541,6 @@ internal class EmailMessageProvider(
         Early childhood education and care service guidance
 
         This is an automatic message on how the form is stored. You cannot reply to this message.
-        """.trimIndent()
-
-    override fun assistanceNeedDecisionNotification(language: Language): EmailContent =
-        EmailContent(subjectForDecisionEmail, getDecisionEmailText(), getDecisionEmailHtml())
-
-    override fun assistanceNeedPreschoolDecisionNotification(language: Language): EmailContent =
-        assistanceNeedDecisionNotification(language) // currently same content
-
-    fun getDecisionEmailHtml(): String =
-        """
-        <p>Hei!</p>
-        
-        <p>Lapsellenne on tehty päätös.</p>
-        
-        <p>Päätös on nähtävissä eVakassa osoitteessa evaka.turku.fi.</p>
-        
-        <p>Tähän viestiin ei voi vastata.</p>
-        $securityFi
-        $unsubscribeFi
-        <hr>
-        
-        <p>Hej!</p>
-
-        <p>Vi har fattat ett beslut gällande ert barn.</p>
-
-        <p>Ni kan läsa beslutet på eVaka på adressen evaka.turku.fi.</p>
-
-        <p>Svara inte på detta meddelande.</p>
-        $securitySv
-        $unsubscribeSv
-        <hr>
-        
-        <p>Hello!</p>
-
-        <p>We have made a decision about your child.</p>
-
-        <p>Please go to evaka.turku.fi to view it.</p>
-
-        <p>This message cannot be replied to.</p>  
-        $securityEn
-        $unsubscribeEn
-        """.trimIndent()
-
-    fun getDecisionEmailText(): String =
-        """
-        Hei!
-        
-        Lapsellenne on tehty päätös.
-        
-        Päätös on nähtävissä eVakassa osoitteessa https://evaka.turku.fi/.
-        
-        Tähän viestiin ei voi vastata.
-        
-        -----
-        
-        Hej!
-
-        Vi har fattat ett beslut gällande ert barn.
-
-        Ni kan läsa beslutet på eVaka på adressen https://evaka.turku.fi/.
-
-        Svara inte på detta meddelande.
-        
-        -----
-        
-        Hello!
-
-        We have made a decision about your child.
-
-        Please go to evaka.turku.fi to view it.
-
-        This message cannot be replied to.
-        
         """.trimIndent()
 
     override fun missingReservationsNotification(
