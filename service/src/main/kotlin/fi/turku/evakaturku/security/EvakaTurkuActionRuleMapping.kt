@@ -153,16 +153,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
                     )
             }
 
-            Action.AssistanceNeedDecision.READ,
-            Action.AssistanceNeedDecision.READ_DECISION_MAKER_OPTIONS,
-            -> {
-                @Suppress("UNCHECKED_CAST")
-                action.defaultRules.asSequence() +
-                    sequenceOf(
-                        HasGlobalRole(UserRole.DIRECTOR) as ScopedActionRule<in T>,
-                    )
-            }
-
             Action.Attachment.READ_APPLICATION_ATTACHMENT,
             Action.Attachment.READ_INCOME_STATEMENT_ATTACHMENT,
             Action.Attachment.READ_INCOME_ATTACHMENT,
@@ -231,7 +221,6 @@ class EvakaTurkuActionRuleMapping : ActionRuleMapping {
             Action.Child.READ_ABSENCES,
             Action.Child.READ_FUTURE_ABSENCES,
             Action.Child.READ_ADDITIONAL_INFO,
-            Action.Child.READ_ASSISTANCE_NEED_DECISIONS,
             Action.Child.READ_ASSISTANCE_NEED_VOUCHER_COEFFICIENTS,
             Action.Child.READ_BACKUP_CARE,
             Action.Child.READ_DAILY_SERVICE_TIMES,

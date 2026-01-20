@@ -60,7 +60,6 @@ class EVakaTurkuConfig {
             unplannedAbsencesAreContractSurplusDays = false,
             maxContractDaySurplusThreshold = 13,
             useContractDaysAsDailyFeeDivisor = false,
-            assistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
             preschoolAssistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
             requestedStartUpperLimit = 14,
             preferredStartRelativeApplicationDueDate = true,
@@ -93,20 +92,6 @@ class EVakaTurkuConfig {
                         ArchiveProcessConfig(
                             processDefinitionNumber = "12.06.01.02",
                             archiveDurationMonths = 12 * 12,
-                        )
-                    }
-
-                    ArchiveProcessType.ASSISTANCE_NEED_DECISION_DAYCARE -> {
-                        ArchiveProcessConfig(
-                            processDefinitionNumber = "12.06.01.00",
-                            archiveDurationMonths = 120 * 12,
-                        )
-                    }
-
-                    ArchiveProcessType.ASSISTANCE_NEED_DECISION_PRESCHOOL -> {
-                        ArchiveProcessConfig(
-                            processDefinitionNumber = "12.06.01.01",
-                            archiveDurationMonths = 120 * 12,
                         )
                     }
 

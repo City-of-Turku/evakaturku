@@ -33,10 +33,6 @@ internal class EVakaTurkuTemplateProvider : ITemplateProvider {
 
     override fun getPreparatoryDecisionPath(): String = "turku/preparatory/decision"
 
-    override fun getAssistanceNeedDecisionPath(): String = "turku/assistance-need/decision"
-
-    override fun getAssistanceNeedPreschoolDecisionPath(): String = "turku/assistance-need-preschool/decision"
-
     override fun getLocalizedFilename(
         type: DecisionType,
         lang: OfficialLanguage,
