@@ -60,7 +60,6 @@ class EVakaTurkuConfig {
             unplannedAbsencesAreContractSurplusDays = false,
             maxContractDaySurplusThreshold = 13,
             useContractDaysAsDailyFeeDivisor = false,
-            preschoolAssistanceDecisionMakerRoles = setOf(UserRole.DIRECTOR, UserRole.SPECIAL_EDUCATION_TEACHER),
             requestedStartUpperLimit = 14,
             preferredStartRelativeApplicationDueDate = true,
             postOffice = "TURKU",
