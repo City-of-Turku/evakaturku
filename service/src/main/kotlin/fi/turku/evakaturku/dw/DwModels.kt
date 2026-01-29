@@ -84,11 +84,16 @@ data class DwChildAggregate(
     val kansalaisuudet: List<String>,
 )
 
-data class DwChildReservations(
+data class DwChildReservation(
     val lapsenId: UUID,
     val paivamaara: LocalDate,
     val varausAlkaa: String?,
     val varausPaattyy: String?,
+)
+
+data class DwChildAttendance(
+    val lapsenId: UUID,
+    val paivamaara: LocalDate,
     val toteumaAlkaa: String?,
     val toteumaPaattyy: String?,
     val yksikonId: UUID,
