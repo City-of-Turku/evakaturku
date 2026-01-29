@@ -10,6 +10,7 @@ enum class DwQuery(
     AssistanceNeedDecision("assistance_need_decisions_3v_", DwQueries.getAssistanceNeedDecisions),
     ChildAggregate("child_aggregate_3v_", DwQueries.getChildAggregate),
     ChildReservations("child_reservations_", DwQueries.getChildReservations),
+    ChildAttendances("child_attendances_", DwQueries.getChildAttendances),
     DailyInfo("daily_info_3v_", DwQueries.getDailyInfos),
     DailyUnitAndGroupAttendance("daily_units_and_groups_attendance_3v_", DwQueries.getDailyUnitsAndGroupsAttendances),
     DailyUnitOccupancyConfirmed("daily_units_occupancy_confirmed_", DwQueries.getDailyUnitsOccupanciesConfirmed),
