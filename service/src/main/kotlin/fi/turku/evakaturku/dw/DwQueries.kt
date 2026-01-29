@@ -192,23 +192,37 @@ object DwQueries {
         }
 
     val getChildReservations =
-        csvQuery<DwChildReservations> {
+        csvQuery<DwChildReservation> {
             sql(
                 """
                 SELECT
-                    ca.child_id AS lapsen_id,
-                    ca.date AS paivamaara,
-                    ar.start_time AS varaus_alkaa,
-                    ar.end_time AS varaus_paattyy,
-                    ca.start_time AS toteuma_alkaa,
-                    ca.end_time AS toteuma_paattyy,
-                    ca.unit_id AS yksikon_id
-                FROM child_attendance ca
-                         LEFT JOIN attendance_reservation ar ON ca.child_id = ar.child_id
-                    AND ca.date = ar.date
-                WHERE current_date::DATE - INTERVAL '3 months' <= ca.date
-                ORDER BY ca.date DESC
-                """.trimIndent(),
+                    child_id AS lapsen_id,
+                    date AS paivamaara,
+                    start_time AS varaus_alkaa,
+                    end_time AS varaus_paattyy
+                    FROM attendance_reservation
+                WHERE 
+                    start_time IS NOT NULL and end_time IS NOT NULL AND
+                    current_date::DATE - INTERVAL '3 months' <= date
+                ORDER BY date DESC, child_id
+                """,
+            )
+        }
+
+    val getChildAttendances =
+        csvQuery<DwChildAttendance> {
+            sql(
+                """
+                SELECT
+                    child_id AS lapsen_id,
+                    date AS paivamaara,
+                    start_time AS toteuma_alkaa,
+                    end_time AS toteuma_paattyy,
+                    unit_id AS yksikon_id
+                FROM child_attendance
+                WHERE current_date::DATE - INTERVAL '3 months' <= date
+                ORDER BY date DESC, child_id
+                """,
             )
         }
 

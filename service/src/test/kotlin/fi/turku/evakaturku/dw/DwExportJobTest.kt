@@ -4,9 +4,11 @@ import fi.espoo.evaka.absence.AbsenceCategory
 import fi.espoo.evaka.shared.AreaId
 import fi.espoo.evaka.shared.EvakaUserId
 import fi.espoo.evaka.shared.ServiceNeedOptionId
+import fi.espoo.evaka.shared.auth.AuthenticatedUser
 import fi.espoo.evaka.shared.db.QuerySql
 import fi.espoo.evaka.shared.dev.DevAbsence
 import fi.espoo.evaka.shared.dev.DevAssistanceAction
+import fi.espoo.evaka.shared.dev.DevChildAttendance
 import fi.espoo.evaka.shared.dev.DevDaycare
 import fi.espoo.evaka.shared.dev.DevDaycareGroup
 import fi.espoo.evaka.shared.dev.DevDaycareGroupPlacement
@@ -15,9 +17,9 @@ import fi.espoo.evaka.shared.dev.DevFeeDecision
 import fi.espoo.evaka.shared.dev.DevPerson
 import fi.espoo.evaka.shared.dev.DevPersonType
 import fi.espoo.evaka.shared.dev.DevPlacement
+import fi.espoo.evaka.shared.dev.DevReservation
 import fi.espoo.evaka.shared.dev.DevVoucherValueDecision
 import fi.espoo.evaka.shared.dev.insert
-import fi.espoo.evaka.shared.domain.DateRange
 import fi.espoo.evaka.shared.domain.FiniteDateRange
 import fi.espoo.evaka.shared.domain.HelsinkiDateTime
 import fi.espoo.evaka.shared.domain.MockEvakaClock
@@ -66,7 +68,8 @@ class DwExportJobTest : AbstractIntegrationTest() {
 
     private fun insertCriticalTestData() {
         db.transaction { tx ->
-            val employeeId = tx.insert(DevEmployee())
+            val employee = DevEmployee()
+            tx.insert(employee)
             val areaId =
                 tx
                     .createQuery(
@@ -86,8 +89,8 @@ class DwExportJobTest : AbstractIntegrationTest() {
                     DevPlacement(
                         childId = childId,
                         unitId = daycareId,
-                        createdBy = EvakaUserId(employeeId.raw),
-                        modifiedBy = EvakaUserId(employeeId.raw),
+                        createdBy = employee.evakaUserId,
+                        modifiedBy = employee.evakaUserId,
                     ),
                 )
             tx.insert(
@@ -101,7 +104,7 @@ class DwExportJobTest : AbstractIntegrationTest() {
                 DevAbsence(
                     childId = childId,
                     date = LocalDate.of(2019, 7, 15),
-                    modifiedBy = EvakaUserId(employeeId.raw),
+                    modifiedBy = employee.evakaUserId,
                     absenceCategory = AbsenceCategory.BILLABLE,
                 ),
             )
@@ -123,7 +126,26 @@ class DwExportJobTest : AbstractIntegrationTest() {
             tx.insert(
                 DevAssistanceAction(
                     childId = childId,
-                    modifiedBy = EvakaUserId(employeeId.raw),
+                    modifiedBy = employee.evakaUserId,
+                ),
+            )
+            tx.insert(
+                DevReservation(
+                    childId = childId,
+                    date = LocalDate.of(2019, 7, 15),
+                    startTime = LocalTime.of(8, 0),
+                    endTime = LocalTime.of(16, 0),
+                    createdBy = employee.evakaUserId,
+                ),
+            )
+            tx.insert(
+                DevChildAttendance(
+                    childId = childId,
+                    unitId = daycareId,
+                    date = LocalDate.of(2019, 7, 15),
+                    arrived = LocalTime.of(8, 15),
+                    departed = LocalTime.of(15, 45),
+                    modifiedBy = employee.evakaUserId,
                 ),
             )
         }
