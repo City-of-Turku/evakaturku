@@ -89,13 +89,6 @@ object DwQueries {
             )
         }
 
-    val getAssistanceNeedDecisions =
-        csvQuery<DwAssistanceNeedDecision> {
-            sql(
-                "SELECT NULL WHERE FALSE",
-            )
-        }
-
     val getChildAggregate =
         csvQuery<DwChildAggregate> {
             sql(

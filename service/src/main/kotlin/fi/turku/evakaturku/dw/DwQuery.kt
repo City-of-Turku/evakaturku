@@ -7,7 +7,6 @@ enum class DwQuery(
     Absence("absences", DwQueries.getAbsences),
     ApplicationInfos("application_info", DwQueries.getApplicationInfos),
     AssistanceActions("assistance_actions", DwQueries.getAssistanceActions),
-    AssistanceNeedDecision("assistance_need_decisions_3v_", DwQueries.getAssistanceNeedDecisions),
     ChildAggregate("child_aggregate_3v_", DwQueries.getChildAggregate),
     ChildReservations("child_reservations_", DwQueries.getChildReservations),
     ChildAttendances("child_attendances_", DwQueries.getChildAttendances),
