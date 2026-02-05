@@ -654,13 +654,13 @@ const fi: DeepPartial<Translations> = {
     applicationDecisions: {
       decision: 'Päätös',
       type: {
-        CLUB: 'kerhosta',
-        DAYCARE: 'varhaiskasvatuksesta',
-        DAYCARE_PART_TIME: 'osa-aikaisesta varhaiskasvatuksesta',
-        PRESCHOOL: 'esiopetuksesta',
-        PRESCHOOL_DAYCARE: 'täydentävästä varhaiskasvatuksesta',
-        PRESCHOOL_CLUB: 'esiopetuksen kerhosta',
-        PREPARATORY_EDUCATION: 'valmistavasta opetuksesta'
+        CLUB: 'Kerho',
+        DAYCARE: 'Varhaiskasvatus',
+        DAYCARE_PART_TIME: 'Osa-aikainen varhaiskasvatus',
+        PRESCHOOL: 'Esiopetus',
+        PRESCHOOL_DAYCARE: 'Täydentävä varhaiskasvatus',
+        PRESCHOOL_CLUB: 'Esiopetuksen kerho',
+        PREPARATORY_EDUCATION: 'Valmistava opetus'
       }
     },
     assistanceDecisions: {
