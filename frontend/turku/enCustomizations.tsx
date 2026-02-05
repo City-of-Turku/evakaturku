@@ -928,11 +928,7 @@ const en: DeepPartial<Translations> = {
         </>
       )
     },
-    summary: (
-      <P width="800px">
-        This page displays the received decisions regarding your child.
-      </P>
-    )
+    summary: 'This page displays the received decisions regarding your child.'
   },
   income: {
     description: (

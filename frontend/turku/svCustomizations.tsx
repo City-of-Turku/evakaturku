@@ -915,7 +915,7 @@ const sv: DeepPartial<Translations> = {
       disclaimer:
         'Ett beslut som fattats i enlighet med lagen om grundläggande utbildning 17§ kan förverkligas även om någon sökt ändring av beslutet.'
     },
-    summary: <P width="800px">Alla barnets beslut kommer på denna sidan.</P>
+    summary: 'Alla barnets beslut kommer på denna sidan.'
   },
   income: {
     description: (

@@ -948,9 +948,7 @@ const fi: DeepPartial<Translations> = {
       disclaimer:
         'Perusopetuslain 17 §:n mukaan tämä päätös voidaan panna täytäntöön muutoksenhausta huolimatta.'
     },
-    summary: (
-      <P width="800px">Tälle sivulle saapuvat kaikki lapsen päätökset.</P>
-    )
+    summary: 'Tälle sivulle saapuvat kaikki lapsen päätökset.'
   },
   personalDetails: {
     description: (
