@@ -464,7 +464,7 @@ const fi: DeepPartial<Translations> = {
           },
           mapLink: 'Yksiköt kartalla',
           serviceVoucherLink:
-            'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli',
+            'https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli',
           languageFilter: {
             label: 'Yksikön kieli',
             fi: 'suomi',
@@ -559,7 +559,7 @@ const fi: DeepPartial<Translations> = {
             <P>
               Lisätietoa asiakasmaksuista löydät Turun kaupungin nettisivuilta:{' '}
               <ExternalLink
-                href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli"
+                href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli"
                 text="Varhaiskasvatuksen asiakasmaksut."
                 newTab
               />
@@ -642,7 +642,7 @@ const fi: DeepPartial<Translations> = {
     mainInfo: `Tässä näkymässä voit hakea kartalta Turun varhaiskasvatus-, esiopetus- ja avoimia varhaiskasvatuspaikkoja. Tietoa yksityisistä päiväkodeista löydät Turun varhaiskasvatuksen kotisivuilta.`,
     privateUnitInfo: <></>,
     serviceVoucherLink:
-      'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli',
+      'https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli',
     searchPlaceholder: 'Esim. Arkeologinkadun päiväkoti.',
     careTypes: {
       CLUB: 'Avoin varhaiskasvatus',

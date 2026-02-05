@@ -466,7 +466,7 @@ const sv: DeepPartial<Translations> = {
           },
           mapLink: 'Visa enheterna på kartan',
           serviceVoucherLink:
-            'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli',
+            'https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli',
           languageFilter: {
             label: 'Enhetens språk',
             fi: 'finska',
@@ -559,7 +559,7 @@ const sv: DeepPartial<Translations> = {
             <P>
               Mer information om kundavgifterna finns på Åbo stads webbplats:{' '}
               <ExternalLink
-                href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli"
+                href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli"
                 text="Avgifter inom småbarnspedagogiken."
                 newTab
               />
@@ -642,7 +642,7 @@ const sv: DeepPartial<Translations> = {
     mainInfo: `På denna karta kan du söka efter Åbos enheter för småbarnspedagogik, förskoleundervisning och öppen småbarnspedagogik. För mer information om privata daghem, besök webbplatsen för Åbo stads småbarnspedagogik.`,
     privateUnitInfo: <></>,
     serviceVoucherLink:
-      'https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/varhaiskasvatuksen-maksut-tuet-ja-palveluseteli',
+      'https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli',
     searchPlaceholder: 'T.ex. Arkeologinkadun päiväkoti.',
     careTypes: {
       CLUB: 'Öppen småbarnspedagogik',
