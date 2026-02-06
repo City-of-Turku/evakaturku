@@ -149,7 +149,7 @@ const en: DeepPartial<Translations> = {
                 care, see the City of Turku’s website:{' '}
                 <ExternalLink
                   text="Clubs, playgrounds activities and open daycare."
-                  href="https://www.turku.fi/en/daycare-and-education/day-care-and-early-childhood-education/clubs-playground-activities-and-open"
+                  href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus/avoin-varhaiskasvatustoiminta"
                   newTab
                 />
               </P>
@@ -472,7 +472,7 @@ const en: DeepPartial<Translations> = {
           },
           mapLink: 'Units on the map',
           serviceVoucherLink:
-            'https://www.turku.fi/en/daycare-and-education/early-childhood-education/day-care-fees-financial-support-and-service-voucher',
+            'https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli',
           languageFilter: {
             label: 'Unit language',
             fi: 'Finnish',
@@ -570,7 +570,7 @@ const en: DeepPartial<Translations> = {
               For more information about customer fees, please see the City of
               Turku website:{' '}
               <ExternalLink
-                href="https://www.turku.fi/en/daycare-and-education/early-childhood-education/day-care-fees-financial-support-and-service-voucher"
+                href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli"
                 text="Early education customer fees."
                 newTab
               />
@@ -656,7 +656,7 @@ const en: DeepPartial<Translations> = {
     mainInfo: `In this view, you can use the map to search for places in early childhood education and care, pre-primary education and open early childhood education and care. Information about private daycare centres can be found on the Day Care and Early Childhood Education web page of the City of Turku.`,
     privateUnitInfo: <></>,
     serviceVoucherLink:
-      'https://www.turku.fi/en/daycare-and-education/early-childhood-education/day-care-fees-financial-support-and-service-voucher',
+      'https://www.turku.fi/varhaiskasvatus-ja-esiopetus/maksut-tuet-ja-palveluseteli',
     searchPlaceholder: 'For example, the daycare centre on Arkeologinkatu.',
     careTypes: {
       CLUB: 'Open early childhood education and care',
@@ -1244,7 +1244,7 @@ const en: DeepPartial<Translations> = {
       <H2>Alternative methods to get things done</H2>
       <P>
         <ExternalLink
-          href="https://www.turku.fi/en/early-childhood-education-e-services"
+          href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus"
           text="City of Turku service points"
         />{' '}
         can help you with e-services. Go to the service points if you do not
