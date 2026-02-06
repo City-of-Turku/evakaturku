@@ -149,7 +149,7 @@ const en: DeepPartial<Translations> = {
                 care, see the City of Turku’s website:{' '}
                 <ExternalLink
                   text="Clubs, playgrounds activities and open daycare."
-                  href="https://www.turku.fi/en/daycare-and-education/day-care-and-early-childhood-education/clubs-playground-activities-and-open"
+                  href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus/avoin-varhaiskasvatustoiminta"
                   newTab
                 />
               </P>
@@ -1244,7 +1244,7 @@ const en: DeepPartial<Translations> = {
       <H2>Alternative methods to get things done</H2>
       <P>
         <ExternalLink
-          href="https://www.turku.fi/en/early-childhood-education-e-services"
+          href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus"
           text="City of Turku service points"
         />{' '}
         can help you with e-services. Go to the service points if you do not

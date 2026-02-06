@@ -145,7 +145,7 @@ const sv: DeepPartial<Translations> = {
                 stads webbplats:{' '}
                 <ExternalLink
                   text="Klubbar, lekparksverksamhet och öppen småbarnspedagogik."
-                  href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/kerhot-leikkipuistotoiminta-ja-avoimet-paivakodit"
+                  href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus/avoin-varhaiskasvatustoiminta"
                   newTab
                 />
               </P>
@@ -1231,7 +1231,7 @@ const sv: DeepPartial<Translations> = {
       <H2>Alternativa användningssätt</H2>
       <P>
         <ExternalLink
-          href="https://www.turku.fi/varhaiskasvatuksen-sahkoinen-asiointi"
+          href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus"
           text="Åbo stads servicepunkter"
         />{' '}
         hjälper till med att använda e-tjänsterna. Kundrådgivarna vid

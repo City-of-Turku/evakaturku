@@ -140,7 +140,7 @@ const fi: DeepPartial<Translations> = {
                 verkkosivuilta:{' '}
                 <ExternalLink
                   text="Kerhot, leikkipuistotoiminta ja avoimet päiväkodit."
-                  href="https://www.turku.fi/paivahoito-ja-koulutus/varhaiskasvatus/kerhot-leikkipuistotoiminta-ja-avoimet-paivakodit"
+                  href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus/avoin-varhaiskasvatustoiminta"
                   newTab
                 />
               </P>
@@ -1264,7 +1264,7 @@ const fi: DeepPartial<Translations> = {
       <H2>Vaihtoehtoiset asiointitavat</H2>
       <P>
         <ExternalLink
-          href="https://www.turku.fi/varhaiskasvatuksen-sahkoinen-asiointi"
+          href="https://www.turku.fi/varhaiskasvatus-ja-esiopetus"
           text="Turun kaupungin asiointipisteistä"
         />{' '}
         saa apua sähköiseen asiointiin. Asiointipisteiden palveluneuvojat
