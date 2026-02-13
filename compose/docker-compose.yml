@@ -64,7 +64,6 @@ services:
     build:
       context: ../evaka/dummy-idp
     init: true
-    restart: on-failure
     ports:
       - "9090:9090"
 
@@ -102,7 +101,6 @@ services:
       EVAKA_INTEGRATION_SFI_ENABLED: "false"
       EVAKA_INTEGRATION_VARDA_URL: "http://localhost:8888/mock-integration/varda/api"
       EVAKA_INTEGRATION_BASIC_AUTH: ""
-    restart: unless-stopped
 
 
 volumes:
