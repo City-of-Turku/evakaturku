@@ -19,6 +19,7 @@ evaka:
     flyway:
       username: evaka_it
       password: evaka_it
+      locations: db/migration,db/data/turku
   email:
     sender_address: evaka@localhost
     sender_name:
