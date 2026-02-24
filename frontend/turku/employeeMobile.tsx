@@ -33,7 +33,8 @@ const customizations: EmployeeMobileCustomizations = {
       mobile: {
         landerText1: 'Tervetuloa käyttämään eVaka Turku -mobiilisovellusta!'
       }
-    }
+    },
+    sv: {}
   },
   featureFlags,
   additionalStaffAttendanceTypes
