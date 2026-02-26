@@ -40,7 +40,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-webservices")
     implementation("org.springframework.boot:spring-boot-jdbc")
 
-    implementation("com.github.kittinunf.fuel:fuel")
     implementation("org.jdbi:jdbi3-core")
     implementation("com.github.mwiede:jsch")
     implementation("software.amazon.awssdk:s3")
