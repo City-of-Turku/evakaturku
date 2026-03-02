@@ -97,7 +97,7 @@ const en: DeepPartial<Translations> = {
                 decision is also available in the eVaka service under
                 Applications - Decisions.
               </p>
-              <P fitted={true}>
+              <P $fitted={true}>
                 * Fields indicated by an asterisk are required
               </P>
             </>
@@ -123,7 +123,7 @@ const en: DeepPartial<Translations> = {
                   Suomi.fi service.
                 </a>{' '}
               </P>
-              <P fitted={true}>
+              <P $fitted={true}>
                 * Fields indicated by an asterisk are required
               </P>
             </>
@@ -217,7 +217,7 @@ const en: DeepPartial<Translations> = {
         urgent: {
           attachmentsMessage: {
             text: (
-              <P fitted={true}>
+              <P $fitted={true}>
                 If the need for an early childhood education and care place is
                 caused by work or study that will begin on short notice, the
                 place must be applied for at least two weeks before the need
@@ -599,7 +599,7 @@ const en: DeepPartial<Translations> = {
     title: 'Applying for early childhood education and care',
     summary: (
       <>
-        <P width="800px">
+        <P $width="800px">
           A child’s parent or guardian can submit an application for early
           childhood education care and open early childhood education and care,
           or enrol the child for pre-primary education. The same application can
@@ -608,7 +608,7 @@ const en: DeepPartial<Translations> = {
           unit. Details of the parent or guardian’s children are retrieved
           automatically into this view from the Population Information System.
         </P>
-        <P width="800px">
+        <P $width="800px">
           If the child already has a place in early childhood education and care
           in Turku and you want the child to be transferred to another unit, you
           must submit a new application.
@@ -1136,7 +1136,7 @@ const en: DeepPartial<Translations> = {
         <P>
           <strong>Note:</strong>
         </P>
-        <Gap size="xs" />
+        <Gap $size="xs" />
         <UnorderedList data-qa="income-formDescription-ul">
           <li>
             If your income exceeds the income threshold for your family size,

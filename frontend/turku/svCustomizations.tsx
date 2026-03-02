@@ -93,7 +93,7 @@ const sv: DeepPartial<Translations> = {
                 eller per brevpost, om du inte har aktiverat Suomi.fi-tjänsten.
                 Beslutet finns också i eVaka-tjänsten under Ansökning - Beslut.
               </p>
-              <P fitted={true}>
+              <P $fitted={true}>
                 * Obligatoriska uppgifter är markerade med en stjärna
               </P>
             </>
@@ -120,7 +120,7 @@ const sv: DeepPartial<Translations> = {
                 eller, om du inte har tagit Suomi.fi-tjänsten i bruk, per
                 brevpost
               </P>
-              <P fitted={true}>
+              <P $fitted={true}>
                 * Obligatoriska uppgifter är markerade med en stjärna
               </P>
             </>
@@ -213,7 +213,7 @@ const sv: DeepPartial<Translations> = {
         urgent: {
           attachmentsMessage: {
             text: (
-              <P fitted={true}>
+              <P $fitted={true}>
                 Om barnet behöver en plats inom småbarnspedagogiken på grund av
                 ny arbets- eller studieplats ska du ansöka om platsen minst två
                 veckor innan behovet blir aktuellt. Båda vårdnadshavarna som bor
@@ -587,14 +587,14 @@ const sv: DeepPartial<Translations> = {
     title: 'Ansökan till småbarnspedagogiken',
     summary: (
       <>
-        <P width="800px">
+        <P $width="800px">
           Barnets vårdnadshavare kan göra en ansökan till småbarnspedagogik och
           öppen småbarnspedagogik eller anmäla barnet till förskoleundervisning.
           Du kan ansöka om servicesedel för småbarnspedagogik med samma ansökan
           genom att ansöka om en plats på en servicesedelenhet. Uppgifterna om
           vårdnadshavarens barn hämtas automatiskt från befolkningsdatasystemet.
         </P>
-        <P width="800px">
+        <P $width="800px">
           Om barnet redan har en plats på en enhet för småbarnspedagogik i Åbo
           och du vill flytta barnet till en annan enhet måste du göra en ny
           ansökan.
@@ -1124,7 +1124,7 @@ const sv: DeepPartial<Translations> = {
         <P>
           <strong>Observera:</strong>
         </P>
-        <Gap size="xs" />
+        <Gap $size="xs" />
         <UnorderedList data-qa="income-formDescription-ul">
           <li>
             Om dina inkomster överstiger inkomstgränsen som fastställts för din

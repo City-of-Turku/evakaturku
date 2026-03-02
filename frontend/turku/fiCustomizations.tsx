@@ -94,7 +94,7 @@ const fi: DeepPartial<Translations> = {
                 Päätös on nähtävillä myös eVaka-palvelussa kohdassa Hakeminen -
                 Päätökset.
               </p>
-              <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
+              <P $fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
             </>
           ),
           PRESCHOOL: (
@@ -118,7 +118,7 @@ const fi: DeepPartial<Translations> = {
                 -palveluun tai postitse, mikäli et ole ottanut Suomi.fi
                 -palvelua käyttöön.
               </P>
-              <P fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
+              <P $fitted={true}>* Tähdellä merkityt tiedot ovat pakollisia</P>
             </>
           ),
           CLUB: (
@@ -208,7 +208,7 @@ const fi: DeepPartial<Translations> = {
         urgent: {
           attachmentsMessage: {
             text: (
-              <P fitted={true}>
+              <P $fitted={true}>
                 Mikäli varhaiskasvatuspaikan tarve johtuu äkillisestä
                 työllistymisestä tai opiskelusta, tulee paikkaa hakea
                 viimeistään kaksi viikkoa ennen kuin tarve alkaa. Hakemuksen
@@ -587,7 +587,7 @@ const fi: DeepPartial<Translations> = {
     title: 'Hakeminen varhaiskasvatukseen',
     summary: (
       <>
-        <P width="800px">
+        <P $width="800px">
           Lapsen huoltaja voi tehdä lapselle hakemuksen varhaiskasvatukseen ja
           avoimeen varhaiskasvatukseen tai ilmoittaa lapsen esiopetukseen.
           Samalla hakemuksella voi hakea myös varhaiskasvatuksen palveluseteliä,
@@ -595,7 +595,7 @@ const fi: DeepPartial<Translations> = {
           lasten tiedot haetaan tähän näkymään automaattisesti
           Väestötietojärjestelmästä.
         </P>
-        <P width="800px">
+        <P $width="800px">
           Jos lapsella on jo paikka Turun varhaiskasvatuksessa ja halutaan hakea
           siirtoa toiseen yksikköön, tehdään lapselle uusi hakemus.
         </P>
@@ -1158,7 +1158,7 @@ const fi: DeepPartial<Translations> = {
         <P>
           <strong>Huomioitavaa:</strong>
         </P>
-        <Gap size="xs" />
+        <Gap $size="xs" />
         <UnorderedList data-qa="income-formDescription-ul">
           <li>
             Jos tulosi ylittävät perhekoon mukaisen tulorajan, hyväksy korkein
