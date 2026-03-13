@@ -212,6 +212,8 @@ commands:
       - run:
           name: Build docker image
           working_directory: << parameters.dir >>
+          environment:
+            BUILDX_GIT_INFO: "0"
           command: |
             docker buildx build --progress=plain \
               -t 574084083847.dkr.ecr.eu-west-1.amazonaws.com/<< parameters.image >>:${CIRCLE_SHA1} \
