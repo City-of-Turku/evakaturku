@@ -262,19 +262,19 @@ object DwQueries {
                     sn.end_date                             AS palveluntarpeen_loppu_pvm,
                     sn.shift_care                           AS vuorohoito,
                     sno.daycare_hours_per_week              AS tunteja_viikossa,
-                    sno.realized_occupancy_coefficient      AS palveluntarvekerroin,
+                    sno.realized_occupancy_coefficient      AS palveluntarvekerroin, -- onko käytössä? tässä pitäis ottaa huomioon ikä ja perhepäivähoito
                     da.level                                AS tuentarve_varhaiskasvatuksessa,
                     lower(da.valid_during)                  AS tuentarve_varha_aloitus_pvm,
                     upper(da.valid_during)                  AS tuentarve_varha_loppu_pvm,
                     pa.level                                AS tuentarve_esiopetuksessa,
                     lower(pa.valid_during)                  AS tuentarve_esiop_aloitus_pvm,
                     upper(pa.valid_during)                  AS tuentarve_esiop_loppu_pvm,
-                    anvc.coefficient                        AS tuentarpeen_kerroin,
-                    lower(anvc.validity_period)             AS kerroin_aloitus_pvm,
-                    upper(anvc.validity_period)             AS kerroin_loppu_pvm,
-                    af.capacity_factor                      AS lapsen_kapasiteetti,
-                    lower(af.valid_during)                  AS kapasiteetti_aloitus_pvm,
-                    upper(af.valid_during)                  AS kapasiteetti_loppu_pvm,
+                    anvc.coefficient                        AS palvelusetelikerroin,
+                    lower(anvc.validity_period)             AS palvelusetelikerroin_aloitus_pvm,
+                    upper(anvc.validity_period)             AS palvelusetelikerroin_loppu_pvm,
+                    af.capacity_factor                      AS tuentarpeen_kerroin,
+                    lower(af.valid_during)                  AS tuentarpeen_kerroin_aloitus_pvm,
+                    upper(af.valid_during)                  AS tuentarpeen_kerroin_loppu_pvm,
                     array(
                         SELECT distinct absence_type
                         FROM absence
